@@ -8,10 +8,10 @@
       "program": "${workspaceRoot}/node_modules/jasmine/bin/jasmine.js",
       "cwd": "${workspaceRoot}",
       "outFiles": [
-        "${workspaceRoot}/build/**/*.js"
+        "${workspaceRoot}/build/test-out.js"
       ],
       "args": [
-        "build/test/src/**/*.js"
+        "build/test-out.js"
       ],
       "sourceMaps": true
     }
