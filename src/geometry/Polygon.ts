@@ -9,9 +9,9 @@ namespace Flexagonator {
 
     const angle = 2 * Math.PI / numSides;
     for (var i = 0; i < numSides; i++) {
-      const thisAngle = angle * i - Math.PI / 2;
-      const x = Math.cos(thisAngle);
-      const y = Math.sin(thisAngle);
+      var thisAngle = angle * i - Math.PI / 2;
+      var x = Math.cos(thisAngle);
+      var y = Math.sin(thisAngle);
       corners.push(x * radius + xCenter);
       corners.push(y * radius + yCenter);
     }
