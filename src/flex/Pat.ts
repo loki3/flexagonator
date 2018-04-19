@@ -30,9 +30,7 @@ namespace Flexagonator {
 
   // single leaf
   class PatLeaf implements Pat {
-    id: number;
-    constructor(id: number) {
-      this.id = id;
+    constructor(private id: number) {
     }
 
     getLeafCount(): number {
@@ -54,11 +52,7 @@ namespace Flexagonator {
 
   // pair of sub-pats
   class PatPair implements Pat {
-    left: Pat;
-    right: Pat;
-    constructor(left: Pat, right: Pat) {
-      this.left = left;
-      this.right = right;
+    constructor(private left: Pat, private right: Pat) {
     }
 
     getLeafCount(): number {
