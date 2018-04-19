@@ -1,4 +1,16 @@
 namespace Flexagonator {
+  describe('makeFlexagon', () => {
+    it('should fail if handed a single pat', () => {
+      const trees: LeafTree[] = [[[4, 5], [6, 7]]];
+      const error = makeFlexagon(trees);
+      if (!isStructureError(error)) {
+        fail();
+        return;
+      }
+      expect(error.reason).toBe(StructureCode.TooFewPats);
+    });
+  });
+
   describe('getAsLeafTrees', () => {
     it('should make a flexagon that returns the original trees', () => {
       const trees: LeafTree[] = [1, [2, 3], [[4, 5], [6, 7]]];
