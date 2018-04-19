@@ -8,6 +8,8 @@ namespace Flexagonator {
     getLeafCount(): number;
     makeCopy(): Pat;
     makeFlipped(): Pat;
+    // get a binary array of subpats, with ids for the leaves
+    getAsRaw(): any;
   }
 
   /*
@@ -16,9 +18,9 @@ namespace Flexagonator {
     leaves that are flipped over
     e.g. [1, [[-2, 3], 4]]
   */
-  export function makePat(leaves: any[]): Pat {
-    if (leaves.length == 1) {
-      return new PatLeaf(leaves[0] as number);
+  export function makePat(leaves: any): Pat {
+    if (!Array.isArray(leaves)) {
+      return new PatLeaf(leaves as number);
     }
     const left = makePat(leaves[0]);
     const right = makePat(leaves[1]);
@@ -44,6 +46,10 @@ namespace Flexagonator {
     makeFlipped(): Pat {
       return new PatLeaf(-this.id);
     }
+
+    getAsRaw(): any {
+      return this.id;
+    }
   }
 
   // pair of sub-pats
@@ -65,6 +71,10 @@ namespace Flexagonator {
 
     makeFlipped(): Pat {
       return new PatPair(this.right.makeFlipped(), this.left.makeFlipped());
+    }
+
+    getAsRaw(): any {
+      return [this.left.getAsRaw(), this.right.getAsRaw()];
     }
   }
 
