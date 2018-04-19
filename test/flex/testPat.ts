@@ -3,7 +3,7 @@ namespace Flexagonator {
     it('should make a pat that returns the original array', () => {
       const original = [1, [[-2, 3], 4]];
       const pat = makePat(original);
-      if (isStructureError(pat)) {
+      if (isTreeError(pat)) {
         fail();
         return;
       }
@@ -16,19 +16,19 @@ namespace Flexagonator {
     it('should fail when handed invalid leaf tree', () => {
       const tree1 = [1, [[-2, 3, 5], 4]];
       const error1 = makePat(tree1);
-      if (!isStructureError(error1)) {
+      if (!isTreeError(error1)) {
         fail();
         return;
       }
-      expect(error1.reason).toBe(StructureCode.ArrayMustHave2Items);
+      expect(error1.reason).toBe(TreeCode.ArrayMustHave2Items);
 
       const tree2 = [1, [[-2, "invalid"], 4]];
       const error2 = makePat(tree2);
-      if (!isStructureError(error2)) {
+      if (!isTreeError(error2)) {
         fail();
         return;
       }
-      expect(error2.reason).toBe(StructureCode.LeafIdMustBeInt);
+      expect(error2.reason).toBe(TreeCode.LeafIdMustBeInt);
       expect(error2.context).toBe("invalid");
     });
   });
@@ -38,7 +38,7 @@ namespace Flexagonator {
       const original = [1, [[-2, 3], 4]];
       const expected = [[-4, [-3, 2]], -1];
       const pat = makePat(original);
-      if (isStructureError(pat)) {
+      if (isTreeError(pat)) {
         fail();
         return;
       }
@@ -51,7 +51,7 @@ namespace Flexagonator {
     it('should return the label for the top leaf', () => {
       const original = [[-1, 2], [-3, [4, -5]]];
       const pat = makePat(original);
-      if (isStructureError(pat)) {
+      if (isTreeError(pat)) {
         fail();
         return;
       }
@@ -64,7 +64,7 @@ namespace Flexagonator {
     it('should return the label for the bottom leaf', () => {
       const original = [[-1, 2], [-3, [4, -5]]];
       const pat = makePat(original);
-      if (isStructureError(pat)) {
+      if (isTreeError(pat)) {
         fail();
         return;
       }

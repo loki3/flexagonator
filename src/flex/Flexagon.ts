@@ -1,13 +1,13 @@
 namespace Flexagonator {
 
-  export function makeFlexagon(trees: LeafTree[]): Flexagon | StructureError {
+  export function makeFlexagon(trees: LeafTree[]): Flexagon | TreeError {
     if (trees.length < 2) {
-      return { reason: StructureCode.TooFewPats, context: trees };
+      return { reason: TreeCode.TooFewPats, context: trees };
     }
     var pats: Pat[] = [];
     for (var tree of trees) {
       const pat = makePat(tree);
-      if (isStructureError(pat)) {
+      if (isTreeError(pat)) {
         return pat;
       }
       pats.push(pat);

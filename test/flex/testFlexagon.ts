@@ -3,11 +3,11 @@ namespace Flexagonator {
     it('should fail if handed a single pat', () => {
       const trees: LeafTree[] = [[[4, 5], [6, 7]]];
       const error = makeFlexagon(trees);
-      if (!isStructureError(error)) {
+      if (!isTreeError(error)) {
         fail();
         return;
       }
-      expect(error.reason).toBe(StructureCode.TooFewPats);
+      expect(error.reason).toBe(TreeCode.TooFewPats);
     });
   });
 
@@ -15,7 +15,7 @@ namespace Flexagonator {
     it('should make a flexagon that returns the original trees', () => {
       const trees: LeafTree[] = [1, [2, 3], [[4, 5], [6, 7]]];
       const flexagon = makeFlexagon(trees);
-      if (isStructureError(flexagon)) {
+      if (isTreeError(flexagon)) {
         fail();
         return;
       }
@@ -30,7 +30,7 @@ namespace Flexagonator {
     it('should return the tops of the top leaves', () => {
       const trees: LeafTree[] = [1, [-2, 3], [[4, 5], [6, -7]]];
       const flexagon = makeFlexagon(trees);
-      if (isStructureError(flexagon)) {
+      if (isTreeError(flexagon)) {
         fail();
         return;
       }
@@ -45,7 +45,7 @@ namespace Flexagonator {
     it('should return the bottoms of the bottom leaves', () => {
       const trees: LeafTree[] = [1, [-2, 3], [[4, 5], [6, -7]]];
       const flexagon = makeFlexagon(trees);
-      if (isStructureError(flexagon)) {
+      if (isTreeError(flexagon)) {
         fail();
         return;
       }

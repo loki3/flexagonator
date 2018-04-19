@@ -11,6 +11,7 @@ namespace Flexagonator {
     getAsLeafTree(): LeafTree;
     getTop(): number;
     getBottom(): number;
+    // findStructure(LeafTree tree): object |
   }
 
   /*
@@ -19,23 +20,23 @@ namespace Flexagonator {
     leaves that are flipped over
     e.g. [1, [[-2, 3], 4]]
   */
-  export function makePat(leaves: LeafTree): Pat | StructureError {
+  export function makePat(leaves: LeafTree): Pat | TreeError {
     if (!Array.isArray(leaves)) {
       if (typeof (leaves) !== "number") {
-        return { reason: StructureCode.LeafIdMustBeInt, context: leaves };
+        return { reason: TreeCode.LeafIdMustBeInt, context: leaves };
       }
       return new PatLeaf(leaves as number);
     }
 
     if (leaves.length !== 2) {
-      return { reason: StructureCode.ArrayMustHave2Items, context: leaves };
+      return { reason: TreeCode.ArrayMustHave2Items, context: leaves };
     }
     const left = makePat(leaves[0]);
-    if (isStructureError(left)) {
+    if (isTreeError(left)) {
       return left;
     }
     const right = makePat(leaves[1]);
-    if (isStructureError(right)) {
+    if (isTreeError(right)) {
       return right;
     }
     return new PatPair(left, right);

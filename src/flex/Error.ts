@@ -1,16 +1,16 @@
 namespace Flexagonator {
-  export enum StructureCode {
+  export enum TreeCode {
     LeafIdMustBeInt,
     ArrayMustHave2Items,
     TooFewPats,
   }
 
-  export interface StructureError {
-    reason: StructureCode;
+  export interface TreeError {
+    reason: TreeCode;
     context: any;
   }
 
-  export function isStructureError(result: any): result is StructureError {
-    return (result as StructureError).reason !== undefined;
+  export function isTreeError(result: any): result is TreeError {
+    return (result as TreeError).reason !== undefined;
   }
 }
