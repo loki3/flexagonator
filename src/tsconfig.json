@@ -34,6 +34,8 @@
     "sourceMap": true,
     // No implicit null or undefined types. NPE be gone.
     "strictNullChecks": true,
+    // Enable all strict checks
+    "strict": true,
     "outFile": "../build/out.js"
   },
   "include": [
