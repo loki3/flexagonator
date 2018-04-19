@@ -11,7 +11,7 @@ namespace Flexagonator {
     getAsLeafTree(): LeafTree;
     getTop(): number;
     getBottom(): number;
-    // findStructure(LeafTree tree): object |
+    hasPattern(tree: LeafTree): boolean;
   }
 
   /*
@@ -71,6 +71,10 @@ namespace Flexagonator {
     getBottom(): number {
       return -this.id;
     }
+
+    hasPattern(tree: LeafTree): boolean {
+      return typeof (tree) === "number";
+    }
   }
 
   // pair of sub-pats
@@ -100,6 +104,13 @@ namespace Flexagonator {
 
     getBottom(): number {
       return this.right.getBottom();
+    }
+
+    hasPattern(tree: LeafTree): boolean {
+      if (!Array.isArray(tree)) {
+        return true;
+      }
+      return this.left.hasPattern(tree[0]) && this.right.hasPattern(tree[1]);
     }
   }
 

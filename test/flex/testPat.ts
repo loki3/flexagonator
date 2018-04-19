@@ -72,4 +72,34 @@ namespace Flexagonator {
       expect(result).toBe(5);
     });
   });
+
+  describe('hasPattern', () => {
+    it('should detect when pattern is present in pat', () => {
+      const pat = makePat([[-1, 2], [-3, [4, -5]]]);
+      if (isTreeError(pat)) {
+        fail();
+        return;
+      }
+
+      const pattern1 = [1, 2];
+      expect(pat.hasPattern(pattern1)).toBeTruthy();
+      const pattern2 = [[1, 2], [3, 4]];
+      expect(pat.hasPattern(pattern2)).toBeTruthy();
+    });
+  });
+
+  describe('hasPattern', () => {
+    it('should detect when pattern is not present in pat', () => {
+      const pat = makePat([1, [-3, [4, -5]]]);
+      if (isTreeError(pat)) {
+        fail();
+        return;
+      }
+
+      const pattern1 = [[1, 2], 3];
+      expect(pat.hasPattern(pattern1)).toBeFalsy();
+      const pattern2 = [1, [[2, 3], 4]];
+      expect(pat.hasPattern(pattern2)).toBeFalsy();
+    });
+  });
 }
