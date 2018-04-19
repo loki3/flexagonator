@@ -51,12 +51,12 @@ namespace Flexagonator {
       return ids;
     }
 
-    hasPattern(tree: LeafTree[]): boolean {
-      if (this.pats.length !== tree.length) {
+    hasPattern(pattern: LeafTree[]): boolean {
+      if (this.pats.length !== pattern.length) {
         return false;
       }
       for (var i in this.pats) {
-        if (!this.pats[i].hasPattern(tree[i])) {
+        if (!this.pats[i].hasPattern(pattern[i])) {
           return false;
         }
       }
