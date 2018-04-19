@@ -19,7 +19,7 @@ namespace Flexagonator {
     Manages the pats in a flexagon
   */
   export class Flexagon {
-    constructor(private pats: Pat[]) {
+    constructor(private readonly pats: Pat[]) {
     }
 
     getPatCount(): number {
