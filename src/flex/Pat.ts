@@ -9,6 +9,8 @@ namespace Flexagonator {
     makeCopy(): Pat;
     makeFlipped(): Pat;
     getAsLeafTree(): LeafTree;
+    getTop(): number;
+    getBottom(): number;
   }
 
   /*
@@ -47,6 +49,14 @@ namespace Flexagonator {
     getAsLeafTree(): LeafTree {
       return this.id;
     }
+
+    getTop(): number {
+      return this.id;
+    }
+
+    getBottom(): number {
+      return -this.id;
+    }
   }
 
   // pair of sub-pats
@@ -68,6 +78,14 @@ namespace Flexagonator {
 
     getAsLeafTree(): LeafTree {
       return [this.left.getAsLeafTree(), this.right.getAsLeafTree()];
+    }
+
+    getTop(): number {
+      return this.left.getTop();
+    }
+
+    getBottom(): number {
+      return this.right.getBottom();
     }
   }
 

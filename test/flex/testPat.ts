@@ -17,4 +17,22 @@ namespace Flexagonator {
       expect(areEqual(result, expected)).toBeTruthy();
     });
   });
+
+  describe('getTop', () => {
+    it('should return the label for the top leaf', () => {
+      const original = [[-1, 2], [-3, [4, -5]]];
+      const pat = makePat(original);
+      const result = pat.getTop();
+      expect(result).toBe(-1);
+    });
+  });
+
+  describe('getBottom', () => {
+    it('should return the label for the bottom leaf', () => {
+      const original = [[-1, 2], [-3, [4, -5]]];
+      const pat = makePat(original);
+      const result = pat.getBottom();
+      expect(result).toBe(5);
+    });
+  });
 }
