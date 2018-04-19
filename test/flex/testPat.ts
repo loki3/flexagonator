@@ -12,6 +12,27 @@ namespace Flexagonator {
     });
   });
 
+  describe('makePat', () => {
+    it('should fail when handed invalid leaf tree', () => {
+      const tree1 = [1, [[-2, 3, 5], 4]];
+      const error1 = makePat(tree1);
+      if (!isStructureError(error1)) {
+        fail();
+        return;
+      }
+      expect(error1.reason).toBe(StructureCode.ArrayMustHave2Items);
+
+      const tree2 = [1, [[-2, "invalid"], 4]];
+      const error2 = makePat(tree2);
+      if (!isStructureError(error2)) {
+        fail();
+        return;
+      }
+      expect(error2.reason).toBe(StructureCode.LeafIdMustBeInt);
+      expect(error2.context).toBe("invalid");
+    });
+  });
+
   describe('makeFlipped', () => {
     it('should properly flip a pat', () => {
       const original = [1, [[-2, 3], 4]];

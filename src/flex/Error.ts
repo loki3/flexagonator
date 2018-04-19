@@ -1,6 +1,7 @@
 namespace Flexagonator {
   export enum StructureCode {
-    InvalidLeafTree,
+    LeafIdMustBeInt,
+    ArrayMustHave2Items,
     TooFewPats,
   }
 

@@ -22,11 +22,14 @@ namespace Flexagonator {
   export function makePat(leaves: LeafTree): Pat | StructureError {
     if (!Array.isArray(leaves)) {
       if (typeof (leaves) !== "number") {
-        return { reason: StructureCode.InvalidLeafTree, context: leaves };
+        return { reason: StructureCode.LeafIdMustBeInt, context: leaves };
       }
       return new PatLeaf(leaves as number);
     }
 
+    if (leaves.length !== 2) {
+      return { reason: StructureCode.ArrayMustHave2Items, context: leaves };
+    }
     const left = makePat(leaves[0]);
     if (isStructureError(left)) {
       return left;
