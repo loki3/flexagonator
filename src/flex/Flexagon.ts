@@ -1,9 +1,12 @@
 namespace Flexagonator {
 
-  export function makeFlexagon(trees: LeafTree[]): Flexagon {
+  export function makeFlexagon(trees: LeafTree[]): Flexagon | StructureError {
     var pats: Pat[] = [];
     for (var tree of trees) {
       const pat = makePat(tree);
+      if (isStructureError(pat)) {
+        return pat;
+      }
       pats.push(pat);
     }
     return new Flexagon(pats);

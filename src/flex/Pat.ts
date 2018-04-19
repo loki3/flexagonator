@@ -19,12 +19,22 @@ namespace Flexagonator {
     leaves that are flipped over
     e.g. [1, [[-2, 3], 4]]
   */
-  export function makePat(leaves: LeafTree): Pat {
+  export function makePat(leaves: LeafTree): Pat | StructureError {
     if (!Array.isArray(leaves)) {
+      if (typeof (leaves) !== "number") {
+        return { reason: StructureCode.InvalidLeafTree, context: leaves };
+      }
       return new PatLeaf(leaves as number);
     }
+
     const left = makePat(leaves[0]);
+    if (isStructureError(left)) {
+      return left;
+    }
     const right = makePat(leaves[1]);
+    if (isStructureError(right)) {
+      return right;
+    }
     return new PatPair(left, right);
   }
 
