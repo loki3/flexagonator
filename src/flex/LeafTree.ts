@@ -38,4 +38,16 @@ namespace Flexagonator {
     return false;
   }
 
+  export function areLTArraysEqual(a: LeafTree[], b: LeafTree[]): boolean {
+    if (a.length !== b.length) {
+      return false;
+    }
+    for (var i in a) {
+      if (!areEqual(a[i], b[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
 }
