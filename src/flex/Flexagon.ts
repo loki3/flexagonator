@@ -62,5 +62,20 @@ namespace Flexagonator {
       }
       return true;
     }
+
+    matchPattern(pattern: LeafTree[]): any[] | PatternError {
+      if (this.pats.length !== pattern.length) {
+        return { expected: pattern, actual: this.pats };
+      }
+
+      var match = [];
+      for (var i in this.pats) {
+        const imatch = this.pats[i].matchPattern(pattern[i]);
+        if (isPatternError(imatch))
+          return imatch;
+        match.push(imatch);
+      }
+      return match;
+    }
   }
 }
