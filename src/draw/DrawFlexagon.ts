@@ -7,7 +7,8 @@ namespace Flexagonator {
 
     const xCenter = 200;
     const yCenter = 150;
-    const corners = createPolygon(flexagon.getPatCount(), xCenter, yCenter, 100);
+    const polygon = new Polygon(flexagon.getPatCount(), xCenter, yCenter, 100);
+    const corners = polygon.getCorners();
     drawPolygon(ctx, corners);
     drawSpokes(ctx, corners, xCenter, yCenter);
   }
