@@ -8,7 +8,7 @@ namespace Flexagonator {
     const yCenter = 150;
     const radius = 100;
 
-    ctx.clearRect(xCenter - radius, yCenter - radius, xCenter + radius, yCenter + radius);
+    ctx.clearRect(xCenter - radius, yCenter - radius * 1.1, xCenter + radius, yCenter + radius);
 
     const polygon = new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius);
 
@@ -17,7 +17,9 @@ namespace Flexagonator {
     drawPolygon(ctx, corners);
     drawSpokes(ctx, corners, xCenter, yCenter);
 
-    drawLabels(ctx, polygon.getFaceCenters(), flexagon.getTopIds());
+    drawFaceText(ctx, polygon.getFaceCenters(0.6), flexagon.getTopIds(), 20);
+    drawFaceText(ctx, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6], 12);
+    drawFaceText(ctx, polygon.getFaceCenters(1.05), flexagon.getThickness(), 12);
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
@@ -37,11 +39,11 @@ namespace Flexagonator {
     }
   }
 
-  function drawLabels(ctx: CanvasRenderingContext2D, centers: number[], ids: number[]) {
+  function drawFaceText(ctx: CanvasRenderingContext2D, centers: number[], ids: number[], fontsize: number) {
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.font = "20px sans-serif";
+    ctx.font = fontsize.toString() + "px sans-serif";
     for (var i = 0; i < ids.length; i++) {
       ctx.fillText(ids[i].toString(), centers[i * 2], centers[i * 2 + 1]);
     }

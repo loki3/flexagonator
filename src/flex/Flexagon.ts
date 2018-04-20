@@ -55,6 +55,14 @@ namespace Flexagonator {
       return ids;
     }
 
+    getThickness(): number[] {
+      var thickness: number[] = [];
+      for (var pat of this.pats) {
+        thickness.push(pat.getThickness());
+      }
+      return thickness;
+    }
+
     hasPattern(pattern: LeafTree[]): boolean {
       if (this.pats.length !== pattern.length) {
         return false;
