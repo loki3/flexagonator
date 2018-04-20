@@ -1,13 +1,13 @@
 namespace Flexagonator {
 
-  export function drawFlexagon(canvasId: string, numSides: number) {
+  export function drawFlexagon(canvasId: string, flexagon: Flexagon) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.strokeStyle = "rgb(90, 150, 210)";
 
     const xCenter = 200;
     const yCenter = 150;
-    const corners = createPolygon(numSides, xCenter, yCenter, 100);
+    const corners = createPolygon(flexagon.getPatCount(), xCenter, yCenter, 100);
     drawPolygon(ctx, corners);
     drawSpokes(ctx, corners, xCenter, yCenter);
   }
