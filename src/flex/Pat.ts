@@ -45,6 +45,10 @@ namespace Flexagonator {
     return new PatPair(left, right);
   }
 
+  export function combinePats(pat1: Pat, pat2: Pat): Pat {
+    return new PatPair(pat1, pat2);
+  }
+
 
   // single leaf
   class PatLeaf implements Pat {

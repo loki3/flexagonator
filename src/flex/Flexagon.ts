@@ -15,6 +15,10 @@ namespace Flexagonator {
     return new Flexagon(pats);
   }
 
+  export function makeFlexagonFromPats(pats: Pat[]): Flexagon {
+    return new Flexagon(pats);
+  }
+
   /*
     Manages the pats in a flexagon
   */
@@ -63,17 +67,20 @@ namespace Flexagonator {
       return true;
     }
 
-    matchPattern(pattern: LeafTree[]): any[] | PatternError {
+    matchPattern(pattern: LeafTree[]): Pat[] | PatternError {
       if (this.pats.length !== pattern.length) {
         return { expected: pattern, actual: this.pats };
       }
 
-      var match = [];
+      var match: Pat[] = [];
       for (var i in this.pats) {
         const imatch = this.pats[i].matchPattern(pattern[i]);
-        if (isPatternError(imatch))
+        if (isPatternError(imatch)) {
           return imatch;
-        match.push(imatch);
+        }
+        for (var j in imatch) {
+          match[j] = imatch[j];
+        }
       }
       return match;
     }

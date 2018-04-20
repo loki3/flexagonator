@@ -31,4 +31,24 @@ namespace Flexagonator {
   export function isPatternError(result: any): result is PatternError {
     return (result as PatternError).expected !== undefined;
   }
+
+
+  /*
+    Error performing a flex on a flexagon
+  */
+
+  export enum FlexCode {
+    SizeMismatch,
+    BadFlexInput,
+    BadFlexOutput,
+  }
+
+  export interface FlexError {
+    reason: FlexCode;
+    patternError?: PatternError;  // set if BadFlexInput
+  }
+
+  export function isFlexError(result: any): result is FlexError {
+    return (result as FlexError).reason !== undefined;
+  }
 }
