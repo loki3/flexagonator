@@ -102,4 +102,52 @@ namespace Flexagonator {
       expect(pat.hasPattern(pattern2)).toBeFalsy();
     });
   });
+
+  describe('matchPattern', () => {
+    it('should find named sup-pats', () => {
+      const pat = makePat([[-1, 2], [-3, [4, -5]]]);
+      if (isTreeError(pat)) {
+        fail();
+        return;
+      }
+
+      const pattern1 = [1, 2];
+      const match1 = pat.matchPattern(pattern1);
+      if (isPatternError(match1)) {
+        fail();
+        return;
+      }
+      expect(match1[1][0]).toBe(-1);
+      expect(match1[1][1]).toBe(2);
+      expect(match1[2][0]).toBe(-3);
+      expect(match1[2][1][0]).toBe(4);
+      expect(match1[2][1][1]).toBe(-5);
+
+      const pattern2 = [[1, 2], [3, 4]];
+      const match2 = pat.matchPattern(pattern2);
+      if (isPatternError(match2)) {
+        fail();
+        return;
+      }
+      expect(match2[1]).toBe(-1);
+      expect(match2[2]).toBe(2);
+      expect(match2[3]).toBe(-3);
+      expect(match2[4][0]).toBe(4);
+      expect(match2[4][1]).toBe(-5);
+    });
+  });
+
+  describe('matchPattern', () => {
+    it('should report error when pattern not found', () => {
+      const pat = makePat([[-1, 2], [-3, [4, -5]]]);
+      if (isTreeError(pat)) {
+        fail();
+        return;
+      }
+
+      const pattern = [[[1, 2]]];
+      const match = pat.matchPattern(pattern);
+      expect(isPatternError(match)).toBeTruthy();
+    });
+  });
 }

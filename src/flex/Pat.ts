@@ -12,6 +12,7 @@ namespace Flexagonator {
     getTop(): number;
     getBottom(): number;
     hasPattern(pattern: LeafTree): boolean;
+    matchPattern(pattern: LeafTree): any[] | PatternError;
   }
 
   /*
@@ -75,6 +76,15 @@ namespace Flexagonator {
     hasPattern(pattern: LeafTree): boolean {
       return typeof (pattern) === "number";
     }
+
+    matchPattern(pattern: LeafTree): any[] | PatternError {
+      if (!this.hasPattern(pattern)) {
+        return { expected: pattern, actual: this.id };
+      }
+      var match: number[] = [];
+      match[pattern as number] = this.id;
+      return match;
+    }
   }
 
   // pair of sub-pats
@@ -114,6 +124,33 @@ namespace Flexagonator {
         return false;
       }
       return this.left.hasPattern(pattern[0]) && this.right.hasPattern(pattern[1]);
+    }
+
+    matchPattern(pattern: LeafTree): any[] | PatternError {
+      if (typeof (pattern) === "number") {
+        var match: any[] = [];
+        match[pattern as number] = this.getAsLeafTree();
+        return match;
+      }
+
+      if (Array.isArray(pattern) && pattern.length === 2) {
+        const leftMatch = this.left.matchPattern(pattern[0]);
+        if (isPatternError(leftMatch)) {
+          return leftMatch;
+        }
+        const rightMatch = this.right.matchPattern(pattern[1]);
+        if (isPatternError(rightMatch)) {
+          return rightMatch;
+        }
+
+        var join = leftMatch;
+        for (var i in rightMatch) {
+          join[i] = rightMatch[i];
+        }
+        return join;
+      }
+
+      return { expected: pattern, actual: [this.left, this.right] };
     }
   }
 
