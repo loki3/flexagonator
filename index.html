@@ -6,16 +6,29 @@
   <script type="text/javascript">
     var flexagon = Flexagonator.makeFlexagon([[[-3, -1], -5], -7, [-8, 6], -10, [[-12, [-2, [-11, 13]]], 9], 4]);
     var fm = Flexagonator.makeFlexagonManager(flexagon);
+
+    function flexAndShow(flex) {
+      fm.applyFlexes(flex);
+      Flexagonator.drawFlexagon('interface', fm.flexagon);
+    }
   </script>
 </head>
 
 <body>
   <h1>Flexagonator</h1>
-  <canvas id="interface" width="600" height="600"></canvas>
 
+  <input onclick="flexAndShow('>');" type="button" value=">" />
+  <input onclick="flexAndShow('<');" type="button" value="<" />
+  <input onclick="flexAndShow('^');" type="button" value="^" />
+  <input onclick="flexAndShow('P');" type="button" value="P" />
+  <input onclick="flexAndShow('S');" type="button" value="S" />
+  <br />
+
+  <canvas id="interface" width="600" height="600"></canvas>
   <script type="text/javascript">
     Flexagonator.drawFlexagon('interface', fm.flexagon);
   </script>
+
 </body>
 
 </html>

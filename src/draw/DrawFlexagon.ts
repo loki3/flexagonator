@@ -3,12 +3,16 @@ namespace Flexagonator {
   export function drawFlexagon(canvasId: string, flexagon: Flexagon) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    ctx.strokeStyle = "rgb(90, 150, 210)";
 
     const xCenter = 200;
     const yCenter = 150;
-    const polygon = new Polygon(flexagon.getPatCount(), xCenter, yCenter, 100);
+    const radius = 100;
 
+    ctx.clearRect(xCenter - radius, yCenter - radius, xCenter + radius, yCenter + radius);
+
+    const polygon = new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius);
+
+    ctx.strokeStyle = "rgb(90, 150, 210)";
     const corners = polygon.getCorners();
     drawPolygon(ctx, corners);
     drawSpokes(ctx, corners, xCenter, yCenter);
