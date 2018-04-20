@@ -9,7 +9,7 @@ namespace Flexagonator {
     if (patCount === 6) {
       flexes[">"] = makeFlex("shift right", [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 1]) as Flex;
       flexes["<"] = makeFlex("shift left", [1, 2, 3, 4, 5, 6], [6, 1, 2, 3, 4, 5]) as Flex;
-      flexes["^"] = makeFlex("turn over", [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 1]) as Flex;
+      flexes["^"] = makeFlex("turn over", [1, 2, 3, 4, 5, 6], [-6, -5, -4, -3, -2, -1]) as Flex;
 
       flexes["P"] = makeFlex("pinch flex",
         [[1, 2], 3, [4, 5], 6, [7, 8], 9],
