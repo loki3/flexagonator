@@ -11,7 +11,7 @@ namespace Flexagonator {
     // returns an array of corners [x1, y1, x2, y2...]
     // the bottom side is parallel to the axis
     getCorners(): number[] {
-      return this.computePoints(this.radius, 0.5);
+      return this.computePoints(this.radius, -0.5);
     }
 
     getFaceCenters(factor: number): number[] {
