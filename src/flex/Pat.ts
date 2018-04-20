@@ -11,8 +11,10 @@ namespace Flexagonator {
     getAsLeafTree(): LeafTree;
     getTop(): number;
     getBottom(): number;
+
     hasPattern(pattern: LeafTree): boolean;
-    matchPattern(pattern: LeafTree): any[] | PatternError;
+    // returns an array where the index is the pattern number from the input
+    matchPattern(pattern: LeafTree): Pat[] | PatternError;
   }
 
   /*
@@ -77,12 +79,12 @@ namespace Flexagonator {
       return typeof (pattern) === "number";
     }
 
-    matchPattern(pattern: LeafTree): any[] | PatternError {
+    matchPattern(pattern: LeafTree): Pat[] | PatternError {
       if (!this.hasPattern(pattern)) {
         return { expected: pattern, actual: this.id };
       }
-      var match: number[] = [];
-      match[pattern as number] = this.id;
+      var match: Pat[] = [];
+      match[pattern as number] = this;
       return match;
     }
   }
@@ -126,10 +128,10 @@ namespace Flexagonator {
       return this.left.hasPattern(pattern[0]) && this.right.hasPattern(pattern[1]);
     }
 
-    matchPattern(pattern: LeafTree): any[] | PatternError {
+    matchPattern(pattern: LeafTree): Pat[] | PatternError {
       if (typeof (pattern) === "number") {
-        var match: any[] = [];
-        match[pattern as number] = this.getAsLeafTree();
+        var match: Pat[] = [];
+        match[pattern as number] = this;
         return match;
       }
 

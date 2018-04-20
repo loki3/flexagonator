@@ -117,11 +117,8 @@ namespace Flexagonator {
         fail();
         return;
       }
-      expect(match1[1][0]).toBe(-1);
-      expect(match1[1][1]).toBe(2);
-      expect(match1[2][0]).toBe(-3);
-      expect(match1[2][1][0]).toBe(4);
-      expect(match1[2][1][1]).toBe(-5);
+      expect(areEqual(match1[1].getAsLeafTree(), [-1, 2])).toBeTruthy();
+      expect(areEqual(match1[2].getAsLeafTree(), [-3, [4, -5]])).toBeTruthy();
 
       const pattern2 = [[1, 2], [3, 4]];
       const match2 = pat.matchPattern(pattern2);
@@ -129,11 +126,10 @@ namespace Flexagonator {
         fail();
         return;
       }
-      expect(match2[1]).toBe(-1);
-      expect(match2[2]).toBe(2);
-      expect(match2[3]).toBe(-3);
-      expect(match2[4][0]).toBe(4);
-      expect(match2[4][1]).toBe(-5);
+      expect(areEqual(match2[1].getAsLeafTree(), -1)).toBeTruthy();
+      expect(areEqual(match2[2].getAsLeafTree(), 2)).toBeTruthy();
+      expect(areEqual(match2[3].getAsLeafTree(), -3)).toBeTruthy();
+      expect(areEqual(match2[4].getAsLeafTree(), [4, -5])).toBeTruthy();
     });
   });
 
