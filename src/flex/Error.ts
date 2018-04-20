@@ -38,14 +38,17 @@ namespace Flexagonator {
   */
 
   export enum FlexCode {
-    SizeMismatch,
-    BadFlexInput,
-    BadFlexOutput,
+    SizeMismatch,   // input, output, & flexagon arrays should all be same size
+    BadFlexInput,   // flex input pattern misformed
+    BadFlexOutput,  // flex output template misformed
+    UnknownFlex,    // flex isn't one the system knows about
+    CantApplyFlex,  // current state of the flexagon doesn't support the flex
   }
 
   export interface FlexError {
     reason: FlexCode;
     patternError?: PatternError;  // set if BadFlexInput
+    flexName?: string;            // set for particular flexes
   }
 
   export function isFlexError(result: any): result is FlexError {
