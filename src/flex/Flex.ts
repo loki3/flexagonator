@@ -7,18 +7,21 @@ namespace Flexagonator {
     e.g. pattern: [1, [2, 3], 4, [5, 6]]
          output:  [[-5, 1], -2, [4, -3], -6]
   */
-  export function makeFlex(pattern: LeafTree[], output: LeafTree[]): Flex | FlexError {
+  export function makeFlex(name: string, pattern: LeafTree[], output: LeafTree[]): Flex | FlexError {
     if (pattern.length !== output.length) {
       return { reason: FlexCode.SizeMismatch };
     }
-    return new Flex(pattern, output);
+    return new Flex(name, pattern, output);
   }
 
   /*
     Manages flexing a flexagon.
   */
   export class Flex {
-    constructor(private readonly pattern: LeafTree[], private readonly output: LeafTree[]) {
+    constructor(
+      readonly name: string,
+      readonly pattern: LeafTree[],
+      readonly output: LeafTree[]) {
     }
 
     // apply this flex to the given flexagon

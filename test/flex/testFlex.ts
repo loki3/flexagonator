@@ -20,7 +20,7 @@ namespace Flexagonator {
         return;
       }
 
-      const flex = new Flex([1, 2, 3, 4], [-4, 3, 2, -1]);
+      const flex = new Flex("test", [1, 2, 3, 4], [-4, 3, 2, -1]);
       const result = flex.apply(flexagon);
       if (isFlexError(result)) {
         fail();
