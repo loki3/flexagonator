@@ -8,9 +8,12 @@ namespace Flexagonator {
     const xCenter = 200;
     const yCenter = 150;
     const polygon = new Polygon(flexagon.getPatCount(), xCenter, yCenter, 100);
+
     const corners = polygon.getCorners();
     drawPolygon(ctx, corners);
     drawSpokes(ctx, corners, xCenter, yCenter);
+
+    drawLabels(ctx, polygon.getFaceCenters(), flexagon.getTopIds());
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
@@ -27,6 +30,16 @@ namespace Flexagonator {
       ctx.moveTo(xCenter, yCenter);
       ctx.lineTo(corners[i], corners[i + 1]);
       ctx.stroke();
+    }
+  }
+
+  function drawLabels(ctx: CanvasRenderingContext2D, centers: number[], ids: number[]) {
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = "20px sans-serif";
+    for (var i = 0; i < ids.length; i++) {
+      ctx.fillText(ids[i].toString(), centers[i * 2], centers[i * 2 + 1]);
     }
   }
 

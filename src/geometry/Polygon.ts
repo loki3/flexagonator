@@ -15,7 +15,7 @@ namespace Flexagonator {
     }
 
     getFaceCenters(): number[] {
-      return this.computePoints(this.radius / 2, 0);
+      return this.computePoints(this.radius * 0.6, 0);
     }
 
     private computePoints(radius: number, angleFactor: number): number[] {
