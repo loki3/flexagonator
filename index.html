@@ -9,7 +9,7 @@
 
     function flexAndShow(flex) {
       fm.applyFlexes(flex);
-      Flexagonator.drawFlexagon('interface', fm.flexagon);
+      Flexagonator.drawAll('interface', fm);
       console.log(fm.checkForPrimeFlexes(false, 0));
     }
   </script>
@@ -31,7 +31,7 @@
 
   <canvas id="interface" width="600" height="600"></canvas>
   <script type="text/javascript">
-    Flexagonator.drawFlexagon('interface', fm.flexagon);
+    Flexagonator.drawAll('interface', fm);
   </script>
 
 </body>

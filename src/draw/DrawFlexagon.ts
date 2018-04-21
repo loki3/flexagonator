@@ -1,12 +1,8 @@
 namespace Flexagonator {
 
-  export function drawFlexagon(canvasId: string, flexagon: Flexagon) {
-    const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
-    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon,
+    xCenter: number, yCenter: number, radius: number) {
 
-    const xCenter = 300;
-    const yCenter = 250;
-    const radius = 200;
     const markerText = radius / 6;
     const largeText = radius / 8;
     const smallText = radius / 14;
