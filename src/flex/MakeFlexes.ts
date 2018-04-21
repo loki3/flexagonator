@@ -63,4 +63,18 @@ namespace Flexagonator {
     return flexes;
   }
 
+  // return just the flexes that can't be done using other flexes
+  export function getPrimeFlexes(all: Flexes): Flexes {
+    var flexes: Flexes = {};
+    const primes = ["P", "S", "T", "T'", "Tf", "V", "F", "Lt", "Ltb", "Ltb'"];
+
+    for (var prime of primes) {
+      if (all[prime] !== undefined) {
+        flexes[prime] = all[prime];
+      }
+    }
+
+    return flexes;
+  }
+
 }
