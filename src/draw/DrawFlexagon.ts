@@ -13,7 +13,7 @@ namespace Flexagonator {
 
     drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds());
     drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6]);
-    drawFaceText(ctx, smallText, polygon.getFaceCenters(1.05), flexagon.getThickness());
+    drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
@@ -38,6 +38,14 @@ namespace Flexagonator {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = fontsize.toString() + "px sans-serif";
+  }
+
+  function drawPatStructures(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], flexagon: Flexagon) {
+    setTextProps(ctx, fontsize);
+    for (var i = 0; i < flexagon.getPatCount(); i++) {
+      const structure: string = flexagon.pats[i].getStructure();
+      ctx.fillText(structure, centers[i * 2], centers[i * 2 + 1]);
+    }
   }
 
   function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[]) {
