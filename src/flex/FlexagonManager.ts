@@ -28,7 +28,7 @@ namespace Flexagonator {
       for (var i = 0; i < rightSteps; i++) {
         modified = this.allFlexes[">"].apply(modified) as Flexagon;
       }
-      return checkForFlexes(this.flexagon, this.primeFlexes);
+      return checkForFlexes(modified, this.primeFlexes);
     }
 
     // apply a series of space delimited flexes, e.g. "P > > S' ^ T"

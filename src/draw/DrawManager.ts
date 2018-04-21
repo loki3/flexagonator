@@ -9,6 +9,24 @@ namespace Flexagonator {
     const radius = 200;
 
     drawFlexagon(ctx, fm.flexagon, xCenter, yCenter, radius);
+
+    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius);
+    drawPossibleFlexes(ctx, fm, polygon);
+
+  }
+
+  function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon) {
+    const corners = polygon.getCorners();
+    for (var i = 0; i < fm.flexagon.getPatCount(); i++) {
+      const flexes: string[] = fm.checkForPrimeFlexes(false, i);
+      const text = flexes.join(' ');
+
+      ctx.fillStyle = "rgb(0, 0, 0)";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "bottom";
+      ctx.font = "17px sans-serif";
+      ctx.fillText(text, corners[2 * i], corners[2 * i + 1]);
+    }
   }
 
 }
