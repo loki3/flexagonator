@@ -4,9 +4,12 @@ namespace Flexagonator {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
-    const xCenter = 200;
-    const yCenter = 150;
-    const radius = 100;
+    const xCenter = 300;
+    const yCenter = 250;
+    const radius = 200;
+    const markerText = radius / 6;
+    const largeText = radius / 8;
+    const smallText = radius / 14;
 
     ctx.clearRect(xCenter - radius, yCenter - radius * 1.1, xCenter + radius, yCenter + radius);
 
@@ -16,11 +19,11 @@ namespace Flexagonator {
     const corners = polygon.getCorners();
     drawPolygon(ctx, corners);
     drawSpokes(ctx, corners, xCenter, yCenter);
-    drawText(ctx, 25, corners[0], corners[1], "*");
+    drawText(ctx, markerText, corners[0], corners[1], "*");
 
-    drawFaceText(ctx, polygon.getFaceCenters(0.6), flexagon.getTopIds(), 20);
-    drawFaceText(ctx, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6], 12);
-    drawFaceText(ctx, polygon.getFaceCenters(1.05), flexagon.getThickness(), 12);
+    drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds());
+    drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6]);
+    drawFaceText(ctx, smallText, polygon.getFaceCenters(1.05), flexagon.getThickness());
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
@@ -47,7 +50,7 @@ namespace Flexagonator {
     ctx.font = fontsize.toString() + "px sans-serif";
   }
 
-  function drawFaceText(ctx: CanvasRenderingContext2D, centers: number[], ids: number[], fontsize: number) {
+  function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[]) {
     setTextProps(ctx, fontsize);
     for (var i = 0; i < ids.length; i++) {
       ctx.fillText(ids[i].toString(), centers[i * 2], centers[i * 2 + 1]);
