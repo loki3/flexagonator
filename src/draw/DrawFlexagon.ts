@@ -1,20 +1,14 @@
 namespace Flexagonator {
 
-  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon,
-    xCenter: number, yCenter: number, radius: number) {
-
-    const markerText = radius / 6;
-    const largeText = radius / 8;
-    const smallText = radius / 14;
-
-    ctx.clearRect(xCenter - radius, yCenter - radius * 1.1, xCenter + radius, yCenter + radius);
-
-    const polygon = new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius);
+  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon) {
+    const markerText = polygon.radius / 6;
+    const largeText = polygon.radius / 8;
+    const smallText = polygon.radius / 14;
 
     ctx.strokeStyle = "rgb(90, 150, 210)";
     const corners = polygon.getCorners();
     drawPolygon(ctx, corners);
-    drawSpokes(ctx, corners, xCenter, yCenter);
+    drawSpokes(ctx, corners, polygon.xCenter, polygon.yCenter);
     drawText(ctx, markerText, corners[0], corners[1], "*");
 
     drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds());

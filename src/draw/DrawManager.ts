@@ -7,10 +7,10 @@ namespace Flexagonator {
     const xCenter = 300;
     const yCenter = 250;
     const radius = 200;
-
-    drawFlexagon(ctx, fm.flexagon, xCenter, yCenter, radius);
+    ctx.clearRect(xCenter - radius, yCenter - radius * 1.1, xCenter + radius, yCenter + radius);
 
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius);
+    drawFlexagon(ctx, fm.flexagon, polygon);
     drawPossibleFlexes(ctx, fm, polygon);
 
   }
