@@ -134,6 +134,25 @@ namespace Flexagonator {
   });
 
   describe('matchPattern', () => {
+    it('should flip pats with a negative pattern number', () => {
+      const pat = makePat([1, [-3, [4, -5]]]);
+      if (isTreeError(pat)) {
+        fail();
+        return;
+      }
+
+      const pattern1 = [-1, -2];
+      const match1 = pat.matchPattern(pattern1);
+      if (isPatternError(match1)) {
+        fail();
+        return;
+      }
+      expect(areEqual(match1[1].getAsLeafTree(), -1)).toBeTruthy();
+      expect(areEqual(match1[2].getAsLeafTree(), [[5, -4], 3])).toBeTruthy();
+    });
+  });
+
+  describe('matchPattern', () => {
     it('should report error when pattern not found', () => {
       const pat = makePat([[-1, 2], [-3, [4, -5]]]);
       if (isTreeError(pat)) {

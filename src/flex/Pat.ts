@@ -92,8 +92,9 @@ namespace Flexagonator {
       if (!this.hasPattern(pattern)) {
         return { expected: pattern, actual: this.id };
       }
+      const n: number = pattern as number;
       var match: Pat[] = [];
-      match[pattern as number] = this;
+      match[Math.abs(n)] = n >= 0 ? this : this.makeFlipped();
       return match;
     }
   }
@@ -143,8 +144,9 @@ namespace Flexagonator {
 
     matchPattern(pattern: LeafTree): Pat[] | PatternError {
       if (typeof (pattern) === "number") {
+        const n: number = pattern as number;
         var match: Pat[] = [];
-        match[pattern as number] = this;
+        match[Math.abs(n)] = n >= 0 ? this : this.makeFlipped();
         return match;
       }
 
