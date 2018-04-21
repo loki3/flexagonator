@@ -73,6 +73,15 @@ namespace Flexagonator {
     });
   });
 
+  describe('getStructure', () => {
+    it('should give a terse description of the structure of the pat', () => {
+      const original = [[-12, [-2, [-11, 13]]], 9];
+      const pat = makePat(original) as Pat;
+      const result = pat.getStructure();
+      expect(result).toBe("[[. [. [. .]]] .]");
+    });
+  });
+
   describe('hasPattern', () => {
     it('should detect when pattern is present in pat', () => {
       const pat = makePat([[-1, 2], [-3, [4, -5]]]);

@@ -12,6 +12,7 @@ namespace Flexagonator {
     getTop(): number;
     getBottom(): number;
     getThickness(): number;
+    getStructure(): string;
 
     hasPattern(pattern: LeafTree): boolean;
     // returns an array where the index is the pattern number from the input
@@ -84,6 +85,10 @@ namespace Flexagonator {
       return 1;
     }
 
+    getStructure(): string {
+      return '.';
+    }
+
     hasPattern(pattern: LeafTree): boolean {
       return typeof (pattern) === "number";
     }
@@ -130,6 +135,10 @@ namespace Flexagonator {
 
     getThickness(): number {
       return this.left.getThickness() + this.right.getThickness();
+    }
+
+    getStructure(): string {
+      return '[' + this.left.getStructure() + ' ' + this.right.getStructure() + ']';
     }
 
     hasPattern(pattern: LeafTree): boolean {
