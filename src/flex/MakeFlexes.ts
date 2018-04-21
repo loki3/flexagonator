@@ -54,6 +54,12 @@ namespace Flexagonator {
         [[[[1, 2], 3], 4], 5, 6, 7, [[[8, 9], 10], 11], 12],
         [-8, [2, [10, [4, -12]]], -1, 3, 5, [9, [6, 11, -7]]]) as Flex;
     }
+
+    // add all the inverses
+    for (var flex of Object.keys(flexes)) {
+      flexes[flex + "'"] = flexes[flex].createInverse();
+    }
+
     return flexes;
   }
 

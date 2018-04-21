@@ -24,6 +24,10 @@ namespace Flexagonator {
       readonly output: LeafTree[]) {
     }
 
+    createInverse(): Flex {
+      return new Flex("inverse " + this.name, this.output, this.pattern);
+    }
+
     // apply this flex to the given flexagon
     apply(flexagon: Flexagon): Flexagon | FlexError {
       const matches = flexagon.matchPattern(this.pattern);
