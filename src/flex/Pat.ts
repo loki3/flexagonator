@@ -86,7 +86,7 @@ namespace Flexagonator {
     }
 
     getStructure(): string {
-      return '.';
+      return '-';
     }
 
     hasPattern(pattern: LeafTree): boolean {

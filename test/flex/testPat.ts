@@ -78,7 +78,7 @@ namespace Flexagonator {
       const original = [[-12, [-2, [-11, 13]]], 9];
       const pat = makePat(original) as Pat;
       const result = pat.getStructure();
-      expect(result).toBe("[[. [. [. .]]] .]");
+      expect(result).toBe("[[- [- [- -]]] -]");
     });
   });
 
