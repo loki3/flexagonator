@@ -7,7 +7,7 @@ namespace Flexagonator {
     const xCenter = 300;
     const yCenter = 250;
     const radius = 200;
-    ctx.clearRect(xCenter - radius * 1.1, yCenter - radius * 1.1, xCenter + radius, yCenter + radius);
+    ctx.clearRect(0, yCenter - radius * 1.1, xCenter + radius * 1.5, yCenter + radius);
 
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps);
