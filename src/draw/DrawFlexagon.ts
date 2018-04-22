@@ -15,7 +15,7 @@ namespace Flexagonator {
     drawSpokes(ctx, corners, polygon.xCenter, polygon.yCenter);
     drawText(ctx, markerText, corners[0], corners[1], "*");
 
-    drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds());
+    drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds(), props);
     drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6]);
     drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
   }
@@ -82,10 +82,24 @@ namespace Flexagonator {
     }
   }
 
-  function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[]) {
+  function getFaceLabel(id: number, props?: LeafProperties[]): string {
+    if (props !== undefined && props[Math.abs(id) - 1] !== undefined) {
+      const leafProps = props[Math.abs(id) - 1];
+      if (leafProps !== undefined) {
+        const label = id > 0 ? leafProps.front.label : leafProps.back.label;
+        if (label !== undefined) {
+          return label;
+        }
+      }
+    }
+    return id.toString();
+  }
+
+  function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[], props?: LeafProperties[]) {
     setTextProps(ctx, fontsize);
     for (var i = 0; i < ids.length; i++) {
-      ctx.fillText(ids[i].toString(), centers[i * 2], centers[i * 2 + 1]);
+      const label = getFaceLabel(ids[i], props);
+      ctx.fillText(label, centers[i * 2], centers[i * 2 + 1]);
     }
   }
 
