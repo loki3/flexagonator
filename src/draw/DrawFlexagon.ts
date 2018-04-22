@@ -5,6 +5,10 @@ namespace Flexagonator {
     const largeText = polygon.radius / 8;
     const smallText = polygon.radius / 14;
 
+    if (props !== undefined) {
+      drawFaceProps(ctx, flexagon, polygon, props);
+    }
+
     ctx.strokeStyle = "rgb(90, 150, 210)";
     const corners = polygon.getCorners();
     drawPolygon(ctx, corners);
@@ -14,6 +18,29 @@ namespace Flexagonator {
     drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds());
     drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6]);
     drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
+  }
+
+  function drawFaceProps(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: LeafProperties[]) {
+    const triangles = polygon.getLeafTriangles();
+    for (const i in triangles) {
+      const color = props[i].front.color;
+      if (color !== undefined) {
+        const colorStr = numberToRGB(color);
+        ctx.fillStyle = colorStr;
+        ctx.moveTo(triangles[i].x1, triangles[i].y1);
+        ctx.lineTo(triangles[i].x2, triangles[i].y2);
+        ctx.lineTo(triangles[i].x3, triangles[i].y3);
+        ctx.lineTo(triangles[i].x1, triangles[i].y1);
+        ctx.fill();
+      }
+    }
+  }
+
+  function numberToRGB(color: number): string {
+    return "rgb("
+      + ((color & 0xff0000) >> 16).toString() + ","
+      + ((color & 0xff00) >> 8).toString() + ","
+      + (color & 0xff).toString() + ")";
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {

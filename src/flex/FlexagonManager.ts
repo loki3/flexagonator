@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   export function makeFlexagonManager(flexagon: Flexagon, leafProps?: LeafProperties[]) {
-    return new FlexagonManager(flexagon);
+    return new FlexagonManager(flexagon, leafProps);
   }
 
   /*

@@ -1,5 +1,14 @@
 namespace Flexagonator {
 
+  export interface Triangle {
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    x3: number,
+    y3: number,
+  }
+
   export class Polygon {
     constructor(
       readonly numSides: number,
@@ -16,6 +25,21 @@ namespace Flexagonator {
 
     getFaceCenters(factor: number): number[] {
       return this.computePoints(this.radius * factor, 0);
+    }
+
+    getLeafTriangles(): Triangle[] {
+      const triangles: Triangle[] = [];
+      const corners = this.computePoints(this.radius, -0.5);
+      for (var i = 0; i < this.numSides; i++) {
+        const j = i == this.numSides - 1 ? 0 : i + 1;
+        const triangle: Triangle = {
+          x1: this.xCenter, y1: this.yCenter,
+          x2: corners[i * 2], y2: corners[i * 2 + 1],
+          x3: corners[j * 2], y3: corners[j * 2 + 1],
+        };
+        triangles.push(triangle);
+      }
+      return triangles;
     }
 
     private computePoints(radius: number, angleFactor: number): number[] {

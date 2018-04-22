@@ -7,11 +7,11 @@ namespace Flexagonator {
   ];
 
   const hh1 = { label: "1", color: 0x0000ff };
-  const hh2 = { label: "2", color: 0x0000ff };
-  const hh3 = { label: "3", color: 0x0000ff };
-  const hh4 = { label: "4", color: 0x0000ff };
-  const hh5 = { label: "5", color: 0x0000ff };
-  const hh6 = { label: "6", color: 0x0000ff };
+  const hh2 = { label: "2", color: 0x00ff00 };
+  const hh3 = { label: "3", color: 0xff0000 };
+  const hh4 = { label: "4", color: 0xffff00 };
+  const hh5 = { label: "5", color: 0xff00ff };
+  const hh6 = { label: "6", color: 0x00ffff };
 
   export const hexaHexaProperties: LeafProperties[] = [
     { front: hh1, back: hh4 },  // 1
