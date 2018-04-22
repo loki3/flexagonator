@@ -22,15 +22,19 @@ namespace Flexagonator {
 
   function drawFaceProps(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: LeafProperties[]) {
     const triangles = polygon.getLeafTriangles();
+    const ids = flexagon.getTopIds();
     for (const i in triangles) {
-      const color = props[i].front.color;
-      if (color !== undefined) {
-        const colorStr = numberToRGB(color);
+      const leafId = ids[i];
+      const faceProps = leafId > 0 ? props[leafId - 1].front : props[-leafId - 1].back;
+      if (faceProps.color !== undefined) {
+        const colorStr = numberToRGB(faceProps.color);
+        const triangle = triangles[i];
         ctx.fillStyle = colorStr;
-        ctx.moveTo(triangles[i].x1, triangles[i].y1);
-        ctx.lineTo(triangles[i].x2, triangles[i].y2);
-        ctx.lineTo(triangles[i].x3, triangles[i].y3);
-        ctx.lineTo(triangles[i].x1, triangles[i].y1);
+        ctx.beginPath();
+        ctx.moveTo(triangle.x1, triangle.y1);
+        ctx.lineTo(triangle.x2, triangle.y2);
+        ctx.lineTo(triangle.x3, triangle.y3);
+        ctx.closePath();
         ctx.fill();
       }
     }
@@ -44,18 +48,21 @@ namespace Flexagonator {
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
+    ctx.beginPath();
     ctx.moveTo(corners[0], corners[1]);
     for (var i = 2; i < corners.length; i += 2) {
       ctx.lineTo(corners[i], corners[i + 1]);
     }
-    ctx.lineTo(corners[0], corners[1]);
+    ctx.closePath();
     ctx.stroke();
   }
 
   function drawSpokes(ctx: CanvasRenderingContext2D, corners: number[], xCenter: number, yCenter: number) {
+    ctx.beginPath();
     for (var i = 0; i < corners.length; i += 2) {
       ctx.moveTo(xCenter, yCenter);
       ctx.lineTo(corners[i], corners[i + 1]);
+      ctx.closePath();
       ctx.stroke();
     }
   }
