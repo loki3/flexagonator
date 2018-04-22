@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  export function makeFlexagonManager(flexagon: Flexagon) {
+  export function makeFlexagonManager(flexagon: Flexagon, leafProps?: LeafProperties[]) {
     return new FlexagonManager(flexagon);
   }
 
@@ -9,11 +9,13 @@ namespace Flexagonator {
   */
   export class FlexagonManager {
     flexagon: Flexagon;
+    leafProps?: LeafProperties[];
     readonly allFlexes: Flexes;
     readonly primeFlexes: Flexes;
 
-    constructor(flexagon: Flexagon) {
+    constructor(flexagon: Flexagon, leafProps?: LeafProperties[]) {
       this.flexagon = flexagon;
+      this.leafProps = leafProps;
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
       this.primeFlexes = getPrimeFlexes(this.allFlexes);
     }
