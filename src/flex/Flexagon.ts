@@ -30,6 +30,14 @@ namespace Flexagonator {
       return this.pats.length;
     }
 
+    getLeafCount(): number {
+      var total = 0;
+      for (var pat of this.pats) {
+        total += pat.getLeafCount();
+      }
+      return total;
+    }
+
     getAsLeafTrees(): LeafTree[] {
       var trees: LeafTree[] = [];
       for (var pat of this.pats) {
