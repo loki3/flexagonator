@@ -18,9 +18,9 @@ namespace Flexagonator {
         flexes["S"] = createPyramidShuffle(patCount);
       if (patCount >= 6)
         flexes["F"] = createFlip(patCount);
-      /*
       if (patCount >= 6)
         flexes["St"] = createSilverTetra(patCount);
+      /*
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
       */
@@ -184,6 +184,31 @@ namespace Flexagonator {
     output.push([-(leaves - 4), -(leaves - 1)]);
 
     return makeFlex("flip flex", pattern, output) as Flex;
+  }
+
+  function createSilverTetra(patCount: number): Flex {
+    // (1(2,3)) (4) … (i) … (n-3(n-2,n-1)) (n)
+    // (2) ((^1,4)^3) … (i) … (n-2) ((^n-3,n)^n-1)
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    const leaves = patCount + 4;
+
+    pattern.push([1, [2, 3]]);
+    for (var i = 4; i <= patCount; i++) {
+      pattern.push(i);
+    }
+    pattern.push([leaves - 3, [leaves - 2, leaves - 1]]);
+    pattern.push(leaves);
+
+    output.push(2);
+    output.push([[-1, 4], -3]);
+    for (var i = 5; i <= patCount; i++) {
+      output.push(i);
+    }
+    output.push(leaves - 2);
+    output.push([[-(leaves - 3), leaves], -(leaves - 1)]);
+
+    return makeFlex("silver tetra flex", pattern, output) as Flex;
   }
 
 }
