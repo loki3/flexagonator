@@ -22,6 +22,11 @@ namespace Flexagonator {
         flexes["St"] = createSilverTetra(patCount);
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
+
+      for (var i = 0; i < patCount - 5; i++) {
+        const s = "T" + (i + 1).toString();
+        flexes[s] = createTuck(patCount, i);
+      }
     }
 
     // add all the inverses
@@ -234,6 +239,39 @@ namespace Flexagonator {
     output.push([leaves - 2, [leaves - 4, [leaves - 1, -(leaves - 3)]]]);
 
     return makeFlex("slot tuck flex", pattern, output) as Flex;
+  }
+
+  // where: which opposite hinge is open starting from 0
+  function createTuck(patCount: number, where: number): Flex {
+    // ((1,2)3) (4) … (i,i+1) … (n-1) (n)
+    // (2) (4) … (i,i+1) … (n-1) (^1(n,^3))
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    const leaves = patCount + 3;
+
+    pattern.push([[1, 2], 3]);
+    for (var i = 4; i <= leaves; i++) {
+      if (i == where + 6) {
+        pattern.push([i, i + 1]);
+      }
+      else if (i != where + 7) {
+        pattern.push(i);
+      }
+    }
+
+    output.push(2);
+    for (var i = 4; i < leaves; i++) {
+      if (i == where + 6) {
+        output.push([i, i + 1]);
+      }
+      else if (i != where + 7) {
+        output.push(i);
+      }
+    }
+    output.push([-1, [leaves, -3]]);
+
+    const name = "tuck" + (where == 0 ? "" : (where + 1).toString());
+    return makeFlex(name, pattern, output) as Flex;
   }
 
 }
