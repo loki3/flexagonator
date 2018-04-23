@@ -174,4 +174,64 @@ namespace Flexagonator {
       expect(isPatternError(match)).toBeTruthy();
     });
   });
+
+  describe('createPattern1', () => {
+    it('should return existing structure if it matches', () => {
+      { // original=1, pattern=3  =>  1
+        const pat = makePat(1) as Pat;
+        const pattern = 3;
+        const result = pat.createPattern(pattern, () => { return 2; });
+        expect(result.getAsLeafTree()).toBe(1);
+      }
+      { // original=[1,2], pattern=3  => [1,2]
+        const pat = makePat([1, 2]) as Pat;
+        const pattern = 3;
+        const result = pat.createPattern(pattern, () => { return 3; });
+        const pair = result.getAsLeafTree() as any[];
+        expect(pair[0]).toBe(1);
+        expect(pair[1]).toBe(2);
+      }
+      { // original=[1,2], pattern=[3,4]  => [1,2]
+        const pat = makePat([1, 2]) as Pat;
+        const pattern = [3, 4];
+        const result = pat.createPattern(pattern, () => { return 3; });
+        const pair = result.getAsLeafTree() as any[];
+        expect(pair[0]).toBe(1);
+        expect(pair[1]).toBe(2);
+      }
+    });
+  });
+
+  describe('createPattern2', () => {
+    it('should create structure if not present already', () => {
+      { // original=1, pattern=[3,4]  => [1,5]
+        const pat = makePat(1) as Pat;
+        const pattern = [3, 4];
+        const result = pat.createPattern(pattern, () => { return 5; });
+        const pair = result.getAsLeafTree() as any[];
+        expect(pair[0]).toBe(1);
+        expect(pair[1]).toBe(5);
+      }
+      { // original=[1,2], pattern=[3,[4,5]]  => [1,[2,6]]
+        const pat = makePat([1, 2]) as Pat;
+        const pattern = [3, [4, 5]];
+        const result = pat.createPattern(pattern, () => { return 6; });
+        const tree = result.getAsLeafTree() as any[];
+        expect(tree[0]).toBe(1);
+        expect(tree[1][0]).toBe(2);
+        expect(tree[1][1]).toBe(6);
+      }
+      { // original=1, pattern=[[2,3],[4,5]]  => [[1,6],[7,8]]
+        const pat = makePat(1) as Pat;
+        const pattern = [[2, 3], [4, 5]];
+        var next = 6;
+        const result = pat.createPattern(pattern, () => { return next++; });
+        const tree = result.getAsLeafTree() as any[];
+        expect(tree[0][0]).toBe(1);
+        expect(tree[0][1]).toBe(6);
+        expect(tree[1][0]).toBe(7);
+        expect(tree[1][1]).toBe(8);
+      }
+    });
+  });
 }

@@ -17,6 +17,7 @@ namespace Flexagonator {
     hasPattern(pattern: LeafTree): boolean;
     // returns an array where the index is the pattern number from the input
     matchPattern(pattern: LeafTree): Pat[] | PatternError;
+    createPattern(pattern: LeafTree, getNextId: () => number): Pat;
   }
 
   /*
@@ -102,6 +103,34 @@ namespace Flexagonator {
       match[Math.abs(n)] = n >= 0 ? this : this.makeFlipped();
       return match;
     }
+
+    createPattern(pattern: LeafTree, getNextId: () => number): Pat {
+      if (typeof (pattern) === "number") {
+        return this.makeCopy();
+      }
+
+      // we want the first leaf to use this.id, all others use getNextId
+      var usedId = false;
+      const patternArray = pattern as any[];
+      const newLeft = this.subCreate(patternArray[0], () => {
+        if (usedId) return getNextId();
+        usedId = true;
+        return this.id;
+      });
+      const newRight = this.subCreate(patternArray[0], getNextId);
+      return new PatPair(newLeft, newRight);
+    }
+
+    // recurse through 'pattern', creating substructure as needed
+    private subCreate(pattern: LeafTree, getNextId: () => number): Pat {
+      if (typeof (pattern) === "number") {
+        return new PatLeaf(getNextId());
+      }
+      const patternArray = pattern as any[];
+      const newLeft = this.subCreate(patternArray[0], getNextId);
+      const newRight = this.subCreate(patternArray[1], getNextId);
+      return new PatPair(newLeft, newRight);
+    }
   }
 
   // pair of sub-pats
@@ -177,6 +206,16 @@ namespace Flexagonator {
       }
 
       return { expected: pattern, actual: [this.left, this.right] };
+    }
+
+    createPattern(pattern: LeafTree, getNextId: () => number): Pat {
+      if (typeof (pattern) === "number") {
+        return this.makeCopy();
+      }
+      const patternArray = pattern as any[];
+      const newLeft = this.left.createPattern(patternArray[0], getNextId);
+      const newRight = this.right.createPattern(patternArray[1], getNextId);
+      return new PatPair(newLeft, newRight);
     }
   }
 
