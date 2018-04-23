@@ -20,10 +20,8 @@ namespace Flexagonator {
         flexes["F"] = createFlip(patCount);
       if (patCount >= 6)
         flexes["St"] = createSilverTetra(patCount);
-      /*
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
-      */
     }
 
     // add all the inverses
@@ -162,8 +160,8 @@ namespace Flexagonator {
   }
 
   function createFlip(patCount: number): Flex {
-    // (1,2) (3) … (i) … ((n-4,n-3)(n-2,n-1)) (n)
-    // (n-3) ((^1,3)(n,^2)) … (i) … (n-2) (^n-4,^n-1)
+    // (1,2) (3) ... (i) ... ((n-4,n-3)(n-2,n-1)) (n)
+    // (n-3) ((^1,3)(n,^2)) ... (i) ... (n-2) (^n-4,^n-1)
     var pattern: LeafTree = [];
     var output: LeafTree = [];
     const leaves = patCount + 4;
@@ -187,8 +185,8 @@ namespace Flexagonator {
   }
 
   function createSilverTetra(patCount: number): Flex {
-    // (1(2,3)) (4) … (i) … (n-3(n-2,n-1)) (n)
-    // (2) ((^1,4)^3) … (i) … (n-2) ((^n-3,n)^n-1)
+    // (1(2,3)) (4) ... (i) ... (n-3(n-2,n-1)) (n)
+    // (2) ((^1,4)^3) ... (i) ... (n-2) ((^n-3,n)^n-1)
     var pattern: LeafTree = [];
     var output: LeafTree = [];
     const leaves = patCount + 4;
@@ -209,6 +207,33 @@ namespace Flexagonator {
     output.push([[-(leaves - 3), leaves], -(leaves - 1)]);
 
     return makeFlex("silver tetra flex", pattern, output) as Flex;
+  }
+
+  function createSlotTuck(patCount: number): Flex {
+    // (((1,2)3)4) ... (i) ... (n-4) (n-3) (n-2,n-1) (n)
+    // (n) (2,4) (^1) (3) ... (i) ... (n-2(n-4(n-1,^n-3)))
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    const leaves = patCount + 4;
+
+    pattern.push([[[1, 2], 3], 4]);
+    for (var i = 5; i < patCount + 2; i++) {
+      pattern.push(i);
+    }
+    pattern.push([leaves - 2, leaves - 1]);
+    pattern.push(leaves);
+
+    // post
+    output.push(leaves);
+    output.push([2, 4]);
+    output.push(-1);
+    output.push(3);
+    for (var i = 5; i < patCount; i++) {
+      output.push(i);
+    }
+    output.push([leaves - 2, [leaves - 4, [leaves - 1, -(leaves - 3)]]]);
+
+    return makeFlex("slot tuck flex", pattern, output) as Flex;
   }
 
 }
