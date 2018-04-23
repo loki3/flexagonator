@@ -16,7 +16,9 @@ namespace Flexagonator {
     drawText(ctx, markerText, corners[0], corners[1], "*");
 
     drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds(), props);
-    drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), [1, 2, 3, 4, 5, 6]);
+    if (props !== undefined) {
+      drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), flexagon.getTopIds());
+    }
     drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
   }
 
