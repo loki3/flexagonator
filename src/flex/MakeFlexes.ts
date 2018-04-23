@@ -14,15 +14,15 @@ namespace Flexagonator {
 
       if (patCount % 2 == 0)
         flexes["P"] = createPinch(patCount);
+      if (patCount >= 5)
+        flexes["S"] = createPyramidShuffle(patCount);
       /*
-    if (patCount >= 5)
-      flexes["S"] = createPyramidShuffle(patCount);
-    if (patCount >= 6)
-      flexes["F"] = createFlip(patCount);
-    if (patCount >= 6)
-      flexes["St"] = createSilverTetra(patCount);
-    if (patCount >= 5)
-      flexes["Lt"] = createSlotTuck(patCount);
+      if (patCount >= 6)
+        flexes["F"] = createFlip(patCount);
+      if (patCount >= 6)
+        flexes["St"] = createSilverTetra(patCount);
+      if (patCount >= 5)
+        flexes["Lt"] = createSlotTuck(patCount);
       */
     }
 
@@ -117,9 +117,9 @@ namespace Flexagonator {
   function createPinch(patCount: number): Flex {
     // (1,2) (3) ... (i,i+1) (i+2) ... (n-2,n-1) (n)
     // (^1) (5,^3) ... (^i) (i+4,^i+2) ... (^n-2) (2,^n)
-    const leaves = patCount * 3 / 2;
     var pattern: LeafTree = [];
     var output: LeafTree = [];
+    const leaves = patCount * 3 / 2;
     for (var i = 0; i < patCount; i += 2) {
       var a = (i / 2) * 3 + 1;
 
@@ -134,6 +134,31 @@ namespace Flexagonator {
       output.push([(a + 4) % leaves, b]);
     }
     return makeFlex("pinch flex", pattern, output) as Flex;
+  }
+
+  function createPyramidShuffle(patCount: number): Flex {
+    // (1,2) (3) ... (i) ... (((n-4,n-3)n-2)n-1) (n)
+    // (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1) (^n-4)
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    const leaves = patCount + 4;
+
+    pattern.push([1, 2]);
+    for (var i = 3; i < patCount; i++) {
+      pattern.push(i);
+    }
+    pattern.push([[[leaves - 4, leaves - 3], leaves - 2], leaves - 1]);
+    pattern.push(leaves);
+
+    // post
+    output.push([1, [leaves - 2, [2, -leaves]]]);
+    for (var i = 3; i < patCount; i++) {
+      output.push(i);
+    }
+    output.push([leaves - 3, leaves - 1]);
+    output.push(-(leaves - 4));
+
+    return makeFlex("pyramid shuffle", pattern, output) as Flex;
   }
 
 }
