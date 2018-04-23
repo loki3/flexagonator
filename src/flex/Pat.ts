@@ -117,7 +117,7 @@ namespace Flexagonator {
         usedId = true;
         return this.id;
       });
-      const newRight = this.subCreate(patternArray[0], getNextId);
+      const newRight = this.subCreate(patternArray[1], getNextId);
       return new PatPair(newLeft, newRight);
     }
 

@@ -232,6 +232,16 @@ namespace Flexagonator {
         expect(tree[1][0]).toBe(7);
         expect(tree[1][1]).toBe(8);
       }
+      { // original=1, pattern=[[2,3],4]]  => [[1,6],7]
+        const pat = makePat(1) as Pat;
+        const pattern = [[2, 3], 4];
+        var next = 6;
+        const result = pat.createPattern(pattern, () => { return next++; });
+        const tree = result.getAsLeafTree() as any[];
+        expect(tree[0][0]).toBe(1);
+        expect(tree[0][1]).toBe(6);
+        expect(tree[1]).toBe(7);
+      }
     });
   });
 }
