@@ -67,6 +67,19 @@ namespace Flexagonator {
       }
       return { reason: FlexCode.BadFlexOutput };
     }
+
+    // generate the structure necessary to perform this flex
+    // note: it doesn't actually apply the flex
+    createPattern(flexagon: Flexagon): Flexagon {
+      var newPats: Pat[] = [];
+      var nextId = flexagon.getLeafCount() + 1;
+      for (var i in this.pattern) {
+        const newPat = flexagon.pats[i].createPattern(this.pattern[i], () => { return nextId++; });
+        newPats.push(newPat);
+      }
+
+      return makeFlexagonFromPats(newPats);
+    }
   }
 
 }
