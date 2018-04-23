@@ -11,6 +11,19 @@ namespace Flexagonator {
     }
     else {
       addRotates(patCount, flexes);
+
+      if (patCount % 2 == 0)
+        flexes["P"] = createPinch(patCount);
+      /*
+    if (patCount >= 5)
+      flexes["S"] = createPyramidShuffle(patCount);
+    if (patCount >= 6)
+      flexes["F"] = createFlip(patCount);
+    if (patCount >= 6)
+      flexes["St"] = createSilverTetra(patCount);
+    if (patCount >= 5)
+      flexes["Lt"] = createSlotTuck(patCount);
+      */
     }
 
     // add all the inverses
@@ -99,6 +112,28 @@ namespace Flexagonator {
     flexes[">"] = makeFlex("shift right", pattern, rightOut) as Flex;
     flexes["<"] = makeFlex("shift left", pattern, leftOut) as Flex;
     flexes["^"] = makeFlex("turn over", pattern, overOut) as Flex;
+  }
+
+  function createPinch(patCount: number): Flex {
+    // (1,2) (3) ... (i,i+1) (i+2) ... (n-2,n-1) (n)
+    // (^1) (5,^3) ... (^i) (i+4,^i+2) ... (^n-2) (2,^n)
+    const leaves = patCount * 3 / 2;
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    for (var i = 0; i < patCount; i += 2) {
+      var a = (i / 2) * 3 + 1;
+
+      // e.g. (1,2) (3)
+      pattern.push([a, a + 1]);
+      pattern.push(a + 2);
+
+      // e.g. (^1) (5,^3)
+      output.push(-a);
+      var b = (a + 2) % leaves;
+      b = (b == 0 ? leaves : b);
+      output.push([(a + 4) % leaves, b]);
+    }
+    return makeFlex("pinch flex", pattern, output) as Flex;
   }
 
 }
