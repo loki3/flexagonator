@@ -4,13 +4,19 @@
   <title>Flexagonator</title>
   <script src="build/out.js"></script>
   <script type="text/javascript">
-    var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
-    var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
+    // var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
+    // var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
+    var flexagon = Flexagonator.makeFlexagon([1, 2, 3, 4, 5, 6]);
+    var fm = Flexagonator.makeFlexagonManager(flexagon);
 
     function flexAndShow(flex) {
       fm.applyFlexes(flex);
       Flexagonator.drawAll('interface', fm);
-      console.log(fm.checkForPrimeFlexes(false, 0));
+    }
+
+    function generateFlexAndShow(flex) {
+      fm.generateAndApplyFlexes(flex);
+      Flexagonator.drawAll('interface', fm);
     }
   </script>
 </head>
@@ -18,6 +24,7 @@
 <body>
   <h1>Flexagonator</h1>
 
+  apply:
   <input onclick="flexAndShow('>');" type="button" value=">" />
   <input onclick="flexAndShow('<');" type="button" value="<" />
   <input onclick="flexAndShow('^');" type="button" value="^" />
@@ -35,6 +42,21 @@
   <input onclick="flexAndShow('Lt\'');" type="button" value="Lt'" />
   <input onclick="flexAndShow('Ltb');" type="button" value="Ltb" />
   <input onclick="flexAndShow('Ltb\'');" type="button" value="Ltb'" />
+  <br /><br /> generate:
+  <input onclick="generateFlexAndShow('P');" type="button" value="P" />
+  <input onclick="generateFlexAndShow('P\'');" type="button" value="P'" />
+  <input onclick="generateFlexAndShow('T');" type="button" value="T" />
+  <input onclick="generateFlexAndShow('T\'');" type="button" value="T'" />
+  <input onclick="generateFlexAndShow('S');" type="button" value="S" />
+  <input onclick="generateFlexAndShow('S\'');" type="button" value="S'" />
+  <input onclick="generateFlexAndShow('V');" type="button" value="V" />
+  <input onclick="generateFlexAndShow('V\'');" type="button" value="V'" />
+  <input onclick="generateFlexAndShow('F');" type="button" value="F" />
+  <input onclick="generateFlexAndShow('F\'');" type="button" value="F'" />
+  <input onclick="generateFlexAndShow('Lt');" type="button" value="Lt" />
+  <input onclick="generateFlexAndShow('Lt\'');" type="button" value="Lt'" />
+  <input onclick="generateFlexAndShow('Ltb');" type="button" value="Ltb" />
+  <input onclick="generateFlexAndShow('Ltb\'');" type="button" value="Ltb'" />
   <br />
 
   <canvas id="interface" width="600" height="600"></canvas>
