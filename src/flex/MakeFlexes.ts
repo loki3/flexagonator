@@ -134,7 +134,7 @@ namespace Flexagonator {
       output.push(-a);
       var b = (a + 2) % leaves;
       b = (b == 0 ? leaves : b);
-      output.push([(a + 4) % leaves, b]);
+      output.push([(a + 4) % leaves, -b]);
     }
     return makeFlex("pinch flex", pattern, output) as Flex;
   }
