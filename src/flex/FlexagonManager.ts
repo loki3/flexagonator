@@ -9,13 +9,13 @@ namespace Flexagonator {
   */
   export class FlexagonManager {
     flexagon: Flexagon;
-    leafProps?: LeafProperties[];
+    leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     readonly primeFlexes: Flexes;
 
     constructor(flexagon: Flexagon, leafProps?: LeafProperties[]) {
       this.flexagon = flexagon;
-      this.leafProps = leafProps;
+      this.leafProps = new PropertiesForLeaves(leafProps);
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
       this.primeFlexes = getPrimeFlexes(this.allFlexes);
     }
@@ -81,24 +81,16 @@ namespace Flexagonator {
     }
 
     setFaceLabel(label: string, front: boolean) {
-      if (this.leafProps === undefined) {
-        this.leafProps = [];
-      }
-
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
       for (var id of ids) {
-        setLabelProp(this.leafProps, id, label);
+        this.leafProps.setLabelProp(id, label);
       }
     }
 
     setFaceColor(color: number, front: boolean) {
-      if (this.leafProps === undefined) {
-        this.leafProps = [];
-      }
-
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
       for (var id of ids) {
-        setColorProp(this.leafProps, id, color);
+        this.leafProps.setColorProp(id, color);
       }
     }
 

@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props?: LeafProperties[]) {
+  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: PropertiesForLeaves) {
     const markerText = polygon.radius / 6;
     const largeText = polygon.radius / 8;
     const smallText = polygon.radius / 14;
@@ -22,20 +22,15 @@ namespace Flexagonator {
     drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
   }
 
-  function drawFaceProps(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: LeafProperties[]) {
+  function drawFaceProps(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: PropertiesForLeaves) {
     const triangles = polygon.getLeafTriangles();
     const ids = flexagon.getTopIds();
     for (const i in triangles) {
       const leafId = ids[i];
-      const leafProps = leafId > 0 ? props[leafId - 1] : props[-leafId - 1];
-      if (leafProps === undefined) {
-        continue;
-      }
-      const faceProps = leafId > 0 ? leafProps.front : leafProps.back;
-      if (faceProps.color !== undefined) {
-        const colorStr = numberToRGB(faceProps.color);
+      const color = props.getColorAsRGBString(leafId);
+      if (color !== undefined) {
         const triangle = triangles[i];
-        ctx.fillStyle = colorStr;
+        ctx.fillStyle = color;
         ctx.beginPath();
         ctx.moveTo(triangle.x1, triangle.y1);
         ctx.lineTo(triangle.x2, triangle.y2);
@@ -44,13 +39,6 @@ namespace Flexagonator {
         ctx.fill();
       }
     }
-  }
-
-  function numberToRGB(color: number): string {
-    return "rgb("
-      + ((color & 0xff0000) >> 16).toString() + ","
-      + ((color & 0xff00) >> 8).toString() + ","
-      + (color & 0xff).toString() + ")";
   }
 
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
@@ -88,23 +76,11 @@ namespace Flexagonator {
     }
   }
 
-  function getFaceLabel(id: number, props?: LeafProperties[]): string {
-    if (props !== undefined && props[Math.abs(id) - 1] !== undefined) {
-      const leafProps = props[Math.abs(id) - 1];
-      if (leafProps !== undefined) {
-        const label = id > 0 ? leafProps.front.label : leafProps.back.label;
-        if (label !== undefined) {
-          return label;
-        }
-      }
-    }
-    return id.toString();
-  }
-
-  function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[], props?: LeafProperties[]) {
+  function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[], props?: PropertiesForLeaves) {
     setTextProps(ctx, fontsize);
     for (var i = 0; i < ids.length; i++) {
-      const label = getFaceLabel(ids[i], props);
+      const id = ids[i];
+      const label = props === undefined ? id.toString() : props.getFaceLabel(id);
       ctx.fillText(label, centers[i * 2], centers[i * 2 + 1]);
     }
   }
