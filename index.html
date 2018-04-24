@@ -4,10 +4,26 @@
   <title>Flexagonator</title>
   <script src="build/out.js"></script>
   <script type="text/javascript">
-    // var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
-    // var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
-    var flexagon = Flexagonator.makeFlexagon([1, 2, 3, 4, 5, 6, 7, 8]);
-    var fm = Flexagonator.makeFlexagonManager(flexagon);
+    var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
+    var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
+
+    function newFlexagons(value) {
+      var leaftree = null;
+      var props = undefined;
+      switch (value) {
+        case "5": leaftree = [1, 2, 3, 4, 5]; break;
+        case "6": leaftree = [1, 2, 3, 4, 5, 6]; break;
+        case "6,6": leaftree = Flexagonator.hexaHexaLeafTree; props = Flexagonator.hexaHexaProperties; break;
+        case "7": leaftree = [1, 2, 3, 4, 5, 6, 7]; break;
+        case "8": leaftree = [1, 2, 3, 4, 5, 6, 7, 8]; break;
+      }
+
+      if (leaftree != null) {
+        var flexagon = Flexagonator.makeFlexagon(leaftree);
+        fm = Flexagonator.makeFlexagonManager(flexagon, props);
+        Flexagonator.drawAll('interface', fm);
+      }
+    }
 
     function flexAndShow(flex) {
       fm.applyFlexes(flex);
@@ -24,43 +40,58 @@
 <body>
   <h1>Flexagonator</h1>
 
-  apply:
-  <input onclick="flexAndShow('>');" type="button" value=">" />
-  <input onclick="flexAndShow('<');" type="button" value="<" />
-  <input onclick="flexAndShow('^');" type="button" value="^" />
-  <input onclick="flexAndShow('P');" type="button" value="P" />
-  <input onclick="flexAndShow('P\'');" type="button" value="P'" />
-  <input onclick="flexAndShow('T');" type="button" value="T" />
-  <input onclick="flexAndShow('T\'');" type="button" value="T'" />
-  <input onclick="flexAndShow('S');" type="button" value="S" />
-  <input onclick="flexAndShow('S\'');" type="button" value="S'" />
-  <input onclick="flexAndShow('V');" type="button" value="V" />
-  <input onclick="flexAndShow('V\'');" type="button" value="V'" />
-  <input onclick="flexAndShow('F');" type="button" value="F" />
-  <input onclick="flexAndShow('F\'');" type="button" value="F'" />
-  <input onclick="flexAndShow('Lt');" type="button" value="Lt" />
-  <input onclick="flexAndShow('Lt\'');" type="button" value="Lt'" />
-  <input onclick="flexAndShow('Ltb');" type="button" value="Ltb" />
-  <input onclick="flexAndShow('Ltb\'');" type="button" value="Ltb'" />
-  <br /><br /> generate:
-  <input onclick="generateFlexAndShow('P');" type="button" value="P" />
-  <input onclick="generateFlexAndShow('P\'');" type="button" value="P'" />
-  <input onclick="generateFlexAndShow('T');" type="button" value="T" />
-  <input onclick="generateFlexAndShow('T\'');" type="button" value="T'" />
-  <input onclick="generateFlexAndShow('S');" type="button" value="S" />
-  <input onclick="generateFlexAndShow('S\'');" type="button" value="S'" />
-  <input onclick="generateFlexAndShow('V');" type="button" value="V" />
-  <input onclick="generateFlexAndShow('V\'');" type="button" value="V'" />
-  <input onclick="generateFlexAndShow('F');" type="button" value="F" />
-  <input onclick="generateFlexAndShow('F\'');" type="button" value="F'" />
-  <input onclick="generateFlexAndShow('Lt');" type="button" value="Lt" />
-  <input onclick="generateFlexAndShow('Lt\'');" type="button" value="Lt'" />
-  <input onclick="generateFlexAndShow('Ltb');" type="button" value="Ltb" />
-  <input onclick="generateFlexAndShow('Ltb\'');" type="button" value="Ltb'" />
-  <input onclick="generateFlexAndShow('T1');" type="button" value="T1" />
-  <input onclick="generateFlexAndShow('T2');" type="button" value="T2" />
-  <input onclick="generateFlexAndShow('T3');" type="button" value="T3" />
-  <br />
+  <p>
+    base flexagon:
+    <select onchange="newFlexagons(event.srcElement.value)">
+      <option value="5">penta</option>
+      <option value="6">hexa</option>
+      <option value="6,6" selected>6-sided hexa</option>
+      <option value="7">hepta</option>
+      <option value="8">octa</option>
+  </select>
+  </p>
+
+  <p>
+    apply:
+    <input onclick="flexAndShow('>');" type="button" value=">" />
+    <input onclick="flexAndShow('<');" type="button" value="<" />
+    <input onclick="flexAndShow('^');" type="button" value="^" />
+    <input onclick="flexAndShow('P');" type="button" value="P" />
+    <input onclick="flexAndShow('P\'');" type="button" value="P'" />
+    <input onclick="flexAndShow('T');" type="button" value="T" />
+    <input onclick="flexAndShow('T\'');" type="button" value="T'" />
+    <input onclick="flexAndShow('S');" type="button" value="S" />
+    <input onclick="flexAndShow('S\'');" type="button" value="S'" />
+    <input onclick="flexAndShow('V');" type="button" value="V" />
+    <input onclick="flexAndShow('V\'');" type="button" value="V'" />
+    <input onclick="flexAndShow('F');" type="button" value="F" />
+    <input onclick="flexAndShow('F\'');" type="button" value="F'" />
+    <input onclick="flexAndShow('Lt');" type="button" value="Lt" />
+    <input onclick="flexAndShow('Lt\'');" type="button" value="Lt'" />
+    <input onclick="flexAndShow('Ltb');" type="button" value="Ltb" />
+    <input onclick="flexAndShow('Ltb\'');" type="button" value="Ltb'" />
+  </p>
+
+  <p>
+    generate:
+    <input onclick="generateFlexAndShow('P');" type="button" value="P" />
+    <input onclick="generateFlexAndShow('P\'');" type="button" value="P'" />
+    <input onclick="generateFlexAndShow('T');" type="button" value="T" />
+    <input onclick="generateFlexAndShow('T\'');" type="button" value="T'" />
+    <input onclick="generateFlexAndShow('S');" type="button" value="S" />
+    <input onclick="generateFlexAndShow('S\'');" type="button" value="S'" />
+    <input onclick="generateFlexAndShow('V');" type="button" value="V" />
+    <input onclick="generateFlexAndShow('V\'');" type="button" value="V'" />
+    <input onclick="generateFlexAndShow('F');" type="button" value="F" />
+    <input onclick="generateFlexAndShow('F\'');" type="button" value="F'" />
+    <input onclick="generateFlexAndShow('Lt');" type="button" value="Lt" />
+    <input onclick="generateFlexAndShow('Lt\'');" type="button" value="Lt'" />
+    <input onclick="generateFlexAndShow('Ltb');" type="button" value="Ltb" />
+    <input onclick="generateFlexAndShow('Ltb\'');" type="button" value="Ltb'" />
+    <input onclick="generateFlexAndShow('T1');" type="button" value="T1" />
+    <input onclick="generateFlexAndShow('T2');" type="button" value="T2" />
+    <input onclick="generateFlexAndShow('T3');" type="button" value="T3" />
+  </p>
 
   <canvas id="interface" width="600" height="600"></canvas>
   <script type="text/javascript">
