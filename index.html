@@ -25,6 +25,20 @@
       }
     }
 
+    function setFaceLabel(value) {
+      if (value !== "") {
+        fm.setFaceLabel(value, true);
+        Flexagonator.drawAll('interface', fm);
+      }
+    }
+
+    function setFaceColor(value) {
+      if (value !== "") {
+        fm.setFaceColor(value, true);
+        Flexagonator.drawAll('interface', fm);
+      }
+    }
+
     function flexAndShow(flex) {
       fm.applyFlexes(flex);
       Flexagonator.drawAll('interface', fm);
@@ -48,7 +62,29 @@
       <option value="6,6" selected>6-sided hexa</option>
       <option value="7">hepta</option>
       <option value="8">octa</option>
-  </select>
+    </select> &nbsp;&nbsp;&nbsp; set color:
+    <select onchange="setFaceColor(event.srcElement.value)">
+      <option value="" selected></option>
+      <option value=0xff0000>red</option>
+      <option value=0x00ff00>green</option>
+      <option value=0x0000ff>blue</option>
+      <option value=0x00ffff>cyan</option>
+      <option value=0xffff00>yellow</option>
+      <option value=0xff00ff>magenta</option>
+      <option value=0xcccccc>grey</option>
+    </select> &nbsp;&nbsp;&nbsp; set label:
+    <select onchange="setFaceLabel(event.srcElement.value)">
+      <option value="" selected></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+    </select>
   </p>
 
   <p>

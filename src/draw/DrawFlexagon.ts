@@ -27,7 +27,11 @@ namespace Flexagonator {
     const ids = flexagon.getTopIds();
     for (const i in triangles) {
       const leafId = ids[i];
-      const faceProps = leafId > 0 ? props[leafId - 1].front : props[-leafId - 1].back;
+      const leafProps = leafId > 0 ? props[leafId - 1] : props[-leafId - 1];
+      if (leafProps === undefined) {
+        continue;
+      }
+      const faceProps = leafId > 0 ? leafProps.front : leafProps.back;
       if (faceProps.color !== undefined) {
         const colorStr = numberToRGB(faceProps.color);
         const triangle = triangles[i];

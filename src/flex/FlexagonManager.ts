@@ -79,5 +79,28 @@ namespace Flexagonator {
       }
       return flexNames;
     }
+
+    setFaceLabel(label: string, front: boolean) {
+      if (this.leafProps === undefined) {
+        this.leafProps = [];
+      }
+
+      const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
+      for (var id of ids) {
+        setLabelProp(this.leafProps, id, label);
+      }
+    }
+
+    setFaceColor(color: number, front: boolean) {
+      if (this.leafProps === undefined) {
+        this.leafProps = [];
+      }
+
+      const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
+      for (var id of ids) {
+        setColorProp(this.leafProps, id, color);
+      }
+    }
+
   }
 }
