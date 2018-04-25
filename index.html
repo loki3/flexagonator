@@ -40,18 +40,22 @@
     }
 
     function flexAndShow(flex) {
-      fm.applyFlexes(flex);
-      Flexagonator.drawAll('interface', fm);
-    }
-
-    function generateFlexAndShow(flex) {
-      fm.generateAndApplyFlexes(flex);
-      Flexagonator.drawAll('interface', fm);
+      var result = fm.applyFlex(flex);
+      if (result === true) {
+        Flexagonator.drawAll('interface', fm);
+      } else {
+        console.log(result);
+      }
     }
 
     function applySequence(key, sequence) {
       if (key == 13) {
-        flexAndShow(sequence);
+        var result = fm.applyFlexes(sequence);
+        if (result === true) {
+          Flexagonator.drawAll('interface', fm);
+        } else {
+          console.log(result);
+        }
       }
     }
   </script>
@@ -116,23 +120,23 @@
 
   <p>
     generate:
-    <input onclick="generateFlexAndShow('P');" type="button" value="P" />
-    <input onclick="generateFlexAndShow('P\'');" type="button" value="P'" />
-    <input onclick="generateFlexAndShow('T');" type="button" value="T" />
-    <input onclick="generateFlexAndShow('T\'');" type="button" value="T'" />
-    <input onclick="generateFlexAndShow('S');" type="button" value="S" />
-    <input onclick="generateFlexAndShow('S\'');" type="button" value="S'" />
-    <input onclick="generateFlexAndShow('V');" type="button" value="V" />
-    <input onclick="generateFlexAndShow('V\'');" type="button" value="V'" />
-    <input onclick="generateFlexAndShow('F');" type="button" value="F" />
-    <input onclick="generateFlexAndShow('F\'');" type="button" value="F'" />
-    <input onclick="generateFlexAndShow('Lt');" type="button" value="Lt" />
-    <input onclick="generateFlexAndShow('Lt\'');" type="button" value="Lt'" />
-    <input onclick="generateFlexAndShow('Ltb');" type="button" value="Ltb" />
-    <input onclick="generateFlexAndShow('Ltb\'');" type="button" value="Ltb'" />
-    <input onclick="generateFlexAndShow('T1');" type="button" value="T1" />
-    <input onclick="generateFlexAndShow('T2');" type="button" value="T2" />
-    <input onclick="generateFlexAndShow('T3');" type="button" value="T3" />
+    <input onclick="flexAndShow('P+');" type="button" value="P" />
+    <input onclick="flexAndShow('P\'+');" type="button" value="P'" />
+    <input onclick="flexAndShow('T+');" type="button" value="T" />
+    <input onclick="flexAndShow('T\'+');" type="button" value="T'" />
+    <input onclick="flexAndShow('S+');" type="button" value="S" />
+    <input onclick="flexAndShow('S\'+');" type="button" value="S'" />
+    <input onclick="flexAndShow('V+');" type="button" value="V" />
+    <input onclick="flexAndShow('V\'+');" type="button" value="V'" />
+    <input onclick="flexAndShow('F+');" type="button" value="F" />
+    <input onclick="flexAndShow('F\'+');" type="button" value="F'" />
+    <input onclick="flexAndShow('Lt+');" type="button" value="Lt" />
+    <input onclick="flexAndShow('Lt\'+');" type="button" value="Lt'" />
+    <input onclick="flexAndShow('Ltb+');" type="button" value="Ltb" />
+    <input onclick="flexAndShow('Ltb\'+');" type="button" value="Ltb'" />
+    <input onclick="flexAndShow('T1+');" type="button" value="T1" />
+    <input onclick="flexAndShow('T2+');" type="button" value="T2" />
+    <input onclick="flexAndShow('T3+');" type="button" value="T3" />
   </p>
   <p>
     <div>

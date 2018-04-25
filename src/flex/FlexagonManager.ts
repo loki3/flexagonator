@@ -33,51 +33,34 @@ namespace Flexagonator {
       return checkForFlexes(modified, this.primeFlexes);
     }
 
-    // apply a series of space delimited flexes, e.g. "P > > S' ^ T"
-    applyFlexes(flexStr: string): boolean | FlexError {
-      const flexNames = this.parseFlexes(flexStr);
-      if (isFlexError(flexNames)) {
-        return flexNames;
+    // apply a single flex;
+    // if the flex string ends with +, generate the needed structure first
+    applyFlex(flexStr: string): boolean | FlexError {
+      const generate = (flexStr[flexStr.length - 1] === '+');
+      const flexName = generate ? flexStr.substring(0, flexStr.length - 1) : flexStr;
+      if (this.allFlexes[flexName] === undefined) {
+        return { reason: FlexCode.UnknownFlex, flexName: flexName };
       }
 
-      // if they all exist, apply them
+      const input = generate ? this.allFlexes[flexName].createPattern(this.flexagon) : this.flexagon;
+      const result = this.allFlexes[flexName].apply(input);
+      if (isFlexError(result)) {
+        return { reason: FlexCode.CantApplyFlex, flexName: flexName };
+      }
+      this.flexagon = result;
+      return true;
+    }
+
+    // apply a series of space delimited flexes, e.g. "P > > S'+ ^ T"
+    applyFlexes(flexStr: string): boolean | FlexError {
+      const flexNames: string[] = flexStr.split(" ");
       for (var flexName of flexNames) {
-        const result = this.allFlexes[flexName].apply(this.flexagon);
+        const result = this.applyFlex(flexName);
         if (isFlexError(result)) {
           return { reason: FlexCode.CantApplyFlex, flexName: flexName };
         }
-        this.flexagon = result;
       }
       return true;
-    }
-
-    // apply a series of flexes, generating structure as necessary
-    generateAndApplyFlexes(flexStr: string): boolean | FlexError {
-      const flexNames = this.parseFlexes(flexStr);
-      if (isFlexError(flexNames)) {
-        return flexNames;
-      }
-
-      for (var flexName of flexNames) {
-        const result1 = this.allFlexes[flexName].createPattern(this.flexagon);
-        const result2 = this.allFlexes[flexName].apply(result1);
-        if (isFlexError(result2)) {
-          return { reason: FlexCode.CantApplyFlex, flexName: flexName };
-        }
-        this.flexagon = result2;
-      }
-      return true;
-    }
-
-    //  check if all the flexes actually exist
-    private parseFlexes(flexStr: string): string[] | FlexError {
-      const flexNames: string[] = flexStr.split(" ");
-      for (var flexName of flexNames) {
-        if (this.allFlexes[flexName] === undefined) {
-          return { reason: FlexCode.UnknownFlex, flexName: flexName };
-        }
-      }
-      return flexNames;
     }
 
     setFaceLabel(label: string, front: boolean) {
