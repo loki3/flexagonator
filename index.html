@@ -48,6 +48,12 @@
       fm.generateAndApplyFlexes(flex);
       Flexagonator.drawAll('interface', fm);
     }
+
+    function applySequence(key, sequence) {
+      if (key == 13) {
+        flexAndShow(sequence);
+      }
+    }
   </script>
 </head>
 
@@ -127,6 +133,12 @@
     <input onclick="generateFlexAndShow('T1');" type="button" value="T1" />
     <input onclick="generateFlexAndShow('T2');" type="button" value="T2" />
     <input onclick="generateFlexAndShow('T3');" type="button" value="T3" />
+  </p>
+  <p>
+    <div>
+      <label>sequence</label>
+      <input onkeypress="applySequence(event.charCode, event.srcElement.value)" size="80" />
+    </div>
   </p>
 
   <canvas id="interface" width="600" height="600"></canvas>
