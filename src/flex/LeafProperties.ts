@@ -20,38 +20,29 @@ namespace Flexagonator {
     }
 
     setLabelProp(id: number, label: string) {
-      const front = id > 0;
-      id = Math.abs(id) - 1;
-      if (this.props[id] === undefined) {
-        const newProp = { label: label };
-        this.props[id] = { front: (front ? newProp : {}), back: (front ? {} : newProp) };
-      } else if (front) {
-        this.props[id].front.label = label;
-      } else {
-        this.props[id].back.label = label;
-      }
+      var props = this.getFacePropsToSet(id);
+      props.label = label;
     }
 
     setColorProp(id: number, color: number) {
-      const front = id > 0;
-      id = Math.abs(id) - 1;
-      if (this.props[id] === undefined) {
-        const newProp = { color: color };
-        this.props[id] = { front: (front ? newProp : {}), back: (front ? {} : newProp) };
-      } else if (front) {
-        this.props[id].front.color = color;
-      } else {
-        this.props[id].back.color = color;
+      var props = this.getFacePropsToSet(id);
+      props.color = color;
+    }
+
+    getFaceLabel(id: number): string {
+      const props = this.getFacePropsToGet(id);
+      if (props !== undefined && props.label !== undefined) {
+        return props.label;
       }
+      return id.toString();
     }
 
     getColorProp(id: number): number | undefined {
-      const leafProps = this.props[Math.abs(id) - 1]
-      if (leafProps === undefined) {
-        return undefined;
+      const props = this.getFacePropsToGet(id);
+      if (props === undefined) {
+        return props;
       }
-      const faceProps = id > 0 ? leafProps.front : leafProps.back;
-      return faceProps.color;
+      return props.color;
     }
 
     getColorAsRGBString(id: number): string | undefined {
@@ -65,15 +56,21 @@ namespace Flexagonator {
         + (color & 0xff).toString() + ")";
     }
 
-    getFaceLabel(id: number): string {
-      const leafProps = this.props[Math.abs(id) - 1];
-      if (leafProps !== undefined) {
-        const label = id > 0 ? leafProps.front.label : leafProps.back.label;
-        if (label !== undefined) {
-          return label;
-        }
+    private getFacePropsToGet(id: number): LeafFaceProperties | undefined {
+      const leafProps = this.props[Math.abs(id) - 1]
+      if (leafProps === undefined) {
+        return undefined;
       }
-      return id.toString();
+      return id > 0 ? leafProps.front : leafProps.back;
+    }
+
+    private getFacePropsToSet(id: number): LeafFaceProperties {
+      const front = id > 0;
+      id = Math.abs(id) - 1;
+      if (this.props[id] === undefined) {
+        this.props[id] = { front: {}, back: {} };
+      }
+      return front ? this.props[id].front : this.props[id].back;
     }
   }
 
