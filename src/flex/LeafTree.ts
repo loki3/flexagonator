@@ -50,4 +50,8 @@ namespace Flexagonator {
     return true;
   }
 
+  export function getTop(tree: LeafTree): number {
+    return (typeof (tree) === "number") ? tree : getTop(tree[0]);
+  }
+
 }
