@@ -21,28 +21,28 @@
       if (leaftree != null) {
         var flexagon = Flexagonator.makeFlexagon(leaftree);
         fm = Flexagonator.makeFlexagonManager(flexagon, props);
-        Flexagonator.drawAll('interface', fm);
+        Flexagonator.drawAll('interface', 'unfolded', fm);
       }
     }
 
     function setFaceLabel(value) {
       if (value !== "") {
         fm.setFaceLabel(value, true);
-        Flexagonator.drawAll('interface', fm);
+        Flexagonator.drawAll('interface', 'unfolded', fm);
       }
     }
 
     function setFaceColor(value) {
       if (value !== "") {
         fm.setFaceColor(value, true);
-        Flexagonator.drawAll('interface', fm);
+        Flexagonator.drawAll('interface', 'unfolded', fm);
       }
     }
 
     function flexAndShow(flex) {
       var result = fm.applyFlex(flex);
       if (result === true) {
-        Flexagonator.drawAll('interface', fm);
+        Flexagonator.drawAll('interface', 'unfolded', fm);
       } else {
         console.log(result);
       }
@@ -52,7 +52,7 @@
       if (key == 13) {
         var result = fm.applyFlexes(sequence);
         if (result === true) {
-          Flexagonator.drawAll('interface', fm);
+          Flexagonator.drawAll('interface', 'unfolded', fm);
         } else {
           console.log(result);
         }
@@ -146,8 +146,11 @@
   </p>
 
   <canvas id="interface" width="600" height="600"></canvas>
+  <br/>
+  <canvas id="unfolded" width="800" height="600"></canvas>
+
   <script type="text/javascript">
-    Flexagonator.drawAll('interface', fm);
+    Flexagonator.drawAll('interface', 'unfolded', fm);
   </script>
 
 </body>

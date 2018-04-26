@@ -1,6 +1,11 @@
 namespace Flexagonator {
 
-  export function drawAll(canvasId: string, fm: FlexagonManager) {
+  export function drawAll(flexCanvasId: string, stripCanvasId: string, fm: FlexagonManager) {
+    drawEntireFlexagon(flexCanvasId, fm);
+    drawUnfolded(stripCanvasId, fm);
+  }
+
+  function drawEntireFlexagon(canvasId: string, fm: FlexagonManager) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
@@ -12,7 +17,22 @@ namespace Flexagonator {
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps);
     drawPossibleFlexes(ctx, fm, polygon);
+  }
 
+  function drawUnfolded(canvasId: string, fm: FlexagonManager) {
+    const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
+    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+    ctx.clearRect(0, 0, 800, 600);
+
+    const unfolded = unfold(fm.flexagon.getAsLeafTrees());
+    if (isTreeError(unfolded)) {
+      console.log("error unfolding flexagon");
+      console.log(unfolded);
+      return;
+    }
+
+    const leaflines = leafsToLines(unfolded, toRadians(60), toRadians(60));
+    drawStrip(ctx, leaflines);
   }
 
   function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon) {
