@@ -44,4 +44,23 @@ namespace Flexagonator {
     });
   });
 
+  describe('unfold', () => {
+    it('unfolds more complex pats', () => {
+      const result1 = unfold([[[1, [2, 3]], 4], 5, [6, [7, 8]]]);
+      if (isTreeError(result1)) {
+        fail();
+        return;
+      }
+      expect(result1.length).toBe(8);
+      expect(areLeafsEqual(result1[0], { id: 4, top: 3, bottom: 2, isClock: false })).toBeTruthy();
+      expect(areLeafsEqual(result1[1], { id: -1, top: 4, bottom: 1, isClock: false })).toBeTruthy();
+      expect(areLeafsEqual(result1[2], { id: 3, top: 5, bottom: 3, isClock: false })).toBeTruthy();
+      expect(areLeafsEqual(result1[3], { id: -2, top: 5, bottom: 4, isClock: true })).toBeTruthy();
+      expect(areLeafsEqual(result1[4], { id: -5, top: 2, bottom: 1, isClock: false })).toBeTruthy();
+      expect(areLeafsEqual(result1[5], { id: -7, top: 7, bottom: 6, isClock: false })).toBeTruthy();
+      expect(areLeafsEqual(result1[6], { id: 8, top: 7, bottom: 2, isClock: true })).toBeTruthy();
+      expect(areLeafsEqual(result1[7], { id: -6, top: 6, bottom: 1, isClock: true })).toBeTruthy();
+    });
+  });
+
 }

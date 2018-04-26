@@ -53,15 +53,11 @@ namespace Flexagonator {
   //----- unfolding routines
 
   function over(tree: LeafTree): LeafTree {
-    return (Array.isArray(tree)) ? [over(tree[0]), over(tree[1])] : -tree;
+    return (Array.isArray(tree)) ? [over(tree[1]), over(tree[0])] : -tree;
   }
 
   function flip(foldpat: FoldPat): FoldPat {
-    if (Array.isArray(foldpat.numbers)) {
-      return { pat: over(foldpat.pat), numbers: foldpat.numbers.reverse(), isClock: !foldpat.isClock, next: foldpat.next };
-    }
-    console.log("not done");
-    return foldpat;
+    return { pat: over(foldpat.pat), numbers: foldpat.numbers.reverse(), isClock: !foldpat.isClock, next: foldpat.next };
   }
 
   function unfoldOne(foldpat: FoldPat): FoldPat[] {
