@@ -23,7 +23,7 @@ namespace Flexagonator {
     const scalex = ctxWidth / (extents[1].x - extents[0].x);
     const scaley = ctxHeight / (extents[1].y - extents[0].y);
     const scale = Math.min(scalex, scaley);
-    ctx.translate(extents[0].x * scale, -extents[0].y * scale);
+    ctx.translate(-extents[0].x * scale, -extents[0].y * scale);
     ctx.scale(scale, scale);
     ctx.lineWidth = ctx.lineWidth / scale;
     return scale;
