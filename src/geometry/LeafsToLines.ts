@@ -71,6 +71,23 @@ namespace Flexagonator {
     return { faces: faces, folds: folds, cuts: cuts };
   }
 
+  export function getExtents(leaflines: LeafLines): [Point, Point] {
+    var xmin = 0, ymin = 0, xmax = 0, ymax = 0;
+    for (var face of leaflines.faces) {
+      for (var point of face.corners) {
+        if (point.x < xmin)
+          xmin = point.x;
+        if (point.x > xmax)
+          xmax = point.x;
+        if (point.y < ymin)
+          ymin = point.y;
+        if (point.y > ymax)
+          ymax = point.y;
+      }
+    }
+    return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
+  }
+
   // given a=(0,0), b(1,0), angle1=(c,a,b), angle2=(a,b,c), find c
   function computeTrianglePoint(angle1: number, angle2: number): Point {
     var cota = Math.cos(angle1) / Math.sin(angle1);
