@@ -32,15 +32,19 @@ namespace Flexagonator {
 
   function drawFaceText(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
     const len = transform.applyScale(1);
-    ctx.font = len / 5 + "px sans-serif";
 
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
     for (var face of faces) {
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
-      const s = face.leaf.top.toString() + '/' + face.leaf.bottom.toString();
-      ctx.fillText(s, p.x, p.y);
+      const y = p.y + len * 0.05;
+
+      ctx.textAlign = "right";
+      ctx.font = len / 5 + "px sans-serif";
+      ctx.fillText(face.leaf.top.toString(), p.x, y);
+
+      ctx.textAlign = "left";
+      ctx.font = len / 8 + "px sans-serif";
+      ctx.fillText(" " + face.leaf.bottom.toString(), p.x, y);
     }
   }
 
