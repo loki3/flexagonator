@@ -8,11 +8,11 @@ namespace Flexagonator {
   function drawEntireFlexagon(canvasId: string, fm: FlexagonManager) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+    ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
-    const xCenter = 300;
-    const yCenter = 250;
-    const radius = 200;
-    ctx.clearRect(0, yCenter - radius * 1.1, xCenter + radius * 1.5, yCenter + radius);
+    const xCenter = ctx.canvas.clientWidth / 2;
+    const yCenter = ctx.canvas.clientHeight / 2;
+    const radius = ctx.canvas.clientHeight * 0.42;
 
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps);
