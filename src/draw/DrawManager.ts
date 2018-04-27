@@ -32,7 +32,7 @@ namespace Flexagonator {
     }
 
     const leaflines = leafsToLines(unfolded, toRadians(60), toRadians(60));
-    drawStrip(ctx, leaflines);
+    drawStrip(ctx, leaflines, StripContent.FoldingLabels, fm.leafProps);
   }
 
   function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon) {

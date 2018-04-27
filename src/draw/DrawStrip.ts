@@ -1,6 +1,12 @@
 namespace Flexagonator {
 
-  export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines) {
+  export enum StripContent {
+    FoldingLabels,  // put everything on one-side, use labels that indicate folding order
+    Front,          // only display what's on the front side, use leaf properties
+    Back,           // only display what's on the back side, use leaf properties
+  }
+
+  export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines, content: StripContent, props: PropertiesForLeaves) {
     ctx.save();
 
     const extents: [Point, Point] = getExtents(leaflines);
@@ -14,7 +20,11 @@ namespace Flexagonator {
     ctx.setLineDash([]);
     drawLines(ctx, leaflines.cuts, transform);
 
-    drawFaceText(ctx, leaflines.faces, transform);
+    if (content === StripContent.FoldingLabels) {
+      drawFoldingLabels(ctx, leaflines.faces, transform);
+    } else if (content === StripContent.Front) {
+    } else if (content === StripContent.Back) {
+    }
 
     ctx.restore();
   }
@@ -30,7 +40,7 @@ namespace Flexagonator {
     }
   }
 
-  function drawFaceText(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
+  function drawFoldingLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
     const len = transform.applyScale(1);
 
     for (var face of faces) {
