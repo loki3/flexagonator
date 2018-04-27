@@ -46,7 +46,7 @@ namespace Flexagonator {
     return { x: x, y: y };
   }
 
-  export function lengthOf(a: Point, b: Point) {
+  function lengthOf(a: Point, b: Point) {
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     return Math.sqrt(dx * dx + dy * dy);
