@@ -12,6 +12,8 @@ namespace Flexagonator {
     ctx.setLineDash([]);
     drawLines(ctx, leaflines.cuts);
 
+    drawFaceText(ctx, leaflines.faces, scale);
+
     ctx.restore();
   }
 
@@ -35,6 +37,17 @@ namespace Flexagonator {
       ctx.moveTo(line.a.x, line.a.y);
       ctx.lineTo(line.b.x, line.b.y);
       ctx.stroke();
+    }
+  }
+
+  function drawFaceText(ctx: CanvasRenderingContext2D, faces: LeafFace[], scale: number) {
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = 20 / scale + "px sans-serif";
+    for (var face of faces) {
+      const p = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
+      const s = face.leaf.top.toString() + '/' + face.leaf.bottom.toString();
+      ctx.fillText(s, p.x, p.y);
     }
   }
 

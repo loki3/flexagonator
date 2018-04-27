@@ -36,4 +36,20 @@ namespace Flexagonator {
     return { x: x2, y: y2 };
   }
 
+  // get the incenter of a triangle
+  export function getIncenter(p1: Point, p2: Point, p3: Point): Point {
+    const a = lengthOf(p2, p3);
+    const b = lengthOf(p1, p3);
+    const c = lengthOf(p1, p2);
+    const x = (a * p1.x + b * p2.x + c * p3.x) / (a + b + c);
+    const y = (a * p1.y + b * p2.y + c * p3.y) / (a + b + c);
+    return { x: x, y: y };
+  }
+
+  export function lengthOf(a: Point, b: Point) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
 }
