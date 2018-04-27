@@ -1,7 +1,16 @@
 namespace Flexagonator {
 
   export class Transform {
-    constructor(readonly offset: Point, readonly scale: number) {
+    private readonly offset: Point;
+    private readonly scale: number;
+
+    constructor(outputSize: Point, inputMin: Point, inputMax: Point) {
+      const scalex = outputSize.x / (inputMax.x - inputMin.x);
+      const scaley = outputSize.y / (inputMax.y - inputMin.y);
+      const scale = Math.min(scalex, scaley);
+
+      this.offset = { x: -inputMin.x, y: -inputMin.y };
+      this.scale = scale;
     }
 
     apply(point: Point): Point {

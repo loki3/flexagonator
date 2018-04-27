@@ -2,7 +2,9 @@ namespace Flexagonator {
 
   export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines) {
     ctx.save();
-    const transform = transformCanvas(ctx, leaflines);
+
+    const extents: [Point, Point] = getExtents(leaflines);
+    const transform = new Transform({ x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight }, extents[0], extents[1]);
 
     ctx.strokeStyle = "rgb(150, 150, 150)";
     ctx.setLineDash([10, 5]);
@@ -15,17 +17,6 @@ namespace Flexagonator {
     drawFaceText(ctx, leaflines.faces, transform);
 
     ctx.restore();
-  }
-
-  function transformCanvas(ctx: CanvasRenderingContext2D, leaflines: LeafLines): Transform {
-    const ctxWidth = 800;
-    const ctxHeight = 500;
-
-    const extents: [Point, Point] = getExtents(leaflines);
-    const scalex = ctxWidth / (extents[1].x - extents[0].x);
-    const scaley = ctxHeight / (extents[1].y - extents[0].y);
-    const scale = Math.min(scalex, scaley);
-    return new Transform({ x: -extents[0].x, y: -extents[0].y }, scale);
   }
 
   function drawLines(ctx: CanvasRenderingContext2D, lines: Line[], transform: Transform) {
