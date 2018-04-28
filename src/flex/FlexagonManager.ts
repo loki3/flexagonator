@@ -12,12 +12,14 @@ namespace Flexagonator {
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     readonly primeFlexes: Flexes;
+    private readonly history: History;
 
     constructor(flexagon: Flexagon, leafProps?: LeafProperties[]) {
       this.flexagon = flexagon;
       this.leafProps = new PropertiesForLeaves(leafProps);
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
       this.primeFlexes = getPrimeFlexes(this.allFlexes);
+      this.history = new History(flexagon);
     }
 
     // possibly flip the flexagon and rotate 'rightSteps',
@@ -48,6 +50,7 @@ namespace Flexagonator {
         return { reason: FlexCode.CantApplyFlex, flexName: flexName };
       }
       this.flexagon = result;
+      this.history.add([flexStr], this.flexagon);
       return true;
     }
 
@@ -77,5 +80,19 @@ namespace Flexagonator {
       }
     }
 
+    undoAll() {
+      this.history.undoAll();
+      this.flexagon = this.history.getCurrent().flexagon;
+    }
+
+    undo() {
+      this.history.undo();
+      this.flexagon = this.history.getCurrent().flexagon;
+    }
+
+    redo() {
+      this.history.redo();
+      this.flexagon = this.history.getCurrent().flexagon;
+    }
   }
 }

@@ -58,6 +58,21 @@
         }
       }
     }
+
+    function reset() {
+      fm.undoAll();
+      Flexagonator.drawAll('interface', 'unfolded', fm);
+    }
+
+    function undo() {
+      fm.undo();
+      Flexagonator.drawAll('interface', 'unfolded', fm);
+    }
+
+    function redo() {
+      fm.redo();
+      Flexagonator.drawAll('interface', 'unfolded', fm);
+    }
   </script>
 </head>
 
@@ -143,6 +158,11 @@
       <label>sequence</label>
       <input onkeypress="applySequence(event.charCode, event.srcElement.value)" size="80" />
     </div>
+  </p>
+  <p>
+    <input onclick="reset();" type="button" value="reset" />
+    <input onclick="undo();" type="button" value="undo" />
+    <input onclick="redo();" type="button" value="redo" />
   </p>
 
   <canvas id="interface" width="800" height="400"></canvas>
