@@ -80,6 +80,10 @@ namespace Flexagonator {
       }
     }
 
+    getFlexHistory(): string[] {
+      return this.history.getCurrent().flexes;
+    }
+
     undoAll() {
       this.history.undoAll();
       this.flexagon = this.history.getCurrent().flexagon;
