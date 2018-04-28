@@ -22,11 +22,13 @@
       var leaftree = null;
       var props = undefined;
       switch (value) {
+        case "4": leaftree = [1, 2, 3, 4]; break;
         case "5": leaftree = [1, 2, 3, 4, 5]; break;
         case "6": leaftree = [1, 2, 3, 4, 5, 6]; break;
         case "6,6": leaftree = Flexagonator.hexaHexaLeafTree; props = Flexagonator.hexaHexaProperties; break;
         case "7": leaftree = [1, 2, 3, 4, 5, 6, 7]; break;
         case "8": leaftree = [1, 2, 3, 4, 5, 6, 7, 8]; break;
+        case "9": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9]; break;
       }
 
       if (leaftree != null) {
@@ -93,11 +95,13 @@
   <p>
     base flexagon:
     <select onchange="newFlexagons(event.srcElement.value)">
+      <option value="4">tetra</option>
       <option value="5">penta</option>
       <option value="6">hexa</option>
       <option value="6,6" selected>6-sided hexa</option>
       <option value="7">hepta</option>
       <option value="8">octa</option>
+      <option value="9">ennea</option>
     </select> &nbsp;&nbsp;&nbsp; set color:
     <select onchange="setFaceColor(event.srcElement.value)">
       <option value="" selected></option>
