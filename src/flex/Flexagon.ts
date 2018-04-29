@@ -12,18 +12,20 @@ namespace Flexagonator {
       }
       pats.push(pat);
     }
-    return new Flexagon(pats);
+    return new Flexagon(pats, 0, false/*isFirstMirrored*/);
   }
 
-  export function makeFlexagonFromPats(pats: Pat[]): Flexagon {
-    return new Flexagon(pats);
+  export function makeFlexagonFromPats(pats: Pat[], whichVertex: number, isFirstMirrored: boolean): Flexagon {
+    return new Flexagon(pats, whichVertex, isFirstMirrored);
   }
 
   /*
     Manages the pats in a flexagon
   */
   export class Flexagon {
-    constructor(readonly pats: Pat[]) {
+    // whichVertex: 1st face is numbered 0,1,2 clockwise - 0 starts out pointing to the center
+    // isFirstMirrored: indicates that the first pat rotates counterclockwise instead
+    constructor(readonly pats: Pat[], readonly whichVertex: number, readonly isFirstMirrored: boolean) {
     }
 
     getPatCount(): number {

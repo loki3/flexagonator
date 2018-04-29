@@ -1,5 +1,13 @@
 namespace Flexagonator {
 
+  // describes how a flex rotates & mirrors leaves
+  export enum FlexRotation {
+    None,          // same center vertex, no mirroring
+    ClockMirror,   // new center = 1 step clockwise, flexagon is mirrored
+    CounterMirror, // new center = 1 step counterclockwise, flexagon is mirrored
+    Mirror,        // same center vertex, flexagon is mirrored
+  }
+
   /*
     Takes a pattern as input (length matches the pat count in the target flexagon)
       and an output pattern that references the labels from the input pattern,
@@ -7,11 +15,11 @@ namespace Flexagonator {
     e.g. pattern: [1, [2, 3], 4, [5, 6]]
          output:  [[-5, 1], -2, [4, -3], -6]
   */
-  export function makeFlex(name: string, pattern: LeafTree[], output: LeafTree[]): Flex | FlexError {
+  export function makeFlex(name: string, pattern: LeafTree[], output: LeafTree[], fr: FlexRotation): Flex | FlexError {
     if (pattern.length !== output.length) {
       return { reason: FlexCode.SizeMismatch };
     }
-    return new Flex(name, pattern, output);
+    return new Flex(name, pattern, output, fr);
   }
 
   /*
@@ -21,11 +29,12 @@ namespace Flexagonator {
     constructor(
       readonly name: string,
       readonly pattern: LeafTree[],
-      readonly output: LeafTree[]) {
+      readonly output: LeafTree[],
+      readonly rotation: FlexRotation) {
     }
 
     createInverse(): Flex {
-      return new Flex("inverse " + this.name, this.output, this.pattern);
+      return new Flex("inverse " + this.name, this.output, this.pattern, this.invertRotation(this.rotation));
     }
 
     // apply this flex to the given flexagon
@@ -44,7 +53,17 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      return makeFlexagonFromPats(newPats);
+      const newVertex: number = this.getNewVertex(flexagon.whichVertex, flexagon.isFirstMirrored);
+      const isFirstMirrored: boolean = (this.rotation == FlexRotation.Mirror) ? !flexagon.isFirstMirrored : flexagon.isFirstMirrored;
+
+      return makeFlexagonFromPats(newPats, newVertex, isFirstMirrored);
+    }
+
+    private invertRotation(fr: FlexRotation): FlexRotation {
+      if (fr === FlexRotation.None || fr === FlexRotation.Mirror) {
+        return fr;
+      }
+      return (fr === FlexRotation.ClockMirror) ? FlexRotation.CounterMirror : FlexRotation.ClockMirror;
     }
 
     // create a pat given a tree of indices into a set of matched pats
@@ -68,6 +87,17 @@ namespace Flexagonator {
       return { reason: FlexCode.BadFlexOutput };
     }
 
+    private getNewVertex(whichVertex: number, isFirstMirrored: boolean): number {
+      if (this.rotation === FlexRotation.None || this.rotation === FlexRotation.Mirror) {
+        return whichVertex;
+      }
+      if ((this.rotation === FlexRotation.ClockMirror && !isFirstMirrored) ||
+        (this.rotation === FlexRotation.CounterMirror && isFirstMirrored)) {
+        return (whichVertex + 1) % 3;
+      }
+      return (whichVertex - 1) % 3;
+    }
+
     // generate the structure necessary to perform this flex
     // note: it doesn't actually apply the flex
     createPattern(flexagon: Flexagon): Flexagon {
@@ -78,7 +108,7 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      return makeFlexagonFromPats(newPats);
+      return makeFlexagonFromPats(newPats, flexagon.whichVertex, flexagon.isFirstMirrored);
     }
   }
 
