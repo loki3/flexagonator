@@ -95,7 +95,7 @@ namespace Flexagonator {
         (this.rotation === FlexRotation.CounterMirror && isFirstMirrored)) {
         return (whichVertex + 1) % 3;
       }
-      return (whichVertex - 1) % 3;
+      return (whichVertex + 2) % 3;
     }
 
     // generate the structure necessary to perform this flex

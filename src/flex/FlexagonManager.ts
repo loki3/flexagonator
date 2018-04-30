@@ -94,9 +94,9 @@ namespace Flexagonator {
       const angles: number[] = [this.angleCenter, this.angleClock, 180 - this.angleCenter - this.angleClock];
       const v = this.flexagon.whichVertex;
       if (this.flexagon.isFirstMirrored) {
-        return [angles[v], angles[v - 1 % 3], angles[v - 2 % 3]];
+        return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
       }
-      return [angles[v], angles[v + 1 % 3], angles[v + 2 % 3]];
+      return [angles[v], angles[(v + 1) % 3], angles[(v + 2) % 3]];
     }
 
     getFlexHistory(): string[] {
