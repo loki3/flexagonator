@@ -12,6 +12,8 @@ namespace Flexagonator {
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     readonly primeFlexes: Flexes;
+    private angleCenter: number;
+    private angleClock: number;
     private readonly history: History;
 
     constructor(flexagon: Flexagon, leafProps?: LeafProperties[]) {
@@ -19,6 +21,8 @@ namespace Flexagonator {
       this.leafProps = new PropertiesForLeaves(leafProps);
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
       this.primeFlexes = getPrimeFlexes(this.allFlexes);
+      this.angleCenter = 60;
+      this.angleClock = 60;
       this.history = new History(flexagon);
     }
 
@@ -78,6 +82,21 @@ namespace Flexagonator {
       for (var id of ids) {
         this.leafProps.setColorProp(id, color);
       }
+    }
+
+    setAngles(center: number, clock: number) {
+      this.angleCenter = center;
+      this.angleClock = clock;
+    }
+
+    // [center angle, clockwise, clockwise]
+    getAngles(): number[] {
+      const angles: number[] = [this.angleCenter, this.angleClock, 180 - this.angleCenter - this.angleClock];
+      const v = this.flexagon.whichVertex;
+      if (this.flexagon.isFirstMirrored) {
+        return [angles[v], angles[v - 1 % 3], angles[v - 2 % 3]];
+      }
+      return [angles[v], angles[v + 1 % 3], angles[v + 2 % 3]];
     }
 
     getFlexHistory(): string[] {
