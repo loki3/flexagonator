@@ -14,7 +14,7 @@ namespace Flexagonator {
     const yCenter = ctx.canvas.clientHeight / 2;
     const radius = ctx.canvas.clientHeight * 0.42;
 
-    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius);
+    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, fm.getAngles());
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps);
     drawPossibleFlexes(ctx, fm, polygon);
   }
