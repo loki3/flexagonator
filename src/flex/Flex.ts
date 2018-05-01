@@ -54,7 +54,7 @@ namespace Flexagonator {
       }
 
       const newVertex: number = this.getNewVertex(flexagon.whichVertex, flexagon.isFirstMirrored);
-      const isFirstMirrored: boolean = (this.rotation == FlexRotation.Mirror) ? !flexagon.isFirstMirrored : flexagon.isFirstMirrored;
+      const isFirstMirrored: boolean = (this.rotation == FlexRotation.None) ? flexagon.isFirstMirrored : !flexagon.isFirstMirrored;
 
       return makeFlexagonFromPats(newPats, newVertex, isFirstMirrored);
     }
