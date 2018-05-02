@@ -23,6 +23,7 @@ namespace Flexagonator {
       this.primeFlexes = getPrimeFlexes(this.allFlexes);
       this.angleCenter = 60;
       this.angleClock = 60;
+      this.setIsosceles();
       this.history = new History(flexagon);
     }
 
@@ -87,6 +88,10 @@ namespace Flexagonator {
     setAngles(center: number, clock: number) {
       this.angleCenter = center;
       this.angleClock = clock;
+    }
+    setIsosceles() {
+      this.angleCenter = 360 / this.flexagon.getPatCount();
+      this.angleClock = (180 - this.angleCenter) / 2;
     }
 
     // [center angle, clockwise, clockwise]

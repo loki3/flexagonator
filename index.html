@@ -34,6 +34,11 @@
         var flexagon = Flexagonator.makeFlexagon(leaftree);
         fm = Flexagonator.makeFlexagonManager(flexagon, props);
         updateUI();
+
+        var angleBox = document.getElementById('setAngle');
+        if (angleBox !== null) {
+          angleBox.value = "iso";
+        }
       }
     }
 
@@ -49,6 +54,32 @@
         fm.setFaceColor(value, true);
         updateUI();
       }
+    }
+
+    function setAngle(value) {
+      var angles = null;
+      switch (value) {
+        case "iso":
+          break;
+        case "60-60-60":
+          angles = [60, 60];
+          break;
+        case "60-30-90":
+          angles = [60, 30];
+          break;
+        case "45-45-90":
+          angles = [45, 45];
+          break;
+        case "45-30-105":
+          angles = [45, 30];
+          break;
+      }
+      if (angles === null) {
+        fm.setIsosceles();
+      } else {
+        fm.setAngles(angles[0], angles[1]);
+      }
+      updateUI();
     }
 
     function flexAndShow(flex) {
@@ -123,7 +154,14 @@
       <option value="7">7</option>
       <option value="8">8</option>
       <option value="9">9</option>
-    </select>
+    </select> &nbsp;&nbsp;&nbsp; set angles:
+    <select onchange="setAngle(event.srcElement.value)" id="setAngle">
+        <option value="iso" selected>isosceles</option>
+        <option value="60-60-60">60-60-60</option>
+        <option value="60-30-90">6: 60-30-90</option>
+        <option value="45-45-90">8: 45-45-90</option>
+        <option value="45-30-105">8: 45-30-105</option>
+      </select>
   </p>
 
   <p>
