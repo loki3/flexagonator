@@ -1,5 +1,11 @@
 namespace Flexagonator {
 
+  export enum CenterAngle {
+    Is360,
+    GreaterThan360 = 1,
+    LessThan360 = -1
+  }
+
   export function makeFlexagonManager(flexagon: Flexagon, leafProps?: LeafProperties[]) {
     return new FlexagonManager(flexagon, leafProps);
   }
@@ -102,6 +108,15 @@ namespace Flexagonator {
         return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
       }
       return [angles[v], angles[(v + 1) % 3], angles[(v + 2) % 3]];
+    }
+
+    getCenterAngleSum(): CenterAngle {
+      const angles = this.getAngles();
+      const angle = angles[0] * this.flexagon.getPatCount();
+      if (Math.round(angle) === 360) {
+        return CenterAngle.Is360;
+      }
+      return (angle < 360) ? CenterAngle.LessThan360 : CenterAngle.GreaterThan360;
     }
 
     getFlexHistory(): string[] {

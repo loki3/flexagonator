@@ -16,6 +16,7 @@ namespace Flexagonator {
 
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, fm.getAngles());
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps);
+    drawStatsText(ctx, fm);
     drawPossibleFlexes(ctx, fm, polygon);
   }
 
@@ -51,6 +52,24 @@ namespace Flexagonator {
       const flexes: string[] = fm.checkForPrimeFlexes(false, i);
       const text = flexes.join(' ');
       ctx.fillText(text, x, y);
+    }
+  }
+
+  function drawStatsText(ctx: CanvasRenderingContext2D, fm: FlexagonManager) {
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "bottom";
+    ctx.font = "14px sans-serif";
+
+    const leafCount = fm.flexagon.getLeafCount();
+    const leafText = leafCount.toString() + " leaves";
+    ctx.fillText(leafText, 0, 20);
+
+    const center = fm.getCenterAngleSum();
+    if (center === CenterAngle.GreaterThan360) {
+      ctx.fillText(">360, doesn't lie flat", 0, 40);
+    } else if (center === CenterAngle.LessThan360) {
+      ctx.fillText("<360, doesn't open fully", 0, 40);
     }
   }
 
