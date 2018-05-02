@@ -15,29 +15,32 @@ namespace Flexagonator {
       return { reason: TreeCode.TooFewPats, context: tree };
     }
 
+    // tracking the next number to assign leaves as they're unfolded
+    var next = 3;
+    const getNext = () => { return next++; };
+
     const foldpats = toFoldPats(tree);
-    const resultFoldpats = unfoldAll(foldpats);
+    const resultFoldpats = unfoldAll(foldpats, getNext);
     return toLeaves(resultFoldpats);
   }
 
+
+  // several leaves folded together, with information
+  // about how this pat is related to other pats
   interface FoldPat {
     pat: LeafTree,
     numbers: number[],
     isClock: boolean,
-    next: any
   }
 
 
   //----- conversion routines
 
   function toFoldPats(tree: LeafTree[]): FoldPat[] {
-    var next = 3;
-    const getNext = () => { return next++; };
-
     // note: this assumes that all the triangles meet in the middle.
     // if you want to unfold a different arrangement, change the
     //   the direction (isClock) of the appropriate pats
-    const foldpats = tree.map((pat) => { return { pat: pat, numbers: [1, 2], isClock: true, next: getNext } });
+    const foldpats = tree.map((pat) => { return { pat: pat, numbers: [1, 2], isClock: true } });
     return foldpats;
   }
 
@@ -57,22 +60,22 @@ namespace Flexagonator {
   }
 
   function flip(foldpat: FoldPat): FoldPat {
-    return { pat: over(foldpat.pat), numbers: foldpat.numbers.reverse(), isClock: !foldpat.isClock, next: foldpat.next };
+    return { pat: over(foldpat.pat), numbers: foldpat.numbers.reverse(), isClock: !foldpat.isClock };
   }
 
-  function unfoldOne(foldpat: FoldPat): FoldPat[] {
+  function unfoldOne(foldpat: FoldPat, getNext: () => number): FoldPat[] {
     const p1 = (<any[]>foldpat.pat)[0];
     const p2 = (<any[]>foldpat.pat)[1];
     const n1 = foldpat.numbers[0];
     const n2 = foldpat.numbers[1];
-    const next = foldpat.next();
+    const next = getNext();
     if (foldpat.isClock) {
-      const a = { pat: p2, numbers: [next, n2], isClock: false, next: foldpat.next };
-      const b = { pat: over(p1), numbers: [next, n1], isClock: true, next: foldpat.next };
+      const a = { pat: p2, numbers: [next, n2], isClock: false };
+      const b = { pat: over(p1), numbers: [next, n1], isClock: true };
       return [a, b];
     } else {
-      const a = { pat: p1, numbers: [n1, next], isClock: true, next: foldpat.next };
-      const b = { pat: over(p2), numbers: [n2, next], isClock: false, next: foldpat.next };
+      const a = { pat: p1, numbers: [n1, next], isClock: true };
+      const b = { pat: over(p2), numbers: [n2, next], isClock: false };
       return [a, b];
     }
   }
@@ -90,12 +93,12 @@ namespace Flexagonator {
     return foldpats;
   }
 
-  function unfoldAt(foldpats: FoldPat[], hinge: number): FoldPat[] {
+  function unfoldAt(foldpats: FoldPat[], hinge: number, getNext: () => number): FoldPat[] {
     const f = (foldpat: FoldPat, i: number): FoldPat | FoldPat[] => {
       if (i < hinge) {
         return foldpat;
       } else if (i === hinge) {
-        return unfoldOne(foldpat);
+        return unfoldOne(foldpat, getNext);
       } else {
         return flip(foldpat);
       }
@@ -113,10 +116,10 @@ namespace Flexagonator {
     return null;
   }
 
-  function unfoldAll(foldpats: FoldPat[]): FoldPat[] {
+  function unfoldAll(foldpats: FoldPat[], getNext: () => number): FoldPat[] {
     var hinge = findNextHinge(foldpats);
     while (hinge !== null) {
-      foldpats = unfoldAt(foldpats, hinge);
+      foldpats = unfoldAt(foldpats, hinge, getNext);
       hinge = findNextHinge(foldpats);
     }
     return foldpats;
