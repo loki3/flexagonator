@@ -28,6 +28,8 @@
         case "7": leaftree = [1, 2, 3, 4, 5, 6, 7]; break;
         case "8": leaftree = [1, 2, 3, 4, 5, 6, 7, 8]; break;
         case "9": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9]; break;
+        case "10": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; break;
+        case "12": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; break;
       }
 
       if (leaftree != null) {
@@ -72,6 +74,12 @@
           break;
         case "45-30-105":
           angles = [45, 30];
+          break;
+        case "36-54-90":
+          angles = [36, 54];
+          break;
+        case "30-60-90":
+          angles = [30, 60];
           break;
       }
       if (angles === null) {
@@ -132,6 +140,8 @@
       <option value="7">hepta</option>
       <option value="8">octa</option>
       <option value="9">ennea</option>
+      <option value="10">deca</option>
+      <option value="12">dodeca</option>
     </select> &nbsp;&nbsp;&nbsp; set color:
     <select onchange="setFaceColor(event.srcElement.value)">
       <option value="" selected></option>
@@ -161,6 +171,8 @@
         <option value="60-30-90">6: 60-30-90</option>
         <option value="45-45-90">8: 45-45-90</option>
         <option value="45-30-105">8: 45-30-105</option>
+        <option value="36-54-90">10: 36-54-90</option>
+        <option value="30-60-90">12: 30-60-90</option>
       </select>
   </p>
 
