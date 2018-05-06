@@ -32,7 +32,7 @@ namespace Flexagonator {
       return;
     }
 
-    const angles = fm.getAngles();
+    const angles = fm.getUnfoldedAngles(unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     drawStrip(ctx, leaflines, StripContent.FoldingLabels, fm.leafProps);
   }

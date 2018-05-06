@@ -119,6 +119,12 @@ namespace Flexagonator {
       return (angle < 360) ? CenterAngle.LessThan360 : CenterAngle.GreaterThan360;
     }
 
+    // get the angles along the edge of the 1st leaf that we'll reflect the 2nd leaf across
+    getUnfoldedAngles(unfolded: Leaf[]): number[] {
+      const angles = this.getAngles();
+      return unfolded[0].isClock ? [angles[2], angles[0], angles[1]] : [angles[1], angles[2], angles[0]];
+    }
+
     getFlexHistory(): string[] {
       return this.history.getCurrent().flexes;
     }
