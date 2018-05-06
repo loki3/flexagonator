@@ -99,7 +99,7 @@ namespace Flexagonator {
       [6, [-9, -7], [-5, -4], -3, -2, [[11, -8], [-1, 10]]], FlexRotation.None) as Flex;
     flexes["Lk"] = makeFlex("slot pocket",
       [[[[1, 2], 3], 4], 5, 6, 7, [[[8, 9], 10], 11], 12],
-      [-8, [2, [10, [4, -12]]], -1, 3, 5, [9, [6, 11, -7]]], FlexRotation.None) as Flex;
+      [-8, [2, [10, [4, -12]]], -1, 3, 5, [9, [6, [11, -7]]]], FlexRotation.None) as Flex;
 
     return flexes;
   }
