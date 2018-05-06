@@ -50,6 +50,20 @@ namespace Flexagonator {
     });
   });
 
+  describe('setUnsetLabel', () => {
+    it('should only set label if not already set', () => {
+      const prop = {
+        front: { label: "3" },
+        back: {}
+      }
+      const props = new PropertiesForLeaves([prop]);
+      props.setUnsetLabelProp(1, "4");
+      expect(props.getFaceLabel(1)).toBe("3");
+      props.setUnsetLabelProp(-1, "4");
+      expect(props.getFaceLabel(-1)).toBe("4");
+    });
+  });
+
   describe('getColorAsRGBString', () => {
     it('should convert color to "rgb(r,g,b)"', () => {
       const prop = {

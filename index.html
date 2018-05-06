@@ -44,16 +44,24 @@
       }
     }
 
-    function setFaceLabel(value) {
+    function setFaceLabel(value, onlyUnset) {
       if (value !== "") {
-        fm.setFaceLabel(value, true);
+        if (onlyUnset) {
+          fm.setUnsetFaceLabel(value, true);
+        } else {
+          fm.setFaceLabel(value, true);
+        }
         updateUI();
       }
     }
 
-    function setFaceColor(value) {
+    function setFaceColor(value, onlyUnset) {
       if (value !== "") {
-        fm.setFaceColor(value, true);
+        if (onlyUnset) {
+          fm.setUnsetFaceColor(value, true);
+        } else {
+          fm.setFaceColor(value, true);
+        }
         updateUI();
       }
     }
@@ -142,8 +150,17 @@
       <option value="9">ennea</option>
       <option value="10">deca</option>
       <option value="12">dodeca</option>
+    </select> &nbsp;&nbsp;&nbsp; angles:
+    <select onchange="setAngle(event.srcElement.value)" id="setAngle">
+      <option value="iso" selected>isosceles</option>
+      <option value="60-60-60">60-60-60</option>
+      <option value="60-30-90">6: 60-30-90</option>
+      <option value="45-45-90">8: 45-45-90</option>
+      <option value="45-30-105">8: 45-30-105</option>
+      <option value="36-54-90">10: 36-54-90</option>
+      <option value="30-60-90">12: 30-60-90</option>
     </select> &nbsp;&nbsp;&nbsp; set color:
-    <select onchange="setFaceColor(event.srcElement.value)">
+    <select onchange="setFaceColor(event.srcElement.value, false)">
       <option value="" selected></option>
       <option value=0xff0000>red</option>
       <option value=0x00ff00>green</option>
@@ -153,7 +170,7 @@
       <option value=0xff00ff>magenta</option>
       <option value=0xcccccc>grey</option>
     </select> &nbsp;&nbsp;&nbsp; set label:
-    <select onchange="setFaceLabel(event.srcElement.value)">
+    <select onchange="setFaceLabel(event.srcElement.value, false)">
       <option value="" selected></option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -164,16 +181,29 @@
       <option value="7">7</option>
       <option value="8">8</option>
       <option value="9">9</option>
-    </select> &nbsp;&nbsp;&nbsp; set angles:
-    <select onchange="setAngle(event.srcElement.value)" id="setAngle">
-        <option value="iso" selected>isosceles</option>
-        <option value="60-60-60">60-60-60</option>
-        <option value="60-30-90">6: 60-30-90</option>
-        <option value="45-45-90">8: 45-45-90</option>
-        <option value="45-30-105">8: 45-30-105</option>
-        <option value="36-54-90">10: 36-54-90</option>
-        <option value="30-60-90">12: 30-60-90</option>
-      </select>
+    </select> &nbsp;&nbsp;&nbsp; color unsets:
+    <select onchange="setFaceColor(event.srcElement.value, true)">
+      <option value="" selected></option>
+      <option value=0xff0000>red</option>
+      <option value=0x00ff00>green</option>
+      <option value=0x0000ff>blue</option>
+      <option value=0x00ffff>cyan</option>
+      <option value=0xffff00>yellow</option>
+      <option value=0xff00ff>magenta</option>
+      <option value=0xcccccc>grey</option>
+    </select>&nbsp;&nbsp;&nbsp; label unsets:
+    <select onchange="setFaceLabel(event.srcElement.value, true)">
+      <option value="" selected></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+    </select>
   </p>
 
   <p>

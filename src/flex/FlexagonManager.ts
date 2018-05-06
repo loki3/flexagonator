@@ -84,10 +84,24 @@ namespace Flexagonator {
       }
     }
 
+    setUnsetFaceLabel(label: string, front: boolean) {
+      const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
+      for (var id of ids) {
+        this.leafProps.setUnsetLabelProp(id, label);
+      }
+    }
+
     setFaceColor(color: number, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
       for (var id of ids) {
         this.leafProps.setColorProp(id, color);
+      }
+    }
+
+    setUnsetFaceColor(color: number, front: boolean) {
+      const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
+      for (var id of ids) {
+        this.leafProps.setUnsetColorProp(id, color);
       }
     }
 

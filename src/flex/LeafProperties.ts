@@ -24,9 +24,23 @@ namespace Flexagonator {
       props.label = label;
     }
 
+    setUnsetLabelProp(id: number, label: string) {
+      var props = this.getFacePropsToSet(id);
+      if (props.label === undefined) {
+        props.label = label;
+      }
+    }
+
     setColorProp(id: number, color: number) {
       var props = this.getFacePropsToSet(id);
       props.color = color;
+    }
+
+    setUnsetColorProp(id: number, color: number) {
+      var props = this.getFacePropsToSet(id);
+      if (props.color === undefined) {
+        props.color = color;
+      }
     }
 
     getFaceLabel(id: number): string {
