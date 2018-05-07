@@ -44,23 +44,25 @@
       }
     }
 
-    function setFaceLabel(value, onlyUnset) {
-      if (value !== "") {
-        if (onlyUnset) {
-          fm.setUnsetFaceLabel(value, true);
-        } else {
-          fm.setFaceLabel(value, true);
-        }
-        updateUI();
+    function setFace(label, onlyUnset) {
+      var color;
+      switch (label) {
+        case "1": color = 0x0000ff; break;
+        case "2": color = 0x00ff00; break;
+        case "3": color = 0xff0000; break;
+        case "4": color = 0x00ffff; break;
+        case "5": color = 0xffff00; break;
+        case "6": color = 0xff00ff; break;
+        case "7": color = 0xdddddd; break;
+        case "8": color = 0x999999; break;
       }
-    }
-
-    function setFaceColor(value, onlyUnset) {
-      if (value !== "") {
+      if (label !== "") {
         if (onlyUnset) {
-          fm.setUnsetFaceColor(value, true);
+          fm.setUnsetFaceLabel(label, true);
+          fm.setUnsetFaceColor(color, true);
         } else {
-          fm.setFaceColor(value, true);
+          fm.setFaceLabel(label, true);
+          fm.setFaceColor(color, true);
         }
         updateUI();
       }
@@ -159,50 +161,28 @@
       <option value="45-30-105">8: 45-30-105</option>
       <option value="36-54-90">10: 36-54-90</option>
       <option value="30-60-90">12: 30-60-90</option>
-    </select> &nbsp;&nbsp;&nbsp; set color:
-    <select onchange="setFaceColor(event.srcElement.value, false)">
+    </select> &nbsp;&nbsp;&nbsp; set face:
+    <select onchange="setFace(event.srcElement.value, false)">
       <option value="" selected></option>
-      <option value=0xff0000>red</option>
-      <option value=0x00ff00>green</option>
-      <option value=0x0000ff>blue</option>
-      <option value=0x00ffff>cyan</option>
-      <option value=0xffff00>yellow</option>
-      <option value=0xff00ff>magenta</option>
-      <option value=0xcccccc>grey</option>
-    </select> &nbsp;&nbsp;&nbsp; set label:
-    <select onchange="setFaceLabel(event.srcElement.value, false)">
+      <option value="1">1: blue</option>
+      <option value="2">2: green</option>
+      <option value="3">3: red</option>
+      <option value="4">4: cyan</option>
+      <option value="5">5: yellow</option>
+      <option value="6">6: magenta</option>
+      <option value="7">7: light grey</option>
+      <option value="8">8: dark grey</option>
+    </select> &nbsp;&nbsp;&nbsp; change unset leaves:
+    <select onchange="setFace(event.srcElement.value, true)">
       <option value="" selected></option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-    </select> &nbsp;&nbsp;&nbsp; color unsets:
-    <select onchange="setFaceColor(event.srcElement.value, true)">
-      <option value="" selected></option>
-      <option value=0xff0000>red</option>
-      <option value=0x00ff00>green</option>
-      <option value=0x0000ff>blue</option>
-      <option value=0x00ffff>cyan</option>
-      <option value=0xffff00>yellow</option>
-      <option value=0xff00ff>magenta</option>
-      <option value=0xcccccc>grey</option>
-    </select>&nbsp;&nbsp;&nbsp; label unsets:
-    <select onchange="setFaceLabel(event.srcElement.value, true)">
-      <option value="" selected></option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
+      <option value="1">1: blue</option>
+      <option value="2">2: green</option>
+      <option value="3">3: red</option>
+      <option value="4">4: cyan</option>
+      <option value="5">5: yellow</option>
+      <option value="6">6: magenta</option>
+      <option value="7">7: light grey</option>
+      <option value="8">8: dark grey</option>
     </select>
   </p>
 
