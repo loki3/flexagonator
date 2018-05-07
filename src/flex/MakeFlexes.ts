@@ -23,6 +23,7 @@ namespace Flexagonator {
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
 
+      flexes["Tf"] = createForcedTuck(patCount);
       for (var i = 0; i < patCount - 5; i++) {
         const s = "T" + (i + 1).toString();
         flexes[s] = createTuck(patCount, i);
@@ -243,8 +244,8 @@ namespace Flexagonator {
 
   // where: which opposite hinge is open starting from 0
   function createTuck(patCount: number, where: number): Flex {
-    // ((1,2)3) (4) … (i,i+1) … (n-1) (n)
-    // (2) (4) … (i,i+1) … (n-1) (^1(n,^3))
+    // ((1,2)3) (4) ... (i,i+1) ... (n-1) (n)
+    // (2) (4) ... (i,i+1) ... (n-1) (^1(n,^3))
     var pattern: LeafTree = [];
     var output: LeafTree = [];
     const leaves = patCount + 3;
@@ -272,6 +273,27 @@ namespace Flexagonator {
 
     const name = "tuck" + (where == 0 ? "" : (where + 1).toString());
     return makeFlex(name, pattern, output, FlexRotation.None) as Flex;
+  }
+
+  function createForcedTuck(patCount: number): Flex {
+    // ((1,2)3) (4) ... (n-1) (n)
+    // (2) (4) ... (n-1) (^1(n,^3))
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    const leaves = patCount + 2;
+
+    pattern.push([[1, 2], 3]);
+    for (var i = 4; i <= leaves; i++) {
+      pattern.push(i);
+    }
+
+    output.push(2);
+    for (var i = 4; i < leaves; i++) {
+      output.push(i);
+    }
+    output.push([-1, [leaves, -3]]);
+
+    return makeFlex("forced tuck", pattern, output, FlexRotation.None) as Flex;
   }
 
 }
