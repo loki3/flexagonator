@@ -28,6 +28,10 @@ namespace Flexagonator {
         const s = "T" + (i + 1).toString();
         flexes[s] = createTuck(patCount, i);
       }
+
+      if (patCount === 9) {
+        flexes["P333"] = createDoublePinch(patCount, [3, 6]);
+      }
     }
 
     // add all the inverses
@@ -138,6 +142,50 @@ namespace Flexagonator {
       output.push([(a + 4) % leaves, -b]);
     }
     return makeFlex("pinch flex", pattern, output, FlexRotation.CounterMirror) as Flex;
+  }
+
+  function createDoublePinch(patCount: number, which: number[]): Flex {
+    // basic unit: [1, [[2, 3], 4]]  ->  [[2, [1, -4]], 3]
+    // 'which' lists the vertices where the basic unit will be applied after 0, e.g. [3,6] for P333
+    // e.g. [[1,3], 2], 4, 5, [[6,8], 7], 9, 10, [[11,13], 12], 14, 15
+    //      3, 4, [-6, [5,-7]], 8, 9, [-11, [10,-12]], 13, 14, [-1, [15,-2]]
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+
+    var iWhich = -1;
+    var iLeaf = 1;
+    for (var iPat = 0; iPat < patCount; iPat++) {
+      if ((iWhich == -1) || (iWhich < which.length && which[iWhich] === iPat)) {
+        pattern.push([[iLeaf, iLeaf + 2], iLeaf + 1]);
+        iWhich++;
+        iLeaf += 3;
+      } else {
+        pattern.push(iLeaf++);
+      }
+    }
+
+    iWhich = 0;
+    iLeaf = 3;
+    for (var iPat = 0; iPat < patCount; iPat++) {
+      if (iWhich < which.length && which[iWhich] - 1 === iPat) {
+        output.push([-(iLeaf + 1), [iLeaf, -(iLeaf + 2)]]);
+        iWhich++;
+        iLeaf += 3;
+      } else if (iPat === patCount - 1) {
+        output.push([-1, [iLeaf, -2]]);
+      } else {
+        output.push(iLeaf);
+        iLeaf++;
+      }
+    }
+
+    // e.g. patCount=9 & which=[3,6] turns into "333"
+    var nums = which[0].toString();
+    for (var i = 1; i < which.length; i++) {
+      nums += (which[i] - which[i - 1]).toString();
+    }
+    nums += (patCount - which[which.length - 1]).toString();
+    return makeFlex("pinch " + nums, pattern, output, FlexRotation.None) as Flex;
   }
 
   function createPyramidShuffle(patCount: number): Flex {
