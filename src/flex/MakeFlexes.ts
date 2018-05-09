@@ -29,9 +29,7 @@ namespace Flexagonator {
         flexes[s] = createTuck(patCount, i);
       }
 
-      if (patCount === 9) {
-        flexes["P333"] = createDoublePinch(patCount, [3, 6]);
-      }
+      addDoublePinches(patCount, flexes);
     }
 
     // add all the inverses
@@ -120,6 +118,24 @@ namespace Flexagonator {
     flexes[">"] = makeFlex("shift right", pattern, rightOut, FlexRotation.Mirror) as Flex;
     flexes["<"] = makeFlex("shift left", pattern, leftOut, FlexRotation.Mirror) as Flex;
     flexes["^"] = makeFlex("turn over", pattern, overOut, FlexRotation.None) as Flex;
+  }
+
+  function addDoublePinches(patCount: number, flexes: Flexes) {
+    if (patCount === 8) {
+      flexes["P44"] = createDoublePinch(patCount, [4]);
+    }
+    if (patCount === 9) {
+      flexes["P333"] = createDoublePinch(patCount, [3, 6]);
+    }
+    if (patCount === 10) {
+      flexes["P334"] = createDoublePinch(patCount, [3, 6]);
+      flexes["P55"] = createDoublePinch(patCount, [5]);
+    }
+    if (patCount === 12) {
+      flexes["P3333"] = createDoublePinch(patCount, [3, 6, 9]);
+      flexes["P444"] = createDoublePinch(patCount, [4, 8]);
+      flexes["P66"] = createDoublePinch(patCount, [6]);
+    }
   }
 
   function createPinch(patCount: number): Flex {
