@@ -47,16 +47,20 @@ namespace Flexagonator {
     }
 
     // apply a single flex;
-    // if the flex string ends with +, generate the needed structure first
+    // if the flex string ends with +, generate the needed structure
+    // if the flex string ends with *, generate the needed structure & apply the flex
     applyFlex(flexStr: string): boolean | FlexError {
-      const generate = (flexStr[flexStr.length - 1] === '+');
+      const last = flexStr[flexStr.length - 1]
+      const generate = (last === '+') || (last === '*');
+      const apply = (last !== '+');
+
       const flexName = generate ? flexStr.substring(0, flexStr.length - 1) : flexStr;
       if (this.allFlexes[flexName] === undefined) {
         return { reason: FlexCode.UnknownFlex, flexName: flexName };
       }
 
       const input = generate ? this.allFlexes[flexName].createPattern(this.flexagon) : this.flexagon;
-      const result = this.allFlexes[flexName].apply(input);
+      const result = apply ? this.allFlexes[flexName].apply(input) : input;
       if (isFlexError(result)) {
         return { reason: FlexCode.CantApplyFlex, flexName: flexName };
       }
