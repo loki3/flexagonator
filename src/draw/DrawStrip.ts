@@ -66,13 +66,13 @@ namespace Flexagonator {
     const len = transform.applyScale(1);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.font = len / 9 + "px sans-serif";
+    ctx.font = len / 10 + "px sans-serif";
 
     for (var face of faces) {
-      // put the text near corner[0] in the direction of the incenter
+      // put the text near one corner in the direction of the incenter
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
-      const c = transform.apply(face.corners[0]);
+      const c = transform.apply(face.corners[2]);
       const x = (c.x * 2 + p.x) / 3;
       const y = (c.y * 2 + p.y) / 3;
       ctx.fillText(face.leaf.id.toString(), x, y);
