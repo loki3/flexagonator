@@ -6,9 +6,10 @@
   <script type="text/javascript">
     var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
     var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
+    var stripContent = 0/*StripContent.FoldingLabels*/;
 
     function updateUI() {
-      Flexagonator.drawAll('interface', 'unfolded', fm);
+      Flexagonator.drawAll('interface', 'unfolded', fm, stripContent);
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {
@@ -243,6 +244,12 @@
   <canvas id="interface" width="800" height="400"></canvas>
   <br/>
   <canvas id="unfolded" width="800" height="600"></canvas>
+
+  <p>
+    <input onclick="stripContent = 0; updateUI();" type="button" value="show unfolding numbers" />
+    <input onclick="stripContent = 1; updateUI();" type="button" value="front colors and labels" />
+    <input onclick="stripContent = 2; updateUI();" type="button" value="back colors and labels" />
+  </p>
 
   <script type="text/javascript">
     updateUI();

@@ -1,8 +1,8 @@
 namespace Flexagonator {
 
-  export function drawAll(flexCanvasId: string, stripCanvasId: string, fm: FlexagonManager) {
+  export function drawAll(flexCanvasId: string, stripCanvasId: string, fm: FlexagonManager, content: StripContent) {
     drawEntireFlexagon(flexCanvasId, fm);
-    drawUnfolded(stripCanvasId, fm);
+    drawUnfolded(stripCanvasId, fm, content);
   }
 
   function drawEntireFlexagon(canvasId: string, fm: FlexagonManager) {
@@ -20,7 +20,7 @@ namespace Flexagonator {
     drawPossibleFlexes(ctx, fm, polygon);
   }
 
-  function drawUnfolded(canvasId: string, fm: FlexagonManager) {
+  function drawUnfolded(canvasId: string, fm: FlexagonManager, content: StripContent) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, 800, 600);
@@ -34,7 +34,7 @@ namespace Flexagonator {
 
     const angles = fm.getUnfoldedAngles(unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
-    drawStrip(ctx, leaflines, StripContent.FoldingLabels, fm.leafProps);
+    drawStrip(ctx, leaflines, content, fm.leafProps);
   }
 
   function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon) {
