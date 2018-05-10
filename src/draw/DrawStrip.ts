@@ -15,6 +15,7 @@ namespace Flexagonator {
 
     if (content === StripContent.FoldingLabels) {
       drawFoldingLabels(ctx, leaflines.faces, transform);
+      drawIds(ctx, leaflines.faces, transform);
     } else if (content === StripContent.Front) {
       drawFaceProps(ctx, leaflines.faces, transform, props, true);
     } else if (content === StripContent.Back) {
@@ -58,6 +59,23 @@ namespace Flexagonator {
       ctx.textAlign = "left";
       ctx.font = len / 8 + "px sans-serif";
       ctx.fillText(" " + face.leaf.bottom.toString(), p.x, y);
+    }
+  }
+
+  function drawIds(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
+    const len = transform.applyScale(1);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = len / 9 + "px sans-serif";
+
+    for (var face of faces) {
+      // put the text near corner[0] in the direction of the incenter
+      const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
+      const p = transform.apply(incenter);
+      const c = transform.apply(face.corners[0]);
+      const x = (c.x * 2 + p.x) / 3;
+      const y = (c.y * 2 + p.y) / 3;
+      ctx.fillText(face.leaf.id.toString(), x, y);
     }
   }
 
