@@ -2,6 +2,7 @@ namespace Flexagonator {
 
   export enum StripContent {
     FoldingLabels,  // put everything on one-side, use labels that indicate folding order
+    FoldingAndIds,  // FoldingLabels plus ids
     Front,          // only display what's on the front side, use leaf properties
     Back,           // only display what's on the back side, use leaf properties
   }
@@ -13,9 +14,11 @@ namespace Flexagonator {
     const flip = (content === StripContent.Back);
     const transform = new Transform({ x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight }, extents[0], extents[1], flip);
 
-    if (content === StripContent.FoldingLabels) {
+    if (content === StripContent.FoldingLabels || content === StripContent.FoldingAndIds) {
       drawFoldingLabels(ctx, leaflines.faces, transform);
-      drawIds(ctx, leaflines.faces, transform);
+      if (content === StripContent.FoldingAndIds) {
+        drawIds(ctx, leaflines.faces, transform);
+      }
     } else if (content === StripContent.Front) {
       drawFaceProps(ctx, leaflines.faces, transform, props, true);
     } else if (content === StripContent.Back) {
