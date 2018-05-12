@@ -9,7 +9,8 @@
     var stripContent = 0/*StripContent.FoldingLabels*/;
 
     function updateUI() {
-      Flexagonator.drawAll('interface', 'unfolded', fm, stripContent);
+      Flexagonator.drawEntireFlexagon('interface', fm);
+      Flexagonator.drawUnfolded('unfolded', fm, stripContent);
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {

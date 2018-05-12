@@ -1,11 +1,6 @@
 namespace Flexagonator {
 
-  export function drawAll(flexCanvasId: string, stripCanvasId: string, fm: FlexagonManager, content: StripContent) {
-    drawEntireFlexagon(flexCanvasId, fm);
-    drawUnfolded(stripCanvasId, fm, content);
-  }
-
-  function drawEntireFlexagon(canvasId: string, fm: FlexagonManager) {
+  export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
@@ -20,7 +15,7 @@ namespace Flexagonator {
     drawPossibleFlexes(ctx, fm, polygon);
   }
 
-  function drawUnfolded(canvasId: string, fm: FlexagonManager, content: StripContent) {
+  export function drawUnfolded(canvasId: string, fm: FlexagonManager, content: StripContent) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, 800, 600);
