@@ -42,7 +42,7 @@ namespace Flexagonator {
       if (isTreeError(result)) {
         return result;
       }
-      return makeFlexagonManager(result);
+      fm = makeFlexagonManager(result);
     }
 
     if (item.flexes !== undefined) {
