@@ -72,7 +72,7 @@ namespace Flexagonator {
 
     private getFacePropsToGet(id: number): LeafFaceProperties | undefined {
       const leafProps = this.props[Math.abs(id) - 1]
-      if (leafProps === undefined) {
+      if (leafProps === undefined || leafProps === null) {
         return undefined;
       }
       return id > 0 ? leafProps.front : leafProps.back;
