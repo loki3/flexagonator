@@ -17,7 +17,7 @@ namespace Flexagonator {
     flexagon: Flexagon;
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
-    readonly primeFlexes: Flexes;
+    flexesToSearch: Flexes;
     private angleCenter: number;
     private angleClock: number;
     private readonly history: History;
@@ -26,7 +26,7 @@ namespace Flexagonator {
       this.flexagon = flexagon;
       this.leafProps = new PropertiesForLeaves(leafProps);
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
-      this.primeFlexes = getPrimeFlexes(this.allFlexes);
+      this.flexesToSearch = getPrimeFlexes(this.allFlexes);
       this.angleCenter = 60;
       this.angleClock = 60;
       this.setIsosceles();
@@ -34,8 +34,8 @@ namespace Flexagonator {
     }
 
     // possibly flip the flexagon and rotate 'rightSteps',
-    // then check which prime flexes can be performed at the current vertex
-    checkForPrimeFlexes(flip: boolean, rightSteps: number): string[] {
+    // then check which flexes can be performed at the current vertex
+    checkForFlexes(flip: boolean, rightSteps: number): string[] {
       var modified = this.flexagon;
       if (flip) {
         modified = this.allFlexes["^"].apply(modified) as Flexagon;
@@ -43,7 +43,7 @@ namespace Flexagonator {
       for (var i = 0; i < rightSteps; i++) {
         modified = this.allFlexes[">"].apply(modified) as Flexagon;
       }
-      return checkForFlexes(modified, this.primeFlexes);
+      return checkForFlexes(modified, this.flexesToSearch);
     }
 
     // apply a single flex;

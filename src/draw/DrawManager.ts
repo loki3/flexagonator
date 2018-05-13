@@ -44,7 +44,7 @@ namespace Flexagonator {
       ctx.textAlign = x > polygon.xCenter ? "left" : "right";
       ctx.textBaseline = y > polygon.yCenter ? "top" : "bottom";
 
-      const flexes: string[] = fm.checkForPrimeFlexes(false, i);
+      const flexes: string[] = fm.checkForFlexes(false, i);
       const text = flexes.join(' ');
       ctx.fillText(text, x, y);
     }
