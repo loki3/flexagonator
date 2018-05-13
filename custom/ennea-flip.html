@@ -1,0 +1,109 @@
+<html>
+
+<head>
+  <title>flip enneaflexagon</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    var flippedEnnea = [[1, 10], [[2, 19], [20, 21]], 3, [4, 18], [[5, 15], [16, 17]], 6, [7, 14], [[8, 11], [12, 13]], 9];
+    var flexagon = Flexagonator.makeFlexagon(flippedEnnea);
+    var one = { "label": "1", "color": 0x0000ff };
+    var two = { "label": "2", "color": 0x00ff00 };
+    var three = { "label": "3", "color": 0xff0000 };
+    var four = { "label": "4", "color": 0x00ffff };
+    var other = { "front": { "label": "5" }, "back": { "label": "5" } };
+    var leafProps = [
+      { "front": one, "back": three }, { "front": one, "back": three }, { "front": one, "back": two },
+      { "front": one, "back": three }, { "front": one, "back": three }, { "front": one, "back": two },
+      { "front": one, "back": three }, { "front": one, "back": three }, { "front": one, "back": two },
+      { "front": four, "back": two }, { "front": three, "back": four },
+      other,
+      { "front": four, "back": two }, { "front": four, "back": two }, { "front": three, "back": four },
+      other,
+      { "front": four, "back": two }, { "front": four, "back": two }, { "front": three, "back": four },
+      other,
+      { "front": four, "back": two }];
+    var fm = Flexagonator.makeFlexagonManager(flexagon, leafProps);
+
+    function updateUI() {
+      Flexagonator.drawEntireFlexagon('interface', fm);
+
+      var historyBox = document.getElementById('history');
+      if (historyBox !== null) {
+        var history = fm.getFlexHistory().join(' ');
+        historyBox.value = history;
+      }
+    }
+
+
+    function flexAndShow(flex) {
+      var result = fm.applyFlex(flex);
+      if (result === true) {
+        updateUI();
+      } else {
+        console.log(result);
+      }
+    }
+
+    function applySequence(key, sequence) {
+      if (key == 13) {
+        var result = fm.applyFlexes(sequence);
+        if (result === true) {
+          updateUI();
+        } else {
+          console.log(result);
+        }
+      }
+    }
+
+    function reset() {
+      fm.undoAll();
+      updateUI();
+    }
+
+    function undo() {
+      fm.undo();
+      updateUI();
+    }
+
+    function redo() {
+      fm.redo();
+      updateUI();
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Flexagonator: applying the flip flex to an enneaflexagon</h1>
+  <h3>generating sequence: (F+&lt;&lt;&lt;)x3</h3>
+
+  <p>
+    flex:
+    <input onclick="flexAndShow('>');" type="button" value=">" />
+    <input onclick="flexAndShow('&lt;');" type="button" value="<" />
+    <input onclick="flexAndShow('^');" type="button" value="^" />
+    <input onclick="flexAndShow('F');" type="button" value="F" />
+    <input onclick="flexAndShow('F\'');" type="button" value="F'" />
+  </p>
+
+  <p>
+    <div>
+      <label>enter flex sequence</label>
+      <input onkeypress="applySequence(event.charCode, event.srcElement.value)" id="enterFlexes" size="75" />
+    </div>
+  </p>
+  <p>
+    <input onclick="reset();" type="button" value="reset" />
+    <input onclick="undo();" type="button" value="undo" />
+    <input onclick="redo();" type="button" value="redo" />
+    <textarea id="history" readonly=true cols="70" rows="1"></textarea>
+  </p>
+
+  <canvas id="interface" width="800" height="500"></canvas>
+
+  <script type="text/javascript">
+    updateUI();
+  </script>
+
+</body>
+
+</html>
