@@ -163,7 +163,7 @@ namespace Flexagonator {
     }
 
     clearHistory() {
-      this.history.clear();
+      this.history.clear(this.flexagon);
     }
   }
 }

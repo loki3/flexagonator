@@ -61,9 +61,10 @@ namespace Flexagonator {
       }
     }
 
-    clear() {
+    clear(original: Flexagon) {
       this.done = [];
       this.undone = [];
+      this.done.push({ flexes: [], flexagon: original });
     }
   }
 
