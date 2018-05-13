@@ -8,6 +8,14 @@ namespace Flexagonator {
     Mirror,        // same center vertex, flexagon is mirrored
   }
 
+  export interface FlexDef {
+    readonly shorthand: string;
+    readonly name: string,
+    readonly input: LeafTree[],
+    readonly output: LeafTree[],
+    readonly rotation?: FlexRotation
+  }
+
   /*
     Takes a pattern as input (length matches the pat count in the target flexagon)
       and an output pattern that references the labels from the input pattern,

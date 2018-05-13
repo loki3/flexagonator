@@ -60,6 +60,11 @@ namespace Flexagonator {
         this.done.push(this.undone.pop() as HistoryItem);
       }
     }
+
+    clear() {
+      this.done = [];
+      this.undone = [];
+    }
   }
 
 }

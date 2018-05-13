@@ -4,25 +4,17 @@
   <title>flip enneaflexagon</title>
   <script src="../build/out.js"></script>
   <script type="text/javascript">
-    var flippedEnnea = [[1, 10], [[2, 19], [20, 21]], 3, [4, 18], [[5, 15], [16, 17]], 6, [7, 14], [[8, 11], [12, 13]], 9];
-    var flexagon = Flexagonator.makeFlexagon(flippedEnnea);
-    var one = { "label": "1", "color": 0x0000ff };
-    var two = { "label": "2", "color": 0x00ff00 };
-    var three = { "label": "3", "color": 0xff0000 };
-    var four = { "label": "4", "color": 0x00ffff };
-    var other = { "front": { "label": "5" }, "back": { "label": "5" } };
-    var leafProps = [
-      { "front": one, "back": three }, { "front": one, "back": three }, { "front": one, "back": two },
-      { "front": one, "back": three }, { "front": one, "back": three }, { "front": one, "back": two },
-      { "front": one, "back": three }, { "front": one, "back": three }, { "front": one, "back": two },
-      { "front": four, "back": two }, { "front": three, "back": four },
-      other,
-      { "front": four, "back": two }, { "front": four, "back": two }, { "front": three, "back": four },
-      other,
-      { "front": four, "back": two }, { "front": four, "back": two }, { "front": three, "back": four },
-      other,
-      { "front": four, "back": two }];
-    var fm = Flexagonator.makeFlexagonManager(flexagon, leafProps);
+    var creator = {
+      pats: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      script: [
+        { flexes: "F+ < < < F+ < < < F+" },
+        { setFace: { front: { label: "1", color: 0x0000ff }, back: { label: "2", color: 0x00ff00 } } },
+        { flexes: "F > > > F > > > F > > F > > > F > > > F > > F > > > F > > > F" },
+        { setFace: { front: { label: "3", color: 0xff0000 }, back: { label: "4", color: 0x00ffff } } },
+        { flexes: "^ F > > > F > > > F > > F > > > F > > > F > > F > > > F > > > F ^" },
+      ]
+    };
+    var fm = Flexagonator.Create(creator);
 
     function updateUI() {
       Flexagonator.drawEntireFlexagon('interface', fm);

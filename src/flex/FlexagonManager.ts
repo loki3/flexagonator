@@ -161,5 +161,9 @@ namespace Flexagonator {
       this.history.redo();
       this.flexagon = this.history.getCurrent().flexagon;
     }
+
+    clearHistory() {
+      this.history.clear();
+    }
   }
 }
