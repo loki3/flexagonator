@@ -113,11 +113,25 @@
 
     function applySequence(key, sequence) {
       if (key == 13) {
-        var result = fm.applyFlexes(sequence);
-        if (result === true) {
-          updateUI();
+        console.log(sequence[0]);
+        if (sequence[0] === '[') {
+          console.log('got it');
+          // if string starts with '[', assume it's a script to run
+          var result = Flexagonator.RunScriptString(fm, sequence);
+          if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+            console.log(result);
+          } else {
+            fm = result;
+            updateUI();
+          }
         } else {
-          console.log(result);
+          // else assume it's a sequence of flexes
+          var result = fm.applyFlexes(sequence);
+          if (result === true) {
+            updateUI();
+          } else {
+            console.log(result);
+          }
         }
       }
     }

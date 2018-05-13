@@ -36,6 +36,11 @@ namespace Flexagonator {
     return fm;
   }
 
+  export function RunScriptString(fm: FlexagonManager, str: string): FlexagonManager | FlexError | TreeError {
+    const script = JSON.parse(str);
+    return RunScript(fm, script);
+  }
+
   function RunScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
     if (item.pats !== undefined) {
       const result = makeFlexagon(item.pats);
