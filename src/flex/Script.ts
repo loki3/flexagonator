@@ -15,6 +15,8 @@ namespace Flexagonator {
     readonly unsetFace?: LeafProperties;
     // add a new flex to what can be applied to the current flexagon
     readonly addFlex?: FlexDef;
+    // a list of flexes to search
+    readonly searchFlexes?: string;
   }
 
   // create a flexagon, apply a script, and return it
@@ -109,6 +111,16 @@ namespace Flexagonator {
         case "redo": fm.redo(); break;
         case "reset": fm.undoAll(); break;
       }
+    }
+
+    if (item.searchFlexes !== undefined) {
+      const flexNames: string[] = item.searchFlexes.split(" ");
+      var flexes: Flexes = {};
+      for (var f of flexNames) {
+        const flex = fm.allFlexes[f];
+        flexes[f] = flex;
+      }
+      fm.flexesToSearch = flexes;
     }
 
     return fm;
