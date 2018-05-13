@@ -4,17 +4,15 @@
   <title>flip enneaflexagon</title>
   <script src="../build/out.js"></script>
   <script type="text/javascript">
-    var creator = {
-      pats: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      script: [
-        { flexes: "F+ < < < F+ < < < F+" },
-        { setFace: { front: { label: "1", color: 0x0000ff }, back: { label: "2", color: 0x00ff00 } } },
-        { flexes: "F > > > F > > > F > > F > > > F > > > F > > F > > > F > > > F" },
-        { setFace: { front: { label: "3", color: 0xff0000 }, back: { label: "4", color: 0x00ffff } } },
-        { flexes: "^ F > > > F > > > F > > F > > > F > > > F > > F > > > F > > > F ^" },
-        { history: "clear" }
-      ]
-    };
+    var creator = [
+      { pats: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
+      { flexes: "F+ < < < F+ < < < F+" },
+      { setFace: { front: { label: "1", color: 0x0000ff }, back: { label: "2", color: 0x00ff00 } } },
+      { flexes: "F > > > F > > > F > > F > > > F > > > F > > F > > > F > > > F" },
+      { setFace: { front: { label: "3", color: 0xff0000 }, back: { label: "4", color: 0x00ffff } } },
+      { flexes: "^ F > > > F > > > F > > F > > > F > > > F > > F > > > F > > > F ^" },
+      { history: "clear" }
+    ];
     var fm = Flexagonator.Create(creator);
 
     function updateUI() {

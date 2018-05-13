@@ -1,12 +1,8 @@
 namespace Flexagonator {
 
-  // info on how to create a new flexagon and run a script modifying it
-  export interface Creator {
-    readonly pats: LeafTree[];
-    readonly script: ScriptItem[];
-  }
-
   export interface ScriptItem {
+    // creates a new flexagon with the given pat structure
+    readonly pats: LeafTree[];
     // a series of space-delimited flexes
     readonly flexes?: string;
     // manipulate the flex history: "clear", "undo", "redo", "reset"
@@ -22,27 +18,33 @@ namespace Flexagonator {
   }
 
   // create a flexagon, apply a script, and return it
-  export function Create(creator: Creator): FlexagonManager | TreeError | FlexError {
-    const result = makeFlexagon(creator.pats);
-    if (isTreeError(result)) {
-      return result;
-    }
+  export function Create(script: ScriptItem[]): FlexagonManager | TreeError | FlexError {
+    const result = makeFlexagon([1, 2, 3, 4, 5, 6]) as Flexagon;
     const fm: FlexagonManager = makeFlexagonManager(result);
-    return RunScript(fm, creator.script);
+    return RunScript(fm, script);
   }
 
-  // apply a script to an existing flexagon
-  export function RunScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexError {
+  // apply a script to an existing flexagon (though it may create a new flexagon)
+  export function RunScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexError | TreeError {
     for (var item of script) {
       const result = RunScriptItem(fm, item);
-      if (isFlexError(result)) {
+      if (isFlexError(result) || isTreeError(result)) {
         return result;
       }
+      fm = result;
     }
     return fm;
   }
 
-  function RunScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError {
+  function RunScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
+    if (item.pats !== undefined) {
+      const result = makeFlexagon(item.pats);
+      if (isTreeError(result)) {
+        return result;
+      }
+      return makeFlexagonManager(result);
+    }
+
     if (item.flexes !== undefined) {
       const result = fm.applyFlexes(item.flexes);
       if (isFlexError(result)) {
