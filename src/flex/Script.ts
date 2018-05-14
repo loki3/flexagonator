@@ -17,6 +17,8 @@ namespace Flexagonator {
     readonly addFlex?: FlexDef;
     // a list of flexes to search
     readonly searchFlexes?: string;
+    // for first leaf: [center angle, clockwise angle]
+    readonly angles?: number[];
   }
 
   // create a flexagon, apply a script, and return it
@@ -121,6 +123,10 @@ namespace Flexagonator {
         flexes[f] = flex;
       }
       fm.flexesToSearch = flexes;
+    }
+
+    if (item.angles !== undefined) {
+      fm.setAngles(item.angles[0], item.angles[1]);
     }
 
     return fm;
