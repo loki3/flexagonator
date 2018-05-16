@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   export interface ScriptItem {
     // creates a new flexagon with the given pat structure
-    readonly pats: LeafTree[];
+    readonly pats?: LeafTree[];
     // a series of space-delimited flexes
     readonly flexes?: string;
     // manipulate the flex history: "clear", "undo", "redo", "reset"

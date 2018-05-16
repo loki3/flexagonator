@@ -147,6 +147,10 @@ namespace Flexagonator {
       return this.history.getCurrent().flexes;
     }
 
+    getBaseFlexagon(): Flexagon {
+      return this.history.getStart().flexagon;
+    }
+
     undoAll() {
       this.history.undoAll();
       this.flexagon = this.history.getCurrent().flexagon;

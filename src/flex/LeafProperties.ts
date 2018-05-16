@@ -19,6 +19,10 @@ namespace Flexagonator {
       this.props = props === undefined ? [] : props;
     }
 
+    getRawProps(): LeafProperties[] {
+      return this.props;
+    }
+
     setLabelProp(id: number, label: string) {
       var props = this.getFacePropsToSet(id);
       props.label = label;

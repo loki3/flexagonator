@@ -21,6 +21,10 @@ namespace Flexagonator {
       return this.done[this.done.length - 1];
     }
 
+    getStart(): HistoryItem {
+      return this.done[0];
+    }
+
     add(newFlexes: string[], newflexagon: Flexagon) {
       var allflexes = [];
       for (var flex of this.getCurrent().flexes) {
