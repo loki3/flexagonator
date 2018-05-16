@@ -118,9 +118,7 @@
 
     function applySequence(key, sequence) {
       if (key == 13) {
-        console.log(sequence[0]);
         if (sequence[0] === '[') {
-          console.log('got it');
           // if string starts with '[', assume it's a script to run
           var result = Flexagonator.RunScriptString(fm, sequence);
           if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
