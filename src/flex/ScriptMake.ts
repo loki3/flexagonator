@@ -1,9 +1,9 @@
 namespace Flexagonator {
 
-  export function MaKeScript(fm: FlexagonManager): ScriptItem[] {
+  export function MakeScript(fm: FlexagonManager): ScriptItem[] {
     var script: ScriptItem[] = [];
     script.push(makePats(fm));
-    if (fm.getFlexHistory.length > 0) {
+    if (fm.getFlexHistory().length > 0) {
       script.push(makeFlexHistory(fm));
     }
     if (fm.leafProps.getRawProps().length !== 0) {

@@ -17,6 +17,11 @@
         var history = fm.getFlexHistory().join(' ');
         historyBox.value = history;
       }
+
+      var scriptDiv = document.getElementById('script');
+      if (scriptDiv !== null) {
+        scriptDiv.innerHTML = "";
+      }
     }
 
     function newFlexagons(value) {
@@ -150,6 +155,14 @@
       fm.redo();
       updateUI();
     }
+
+    function seeScript() {
+      var scriptDiv = document.getElementById('script');
+      if (scriptDiv !== null) {
+        var str = JSON.stringify(Flexagonator.MakeScript(fm));
+        scriptDiv.innerHTML = str;
+      }
+    }
   </script>
 </head>
 
@@ -265,6 +278,11 @@
     <input onclick="stripContent = 1; updateUI();" type="button" value="folding numbers + ids" />
     <input onclick="stripContent = 2; updateUI();" type="button" value="front colors and labels" />
     <input onclick="stripContent = 3; updateUI();" type="button" value="back colors and labels" />
+  </p>
+
+  <p>
+    <input onclick="seeScript();" type="button" value="see script" />
+    <div id="script"></div>
   </p>
 
   <script type="text/javascript">
