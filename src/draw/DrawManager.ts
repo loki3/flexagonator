@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager) {
+  export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager): ScriptButtons {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
@@ -12,7 +12,7 @@ namespace Flexagonator {
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, fm.getAngles());
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps);
     drawStatsText(ctx, fm);
-    drawPossibleFlexes(ctx, fm, polygon);
+    return drawPossibleFlexes(ctx, fm, polygon);
   }
 
   export function drawUnfolded(canvasId: string, fm: FlexagonManager, content: StripContent) {

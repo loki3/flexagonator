@@ -7,9 +7,10 @@
     var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
     var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
     var stripContent = 0/*StripContent.FoldingLabels*/;
+    var buttons = null;
 
     function updateUI() {
-      Flexagonator.drawEntireFlexagon('interface', fm);
+      buttons = Flexagonator.drawEntireFlexagon('interface', fm);
       Flexagonator.drawUnfolded('unfolded', fm, stripContent);
 
       var historyBox = document.getElementById('history');
