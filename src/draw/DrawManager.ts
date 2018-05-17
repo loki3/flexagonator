@@ -32,24 +32,6 @@ namespace Flexagonator {
     drawStrip(ctx, leaflines, content, fm.leafProps);
   }
 
-  function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon) {
-    ctx.font = (polygon.radius / 10) + "px sans-serif";
-
-    const corners = polygon.getCorners();
-    for (var i = 0; i < fm.flexagon.getPatCount(); i++) {
-      const x = corners[i * 2];
-      const y = corners[i * 2 + 1];
-
-      ctx.fillStyle = "rgb(0, 0, 0)";
-      ctx.textAlign = x > polygon.xCenter ? "left" : "right";
-      ctx.textBaseline = y > polygon.yCenter ? "top" : "bottom";
-
-      const flexes: string[] = fm.checkForFlexes(false, i);
-      const text = flexes.join(' ');
-      ctx.fillText(text, x, y);
-    }
-  }
-
   function drawStatsText(ctx: CanvasRenderingContext2D, fm: FlexagonManager) {
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.textAlign = "left";
