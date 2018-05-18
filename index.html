@@ -162,6 +162,30 @@
         scriptDiv.innerHTML = str;
       }
     }
+
+    function getScriptItem(event) {
+      var canvas = document.getElementById('interface');
+      var rect = canvas.getBoundingClientRect();
+      var x = event.clientX - rect.x;
+      var y = event.clientY - rect.y;
+      return buttons.findButton(x, y);
+    }
+
+    function interfaceMouseMove(event) {
+      var script = getScriptItem(event);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event) {
+      var script = getScriptItem(event);
+      if (script != null) {
+        var result = Flexagonator.RunScriptItem(fm, script);
+        if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
   </script>
 </head>
 
@@ -286,6 +310,9 @@
 
   <script type="text/javascript">
     updateUI();
+    var canvas = document.getElementById('interface');
+    canvas.addEventListener('mousemove', interfaceMouseMove, false);
+    canvas.addEventListener('click', interfaceMouseClick, false);
   </script>
 
 </body>

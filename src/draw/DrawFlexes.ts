@@ -42,7 +42,7 @@ namespace Flexagonator {
       const thisWidth = metrics.width;
 
       ctx.fillText(flex, thisx, thisy);
-      buttons.addFlexButton({ x: thisx, y: thisy, w: thisWidth, h: h }, thisflex);
+      buttons.addFlexButton({ x: thisx, y: thisy - h, w: thisWidth, h: h }, thisflex);
 
       x = left ? x + thisWidth + spaceWidth : x - thisWidth - spaceWidth;
     }
