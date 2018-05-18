@@ -163,21 +163,13 @@
       }
     }
 
-    function getScriptItem(event) {
-      var canvas = document.getElementById('interface');
-      var rect = canvas.getBoundingClientRect();
-      var x = event.clientX - rect.x;
-      var y = event.clientY - rect.y;
-      return buttons.findButton(x, y);
-    }
-
     function interfaceMouseMove(event) {
-      var script = getScriptItem(event);
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       event.target.style.cursor = script == null ? 'default' : 'pointer';
     }
 
     function interfaceMouseClick(event) {
-      var script = getScriptItem(event);
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
         var result = Flexagonator.RunScriptItem(fm, script);
         if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {

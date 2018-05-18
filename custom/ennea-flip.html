@@ -22,9 +22,10 @@
       { history: "clear" }
     ];
     var fm = Flexagonator.Create(creator);
+    var buttons = null;
 
     function updateUI() {
-      Flexagonator.drawEntireFlexagon('interface', fm);
+      buttons = Flexagonator.drawEntireFlexagon('interface', fm);
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {
@@ -68,6 +69,22 @@
       fm.redo();
       updateUI();
     }
+
+    function interfaceMouseMove(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      if (script != null) {
+        var result = Flexagonator.RunScriptItem(fm, script);
+        if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
   </script>
 </head>
 
@@ -103,6 +120,9 @@
 
   <script type="text/javascript">
     updateUI();
+    var canvas = document.getElementById('interface');
+    canvas.addEventListener('mousemove', interfaceMouseMove, false);
+    canvas.addEventListener('click', interfaceMouseClick, false);
   </script>
 
 </body>
