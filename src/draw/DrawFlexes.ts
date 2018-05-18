@@ -11,7 +11,7 @@ namespace Flexagonator {
     ctx.textBaseline = "bottom";
 
     const corners = polygon.getCorners();
-    var prefix = "";
+    var prefix = "", postfix = "";
     for (var i = 0; i < fm.flexagon.getPatCount(); i++) {
       const x = corners[i * 2];
       const y = corners[i * 2 + 1];
@@ -19,15 +19,16 @@ namespace Flexagonator {
       const up = y > polygon.yCenter;
 
       const flexes: string[] = fm.checkForFlexes(false, i);
-      addFlexes(ctx, flexes, prefix, x, y, height, left, up, buttons);
+      addFlexes(ctx, flexes, prefix, postfix, x, y, height, left, up, buttons);
       prefix += "> ";
+      postfix += " <";
     }
     return buttons;
   }
 
   // draw each flex and add a button that knows how to apply the flex
   function addFlexes(ctx: CanvasRenderingContext2D,
-    flexes: string[], prefix: string,
+    flexes: string[], prefix: string, postfix: string,
     x: number, y: number, h: number, left: boolean, up: boolean,
     /*output*/ buttons: ScriptButtons) {
 
@@ -38,7 +39,7 @@ namespace Flexagonator {
       const metrics = ctx.measureText(flex);
       const thisx = left ? x : x - metrics.width;
       const thisy = up ? y : y - h;
-      const thisflex = prefix + flex;
+      const thisflex = prefix + flex + postfix;
       const thisWidth = metrics.width;
 
       ctx.fillText(flex, thisx, thisy);
