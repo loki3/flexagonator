@@ -33,6 +33,7 @@ namespace Flexagonator {
     /*output*/ buttons: ScriptButtons) {
 
     const spaceWidth = ctx.measureText(' ').width;
+    const pad = 3;
     y += h;
 
     for (var flex of flexes) {
@@ -43,7 +44,7 @@ namespace Flexagonator {
       const thisWidth = metrics.width;
 
       ctx.fillText(flex, thisx, thisy);
-      buttons.addFlexButton({ x: thisx, y: thisy - h, w: thisWidth, h: h }, thisflex);
+      buttons.addFlexButton({ x: thisx - pad, y: thisy - h - pad, w: thisWidth + pad * 2, h: h + pad * 2 }, thisflex);
 
       x = left ? x + thisWidth + spaceWidth : x - thisWidth - spaceWidth;
     }
