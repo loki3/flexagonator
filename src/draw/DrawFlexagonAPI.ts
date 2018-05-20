@@ -20,8 +20,15 @@ namespace Flexagonator {
     const yCenter = ctx.canvas.clientHeight / 2;
     const radius = ctx.canvas.clientHeight * 0.42;
 
-    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, fm.getAngles());
     const showFront = (options.back === undefined || !options.back);
+    const angles = fm.getAngles();
+    if (!showFront) {
+      const temp = angles[1];
+      angles[1] = angles[2];
+      angles[2] = temp;
+    }
+    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, angles);
+
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront, showStructure);
     if (options.stats !== undefined && options.stats) {
