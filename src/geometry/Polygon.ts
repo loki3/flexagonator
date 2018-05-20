@@ -69,7 +69,17 @@ namespace Flexagonator {
         const thisAngle = angle * i + offset;
         const x = Math.cos(thisAngle);
         const y = Math.sin(thisAngle);
-        const scale = (i % 2 === 0) ? radius * scales[0] : radius * scales[1];
+
+        // this is how far from the center to put the corner.
+        // if we're in the middle of a face (angleFactor ===0),
+        //  we need to adjust for the two edges possibly being different
+        var scale;
+        if (angleFactor === 0) {
+          scale = radius * (scales[0] + scales[1]) / 2;
+        } else {
+          scale = (i % 2 === 0) ? radius * scales[0] : radius * scales[1];
+        }
+
         corners.push(x * scale + this.xCenter);
         corners.push(y * scale + this.yCenter);
       }
