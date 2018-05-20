@@ -10,7 +10,8 @@
     var buttons = null;
 
     function updateUI() {
-      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { showFlexes: true, stats: true });
+      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, stats: true, structure: true });
+      Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
       Flexagonator.drawUnfolded('unfolded', fm, stripContent);
 
       var historyBox = document.getElementById('history');
@@ -285,6 +286,7 @@
   </p>
 
   <canvas id="interface" width="800" height="400"></canvas>
+  <canvas id="backside" width="200" height="200"></canvas>
   <br/>
   <canvas id="unfolded" width="800" height="600"></canvas>
 

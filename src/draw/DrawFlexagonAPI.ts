@@ -1,17 +1,18 @@
 namespace Flexagonator {
 
   export interface DrawFlexagonOptions {
-    clear: boolean;       // clear the canvas before drawing - default: true
-    front: boolean;       // draw front or back - default: front
+    drawover: boolean;    // draw over canvas or clear first - default: false
+    back: boolean;        // draw front or back - default: false (front)
     stats: boolean;       // show stats - default: false
-    showFlexes: boolean;  // show possible flexes at corners: default: false
+    flexes: boolean;      // show possible flexes at corners - default: false
+    structure: boolean;   // show pat structure - default: false
   }
 
   export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
-    if (options.clear === undefined || options.clear) {
+    if (options.drawover === undefined || !options.drawover) {
       ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
     }
 
@@ -20,12 +21,13 @@ namespace Flexagonator {
     const radius = ctx.canvas.clientHeight * 0.42;
 
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, fm.getAngles());
-    const showFront = (options.front === undefined || options.front);
-    drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront);
+    const showFront = (options.back === undefined || !options.back);
+    const showStructure = (options.structure !== undefined && options.structure);
+    drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront, showStructure);
     if (options.stats !== undefined && options.stats) {
       drawStatsText(ctx, fm);
     }
-    if (options.showFlexes !== undefined && options.showFlexes) {
+    if (options.flexes !== undefined && options.flexes) {
       return drawPossibleFlexes(ctx, fm, polygon);
     }
     return new ScriptButtons();

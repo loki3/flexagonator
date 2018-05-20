@@ -25,7 +25,7 @@
     var buttons = null;
 
     function updateUI() {
-      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { showFlexes: true });
+      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {
