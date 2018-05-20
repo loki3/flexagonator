@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: PropertiesForLeaves) {
+  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: PropertiesForLeaves, front: boolean) {
     const markerText = polygon.radius / 6;
     const largeText = polygon.radius / 8;
     const smallText = polygon.radius / 14;
