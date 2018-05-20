@@ -6,9 +6,10 @@ namespace Flexagonator {
     const markerText = polygon.radius / 6;
     const largeText = polygon.radius / 8;
     const smallText = polygon.radius / 14;
+    const ids = front ? flexagon.getTopIds() : flexagon.getBottomIds().reverse();
 
     if (props !== undefined) {
-      drawFaceProps(ctx, flexagon, polygon, props);
+      drawFaceProps(ctx, polygon, props, ids);
     }
 
     ctx.strokeStyle = "rgb(90, 150, 210)";
@@ -17,18 +18,17 @@ namespace Flexagonator {
     drawSpokes(ctx, corners, polygon.xCenter, polygon.yCenter);
     drawText(ctx, markerText, corners[0], corners[1], "*");
 
-    drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), flexagon.getTopIds(), props);
+    drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), ids, props);
     if (props !== undefined) {
-      drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), flexagon.getTopIds());
+      drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), ids);
     }
     if (patstructure) {
       drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
     }
   }
 
-  function drawFaceProps(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon, props: PropertiesForLeaves) {
+  function drawFaceProps(ctx: CanvasRenderingContext2D, polygon: Polygon, props: PropertiesForLeaves, ids: number[]) {
     const triangles = polygon.getLeafTriangles();
-    const ids = flexagon.getTopIds();
     for (const i in triangles) {
       const leafId = ids[i];
       const color = props.getColorAsRGBString(leafId);
