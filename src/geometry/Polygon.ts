@@ -82,7 +82,11 @@ namespace Flexagonator {
 
     constructor(numSides: number, angleFactor: number) {
       this.centerAngle = 2 * Math.PI / numSides;
-      this.offsetAngle = Math.PI / 2 + this.centerAngle * angleFactor;
+      // the goal in determining this base angle is to put the current vertex
+      // at the top or just to the right of the top & have the base of a
+      // regular polygon at the bottom
+      const adjust = (Math.floor((numSides + 1) / 2) - 1) * this.centerAngle;
+      this.offsetAngle = Math.PI / 2 + this.centerAngle * angleFactor - adjust;
     }
 
     computePoint(i: number): number[] {
