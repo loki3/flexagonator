@@ -62,42 +62,73 @@ namespace Flexagonator {
       if (this.numSides < 3)
         return corners;
 
-      const angle = 2 * Math.PI / this.numSides;
-      const offset = Math.PI / 2 + angle * angleFactor;
-      const scales = this.getScales();
+      const angles = new Angles(this.numSides, angleFactor);
+      const scales = new Scales(this.numSides, this.anglesDegrees, radius, angleFactor);
       for (var i = 0; i < this.numSides; i++) {
-        const thisAngle = angle * i + offset;
-        const x = Math.cos(thisAngle);
-        const y = Math.sin(thisAngle);
+        const point = angles.computePoint(i);
+        const scale = scales.computeScale(i);
 
-        // this is how far from the center to put the corner.
-        // if we're in the middle of a face (angleFactor ===0),
-        //  we need to adjust for the two edges possibly being different
-        var scale;
-        if (angleFactor === 0) {
-          scale = radius * (scales[0] + scales[1]) / 2;
-        } else {
-          scale = (i % 2 === 0) ? radius * scales[0] : radius * scales[1];
-        }
-
-        corners.push(x * scale + this.xCenter);
-        corners.push(y * scale + this.yCenter);
+        corners.push(point[0] * scale + this.xCenter);
+        corners.push(point[1] * scale + this.yCenter);
       }
       return corners;
+    }
+  }
+
+  // computes the angles for each point around the polygon
+  class Angles {
+    private readonly centerAngle: number;
+    private readonly offsetAngle: number;
+
+    constructor(numSides: number, angleFactor: number) {
+      this.centerAngle = 2 * Math.PI / numSides;
+      this.offsetAngle = Math.PI / 2 + this.centerAngle * angleFactor;
+    }
+
+    computePoint(i: number): number[] {
+      const thisAngle = this.centerAngle * i + this.offsetAngle;
+      const x = Math.cos(thisAngle);
+      const y = Math.sin(thisAngle);
+      return [x, y];
+    }
+  }
+
+  // computes the scales used to place the points somewhere between
+  // the polygon center and its edges
+  class Scales {
+    private readonly scales: number[];
+    private readonly radius: number;
+    private readonly angleFactor: number;
+
+    constructor(numSides: number, anglesDegrees: number[], radius: number, angleFactor: number) {
+      this.scales = this.getScales(numSides, anglesDegrees);
+      this.radius = radius;
+      this.angleFactor = angleFactor;
+    }
+
+    computeScale(i: number): number {
+      // this is how far from the center to put the corner.
+      // if we're in the middle of a face (angleFactor ===0),
+      //  we need to adjust for the two edges possibly being different
+      if (this.angleFactor === 0) {
+        return this.radius * (this.scales[0] + this.scales[1]) / 2;
+      } else {
+        return (i % 2 === 0) ? this.radius * this.scales[0] : this.radius * this.scales[1];
+      }
     }
 
     // Basic approach: pretend the center angle (angles[0]) is (2pi/n),
     // and scale the other two angles to keep their proportions the same.
     // Then we'll scale down the side opposite the smaller angle.
     // Returns the scaling to apply to the two radial sides of the leaf.
-    private getScales(): number[] {
-      if (this.anglesDegrees[0] === 60 && this.anglesDegrees[1] === 60) {
+    private getScales(numSides: number, anglesDegrees: number[]): number[] {
+      if (anglesDegrees[0] === 60 && anglesDegrees[1] === 60) {
         return [1, 1];
       }
 
-      const theta = 2 * Math.PI / this.numSides;
-      const beta = toRadians(this.anglesDegrees[1]);
-      const gamma = toRadians(this.anglesDegrees[2]);
+      const theta = 2 * Math.PI / numSides;
+      const beta = toRadians(anglesDegrees[1]);
+      const gamma = toRadians(anglesDegrees[2]);
       const angleScale = (Math.PI - theta) / (beta + gamma);
       const lengthScale = Math.sin(angleScale * gamma) / Math.sin(angleScale * beta);
       if (beta > gamma) {
