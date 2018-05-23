@@ -82,6 +82,8 @@ namespace Flexagonator {
         return newFlex;
       }
       fm.allFlexes[f.shorthand] = newFlex;
+      // & add the inverse
+      fm.allFlexes[f.shorthand + "'"] = newFlex.createInverse();
     }
 
     // manipulate the flex history: "clear", "undo", "redo", "reset"
