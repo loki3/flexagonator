@@ -120,23 +120,11 @@
 
     function applySequence(key, sequence) {
       if (key == 13) {
-        if (sequence[0] === '[') {
-          // if string starts with '[', assume it's a script to run
-          var result = Flexagonator.RunScriptString(fm, sequence);
-          if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
-            console.log(result);
-          } else {
-            fm = result;
-            updateUI();
-          }
+        var result = fm.applyFlexes(sequence, true);
+        if (result === true) {
+          updateUI();
         } else {
-          // else assume it's a sequence of flexes
-          var result = fm.applyFlexes(sequence, true);
-          if (result === true) {
-            updateUI();
-          } else {
-            console.log(result);
-          }
+          console.log(result);
         }
       }
     }
@@ -157,10 +145,23 @@
     }
 
     function seeScript() {
-      var scriptDiv = document.getElementById('script');
-      if (scriptDiv !== null) {
+      var scriptBox = document.getElementById('script');
+      if (scriptBox !== null) {
         var str = JSON.stringify(Flexagonator.MakeScript(fm));
-        scriptDiv.innerHTML = str;
+        scriptBox.value = str;
+      }
+    }
+
+    function runScript() {
+      var scriptBox = document.getElementById('script');
+      if (scriptBox !== null) {
+        var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+        if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+          console.log(result);
+        } else {
+          fm = result;
+          updateUI();
+        }
       }
     }
 
@@ -299,7 +300,9 @@
 
   <p>
     <input onclick="seeScript();" type="button" value="see script" />
-    <div id="script"></div>
+    <input onclick="runScript();" type="button" value="run script" />
+    <br />
+    <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
   </p>
 
   <script type="text/javascript">
