@@ -46,7 +46,7 @@
 
     function applySequence(key, sequence) {
       if (key == 13) {
-        var result = fm.applyFlexes(sequence);
+        var result = fm.applyFlexes(sequence, true);
         if (result === true) {
           updateUI();
         } else {

@@ -50,6 +50,32 @@ namespace Flexagonator {
     // if the flex string ends with +, generate the needed structure
     // if the flex string ends with *, generate the needed structure & apply the flex
     applyFlex(flexStr: string): boolean | FlexError {
+      const result = this.rawApplyFlex(flexStr);
+      if (isFlexError(result)) {
+        return result;
+      }
+      this.history.add([flexStr], this.flexagon);
+      return true;
+    }
+
+    // apply a series of space delimited flexes, e.g. "P > > S'+ ^ T"
+    // as a single undoable operation
+    applyFlexes(flexStr: string, separatelyUndoable: boolean): boolean | FlexError {
+      const flexNames: string[] = flexStr.split(" ");
+      for (var flexName of flexNames) {
+        const result = separatelyUndoable ? this.applyFlex(flexName) : this.rawApplyFlex(flexName);
+        if (isFlexError(result)) {
+          return { reason: FlexCode.CantApplyFlex, flexName: flexName };
+        }
+      }
+      if (!separatelyUndoable) {
+        this.history.add(flexNames, this.flexagon);
+      }
+      return true;
+    }
+
+    // apply a flex without adding it to the history list
+    private rawApplyFlex(flexStr: string): boolean | FlexError {
       const last = flexStr[flexStr.length - 1]
       const generate = (last === '+') || (last === '*');
       const apply = (last !== '+');
@@ -65,19 +91,6 @@ namespace Flexagonator {
         return { reason: FlexCode.CantApplyFlex, flexName: flexName };
       }
       this.flexagon = result;
-      this.history.add([flexStr], this.flexagon);
-      return true;
-    }
-
-    // apply a series of space delimited flexes, e.g. "P > > S'+ ^ T"
-    applyFlexes(flexStr: string): boolean | FlexError {
-      const flexNames: string[] = flexStr.split(" ");
-      for (var flexName of flexNames) {
-        const result = this.applyFlex(flexName);
-        if (isFlexError(result)) {
-          return { reason: FlexCode.CantApplyFlex, flexName: flexName };
-        }
-      }
       return true;
     }
 

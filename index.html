@@ -131,7 +131,7 @@
           }
         } else {
           // else assume it's a sequence of flexes
-          var result = fm.applyFlexes(sequence);
+          var result = fm.applyFlexes(sequence, true);
           if (result === true) {
             updateUI();
           } else {

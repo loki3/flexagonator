@@ -34,7 +34,7 @@ namespace Flexagonator {
     }
 
     if (item.flexes !== undefined) {
-      const result = fm.applyFlexes(item.flexes);
+      const result = fm.applyFlexes(item.flexes, false);
       if (isFlexError(result)) {
         return result;
       }

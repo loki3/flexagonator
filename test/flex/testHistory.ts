@@ -21,6 +21,31 @@ namespace Flexagonator {
     });
   });
 
+
+  describe('History.add2', () => {
+    it('should add multiple items to history', () => {
+      const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+
+      const history: History = new History(flexagon);
+      expect(history.canUndo()).toBe(false);
+      expect(history.getCurrent().flexes.length).toBe(0);
+
+      history.add(["S", "P"], flexagon);
+      expect(history.canUndo()).toBe(true);
+      expect(history.getCurrent().flexes.length).toBe(2);
+      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[1]).toBe("P");
+
+      history.add(["T", "F"], flexagon);
+      expect(history.canUndo()).toBe(true);
+      expect(history.getCurrent().flexes.length).toBe(4);
+      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[1]).toBe("P");
+      expect(history.getCurrent().flexes[2]).toBe("T");
+      expect(history.getCurrent().flexes[3]).toBe("F");
+    });
+  });
+
   describe('History.undo', () => {
     it('should undo items in the history', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
