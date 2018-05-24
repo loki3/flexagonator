@@ -22,12 +22,7 @@ namespace Flexagonator {
 
     const showFront = (options.back === undefined || !options.back);
     const angles = fm.getAngles();
-    if (!showFront) {
-      const temp = angles[1];
-      angles[1] = angles[2];
-      angles[2] = temp;
-    }
-    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, angles);
+    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront, showStructure);

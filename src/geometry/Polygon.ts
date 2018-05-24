@@ -29,8 +29,8 @@ namespace Flexagonator {
       readonly xCenter: number,
       readonly yCenter: number,
       readonly radius: number,
-      readonly anglesDegrees: number[]) {
-    }
+      readonly anglesDegrees: number[],
+      readonly showFront: boolean) { }
 
     // returns an array of corners [x1, y1, x2, y2...]
     // the bottom side is parallel to the axis
@@ -62,7 +62,7 @@ namespace Flexagonator {
       if (this.numSides < 3)
         return corners;
 
-      const angles = new Angles(this.numSides, angleFactor);
+      const angles = new Angles(this.numSides, angleFactor, this.showFront);
       const scales = new Scales(this.numSides, this.anglesDegrees, radius, angleFactor);
       for (var i = 0; i < this.numSides; i++) {
         const point = angles.computePoint(i);
@@ -80,12 +80,13 @@ namespace Flexagonator {
     private readonly centerAngle: number;
     private readonly offsetAngle: number;
 
-    constructor(numSides: number, angleFactor: number) {
+    constructor(numSides: number, angleFactor: number, showFront: boolean) {
       this.centerAngle = 2 * Math.PI / numSides;
       // the goal in determining this base angle is to put the current vertex
-      // at the top or just to the right of the top & have the base of a
-      // regular polygon at the bottom
-      const adjust = (Math.floor((numSides + 1) / 2) - 1) * this.centerAngle;
+      // at the top or just to the right of the top (mirrored on the backside)
+      // & have the base of a regular polygon at the bottom
+      const value = showFront ? 1 : 2;
+      const adjust = (Math.floor((numSides + value) / 2) - 1) * this.centerAngle;
       this.offsetAngle = Math.PI / 2 + this.centerAngle * angleFactor - adjust;
     }
 

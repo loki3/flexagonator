@@ -1,7 +1,7 @@
 namespace Flexagonator {
   describe('getCorners.basic', () => {
     it('should compute properly', () => {
-      const corners = new Polygon(3, 100, 100, 100, [60, 60, 60]).getCorners();
+      const corners = new Polygon(3, 100, 100, 100, [60, 60, 60], true).getCorners();
       expect(corners[0]).toBeCloseTo(100, 0.1);
       expect(corners[1]).toBeCloseTo(0, 0.1);
       expect(corners[2]).toBeCloseTo(186.6, 0.1);
@@ -13,7 +13,7 @@ namespace Flexagonator {
 
   describe('getCorners.angles', () => {
     it('should use angles properly', () => {
-      const corners = new Polygon(4, 100, 100, 100, [50, 30, 100]).getCorners();
+      const corners = new Polygon(4, 100, 100, 100, [50, 30, 100], true).getCorners();
       expect(corners[0]).toBeCloseTo(126.8, 0.1);
       expect(corners[1]).toBeCloseTo(73.2, 0.1);
       expect(corners[2]).toBeCloseTo(170.7, 0.1);
