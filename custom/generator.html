@@ -28,6 +28,7 @@
 
     function updateUI() {
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
+      Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {
@@ -111,6 +112,7 @@
   </p>
 
   <canvas id="interface" width="800" height="500"></canvas>
+  <canvas id="backside" width="300" height="300"></canvas>
 
   <script type="text/javascript">
     updateUI();
