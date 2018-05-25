@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <title>generator</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    var flexagon = Flexagonator.makeFlexagon([1, 2, 3, 4, 5, 6]);
+    var fm = Flexagonator.makeFlexagonManager(flexagon);
+    makeNew("");
+    var buttons = null;
+
+    function makeNew(sequence) {
+      var creator = [
+        { pats: [1, 2, 3, 4, 5, 6] },
+        { flexes: sequence },
+        { reverseFlexes: sequence },
+        { setFace: { front: { label: "1", color: 0x2E4172 }, back: { label: "2", color: 0x2B803E } } },
+        { history: "clear" }
+      ];
+      var newFM = Flexagonator.Create(creator);
+      if (Flexagonator.isTreeError(newFM) || Flexagonator.isFlexError(newFM)) {
+        console.log(newFM);
+      }
+      else {
+        fm = newFM;
+      }
+    }
+
+    function updateUI() {
+      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
+
+      var historyBox = document.getElementById('history');
+      if (historyBox !== null) {
+        var history = fm.getFlexHistory().join(' ');
+        historyBox.value = history;
+      }
+    }
+
+    function generate(key, sequence) {
+      if (key == 13) {
+        makeNew(sequence);
+        updateUI();
+      }
+    }
+
+    function applySequence(key, sequence) {
+      if (key == 13) {
+        var result = fm.applyFlexes(sequence, true);
+        if (result === true) {
+          updateUI();
+        } else {
+          console.log(result);
+        }
+      }
+    }
+
+    function reset() {
+      fm.undoAll();
+      updateUI();
+    }
+
+    function undo() {
+      fm.undo();
+      updateUI();
+    }
+
+    function redo() {
+      fm.redo();
+      updateUI();
+    }
+
+    function interfaceMouseMove(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      if (script != null) {
+        var result = Flexagonator.RunScriptItem(fm, script);
+        if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Flexagonator: generators</h1>
+
+  <p>
+    <div>
+      <label>enter generator for new flexagon:</label>
+      <input onkeypress="generate(event.charCode, event.srcElement.value)" size="70" />
+    </div>
+  </p>
+
+  <p>
+    <div>
+      <label>enter flex sequence</label>
+      <input onkeypress="applySequence(event.charCode, event.srcElement.value)" size="75" />
+    </div>
+  </p>
+  <p>
+    <input onclick="reset();" type="button" value="reset" />
+    <input onclick="undo();" type="button" value="undo" />
+    <input onclick="redo();" type="button" value="redo" />
+    <textarea id="history" readonly=true cols="70" rows="1"></textarea>
+  </p>
+
+  <canvas id="interface" width="800" height="500"></canvas>
+
+  <script type="text/javascript">
+    updateUI();
+    var canvas = document.getElementById('interface');
+    canvas.addEventListener('mousemove', interfaceMouseMove, false);
+    canvas.addEventListener('click', interfaceMouseClick, false);
+  </script>
+
+</body>
+
+</html>
