@@ -40,6 +40,13 @@ namespace Flexagonator {
       }
     }
 
+    if (item.reverseFlexes !== undefined) {
+      const result = fm.applyInReverse(item.reverseFlexes);
+      if (isFlexError(result)) {
+        return result;
+      }
+    }
+
     if (item.leafProps !== undefined) {
       fm.leafProps = new PropertiesForLeaves(item.leafProps);
     }

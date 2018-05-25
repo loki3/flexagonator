@@ -63,6 +63,9 @@ namespace Flexagonator {
     applyFlexes(flexStr: string, separatelyUndoable: boolean): boolean | FlexError {
       const flexNames: string[] = flexStr.split(" ");
       for (var flexName of flexNames) {
+        if (flexName.length === 0) {
+          continue;
+        }
         const result = separatelyUndoable ? this.applyFlex(flexName) : this.rawApplyFlex(flexName);
         if (isFlexError(result)) {
           return { reason: FlexCode.CantApplyFlex, flexName: flexName };
@@ -74,9 +77,23 @@ namespace Flexagonator {
       return true;
     }
 
+    // run the inverse of the flexes backwards to effectively undo a sequence
+    applyInReverse(flexStr: string): boolean | FlexError {
+      const flexNames: string[] = flexStr.split(" ").reverse();
+      var inverses = "";
+      for (var flexName of flexNames) {
+        if (flexName.length === 0) {
+          continue;
+        }
+        inverses += this.getInverseName(flexName);
+        inverses += ' ';
+      }
+      return this.applyFlexes(inverses, false);
+    }
+
     // apply a flex without adding it to the history list
     private rawApplyFlex(flexStr: string): boolean | FlexError {
-      const last = flexStr[flexStr.length - 1]
+      const last = flexStr[flexStr.length - 1];
       const generate = (last === '+') || (last === '*');
       const apply = (last !== '+');
 
@@ -92,6 +109,19 @@ namespace Flexagonator {
       }
       this.flexagon = result;
       return true;
+    }
+
+    private getInverseName(flex: string): string {
+      const last = flex[flex.length - 1];
+      if (last === "*" || last === "+") {
+        const subname = flex.substr(0, flex.length - 1);
+        const invertSubname = this.getInverseName(subname);
+        return invertSubname + last;
+      } else if (last === "'") {
+        return flex.substr(0, flex.length - 1);
+      } else {
+        return flex + "'";
+      }
     }
 
     setFaceLabel(label: string, front: boolean) {

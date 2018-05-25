@@ -5,6 +5,8 @@ namespace Flexagonator {
     readonly pats?: LeafTree[];
     // a series of space-delimited flexes
     readonly flexes?: string;
+    // run a series of flexes in reverse, effectively undoing them
+    readonly reverseFlexes?: string;
     // manipulate the flex history: "clear", "undo", "redo", "reset"
     readonly history?: string;
     // array of properties for every leaf
