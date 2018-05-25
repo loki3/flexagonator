@@ -12,10 +12,17 @@
     function makeNew(sequence) {
       var creator = [
         { pats: [1, 2, 3, 4, 5, 6] },
+        // apply generating sequence, get back to original position, & call it the base state
         { flexes: sequence },
         { reverseFlexes: sequence },
+        { history: "clear" },
+        // color the start point
         { setFace: { front: { label: "1", color: 0x2E4172 }, back: { label: "2", color: 0x2B803E } } },
-        { history: "clear" }
+        // color anything from the end point that hasn't been colored yet
+        { flexes: sequence },
+        { unsetFace: { front: { label: "3", color: 0xAA4439 }, back: { label: "4", color: 0xffff00 } } },
+        // go back to base state
+        { history: "reset" },
       ];
       var newFM = Flexagonator.Create(creator);
       if (Flexagonator.isTreeError(newFM) || Flexagonator.isFlexError(newFM)) {
