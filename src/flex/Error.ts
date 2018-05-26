@@ -1,4 +1,29 @@
 namespace Flexagonator {
+
+  // get details about an error
+  export function errorToString(error: TreeError | PatternError | FlexError): string {
+    if (isTreeError(error)) {
+      var str = "Tree Error: " + TreeCode[error.reason];
+      if (error.context) {
+        str += " with context " + error.context.toString();
+      }
+      return str;
+    } else if (isPatternError(error)) {
+      return "Error in flex pattern definition; expected '" + error.expected.toString()
+        + "' but found '" + error.actual.toString() + "'";
+    } else if (isFlexError(error)) {
+      var str = "Flex Error: " + FlexCode[error.reason];
+      if (error.flexName) {
+        str += " for flex " + error.flexName;
+      }
+      if (error.patternError) {
+        str += " because of " + errorToString(error.patternError);
+      }
+      return str;
+    }
+    return "no error";
+  }
+
   /*
     Error parsing a leaf tree when creating a pat or flexagon
   */
@@ -15,8 +40,9 @@ namespace Flexagonator {
   }
 
   export function isTreeError(result: any): result is TreeError {
-    return (result as TreeError).reason !== undefined;
+    return (result as TreeError).context !== undefined;
   }
+
 
 
   /*
