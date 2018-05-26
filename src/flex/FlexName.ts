@@ -73,7 +73,7 @@ namespace Flexagonator {
     const names: string[] = flexStr.split(" ");
     for (var name of names) {
       const lookup = makeFlexName(name).lookupName;
-      if (excludeRotates && (lookup == '>' || lookup == '>' || lookup == '^')) {
+      if (excludeRotates && (lookup == '<' || lookup == '>' || lookup == '^')) {
         continue;
       }
       if (result.find(x => (x === lookup)) === undefined) {
