@@ -4,7 +4,7 @@ namespace Flexagonator {
   export function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon): ScriptButtons {
     var buttons: ScriptButtons = new ScriptButtons();
 
-    const height = polygon.radius / 10;
+    const height = polygon.radius / 9;
     ctx.font = height + "px sans-serif";
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.textAlign = "left";
