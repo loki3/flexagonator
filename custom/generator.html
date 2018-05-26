@@ -27,14 +27,16 @@
       ];
       var newFM = Flexagonator.Create(creator);
       if (Flexagonator.isTreeError(newFM) || Flexagonator.isFlexError(newFM)) {
-        console.log(newFM);
+        reportError(newFM);
+        return false;
       }
-      else {
-        fm = newFM;
-      }
+      fm = newFM;
+      return true;
     }
 
     function updateUI() {
+      clearError();
+
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
@@ -45,10 +47,26 @@
       }
     }
 
+    function reportError(error) {
+      var str = Flexagonator.errorToString(error);
+      console.log(str);
+      var div = document.getElementById('error');
+      if (div !== null) {
+        div.innerHTML = str;
+      }
+    }
+    function clearError() {
+      var div = document.getElementById('error');
+      if (div !== null) {
+        div.innerHTML = "";
+      }
+    }
+
     function generate(key, sequence) {
       if (key == 13) {
-        makeNew(sequence);
-        updateUI();
+        if (makeNew(sequence)) {
+          updateUI();
+        }
       }
     }
 
@@ -58,7 +76,7 @@
         if (result === true) {
           updateUI();
         } else {
-          console.log(result);
+          reportError(result);
         }
       }
     }
@@ -104,7 +122,11 @@
       <label>enter generator for new flexagon:</label>
       <input onkeypress="generate(event.charCode, event.srcElement.value)" size="70" />
     </div>
+    <div id="error"></div>
   </p>
+
+  <canvas id="interface" width="800" height="500"></canvas>
+  <canvas id="backside" width="300" height="300"></canvas>
 
   <p>
     <div>
@@ -118,9 +140,6 @@
     <input onclick="redo();" type="button" value="redo" />
     <textarea id="history" readonly=true cols="70" rows="1"></textarea>
   </p>
-
-  <canvas id="interface" width="800" height="500"></canvas>
-  <canvas id="backside" width="300" height="300"></canvas>
 
   <script type="text/javascript">
     updateUI();
