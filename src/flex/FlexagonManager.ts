@@ -85,7 +85,7 @@ namespace Flexagonator {
         if (flexName.length === 0) {
           continue;
         }
-        inverses += this.getInverseName(flexName);
+        inverses += makeFlexName(flexName).getInverse().fullName;
         inverses += ' ';
       }
       return this.applyFlexes(inverses, false);
@@ -93,35 +93,20 @@ namespace Flexagonator {
 
     // apply a flex without adding it to the history list
     private rawApplyFlex(flexStr: string): boolean | FlexError {
-      const last = flexStr[flexStr.length - 1];
-      const generate = (last === '+') || (last === '*');
-      const apply = (last !== '+');
+      const flexName = makeFlexName(flexStr);
+      const lookup = flexName.lookupName;
 
-      const flexName = generate ? flexStr.substring(0, flexStr.length - 1) : flexStr;
-      if (this.allFlexes[flexName] === undefined) {
-        return { reason: FlexCode.UnknownFlex, flexName: flexName };
+      if (this.allFlexes[lookup] === undefined) {
+        return { reason: FlexCode.UnknownFlex, flexName: lookup };
       }
 
-      const input = generate ? this.allFlexes[flexName].createPattern(this.flexagon) : this.flexagon;
-      const result = apply ? this.allFlexes[flexName].apply(input) : input;
+      const input = flexName.shouldGenerate ? this.allFlexes[lookup].createPattern(this.flexagon) : this.flexagon;
+      const result = flexName.shouldApply ? this.allFlexes[lookup].apply(input) : input;
       if (isFlexError(result)) {
-        return { reason: FlexCode.CantApplyFlex, flexName: flexName };
+        return { reason: FlexCode.CantApplyFlex, flexName: lookup };
       }
       this.flexagon = result;
       return true;
-    }
-
-    private getInverseName(flex: string): string {
-      const last = flex[flex.length - 1];
-      if (last === "*" || last === "+") {
-        const subname = flex.substr(0, flex.length - 1);
-        const invertSubname = this.getInverseName(subname);
-        return invertSubname + last;
-      } else if (last === "'") {
-        return flex.substr(0, flex.length - 1);
-      } else {
-        return flex + "'";
-      }
     }
 
     setFaceLabel(label: string, front: boolean) {
