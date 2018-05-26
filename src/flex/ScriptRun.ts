@@ -108,7 +108,9 @@ namespace Flexagonator {
       var flexes: Flexes = {};
       for (var f of flexNames) {
         const flex = fm.allFlexes[f];
-        flexes[f] = flex;
+        if (flex !== undefined) {
+          flexes[f] = flex;
+        }
       }
       fm.flexesToSearch = flexes;
     }

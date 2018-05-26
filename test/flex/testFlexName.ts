@@ -44,4 +44,14 @@ namespace Flexagonator {
     });
   });
 
+  describe('getUniqueFlexes', () => {
+    it('should return just the unique names', () => {
+      const result = getUniqueFlexes("S S' S* > S+ S'* Lt P*", true);
+      expect(result.length).toBe(4);
+      expect(result[0]).toBe("S");
+      expect(result[1]).toBe("S'");
+      expect(result[2]).toBe("Lt");
+      expect(result[3]).toBe("P");
+    });
+  });
 }

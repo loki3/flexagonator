@@ -63,7 +63,24 @@ namespace Flexagonator {
     getInverse(): FlexName {
       return new FlexName(this.justName, !this.isInverse, this.shouldGenerate, this.shouldApply);
     }
+  }
 
+
+  // get a list of all the unique flex names (ingoring * and +, but including ')
+  // and optionally excluding ><^
+  export function getUniqueFlexes(flexStr: string, excludeRotates: boolean): string[] {
+    var result: string[] = [];
+    const names: string[] = flexStr.split(" ");
+    for (var name of names) {
+      const lookup = makeFlexName(name).lookupName;
+      if (excludeRotates && (lookup == '>' || lookup == '>' || lookup == '^')) {
+        continue;
+      }
+      if (result.find(x => (x === lookup)) === undefined) {
+        result.push(lookup);
+      }
+    }
+    return result;
   }
 
 }

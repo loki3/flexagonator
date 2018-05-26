@@ -12,6 +12,7 @@
     function makeNew(sequence) {
       var creator = [
         { pats: [1, 2, 3, 4, 5, 6] },
+        { searchFlexes: Flexagonator.getUniqueFlexes(sequence, true).join(" ") },
         // apply generating sequence, get back to original position, & call it the base state
         { flexes: sequence },
         { reverseFlexes: sequence },
