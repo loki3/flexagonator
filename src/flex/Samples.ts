@@ -6,12 +6,12 @@ namespace Flexagonator {
     [13, -12], [[16, -17], [14, -15]],
   ];
 
-  const hh1 = { label: "1", color: 0x0000ff };
-  const hh2 = { label: "2", color: 0x00ff00 };
-  const hh3 = { label: "3", color: 0xff0000 };
-  const hh4 = { label: "4", color: 0xffff00 };
-  const hh5 = { label: "5", color: 0xff00ff };
-  const hh6 = { label: "6", color: 0x00ffff };
+  const hh1 = { label: "1", color: 0x2E4172 };
+  const hh2 = { label: "2", color: 0x2B803E };
+  const hh3 = { label: "3", color: 0xAA4439 };
+  const hh4 = { label: "4", color: 0x622870 };
+  const hh5 = { label: "5", color: 0xffff00 };
+  const hh6 = { label: "6", color: 0x553900 };
 
   export const hexaHexaProperties: LeafProperties[] = [
     { front: hh1, back: hh4 },  // 1
