@@ -94,16 +94,16 @@ namespace Flexagonator {
     // apply a flex without adding it to the history list
     private rawApplyFlex(flexStr: string): boolean | FlexError {
       const flexName = makeFlexName(flexStr);
-      const lookup = flexName.lookupName;
+      const name = flexName.flexName;
 
-      if (this.allFlexes[lookup] === undefined) {
-        return { reason: FlexCode.UnknownFlex, flexName: lookup };
+      if (this.allFlexes[name] === undefined) {
+        return { reason: FlexCode.UnknownFlex, flexName: name };
       }
 
-      const input = flexName.shouldGenerate ? this.allFlexes[lookup].createPattern(this.flexagon) : this.flexagon;
-      const result = flexName.shouldApply ? this.allFlexes[lookup].apply(input) : input;
+      const input = flexName.shouldGenerate ? this.allFlexes[name].createPattern(this.flexagon) : this.flexagon;
+      const result = flexName.shouldApply ? this.allFlexes[name].apply(input) : input;
       if (isFlexError(result)) {
-        return { reason: FlexCode.CantApplyFlex, flexName: lookup };
+        return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
       this.flexagon = result;
       return true;

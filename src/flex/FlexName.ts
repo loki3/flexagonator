@@ -6,25 +6,25 @@ namespace Flexagonator {
     const shouldApply = (last !== '+');
 
     var isInverse: boolean;
-    var justName: string;
+    var baseName: string;
     if (shouldGenerate) {
       const next = fullName[fullName.length - 2];
       isInverse = (next === "'");
       if (isInverse) {
-        justName = fullName.substring(0, fullName.length - 2);
+        baseName = fullName.substring(0, fullName.length - 2);
       } else {
-        justName = fullName.substring(0, fullName.length - 1);
+        baseName = fullName.substring(0, fullName.length - 1);
       }
     } else {
       isInverse = (last === "'");
       if (isInverse) {
-        justName = fullName.substring(0, fullName.length - 1);
+        baseName = fullName.substring(0, fullName.length - 1);
       } else {
-        justName = fullName;
+        baseName = fullName;
       }
     }
 
-    return new FlexName(justName, isInverse, shouldGenerate, shouldApply);
+    return new FlexName(baseName, isInverse, shouldGenerate, shouldApply);
   }
 
   // can interpret a string representing a flex, whether it's an inverse, etc.
@@ -32,25 +32,25 @@ namespace Flexagonator {
   // +  generate necessary structure but don't apply
   // *  generate necessary structure and apply
   export class FlexName {
-    readonly fullName: string;        // e.g. S'*
-    readonly justName: string;        // e.g. S
-    readonly lookupName: string;      // e.g. S'
+    readonly fullName: string;      // e.g. S'*
+    readonly baseName: string;      // e.g. S
+    readonly flexName: string;      // e.g. S'
     readonly isInverse: boolean;
     readonly shouldGenerate: boolean;
     readonly shouldApply: boolean;
 
-    constructor(justName: string, isInverse: boolean, shouldGenerate: boolean, shouldApply: boolean) {
-      this.justName = justName;
+    constructor(baseName: string, isInverse: boolean, shouldGenerate: boolean, shouldApply: boolean) {
+      this.baseName = baseName;
       this.isInverse = isInverse;
       this.shouldGenerate = shouldGenerate;
       this.shouldApply = shouldApply;
 
-      this.lookupName = this.justName;
+      this.flexName = this.baseName;
       if (this.isInverse) {
-        this.lookupName += "'";
+        this.flexName += "'";
       }
 
-      this.fullName = this.lookupName;
+      this.fullName = this.flexName;
       if (this.shouldGenerate) {
         if (this.shouldApply) {
           this.fullName += "*";
@@ -61,7 +61,7 @@ namespace Flexagonator {
     }
 
     getInverse(): FlexName {
-      return new FlexName(this.justName, !this.isInverse, this.shouldGenerate, this.shouldApply);
+      return new FlexName(this.baseName, !this.isInverse, this.shouldGenerate, this.shouldApply);
     }
   }
 
@@ -72,12 +72,12 @@ namespace Flexagonator {
     var result: string[] = [];
     const names: string[] = flexStr.split(" ");
     for (var name of names) {
-      const lookup = makeFlexName(name).lookupName;
-      if (excludeRotates && (lookup == '<' || lookup == '>' || lookup == '^')) {
+      const flexName = makeFlexName(name).flexName;
+      if (excludeRotates && (flexName == '<' || flexName == '>' || flexName == '^')) {
         continue;
       }
-      if (result.find(x => (x === lookup)) === undefined) {
-        result.push(lookup);
+      if (result.find(x => (x === flexName)) === undefined) {
+        result.push(flexName);
       }
     }
     return result;
