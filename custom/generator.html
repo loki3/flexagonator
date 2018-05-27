@@ -45,6 +45,7 @@
         var history = fm.getFlexHistory().join(' ');
         historyBox.value = history;
       }
+      reportAvailable();
     }
 
     function reportError(error) {
@@ -59,6 +60,18 @@
       var div = document.getElementById('error');
       if (div !== null) {
         div.innerHTML = "";
+      }
+    }
+
+    function reportAvailable() {
+      var availableDiv = document.getElementById('available');
+      if (availableDiv !== null) {
+        var str = "";
+        for (var f in fm.allFlexes) {
+          str += f.toString() + " ";
+        }
+        var available = "available flexes: " + str;
+        availableDiv.innerHTML = available;
       }
     }
 
@@ -122,6 +135,7 @@
       <label>enter generator for new flexagon:</label>
       <input onkeypress="generate(event.charCode, event.srcElement.value)" size="70" />
     </div>
+    <div id="available"></div>
     <div id="error"></div>
   </p>
 
