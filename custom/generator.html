@@ -4,14 +4,15 @@
   <title>generator</title>
   <script src="../build/out.js"></script>
   <script type="text/javascript">
-    var flexagon = Flexagonator.makeFlexagon([1, 2, 3, 4, 5, 6]);
+    var patCount = 6;
+    var flexagon = Flexagonator.makeFlexagon(getSimplePats(patCount));
     var fm = Flexagonator.makeFlexagonManager(flexagon);
     makeNew("");
     var buttons = null;
 
     function makeNew(sequence) {
       var creator = [
-        { pats: [1, 2, 3, 4, 5, 6] },
+        { pats: getSimplePats(patCount) },
         { searchFlexes: Flexagonator.getUniqueFlexes(sequence, true).join(" ") },
         // apply generating sequence, get back to original position, & call it the base state
         { flexes: sequence },
@@ -75,6 +76,14 @@
       }
     }
 
+    function getSimplePats(patCount) {
+      var array = [];
+      for (var i = 1; i <= patCount; i++) {
+        array.push(i);
+      }
+      return array;
+    }
+
     function generate(key, sequence) {
       if (key == 13) {
         if (makeNew(sequence)) {
@@ -124,6 +133,12 @@
         }
       }
     }
+
+    function newPatCount(newCount) {
+      patCount = newCount;
+      makeNew("");
+      updateUI()
+    }
   </script>
 </head>
 
@@ -131,11 +146,25 @@
   <h1>Flexagonator: generators</h1>
 
   <p>
+    number of pats:
+    <select onchange="newPatCount(event.srcElement.value)">
+      <option value=4>4</option>
+      <option value=5>5</option>
+      <option value=6 selected>6</option>
+      <option value=7>7</option>
+      <option value=8>8</option>
+      <option value=9>9</option>
+      <option value=10>10</option>
+      <option value=12>12</option>
+    </select>
+    <div id="available"></div>
+  </p>
+
+  <p>
     <div>
       <label>enter generator for new flexagon:</label>
       <input onkeypress="generate(event.charCode, event.srcElement.value)" size="70" />
     </div>
-    <div id="available"></div>
     <div id="error"></div>
   </p>
 
