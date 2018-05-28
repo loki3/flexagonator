@@ -2,12 +2,9 @@ namespace Flexagonator {
 
   describe('Tracker', () => {
     it('should track flexagons seen before', () => {
-      const tracker = new Tracker();
-      expect(tracker.getTotalStates()).toBe(0);
-
       // add first flexagon
       const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
-      expect(tracker.findMaybeAdd(flexagon)).toBe(null);
+      const tracker = new Tracker(flexagon);
       expect(tracker.getTotalStates()).toBe(1);
 
       // add same one again
@@ -30,12 +27,10 @@ namespace Flexagonator {
 
   describe('Tracker', () => {
     it('should track flexagons that are rotated & flipped', () => {
-      const tracker = new Tracker();
-      expect(tracker.getTotalStates()).toBe(0);
-
       // add first flexagon
       const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
-      expect(tracker.findMaybeAdd(flexagon)).toBe(null);
+      const tracker = new Tracker(flexagon);
+      expect(tracker.findMaybeAdd(flexagon)).toBe(0);
       expect(tracker.getTotalStates()).toBe(1);
 
       // add rotated version

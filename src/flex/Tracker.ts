@@ -4,6 +4,10 @@ namespace Flexagonator {
   export class Tracker {
     private outsides: Outside[] = [];
 
+    constructor(flexagon: Flexagon) {
+      this.findMaybeAdd(flexagon);
+    }
+
     getTotalStates(): number {
       return this.outsides.length;
     }
