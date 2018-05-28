@@ -32,7 +32,7 @@ namespace Flexagonator {
       this.angleClock = 60;
       this.setIsosceles();
       this.tracker = new Tracker(flexagon);
-      this.history = new History(flexagon, this.tracker);
+      this.history = new History(flexagon, this.tracker.getCopy());
     }
 
     // possibly flip the flexagon and rotate 'rightSteps',
@@ -112,8 +112,7 @@ namespace Flexagonator {
         // whenever we add new structure, start tracking over again
         this.tracker = new Tracker(result);
       } else {
-        const i = this.tracker.findMaybeAdd(result);
-        console.log("total: " + this.tracker.getTotalStates() + "   current: " + i);
+        this.tracker.findMaybeAdd(result);
       }
 
       this.flexagon = result;
@@ -190,22 +189,33 @@ namespace Flexagonator {
       return this.history.getStart().flexagon;
     }
 
+    // get the total number of states this flexagon has been flexed through
+    getTotalStates(): number {
+      return this.tracker.getTotalStates();
+    }
+
+    // out of the all the states this flexagon has been in, get which state we're in currently
+    // (0-based)
+    getCurrentState(): number {
+      return this.tracker.getCurrentState();
+    }
+
     undoAll() {
       this.history.undoAll();
       this.flexagon = this.history.getCurrent().flexagon;
-      this.tracker = this.history.getCurrent().tracker;
+      this.tracker = this.history.getCurrent().tracker.getCopy();
     }
 
     undo() {
       this.history.undo();
       this.flexagon = this.history.getCurrent().flexagon;
-      this.tracker = this.history.getCurrent().tracker;
+      this.tracker = this.history.getCurrent().tracker.getCopy();
     }
 
     redo() {
       this.history.redo();
       this.flexagon = this.history.getCurrent().flexagon;
-      this.tracker = this.history.getCurrent().tracker;
+      this.tracker = this.history.getCurrent().tracker.getCopy();
     }
 
     clearHistory() {

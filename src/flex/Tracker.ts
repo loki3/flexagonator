@@ -3,6 +3,7 @@ namespace Flexagonator {
   // tracks flexagons we've seen before
   export class Tracker {
     private outsides: Outside[] = [];
+    private current: number = 0;  // 0-based index into outsides
 
     constructor(flexagon: Flexagon) {
       this.findMaybeAdd(flexagon);
@@ -12,12 +13,17 @@ namespace Flexagonator {
       return this.outsides.length;
     }
 
+    getCurrentState(): number {
+      return this.current;
+    }
+
     getCopy(): Tracker {
       // a temporary flexagon that gets replaced by a shallow copy
       // of this object's state (since its members are immutable)
       const temp = makeFlexagon([1, 2]) as Flexagon;
       const other = new Tracker(temp);
       other.outsides = this.outsides.map(x => x);
+      other.current = this.current;
       return other;
     }
 
@@ -27,9 +33,11 @@ namespace Flexagonator {
       const outside = new Outside(flexagon.getTopIds(), flexagon.getBottomIds());
       const i = this.getIndex(outside);
       if (i !== null) {
+        this.current = i;
         return i;
       }
       this.outsides.push(outside);
+      this.current = this.outsides.length - 1;
       return null;
     }
 
