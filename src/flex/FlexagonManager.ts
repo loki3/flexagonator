@@ -20,6 +20,7 @@ namespace Flexagonator {
     flexesToSearch: Flexes;
     private angleCenter: number;
     private angleClock: number;
+    private tracker: Tracker;
     private readonly history: History;
 
     constructor(flexagon: Flexagon, leafProps?: LeafProperties[]) {
@@ -30,7 +31,8 @@ namespace Flexagonator {
       this.angleCenter = 60;
       this.angleClock = 60;
       this.setIsosceles();
-      this.history = new History(flexagon);
+      this.tracker = new Tracker(flexagon);
+      this.history = new History(flexagon, this.tracker);
     }
 
     // possibly flip the flexagon and rotate 'rightSteps',
@@ -54,7 +56,7 @@ namespace Flexagonator {
       if (isFlexError(result)) {
         return result;
       }
-      this.history.add([flexStr], this.flexagon);
+      this.history.add([flexStr], this.flexagon, this.tracker.getCopy());
       return true;
     }
 
@@ -72,7 +74,7 @@ namespace Flexagonator {
         }
       }
       if (!separatelyUndoable) {
-        this.history.add(flexNames, this.flexagon);
+        this.history.add(flexNames, this.flexagon, this.tracker.getCopy());
       }
       return true;
     }
@@ -105,6 +107,15 @@ namespace Flexagonator {
       if (isFlexError(result)) {
         return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
+
+      if (flexName.shouldGenerate && this.flexagon.getLeafCount() !== result.getLeafCount()) {
+        // whenever we add new structure, start tracking over again
+        this.tracker = new Tracker(result);
+      } else {
+        const i = this.tracker.findMaybeAdd(result);
+        console.log("total: " + this.tracker.getTotalStates() + "   current: " + i);
+      }
+
       this.flexagon = result;
       return true;
     }
@@ -182,20 +193,24 @@ namespace Flexagonator {
     undoAll() {
       this.history.undoAll();
       this.flexagon = this.history.getCurrent().flexagon;
+      this.tracker = this.history.getCurrent().tracker;
     }
 
     undo() {
       this.history.undo();
       this.flexagon = this.history.getCurrent().flexagon;
+      this.tracker = this.history.getCurrent().tracker;
     }
 
     redo() {
       this.history.redo();
       this.flexagon = this.history.getCurrent().flexagon;
+      this.tracker = this.history.getCurrent().tracker;
     }
 
     clearHistory() {
-      this.history.clear(this.flexagon);
+      this.tracker = new Tracker(this.flexagon);
+      this.history.clear(this.flexagon, this.tracker);
     }
   }
 }

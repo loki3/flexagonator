@@ -12,6 +12,15 @@ namespace Flexagonator {
       return this.outsides.length;
     }
 
+    getCopy(): Tracker {
+      // a temporary flexagon that gets replaced by a shallow copy
+      // of this object's state (since its members are immutable)
+      const temp = makeFlexagon([1, 2]) as Flexagon;
+      const other = new Tracker(temp);
+      other.outsides = this.outsides.map(x => x);
+      return other;
+    }
+
     // if we've seen this flexagon before, return which one,
     // else add it to our list and return null
     findMaybeAdd(flexagon: Flexagon): number | null {

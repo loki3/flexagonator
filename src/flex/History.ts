@@ -3,6 +3,7 @@ namespace Flexagonator {
   interface HistoryItem {
     readonly flexes: string[];
     readonly flexagon: Flexagon;
+    readonly tracker: Tracker;
   }
 
   /*
@@ -13,8 +14,8 @@ namespace Flexagonator {
     private done: HistoryItem[] = [];
     private undone: HistoryItem[] = [];
 
-    constructor(original: Flexagon) {
-      this.done.push({ flexes: [], flexagon: original });
+    constructor(original: Flexagon, tracker: Tracker) {
+      this.done.push({ flexes: [], flexagon: original, tracker: tracker });
     }
 
     getCurrent(): HistoryItem {
@@ -25,7 +26,7 @@ namespace Flexagonator {
       return this.done[0];
     }
 
-    add(newFlexes: string[], newflexagon: Flexagon) {
+    add(newFlexes: string[], newflexagon: Flexagon, tracker: Tracker) {
       var allflexes = [];
       // copy old list across
       for (var flex of this.getCurrent().flexes) {
@@ -47,7 +48,7 @@ namespace Flexagonator {
         allflexes.push(flex);
       }
 
-      this.done.push({ flexes: allflexes, flexagon: newflexagon });
+      this.done.push({ flexes: allflexes, flexagon: newflexagon, tracker: tracker });
       this.undone = [];
     }
 
@@ -78,10 +79,10 @@ namespace Flexagonator {
       }
     }
 
-    clear(original: Flexagon) {
+    clear(original: Flexagon, tracker: Tracker) {
       this.done = [];
       this.undone = [];
-      this.done.push({ flexes: [], flexagon: original });
+      this.done.push({ flexes: [], flexagon: original, tracker: tracker });
     }
   }
 

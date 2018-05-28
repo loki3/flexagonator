@@ -3,17 +3,18 @@ namespace Flexagonator {
   describe('History.add', () => {
     it('should add new items to history', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+      const tracker = new Tracker(flexagon);
 
-      const history: History = new History(flexagon);
+      const history: History = new History(flexagon, tracker);
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["S"], flexagon);
+      history.add(["S"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(1);
       expect(history.getCurrent().flexes[0]).toBe("S");
 
-      history.add(["T"], flexagon);
+      history.add(["T"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
       expect(history.getCurrent().flexes[0]).toBe("S");
@@ -24,18 +25,19 @@ namespace Flexagonator {
   describe('History.add2', () => {
     it('should add multiple items to history', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+      const tracker = new Tracker(flexagon);
 
-      const history: History = new History(flexagon);
+      const history: History = new History(flexagon, tracker);
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["S", "P"], flexagon);
+      history.add(["S", "P"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
       expect(history.getCurrent().flexes[0]).toBe("S");
       expect(history.getCurrent().flexes[1]).toBe("P");
 
-      history.add(["T", "F"], flexagon);
+      history.add(["T", "F"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
       expect(history.getCurrent().flexes[0]).toBe("S");
@@ -48,13 +50,14 @@ namespace Flexagonator {
   describe('History.add3', () => {
     it('should consolidate unneeded rotates', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+      const tracker = new Tracker(flexagon);
 
-      const history: History = new History(flexagon);
+      const history: History = new History(flexagon, tracker);
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["S", ">", ">", ">"], flexagon);
-      history.add(["<", "<", "P", "<"], flexagon);
+      history.add(["S", ">", ">", ">"], flexagon, tracker);
+      history.add(["<", "<", "P", "<"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
       expect(history.getCurrent().flexes[0]).toBe("S");
@@ -67,10 +70,11 @@ namespace Flexagonator {
   describe('History.undo', () => {
     it('should undo items in the history', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+      const tracker = new Tracker(flexagon);
 
-      const history: History = new History(flexagon);
-      history.add(["S"], flexagon);
-      history.add(["T"], flexagon);
+      const history: History = new History(flexagon, tracker);
+      history.add(["S"], flexagon, tracker);
+      history.add(["T"], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
 
       history.undo();
@@ -88,11 +92,12 @@ namespace Flexagonator {
   describe('History.undoAll', () => {
     it('should undo everything back to the original state', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+      const tracker = new Tracker(flexagon);
 
-      const history: History = new History(flexagon);
-      history.add(["S"], flexagon);
-      history.add(["T"], flexagon);
-      history.add(["P"], flexagon);
+      const history: History = new History(flexagon, tracker);
+      history.add(["S"], flexagon, tracker);
+      history.add(["T"], flexagon, tracker);
+      history.add(["P"], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(3);
 
       history.undoAll();
@@ -104,10 +109,11 @@ namespace Flexagonator {
   describe('History.redo', () => {
     it('should redo items that had been undone', () => {
       const flexagon: Flexagon = makeFlexagon([1, 2]) as Flexagon;
+      const tracker = new Tracker(flexagon);
 
-      const history: History = new History(flexagon);
-      history.add(["S"], flexagon);
-      history.add(["T"], flexagon);
+      const history: History = new History(flexagon, tracker);
+      history.add(["S"], flexagon, tracker);
+      history.add(["T"], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
       expect(history.canRedo()).toBe(false);
       history.undo();
