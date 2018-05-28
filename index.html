@@ -20,6 +20,12 @@
         historyBox.value = history;
       }
 
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        var str = "in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates();
+        statusDiv.innerHTML = str;
+      }
+
       var scriptDiv = document.getElementById('script');
       if (scriptDiv !== null) {
         scriptDiv.innerHTML = "";
@@ -288,7 +294,7 @@
 
   <canvas id="interface" width="700" height="400"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
-  <br/>
+  <div id="status"></div>
   <canvas id="unfolded" width="800" height="600"></canvas>
 
   <p>
