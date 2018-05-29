@@ -41,6 +41,12 @@
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        var str = "in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates();
+        statusDiv.innerHTML = str;
+      }
+
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {
         var history = fm.getFlexHistory().join(' ');
@@ -170,6 +176,7 @@
 
   <canvas id="interface" width="800" height="500"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
+  <div id="status"></div>
 
   <p>
     <div>
