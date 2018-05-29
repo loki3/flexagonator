@@ -220,7 +220,7 @@ namespace Flexagonator {
 
     clearHistory() {
       this.tracker = new Tracker(this.flexagon);
-      this.history.clear(this.flexagon, this.tracker);
+      this.history.clear(this.flexagon, this.tracker.getCopy());
     }
   }
 }
