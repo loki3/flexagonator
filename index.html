@@ -195,7 +195,7 @@
 
   <p>
     base flexagon:
-    <select onchange="newFlexagons(event.srcElement.value)">
+    <select onchange="newFlexagons(event.target.value)">
       <option value="4">tetra</option>
       <option value="5">penta</option>
       <option value="6">hexa</option>
@@ -206,7 +206,7 @@
       <option value="10">deca</option>
       <option value="12">dodeca</option>
     </select> &nbsp;&nbsp;&nbsp; angles:
-    <select onchange="setAngle(event.srcElement.value)" id="setAngle">
+    <select onchange="setAngle(event.target.value)" id="setAngle">
       <option value="iso" selected>isosceles</option>
       <option value="60-60-60">60-60-60</option>
       <option value="60-30-90">6: 60-30-90</option>
@@ -215,7 +215,7 @@
       <option value="36-54-90">10: 36-54-90</option>
       <option value="30-60-90">12: 30-60-90</option>
     </select> &nbsp;&nbsp;&nbsp; set face:
-    <select onchange="setFace(event.srcElement.value, false)">
+    <select onchange="setFace(event.target.value, false)">
       <option value="" selected></option>
       <option value="1">1: blue</option>
       <option value="2">2: green</option>
@@ -226,7 +226,7 @@
       <option value="7">7: light grey</option>
       <option value="8">8: dark grey</option>
     </select> &nbsp;&nbsp;&nbsp; change unset leaves:
-    <select onchange="setFace(event.srcElement.value, true)">
+    <select onchange="setFace(event.target.value, true)">
       <option value="" selected></option>
       <option value="1">1: blue</option>
       <option value="2">2: green</option>
@@ -283,7 +283,7 @@
   <p>
     <div>
       <label>enter flex sequence</label>
-      <input onkeypress="applySequence(event.charCode, event.srcElement.value)" id="enterFlexes" size="75" spellcheck="false" />
+      <input onkeypress="applySequence(event.charCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false" />
     </div>
   </p>
   <p>

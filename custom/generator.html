@@ -154,7 +154,7 @@
 
   <p>
     number of pats:
-    <select onchange="newPatCount(event.srcElement.value)">
+    <select onchange="newPatCount(event.target.value)">
       <option value=4>4</option>
       <option value=5>5</option>
       <option value=6 selected>6</option>
@@ -170,7 +170,7 @@
   <p>
     <div>
       <label>enter generator for new flexagon:</label>
-      <input onkeypress="generate(event.charCode, event.srcElement.value)" size="70" />
+      <input onkeypress="generate(event.charCode, event.target.value)" size="70" />
     </div>
     <div id="error"></div>
   </p>
@@ -182,7 +182,7 @@
   <p>
     <div>
       <label>enter flex sequence</label>
-      <input onkeypress="applySequence(event.charCode, event.srcElement.value)" size="75" />
+      <input onkeypress="applySequence(event.charCode, event.target.value)" size="75" />
     </div>
   </p>
   <p>
