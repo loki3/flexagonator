@@ -1,0 +1,85 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>Flexagon Explorer</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
+    var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
+    var cancelled = false;
+
+    function runScript() {
+      statusMessage("error parsing script");
+      var scriptBox = document.getElementById('script');
+      if (scriptBox !== null) {
+        var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+        if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+          var str = Flexagonator.errorToString(result);
+          statusMessage(str);
+        } else {
+          fm = result;
+          statusMessage("script successful");
+        }
+      }
+    }
+
+    function startExplore() {
+      cancelled = false;
+      var explorer = new Flexagonator.Explore(fm.flexagon, fm.allFlexes);
+      explore(explorer);
+    }
+
+    function explore(explorer) {
+      if (cancelled) {
+        statusMessage("CANCELLED after " + explorer.getTotalStates() + " states");
+        return;
+      }
+      while (explorer.checkNext()) {
+        if (explorer.getExploredStates() % 20 == 0) {
+          var str = "explored " + explorer.getExploredStates() + " states, found " + explorer.getTotalStates() + " states";
+          statusMessage(str);
+          setTimeout(explore, 0, explorer);
+          return;
+        }
+      }
+
+      var str = "DONE: found " + explorer.getTotalStates() + " states";
+      statusMessage(str);
+    }
+
+    function cancel() {
+      cancelled = true;
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        statusDiv.innerHTML = message;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Flexagon Explorer</h1>
+
+  <p>
+    Run a script to describe a flexagon, then explore all the states of that flexagon.
+  </p>
+
+  <p>
+    <input onclick="runScript();" type="button" value="run script" />
+    <br />
+    <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
+  </p>
+
+  <div id="status"></div>
+
+  <p>
+    <input onclick="startExplore();" type="button" value="explore" />
+    <input onclick="cancel();" type="button" value="cancel" />
+  </p>
+</body>
+
+</html>
