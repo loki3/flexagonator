@@ -26,7 +26,7 @@
 
     function startExplore() {
       cancelled = false;
-      var explorer = new Flexagonator.Explore(fm.flexagon, fm.allFlexes);
+      var explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
       explore(explorer);
     }
 

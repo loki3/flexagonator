@@ -12,10 +12,10 @@ namespace Flexagonator {
     private tracker: Tracker;
     private current: number;
 
-    constructor(flexagon: Flexagon, flexes: Flexes) {
+    constructor(flexagon: Flexagon, flexes: Flexes, right: Flex, over: Flex) {
       // initialize flexes
-      this.right = flexes['>'];
-      this.over = flexes['^'];
+      this.right = right;
+      this.over = over;
       this.flexes = {};
       for (var f in flexes) {
         if (f !== '>' && f !== '<' && f !== '^') {
