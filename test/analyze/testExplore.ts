@@ -17,14 +17,14 @@ namespace Flexagonator {
 
       // step
       expect(explore.checkNext()).toBeTruthy();
-      expect(explore.getTotalStates()).toBe(8);
+      expect(explore.getTotalStates()).toBe(7);
       expect(explore.getExploredStates()).toBe(1);
 
       // keep going till done
       while (explore.checkNext()) {
       }
-      expect(explore.getTotalStates()).toBe(21);
-      expect(explore.getExploredStates()).toBe(21);
+      expect(explore.getTotalStates()).toBe(15);
+      expect(explore.getExploredStates()).toBe(15);
     });
   });
 

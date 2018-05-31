@@ -45,4 +45,18 @@ namespace Flexagonator {
     });
   });
 
+  describe('Tracker', () => {
+    it('should choose positive numbers over negative', () => {
+      // add first flexagon
+      const flexagon = makeFlexagon([1, 2, 3, 4]) as Flexagon;
+      const tracker = new Tracker(flexagon);
+      expect(tracker.findMaybeAdd(flexagon)).toBe(0);
+      expect(tracker.getTotalStates()).toBe(1);
+
+      const other = makeFlexagon([-1, -4, -3, -2]) as Flexagon;
+      expect(tracker.findMaybeAdd(other)).toBe(0);
+      expect(tracker.getTotalStates()).toBe(1);
+    });
+  });
+
 }

@@ -99,7 +99,7 @@ namespace Flexagonator {
           onTop = true;
         }
         const theBottom = Math.abs(bottom[i]);
-        if (lowest === null || theBottom < lowest) {
+        if (lowest === null || theBottom < lowest || (theBottom == lowest && bottom[i] > 0)) {
           lowest = theBottom;
           index = i;
           onTop = false;
