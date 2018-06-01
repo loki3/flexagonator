@@ -12,22 +12,25 @@
     function runScript() {
       statusMessage("error parsing script");
       var scriptBox = document.getElementById('script');
-      if (scriptBox !== null) {
-        var result = Flexagonator.RunScriptString(fm, scriptBox.value);
-        if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
-          var str = Flexagonator.errorToString(result);
-          statusMessage(str);
-        } else {
-          fm = result;
-          statusMessage("script successful");
-        }
+      if (scriptBox === null) {
+        return false;
       }
+      var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+      if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+        var str = Flexagonator.errorToString(result);
+        statusMessage(str);
+        return false;
+      }
+      fm = result;
+      return true;
     }
 
     function startExplore() {
-      cancelled = false;
-      var explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
-      explore(explorer);
+      if (runScript()) {
+        cancelled = false;
+        var explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
+        explore(explorer);
+      }
     }
 
     function explore(explorer) {
@@ -95,8 +98,6 @@
   </p>
 
   <p>
-    <input onclick="runScript();" type="button" value="run script" />
-    <br />
     <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
   </p>
 
