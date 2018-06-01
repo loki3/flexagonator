@@ -27,6 +27,19 @@ namespace Flexagonator {
       return other;
     }
 
+    // return [[front, back], [front, back], ...]
+    getSides(): any[] {
+      var result: any[] = [];
+      for (var outside of this.outsides) {
+        var flexagon = [];
+        for (var i = 0; i < outside.top.length; i++) {
+          flexagon.push([outside.top[i], outside.bottom[i]]);
+        }
+        result.push(flexagon);
+      }
+      return result;
+    }
+
     // if we've seen this flexagon before, return which one,
     // else add it to our list and return null
     findMaybeAdd(flexagon: Flexagon): number | null {
