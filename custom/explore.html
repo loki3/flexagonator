@@ -46,6 +46,7 @@
 
       var str = "DONE: found " + explorer.getTotalStates() + " states";
       statusMessage(str);
+      showStates(explorer.getFlexagons());
     }
 
     function cancel() {
@@ -56,6 +57,18 @@
       var statusDiv = document.getElementById('status');
       if (statusDiv !== null) {
         statusDiv.innerHTML = message;
+      }
+    }
+
+    function showStates(flexagons) {
+      var statesBox = document.getElementById('states');
+      if (statesBox !== null) {
+        var str = "";
+        for (var i = 0; i < flexagons.length; i++) {
+          var tree = flexagons[i].getAsLeafTrees();
+          str += JSON.stringify(tree) + '\n';
+        }
+        statesBox.value = str;
       }
     }
   </script>
@@ -79,6 +92,10 @@
   <p>
     <input onclick="startExplore();" type="button" value="explore" />
     <input onclick="cancel();" type="button" value="cancel" />
+  </p>
+
+  <p>
+    <textarea id="states" cols="100" rows="7" spellcheck="false" readonly="true"></textarea>
   </p>
 </body>
 

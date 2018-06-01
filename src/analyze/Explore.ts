@@ -37,6 +37,10 @@ namespace Flexagonator {
       return this.current;
     }
 
+    getFlexagons(): Flexagon[] {
+      return this.flexagons;
+    }
+
     // check the next unexplored state
     // returns false once there are no more states to explore
     checkNext(): boolean {
