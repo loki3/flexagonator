@@ -19,6 +19,7 @@ namespace Flexagonator {
     getBottom(): number;
     getThickness(): number;
     getStructure(): string;
+    getString(): string;
     findId(id: number): WhereLeaf;
 
     hasPattern(pattern: LeafTree): boolean;
@@ -95,6 +96,10 @@ namespace Flexagonator {
 
     getStructure(): string {
       return '-';
+    }
+
+    getString(): string {
+      return this.id.toString();
     }
 
     findId(id: number): WhereLeaf {
@@ -182,6 +187,10 @@ namespace Flexagonator {
 
     getStructure(): string {
       return '[' + this.left.getStructure() + ' ' + this.right.getStructure() + ']';
+    }
+
+    getString(): string {
+      return '[' + this.left.getString() + ',' + this.right.getString() + ']';
     }
 
     findId(id: number): WhereLeaf {
