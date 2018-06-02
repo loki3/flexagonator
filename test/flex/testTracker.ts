@@ -46,7 +46,7 @@ namespace Flexagonator {
   });
 
   describe('Tracker', () => {
-    it('should choose positive numbers over negative', () => {
+    it("should handle a flexagon that's been turned over", () => {
       // add first flexagon
       const flexagon = makeFlexagon([1, 2, 3, 4]) as Flexagon;
       const tracker = new Tracker(flexagon);
@@ -58,5 +58,22 @@ namespace Flexagonator {
       expect(tracker.getTotalStates()).toBe(1);
     });
   });
+
+  /*
+  describe('Tracker', () => {
+    it("should examine a flexagon's innards", () => {
+      // add first flexagon
+      const flexagon = makeFlexagon([1, [[2, [3, 4]], 5], 6, 7]) as Flexagon;
+      const tracker = new Tracker(flexagon);
+      expect(tracker.findMaybeAdd(flexagon)).toBe(0);
+      expect(tracker.getTotalStates()).toBe(1);
+
+      // top & bottom leaves are the same, but the insides are different
+      const other = makeFlexagon([1, [[2, [4, 3]], 5], 6, 7]) as Flexagon;
+      expect(tracker.findMaybeAdd(other)).toBe(null);
+      expect(tracker.getTotalStates()).toBe(2);
+    });
+  });
+  */
 
 }
