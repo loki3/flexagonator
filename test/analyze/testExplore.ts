@@ -22,8 +22,8 @@ namespace Flexagonator {
       // keep going till done
       while (explore.checkNext()) {
       }
-      expect(explore.getTotalStates()).toBe(15);
-      expect(explore.getExploredStates()).toBe(15);
+      expect(explore.getTotalStates()).toBe(21);
+      expect(explore.getExploredStates()).toBe(21);
     });
   });
 
