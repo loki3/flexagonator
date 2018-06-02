@@ -39,7 +39,7 @@
         return;
       }
       while (explorer.checkNext()) {
-        if (explorer.getExploredStates() % 20 == 0) {
+        if (explorer.getExploredStates() % 50 == 0) {
           var str = "explored " + explorer.getExploredStates() + " states, found " + explorer.getTotalStates() + " states";
           statusMessage(str);
           setTimeout(explore, 0, explorer);
