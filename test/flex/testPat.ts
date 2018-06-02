@@ -82,6 +82,15 @@ namespace Flexagonator {
     });
   });
 
+  describe('findId', () => {
+    it('should describe how/if a given id occurs in a pat', () => {
+      const pat = makePat([[-12, [-2, [-11, 7]]], 9]) as Pat;
+      expect(pat.findId(1)).toBe(WhereLeaf.NotFound);
+      expect(pat.findId(7)).toBe(WhereLeaf.Found);
+      expect(pat.findId(2)).toBe(WhereLeaf.FoundFlipped);
+    });
+  });
+
   describe('hasPattern', () => {
     it('should detect when pattern is present in pat', () => {
       const pat = makePat([[-1, 2], [-3, [4, -5]]]);

@@ -1,6 +1,12 @@
 "use strict"
 namespace Flexagonator {
 
+  export enum WhereLeaf {
+    NotFound,
+    Found,
+    FoundFlipped,
+  }
+
   /*
     A single pat (stack of polygons) in a flexagon
   */
@@ -13,6 +19,7 @@ namespace Flexagonator {
     getBottom(): number;
     getThickness(): number;
     getStructure(): string;
+    findId(id: number): WhereLeaf;
 
     hasPattern(pattern: LeafTree): boolean;
     // returns an array where the index is the pattern number from the input
@@ -88,6 +95,13 @@ namespace Flexagonator {
 
     getStructure(): string {
       return '-';
+    }
+
+    findId(id: number): WhereLeaf {
+      if (this.id == id) {
+        return WhereLeaf.Found;
+      }
+      return (this.id == -id) ? WhereLeaf.FoundFlipped : WhereLeaf.NotFound;
     }
 
     hasPattern(pattern: LeafTree): boolean {
@@ -168,6 +182,14 @@ namespace Flexagonator {
 
     getStructure(): string {
       return '[' + this.left.getStructure() + ' ' + this.right.getStructure() + ']';
+    }
+
+    findId(id: number): WhereLeaf {
+      const a = this.left.findId(id);
+      if (a !== WhereLeaf.NotFound) {
+        return a;
+      }
+      return this.right.findId(id);
     }
 
     hasPattern(pattern: LeafTree): boolean {
