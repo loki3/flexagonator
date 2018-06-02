@@ -2,15 +2,15 @@ namespace Flexagonator {
 
   // tracks flexagons we've seen before
   export class Tracker {
-    private outsides: Outside[] = [];
-    private current: number = 0;  // 0-based index into outsides
+    private states: State[] = [];
+    private current: number = 0;  // 0-based index into states
 
     constructor(flexagon: Flexagon) {
       this.findMaybeAdd(flexagon);
     }
 
     getTotalStates(): number {
-      return this.outsides.length;
+      return this.states.length;
     }
 
     getCurrentState(): number {
@@ -22,7 +22,7 @@ namespace Flexagonator {
       // of this object's state (since its members are immutable)
       const temp = makeFlexagon([1, 2]) as Flexagon;
       const other = new Tracker(temp);
-      other.outsides = this.outsides.map(x => x);
+      other.states = this.states.map(x => x);
       other.current = this.current;
       return other;
     }
@@ -30,22 +30,22 @@ namespace Flexagonator {
     // if we've seen this flexagon before, return which one,
     // else add it to our list and return null
     findMaybeAdd(flexagon: Flexagon): number | null {
-      const outside = new Outside(flexagon.getTopIds(), flexagon.getBottomIds());
-      const i = this.getIndex(outside);
+      const state = new State(flexagon);
+      const i = this.getIndex(state);
       if (i !== null) {
         this.current = i;
         return i;
       }
-      this.outsides.push(outside);
-      this.current = this.outsides.length - 1;
+      this.states.push(state);
+      this.current = this.states.length - 1;
       return null;
     }
 
     // returns which state we have, or null if we haven't seen it before
-    private getIndex(outside: Outside): number | null {
-      for (var i = 0; i < this.outsides.length; i++) {
-        const thisOutside = this.outsides[i];
-        if (thisOutside.isEqualTo(outside)) {
+    private getIndex(state: State): number | null {
+      for (var i = 0; i < this.states.length; i++) {
+        const thisState = this.states[i];
+        if (thisState.isEqualTo(state)) {
           return i;
         }
       }
@@ -54,14 +54,16 @@ namespace Flexagonator {
   }
 
 
-  // represents the leaves visible on the outside of a flexagon
-  // normalized, so the 1st top leaf is the lowest value
-  class Outside {
+  // represents a flexagon state in such a way that's quick to compare
+  // against others, while ignoring how it's rotated or flipped
+  class State {
     readonly top: number[];
     readonly bottom: number[];
 
-    constructor(top: number[], bottom: number[]) {
-      const where = Outside.findLowest(top, bottom);
+    constructor(flexagon: Flexagon) {
+      const top = flexagon.getTopIds();
+      const bottom = flexagon.getBottomIds();
+      const where = State.findLowest(top, bottom);
       if (where.onTop) {
         this.top = this.rotate(where.index, top);
         this.bottom = this.rotate(where.index, bottom);
@@ -72,7 +74,7 @@ namespace Flexagonator {
       }
     }
 
-    isEqualTo(other: Outside): boolean {
+    isEqualTo(other: State): boolean {
       for (var i in this.top) {
         if (this.top[i] !== other.top[i]) {
           return false;
