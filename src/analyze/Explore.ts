@@ -41,11 +41,6 @@ namespace Flexagonator {
       return this.flexagons;
     }
 
-    // 0: [[front, back], [front, back], ...], 1: [[front, back], [front, back], ...], ...
-    getSides(): any[] {
-      return this.tracker.getSides();
-    }
-
     // check the next unexplored state
     // returns false once there are no more states to explore
     checkNext(): boolean {
