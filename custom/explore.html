@@ -5,8 +5,8 @@
   <title>Flexagon Explorer</title>
   <script src="../build/out.js"></script>
   <script type="text/javascript">
-    var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
-    var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
+    var fm;
+    var explorer;
     var cancelled = false;
 
     function runScript() {
@@ -28,7 +28,7 @@
     function startExplore() {
       if (runScript()) {
         cancelled = false;
-        var explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
+        explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
         explore(explorer);
       }
     }
@@ -49,7 +49,6 @@
 
       var str = "DONE: found " + explorer.getTotalStates() + " states";
       statusMessage(str);
-      showStates(explorer.getFlexagons());
     }
 
     function cancel() {
@@ -85,14 +84,18 @@
   </p>
 
   <p>
+    <input onclick="startExplore();" type="button" value="explore" />
+    <input onclick="cancel();" type="button" value="cancel" />
+  </p>
+
+  <p>
     <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
   </p>
 
   <div id="status"></div>
 
   <p>
-    <input onclick="startExplore();" type="button" value="explore" />
-    <input onclick="cancel();" type="button" value="cancel" />
+    <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
   </p>
 
   <p>
