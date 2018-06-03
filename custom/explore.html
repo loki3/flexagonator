@@ -99,6 +99,20 @@
         box.value = str;
       }
     }
+
+    function showDotSimple(found) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        box.value = Flexagonator.DotSimple(found);
+      }
+    }
+
+    function showDotFlexes(found) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        box.value = Flexagonator.DotWithFlexes(found);
+      }
+    }
   </script>
 </head>
 
@@ -124,6 +138,8 @@
     <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
     <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
+    <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
+    <input onclick="showDotFlexes(explorer.getFoundFlexes());" type="button" value="DOT: flexes" />
   </p>
 
   <p>
