@@ -68,7 +68,19 @@
         var str = "";
         for (var i = 0; i < flexagons.length; i++) {
           var tree = flexagons[i].getAsLeafTrees();
-          str += JSON.stringify(tree) + '\n';
+          str += i.toString() + ": " + JSON.stringify(tree) + '\n';
+        }
+        box.value = str;
+      }
+    }
+
+    function showFlexes(found) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        var str = "";
+        for (var i = 0; i < found.length; i++) {
+          var s = i.toString() + ": " + Flexagonator.relativeFlexesToString(found[i]) + '\n';
+          str += s;
         }
         box.value = str;
       }
@@ -96,10 +108,11 @@
 
   <p>
     <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
+    <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
   </p>
 
   <p>
-    <textarea id="states" cols="100" rows="7" spellcheck="false" readonly="true"></textarea>
+    <textarea id="states" cols="100" rows="30" spellcheck="false" readonly="true"></textarea>
   </p>
 </body>
 
