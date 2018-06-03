@@ -8,19 +8,12 @@ namespace Flexagonator {
   // create a DOT graph of just the state-to-state transitions,
   // ignoring flexes & rotations
   export function DotSimple(allRelFlexes: RelativeFlexes[]): string {
+    const transitions = getStateToState(allRelFlexes, true/*oneway*/);
     var str = "graph {\n";
 
-    for (var i in allRelFlexes) {
-      // find all the states that can be reached from this state
-      var states: number[] = [];
-      for (var relFlex of allRelFlexes[i]) {
-        if (!states.find(x => (x === relFlex.toState))) {
-          states.push(relFlex.toState);
-        }
-      }
-
+    for (var i in transitions) {
       const thisState = Number.parseInt(i);
-      for (var state of states) {
+      for (var state of transitions[i]) {
         if (state > thisState) {
           str += "  " + i + " -- " + state.toString() + '\n';
         }
