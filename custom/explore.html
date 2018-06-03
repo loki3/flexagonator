@@ -85,6 +85,20 @@
         box.value = str;
       }
     }
+
+    function showCounts(found) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        var flexCounts = Flexagonator.countStatesThatSupportFlexes(found);
+        var str = "states that support flexes\n\n";
+        var entries = Object.entries(flexCounts);
+        for (var i = 0; i < entries.length; i++) {
+          var line = entries[i][0] + '\t' + entries[i][1] + '\n';
+          str += line;
+        }
+        box.value = str;
+      }
+    }
   </script>
 </head>
 
@@ -109,6 +123,7 @@
   <p>
     <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
+    <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
   </p>
 
   <p>
