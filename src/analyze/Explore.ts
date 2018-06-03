@@ -7,10 +7,12 @@ namespace Flexagonator {
     private readonly flexes: Flexes;  // flexes to explore with other than <>^
     private readonly right: Flex;     // >
     private readonly over: Flex;      // ^
-    // the following two collections are aligned with each other
+
+    private current: number;          // which state we're about to explore
+    // the following 3 collections are aligned with each other
     private flexagons: Flexagon[] = [];
     private tracker: Tracker;
-    private current: number;
+    private found: RelativeFlexes[] = [];
 
     constructor(flexagon: Flexagon, flexes: Flexes, right: Flex, over: Flex) {
       // initialize flexes
@@ -41,6 +43,10 @@ namespace Flexagonator {
       return this.flexagons;
     }
 
+    getFoundFlexes(): RelativeFlexes[] {
+      return this.found;
+    }
+
     // check the next unexplored state
     // returns false once there are no more states to explore
     checkNext(): boolean {
@@ -48,36 +54,41 @@ namespace Flexagonator {
         return false;
       }
 
-      // rotate & flip over, applying all flexes at each step
       var flexagon = this.flexagons[this.current];
       const count = flexagon.getPatCount();
-      this.checkAllFlexes(flexagon);
+      var found: RelativeFlexes = [];
+
+      // rotate & flip over, applying all flexes at each step
+      this.checkAllFlexes(flexagon, found, 0, false);
       for (var i = 1; i < count; i++) {
         flexagon = this.right.apply(flexagon) as Flexagon;
-        this.checkAllFlexes(flexagon);
+        this.checkAllFlexes(flexagon, found, i, false);
       }
-      flexagon = this.over.apply(flexagon) as Flexagon;
-      this.checkAllFlexes(flexagon);
+      flexagon = this.over.apply(this.flexagons[this.current]) as Flexagon;
+      this.checkAllFlexes(flexagon, found, 0, true);
       for (var i = 1; i < count; i++) {
         flexagon = this.right.apply(flexagon) as Flexagon;
-        this.checkAllFlexes(flexagon);
+        this.checkAllFlexes(flexagon, found, i, true);
       }
 
+      this.found[this.current] = found;
       this.current++;
       return true;
     }
 
     // apply every flex at the current vertex,
     // every time we find a new state, track it
-    private checkAllFlexes(flexagon: Flexagon) {
+    private checkAllFlexes(flexagon: Flexagon, found: RelativeFlexes, rights: number, over: boolean) {
       for (var f in this.flexes) {
         const newFlexagon = this.flexes[f].apply(flexagon);
         if (!isFlexError(newFlexagon)) {
-          const result = this.tracker.findMaybeAdd(newFlexagon);
+          var result = this.tracker.findMaybeAdd(newFlexagon);
           if (result === null) {
             // we have a new state
             this.flexagons.push(newFlexagon);
+            result = this.flexagons.length - 1;
           }
+          found.push(new RelativeFlex(rights, over, f, result));
         }
       }
     }
