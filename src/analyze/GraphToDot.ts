@@ -50,15 +50,27 @@ namespace Flexagonator {
     for (var i in transitions) {
       for (var state of transitions[i]) {
         str += "  " + i + connect + state.state;
-        if (props[state.flex]) {
-          str += " [" + props[state.flex] + "]";
-        }
+        str += getProps(state.flex, props);
         str += '\n';
       }
     }
 
     str += "}";
     return str;
+  }
+
+  // lookup props either for the given name if it exists, or the base name,
+  // e.g. if S' is passed, we'll try S if S' doesn't exist
+  function getProps(flex: string, props: FlexDotProps): string {
+    if (props[flex]) {
+      return " [" + props[flex] + "]";
+    }
+
+    const flexname = makeFlexName(flex);
+    if (props[flexname.baseName]) {
+      return " [" + props[flexname.baseName] + "]";
+    }
+    return "";
   }
 
 }
