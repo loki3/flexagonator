@@ -37,17 +37,19 @@ namespace Flexagonator {
 
   // create a DOT graph describing which flexes you can use to get between states,
   // ignoring rotations
-  export function DotWithFlexes(allRelFlexes: RelativeFlexes[], props: FlexDotProps | undefined): string {
+  export function DotWithFlexes(allRelFlexes: RelativeFlexes[], oneway: boolean, props: FlexDotProps | undefined): string {
     if (!props) {
       props = defaultDotProps;
     }
-    const transitions = getSimpleFlexGraph(allRelFlexes, true/*oneway*/);
+    const transitions = getSimpleFlexGraph(allRelFlexes, oneway);
 
-    var str = "graph {\n";
+    var str = oneway ? "" : "di";
+    str += "graph {\n";
+    const connect = oneway ? " -- " : " -> ";
 
     for (var i in transitions) {
       for (var state of transitions[i]) {
-        str += "  " + i + " -- " + state.state;
+        str += "  " + i + connect + state.state;
         if (props[state.flex]) {
           str += " [" + props[state.flex] + "]";
         }
