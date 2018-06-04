@@ -25,10 +25,11 @@
       return true;
     }
 
-    function startExplore() {
+    function startExplore(includeOver) {
       if (runScript()) {
         cancelled = false;
-        explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
+        var over = includeOver ? fm.allFlexes['^'] : undefined;
+        explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], over);
         explore(explorer);
       }
     }
@@ -107,10 +108,10 @@
       }
     }
 
-    function showDotFlexes(found) {
+    function showDotFlexes(found, oneway) {
       var box = document.getElementById('states');
       if (box !== null) {
-        box.value = Flexagonator.DotWithFlexes(found);
+        box.value = Flexagonator.DotWithFlexes(found, oneway);
       }
     }
   </script>
@@ -124,7 +125,8 @@
   </p>
 
   <p>
-    <input onclick="startExplore();" type="button" value="explore" />
+    <input onclick="startExplore(true);" type="button" value="explore" />
+    <input onclick="startExplore(false);" type="button" value="explore (no ^)" /> -
     <input onclick="cancel();" type="button" value="cancel" />
   </p>
 
@@ -139,7 +141,8 @@
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
     <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
     <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
-    <input onclick="showDotFlexes(explorer.getFoundFlexes());" type="button" value="DOT: flexes" />
+    <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />
+    <input onclick="showDotFlexes(explorer.getFoundFlexes(), false);" type="button" value="DOT: directed flexes" />
   </p>
 
   <p>
