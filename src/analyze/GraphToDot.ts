@@ -28,10 +28,9 @@ namespace Flexagonator {
 
   const defaultDotProps: FlexDotProps = {
     P: "color=black",
-    V: "color=green, style=dashed",
-    S: "color=red, style=dashed",
+    V: "color=green",
+    S: "color=red",
     T: "color=blue",
-    "T'": "color=blue, style=dashed",
     Lt: "color=orange",
   }
 
@@ -62,15 +61,21 @@ namespace Flexagonator {
   // lookup props either for the given name if it exists, or the base name,
   // e.g. if S' is passed, we'll try S if S' doesn't exist
   function getProps(flex: string, props: FlexDotProps): string {
+    // if there's an explicit property for this flex, use it
     if (props[flex]) {
       return " [" + props[flex] + "]";
     }
 
+    // otherwise, use props for the base name, tacking on dashed if it's an inverse
     const flexname = makeFlexName(flex);
-    if (props[flexname.baseName]) {
-      return " [" + props[flexname.baseName] + "]";
+    if (!props[flexname.baseName]) {
+      return "";
     }
-    return "";
+    var str = " [" + props[flexname.baseName];
+    if (flexname.isInverse) {
+      str += ", style=dashed";
+    }
+    return str + "]";
   }
 
 }
