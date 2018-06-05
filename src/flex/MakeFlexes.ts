@@ -22,6 +22,8 @@ namespace Flexagonator {
         flexes["St"] = createSilverTetra(patCount);
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
+      if (patCount == 5)
+        flexes["L3"] = createSlotTriplePocket();
 
       flexes["Tf"] = createForcedTuck(patCount);
       for (var i = 0; i < patCount - 5; i++) {
@@ -304,6 +306,12 @@ namespace Flexagonator {
     output.push([leaves - 2, [leaves - 4, [leaves - 1, -(leaves - 3)]]]);
 
     return makeFlex("slot tuck flex", pattern, output, FlexRotation.None) as Flex;
+  }
+
+  function createSlotTriplePocket(): Flex {
+    var pattern: LeafTree = [[[[12, -11], -13], 10], [[[2, -1], -3], -14], -4, [[[-7, 6], 8], -5], 9];
+    var output: LeafTree = [2, [6, [-3, [-5, 4]]], 7, [-11, [8, [10, -9]]], [-1, [-12, [-14, 13]]]];
+    return makeFlex("slot triple pocket", pattern, output, FlexRotation.None) as Flex;
   }
 
   // where: which opposite hinge is open starting from 0
