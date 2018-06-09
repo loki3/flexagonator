@@ -1,0 +1,129 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>Multi-part strips</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    var fm;
+    var scale;
+    var start = [];
+    var end = [];
+
+    function runScript() {
+      statusMessage("error parsing script");
+      var scriptBox = document.getElementById('script');
+      if (scriptBox === null) {
+        return;
+      }
+      var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+      if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+        var str = Flexagonator.errorToString(result);
+        statusMessage(str);
+        return;
+      }
+      fm = result;
+      statusMessage("unfolded strip has " + fm.flexagon.getLeafCount() + " leaves");
+      updateUI();
+    }
+
+    function updateUI() {
+      Flexagonator.drawUnfolded('unfolded1', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[1], end: end[1] });
+      Flexagonator.drawUnfolded('unfolded2', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[2], end: end[2] });
+      Flexagonator.drawUnfolded('unfolded3', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[3], end: end[3] });
+      Flexagonator.drawUnfolded('unfolded4', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[4], end: end[4] });
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        statusDiv.innerHTML = message;
+      }
+    }
+
+    function setScale(keyCode, str, key, which) {
+      scale = asNumber(str, key);
+      if (keyCode == 13) {
+        updateUI();
+      }
+    }
+
+    function setStart(keyCode, str, key, which) {
+      start[which] = asNumber(str, key);
+      if (keyCode == 13) {
+        updateUI();
+      }
+    }
+
+    function setEnd(keyCode, str, key, which) {
+      end[which] = asNumber(str, key);
+      if (keyCode == 13) {
+        updateUI();
+      }
+    }
+
+    function asNumber(str, key) {
+      if ('0' <= key && key <= '9') {
+        return Number.parseInt(str + key);
+      }
+      return Number.parseInt(str);
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Multi-part strips</h1>
+
+  <p>
+    Run a script to describe a flexagon, then specify a subset of the unfolded strip to display. Useful for strips that are too
+    long to fit on a page, or for strips that twist back on themselves.
+  </p>
+
+  <p>
+    <input onclick="runScript();" type="button" value="run script" />
+  </p>
+  <div id="status"></div>
+
+  <p>
+    <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
+  </p>
+  <div>
+    <label>scale:</label>
+    <input onkeypress="setScale(event.keyCode, event.target.value, event.key, 1)" size="5" />
+  </div>
+
+  <div>
+    <label>start:</label>
+    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 1)" size="5" />
+    <label>end:</label>
+    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 1)" size="5" />
+  </div>
+  <canvas id="unfolded1" width="800" height="600"></canvas>
+
+  <div>
+    <label>start:</label>
+    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 2)" size="5" />
+    <label>end:</label>
+    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 2)" size="5" />
+  </div>
+  <canvas id="unfolded2" width="800" height="600"></canvas>
+
+  <div>
+    <label>start:</label>
+    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 3)" size="5" />
+    <label>end:</label>
+    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 3)" size="5" />
+  </div>
+  <canvas id="unfolded3" width="800" height="600"></canvas>
+
+  <div>
+    <label>start:</label>
+    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 4)" size="5" />
+    <label>end:</label>
+    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 4)" size="5" />
+  </div>
+  <canvas id="unfolded4" width="800" height="600"></canvas>
+
+</body>
+
+</html>
