@@ -6,6 +6,7 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     var fm;
+    var stripContent = Flexagonator.StripContent.FoldingAndIds;
     var scale;
     var start = [];
     var end = [];
@@ -28,10 +29,10 @@
     }
 
     function updateUI() {
-      Flexagonator.drawUnfolded('unfolded1', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[1], end: end[1] });
-      Flexagonator.drawUnfolded('unfolded2', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[2], end: end[2] });
-      Flexagonator.drawUnfolded('unfolded3', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[3], end: end[3] });
-      Flexagonator.drawUnfolded('unfolded4', fm, { content: Flexagonator.StripContent.FoldingAndIds, scale: scale, start: start[4], end: end[4] });
+      Flexagonator.drawUnfolded('unfolded1', fm, { content: stripContent, scale: scale, start: start[1], end: end[1] });
+      Flexagonator.drawUnfolded('unfolded2', fm, { content: stripContent, scale: scale, start: start[2], end: end[2] });
+      Flexagonator.drawUnfolded('unfolded3', fm, { content: stripContent, scale: scale, start: start[3], end: end[3] });
+      Flexagonator.drawUnfolded('unfolded4', fm, { content: stripContent, scale: scale, start: start[4], end: end[4] });
     }
 
     function statusMessage(message) {
@@ -87,6 +88,14 @@
   <p>
     <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
   </p>
+
+  <p>
+    <input onclick="stripContent = 0; updateUI();" type="button" value="show folding numbers" />
+    <input onclick="stripContent = 1; updateUI();" type="button" value="folding numbers + ids" />
+    <input onclick="stripContent = 2; updateUI();" type="button" value="front colors and labels" />
+    <input onclick="stripContent = 3; updateUI();" type="button" value="back colors and labels" />
+  </p>
+
   <div>
     <label>scale:</label>
     <input onkeypress="setScale(event.keyCode, event.target.value, event.key, 1)" size="5" />
