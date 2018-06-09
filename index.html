@@ -13,7 +13,7 @@
     function updateUI() {
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, stats: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
-      Flexagonator.drawUnfolded('unfolded', fm, stripContent);
+      Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent });
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {

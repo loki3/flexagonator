@@ -28,7 +28,6 @@ namespace Flexagonator {
     var b = { x: 1, y: 0 };
     var c = computeTrianglePoint(angle1, angle2);
     faces.push({ leaf: leafs[0], corners: [a, b, c] });
-    folds.push({ a: a, b: b });
     if (leafs[0].isClock) {
       folds.push({ a: b, b: c });
       cuts.push({ a: a, b: c });
@@ -36,6 +35,7 @@ namespace Flexagonator {
       folds.push({ a: a, b: c });
       cuts.push({ a: b, b: c });
     }
+    folds.push({ a: a, b: b });
 
     // keep mirroring a corner based on the direction the strip winds
     for (var i = 1; i < leafs.length; i++) {
@@ -77,5 +77,20 @@ namespace Flexagonator {
       }
     }
     return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
+  }
+
+  export function sliceLeafLines(leaflines: LeafLines, start?: number, end?: number): LeafLines {
+    if (!start && !end) {
+      return leaflines;
+    }
+    // end+1, because we want inclusive, not exclusive
+    const theEnd = end ? end + 1 : end;
+    // and there's an extra fold, so we want end+2
+    const foldEnd = end ? end + 2 : end;
+    return {
+      faces: leaflines.faces.slice(start, theEnd),
+      folds: leaflines.folds.slice(start, foldEnd),
+      cuts: leaflines.cuts.slice(start, theEnd),
+    };
   }
 }

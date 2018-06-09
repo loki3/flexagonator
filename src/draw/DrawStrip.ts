@@ -1,12 +1,5 @@
 namespace Flexagonator {
 
-  export enum StripContent {
-    FoldingLabels,  // put everything on one-side, use labels that indicate folding order
-    FoldingAndIds,  // FoldingLabels plus ids
-    Front,          // only display what's on the front side, use leaf properties
-    Back,           // only display what's on the back side, use leaf properties
-  }
-
   export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines, content: StripContent, props: PropertiesForLeaves) {
     ctx.save();
 
