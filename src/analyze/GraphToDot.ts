@@ -23,7 +23,7 @@ namespace Flexagonator {
 
   // lookup DOT properties like color based on flex name
   export interface FlexDotProps {
-    [index: string]: string;
+    readonly [index: string]: string;
   }
 
   const defaultDotProps: FlexDotProps = {

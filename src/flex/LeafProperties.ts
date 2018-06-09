@@ -8,8 +8,8 @@ namespace Flexagonator {
 
   // properties for a single leaf
   export interface LeafProperties {
-    front: LeafFaceProperties,
-    back: LeafFaceProperties
+    readonly front: LeafFaceProperties,
+    readonly back: LeafFaceProperties
   }
 
   export class PropertiesForLeaves {

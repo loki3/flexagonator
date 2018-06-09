@@ -1,11 +1,11 @@
 namespace Flexagonator {
 
   export interface DrawFlexagonOptions {
-    drawover: boolean;    // draw over canvas or clear first - default: false
-    back: boolean;        // draw front or back - default: false (front)
-    stats: boolean;       // show stats - default: false
-    flexes: boolean;      // show possible flexes at corners - default: false
-    structure: boolean;   // show pat structure - default: false
+    readonly drawover: boolean;    // draw over canvas or clear first - default: false
+    readonly back: boolean;        // draw front or back - default: false (front)
+    readonly stats: boolean;       // show stats - default: false
+    readonly flexes: boolean;      // show possible flexes at corners - default: false
+    readonly structure: boolean;   // show pat structure - default: false
   }
 
   export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {

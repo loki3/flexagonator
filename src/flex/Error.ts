@@ -35,8 +35,8 @@ namespace Flexagonator {
   }
 
   export interface TreeError {
-    reason: TreeCode;
-    context: any;
+    readonly reason: TreeCode;
+    readonly context: any;
   }
 
   export function isTreeError(result: any): result is TreeError {
@@ -50,8 +50,8 @@ namespace Flexagonator {
   */
 
   export interface PatternError {
-    expected: LeafTree;
-    actual: LeafTree;
+    readonly expected: LeafTree;
+    readonly actual: LeafTree;
   }
 
   export function isPatternError(result: any): result is PatternError {
@@ -72,9 +72,9 @@ namespace Flexagonator {
   }
 
   export interface FlexError {
-    reason: FlexCode;
-    patternError?: PatternError;  // set if BadFlexInput
-    flexName?: string;            // set for particular flexes
+    readonly reason: FlexCode;
+    readonly patternError?: PatternError;  // set if BadFlexInput
+    readonly flexName?: string;            // set for particular flexes
   }
 
   export function isFlexError(result: any): result is FlexError {

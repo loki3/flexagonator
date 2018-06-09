@@ -2,10 +2,10 @@ namespace Flexagonator {
 
   // a description of a single triangle in a strip
   export interface Leaf {
-    id: number,       // id that's unique across the strip
-    top: number,      // folding number on top of leaf
-    bottom: number,   // folding number on bottom of leaf
-    isClock: boolean, // true -> next leaf connected clockwise
+    readonly id: number,       // id that's unique across the strip
+    readonly top: number,      // folding number on top of leaf
+    readonly bottom: number,   // folding number on bottom of leaf
+    readonly isClock: boolean, // true -> next leaf connected clockwise
   }
 
   // unfold a flexagon into a strip of leaves containing information

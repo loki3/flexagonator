@@ -30,8 +30,8 @@ namespace Flexagonator {
 
 
   export interface FlexToState {
-    flex: string,
-    state: StateId,
+    readonly flex: string,
+    readonly state: StateId,
   }
   // every top level element is an array of flex->state mappings
   export type FlexesToStates = Array<Array<FlexToState>>;
