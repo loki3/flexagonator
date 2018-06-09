@@ -310,7 +310,7 @@ namespace Flexagonator {
 
   function createSlotTriplePocket(): Flex {
     var pattern: LeafTree = [[[[12, -11], -13], 10], [[[2, -1], -3], -14], -4, [[[-7, 6], 8], -5], 9];
-    var output: LeafTree = [2, [6, [-3, [-5, 4]]], 7, [-11, [8, [10, -9]]], [-1, [-12, [-14, 13]]]];
+    var output: LeafTree = [-2, [6, [-3, [-5, 4]]], 7, [-11, [8, [10, -9]]], [-1, [-12, [-14, 13]]]];
     return makeFlex("slot triple pocket", pattern, output, FlexRotation.None) as Flex;
   }
 
