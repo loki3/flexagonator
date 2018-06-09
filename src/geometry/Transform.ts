@@ -1,18 +1,22 @@
 namespace Flexagonator {
 
   export class Transform {
-    private readonly offset: Point;
-    private readonly scale: number;
-    private readonly xmax: number;
+    private constructor(
+      private readonly offset: Point,
+      private readonly scale: number,
+      private readonly xmax: number) {
+    }
 
-    constructor(outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean) {
-      const scalex = outputSize.x / (inputMax.x - inputMin.x);
-      const scaley = outputSize.y / (inputMax.y - inputMin.y);
-      const scale = Math.min(scalex, scaley);
+    static New(outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean, scale?: number): Transform {
+      if (!scale) {
+        const scalex = outputSize.x / (inputMax.x - inputMin.x);
+        const scaley = outputSize.y / (inputMax.y - inputMin.y);
+        scale = Math.min(scalex, scaley);
+      }
 
-      this.offset = { x: -inputMin.x, y: -inputMin.y };
-      this.scale = scale;
-      this.xmax = flip ? outputSize.x : 0;
+      const offset = { x: -inputMin.x, y: -inputMin.y };
+      const xmax = flip ? outputSize.x : 0;
+      return new Transform(offset, scale, xmax);
     }
 
     apply(point: Point): Point {

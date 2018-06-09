@@ -12,6 +12,8 @@ namespace Flexagonator {
     // [optional] indices for the first & last leaves to draw
     readonly start?: number;
     readonly end?: number;
+    // [optional] scale factor (approximately the number of pixels on a leaf edge)
+    readonly scale?: number;
   }
 
   export function drawUnfolded(canvasId: string, fm: FlexagonManager, options: DrawStripOptions) {
@@ -29,7 +31,7 @@ namespace Flexagonator {
     const angles = fm.getUnfoldedAngles(unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
-    drawStrip(ctx, leaflinesSubset, options.content, fm.leafProps);
+    drawStrip(ctx, leaflinesSubset, options.content, fm.leafProps, options.scale);
   }
 
 }

@@ -1,11 +1,13 @@
 namespace Flexagonator {
 
-  export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines, content: StripContent, props: PropertiesForLeaves) {
+  export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines,
+    content: StripContent, props: PropertiesForLeaves, scale?: number) {
+
     ctx.save();
 
     const extents: [Point, Point] = getExtents(leaflines);
     const flip = (content === StripContent.Back);
-    const transform = new Transform({ x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight }, extents[0], extents[1], flip);
+    const transform = Transform.New({ x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight }, extents[0], extents[1], flip, scale);
 
     if (content === StripContent.FoldingLabels || content === StripContent.FoldingAndIds) {
       drawFoldingLabels(ctx, leaflines.faces, transform);
