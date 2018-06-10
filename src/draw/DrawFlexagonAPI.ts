@@ -30,7 +30,7 @@ namespace Flexagonator {
       drawStatsText(ctx, fm.flexagon, fm.getAngleInfo());
     }
     if (options.flexes !== undefined && options.flexes) {
-      return drawPossibleFlexes(ctx, fm, polygon);
+      return drawPossibleFlexes(ctx, fm.flexagon, fm.allFlexes, fm.flexesToSearch, polygon);
     }
     return new ScriptButtons();
   }

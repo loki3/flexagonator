@@ -26,19 +26,6 @@ namespace Flexagonator {
       this.history = new History(flexagon, this.tracker.getCopy());
     }
 
-    // possibly flip the flexagon and rotate 'rightSteps',
-    // then check which flexes can be performed at the current vertex
-    checkForFlexes(flip: boolean, rightSteps: number): string[] {
-      var modified = this.flexagon;
-      if (flip) {
-        modified = this.allFlexes["^"].apply(modified) as Flexagon;
-      }
-      for (var i = 0; i < rightSteps; i++) {
-        modified = this.allFlexes[">"].apply(modified) as Flexagon;
-      }
-      return checkForFlexes(modified, this.flexesToSearch);
-    }
-
     // apply a single flex;
     // if the flex string ends with +, generate the needed structure
     // if the flex string ends with *, generate the needed structure & apply the flex

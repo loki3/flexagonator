@@ -1,7 +1,9 @@
 namespace Flexagonator {
 
   // draw possible flexes & create buttons that understand the associated flexes
-  export function drawPossibleFlexes(ctx: CanvasRenderingContext2D, fm: FlexagonManager, polygon: Polygon): ScriptButtons {
+  export function drawPossibleFlexes(ctx: CanvasRenderingContext2D, flexagon: Flexagon,
+    allFlexes: Flexes, flexesToSearch: Flexes, polygon: Polygon): ScriptButtons {
+
     var buttons: ScriptButtons = new ScriptButtons();
 
     const height = polygon.radius / 9;
@@ -12,13 +14,13 @@ namespace Flexagonator {
 
     const corners = polygon.getCorners();
     var prefix = "", postfix = "";
-    for (var i = 0; i < fm.flexagon.getPatCount(); i++) {
+    for (var i = 0; i < flexagon.getPatCount(); i++) {
       const x = corners[i * 2];
       const y = corners[i * 2 + 1];
       const left = x > polygon.xCenter;
       const up = y > polygon.yCenter;
 
-      const flexes: string[] = fm.checkForFlexes(false, i);
+      const flexes: string[] = checkForFlexesAtVertex(flexagon, allFlexes, flexesToSearch, false, i);
       addFlexes(ctx, flexes, prefix, postfix, x, y, height, left, up, buttons);
       prefix += "> ";
       postfix += " <";
