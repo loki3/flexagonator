@@ -28,7 +28,7 @@ namespace Flexagonator {
       return;
     }
 
-    const angles = fm.getUnfoldedAngles(unfolded);
+    const angles = fm.getAngleInfo().getUnfoldedAngles(fm.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
     drawStrip(ctx, leaflinesSubset, options.content, fm.leafProps, options.scale);

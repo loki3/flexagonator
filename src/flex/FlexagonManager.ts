@@ -1,11 +1,5 @@
 namespace Flexagonator {
 
-  export enum CenterAngle {
-    Is360,
-    GreaterThan360 = 1,
-    LessThan360 = -1
-  }
-
   export function makeFlexagonManager(flexagon: Flexagon, leafProps?: LeafProperties[]) {
     return new FlexagonManager(flexagon, leafProps);
   }
@@ -18,8 +12,7 @@ namespace Flexagonator {
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     flexesToSearch: Flexes;
-    private angleCenter: number;
-    private angleClock: number;
+    private angleInfo: FlexagonAngles = new FlexagonAngles();
     private tracker: Tracker;
     private readonly history: History;
 
@@ -28,8 +21,6 @@ namespace Flexagonator {
       this.leafProps = new PropertiesForLeaves(leafProps);
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
       this.flexesToSearch = getPrimeFlexes(this.allFlexes);
-      this.angleCenter = 60;
-      this.angleClock = 60;
       this.setIsosceles();
       this.tracker = Tracker.New(flexagon);
       this.history = new History(flexagon, this.tracker.getCopy());
@@ -148,37 +139,14 @@ namespace Flexagonator {
     }
 
     setAngles(center: number, clock: number) {
-      this.angleCenter = center;
-      this.angleClock = clock;
+      this.angleInfo.setAngles(center, clock);
     }
     setIsosceles() {
-      this.angleCenter = 360 / this.flexagon.getPatCount();
-      this.angleClock = (180 - this.angleCenter) / 2;
+      this.angleInfo.setIsosceles(this.flexagon);
     }
 
-    // [center angle, clockwise, clockwise]
-    getAngles(): number[] {
-      const angles: number[] = [this.angleCenter, this.angleClock, 180 - this.angleCenter - this.angleClock];
-      const v = this.flexagon.whichVertex;
-      if (this.flexagon.isFirstMirrored) {
-        return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
-      }
-      return [angles[v], angles[(v + 1) % 3], angles[(v + 2) % 3]];
-    }
-
-    getCenterAngleSum(): CenterAngle {
-      const angles = this.getAngles();
-      const angle = angles[0] * this.flexagon.getPatCount();
-      if (Math.round(angle) === 360) {
-        return CenterAngle.Is360;
-      }
-      return (angle < 360) ? CenterAngle.LessThan360 : CenterAngle.GreaterThan360;
-    }
-
-    // get the angles along the edge of the 1st leaf that we'll reflect the 2nd leaf across
-    getUnfoldedAngles(unfolded: Leaf[]): number[] {
-      const angles = this.getAngles();
-      return unfolded[0].isClock ? [angles[2], angles[0], angles[1]] : [angles[1], angles[2], angles[0]];
+    getAngleInfo(): FlexagonAngles {
+      return this.angleInfo;
     }
 
     getFlexHistory(): string[] {

@@ -10,7 +10,7 @@ namespace Flexagonator {
       script.push({ leafProps: fm.leafProps.getRawProps() });
     }
     script.push(makeFlexesToSearch(fm));
-    script.push({ angles: fm.getAngles() });
+    script.push({ angles: fm.getAngleInfo().getAngles(fm.flexagon) });
     return script;
   }
 

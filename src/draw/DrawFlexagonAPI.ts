@@ -21,7 +21,7 @@ namespace Flexagonator {
     const radius = ctx.canvas.clientHeight * 0.42;
 
     const showFront = (options.back === undefined || !options.back);
-    const angles = fm.getAngles();
+    const angles = fm.getAngleInfo().getAngles(fm.flexagon);
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
@@ -45,7 +45,7 @@ namespace Flexagonator {
     const leafText = leafCount.toString() + " leaves";
     ctx.fillText(leafText, 0, 20);
 
-    const center = fm.getCenterAngleSum();
+    const center = fm.getAngleInfo().getCenterAngleSum(fm.flexagon);
     if (center === CenterAngle.GreaterThan360) {
       ctx.fillText(">360, doesn't lie flat", 0, 40);
     } else if (center === CenterAngle.LessThan360) {
