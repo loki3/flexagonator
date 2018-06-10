@@ -1,5 +1,6 @@
 namespace Flexagonator {
 
+  // information about the display properties a given flexagon
   export interface DrawFlexagonObjects {
     readonly flexagon: Flexagon;
     readonly angleInfo: FlexagonAngles;
@@ -8,6 +9,7 @@ namespace Flexagonator {
     readonly flexesToSearch: Flexes;
   }
 
+  // list of different options for what should be drawn for a flexagon
   export interface DrawFlexagonOptions {
     readonly drawover: boolean;    // draw over canvas or clear first - default: false
     readonly back: boolean;        // draw front or back - default: false (front)
@@ -16,6 +18,7 @@ namespace Flexagonator {
     readonly structure: boolean;   // show pat structure - default: false
   }
 
+  // draw a flexagon in its current state, with optional colors, flexes, etc.
   export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {
     const objects = {
       flexagon: fm.flexagon,
@@ -27,7 +30,7 @@ namespace Flexagonator {
     return drawEntireFlexagonObjects(canvasId, objects, options);
   }
 
-  function drawEntireFlexagonObjects(canvasId: string, fm: DrawFlexagonObjects, options: DrawFlexagonOptions): ScriptButtons {
+  function drawEntireFlexagonObjects(canvasId: string, objects: DrawFlexagonObjects, options: DrawFlexagonOptions): ScriptButtons {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
@@ -40,16 +43,16 @@ namespace Flexagonator {
     const radius = ctx.canvas.clientHeight * 0.42;
 
     const showFront = (options.back === undefined || !options.back);
-    const angles = fm.angleInfo.getAngles(fm.flexagon);
-    const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
+    const angles = objects.angleInfo.getAngles(objects.flexagon);
+    const polygon = new Polygon(objects.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
-    drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront, showStructure);
+    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure);
     if (options.stats !== undefined && options.stats) {
-      drawStatsText(ctx, fm.flexagon, fm.angleInfo);
+      drawStatsText(ctx, objects.flexagon, objects.angleInfo);
     }
     if (options.flexes !== undefined && options.flexes) {
-      return drawPossibleFlexes(ctx, fm.flexagon, fm.allFlexes, fm.flexesToSearch, polygon);
+      return drawPossibleFlexes(ctx, objects.flexagon, objects.allFlexes, objects.flexesToSearch, polygon);
     }
     return new ScriptButtons();
   }
