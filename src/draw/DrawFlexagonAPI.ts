@@ -27,7 +27,7 @@ namespace Flexagonator {
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront, showStructure);
     if (options.stats !== undefined && options.stats) {
-      drawStatsText(ctx, fm);
+      drawStatsText(ctx, fm.flexagon, fm.getAngleInfo());
     }
     if (options.flexes !== undefined && options.flexes) {
       return drawPossibleFlexes(ctx, fm, polygon);
@@ -35,17 +35,17 @@ namespace Flexagonator {
     return new ScriptButtons();
   }
 
-  function drawStatsText(ctx: CanvasRenderingContext2D, fm: FlexagonManager) {
+  function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.textAlign = "left";
     ctx.textBaseline = "bottom";
     ctx.font = "14px sans-serif";
 
-    const leafCount = fm.flexagon.getLeafCount();
+    const leafCount = flexagon.getLeafCount();
     const leafText = leafCount.toString() + " leaves";
     ctx.fillText(leafText, 0, 20);
 
-    const center = fm.getAngleInfo().getCenterAngleSum(fm.flexagon);
+    const center = angleInfo.getCenterAngleSum(flexagon);
     if (center === CenterAngle.GreaterThan360) {
       ctx.fillText(">360, doesn't lie flat", 0, 40);
     } else if (center === CenterAngle.LessThan360) {
