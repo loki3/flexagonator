@@ -1,5 +1,13 @@
 namespace Flexagonator {
 
+  export interface DrawFlexagonObjects {
+    readonly flexagon: Flexagon;
+    readonly angleInfo: FlexagonAngles;
+    readonly leafProps: PropertiesForLeaves;
+    readonly allFlexes: Flexes;
+    readonly flexesToSearch: Flexes;
+  }
+
   export interface DrawFlexagonOptions {
     readonly drawover: boolean;    // draw over canvas or clear first - default: false
     readonly back: boolean;        // draw front or back - default: false (front)
@@ -9,6 +17,17 @@ namespace Flexagonator {
   }
 
   export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {
+    const objects = {
+      flexagon: fm.flexagon,
+      angleInfo: fm.getAngleInfo(),
+      leafProps: fm.leafProps,
+      allFlexes: fm.allFlexes,
+      flexesToSearch: fm.flexesToSearch,
+    };
+    return drawEntireFlexagonObjects(canvasId, objects, options);
+  }
+
+  function drawEntireFlexagonObjects(canvasId: string, fm: DrawFlexagonObjects, options: DrawFlexagonOptions): ScriptButtons {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
@@ -21,13 +40,13 @@ namespace Flexagonator {
     const radius = ctx.canvas.clientHeight * 0.42;
 
     const showFront = (options.back === undefined || !options.back);
-    const angles = fm.getAngleInfo().getAngles(fm.flexagon);
+    const angles = fm.angleInfo.getAngles(fm.flexagon);
     const polygon = new Polygon(fm.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, fm.flexagon, polygon, fm.leafProps, showFront, showStructure);
     if (options.stats !== undefined && options.stats) {
-      drawStatsText(ctx, fm.flexagon, fm.getAngleInfo());
+      drawStatsText(ctx, fm.flexagon, fm.angleInfo);
     }
     if (options.flexes !== undefined && options.flexes) {
       return drawPossibleFlexes(ctx, fm.flexagon, fm.allFlexes, fm.flexesToSearch, polygon);
