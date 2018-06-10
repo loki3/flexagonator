@@ -4,7 +4,7 @@ namespace Flexagonator {
     it('should track flexagons seen before', () => {
       // add first flexagon
       const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
-      const tracker = new Tracker(flexagon);
+      const tracker = Tracker.New(flexagon);
       expect(tracker.getTotalStates()).toBe(1);
 
       // add same one again
@@ -29,7 +29,7 @@ namespace Flexagonator {
     it('should track flexagons that are rotated & flipped', () => {
       // add first flexagon
       const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
-      const tracker = new Tracker(flexagon);
+      const tracker = Tracker.New(flexagon);
       expect(tracker.findMaybeAdd(flexagon)).toBe(0);
       expect(tracker.getTotalStates()).toBe(1);
 
@@ -49,7 +49,7 @@ namespace Flexagonator {
     it("should handle a flexagon that's been turned over", () => {
       // add first flexagon
       const flexagon = makeFlexagon([1, 2, 3, 4]) as Flexagon;
-      const tracker = new Tracker(flexagon);
+      const tracker = Tracker.New(flexagon);
       expect(tracker.findMaybeAdd(flexagon)).toBe(0);
       expect(tracker.getTotalStates()).toBe(1);
 
@@ -59,12 +59,11 @@ namespace Flexagonator {
     });
   });
 
-  /*
   describe('Tracker', () => {
     it("should examine a flexagon's innards", () => {
       // add first flexagon
       const flexagon = makeFlexagon([1, [[2, [3, 4]], 5], 6, 7]) as Flexagon;
-      const tracker = new Tracker(flexagon);
+      const tracker = Tracker.New(flexagon);
       expect(tracker.findMaybeAdd(flexagon)).toBe(0);
       expect(tracker.getTotalStates()).toBe(1);
 
@@ -74,6 +73,5 @@ namespace Flexagonator {
       expect(tracker.getTotalStates()).toBe(2);
     });
   });
-  */
 
 }

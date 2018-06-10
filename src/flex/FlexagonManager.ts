@@ -31,7 +31,7 @@ namespace Flexagonator {
       this.angleCenter = 60;
       this.angleClock = 60;
       this.setIsosceles();
-      this.tracker = new Tracker(flexagon);
+      this.tracker = Tracker.New(flexagon);
       this.history = new History(flexagon, this.tracker.getCopy());
     }
 
@@ -110,7 +110,7 @@ namespace Flexagonator {
 
       if (flexName.shouldGenerate && this.flexagon.getLeafCount() !== result.getLeafCount()) {
         // whenever we add new structure, start tracking over again
-        this.tracker = new Tracker(result);
+        this.tracker = Tracker.New(result);
       } else {
         this.tracker.findMaybeAdd(result);
       }
@@ -219,7 +219,7 @@ namespace Flexagonator {
     }
 
     clearHistory() {
-      this.tracker = new Tracker(this.flexagon);
+      this.tracker = Tracker.New(this.flexagon);
       this.history.clear(this.flexagon, this.tracker.getCopy());
     }
   }

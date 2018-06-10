@@ -6,8 +6,15 @@ namespace Flexagonator {
     private readonly keyId: number = 1;
     private current: number = 0;  // 0-based index into states
 
-    constructor(flexagon: Flexagon) {
-      this.findMaybeAdd(flexagon);
+    private constructor(states: State[], current: number) {
+      this.states = states;
+      this.current = current;
+    }
+
+    static New(flexagon: Flexagon): Tracker {
+      const tracker = new Tracker([], 0);
+      tracker.findMaybeAdd(flexagon);
+      return tracker;
     }
 
     getTotalStates(): number {
@@ -19,13 +26,10 @@ namespace Flexagonator {
     }
 
     getCopy(): Tracker {
-      // a temporary flexagon that gets replaced by a shallow copy
-      // of this object's state (since its members are immutable)
-      const temp = makeFlexagon([1, 2]) as Flexagon;
-      const other = new Tracker(temp);
-      other.states = this.states.map(x => x);
-      other.current = this.current;
-      return other;
+      // create a shallow copy of this object's state
+      // (since its members are immutable)
+      const states = this.states.map(x => x);
+      return new Tracker(states, this.current);
     }
 
     // if we've seen this flexagon before, return which one,
