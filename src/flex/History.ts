@@ -27,27 +27,7 @@ namespace Flexagonator {
     }
 
     add(newFlexes: string[], newflexagon: Flexagon, tracker: Tracker) {
-      var allflexes = [];
-      // copy old list across
-      for (var flex of this.getCurrent().flexes) {
-        allflexes.push(flex);
-      }
-
-      // add new flexes, consolidating redundant rotates
-      var start = true;
-      for (var flex of newFlexes) {
-        if (start) {
-          const last = allflexes.length > 0 ? allflexes[allflexes.length - 1] : "";
-          if ((flex === '<' && last === '>') || (flex === '>' && last === '<')) {
-            allflexes.pop();
-            continue;
-          }
-          start = false;
-        }
-
-        allflexes.push(flex);
-      }
-
+      const allflexes = addAndConsolidate(this.getCurrent().flexes, newFlexes);
       this.done.push({ flexes: allflexes, flexagon: newflexagon, tracker: tracker });
       this.undone = [];
     }
