@@ -32,6 +32,7 @@ namespace Flexagonator {
     Sh: "color=red",
     T: "color=blue",
     Lt: "color=orange",
+    F: "color=magenta",
   }
 
   // create a DOT graph describing which flexes you can use to get between states,
