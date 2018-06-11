@@ -59,14 +59,17 @@ namespace Flexagonator {
 
     // run the inverse of the flexes backwards to effectively undo a sequence
     applyInReverse(flexStr: string): boolean | FlexError {
-      const flexNames: string[] = flexStr.split(" ").reverse();
+      const flexStrings: string[] = flexStr.split(" ").reverse();
       var inverses = "";
-      for (var flexName of flexNames) {
-        if (flexName.length === 0) {
+      for (var alias of flexStrings) {
+        if (alias.length === 0) {
           continue;
         }
-        inverses += makeFlexName(flexName).getInverse().fullName;
-        inverses += ' ';
+        const flexName = makeFlexName(alias);
+        if (flexName.shouldApply) {
+          inverses += flexName.getInverse().fullName;
+          inverses += ' ';
+        }
       }
       return this.applyFlexes(inverses, false);
     }
