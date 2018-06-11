@@ -14,7 +14,7 @@ namespace Flexagonator {
     for (var flex of newFlexes) {
       if (start) {
         const last = allflexes.length > 0 ? allflexes[allflexes.length - 1] : "";
-        if ((flex === '<' && last === '>') || (flex === '>' && last === '<')) {
+        if ((flex === '<' && last === '>') || (flex === '>' && last === '<') || (flex === '^' && last === '^')) {
           allflexes.pop();
           continue;
         }
