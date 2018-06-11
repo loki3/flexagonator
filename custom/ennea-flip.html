@@ -36,15 +36,6 @@
     }
 
 
-    function flexAndShow(flex) {
-      var result = fm.applyFlex(flex);
-      if (result === true) {
-        updateUI();
-      } else {
-        console.log(result);
-      }
-    }
-
     function applySequence(key, sequence) {
       if (key == 13) {
         var result = fm.applyFlexes(sequence, true);
@@ -94,14 +85,9 @@
   <h3>generating sequence: (F+&lt;&lt;&lt;)x3</h3>
 
   <p>
-    flex:
-    <input onclick="flexAndShow('>');" type="button" value=">" />
-    <input onclick="flexAndShow('&lt;');" type="button" value="<" />
-    <input onclick="flexAndShow('^');" type="button" value="^" />
-    <input onclick="flexAndShow('F');" type="button" value="F" />
-    <input onclick="flexAndShow('F\'');" type="button" value="F'" />
-    <input onclick="flexAndShow('F3');" type="button" value="F3" />
-    <input onclick="flexAndShow('F3\'');" type="button" value="F3'" />
+    If you stick to the flip flex (F), you'll always make it from blue/1 to red/3 in either 6 or 9 moves. Once you add in F3
+    (same as the flip, but using 3 leaves instead of 2), you may find red or get stuck in a cycle or reach a dead-end. If
+    you get stuck, hit the <em>reset</em> button to start over, or <em>undo</em> to back up.
   </p>
 
   <p>
