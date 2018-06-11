@@ -9,15 +9,15 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["S"], flexagon, tracker);
+      history.add(["Sh"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(1);
-      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[0]).toBe("Sh");
 
       history.add(["T"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
-      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[0]).toBe("Sh");
       expect(history.getCurrent().flexes[1]).toBe("T");
     });
   });
@@ -31,16 +31,16 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["S", "P"], flexagon, tracker);
+      history.add(["Sh", "P"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
-      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[0]).toBe("Sh");
       expect(history.getCurrent().flexes[1]).toBe("P");
 
       history.add(["T", "F"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
-      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[0]).toBe("Sh");
       expect(history.getCurrent().flexes[1]).toBe("P");
       expect(history.getCurrent().flexes[2]).toBe("T");
       expect(history.getCurrent().flexes[3]).toBe("F");
@@ -56,11 +56,11 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["S", ">", ">", ">"], flexagon, tracker);
+      history.add(["Sh", ">", ">", ">"], flexagon, tracker);
       history.add(["<", "<", "P", "<"], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
-      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[0]).toBe("Sh");
       expect(history.getCurrent().flexes[1]).toBe(">");
       expect(history.getCurrent().flexes[2]).toBe("P");
       expect(history.getCurrent().flexes[3]).toBe("<");
@@ -73,13 +73,13 @@ namespace Flexagonator {
       const tracker = Tracker.New(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add(["S"], flexagon, tracker);
+      history.add(["Sh"], flexagon, tracker);
       history.add(["T"], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
 
       history.undo();
       expect(history.getCurrent().flexes.length).toBe(1);
-      expect(history.getCurrent().flexes[0]).toBe("S");
+      expect(history.getCurrent().flexes[0]).toBe("Sh");
 
       history.undo();
       expect(history.getCurrent().flexes.length).toBe(0);
@@ -95,7 +95,7 @@ namespace Flexagonator {
       const tracker = Tracker.New(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add(["S"], flexagon, tracker);
+      history.add(["Sh"], flexagon, tracker);
       history.add(["T"], flexagon, tracker);
       history.add(["P"], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(3);
@@ -112,7 +112,7 @@ namespace Flexagonator {
       const tracker = Tracker.New(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add(["S"], flexagon, tracker);
+      history.add(["Sh"], flexagon, tracker);
       history.add(["T"], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
       expect(history.canRedo()).toBe(false);

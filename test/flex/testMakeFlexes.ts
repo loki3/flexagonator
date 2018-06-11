@@ -21,19 +21,19 @@ namespace Flexagonator {
         return;
       }
 
-      // apply P and S flexes
+      // apply P and Sh flexes
       const afterP = flexes["P"].apply(flexagon);
       if (isFlexError(afterP)) {
         fail();
         return;
       }
-      const afterPS = flexes["S"].apply(afterP);
+      const afterPS = flexes["Sh"].apply(afterP);
       if (isFlexError(afterPS)) {
         fail();
         return;
       }
 
-      const expected = [[1, [2, [3, [4, 5]]]], [6, 7], 8, [9, 10], [11, 12], 13];
+      const expected = [13, [1, [2, [3, [4, 5]]]], [6, 7], 8, [9, 10], [11, 12]];
       expect(areLTArraysEqual(afterPS.getAsLeafTrees(), expected)).toBeTruthy();
     });
   });
@@ -46,7 +46,7 @@ namespace Flexagonator {
       expect(flexes["^"]).toBeDefined();
 
       expect(flexes["P'"]).toBeDefined();
-      expect(flexes["S'"]).toBeDefined();
+      expect(flexes["Sh'"]).toBeDefined();
       expect(flexes["T1"]).toBeDefined();
       expect(flexes["T2"]).toBeDefined();
       expect(flexes["T3"]).toBeDefined();
@@ -57,9 +57,9 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["P"].output, Pout)).toBeTruthy();
 
       const Sin = [[1, 2], 3, 4, 5, 6, 7, [[[8, 9], 10], 11], 12];
-      const Sout = [[1, [10, [2, -12]]], 3, 4, 5, 6, 7, [9, 11], -8];
-      expect(areLTArraysEqual(flexes["S"].pattern, Sin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["S"].output, Sout)).toBeTruthy();
+      const Sout = [-8, [1, [10, [2, -12]]], 3, 4, 5, 6, 7, [9, 11]];
+      expect(areLTArraysEqual(flexes["Sh"].pattern, Sin)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["Sh"].output, Sout)).toBeTruthy();
 
       const Fin = [[1, 2], 3, 4, 5, 6, 7, [[8, 9], [10, 11]], 12];
       const Fout = [9, [[-1, 3], [12, -2]], 4, 5, 6, 7, 10, [-8, -11]];

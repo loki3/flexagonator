@@ -3,10 +3,10 @@ namespace Flexagonator {
   describe('makeFlexName', () => {
     it('should interpret flex names correctly', () => {
       {
-        const flex = makeFlexName("S");
-        expect(flex.fullName).toBe("S");
-        expect(flex.baseName).toBe("S");
-        expect(flex.flexName).toBe("S");
+        const flex = makeFlexName("Sh");
+        expect(flex.fullName).toBe("Sh");
+        expect(flex.baseName).toBe("Sh");
+        expect(flex.flexName).toBe("Sh");
         expect(flex.isInverse).toBeFalsy();
         expect(flex.shouldApply).toBeTruthy();
         expect(flex.shouldGenerate).toBeFalsy();
@@ -46,10 +46,10 @@ namespace Flexagonator {
 
   describe('getUniqueFlexes', () => {
     it('should return just the unique names', () => {
-      const result = getUniqueFlexes("S S' S* > S+ S'* < Lt ^ P*", true);
+      const result = getUniqueFlexes("Sh Sh' Sh* > Sh+ Sh'* < Lt ^ P*", true);
       expect(result.length).toBe(4);
-      expect(result[0]).toBe("S");
-      expect(result[1]).toBe("S'");
+      expect(result[0]).toBe("Sh");
+      expect(result[1]).toBe("Sh'");
       expect(result[2]).toBe("Lt");
       expect(result[3]).toBe("P");
     });

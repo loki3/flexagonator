@@ -15,7 +15,7 @@ namespace Flexagonator {
       if (patCount % 2 == 0)
         flexes["P"] = createPinch(patCount);
       if (patCount >= 5)
-        flexes["S"] = createPyramidShuffle(patCount);
+        flexes["Sh"] = createPyramidShuffle(patCount);
       if (patCount >= 6)
         flexes["F"] = createFlip(patCount);
       if (patCount >= 6)
@@ -45,7 +45,7 @@ namespace Flexagonator {
   // return just the flexes that can't be done using other flexes
   export function getPrimeFlexes(all: Flexes): Flexes {
     var flexes: Flexes = {};
-    const primes = ["P", "S", "T", "T'", "Tf", "V", "F", "Lt", "Ltb", "Ltb'"];
+    const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Lt", "Ltb", "Ltb'"];
 
     for (var prime of primes) {
       if (all[prime] !== undefined) {
@@ -75,9 +75,9 @@ namespace Flexagonator {
     flexes["Tt"] = makeFlex("tuck top",
       [[[2, -3], -1], [5, -4], 6, [-8, 7], -9, -10],
       [[-4, 3], -5, [7, -6], 8, [[-10, 1], 9], 2], FlexRotation.None) as Flex;
-    flexes["S"] = makeFlex("pyramid shuffle",
+    flexes["Sh"] = makeFlex("pyramid shuffle",
       [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10],
-      [[1, [8, [2, -10]]], 3, 4, 5, [7, 9], -6], FlexRotation.None) as Flex;
+      [-6, [1, [8, [2, -10]]], 3, 4, 5, [7, 9]], FlexRotation.None) as Flex;
     flexes["V"] = makeFlex("v flex",
       [1, [2, 3], [4, 5], 6, 7, [8, 9]],
       [[3, -1], -2, -5, [-6, 4], [9, -7], -8], FlexRotation.ClockMirror) as Flex;
@@ -208,7 +208,7 @@ namespace Flexagonator {
 
   function createPyramidShuffle(patCount: number): Flex {
     // (1,2) (3) ... (i) ... (((n-4,n-3)n-2)n-1) (n)
-    // (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1) (^n-4)
+    // (^n-4) (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1)
     var pattern: LeafTree = [];
     var output: LeafTree = [];
     const leaves = patCount + 4;
@@ -221,12 +221,12 @@ namespace Flexagonator {
     pattern.push(leaves);
 
     // post
+    output.push(-(leaves - 4));
     output.push([1, [leaves - 2, [2, -leaves]]]);
     for (var i = 3; i < patCount; i++) {
       output.push(i);
     }
     output.push([leaves - 3, leaves - 1]);
-    output.push(-(leaves - 4));
 
     return makeFlex("pyramid shuffle", pattern, output, FlexRotation.None) as Flex;
   }
