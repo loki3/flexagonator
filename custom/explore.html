@@ -28,6 +28,7 @@
     function startExplore(includeOver) {
       if (runScript()) {
         cancelled = false;
+        clearStates();
         var over = includeOver ? fm.allFlexes['^'] : undefined;
         explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], over);
         explore(explorer);
@@ -73,6 +74,13 @@
           str += i.toString() + ": " + JSON.stringify(tree) + '\n';
         }
         box.value = str;
+      }
+    }
+
+    function clearStates() {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        box.value = "";
       }
     }
 
