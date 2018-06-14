@@ -28,6 +28,8 @@ For example, `{ flexes: "P" }` is the JavaScript version while `{ "flexes": "P" 
 
 ## Defining flexagon structure
 
+### the `pats` command
+
 ```javascript
 // create a flexagon with 5 leaves but no internal structure
 { pats: [1, 2, 3, 4, 5] }
@@ -37,6 +39,8 @@ For example, `{ flexes: "P" }` is the JavaScript version while `{ "flexes": "P" 
 ```
 
 ## Flexes
+
+### the `flexes` command
 
 ```javascript
 [
@@ -52,9 +56,13 @@ For example, `{ flexes: "P" }` is the JavaScript version while `{ "flexes": "P" 
 You can specify the flexes used by the system when it searches for which flexes can be performed on a flexagon.
 The system defaults to using a set of "prime" flexes, i.e. flexes that can't always be expressed in terms of other flexes.
 
+### the `searchFlexes` command
+
 ```javascript
 { searchFlexes: "P V T T' S" }
 ```
+
+### the `addFlex` command
 
 While Flexagonator has a lot of built-in flexes, it doesn't contain all the possible flexes.
 Therefore, you can define your own flexes.
@@ -78,6 +86,8 @@ Note that you should figure out the simplest pat structure needed to support you
 
 ## Properties
 
+### the `leafProps` command
+
 ```javascript
 {leafProps:[
   {front:{label:"1",color:3031410},back:{}},
@@ -92,7 +102,7 @@ Note that you should figure out the simplest pat structure needed to support you
 ]}
 ```
 
-setFace & unsetFace
+### the `setFace` & `unsetFace` commands
 
 ```javascript
 [
@@ -105,6 +115,8 @@ setFace & unsetFace
 ]
 ```
 
+### the `angles` command
+
 set the angles for first leaf: [center angle, clockwise angle]
 
 ```javascript
@@ -114,6 +126,8 @@ set the angles for first leaf: [center angle, clockwise angle]
 
 
 ## History
+
+### the `history` command
 
 manipulate the flex history - `clear`, `undo`, `redo`, `reset`
 
