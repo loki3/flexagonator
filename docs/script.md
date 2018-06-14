@@ -30,6 +30,21 @@ For example, `{ flexes: "P" }` is the JavaScript version while `{ "flexes": "P" 
 
 ### the `pats` command
 
+Use the `pats` command to describe the structure of a flexagon.
+This structure definition is also used to define the before and after states when defining a flex.
+
+A flexagon is made of a series of polygons mirrored over an edge, then folded up into a working flexagon.
+Each individual polygon is a `leaf`.
+A stack of folded leaves is called a `pat`, and the full flexagon consists of a series of connected pats.
+For example, a hexaflexagon consists of 6 connected pats.
+
+Every leaf in the flexagon is represented by a unique number.
+That number may be positive or negative, depending on which side is up.
+A pat consists of either a single leaf number or nested arrays of leaf numbers.
+Each array in a pat has exactly two elements, where each element is either a leaf number or an array.
+The full structure specified by `pats` consists of an array of pats.
+For example, a hexaflexagon will be described using an array of 6 pats.
+
 ```javascript
 // create a flexagon with 5 leaves but no internal structure
 { pats: [1, 2, 3, 4, 5] }
