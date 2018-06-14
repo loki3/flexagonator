@@ -42,7 +42,7 @@ Every leaf in the flexagon is represented by a unique number.
 That number may be positive or negative, depending on which side is up.
 A pat consists of either a single leaf number or nested arrays of leaf numbers.
 Each array in a pat has exactly two elements, where each element is either a leaf number or an array.
-The full structure specified by `pats` consists of an array of pats.
+The full structure of a flexagon specified by `pats` consists of an array of pats, where the pats go clockwise.
 For example, a hexaflexagon will be described using an array of 6 pats.
 
 ```javascript
@@ -52,6 +52,20 @@ For example, a hexaflexagon will be described using an array of 6 pats.
 // create the minimal hexaflexagon that supports the pyramid shuffle
 { pats: [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10] }
 ```
+
+In order to figure out the pat notation for a given flexagon, start by uniquely labeling every leaf, from 1 on up.
+Put the negative numbers on the backside of each leaf, so if the front is 3, the back will be -3.
+From the folded state you want to describe, start from one pat and go clockwise till you've described each pat.
+
+For an individual pat, identify the first hinge that could unfold it.
+The subpat on the top will be listed first, and the subpat on the bottom will be listed second.
+If a subpat is just a single leaf, list the leaf number, including whether the positive or negative value is face up.
+If the subpat has more structure, repeat the above process, finding the next hinge and describing the two subpats.
+In this way, you can recursively describe the entire structure of a pat in nested arrays.
+
+One interesting note is that pat notation for triangle flexagons doesn't need to say which hinge connects subpats.
+This is implicit in how flexagons behave.
+Also note that Flexagonator currently assumes all the triangles meet in the center, so the full flexagon structure doesn't need to specify how the pats are connected.
 
 ## Flexes
 
