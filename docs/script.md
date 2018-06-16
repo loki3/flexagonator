@@ -74,7 +74,7 @@ Also note that Flexagonator currently assumes all the triangles meet in the cent
 This allows you to specify a series of flexes to be performed on a flexagon,
 optionally creating new structure in the flexagon in order to allow the flex to be performed.
 Each flex is separated by one or more space and uses the `shorthand` field from `addFlex` for representation,
-e.g. `P > > S+ ^ T'`.
+e.g. `P > > Sh+ ^ T'`.
 
 A flex is performed relative to the "current corner".
 You can change the current corner using the special flexes `>` and `<` or turn the flexagon over with `^`.
@@ -91,23 +91,23 @@ Here are some examples of flexes:
 * `P` the pinch flex, usable on flexagons with an even number of pats
 * `V` the v-flex; while it can be applied to a variety of flexagons, Flexagonator currently only defines it for hexaflexagons
 * `T` the tuck flex
-* `S` the pyramid shuffle
+* `Sh` the pyramid shuffle
 * `F` the flip flex
 
 Additionally, there are several symbols you can tack onto a flex to modify it.
 
 * `'` apply the inverse of the flex, e.g. `P'`
 * `+` generate the structure necessary for the flex without applying it, e.g. `T+`
-* `*` generate the structure necessary for the flex and apply it, e.g. `S*`
+* `*` generate the structure necessary for the flex and apply it, e.g. `Sh*`
 
 ```javascript
 [
 // perform the given flexes in order
-{ flexes: "P > > V' ^ S" },
+{ flexes: "P > > V' ^ Sh" },
 // create the structure necessary to perform two pinch flexes in a row
 { flexes: "P* P*" },
 // run the given flexes backwards
-{ reverseFlexes: "P > > V' ^ S" }
+{ reverseFlexes: "P > > V' ^ Sh" }
 ]
 ```
 
@@ -132,7 +132,7 @@ The system defaults to using a set of "prime" flexes, i.e. flexes that can't alw
 You can fetch the current list through `FlexagonManager.flexesToSearch`.
 
 ```javascript
-{ searchFlexes: "P V T T' S" }
+{ searchFlexes: "P V T T' Sh" }
 ```
 
 ### the `addFlex` command
@@ -171,7 +171,7 @@ which takes the values `0`, `1`, `2`, or `3` in JSON or one of the following val
 * `FlexRotation.Mirror`:        same center vertex, flexagon is mirrored
 
 This describes how the top leaf in the first pat rotates when the flex is performed.
-For many flexes (such as `T`, `S`, and `F`), rotation doesn't change, so you can rely on the default of `None`.
+For many flexes (such as `T`, `Sh`, and `F`), rotation doesn't change, so you can rely on the default of `None`.
 But for other flexs (such as `P` and `V`), the leaves rotate so a different corner of the leaf triangle is pointing into the center.
 When you change the current corner with `>` or `<`, the leaves are mirrored, not rotated, so they use `FlexRotation.Mirror`.
 
@@ -210,7 +210,7 @@ Both use the same `front` and `back` settings as `leafProps`.
 // set all the visible faces, front & back
 { setFace: { front: { label: "1", color: 0x2E4172 }, back: { label: "2", color: 0x2B803E } } },
 // apply a pyramid shuffle
-{ flexes: "S" },
+{ flexes: "Sh" },
 // then set all the faces that weren't previously set
 { unsetFace: { front: { label: "3", color: 0xAA4439 }, back: { label: "4", color: 0x622870 } } },
 ]
