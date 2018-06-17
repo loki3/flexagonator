@@ -1,0 +1,163 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>hexaflexagons</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    var props = [
+      { label: "1", color: 0x2E4172 },
+      { label: "2", color: 0x2B803E },
+      { label: "3", color: 0xAA4439 },
+      { label: "4", color: 0x622870 },
+      { label: "5", color: 0xffff00 },
+      { label: "6", color: 0x553900 },
+      { label: "7", color: 0xdddddd },
+      { label: "8", color: 0x999999 },
+      { label: "9", color: 0xffffff },
+      { label: "10", color: 0xffffff },
+      { label: "11", color: 0xffffff },
+      { label: "12", color: 0xffffff }
+    ];
+    var buttons = null;
+    var fm = null;
+    runGeneratingSequence("P*");
+
+    function updateUI() {
+      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
+      Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
+      Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.FoldingLabels });
+      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isFlexError(message) || Flexagonator.isTreeError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
+      }
+    }
+
+    function runGeneratingSequence(sequence) {
+      // script we'll build on
+      var script = [
+        { pats: [1, 2, 3, 4, 5, 6] },
+        { searchFlexes: "P" },
+        { flexes: sequence },
+        { reverseFlexes: sequence },
+        { setFace: { front: props[0], back: props[1] } }
+      ];
+
+      // for each P, flex to it & set the face properties
+      var current = "";
+      var i = 2;
+      const flexNames = sequence.split(" ");
+      for (var flexName of flexNames) {
+        current += flexName + " ";
+        if (flexName === "P+") {
+          current += "P";
+          script.push({ flexes: current });
+          script.push({ setFace: { front: props[i++], back: {} } });
+          current = "P' ";
+        }
+        else if (flexName === "P*") {
+          script.push({ flexes: current });
+          script.push({ setFace: { front: props[i++], back: {} } });
+          current = "";
+        }
+      }
+
+      // finish up the script & run it
+      script.push({ reverseFlexes: sequence });
+      script.push({ history: "clear" });
+      fm = Flexagonator.Create(script);
+
+      if (Flexagonator.isFlexError(fm) || Flexagonator.isTreeError(fm)) {
+        statusMessage(fm);
+      } else {
+        updateUI();
+      }
+    }
+
+    function applySequence(key, sequence) {
+      if (key == 13) {
+        runGeneratingSequence(sequence);
+      }
+    }
+
+    function interfaceMouseMove(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      if (script != null) {
+        fm = Flexagonator.RunScriptItem(fm, script);
+        updateUI();
+      }
+    }
+
+    function backsideMouseMove(event) {
+      event.target.style.cursor = 'pointer';
+    }
+
+    function backsideMouseClick(event) {
+      var result = fm.applyFlex('^');
+      updateUI();
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Flexagonator: creating standard hexaflexagons</h1>
+
+  <p>
+    This page allows you to create the standard hexaflexagons with 3 or more sides using a "flex generating sequence", i.e. create
+    the minimal necessary structure to allow the flexagon to carry out the given sequence of flexes. See "More info" at the
+    bottom for background.
+  </p>
+
+  <p>
+    <div>
+      <label>enter flex generating sequence</label>
+      <input onkeypress="applySequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" />
+    </div>
+  </p>
+
+  <canvas id="interface" width="800" height="500"></canvas>
+  <canvas id="backside" width="300" height="300"></canvas>
+  <div id="status"></div>
+  <canvas id="unfolded" width="800" height="600"></canvas>
+
+  <script type="text/javascript">
+    updateUI();
+    var canvas = document.getElementById('interface');
+    canvas.addEventListener('mousemove', interfaceMouseMove, false);
+    canvas.addEventListener('click', interfaceMouseClick, false);
+    var backside = document.getElementById('backside');
+    backside.addEventListener('mousemove', backsideMouseMove, false);
+    backside.addEventListener('click', backsideMouseClick, false);
+  </script>
+
+  <h2>More info</h2>
+  <p>
+    The technique used here is to apply a "flex generating sequence", i.e. create the minimal necessary structure to allow the
+    flexagon to carry out the given sequence of flexes. This technique generalizes to a wide variety of flexagons and flexes.
+    See <a href="http://loki3.com/flex/g4g10/Flex-Theory.pdf">Flexagon Theory</a> for more background about flexes and
+    flex generating sequences.
+  </p>
+  <p>
+    Most flexagon theory has been aimed at hexaflexagons and the pinch flex. Here are several references for the theory around
+    pinch flexes:
+    <ul>
+      <li><a href="http://erikdemaine.org/flexagons/Conrad-Hartline-1962/flexagon.html">Flexagons</a> paper by Conrad and Hartline</li>
+      <li>Dr. King's <a href="http://www.drking.org.uk/hexagons/flexagons/theory1.html">Flexagon Theory</a></li>
+      <li><a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a>" from Antonio Carlos M. de Queiroz</li>
+    </ul>
+  </p>
+</body>
+
+</html>
