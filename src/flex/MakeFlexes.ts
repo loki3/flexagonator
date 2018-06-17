@@ -22,6 +22,8 @@ namespace Flexagonator {
         flexes["St"] = createSilverTetra(patCount);
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
+      if (patCount >= 5)
+        flexes["Lk"] = createSlotPocket(patCount);
       if (patCount == 5)
         flexes["L3"] = createSlotTriplePocket();
 
@@ -307,6 +309,34 @@ namespace Flexagonator {
 
     return makeFlex("slot tuck flex", pattern, output, FlexRotation.None) as Flex;
   }
+
+  function createSlotPocket(patCount: number): Flex {
+    // (((1,2)3)4) ... (i) ... (n-5) (((n-4,n-3)n-2)n-1) (n)
+    // (^n-4) (2(n-2(4,^n))) (^1) (3) ... (i) ... (n-3(n-6(n-1,^n-5)))
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    const leaves = patCount + 6;
+
+    pattern.push([[[1, 2], 3], 4]);
+    for (var i = 5; i < patCount + 2; i++) {
+      pattern.push(i);
+    }
+    pattern.push([[[leaves - 4, leaves - 3], leaves - 2], leaves - 1]);
+    pattern.push(leaves);
+
+    // post
+    output.push(-(leaves - 4));
+    output.push([2, [leaves - 2, [4, -leaves]]]);
+    output.push(-1);
+    output.push(3);
+    for (var i = 5; i < patCount; i++) {
+      output.push(i);
+    }
+    output.push([leaves - 3, [leaves - 6, [leaves - 1, -(leaves - 5)]]]);
+
+    return makeFlex("slot pocket", pattern, output, FlexRotation.None) as Flex;
+  }
+
 
   function createSlotTriplePocket(): Flex {
     var pattern: LeafTree = [[[[12, -11], -13], 10], [[[2, -1], -3], -14], -4, [[[-7, 6], 8], -5], 9];
