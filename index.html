@@ -21,15 +21,21 @@
         historyBox.value = history;
       }
 
-      var statusDiv = document.getElementById('status');
-      if (statusDiv !== null) {
-        var str = "in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates();
-        statusDiv.innerHTML = str;
-      }
+      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
 
       var scriptDiv = document.getElementById('script');
       if (scriptDiv !== null) {
         scriptDiv.innerHTML = "";
+      }
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isFlexError(message) || Flexagonator.isTreeError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
       }
     }
 
@@ -136,7 +142,7 @@
       if (result === true) {
         updateUI();
       } else {
-        console.log(result);
+        statusMessage(result);
       }
     }
 
@@ -146,7 +152,7 @@
         if (result === true) {
           updateUI();
         } else {
-          console.log(result);
+          statusMessage(result);
         }
       }
     }
@@ -177,9 +183,10 @@
     function runScript() {
       var scriptBox = document.getElementById('script');
       if (scriptBox !== null) {
+        statusMessage("error parsing script");
         var result = Flexagonator.RunScriptString(fm, scriptBox.value);
         if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
-          console.log(result);
+          statusMessage(result);
         } else {
           fm = result;
           updateUI();
