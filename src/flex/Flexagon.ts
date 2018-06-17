@@ -65,6 +65,16 @@ namespace Flexagonator {
       return ids;
     }
 
+    // get the ids for the visible leaves [ top1, bottom1, top2, bottom2, ... ]
+    getVisible(): number[] {
+      var ids: number[] = [];
+      for (var pat of this.pats) {
+        ids.push(pat.getTop());
+        ids.push(pat.getBottom());
+      }
+      return ids;
+    }
+
     getThickness(): number[] {
       var thickness: number[] = [];
       for (var pat of this.pats) {

@@ -84,6 +84,18 @@
       }
     }
 
+    function showVisible(flexagons) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        var str = "";
+        for (var i = 0; i < flexagons.length; i++) {
+          var visible = flexagons[i].getVisible();
+          str += i.toString() + ": " + JSON.stringify(visible) + '\n';
+        }
+        box.value = str;
+      }
+    }
+
     function showFlexes(found) {
       var box = document.getElementById('states');
       if (box !== null) {
@@ -147,6 +159,7 @@
 
   <p>
     <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
+    <input onclick="showVisible(explorer.getFlexagons());" type="button" value="show visible" />
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
     <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
     <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
