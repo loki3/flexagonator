@@ -137,6 +137,11 @@
       updateUI();
     }
 
+    function resetFaces() {
+      fm.leafProps.reset();
+      updateUI();
+    }
+
     function flexAndShow(flex) {
       var result = fm.applyFlex(flex);
       if (result === true) {
@@ -266,7 +271,8 @@
       <option value="6">6: brown</option>
       <option value="7">7: light grey</option>
       <option value="8">8: dark grey</option>
-    </select>
+    </select> &nbsp;&nbsp;&nbsp;
+    <input onclick="resetFaces();" type="button" value="reset faces" />
   </p>
 
   <p>

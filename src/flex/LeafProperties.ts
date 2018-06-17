@@ -19,6 +19,10 @@ namespace Flexagonator {
       this.props = props === undefined ? [] : props;
     }
 
+    reset() {
+      this.props = [];
+    }
+
     getRawProps(): LeafProperties[] {
       return this.props;
     }
