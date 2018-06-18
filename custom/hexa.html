@@ -21,7 +21,6 @@
 
     var buttons = null;
     var fm = null;
-    var sideCount = 3;
     runGeneratingSequence("P*");
 
     function updateUI() {
@@ -30,7 +29,8 @@
       Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.Front });
       Flexagonator.drawUnfolded('unfoldedBack', fm, { content: Flexagonator.StripContent.Back });
 
-      var message = "number of sides: " + sideCount;
+      const numSides = fm.flexagon.getLeafCount() / 3;
+      var message = "number of sides: " + numSides;
       message += " ----- in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates()
       statusMessage(message);
     }
@@ -64,16 +64,15 @@
         if (flexName === "P+") {
           current += "P";
           script.push({ flexes: current });
-          script.push({ setFace: { front: props[i++], back: {} } });
+          script.push({ unsetFace: { front: props[i++], back: {} } });
           current = "P' ";
         }
         else if (flexName === "P*") {
           script.push({ flexes: current });
-          script.push({ setFace: { front: props[i++], back: {} } });
+          script.push({ unsetFace: { front: props[i++], back: {} } });
           current = "";
         }
       }
-      sideCount = i;
 
       // finish up the script & run it
       script.push({ flexes: current });
