@@ -14,11 +14,11 @@
       { label: "6", color: 0x553900 },
       { label: "7", color: 0xdddddd },
       { label: "8", color: 0x999999 },
-      { label: "9", color: 0xffffff },
-      { label: "10", color: 0xffffff },
-      { label: "11", color: 0xffffff },
-      { label: "12", color: 0xffffff }
     ];
+    for (var i = 9; i <= 50; i++) {
+      props.push({ label: i.toString() });
+    }
+
     var buttons = null;
     var fm = null;
     var sideCount = 3;
