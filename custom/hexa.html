@@ -141,8 +141,8 @@
       <label>pick a flex generating sequence</label>
       <select onchange="newSequence(event.target.value)">
           <option value="P*">3: P*</option>
-          <option value="P* P*">4: P* P*</option>
-          <option value="P* P* P*">5: P* P* P*</option>
+          <option value="P* P*">4: P* x 2</option>
+          <option value="P* P* P*">5: P* x 3</option>
           <option value="P* P* P* P*">6: P* x 4</option>
           <option value="P* ^ > P* ^ > P* ^ > P* ^ >">6: (P* ^ >) x 4</option>
           <option value="P* P* P+ > P P*">6: P* P* P+ > P P*</option>
@@ -150,6 +150,13 @@
           <option value="P* ^ > P* ^ > P* ^ > P* ^ > P* ^ >">7: (P* ^ >) x 5</option>
           <option value="P* P* P* P+ > P P*">7: P* P* P* P+ > P P*</option>
           <option value="P* P* P* ^ > P* P*">7: P* P* P* ^ > P* P*</option>
+          <option value="P* P* P* P* P* P*">8: P* x 6</option>
+          <option value="P* ^ > P* ^ > P* ^ > P* ^ > P* ^ > P*">8: P* ^ >) x 6</option>
+          <option value="P* P* P* ^ > P* ^ > P* ^ > P*">8: P* x 3 (^>P*) x 3</option>
+          <option value="P* P* P* P+ > P P* P*">8: P* P* P* P+ > P P* P*</option>
+          <option value="P* P* P* P* P+ > P P*">8: P* P* P* P* P+ > P P*</option>
+          <option value="P* P* P* ^ > P* P* P*">8: P* P* P* ^ > P* P* P*</option>
+          <option value="P* P* P* P* ^ > P* P*">8: P* P* P* P* ^ > P* P*</option>
         </select>
     </div>
   </p>
