@@ -52,17 +52,21 @@ namespace Flexagonator {
     }
 
     if (item.setFace !== undefined) {
-      if (item.setFace.front.label !== undefined) {
-        fm.setFaceLabel(item.setFace.front.label, true);
+      if (item.setFace.front !== undefined) {
+        if (item.setFace.front.label !== undefined) {
+          fm.setFaceLabel(item.setFace.front.label, true);
+        }
+        if (item.setFace.front.color !== undefined) {
+          fm.setFaceColor(item.setFace.front.color, true);
+        }
       }
-      if (item.setFace.back.label !== undefined) {
-        fm.setFaceLabel(item.setFace.back.label, false);
-      }
-      if (item.setFace.front.color !== undefined) {
-        fm.setFaceColor(item.setFace.front.color, true);
-      }
-      if (item.setFace.back.color !== undefined) {
-        fm.setFaceColor(item.setFace.back.color, false);
+      if (item.setFace.back !== undefined) {
+        if (item.setFace.back.label !== undefined) {
+          fm.setFaceLabel(item.setFace.back.label, false);
+        }
+        if (item.setFace.back.color !== undefined) {
+          fm.setFaceColor(item.setFace.back.color, false);
+        }
       }
     }
 
