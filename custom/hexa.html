@@ -21,6 +21,7 @@
     ];
     var buttons = null;
     var fm = null;
+    var sideCount = 3;
     runGeneratingSequence("P*");
 
     function updateUI() {
@@ -28,7 +29,10 @@
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
       Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.Front });
       Flexagonator.drawUnfolded('unfoldedBack', fm, { content: Flexagonator.StripContent.Back });
-      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+
+      var message = "number of sides: " + sideCount;
+      message += " ----- in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates()
+      statusMessage(message);
     }
 
     function statusMessage(message) {
@@ -69,6 +73,7 @@
           current = "";
         }
       }
+      sideCount = i;
 
       // finish up the script & run it
       script.push({ flexes: current });
