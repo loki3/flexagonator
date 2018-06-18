@@ -26,7 +26,7 @@
     function updateUI() {
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
-      Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.FoldingLabels });
+      Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.Front });
       statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
     }
 
@@ -70,6 +70,7 @@
       }
 
       // finish up the script & run it
+      script.push({ flexes: current });
       script.push({ reverseFlexes: sequence });
       script.push({ history: "clear" });
       fm = Flexagonator.Create(script);
@@ -79,6 +80,15 @@
       } else {
         updateUI();
       }
+    }
+
+    function newSequence(sequence) {
+      var input = document.getElementById('enterFlexes');
+      if (input !== null) {
+        input.value = sequence;
+      }
+
+      runGeneratingSequence(sequence);
     }
 
     function applySequence(key, sequence) {
@@ -118,6 +128,24 @@
     This page allows you to create the standard hexaflexagons with 3 or more sides using a "flex generating sequence", i.e. create
     the minimal necessary structure to allow the flexagon to carry out the given sequence of flexes. See "More info" at the
     bottom for background.
+  </p>
+
+  <p>
+    <div>
+      <label>pick a flex generating sequence</label>
+      <select onchange="newSequence(event.target.value)">
+          <option value="P*">3: P*</option>
+          <option value="P* P*">4: P* P*</option>
+          <option value="P* P* P*">5: P* P* P*</option>
+          <option value="P* P* P* P*">6: P* x 4</option>
+          <option value="P* ^ > P* ^ > P* ^ > P* ^ >">6: (P* ^ >) x 4</option>
+          <option value="P* P* P+ > P P*">6: P* P* P+ > P P*</option>
+          <option value="P* P* P* P* P*">7: P* x 5</option>
+          <option value="P* ^ > P* ^ > P* ^ > P* ^ > P* ^ >">7: (P* ^ >) x 5</option>
+          <option value="P* P* P* P+ > P P*">7: P* P* P* P+ > P P*</option>
+          <option value="P* P* P* ^ > P* P*">7: P* P* P* ^ > P* P*</option>
+        </select>
+    </div>
   </p>
 
   <p>
