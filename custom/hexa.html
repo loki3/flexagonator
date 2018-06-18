@@ -27,6 +27,7 @@
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
       Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.Front });
+      Flexagonator.drawUnfolded('unfoldedBack', fm, { content: Flexagonator.StripContent.Back });
       statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
     }
 
@@ -159,6 +160,7 @@
   <canvas id="backside" width="300" height="300"></canvas>
   <div id="status"></div>
   <canvas id="unfolded" width="800" height="600"></canvas>
+  <canvas id="unfoldedBack" width="800" height="600"></canvas>
 
   <script type="text/javascript">
     updateUI();
