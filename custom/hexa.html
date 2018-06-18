@@ -21,13 +21,10 @@
 
     var buttons = null;
     var fm = null;
-    runGeneratingSequence("P*");
 
     function updateUI() {
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
-      Flexagonator.drawUnfolded('unfolded', fm, { content: Flexagonator.StripContent.Front });
-      Flexagonator.drawUnfolded('unfoldedBack', fm, { content: Flexagonator.StripContent.Back });
 
       const numSides = fm.flexagon.getLeafCount() / 3;
       var message = "number of sides: " + numSides;
@@ -84,6 +81,10 @@
         statusMessage(fm);
       } else {
         updateUI();
+
+        const stripObjects = { flexagon: fm.getBaseFlexagon(), angleInfo: fm.getAngleInfo(), leafProps: fm.leafProps };
+        Flexagonator.drawUnfoldedObjects('unfolded', stripObjects, { content: Flexagonator.StripContent.Front });
+        Flexagonator.drawUnfoldedObjects('unfoldedBack', stripObjects, { content: Flexagonator.StripContent.Back });
       }
     }
 
@@ -174,7 +175,7 @@
   <canvas id="unfoldedBack" width="800" height="600"></canvas>
 
   <script type="text/javascript">
-    updateUI();
+    runGeneratingSequence("P*");
     var canvas = document.getElementById('interface');
     canvas.addEventListener('mousemove', interfaceMouseMove, false);
     canvas.addEventListener('click', interfaceMouseClick, false);

@@ -33,7 +33,7 @@ namespace Flexagonator {
     return drawUnfoldedObjects(canvasId, objects, options);
   }
 
-  function drawUnfoldedObjects(canvasId: string, objects: DrawStripObjects, options: DrawStripOptions) {
+  export function drawUnfoldedObjects(canvasId: string, objects: DrawStripObjects, options: DrawStripOptions) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, 800, 600);
