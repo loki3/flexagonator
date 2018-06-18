@@ -196,9 +196,20 @@
     pinch flexes:
     <ul>
       <li><a href="http://erikdemaine.org/flexagons/Conrad-Hartline-1962/flexagon.html">Flexagons</a> paper by Conrad and Hartline</li>
-      <li>Dr. King's <a href="http://www.drking.org.uk/hexagons/flexagons/theory1.html">Flexagon Theory</a></li>
-      <li><a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a>" from Antonio Carlos M. de Queiroz</li>
+      <li><a href="http://www.drking.org.uk/hexagons/flexagons/theory1.html">Dr. King's Flexagon Theory</a></li>
+      <li><a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a> from Antonio Carlos M. de Queiroz</li>
     </ul>
+  </p>
+
+  <p>
+    Figuring out a flex generating sequence from a diagram such as the ones linked from the
+    <a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a> page is relatively straight forward because the
+    diagrams capture a lot about how the pinch flex is applied. Pick a vertex to start on, then step between vertices, visiting
+    every little triangle at least once. Every little triangle needs a P* in the sequence in order to create it, which basically
+    means that you create the structure necessary to perform a single pinch flex. If you curve as you travel around the diagram,
+    simply add "P*", but if you're traveling in a straight line, add "^ > P*". You may be able to visit every triangle once
+    this way, but with some you may need to back up to a previous triangle before continuing on. One way to accomplish this
+    is to follow a P* with P'.
   </p>
 </body>
 
