@@ -117,12 +117,7 @@ You can fetch the current list through `FlexagonManager.flexesToSearch`.
 While Flexagonator has a lot of built-in flexes, it doesn't contain all the possible flexes.
 Therefore, you can define your own flexes.
 You specify both a full name and an abbreviated name used in flex sequences.
-
-The abbreviated name should start with capital letter.
-This can be followed by a series of lower case letters or numbers,
-for example, `P`, `Sh`, `F3`, `Ltb`, or `P334`.
-This makes it easy to find the beginning of a flex in a series of flexes.
-The special flexes `>`, `<`, and `^` just rotate or flip the flexagon without modifying it all.
+See [Flex Notation](flex-notation.md) for notes on naming conventions for the names of flexes.
 
 After the names, you list the minimal pat structure before the flex is applied  with `input` and the resulting pat structure after the flex has been applied with `output`.
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
