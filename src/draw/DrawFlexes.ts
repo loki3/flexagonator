@@ -4,7 +4,7 @@ namespace Flexagonator {
   export function drawPossibleFlexes(ctx: CanvasRenderingContext2D, flexagon: Flexagon,
     allFlexes: Flexes, flexesToSearch: Flexes, polygon: Polygon): ScriptButtons {
 
-    var buttons: ScriptButtons = new ScriptButtons();
+    var buttons = new ButtonsBuilder();
 
     const height = polygon.radius / 9;
     ctx.font = height + "px sans-serif";
@@ -25,14 +25,14 @@ namespace Flexagonator {
       prefix += "> ";
       postfix += " <";
     }
-    return buttons;
+    return buttons.create();
   }
 
   // draw each flex and add a button that knows how to apply the flex
   function addFlexes(ctx: CanvasRenderingContext2D,
     flexes: string[], prefix: string, postfix: string,
     x: number, y: number, h: number, left: boolean, up: boolean,
-    /*output*/ buttons: ScriptButtons) {
+    /*output*/ buttons: ButtonsBuilder) {
 
     const spaceWidth = ctx.measureText(' ').width;
     const pad = 3;

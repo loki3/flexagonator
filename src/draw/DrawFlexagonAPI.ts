@@ -54,7 +54,7 @@ namespace Flexagonator {
     if (options.flexes !== undefined && options.flexes) {
       return drawPossibleFlexes(ctx, objects.flexagon, objects.allFlexes, objects.flexesToSearch, polygon);
     }
-    return new ScriptButtons();
+    return new ScriptButtons([]);
   }
 
   function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {
