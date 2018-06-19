@@ -9,17 +9,15 @@ namespace Flexagonator {
   // object that understand which angles to use for leaves
   // when given a flexagon
   export class FlexagonAngles {
-    private angleCenter: number = 60;
-    private angleClock: number = 60;
-
-    setAngles(center: number, clock: number) {
-      this.angleCenter = center;
-      this.angleClock = clock;
+    // angleCenter: angle in the center of the flexagon
+    // angleClock:  angle clockwise from the center
+    constructor(private readonly angleCenter: number, private readonly angleClock: number) {
     }
 
-    setIsosceles(flexagon: Flexagon) {
-      this.angleCenter = 360 / flexagon.getPatCount();
-      this.angleClock = (180 - this.angleCenter) / 2;
+    static makeIsosceles(flexagon: Flexagon): FlexagonAngles {
+      const center = 360 / flexagon.getPatCount();
+      const clock = (180 - center) / 2;
+      return new FlexagonAngles(center, clock);
     }
 
     // [center angle, clockwise, clockwise]

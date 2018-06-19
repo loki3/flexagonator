@@ -12,7 +12,7 @@ namespace Flexagonator {
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     flexesToSearch: Flexes;
-    private angleInfo: FlexagonAngles = new FlexagonAngles();
+    private angleInfo: FlexagonAngles = new FlexagonAngles(60, 60);
     private tracker: Tracker;
     private readonly history: History;
 
@@ -129,10 +129,10 @@ namespace Flexagonator {
     }
 
     setAngles(center: number, clock: number) {
-      this.angleInfo.setAngles(center, clock);
+      this.angleInfo = new FlexagonAngles(center, clock);
     }
     setIsosceles() {
-      this.angleInfo.setIsosceles(this.flexagon);
+      this.angleInfo = FlexagonAngles.makeIsosceles(this.flexagon);
     }
 
     getAngleInfo(): FlexagonAngles {
