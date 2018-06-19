@@ -26,9 +26,14 @@ There are several modifiers that can be tacked on to a flex:
 * `+`: if the current state of the flexagon doesn't support the given flex, create the internal structure necessary to support it *without* applying the flex, e.g. `F3+` or `Ltb'+`
 * `*`: same as `+`, but apply the flex after creating the necessary structure, e.g. `T*` or `P334'*`
 
-```javascript
+```
 P > > T'* ^ < Sh+
 ```
+
+A sequence of flexes used to create a new flexagon is called a *generating sequence*.
+It typically consists of flexes followed with `*` or `+`.
+For example, the generating sequence `P* P* P*` can be used to create a pentahexaflexagon,
+i.e. a hexagonal flexagon where you can pinch flex to 5 different sides.
 
 
 ## Flexes
