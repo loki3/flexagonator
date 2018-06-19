@@ -7,11 +7,13 @@ namespace Flexagonator {
     readonly h: number;
   }
 
+  // a region that's tied to a script command
   interface Button {
     readonly box: Box;
     readonly script: ScriptItem;
   }
 
+  // class that can build up a list of script buttons
   export class ButtonsBuilder {
     private buttons: Button[] = [];
 
@@ -26,7 +28,7 @@ namespace Flexagonator {
     }
   }
 
-  // tracks regions that will trigger a script command when asked
+  // regions that will trigger a script command when asked
   export class ScriptButtons {
     constructor(private readonly buttons: Button[]) {
     }
