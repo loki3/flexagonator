@@ -65,13 +65,11 @@ namespace Flexagonator {
       return ids;
     }
 
-    // get the ids for the visible leaves [ top1, bottom1, top2, bottom2, ... ]
-    getVisible(): number[] {
-      var ids: number[] = [];
-      for (var pat of this.pats) {
-        ids.push(pat.getTop());
-        ids.push(pat.getBottom());
-      }
+    // get the ids for the visible leaves [ [top1, top2...], [bottom1,  bottom2...] ]
+    getVisible(): number[][] {
+      var ids: number[][] = [];
+      ids.push(this.getTopIds());
+      ids.push(this.getBottomIds());
       return ids;
     }
 
