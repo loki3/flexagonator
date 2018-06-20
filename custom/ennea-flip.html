@@ -71,7 +71,7 @@
       var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
         var result = Flexagonator.RunScriptItem(fm, script);
-        if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {
+        if (!Flexagonator.isError(result)) {
           fm = result;
           updateUI();
         }

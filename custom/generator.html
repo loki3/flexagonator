@@ -28,7 +28,7 @@
         { history: "reset" },
       ];
       var newFM = Flexagonator.Create(creator);
-      if (Flexagonator.isTreeError(newFM) || Flexagonator.isFlexError(newFM)) {
+      if (Flexagonator.isError(newFM)) {
         reportError(newFM);
         return false;
       }
@@ -135,7 +135,7 @@
       var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
         var result = Flexagonator.RunScriptItem(fm, script);
-        if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {
+        if (!Flexagonator.isError(result)) {
           fm = result;
           updateUI();
         }

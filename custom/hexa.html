@@ -35,7 +35,7 @@
     function statusMessage(message) {
       var statusDiv = document.getElementById('status');
       if (statusDiv !== null) {
-        if (Flexagonator.isFlexError(message) || Flexagonator.isTreeError(message)) {
+        if (Flexagonator.isError(message)) {
           message = Flexagonator.errorToString(message);
         }
         statusDiv.innerHTML = message;
@@ -77,7 +77,7 @@
       script.push({ history: "clear" });
       fm = Flexagonator.Create(script);
 
-      if (Flexagonator.isFlexError(fm) || Flexagonator.isTreeError(fm)) {
+      if (Flexagonator.isError(fm)) {
         statusMessage(fm);
       } else {
         updateUI();

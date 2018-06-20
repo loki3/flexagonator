@@ -18,7 +18,7 @@
         return;
       }
       var result = Flexagonator.RunScriptString(fm, scriptBox.value);
-      if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+      if (Flexagonator.isError(result)) {
         var str = Flexagonator.errorToString(result);
         statusMessage(str);
         return;

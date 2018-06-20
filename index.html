@@ -32,7 +32,7 @@
     function statusMessage(message) {
       var statusDiv = document.getElementById('status');
       if (statusDiv !== null) {
-        if (Flexagonator.isFlexError(message) || Flexagonator.isTreeError(message)) {
+        if (Flexagonator.isError(message)) {
           message = Flexagonator.errorToString(message);
         }
         statusDiv.innerHTML = message;
@@ -190,7 +190,7 @@
       if (scriptBox !== null) {
         statusMessage("error parsing script");
         var result = Flexagonator.RunScriptString(fm, scriptBox.value);
-        if (Flexagonator.isFlexError(result) || Flexagonator.isTreeError(result)) {
+        if (Flexagonator.isError(result)) {
           statusMessage(result);
         } else {
           fm = result;
@@ -208,7 +208,7 @@
       var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
         var result = Flexagonator.RunScriptItem(fm, script);
-        if (!Flexagonator.isFlexError(result) && !Flexagonator.isTreeError(result)) {
+        if (!Flexagonator.isError(result)) {
           fm = result;
           updateUI();
         }

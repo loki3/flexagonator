@@ -1,5 +1,10 @@
 namespace Flexagonator {
 
+  // check if this is one of the errors Flexagonator can signal
+  export function isError(result: any): result is TreeError | PatternError | FlexError {
+    return isTreeError(result) || isPatternError(result) || isFlexError(result);
+  }
+
   // get details about an error
   export function errorToString(error: TreeError | PatternError | FlexError): string {
     if (isTreeError(error)) {
