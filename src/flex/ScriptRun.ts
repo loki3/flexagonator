@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   // create a flexagon, apply a script, and return it
   export function Create(script: ScriptItem[]): FlexagonManager | TreeError | FlexError {
-    const result = makeFlexagon([1, 2, 3, 4, 5, 6]) as Flexagon;
+    const result = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
     const fm: FlexagonManager = makeFlexagonManager(result);
     return RunScript(fm, script);
   }
@@ -26,7 +26,7 @@ namespace Flexagonator {
 
   export function RunScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
     if (item.pats !== undefined) {
-      const result = makeFlexagon(item.pats);
+      const result = Flexagon.makeFromTree(item.pats);
       if (isTreeError(result)) {
         return result;
       }

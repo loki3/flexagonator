@@ -15,7 +15,7 @@ namespace Flexagonator {
   describe('makeFlexes(6)', () => {
     it('should allow some simple flexes', () => {
       const flexes: Flexes = makeAllFlexes(6);
-      const flexagon = makeFlexagon([[[-3, -1], -5], -7, [-8, 6], -10, [[-12, [-2, [-11, 13]]], 9], 4]);
+      const flexagon = Flexagon.makeFromTree([[[-3, -1], -5], -7, [-8, 6], -10, [[-12, [-2, [-11, 13]]], 9], 4]);
       if (isTreeError(flexagon)) {
         fail();
         return;

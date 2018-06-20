@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   describe('Flex.apply', () => {
     it('should transform a flexagon properly', () => {
-      const flexagon = makeFlexagon([1, [2, -3], -4, [-5, 6]]);
+      const flexagon = Flexagon.makeFromTree([1, [2, -3], -4, [-5, 6]]);
       if (isTreeError(flexagon)) {
         fail();
         return;
@@ -22,7 +22,7 @@ namespace Flexagonator {
   describe('Flex.apply/rotate', () => {
     it('should rotate & mirror vertices', () => {
       // ((7,8)^5) (^6) ((11,12)^9) (^10) ((3,4)^1) (^2)
-      const flexagon = makeFlexagon([[[7, 8], -5], -6, [[11, 12], -9], -10, [[3, 4], -1], -2]) as Flexagon;
+      const flexagon = Flexagon.makeFromTree([[[7, 8], -5], -6, [[11, 12], -9], -10, [[3, 4], -1], -2]) as Flexagon;
       expect(flexagon.whichVertex).toBe(0);
       expect(flexagon.isFirstMirrored).toBe(false);
 
@@ -64,7 +64,7 @@ namespace Flexagonator {
 
   describe('Flex.createPattern', () => {
     it('should derive a flexagon capable of performing the given flex', () => {
-      const flexagon = makeFlexagon([1, [2, -3], -4, [-5, 6]]) as Flexagon;
+      const flexagon = Flexagon.makeFromTree([1, [2, -3], -4, [-5, 6]]) as Flexagon;
 
       const flex = new Flex("test", [[1, 2], [3, [4, 5]], [6, 7], 8], [], FlexRotation.None);
       const result = flex.createPattern(flexagon);

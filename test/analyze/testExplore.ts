@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   describe('Explore.checkNext', () => {
     it('should find all states accessible using a small set of flexes', () => {
-      const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
+      const flexagon = Flexagon.makeFromTree([[1, 2], 3, [4, 5], 6]) as Flexagon;
 
       var flexes: Flexes = {};
       flexes["A"] = makeFlex("A", [[1, 2], 3, 4, 5], [1, [2, 3], 4, 5], FlexRotation.None) as Flex;
@@ -29,7 +29,7 @@ namespace Flexagonator {
 
   describe('Explore.checkNext', () => {
     it('should remember the flexes accessible from each explored state', () => {
-      const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
+      const flexagon = Flexagon.makeFromTree([[1, 2], 3, [4, 5], 6]) as Flexagon;
 
       var flexes: Flexes = {};
       flexes["A"] = makeFlex("A", [[1, 2], 3, 4, 5], [1, [2, 3], 4, 5], FlexRotation.None) as Flex;

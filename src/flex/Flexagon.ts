@@ -1,24 +1,5 @@
 namespace Flexagonator {
 
-  export function makeFlexagon(trees: LeafTree[]): Flexagon | TreeError {
-    if (trees.length < 2) {
-      return { reason: TreeCode.TooFewPats, context: trees };
-    }
-    var pats: Pat[] = [];
-    for (var tree of trees) {
-      const pat = makePat(tree);
-      if (isTreeError(pat)) {
-        return pat;
-      }
-      pats.push(pat);
-    }
-    return new Flexagon(pats, 0, false/*isFirstMirrored*/);
-  }
-
-  export function makeFlexagonFromPats(pats: Pat[], whichVertex: number, isFirstMirrored: boolean): Flexagon {
-    return new Flexagon(pats, whichVertex, isFirstMirrored);
-  }
-
   /*
     Manages the pats in a flexagon
   */
@@ -26,6 +7,25 @@ namespace Flexagonator {
     // whichVertex: 1st face is numbered 0,1,2 clockwise - 0 starts out pointing to the center
     // isFirstMirrored: indicates that the first pat rotates counterclockwise instead
     constructor(readonly pats: Pat[], readonly whichVertex: number, readonly isFirstMirrored: boolean) {
+    }
+
+    static makeFromPats(pats: Pat[], whichVertex: number, isFirstMirrored: boolean): Flexagon {
+      return new Flexagon(pats, whichVertex, isFirstMirrored);
+    }
+
+    static makeFromTree(trees: LeafTree[]): Flexagon | TreeError {
+      if (trees.length < 2) {
+        return { reason: TreeCode.TooFewPats, context: trees };
+      }
+      var pats: Pat[] = [];
+      for (var tree of trees) {
+        const pat = makePat(tree);
+        if (isTreeError(pat)) {
+          return pat;
+        }
+        pats.push(pat);
+      }
+      return new Flexagon(pats, 0, false/*isFirstMirrored*/);
     }
 
     getPatCount(): number {

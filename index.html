@@ -5,7 +5,7 @@
   <title>Flexagonator</title>
   <script src="build/out.js"></script>
   <script type="text/javascript">
-    var flexagon = Flexagonator.makeFlexagon(Flexagonator.hexaHexaLeafTree);
+    var flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
     var fm = Flexagonator.makeFlexagonManager(flexagon, Flexagonator.hexaHexaProperties);
     var stripContent = 0/*StripContent.FoldingLabels*/;
     var buttons = null;
@@ -55,7 +55,7 @@
       }
 
       if (leaftree != null) {
-        var flexagon = Flexagonator.makeFlexagon(leaftree);
+        var flexagon = Flexagonator.Flexagon.makeFromTree(leaftree);
         fm = Flexagonator.makeFlexagonManager(flexagon, props);
         updateUI();
 

@@ -64,7 +64,7 @@ namespace Flexagonator {
       const newVertex: number = this.getNewVertex(flexagon.whichVertex, flexagon.isFirstMirrored);
       const isFirstMirrored: boolean = (this.rotation == FlexRotation.None) ? flexagon.isFirstMirrored : !flexagon.isFirstMirrored;
 
-      return makeFlexagonFromPats(newPats, newVertex, isFirstMirrored);
+      return Flexagon.makeFromPats(newPats, newVertex, isFirstMirrored);
     }
 
     private invertRotation(fr: FlexRotation): FlexRotation {
@@ -116,7 +116,7 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      return makeFlexagonFromPats(newPats, flexagon.whichVertex, flexagon.isFirstMirrored);
+      return Flexagon.makeFromPats(newPats, flexagon.whichVertex, flexagon.isFirstMirrored);
     }
   }
 

@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   describe('checkForFlexes', () => {
     it('should find all possible flexes at the current vertex', () => {
-      const flexagon = makeFlexagon([[1, 2], 3, [4, 5], 6]) as Flexagon;
+      const flexagon = Flexagon.makeFromTree([[1, 2], 3, [4, 5], 6]) as Flexagon;
 
       var flexes: Flexes = {};
       flexes["A"] = makeFlex("test", [[1, 2], 3, 4, 5], [[1, 2], 3, -4, -5], FlexRotation.None) as Flex;

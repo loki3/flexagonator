@@ -6,7 +6,7 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     var patCount = 6;
-    var flexagon = Flexagonator.makeFlexagon(getSimplePats(patCount));
+    var flexagon = Flexagonator.Flexagon.makeFromTree(getSimplePats(patCount));
     var fm = Flexagonator.makeFlexagonManager(flexagon);
     makeNew("");
     var buttons = null;
