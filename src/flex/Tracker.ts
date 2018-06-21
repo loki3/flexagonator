@@ -59,6 +59,46 @@ namespace Flexagonator {
   }
 
 
+  // similar to Tracker, but just tracks the visible leaves,
+  // which might have duplicates across all the flexagon states
+  export class TrackerVisible {
+    private readonly states: State[] = [];
+    private readonly keyId: number = 1;
+
+    constructor(flexagons: Flexagon[]) {
+      for (var flexagon of flexagons) {
+        const pseudo = TrackerVisible.toPseudoFlexagon(flexagon.getTopIds(), flexagon.getBottomIds());
+        const state = new State(pseudo, this.keyId);
+        this.states.push(state);
+      }
+    }
+
+    // returns the indices of flexagons with the same visible leaves, if any
+    find(top: number[], bottom: number[]): number[] {
+      var results: number[] = [];
+      const pseudo = TrackerVisible.toPseudoFlexagon(top, bottom);
+      const toFind = new State(pseudo, this.keyId);
+      var i = 0;
+      for (var state of this.states) {
+        if (state.isEqualTo(toFind)) {
+          results.push(i);
+        }
+        i++;
+      }
+      return results;
+    }
+
+    // pretend the visible leaves describe a flexagon
+    private static toPseudoFlexagon(top: number[], bottom: number[]): Flexagon {
+      var visible = [];
+      for (var i = 0; i < top.length; i++) {
+        visible.push([top[i], bottom[i]]);
+      }
+      return Flexagon.makeFromTree(visible) as Flexagon;
+    }
+  }
+
+
   // represents a flexagon state in such a way that's quick to compare
   // against others, while ignoring how it's rotated or flipped
   class State {

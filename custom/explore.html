@@ -135,6 +135,18 @@
         box.value = Flexagonator.DotWithFlexes(found, oneway);
       }
     }
+
+    function findStates(key, input) {
+      if (key == 13) {
+        var visible = JSON.parse(input);
+        var result = explorer.getFlexGraph().findVisible(visible);
+        var output = document.getElementById('visibleOutput');
+        if (result.length == 0)
+          output.innerHTML = "not found";
+        else
+          output.innerHTML = JSON.stringify(result);
+      }
+    }
   </script>
 </head>
 
@@ -169,6 +181,13 @@
 
   <p>
     <textarea id="states" cols="100" rows="30" spellcheck="false" readonly="true"></textarea>
+  </p>
+
+  <p>
+    Find which state(s) has a given set of visible leaves [ [top1, top2...], [bottom1, bottom2...] ]
+    <br/>
+    <input onkeypress="findStates(event.keyCode, event.target.value)" id="visibleInput" size="100" spellcheck="false" />
+    <div id="visibleOutput"></div>
   </p>
 </body>
 

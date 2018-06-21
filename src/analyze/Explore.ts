@@ -47,6 +47,10 @@ namespace Flexagonator {
       return this.found;
     }
 
+    getFlexGraph(): FlexGraph {
+      return new FlexGraph(this.flexagons, this.found);
+    }
+
     // check the next unexplored state
     // returns false once there are no more states to explore
     checkNext(): boolean {
