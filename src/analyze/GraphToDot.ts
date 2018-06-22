@@ -37,7 +37,7 @@ namespace Flexagonator {
 
   // create a DOT graph describing which flexes you can use to get between states,
   // ignoring rotations
-  export function DotWithFlexes(allRelFlexes: RelativeFlexes[], oneway: boolean, props: FlexDotProps | undefined): string {
+  export function DotWithFlexes(allRelFlexes: RelativeFlexes[], oneway: boolean, props?: FlexDotProps): string {
     if (!props) {
       props = defaultDotProps;
     }

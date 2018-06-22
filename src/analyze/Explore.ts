@@ -6,7 +6,7 @@ namespace Flexagonator {
   export class Explore {
     private readonly flexes: Flexes;          // flexes to explore with other than <>^
     private readonly right: Flex;             // >
-    private readonly over: Flex | undefined;  // ^
+    private readonly over?: Flex;             // ^
 
     private current: number;          // which state we're about to explore
     // the following 3 collections are aligned with each other
@@ -14,7 +14,7 @@ namespace Flexagonator {
     private tracker: Tracker;
     private found: RelativeFlexes[] = [];
 
-    constructor(flexagon: Flexagon, flexes: Flexes, right: Flex, over: Flex | undefined) {
+    constructor(flexagon: Flexagon, flexes: Flexes, right: Flex, over?: Flex) {
       // initialize flexes
       this.right = right;
       this.over = over;
