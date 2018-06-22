@@ -1,8 +1,8 @@
 namespace Flexagonator {
 
   function toLeafs(isClocks: boolean[]): Leaf[] {
-    var leafs: Leaf[] = [];
-    for (var isClock of isClocks) {
+    const leafs: Leaf[] = [];
+    for (let isClock of isClocks) {
       leafs.push({ id: 1, top: 1, bottom: 1, isClock: isClock });
     }
     return leafs;

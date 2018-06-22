@@ -11,8 +11,8 @@ namespace Flexagonator {
 
   // given a=(0,0), b(1,0), angle1=(c,a,b), angle2=(a,b,c), find c
   export function computeTrianglePoint(angle1: number, angle2: number): Point {
-    var cota = Math.cos(angle1) / Math.sin(angle1);
-    var cotb = Math.cos(angle2) / Math.sin(angle2);
+    const cota = Math.cos(angle1) / Math.sin(angle1);
+    const cotb = Math.cos(angle2) / Math.sin(angle2);
     return { x: cota / (cota + cotb), y: 1 / (cota + cotb) };
   }
 

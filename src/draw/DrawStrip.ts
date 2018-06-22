@@ -32,7 +32,7 @@ namespace Flexagonator {
   }
 
   function drawLines(ctx: CanvasRenderingContext2D, lines: Line[], transform: Transform) {
-    for (var line of lines) {
+    for (let line of lines) {
       ctx.beginPath();
       const from = transform.apply(line.a);
       ctx.moveTo(from.x, from.y);
@@ -45,7 +45,7 @@ namespace Flexagonator {
   function drawFoldingLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
     const len = transform.applyScale(1);
 
-    for (var face of faces) {
+    for (let face of faces) {
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
       const y = p.y + len * 0.05;
@@ -66,7 +66,7 @@ namespace Flexagonator {
     ctx.textBaseline = "middle";
     ctx.font = len / 10 + "px sans-serif";
 
-    for (var face of faces) {
+    for (let face of faces) {
       // put the text near one corner in the direction of the incenter
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
@@ -82,7 +82,7 @@ namespace Flexagonator {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    for (var face of faces) {
+    for (let face of faces) {
       const id = front ? face.leaf.id : -face.leaf.id;
       const color = props.getColorAsRGBString(id);
       if (color !== undefined) {

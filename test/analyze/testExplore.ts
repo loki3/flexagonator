@@ -4,7 +4,7 @@ namespace Flexagonator {
     it('should find all states accessible using a small set of flexes', () => {
       const flexagon = Flexagon.makeFromTree([[1, 2], 3, [4, 5], 6]) as Flexagon;
 
-      var flexes: Flexes = {};
+      const flexes: Flexes = {};
       flexes["A"] = makeFlex("A", [[1, 2], 3, 4, 5], [1, [2, 3], 4, 5], FlexRotation.None) as Flex;
       flexes["B"] = makeFlex("B", [[1, 2], 3, [4, 5], 6], [1, 2, [3, 4], [5, 6]], FlexRotation.None) as Flex;
       const right = makeFlex("shift right", [1, 2, 3, 4], [2, 3, 4, 1], FlexRotation.Mirror) as Flex;
@@ -31,7 +31,7 @@ namespace Flexagonator {
     it('should remember the flexes accessible from each explored state', () => {
       const flexagon = Flexagon.makeFromTree([[1, 2], 3, [4, 5], 6]) as Flexagon;
 
-      var flexes: Flexes = {};
+      const flexes: Flexes = {};
       flexes["A"] = makeFlex("A", [[1, 2], 3, 4, 5], [1, [2, 3], 4, 5], FlexRotation.None) as Flex;
       const right = makeFlex("shift right", [1, 2, 3, 4], [2, 3, 4, 1], FlexRotation.Mirror) as Flex;
       const over = makeFlex("turn over", [1, 2, 3, 4], [-4, -3, -2, -1], FlexRotation.None) as Flex;

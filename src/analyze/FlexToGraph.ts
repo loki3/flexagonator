@@ -8,13 +8,13 @@ namespace Flexagonator {
   // and create a simple description of which states can be reach from each state.
   // if 'oneway', only list transitions from smaller states to larger
   export function getStateToState(allRelFlexes: RelativeFlexes[], oneway: boolean): StateToState {
-    var result: StateToState = [];
+    let result: StateToState = [];
 
-    for (var i in allRelFlexes) {
+    for (let i in allRelFlexes) {
       // find all the states that can be reached from this state
       const thisState = Number.parseInt(i);
-      var states: number[] = [];
-      for (var relFlex of allRelFlexes[i]) {
+      const states: number[] = [];
+      for (let relFlex of allRelFlexes[i]) {
         if (oneway && thisState > relFlex.toState) {
           continue;
         }
@@ -40,14 +40,14 @@ namespace Flexagonator {
   // and create a list of which flexes can be used to get to other states,
   // while ignoring rotations
   export function getSimpleFlexGraph(allRelFlexes: RelativeFlexes[], oneway: boolean): FlexesToStates {
-    var result: FlexesToStates = [];
+    let result: FlexesToStates = [];
 
-    for (var i in allRelFlexes) {
+    for (let i in allRelFlexes) {
       // check all flexes from this state
       const thisState = Number.parseInt(i);
-      var flexes: FlexToState[] = [];
+      const flexes: FlexToState[] = [];
 
-      for (var relFlex of allRelFlexes[i]) {
+      for (let relFlex of allRelFlexes[i]) {
         if (oneway) {
           const flexname = makeFlexName(relFlex.flex);
           // only output flex if we're flexing to a state later in the list (to avoid double counting)
@@ -72,7 +72,7 @@ namespace Flexagonator {
     if (!flexname.isInverse) {
       return false;
     }
-    for (var relFlex of other) {
+    for (let relFlex of other) {
       if (relFlex.flex === flexname.baseName && relFlex.toState === state) {
         return false;
       }

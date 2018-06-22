@@ -9,10 +9,10 @@ namespace Flexagonator {
   // ignoring flexes & rotations
   export function DotSimple(allRelFlexes: RelativeFlexes[]): string {
     const transitions = getStateToState(allRelFlexes, true/*oneway*/);
-    var str = "graph {\n";
+    let str = "graph {\n";
 
-    for (var i in transitions) {
-      for (var state of transitions[i]) {
+    for (let i in transitions) {
+      for (let state of transitions[i]) {
         str += "  " + i + " -- " + state.toString() + '\n';
       }
     }
@@ -43,12 +43,12 @@ namespace Flexagonator {
     }
     const transitions = getSimpleFlexGraph(allRelFlexes, oneway);
 
-    var str = oneway ? "" : "di";
+    let str = oneway ? "" : "di";
     str += "graph {\n";
     const connect = oneway ? " -- " : " -> ";
 
-    for (var i in transitions) {
-      for (var state of transitions[i]) {
+    for (let i in transitions) {
+      for (let state of transitions[i]) {
         str += "  " + i + connect + state.state;
         str += getProps(state.flex, props);
         str += '\n';
@@ -72,7 +72,7 @@ namespace Flexagonator {
     if (!props[flexname.baseName]) {
       return "";
     }
-    var str = " [" + props[flexname.baseName];
+    let str = " [" + props[flexname.baseName];
     if (flexname.isInverse) {
       str += ", style=dashed";
     }

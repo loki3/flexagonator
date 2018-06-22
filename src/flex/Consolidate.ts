@@ -3,15 +3,15 @@ namespace Flexagonator {
   // add new flexes to old, consolidating redundant rotates
   // and return the new list (which could be shorter)
   export function addAndConsolidate(oldFlexes: string[], newFlexes: string[]): string[] {
-    var allflexes = [];
+    const allflexes = [];
     // copy old list across
-    for (var flex of oldFlexes) {
+    for (let flex of oldFlexes) {
       allflexes.push(flex);
     }
 
     // add new flexes, consolidating redundant rotates
-    var start = true;
-    for (var flex of newFlexes) {
+    let start = true;
+    for (let flex of newFlexes) {
       if (start) {
         const last = allflexes.length > 0 ? allflexes[allflexes.length - 1] : "";
         const last2 = allflexes.length > 1 ? allflexes[allflexes.length - 2] : "";

@@ -19,7 +19,7 @@ namespace Flexagonator {
       this.right = right;
       this.over = over;
       this.flexes = {};
-      for (var f in flexes) {
+      for (let f in flexes) {
         if (f !== '>' && f !== '<' && f !== '^') {
           this.flexes[f] = flexes[f];
         }
@@ -58,20 +58,20 @@ namespace Flexagonator {
         return false;
       }
 
-      var flexagon = this.flexagons[this.current];
+      let flexagon = this.flexagons[this.current];
       const count = flexagon.getPatCount();
-      var found: RelativeFlexes = [];
+      const found: RelativeFlexes = [];
 
       // rotate & flip over, applying all flexes at each step
       this.checkAllFlexes(flexagon, found, 0, false);
-      for (var i = 1; i < count; i++) {
+      for (let i = 1; i < count; i++) {
         flexagon = this.right.apply(flexagon) as Flexagon;
         this.checkAllFlexes(flexagon, found, i, false);
       }
       if (this.over) {
         flexagon = this.over.apply(this.flexagons[this.current]) as Flexagon;
         this.checkAllFlexes(flexagon, found, 0, true);
-        for (var i = 1; i < count; i++) {
+        for (let i = 1; i < count; i++) {
           flexagon = this.right.apply(flexagon) as Flexagon;
           this.checkAllFlexes(flexagon, found, i, true);
         }
@@ -85,10 +85,10 @@ namespace Flexagonator {
     // apply every flex at the current vertex,
     // every time we find a new state, track it
     private checkAllFlexes(flexagon: Flexagon, found: RelativeFlexes, rights: number, over: boolean) {
-      for (var f in this.flexes) {
+      for (let f in this.flexes) {
         const newFlexagon = this.flexes[f].apply(flexagon);
         if (!isFlexError(newFlexagon)) {
-          var result = this.tracker.findMaybeAdd(newFlexagon);
+          let result = this.tracker.findMaybeAdd(newFlexagon);
           if (result === null) {
             // we have a new state
             this.flexagons.push(newFlexagon);

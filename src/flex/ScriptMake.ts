@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   export function MakeScript(fm: FlexagonManager): ScriptItem[] {
-    var script: ScriptItem[] = [];
+    const script: ScriptItem[] = [];
     script.push(makePats(fm));
     if (fm.getFlexHistory().length > 0) {
       script.push(makeFlexHistory(fm));
@@ -25,9 +25,9 @@ namespace Flexagonator {
   }
 
   function makeFlexesToSearch(fm: FlexagonManager): ScriptItem {
-    var searchFlexes = "";
-    var firstFlex = true;
-    for (var name in fm.flexesToSearch) {
+    let searchFlexes = "";
+    let firstFlex = true;
+    for (let name in fm.flexesToSearch) {
       if (firstFlex) {
         firstFlex = false;
       } else {

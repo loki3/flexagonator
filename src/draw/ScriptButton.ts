@@ -34,7 +34,7 @@ namespace Flexagonator {
     }
 
     findButton(x: number, y: number): ScriptItem | null {
-      for (var button of this.buttons) {
+      for (let button of this.buttons) {
         const box = button.box;
         if (box.x <= x && x <= box.x + box.w && box.y <= y && y <= box.y + box.h) {
           return button.script;

@@ -8,7 +8,7 @@ namespace Flexagonator {
   // get details about an error
   export function errorToString(error: TreeError | PatternError | FlexError): string {
     if (isTreeError(error)) {
-      var str = "Tree Error: " + TreeCode[error.reason];
+      let str = "Tree Error: " + TreeCode[error.reason];
       if (error.context) {
         str += " with context " + error.context.toString();
       }
@@ -17,7 +17,7 @@ namespace Flexagonator {
       return "Error in flex pattern definition; expected '" + error.expected.toString()
         + "' but found '" + error.actual.toString() + "'";
     } else if (isFlexError(error)) {
-      var str = "Flex Error: " + FlexCode[error.reason];
+      let str = "Flex Error: " + FlexCode[error.reason];
       if (error.flexName) {
         str += " for flex " + error.flexName;
       }

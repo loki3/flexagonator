@@ -24,12 +24,12 @@ namespace Flexagonator {
     }
 
     toString(): string {
-      var str = this.toState + '(';
+      let str = this.toState + '(';
       if (this.shouldTurnOver()) {
         str += '^';
       }
       const rights = this.getRights();
-      for (var i = 0; i < rights; i++) {
+      for (let i = 0; i < rights; i++) {
         str += '>';
       }
       str += this.flex + ')';
@@ -41,9 +41,9 @@ namespace Flexagonator {
   export type RelativeFlexes = Array<RelativeFlex>;
 
   export function relativeFlexesToString(flexes: RelativeFlexes): string {
-    var str = "";
-    var first = true;
-    for (var relFlex of flexes) {
+    let str = "";
+    let first = true;
+    for (let relFlex of flexes) {
       if (first) {
         str = relFlex.toString();
         first = false;

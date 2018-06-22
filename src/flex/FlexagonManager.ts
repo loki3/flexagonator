@@ -42,7 +42,7 @@ namespace Flexagonator {
     // as a single undoable operation
     applyFlexes(flexStr: string, separatelyUndoable: boolean): boolean | FlexError {
       const flexNames: string[] = flexStr.split(" ");
-      for (var flexName of flexNames) {
+      for (let flexName of flexNames) {
         if (flexName.length === 0) {
           continue;
         }
@@ -60,8 +60,8 @@ namespace Flexagonator {
     // run the inverse of the flexes backwards to effectively undo a sequence
     applyInReverse(flexStr: string): boolean | FlexError {
       const flexStrings: string[] = flexStr.split(" ").reverse();
-      var inverses = "";
-      for (var alias of flexStrings) {
+      let inverses = "";
+      for (let alias of flexStrings) {
         if (alias.length === 0) {
           continue;
         }
@@ -102,28 +102,28 @@ namespace Flexagonator {
 
     setFaceLabel(label: string, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (var id of ids) {
+      for (let id of ids) {
         this.leafProps.setLabelProp(id, label);
       }
     }
 
     setUnsetFaceLabel(label: string, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (var id of ids) {
+      for (let id of ids) {
         this.leafProps.setUnsetLabelProp(id, label);
       }
     }
 
     setFaceColor(color: number, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (var id of ids) {
+      for (let id of ids) {
         this.leafProps.setColorProp(id, color);
       }
     }
 
     setUnsetFaceColor(color: number, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (var id of ids) {
+      for (let id of ids) {
         this.leafProps.setUnsetColorProp(id, color);
       }
     }

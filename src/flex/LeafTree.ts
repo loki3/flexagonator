@@ -42,7 +42,7 @@ namespace Flexagonator {
     if (a.length !== b.length) {
       return false;
     }
-    for (var i in a) {
+    for (let i in a) {
       if (!areEqual(a[i], b[i])) {
         return false;
       }

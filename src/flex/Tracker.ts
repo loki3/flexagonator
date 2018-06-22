@@ -48,7 +48,7 @@ namespace Flexagonator {
 
     // returns which state we have, or null if we haven't seen it before
     private getIndex(state: State): number | null {
-      for (var i = 0; i < this.states.length; i++) {
+      for (let i = 0; i < this.states.length; i++) {
         const thisState = this.states[i];
         if (thisState.isEqualTo(state)) {
           return i;
@@ -66,7 +66,7 @@ namespace Flexagonator {
     private readonly keyId: number = 1;
 
     constructor(flexagons: Flexagon[]) {
-      for (var flexagon of flexagons) {
+      for (let flexagon of flexagons) {
         const pseudo = TrackerVisible.toPseudoFlexagon(flexagon.getTopIds(), flexagon.getBottomIds());
         const state = new State(pseudo, this.keyId);
         this.states.push(state);
@@ -75,11 +75,11 @@ namespace Flexagonator {
 
     // returns the indices of flexagons with the same visible leaves, if any
     find(top: number[], bottom: number[]): number[] {
-      var results: number[] = [];
+      const results: number[] = [];
       const pseudo = TrackerVisible.toPseudoFlexagon(top, bottom);
       const toFind = new State(pseudo, this.keyId);
-      var i = 0;
-      for (var state of this.states) {
+      let i = 0;
+      for (let state of this.states) {
         if (state.isEqualTo(toFind)) {
           results.push(i);
         }
@@ -90,8 +90,8 @@ namespace Flexagonator {
 
     // pretend the visible leaves describe a flexagon
     private static toPseudoFlexagon(top: number[], bottom: number[]): Flexagon {
-      var visible = [];
-      for (var i = 0; i < top.length; i++) {
+      const visible = [];
+      for (let i = 0; i < top.length; i++) {
         visible.push([top[i], bottom[i]]);
       }
       return Flexagon.makeFromTree(visible) as Flexagon;
@@ -108,9 +108,9 @@ namespace Flexagonator {
       const patcount = flexagon.getPatCount();
 
       // find which pat 'key' is in and whether it's face up or down
-      var whichpat: number = 0;
-      var faceup = true;
-      for (var i = 0; i < patcount; i++) {
+      let whichpat: number = 0;
+      let faceup = true;
+      for (let i = 0; i < patcount; i++) {
         const whereKey = flexagon.pats[i].findId(key);
         if (whereKey != WhereLeaf.NotFound) {
           whichpat = i;
@@ -122,12 +122,12 @@ namespace Flexagonator {
       // build up a string that represents the normalized form,
       // where 'id' is faceup in the first pat
       if (faceup) {
-        for (var i = 0; i < patcount; i++) {
+        for (let i = 0; i < patcount; i++) {
           const patnum = (i + whichpat) % patcount;
           this.state += flexagon.pats[patnum].getString() + ",";
         }
       } else {
-        for (var i = 0; i < patcount; i++) {
+        for (let i = 0; i < patcount; i++) {
           const patnum = (whichpat - i + patcount) % patcount;
           this.state += flexagon.pats[patnum].makeFlipped().getString() + ",";
         }

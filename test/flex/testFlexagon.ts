@@ -20,7 +20,7 @@ namespace Flexagonator {
         return;
       }
       const result = flexagon.getAsLeafTrees();
-      for (var i in result) {
+      for (let i in result) {
         expect(areEqual(result[i], trees[i])).toBeTruthy();
       }
     });

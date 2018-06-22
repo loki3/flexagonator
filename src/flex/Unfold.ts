@@ -16,7 +16,7 @@ namespace Flexagonator {
     }
 
     // tracking the next number to assign leaves as they're unfolded
-    var next = 3;
+    let next = 3;
     const getNext = () => { return next++; };
 
     const foldpats = toFoldPats(tree);
@@ -81,8 +81,8 @@ namespace Flexagonator {
   }
 
   function flatten(fp: (FoldPat | FoldPat[])[]): FoldPat[] {
-    var foldpats: FoldPat[] = [];
-    for (var item of fp) {
+    const foldpats: FoldPat[] = [];
+    for (let item of fp) {
       if (Array.isArray(item)) {
         foldpats.push(item[0]);
         foldpats.push(item[1]);
@@ -108,7 +108,7 @@ namespace Flexagonator {
   }
 
   function findNextHinge(foldpats: FoldPat[]): number | null {
-    for (var i in foldpats) {
+    for (let i in foldpats) {
       if (Array.isArray(foldpats[i].pat)) {
         return Number.parseInt(i);
       }
@@ -117,7 +117,7 @@ namespace Flexagonator {
   }
 
   function unfoldAll(foldpats: FoldPat[], getNext: () => number): FoldPat[] {
-    var hinge = findNextHinge(foldpats);
+    let hinge = findNextHinge(foldpats);
     while (hinge !== null) {
       foldpats = unfoldAt(foldpats, hinge, getNext);
       hinge = findNextHinge(foldpats);

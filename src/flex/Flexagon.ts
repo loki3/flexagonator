@@ -17,8 +17,8 @@ namespace Flexagonator {
       if (trees.length < 2) {
         return { reason: TreeCode.TooFewPats, context: trees };
       }
-      var pats: Pat[] = [];
-      for (var tree of trees) {
+      const pats: Pat[] = [];
+      for (let tree of trees) {
         const pat = makePat(tree);
         if (isTreeError(pat)) {
           return pat;
@@ -33,16 +33,16 @@ namespace Flexagonator {
     }
 
     getLeafCount(): number {
-      var total = 0;
-      for (var pat of this.pats) {
+      let total = 0;
+      for (let pat of this.pats) {
         total += pat.getLeafCount();
       }
       return total;
     }
 
     getAsLeafTrees(): LeafTree[] {
-      var trees: LeafTree[] = [];
-      for (var pat of this.pats) {
+      const trees: LeafTree[] = [];
+      for (let pat of this.pats) {
         const tree: LeafTree = pat.getAsLeafTree();
         trees.push(tree);
       }
@@ -50,16 +50,16 @@ namespace Flexagonator {
     }
 
     getTopIds(): number[] {
-      var ids: number[] = [];
-      for (var pat of this.pats) {
+      const ids: number[] = [];
+      for (let pat of this.pats) {
         ids.push(pat.getTop());
       }
       return ids;
     }
 
     getBottomIds(): number[] {
-      var ids: number[] = [];
-      for (var pat of this.pats) {
+      const ids: number[] = [];
+      for (let pat of this.pats) {
         ids.push(pat.getBottom());
       }
       return ids;
@@ -67,15 +67,15 @@ namespace Flexagonator {
 
     // get the ids for the visible leaves [ [top1, top2...], [bottom1,  bottom2...] ]
     getVisible(): number[][] {
-      var ids: number[][] = [];
+      const ids: number[][] = [];
       ids.push(this.getTopIds());
       ids.push(this.getBottomIds());
       return ids;
     }
 
     getThickness(): number[] {
-      var thickness: number[] = [];
-      for (var pat of this.pats) {
+      const thickness: number[] = [];
+      for (let pat of this.pats) {
         thickness.push(pat.getThickness());
       }
       return thickness;
@@ -85,7 +85,7 @@ namespace Flexagonator {
       if (this.pats.length !== pattern.length) {
         return false;
       }
-      for (var i in this.pats) {
+      for (let i in this.pats) {
         if (!this.pats[i].hasPattern(pattern[i])) {
           return false;
         }
@@ -98,13 +98,13 @@ namespace Flexagonator {
         return { expected: pattern, actual: this.pats };
       }
 
-      var match: Pat[] = [];
-      for (var i in this.pats) {
+      const match: Pat[] = [];
+      for (let i in this.pats) {
         const imatch = this.pats[i].matchPattern(pattern[i]);
         if (isPatternError(imatch)) {
           return imatch;
         }
-        for (var j in imatch) {
+        for (let j in imatch) {
           match[j] = imatch[j];
         }
       }

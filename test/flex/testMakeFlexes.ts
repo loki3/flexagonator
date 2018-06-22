@@ -3,7 +3,7 @@ namespace Flexagonator {
   describe('makeFlexes', () => {
     it('should generate valid flexes', () => {
       const flexes: Flexes = makeAllFlexes(6);
-      for (var flex of Object.keys(flexes)) {
+      for (let flex of Object.keys(flexes)) {
         if (isFlexError(flexes[flex])) {
           fail();
           return;

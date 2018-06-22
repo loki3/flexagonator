@@ -45,7 +45,7 @@ namespace Flexagonator {
     getLeafTriangles(): Triangle[] {
       const triangles: Triangle[] = [];
       const corners = this.computePoints(this.radius, -0.5);
-      for (var i = 0; i < this.numSides; i++) {
+      for (let i = 0; i < this.numSides; i++) {
         const j = i == this.numSides - 1 ? 0 : i + 1;
         const triangle: Triangle = {
           x1: this.xCenter, y1: this.yCenter,
@@ -58,13 +58,13 @@ namespace Flexagonator {
     }
 
     private computePoints(radius: number, angleFactor: number): number[] {
-      var corners: number[] = [];
+      const corners: number[] = [];
       if (this.numSides < 3)
         return corners;
 
       const angles = new Angles(this.numSides, angleFactor, this.showFront);
       const scales = new Scales(this.numSides, this.anglesDegrees, radius, angleFactor);
-      for (var i = 0; i < this.numSides; i++) {
+      for (let i = 0; i < this.numSides; i++) {
         const point = angles.computePoint(i);
         const scale = scales.computeScale(i);
 

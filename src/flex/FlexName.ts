@@ -5,8 +5,8 @@ namespace Flexagonator {
     const shouldGenerate = (last === '+') || (last === '*');
     const shouldApply = (last !== '+');
 
-    var isInverse: boolean;
-    var baseName: string;
+    let isInverse: boolean;
+    let baseName: string;
     if (shouldGenerate) {
       const next = fullName[fullName.length - 2];
       isInverse = (next === "'");
@@ -69,9 +69,9 @@ namespace Flexagonator {
   // get a list of all the unique flex names (ingoring * and +, but including ')
   // and optionally excluding ><^
   export function getUniqueFlexes(flexStr: string, excludeRotates: boolean): string[] {
-    var result: string[] = [];
+    let result: string[] = [];
     const names: string[] = flexStr.split(" ");
-    for (var name of names) {
+    for (let name of names) {
       const flexName = makeFlexName(name).flexName;
       if (excludeRotates && (flexName == '<' || flexName == '>' || flexName == '^')) {
         continue;

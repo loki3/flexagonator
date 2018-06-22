@@ -19,14 +19,14 @@ namespace Flexagonator {
       angle2: the edge connecting the angles is the first edge to mirror across
   */
   export function leafsToLines(leafs: Leaf[], angle1: number, angle2: number): LeafLines {
-    var faces: LeafFace[] = [];
-    var folds: Line[] = [];
-    var cuts: Line[] = [];
+    const faces: LeafFace[] = [];
+    const folds: Line[] = [];
+    const cuts: Line[] = [];
 
     // first triangle
-    var a = { x: 0, y: 0 };
-    var b = { x: 1, y: 0 };
-    var c = computeTrianglePoint(angle1, angle2);
+    let a = { x: 0, y: 0 };
+    let b = { x: 1, y: 0 };
+    let c = computeTrianglePoint(angle1, angle2);
     faces.push({ leaf: leafs[0], corners: [a, b, c] });
     if (leafs[0].isClock) {
       folds.push({ a: b, b: c });
@@ -38,7 +38,7 @@ namespace Flexagonator {
     folds.push({ a: a, b: b });
 
     // keep mirroring a corner based on the direction the strip winds
-    for (var i = 1; i < leafs.length; i++) {
+    for (let i = 1; i < leafs.length; i++) {
       c = mirror(a, b, c);
       faces.push({ leaf: leafs[i], corners: [a, b, c] });
 
@@ -63,9 +63,9 @@ namespace Flexagonator {
   }
 
   export function getExtents(leaflines: LeafLines): [Point, Point] {
-    var xmin = 0, ymin = 0, xmax = 0, ymax = 0;
-    for (var face of leaflines.faces) {
-      for (var point of face.corners) {
+    let xmin = 0, ymin = 0, xmax = 0, ymax = 0;
+    for (let face of leaflines.faces) {
+      for (let point of face.corners) {
         if (point.x < xmin)
           xmin = point.x;
         if (point.x > xmax)

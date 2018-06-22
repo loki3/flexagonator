@@ -118,7 +118,7 @@ namespace Flexagonator {
         return { expected: pattern, actual: this.id };
       }
       const n: number = pattern as number;
-      var match: Pat[] = [];
+      const match: Pat[] = [];
       match[Math.abs(n)] = n >= 0 ? this : this.makeFlipped();
       return match;
     }
@@ -129,7 +129,7 @@ namespace Flexagonator {
       }
 
       // we want the first leaf to use this.id, all others use getNextId
-      var usedId = false;
+      let usedId = false;
       const patternArray = pattern as any[];
       const newLeft = this.subCreate(patternArray[0], () => {
         if (usedId) return getNextId();
@@ -214,7 +214,7 @@ namespace Flexagonator {
     matchPattern(pattern: LeafTree): Pat[] | PatternError {
       if (typeof (pattern) === "number") {
         const n: number = pattern as number;
-        var match: Pat[] = [];
+        const match: Pat[] = [];
         match[Math.abs(n)] = n >= 0 ? this : this.makeFlipped();
         return match;
       }
@@ -229,8 +229,8 @@ namespace Flexagonator {
           return rightMatch;
         }
 
-        var join = leftMatch;
-        for (var i in rightMatch) {
+        let join = leftMatch;
+        for (let i in rightMatch) {
           join[i] = rightMatch[i];
         }
         return join;

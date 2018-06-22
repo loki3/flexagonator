@@ -4,7 +4,7 @@ namespace Flexagonator {
   export function drawPossibleFlexes(ctx: CanvasRenderingContext2D, flexagon: Flexagon,
     allFlexes: Flexes, flexesToSearch: Flexes, polygon: Polygon): ScriptButtons {
 
-    var buttons = new ButtonsBuilder();
+    const buttons = new ButtonsBuilder();
 
     const height = polygon.radius / 9;
     ctx.font = height + "px sans-serif";
@@ -13,8 +13,8 @@ namespace Flexagonator {
     ctx.textBaseline = "bottom";
 
     const corners = polygon.getCorners();
-    var prefix = "", postfix = "";
-    for (var i = 0; i < flexagon.getPatCount(); i++) {
+    let prefix = "", postfix = "";
+    for (let i = 0; i < flexagon.getPatCount(); i++) {
       const x = corners[i * 2];
       const y = corners[i * 2 + 1];
       const left = x > polygon.xCenter;
@@ -38,7 +38,7 @@ namespace Flexagonator {
     const pad = 3;
     y += h;
 
-    for (var flex of flexes) {
+    for (let flex of flexes) {
       const metrics = ctx.measureText(flex);
       const thisx = left ? x : x - metrics.width;
       const thisy = up ? y : y - h;

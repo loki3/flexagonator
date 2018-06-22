@@ -9,7 +9,7 @@ namespace Flexagonator {
 
   // apply a script to an existing flexagon (though it may create a new flexagon)
   export function RunScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexError | TreeError {
-    for (var item of script) {
+    for (let item of script) {
       const result = RunScriptItem(fm, item);
       if (isFlexError(result) || isTreeError(result)) {
         return result;
@@ -109,8 +109,8 @@ namespace Flexagonator {
 
     if (item.searchFlexes !== undefined) {
       const flexNames: string[] = item.searchFlexes.split(" ");
-      var flexes: Flexes = {};
-      for (var f of flexNames) {
+      let flexes: Flexes = {};
+      for (let f of flexNames) {
         const flex = fm.allFlexes[f];
         if (flex !== undefined) {
           flexes[f] = flex;

@@ -52,8 +52,8 @@ namespace Flexagonator {
         return { reason: FlexCode.BadFlexInput, patternError: matches };
       }
 
-      var newPats: Pat[] = [];
-      for (var stack of this.output) {
+      const newPats: Pat[] = [];
+      for (let stack of this.output) {
         const newPat = this.createPat(stack, matches);
         if (isFlexError(newPat)) {
           return newPat;
@@ -109,9 +109,9 @@ namespace Flexagonator {
     // generate the structure necessary to perform this flex
     // note: it doesn't actually apply the flex
     createPattern(flexagon: Flexagon): Flexagon {
-      var newPats: Pat[] = [];
-      var nextId = flexagon.getLeafCount() + 1;
-      for (var i in this.pattern) {
+      const newPats: Pat[] = [];
+      let nextId = flexagon.getLeafCount() + 1;
+      for (let i in this.pattern) {
         const newPat = flexagon.pats[i].createPattern(this.pattern[i], () => { return nextId++; });
         newPats.push(newPat);
       }

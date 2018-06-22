@@ -5,7 +5,7 @@ namespace Flexagonator {
   }
 
   export function makeAllFlexes(patCount: number): Flexes {
-    var flexes: Flexes = {};
+    let flexes: Flexes = {};
     if (patCount === 6) {
       flexes = makeHexaFlexes();
     }
@@ -28,7 +28,7 @@ namespace Flexagonator {
         flexes["L3"] = createSlotTriplePocket();
 
       flexes["Tf"] = createForcedTuck(patCount);
-      for (var i = 0; i < patCount - 5; i++) {
+      for (let i = 0; i < patCount - 5; i++) {
         const s = "T" + (i + 1).toString();
         flexes[s] = createTuck(patCount, i);
       }
@@ -37,7 +37,7 @@ namespace Flexagonator {
     }
 
     // add all the inverses
-    for (var flex of Object.keys(flexes)) {
+    for (let flex of Object.keys(flexes)) {
       flexes[flex + "'"] = flexes[flex].createInverse();
     }
 
@@ -46,10 +46,10 @@ namespace Flexagonator {
 
   // return just the flexes that can't be done using other flexes
   export function getPrimeFlexes(all: Flexes): Flexes {
-    var flexes: Flexes = {};
+    const flexes: Flexes = {};
     const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Lt", "Ltb", "Ltb'"];
 
-    for (var prime of primes) {
+    for (let prime of primes) {
       if (all[prime] !== undefined) {
         flexes[prime] = all[prime];
       }
@@ -59,7 +59,7 @@ namespace Flexagonator {
   }
 
   function makeHexaFlexes(): Flexes {
-    var flexes: Flexes = {};
+    const flexes: Flexes = {};
 
     flexes[">"] = makeFlex("shift right", [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 1], FlexRotation.Mirror) as Flex;
     flexes["<"] = makeFlex("shift left", [1, 2, 3, 4, 5, 6], [6, 1, 2, 3, 4, 5], FlexRotation.Mirror) as Flex;
@@ -115,8 +115,8 @@ namespace Flexagonator {
   }
 
   function addRotates(patCount: number, flexes: Flexes) {
-    var pattern = [], rightOut = [], leftOut = [], overOut = [];
-    for (var i = 0; i < patCount; i++) {
+    const pattern = [], rightOut = [], leftOut = [], overOut = [];
+    for (let i = 0; i < patCount; i++) {
       pattern[i] = i + 1;
       rightOut[i] = i + 2 > patCount ? 1 : i + 2;
       leftOut[i] = i < 1 ? patCount : i;
@@ -148,11 +148,11 @@ namespace Flexagonator {
   function createPinch(patCount: number): Flex {
     // (1,2) (3) ... (i,i+1) (i+2) ... (n-2,n-1) (n)
     // (^1) (5,^3) ... (^i) (i+4,^i+2) ... (^n-2) (2,^n)
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount * 3 / 2;
-    for (var i = 0; i < patCount; i += 2) {
-      var a = (i / 2) * 3 + 1;
+    for (let i = 0; i < patCount; i += 2) {
+      const a = (i / 2) * 3 + 1;
 
       // e.g. (1,2) (3)
       pattern.push([a, a + 1]);
@@ -160,7 +160,7 @@ namespace Flexagonator {
 
       // e.g. (^1) (5,^3)
       output.push(-a);
-      var b = (a + 2) % leaves;
+      let b = (a + 2) % leaves;
       b = (b == 0 ? leaves : b);
       output.push([(a + 4) % leaves, -b]);
     }
@@ -172,12 +172,12 @@ namespace Flexagonator {
     // 'which' lists the vertices where the basic unit will be applied after 0, e.g. [3,6] for P333
     // e.g. [[1,3], 2], 4, 5, [[6,8], 7], 9, 10, [[11,13], 12], 14, 15
     //      3, 4, [-6, [5,-7]], 8, 9, [-11, [10,-12]], 13, 14, [-1, [15,-2]]
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
 
-    var iWhich = -1;
-    var iLeaf = 1;
-    for (var iPat = 0; iPat < patCount; iPat++) {
+    let iWhich = -1;
+    let iLeaf = 1;
+    for (let iPat = 0; iPat < patCount; iPat++) {
       if ((iWhich == -1) || (iWhich < which.length && which[iWhich] === iPat)) {
         pattern.push([[iLeaf, iLeaf + 2], iLeaf + 1]);
         iWhich++;
@@ -189,7 +189,7 @@ namespace Flexagonator {
 
     iWhich = 0;
     iLeaf = 3;
-    for (var iPat = 0; iPat < patCount; iPat++) {
+    for (let iPat = 0; iPat < patCount; iPat++) {
       if (iWhich < which.length && which[iWhich] - 1 === iPat) {
         output.push([-(iLeaf + 1), [iLeaf, -(iLeaf + 2)]]);
         iWhich++;
@@ -203,8 +203,8 @@ namespace Flexagonator {
     }
 
     // e.g. patCount=9 & which=[3,6] turns into "333"
-    var nums = which[0].toString();
-    for (var i = 1; i < which.length; i++) {
+    let nums = which[0].toString();
+    for (let i = 1; i < which.length; i++) {
       nums += (which[i] - which[i - 1]).toString();
     }
     nums += (patCount - which[which.length - 1]).toString();
@@ -214,12 +214,12 @@ namespace Flexagonator {
   function createPyramidShuffle(patCount: number): Flex {
     // (1,2) (3) ... (i) ... (((n-4,n-3)n-2)n-1) (n)
     // (^n-4) (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1)
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 4;
 
     pattern.push([1, 2]);
-    for (var i = 3; i < patCount; i++) {
+    for (let i = 3; i < patCount; i++) {
       pattern.push(i);
     }
     pattern.push([[[leaves - 4, leaves - 3], leaves - 2], leaves - 1]);
@@ -228,7 +228,7 @@ namespace Flexagonator {
     // post
     output.push(-(leaves - 4));
     output.push([1, [leaves - 2, [2, -leaves]]]);
-    for (var i = 3; i < patCount; i++) {
+    for (let i = 3; i < patCount; i++) {
       output.push(i);
     }
     output.push([leaves - 3, leaves - 1]);
@@ -239,12 +239,12 @@ namespace Flexagonator {
   function createFlip(patCount: number): Flex {
     // (1,2) (3) ... (i) ... ((n-4,n-3)(n-2,n-1)) (n)
     // (n-3) ((^1,3)(n,^2)) ... (i) ... (n-2) (^n-4,^n-1)
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 4;
 
     pattern.push([1, 2]);
-    for (var i = 3; i < patCount; i++) {
+    for (let i = 3; i < patCount; i++) {
       pattern.push(i);
     }
     pattern.push([[leaves - 4, leaves - 3], [leaves - 2, leaves - 1]]);
@@ -252,7 +252,7 @@ namespace Flexagonator {
 
     output.push(leaves - 3);
     output.push([[-1, 3], [leaves, -2]]);
-    for (var i = 4; i < patCount; i++) {
+    for (let i = 4; i < patCount; i++) {
       output.push(i);
     }
     output.push(leaves - 2);
@@ -264,12 +264,12 @@ namespace Flexagonator {
   function createSilverTetra(patCount: number): Flex {
     // (1(2,3)) (4) ... (i) ... (n-3(n-2,n-1)) (n)
     // (2) ((^1,4)^3) ... (i) ... (n-2) ((^n-3,n)^n-1)
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 4;
 
     pattern.push([1, [2, 3]]);
-    for (var i = 4; i <= patCount; i++) {
+    for (let i = 4; i <= patCount; i++) {
       pattern.push(i);
     }
     pattern.push([leaves - 3, [leaves - 2, leaves - 1]]);
@@ -277,7 +277,7 @@ namespace Flexagonator {
 
     output.push(2);
     output.push([[-1, 4], -3]);
-    for (var i = 5; i <= patCount; i++) {
+    for (let i = 5; i <= patCount; i++) {
       output.push(i);
     }
     output.push(leaves - 2);
@@ -289,12 +289,12 @@ namespace Flexagonator {
   function createSlotTuck(patCount: number): Flex {
     // (((1,2)3)4) ... (i) ... (n-4) (n-3) (n-2,n-1) (n)
     // (n) (2,4) (^1) (3) ... (i) ... (n-2(n-4(n-1,^n-3)))
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 4;
 
     pattern.push([[[1, 2], 3], 4]);
-    for (var i = 5; i < patCount + 2; i++) {
+    for (let i = 5; i < patCount + 2; i++) {
       pattern.push(i);
     }
     pattern.push([leaves - 2, leaves - 1]);
@@ -305,7 +305,7 @@ namespace Flexagonator {
     output.push([2, 4]);
     output.push(-1);
     output.push(3);
-    for (var i = 5; i < patCount; i++) {
+    for (let i = 5; i < patCount; i++) {
       output.push(i);
     }
     output.push([leaves - 2, [leaves - 4, [leaves - 1, -(leaves - 3)]]]);
@@ -316,12 +316,12 @@ namespace Flexagonator {
   function createSlotPocket(patCount: number): Flex {
     // (((1,2)3)4) ... (i) ... (n-5) (((n-4,n-3)n-2)n-1) (n)
     // (^n-4) (2(n-2(4,^n))) (^1) (3) ... (i) ... (n-3(n-6(n-1,^n-5)))
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 6;
 
     pattern.push([[[1, 2], 3], 4]);
-    for (var i = 5; i < patCount + 2; i++) {
+    for (let i = 5; i < patCount + 2; i++) {
       pattern.push(i);
     }
     pattern.push([[[leaves - 4, leaves - 3], leaves - 2], leaves - 1]);
@@ -332,7 +332,7 @@ namespace Flexagonator {
     output.push([2, [leaves - 2, [4, -leaves]]]);
     output.push(-1);
     output.push(3);
-    for (var i = 5; i < patCount; i++) {
+    for (let i = 5; i < patCount; i++) {
       output.push(i);
     }
     output.push([leaves - 3, [leaves - 6, [leaves - 1, -(leaves - 5)]]]);
@@ -342,8 +342,8 @@ namespace Flexagonator {
 
 
   function createSlotTriplePocket(): Flex {
-    var pattern: LeafTree = [[[[12, -11], -13], 10], [[[2, -1], -3], -14], -4, [[[-7, 6], 8], -5], 9];
-    var output: LeafTree = [-2, [6, [-3, [-5, 4]]], 7, [-11, [8, [10, -9]]], [-1, [-12, [-14, 13]]]];
+    const pattern: LeafTree = [[[[12, -11], -13], 10], [[[2, -1], -3], -14], -4, [[[-7, 6], 8], -5], 9];
+    const output: LeafTree = [-2, [6, [-3, [-5, 4]]], 7, [-11, [8, [10, -9]]], [-1, [-12, [-14, 13]]]];
     return makeFlex("slot triple pocket", pattern, output, FlexRotation.None) as Flex;
   }
 
@@ -351,12 +351,12 @@ namespace Flexagonator {
   function createTuck(patCount: number, where: number): Flex {
     // ((1,2)3) (4) ... (i,i+1) ... (n-1) (n)
     // (2) (4) ... (i,i+1) ... (n-1) (^1(n,^3))
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 3;
 
     pattern.push([[1, 2], 3]);
-    for (var i = 4; i <= leaves; i++) {
+    for (let i = 4; i <= leaves; i++) {
       if (i == where + 6) {
         pattern.push([i, i + 1]);
       }
@@ -366,7 +366,7 @@ namespace Flexagonator {
     }
 
     output.push(2);
-    for (var i = 4; i < leaves; i++) {
+    for (let i = 4; i < leaves; i++) {
       if (i == where + 6) {
         output.push([i, i + 1]);
       }
@@ -383,17 +383,17 @@ namespace Flexagonator {
   function createForcedTuck(patCount: number): Flex {
     // ((1,2)3) (4) ... (n-1) (n)
     // (2) (4) ... (n-1) (^1(n,^3))
-    var pattern: LeafTree = [];
-    var output: LeafTree = [];
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
     const leaves = patCount + 2;
 
     pattern.push([[1, 2], 3]);
-    for (var i = 4; i <= leaves; i++) {
+    for (let i = 4; i <= leaves; i++) {
       pattern.push(i);
     }
 
     output.push(2);
-    for (var i = 4; i < leaves; i++) {
+    for (let i = 4; i < leaves; i++) {
       output.push(i);
     }
     output.push([-1, [leaves, -3]]);

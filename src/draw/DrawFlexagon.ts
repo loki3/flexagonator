@@ -48,7 +48,7 @@ namespace Flexagonator {
   function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
     ctx.beginPath();
     ctx.moveTo(corners[0], corners[1]);
-    for (var i = 2; i < corners.length; i += 2) {
+    for (let i = 2; i < corners.length; i += 2) {
       ctx.lineTo(corners[i], corners[i + 1]);
     }
     ctx.closePath();
@@ -57,7 +57,7 @@ namespace Flexagonator {
 
   function drawSpokes(ctx: CanvasRenderingContext2D, corners: number[], xCenter: number, yCenter: number) {
     ctx.beginPath();
-    for (var i = 0; i < corners.length; i += 2) {
+    for (let i = 0; i < corners.length; i += 2) {
       ctx.moveTo(xCenter, yCenter);
       ctx.lineTo(corners[i], corners[i + 1]);
       ctx.closePath();
@@ -74,7 +74,7 @@ namespace Flexagonator {
 
   function drawPatStructures(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], flexagon: Flexagon) {
     setTextProps(ctx, fontsize);
-    for (var i = 0; i < flexagon.getPatCount(); i++) {
+    for (let i = 0; i < flexagon.getPatCount(); i++) {
       const structure: string = flexagon.pats[i].getStructure();
       ctx.fillText(structure, centers[i * 2], centers[i * 2 + 1]);
     }
@@ -82,7 +82,7 @@ namespace Flexagonator {
 
   function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[], props?: PropertiesForLeaves) {
     setTextProps(ctx, fontsize);
-    for (var i = 0; i < ids.length; i++) {
+    for (let i = 0; i < ids.length; i++) {
       const id = ids[i];
       const label = props === undefined ? id.toString() : props.getFaceLabel(id);
       ctx.fillText(label, centers[i * 2], centers[i * 2 + 1]);

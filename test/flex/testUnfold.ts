@@ -13,7 +13,7 @@ namespace Flexagonator {
       }
 
       expect(result.length).toBe(5);
-      for (var i in result) {
+      for (let i in result) {
         const n = Number.parseInt(i);
         expect(areLeafsEqual(result[n], { id: n + 1, top: 1, bottom: 2, isClock: true })).toBeTruthy();
       }

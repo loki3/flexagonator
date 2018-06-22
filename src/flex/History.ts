@@ -41,7 +41,7 @@ namespace Flexagonator {
     }
 
     undoAll() {
-      for (var i = this.done.length - 1; i > 0; i--) {
+      for (let i = this.done.length - 1; i > 0; i--) {
         this.undone.push(this.done[i]);
       }
       this.done = [this.done[0]];
