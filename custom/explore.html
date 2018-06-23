@@ -151,18 +151,19 @@
     function findShortest() {
       var searchStartStr = document.getElementById('searchStart').value;
       var searchEndStr = document.getElementById('searchEnd').value;
+      var output = document.getElementById('flexSequence');
       var searchStart = JSON.parse(searchStartStr);
       var searchEnd = JSON.parse(searchEndStr);
       var find = Flexagonator.FindShortest.New(searchStart, searchEnd, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
       if (Flexagonator.isError(find)) {
         var str = Flexagonator.errorToString(find);
-        statusMessage(str);
+        output.innerHTML = str;
         return;
       }
 
+      output.innerHTML = "searching...";
       while (find.checkLevel()) {
       }
-      var output = document.getElementById('flexSequence');
       if (find.wasFound()) {
         output.innerHTML = find.getFlexes();
       } else {
