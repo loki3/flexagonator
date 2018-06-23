@@ -74,4 +74,40 @@ namespace Flexagonator {
     });
   });
 
+  describe('TrackerVisible', () => {
+    it("should recognize when visible leaves are the same", () => {
+      const flexagon1 = Flexagon.makeFromTree([[1, 2], [3, 4], 5]) as Flexagon;
+      const flexagon2 = Flexagon.makeFromTree([1, [2, [3, 4]], 5]) as Flexagon;
+      const flexagon3 = Flexagon.makeFromTree([1, [[2, 3], 4], 5]) as Flexagon;
+      const flexagons = [flexagon1, flexagon2, flexagon3];
+      const tracker = new TrackerVisible(flexagons);
+
+      { // no match
+        const actual = tracker.find([1, 4, 5], [-2, -3, -5]);
+        expect(actual.length).toBe(0);
+      }
+      { // one match
+        const actual = tracker.find([1, 3, 5], [-2, -4, -5]);
+        expect(actual.length).toBe(1);
+        expect(actual[0]).toBe(0);
+      }
+      { // two matches, with different internals
+        const actual = tracker.find([1, 2, 5], [-1, -4, -5]);
+        expect(actual.length).toBe(2);
+        expect(actual[0]).toBe(1);
+        expect(actual[1]).toBe(2);
+      }
+      { // leaves are shifted
+        const actual = tracker.find([5, 1, 3], [-5, -2, -4]);
+        expect(actual.length).toBe(1);
+        expect(actual[0]).toBe(0);
+      }
+      { // leaves are shifted & flipped
+        const actual = tracker.find([4, 2, 5], [-3, -1, -5]);
+        expect(actual.length).toBe(1);
+        expect(actual[0]).toBe(0);
+      }
+    });
+  });
+
 }
