@@ -24,7 +24,11 @@ namespace Flexagonator {
     }
 
     toString(): string {
-      let str = this.toState + '(';
+      return this.toState + '(' + this.getSequence() + ')';
+    }
+
+    getSequence(): string {
+      let str = "";
       if (this.shouldTurnOver()) {
         str += '^';
       }
@@ -32,7 +36,7 @@ namespace Flexagonator {
       for (let i = 0; i < rights; i++) {
         str += '>';
       }
-      str += this.flex + ')';
+      str += this.flex;
       return str;
     }
   }
