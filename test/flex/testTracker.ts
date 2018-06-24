@@ -110,4 +110,17 @@ namespace Flexagonator {
     });
   });
 
+  describe('TrackerVisible', () => {
+    it("should work when 1 isn't visible", () => {
+      // [-9, -12, -15, -6, -7, -4], [9, 12, 15, -5, 7, -13]
+      const flexagon1 = Flexagon.makeFromTree([-9, -12, -15, [-6, 5], -7, [-4, [-10, [[[-2, 1], [[-11, [3, 14]], 8]], 13]]]]) as Flexagon;
+      const flexagons = [flexagon1];
+      const tracker = new TrackerVisible(flexagons);
+
+      const actual = tracker.find([-7, -4, -9, -12, -15, -6], [7, -13, 9, 12, 15, -5]);
+      expect(actual.length).toBe(1);
+      expect(actual[0]).toBe(0);
+    });
+  });
+
 }

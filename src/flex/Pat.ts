@@ -21,6 +21,7 @@ namespace Flexagonator {
     getStructure(): string;
     getString(): string;
     findId(id: number): WhereLeaf;
+    findMinId(): number;  // min(abs(id))
 
     hasPattern(pattern: LeafTree): boolean;
     // returns an array where the index is the pattern number from the input
@@ -107,6 +108,10 @@ namespace Flexagonator {
         return WhereLeaf.Found;
       }
       return (this.id == -id) ? WhereLeaf.FoundFlipped : WhereLeaf.NotFound;
+    }
+
+    findMinId(): number {
+      return Math.abs(this.id);
     }
 
     hasPattern(pattern: LeafTree): boolean {
@@ -199,6 +204,12 @@ namespace Flexagonator {
         return a;
       }
       return this.right.findId(id);
+    }
+
+    findMinId(): number {
+      const a = this.left.findMinId();
+      const b = this.right.findMinId();
+      return Math.min(a, b);
     }
 
     hasPattern(pattern: LeafTree): boolean {

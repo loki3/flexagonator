@@ -99,6 +99,11 @@ namespace Flexagonator {
   }
 
 
+  interface WhereFound {
+    whichpat: number;
+    faceup: boolean;
+  }
+
   // represents a flexagon state in such a way that's quick to compare
   // against others, while ignoring how it's rotated or flipped
   class State {
@@ -108,7 +113,30 @@ namespace Flexagonator {
       const patcount = flexagon.getPatCount();
 
       // find which pat 'key' is in and whether it's face up or down
-      let whichpat: number = 0;
+      const where = this.findKey(flexagon, key);
+
+      // build up a string that represents the normalized form,
+      // where 'id' is faceup in the first pat
+      if (where.faceup) {
+        for (let i = 0; i < patcount; i++) {
+          const patnum = (i + where.whichpat) % patcount;
+          this.state += flexagon.pats[patnum].getString() + ",";
+        }
+      } else {
+        for (let i = 0; i < patcount; i++) {
+          const patnum = (where.whichpat - i + patcount) % patcount;
+          this.state += flexagon.pats[patnum].makeFlipped().getString() + ",";
+        }
+      }
+    }
+
+    isEqualTo(other: State): boolean {
+      return this.state === other.state;
+    }
+
+    private findKey(flexagon: Flexagon, key: number): WhereFound {
+      const patcount = flexagon.getPatCount();
+      let whichpat: number = -1;
       let faceup = true;
       for (let i = 0; i < patcount; i++) {
         const whereKey = flexagon.pats[i].findId(key);
@@ -118,24 +146,19 @@ namespace Flexagonator {
           break;
         }
       }
+      if (whichpat != -1) {
+        return { whichpat: whichpat, faceup: faceup };
+      }
 
-      // build up a string that represents the normalized form,
-      // where 'id' is faceup in the first pat
-      if (faceup) {
-        for (let i = 0; i < patcount; i++) {
-          const patnum = (i + whichpat) % patcount;
-          this.state += flexagon.pats[patnum].getString() + ",";
-        }
-      } else {
-        for (let i = 0; i < patcount; i++) {
-          const patnum = (whichpat - i + patcount) % patcount;
-          this.state += flexagon.pats[patnum].makeFlipped().getString() + ",";
+      // key wasn't found, so find the min value instead
+      let minId = Number.MAX_SAFE_INTEGER;
+      for (let i = 0; i < patcount; i++) {
+        const thisMin = flexagon.pats[i].findMinId();
+        if (thisMin < minId) {
+          minId = thisMin;
         }
       }
-    }
-
-    isEqualTo(other: State): boolean {
-      return this.state === other.state;
+      return this.findKey(flexagon, minId);
     }
   }
 }
