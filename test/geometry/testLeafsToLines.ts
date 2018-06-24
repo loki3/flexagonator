@@ -21,4 +21,23 @@ namespace Flexagonator {
     });
   });
 
+  describe('rotateLeafLines', () => {
+    it('should rotate all pieces of LeafLines', () => {
+      const leaf: Leaf = { id: 1, top: 1, bottom: 1, isClock: true };
+      const sample: LeafLines = {
+        faces: [{ leaf: leaf, corners: [{ x: 1, y: 2 }, { x: 3, y: 4 }] }], // [-2,1], [-4,3]
+        folds: [{ a: { x: -1, y: -2 }, b: { x: -2, y: 1 } }], // [2,-1], [-1,-2]
+        cuts: [{ a: { x: 1, y: -2 }, b: { x: 2, y: -1 } }]  // [2,1], [1,2]
+      };
+      const actual = rotateLeafLines(sample, toRadians(90));
+      expect(actual.faces.length).toBe(1);
+      expect(actual.faces[0].corners[0].x).toBeCloseTo(-2);
+      expect(actual.faces[0].corners[0].y).toBeCloseTo(1);
+      expect(actual.faces[0].corners[1].x).toBeCloseTo(-4);
+      expect(actual.faces[0].corners[1].y).toBeCloseTo(3);
+      expect(actual.folds[0].a.x).toBeCloseTo(2);
+      expect(actual.cuts[0].b.y).toBeCloseTo(2);
+    });
+  });
+
 }

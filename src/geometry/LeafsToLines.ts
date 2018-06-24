@@ -93,4 +93,51 @@ namespace Flexagonator {
       cuts: leaflines.cuts.slice(start, theEnd),
     };
   }
+
+
+  // rotate around the origin
+  class Rotate {
+    private readonly cos: number;
+    private readonly sin: number;
+
+    constructor(angle: number) {
+      this.cos = Math.cos(angle);
+      this.sin = Math.sin(angle);
+    }
+
+    point(p: Point): Point {
+      const x = p.x * this.cos - p.y * this.sin;
+      const y = p.y * this.cos + p.x * this.sin;
+      return { x: x, y: y };
+    }
+
+    line(l: Line): Line {
+      return { a: this.point(l.a), b: this.point(l.b) };
+    }
+  }
+
+  // rotate leaflines around the origin (in radians)
+  export function rotateLeafLines(leaflines: LeafLines, angle: number): LeafLines {
+    const rotate = new Rotate(angle);
+
+    const faces: LeafFace[] = [];
+    for (let oldface of leaflines.faces) {
+      const corners: Point[] = [];
+      for (let oldcorner of oldface.corners) {
+        corners.push(rotate.point(oldcorner));
+      }
+      faces.push({ leaf: oldface.leaf, corners: corners });
+    }
+
+    const folds: Line[] = [];
+    for (let oldfold of leaflines.folds) {
+      folds.push(rotate.line(oldfold));
+    }
+    const cuts: Line[] = [];
+    for (let oldcut of leaflines.cuts) {
+      cuts.push(rotate.line(oldcut));
+    }
+
+    return { faces: faces, folds: folds, cuts: cuts };
+  }
 }

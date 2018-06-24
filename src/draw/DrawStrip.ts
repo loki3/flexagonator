@@ -1,9 +1,13 @@
 namespace Flexagonator {
 
   export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines,
-    content: StripContent, props: PropertiesForLeaves, scale?: number) {
+    content: StripContent, props: PropertiesForLeaves, scale?: number, rotation?: number) {
 
     ctx.save();
+
+    if (rotation) {
+      leaflines = rotateLeafLines(leaflines, toRadians(rotation));
+    }
 
     const extents: [Point, Point] = getExtents(leaflines);
     const flip = (content === StripContent.Back);
