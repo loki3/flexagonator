@@ -54,4 +54,26 @@ namespace Flexagonator {
     return (typeof (tree) === "number") ? tree : getTop(tree[0]);
   }
 
+  export function parseLeafTrees(str: string): LeafTree[] | TreeError {
+    try {
+      const result = JSON.parse(str);
+      if (!Array.isArray(result)) {
+        return { reason: TreeCode.ExpectedArray, context: result };
+      }
+
+      const array = <any[]>result;
+      let i = 0;
+      for (let tree of array) {
+        if (!isValid(tree)) {
+          return { reason: TreeCode.ErrorInSubArray, context: "problem in element # " + i };
+        }
+        i++;
+      }
+
+      return result;
+    } catch (error) {
+      return { reason: TreeCode.ParseError, context: error };
+    }
+  }
+
 }

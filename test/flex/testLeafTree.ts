@@ -31,4 +31,24 @@ namespace Flexagonator {
       expect(areEqual(tree1, tree3)).toBeFalsy();
     });
   });
+
+  describe('parseLeafTrees', () => {
+    it('should read valid leaf trees', () => {
+      const tree = [1, [[-2, 3], 4]];
+      const input = JSON.stringify(tree);
+      const output = parseLeafTrees(input);
+      expect(isTreeError(output)).toBeFalsy();
+      expect(areLTArraysEqual(tree, output as LeafTree[])).toBeTruthy();
+    });
+    it('should produce errors on bad input', () => {
+      const output1 = parseLeafTrees("abc");
+      expect(isTreeError(output1)).toBeTruthy();
+
+      const output2 = parseLeafTrees("[1, [2,3,4]]");
+      expect(isTreeError(output2)).toBeTruthy();
+
+      const output3 = parseLeafTrees("42");
+      expect(isTreeError(output3)).toBeTruthy();
+    });
+  });
 }

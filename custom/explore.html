@@ -152,8 +152,19 @@
       var searchStartStr = document.getElementById('searchStart').value;
       var searchEndStr = document.getElementById('searchEnd').value;
       var output = document.getElementById('flexSequence');
-      var searchStart = JSON.parse(searchStartStr);
-      var searchEnd = JSON.parse(searchEndStr);
+      var searchStart = Flexagonator.parseLeafTrees(searchStartStr);
+      var searchEnd = Flexagonator.parseLeafTrees(searchEndStr);
+      if (Flexagonator.isError(searchStart)) {
+        var str = Flexagonator.errorToString(searchStart);
+        output.innerHTML = str;
+        return;
+      }
+      if (Flexagonator.isError(searchEnd)) {
+        var str = Flexagonator.errorToString(searchEnd);
+        output.innerHTML = str;
+        return;
+      }
+
       var find = Flexagonator.FindShortest.New(searchStart, searchEnd, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
       if (Flexagonator.isError(find)) {
         var str = Flexagonator.errorToString(find);

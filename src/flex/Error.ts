@@ -37,6 +37,9 @@ namespace Flexagonator {
     LeafIdMustBeInt,
     ArrayMustHave2Items,
     TooFewPats,
+    ExpectedArray,
+    ErrorInSubArray,
+    ParseError,
   }
 
   export interface TreeError {
