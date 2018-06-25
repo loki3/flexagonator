@@ -15,7 +15,7 @@ namespace Flexagonator {
   }
 
   export interface DrawStripOptions {
-    readonly content: StripContent;
+    readonly content?: StripContent;
     // [optional] indices for the first & last leaves to draw
     readonly start?: number;
     readonly end?: number;
@@ -47,10 +47,11 @@ namespace Flexagonator {
       return;
     }
 
+    const content = options.content === undefined ? StripContent.FoldingLabels : options.content;
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
-    drawStrip(ctx, leaflinesSubset, options.content, objects.leafProps, options.scale, options.rotation);
+    drawStrip(ctx, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation);
   }
 
 }
