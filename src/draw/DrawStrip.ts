@@ -5,13 +5,16 @@ namespace Flexagonator {
 
     ctx.save();
 
+    const box = { x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight };
     if (rotation) {
       leaflines = rotateLeafLines(leaflines, toRadians(rotation));
+    } else {
+      leaflines = findBestRotation(leaflines, box);
     }
 
     const extents: [Point, Point] = getExtents(leaflines);
     const flip = (content === StripContent.Back);
-    const transform = Transform.New({ x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight }, extents[0], extents[1], flip, scale);
+    const transform = Transform.New(box, extents[0], extents[1], flip, scale);
 
     if (content === StripContent.FoldingLabels || content === StripContent.FoldingAndIds) {
       drawFoldingLabels(ctx, leaflines.faces, transform);
@@ -33,6 +36,22 @@ namespace Flexagonator {
     drawLines(ctx, leaflines.cuts, transform);
 
     ctx.restore();
+  }
+
+
+  // search for the rotation that optimizes the amount of 'box' that gets filled
+  function findBestRotation(leaflines: LeafLines, box: Point): LeafLines {
+    let bestlines = leaflines;
+    const best = new BestBoxInBox(box);
+    for (let i = 0; i < 24; i++) {
+      const rotation = i / Math.PI * 2;
+      const thislines = rotateLeafLines(leaflines, rotation);
+      const extents: [Point, Point] = getExtents(thislines);
+      if (best.isBest(extents[0], extents[1])) {
+        bestlines = thislines;
+      }
+    }
+    return bestlines;
   }
 
   function drawLines(ctx: CanvasRenderingContext2D, lines: Line[], transform: Transform) {
