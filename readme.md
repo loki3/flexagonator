@@ -13,10 +13,12 @@ Some of its features:
 * Creates new flexagons using "flex generating sequences" for generating the structure necessary to perform the given flexes
 * Displays the unfolded strip of paper corresponding to the current flexagon
 * Searches for all the states accessible given a specified set of flexes
+* Can figure out the series of flexes needed to get from one state to another
 
 
 ## For more information
 
+* [Flexagonator documentation](docs/readme.md)
 * [Flexagon Theory](http://loki3.com/flex/g4g10/Flex-Theory.pdf):
   Background on the flex and pat notations used in the program
 * [Main flexagon page](http://loki3.com/flex/)
