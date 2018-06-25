@@ -44,7 +44,7 @@ namespace Flexagonator {
     let bestlines = leaflines;
     const best = new BestBoxInBox(box);
     for (let i = 0; i < 24; i++) {
-      const rotation = i / Math.PI * 2;
+      const rotation = (i * Math.PI * 2) / 24;
       const thislines = rotateLeafLines(leaflines, rotation);
       const extents: [Point, Point] = getExtents(thislines);
       if (best.isBest(extents[0], extents[1])) {
