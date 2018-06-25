@@ -118,6 +118,9 @@ namespace Flexagonator {
 
   // rotate leaflines around the origin (in radians)
   export function rotateLeafLines(leaflines: LeafLines, angle: number): LeafLines {
+    if (angle === 0) {
+      return leaflines;
+    }
     const rotate = new Rotate(angle);
 
     const faces: LeafFace[] = [];
