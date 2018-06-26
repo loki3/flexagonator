@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   interface HistoryItem {
-    readonly flexes: string[];
+    readonly flexes: FlexName[];
     readonly flexagon: Flexagon;
     readonly tracker: Tracker;
   }
@@ -26,7 +26,7 @@ namespace Flexagonator {
       return this.done[0];
     }
 
-    add(newFlexes: string[], newflexagon: Flexagon, tracker: Tracker) {
+    add(newFlexes: FlexName[], newflexagon: Flexagon, tracker: Tracker) {
       const allflexes = addAndConsolidate(this.getCurrent().flexes, newFlexes);
       this.done.push({ flexes: allflexes, flexagon: newflexagon, tracker: tracker });
       this.undone = [];

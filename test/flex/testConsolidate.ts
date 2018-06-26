@@ -1,40 +1,48 @@
 namespace Flexagonator {
 
+  function makeFlexNames(list: string[]): FlexName[] {
+    const result: FlexName[] = [];
+    for (let f of list) {
+      result.push(makeFlexName(f));
+    }
+    return result;
+  }
+
   describe('addAndConsolidate', () => {
     it('should consolidate unneeded rotates', () => {
-      const old = ["Sh", ">", ">", ">"];
-      const more = ["<", "<", "P", "<"];
+      const old = makeFlexNames(["Sh", ">", ">", ">"]);
+      const more = makeFlexNames(["<", "<", "P", "<"]);
       const actual = addAndConsolidate(old, more);
       expect(actual.length).toBe(4);
-      expect(actual[0]).toBe("Sh");
-      expect(actual[1]).toBe(">");
-      expect(actual[2]).toBe("P");
-      expect(actual[3]).toBe("<");
+      expect(actual[0].fullName).toBe("Sh");
+      expect(actual[1].fullName).toBe(">");
+      expect(actual[2].fullName).toBe("P");
+      expect(actual[3].fullName).toBe("<");
     });
   });
 
   describe('addAndConsolidate', () => {
     it('should consolidate unneeded ^', () => {
-      const old = ["T", ">", "^"];
-      const more = ["^", "V", "^"];
+      const old = makeFlexNames(["T", ">", "^"]);
+      const more = makeFlexNames(["^", "V", "^"]);
       const actual = addAndConsolidate(old, more);
       expect(actual.length).toBe(4);
-      expect(actual[0]).toBe("T");
-      expect(actual[1]).toBe(">");
-      expect(actual[2]).toBe("V");
-      expect(actual[3]).toBe("^");
+      expect(actual[0].fullName).toBe("T");
+      expect(actual[1].fullName).toBe(">");
+      expect(actual[2].fullName).toBe("V");
+      expect(actual[3].fullName).toBe("^");
     });
   });
 
   describe('addAndConsolidate', () => {
     it('should consolidate unneeded >^>', () => {
-      const old = ["T", ">", "^"];
-      const more = [">", "F"];
+      const old = makeFlexNames(["T", ">", "^"]);
+      const more = makeFlexNames([">", "F"]);
       const actual = addAndConsolidate(old, more);
       expect(actual.length).toBe(3);
-      expect(actual[0]).toBe("T");
-      expect(actual[1]).toBe("^");
-      expect(actual[2]).toBe("F");
+      expect(actual[0].fullName).toBe("T");
+      expect(actual[1].fullName).toBe("^");
+      expect(actual[2].fullName).toBe("F");
     });
   });
 

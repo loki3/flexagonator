@@ -29,26 +29,24 @@ namespace Flexagonator {
     // apply a single flex;
     // if the flex string ends with +, generate the needed structure
     // if the flex string ends with *, generate the needed structure & apply the flex
-    applyFlex(flexStr: string): boolean | FlexError {
-      const result = this.rawApplyFlex(flexStr);
+    applyFlex(flexStr: string | FlexName): boolean | FlexError {
+      const flexName = (typeof (flexStr) === 'string') ? makeFlexName(flexStr) : flexStr;
+      const result = this.rawApplyFlex(flexName);
       if (isFlexError(result)) {
         return result;
       }
-      this.history.add([flexStr], this.flexagon, this.tracker.getCopy());
+      this.history.add([flexName], this.flexagon, this.tracker.getCopy());
       return true;
     }
 
     // apply a series of space delimited flexes, e.g. "P > > S'+ ^ T"
     // as a single undoable operation
-    applyFlexes(flexStr: string, separatelyUndoable: boolean): boolean | FlexError {
-      const flexNames: string[] = flexStr.split(" ");
+    applyFlexes(flexStr: string | FlexName[], separatelyUndoable: boolean): boolean | FlexError {
+      const flexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
       for (let flexName of flexNames) {
-        if (flexName.length === 0) {
-          continue;
-        }
         const result = separatelyUndoable ? this.applyFlex(flexName) : this.rawApplyFlex(flexName);
         if (isFlexError(result)) {
-          return { reason: FlexCode.CantApplyFlex, flexName: flexName };
+          return { reason: FlexCode.CantApplyFlex, flexName: flexName.fullName };
         }
       }
       if (!separatelyUndoable) {
@@ -58,14 +56,11 @@ namespace Flexagonator {
     }
 
     // run the inverse of the flexes backwards to effectively undo a sequence
-    applyInReverse(flexStr: string): boolean | FlexError {
-      const flexStrings: string[] = flexStr.split(" ").reverse();
+    applyInReverse(flexStr: string | FlexName[]): boolean | FlexError {
+      const forwardFlexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
+      const flexNames = forwardFlexNames.reverse();
       let inverses = "";
-      for (let alias of flexStrings) {
-        if (alias.length === 0) {
-          continue;
-        }
-        const flexName = makeFlexName(alias);
+      for (let flexName of flexNames) {
         if (flexName.shouldApply) {
           inverses += flexName.getInverse().fullName;
           inverses += ' ';
@@ -75,8 +70,7 @@ namespace Flexagonator {
     }
 
     // apply a flex without adding it to the history list
-    private rawApplyFlex(flexStr: string): boolean | FlexError {
-      const flexName = makeFlexName(flexStr);
+    private rawApplyFlex(flexName: FlexName): boolean | FlexError {
       const name = flexName.flexName;
 
       if (this.allFlexes[name] === undefined) {
@@ -140,7 +134,12 @@ namespace Flexagonator {
     }
 
     getFlexHistory(): string[] {
-      return this.history.getCurrent().flexes;
+      const flexes = this.history.getCurrent().flexes;
+      const strings: string[] = [];
+      for (let flex of flexes) {
+        strings.push(flex.fullName);
+      }
+      return strings;
     }
 
     getBaseFlexagon(): Flexagon {

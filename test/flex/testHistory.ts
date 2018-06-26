@@ -1,5 +1,13 @@
 namespace Flexagonator {
 
+  function makeFlexNames(list: string[]): FlexName[] {
+    const result: FlexName[] = [];
+    for (let f of list) {
+      result.push(makeFlexName(f));
+    }
+    return result;
+  }
+
   describe('History.add', () => {
     it('should add new items to history', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
@@ -9,16 +17,16 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["Sh"], flexagon, tracker);
+      history.add([makeFlexName("Sh")], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(1);
-      expect(history.getCurrent().flexes[0]).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
 
-      history.add(["T"], flexagon, tracker);
+      history.add([makeFlexName("T")], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
-      expect(history.getCurrent().flexes[0]).toBe("Sh");
-      expect(history.getCurrent().flexes[1]).toBe("T");
+      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[1].fullName).toBe("T");
     });
   });
 
@@ -31,19 +39,19 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["Sh", "P"], flexagon, tracker);
+      history.add(makeFlexNames(["Sh", "P"]), flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
-      expect(history.getCurrent().flexes[0]).toBe("Sh");
-      expect(history.getCurrent().flexes[1]).toBe("P");
+      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[1].fullName).toBe("P");
 
-      history.add(["T", "F"], flexagon, tracker);
+      history.add(makeFlexNames(["T", "F"]), flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
-      expect(history.getCurrent().flexes[0]).toBe("Sh");
-      expect(history.getCurrent().flexes[1]).toBe("P");
-      expect(history.getCurrent().flexes[2]).toBe("T");
-      expect(history.getCurrent().flexes[3]).toBe("F");
+      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[1].fullName).toBe("P");
+      expect(history.getCurrent().flexes[2].fullName).toBe("T");
+      expect(history.getCurrent().flexes[3].fullName).toBe("F");
     });
   });
 
@@ -56,14 +64,14 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(["Sh", ">", ">", ">"], flexagon, tracker);
-      history.add(["<", "<", "P", "<"], flexagon, tracker);
+      history.add(makeFlexNames(["Sh", ">", ">", ">"]), flexagon, tracker);
+      history.add(makeFlexNames(["<", "<", "P", "<"]), flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
-      expect(history.getCurrent().flexes[0]).toBe("Sh");
-      expect(history.getCurrent().flexes[1]).toBe(">");
-      expect(history.getCurrent().flexes[2]).toBe("P");
-      expect(history.getCurrent().flexes[3]).toBe("<");
+      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[1].fullName).toBe(">");
+      expect(history.getCurrent().flexes[2].fullName).toBe("P");
+      expect(history.getCurrent().flexes[3].fullName).toBe("<");
     });
   });
 
@@ -73,13 +81,13 @@ namespace Flexagonator {
       const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add(["Sh"], flexagon, tracker);
-      history.add(["T"], flexagon, tracker);
+      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("T")], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
 
       history.undo();
       expect(history.getCurrent().flexes.length).toBe(1);
-      expect(history.getCurrent().flexes[0]).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
 
       history.undo();
       expect(history.getCurrent().flexes.length).toBe(0);
@@ -95,9 +103,9 @@ namespace Flexagonator {
       const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add(["Sh"], flexagon, tracker);
-      history.add(["T"], flexagon, tracker);
-      history.add(["P"], flexagon, tracker);
+      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("T")], flexagon, tracker);
+      history.add([makeFlexName("P")], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(3);
 
       history.undoAll();
@@ -112,8 +120,8 @@ namespace Flexagonator {
       const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add(["Sh"], flexagon, tracker);
-      history.add(["T"], flexagon, tracker);
+      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("T")], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
       expect(history.canRedo()).toBe(false);
       history.undo();
