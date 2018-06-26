@@ -53,5 +53,11 @@ namespace Flexagonator {
       expect(result[2]).toBe("Lt");
       expect(result[3]).toBe("P");
     });
+    it('should not require spaces', () => {
+      const result = getUniqueFlexes("Sh'+>Lt", true);
+      expect(result.length).toBe(2);
+      expect(result[0]).toBe("Sh'");
+      expect(result[1]).toBe("Lt");
+    });
   });
 }

@@ -70,9 +70,9 @@ namespace Flexagonator {
   // and optionally excluding ><^
   export function getUniqueFlexes(flexStr: string, excludeRotates: boolean): string[] {
     let result: string[] = [];
-    const names: string[] = flexStr.split(" ");
+    const names: FlexName[] = parseFlexSequence(flexStr);
     for (let name of names) {
-      const flexName = makeFlexName(name).flexName;
+      const flexName = name.flexName;
       if (excludeRotates && (flexName == '<' || flexName == '>' || flexName == '^')) {
         continue;
       }
