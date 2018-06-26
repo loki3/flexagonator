@@ -1,9 +1,5 @@
 namespace Flexagonator {
 
-  export function makeFlexagonManager(flexagon: Flexagon, leafProps?: LeafProperties[]) {
-    return new FlexagonManager(flexagon, leafProps);
-  }
-
   /*
     Manages a flexagon, its valid flexes, & applying flexes
   */
@@ -24,6 +20,10 @@ namespace Flexagonator {
       this.setIsosceles();
       this.tracker = Tracker.make(flexagon);
       this.history = new History(flexagon, this.tracker.getCopy());
+    }
+
+    static make(flexagon: Flexagon, leafProps?: LeafProperties[]) {
+      return new FlexagonManager(flexagon, leafProps);
     }
 
     // apply a single flex;
