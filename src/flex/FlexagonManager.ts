@@ -22,7 +22,7 @@ namespace Flexagonator {
       this.allFlexes = makeAllFlexes(flexagon.getPatCount());
       this.flexesToSearch = getPrimeFlexes(this.allFlexes);
       this.setIsosceles();
-      this.tracker = Tracker.New(flexagon);
+      this.tracker = Tracker.make(flexagon);
       this.history = new History(flexagon, this.tracker.getCopy());
     }
 
@@ -91,7 +91,7 @@ namespace Flexagonator {
 
       if (flexName.shouldGenerate && this.flexagon.getLeafCount() !== result.getLeafCount()) {
         // whenever we add new structure, start tracking over again
-        this.tracker = Tracker.New(result);
+        this.tracker = Tracker.make(result);
       } else {
         this.tracker.findMaybeAdd(result);
       }
@@ -177,7 +177,7 @@ namespace Flexagonator {
     }
 
     clearHistory() {
-      this.tracker = Tracker.New(this.flexagon);
+      this.tracker = Tracker.make(this.flexagon);
       this.history.clear(this.flexagon, this.tracker.getCopy());
     }
   }

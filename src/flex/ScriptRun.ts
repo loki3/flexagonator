@@ -1,16 +1,16 @@
 namespace Flexagonator {
 
   // create a flexagon, apply a script, and return it
-  export function Create(script: ScriptItem[]): FlexagonManager | TreeError | FlexError {
+  export function createFromScript(script: ScriptItem[]): FlexagonManager | TreeError | FlexError {
     const result = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
     const fm: FlexagonManager = makeFlexagonManager(result);
-    return RunScript(fm, script);
+    return runScript(fm, script);
   }
 
   // apply a script to an existing flexagon (though it may create a new flexagon)
-  export function RunScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexError | TreeError {
+  export function runScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexError | TreeError {
     for (let item of script) {
-      const result = RunScriptItem(fm, item);
+      const result = runScriptItem(fm, item);
       if (isFlexError(result) || isTreeError(result)) {
         return result;
       }
@@ -19,12 +19,12 @@ namespace Flexagonator {
     return fm;
   }
 
-  export function RunScriptString(fm: FlexagonManager, str: string): FlexagonManager | FlexError | TreeError {
+  export function runScriptString(fm: FlexagonManager, str: string): FlexagonManager | FlexError | TreeError {
     const script = JSON.parse(str);
-    return RunScript(fm, script);
+    return runScript(fm, script);
   }
 
-  export function RunScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
+  export function runScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
     if (item.pats !== undefined) {
       const result = Flexagon.makeFromTree(item.pats);
       if (isTreeError(result)) {

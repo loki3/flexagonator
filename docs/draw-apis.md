@@ -85,7 +85,7 @@ interface.addEventListener('click', interfaceMouseClick, false);
 function interfaceMouseClick(event) {
   var script = Flexagonator.getScriptItem(event, 'interface', buttons);
   if (script != null) {
-    var result = Flexagonator.RunScriptItem(fm, script);
+    var result = Flexagonator.runScriptItem(fm, script);
     if (!Flexagonator.isError(result)) {
       fm = result;
       updateUI();

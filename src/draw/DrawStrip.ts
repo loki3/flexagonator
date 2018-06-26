@@ -14,7 +14,7 @@ namespace Flexagonator {
 
     const extents: [Point, Point] = getExtents(leaflines);
     const flip = (content === StripContent.Back);
-    const transform = Transform.New(box, extents[0], extents[1], flip, scale);
+    const transform = Transform.make(box, extents[0], extents[1], flip, scale);
 
     if (content === StripContent.FoldingLabels || content === StripContent.FoldingAndIds) {
       drawFoldingLabels(ctx, leaflines.faces, transform);

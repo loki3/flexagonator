@@ -7,7 +7,7 @@ namespace Flexagonator {
       private readonly xmax: number) {
     }
 
-    static New(outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean, scale?: number): Transform {
+    static make(outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean, scale?: number): Transform {
       if (!scale) {
         const scalex = outputSize.x / (inputMax.x - inputMin.x);
         const scaley = outputSize.y / (inputMax.y - inputMin.y);

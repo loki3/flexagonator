@@ -6,7 +6,7 @@ namespace Flexagonator {
       const fm1 = makeFlexagonManager(empty);
 
       const pats = [1, [2, 3], [4, [5, 6]], 7];
-      const fm2 = RunScriptItem(fm1, { pats: pats }) as FlexagonManager;
+      const fm2 = runScriptItem(fm1, { pats: pats }) as FlexagonManager;
       expect(areLTArraysEqual(pats, fm2.flexagon.getAsLeafTrees()));
     });
   });

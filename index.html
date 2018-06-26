@@ -180,7 +180,7 @@
     function seeScript() {
       var scriptBox = document.getElementById('script');
       if (scriptBox !== null) {
-        var str = JSON.stringify(Flexagonator.MakeScript(fm));
+        var str = JSON.stringify(Flexagonator.makeScript(fm));
         scriptBox.value = str;
       }
     }
@@ -189,7 +189,7 @@
       var scriptBox = document.getElementById('script');
       if (scriptBox !== null) {
         statusMessage("error parsing script");
-        var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+        var result = Flexagonator.runScriptString(fm, scriptBox.value);
         if (Flexagonator.isError(result)) {
           statusMessage(result);
         } else {
@@ -207,7 +207,7 @@
     function interfaceMouseClick(event) {
       var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
-        var result = Flexagonator.RunScriptItem(fm, script);
+        var result = Flexagonator.runScriptItem(fm, script);
         if (!Flexagonator.isError(result)) {
           fm = result;
           updateUI();

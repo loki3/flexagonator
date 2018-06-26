@@ -11,7 +11,7 @@ namespace Flexagonator {
       this.current = current;
     }
 
-    static New(flexagon: Flexagon): Tracker {
+    static make(flexagon: Flexagon): Tracker {
       const tracker = new Tracker([], 0);
       tracker.findMaybeAdd(flexagon);
       return tracker;

@@ -17,7 +17,7 @@
       if (scriptBox === null) {
         return;
       }
-      var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+      var result = Flexagonator.runScriptString(fm, scriptBox.value);
       if (Flexagonator.isError(result)) {
         var str = Flexagonator.errorToString(result);
         statusMessage(str);

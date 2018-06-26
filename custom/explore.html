@@ -15,7 +15,7 @@
       if (scriptBox === null) {
         return false;
       }
-      var result = Flexagonator.RunScriptString(fm, scriptBox.value);
+      var result = Flexagonator.runScriptString(fm, scriptBox.value);
       if (Flexagonator.isError(result)) {
         var str = Flexagonator.errorToString(result);
         statusMessage(str);
@@ -125,14 +125,14 @@
     function showDotSimple(found) {
       var box = document.getElementById('states');
       if (box !== null) {
-        box.value = Flexagonator.DotSimple(found);
+        box.value = Flexagonator.dotSimple(found);
       }
     }
 
     function showDotFlexes(found, oneway) {
       var box = document.getElementById('states');
       if (box !== null) {
-        box.value = Flexagonator.DotWithFlexes(found, oneway);
+        box.value = Flexagonator.dotWithFlexes(found, oneway);
       }
     }
 
@@ -165,7 +165,7 @@
         return;
       }
 
-      var find = Flexagonator.FindShortest.New(searchStart, searchEnd, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
+      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
       if (Flexagonator.isError(find)) {
         var str = Flexagonator.errorToString(find);
         output.innerHTML = str;

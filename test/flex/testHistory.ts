@@ -3,7 +3,7 @@ namespace Flexagonator {
   describe('History.add', () => {
     it('should add new items to history', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
-      const tracker = Tracker.New(flexagon);
+      const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
       expect(history.canUndo()).toBe(false);
@@ -25,7 +25,7 @@ namespace Flexagonator {
   describe('History.add2', () => {
     it('should add multiple items to history', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
-      const tracker = Tracker.New(flexagon);
+      const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
       expect(history.canUndo()).toBe(false);
@@ -50,7 +50,7 @@ namespace Flexagonator {
   describe('History.add3', () => {
     it('should consolidate unneeded rotates', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
-      const tracker = Tracker.New(flexagon);
+      const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
       expect(history.canUndo()).toBe(false);
@@ -70,7 +70,7 @@ namespace Flexagonator {
   describe('History.undo', () => {
     it('should undo items in the history', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
-      const tracker = Tracker.New(flexagon);
+      const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
       history.add(["Sh"], flexagon, tracker);
@@ -92,7 +92,7 @@ namespace Flexagonator {
   describe('History.undoAll', () => {
     it('should undo everything back to the original state', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
-      const tracker = Tracker.New(flexagon);
+      const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
       history.add(["Sh"], flexagon, tracker);
@@ -109,7 +109,7 @@ namespace Flexagonator {
   describe('History.redo', () => {
     it('should redo items that had been undone', () => {
       const flexagon: Flexagon = Flexagon.makeFromTree([1, 2]) as Flexagon;
-      const tracker = Tracker.New(flexagon);
+      const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
       history.add(["Sh"], flexagon, tracker);

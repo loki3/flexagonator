@@ -27,7 +27,7 @@ namespace Flexagonator {
 
       // initialize flexagon tracking
       this.flexagons.push(flexagon);
-      this.tracker = Tracker.New(flexagon);
+      this.tracker = Tracker.make(flexagon);
       this.current = 0;
     }
 

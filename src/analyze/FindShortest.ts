@@ -25,7 +25,7 @@ namespace Flexagonator {
     private readonly target: number;  // where the desired end state is in 'tracker'
     private found: boolean = false;
 
-    static New(start: LeafTree[], end: LeafTree[], flexes: Flexes, right: Flex, over?: Flex): FindShortest | TreeError {
+    static make(start: LeafTree[], end: LeafTree[], flexes: Flexes, right: Flex, over?: Flex): FindShortest | TreeError {
       const startFlexagon = Flexagon.makeFromTree(start);
       if (isTreeError(startFlexagon)) {
         return startFlexagon;
@@ -52,7 +52,7 @@ namespace Flexagonator {
 
       // initialize flexagon tracking
       this.flexagons.push(start);
-      this.tracker = Tracker.New(start);
+      this.tracker = Tracker.make(start);
       this.flexagons.push(end);
       this.target = this.tracker.findMaybeAdd(end) === null ? 1 : 0;
       // add first level of search

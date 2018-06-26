@@ -75,7 +75,7 @@
       script.push({ flexes: current });
       script.push({ reverseFlexes: sequence });
       script.push({ history: "clear" });
-      fm = Flexagonator.Create(script);
+      fm = Flexagonator.createFromScript(script);
 
       if (Flexagonator.isError(fm)) {
         statusMessage(fm);
@@ -111,7 +111,7 @@
     function interfaceMouseClick(event) {
       var script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
-        fm = Flexagonator.RunScriptItem(fm, script);
+        fm = Flexagonator.runScriptItem(fm, script);
         updateUI();
       }
     }

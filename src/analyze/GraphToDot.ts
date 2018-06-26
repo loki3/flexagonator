@@ -7,7 +7,7 @@ namespace Flexagonator {
 
   // create a DOT graph of just the state-to-state transitions,
   // ignoring flexes & rotations
-  export function DotSimple(allRelFlexes: RelativeFlexes[]): string {
+  export function dotSimple(allRelFlexes: RelativeFlexes[]): string {
     const transitions = getStateToState(allRelFlexes, true/*oneway*/);
     let str = "graph {\n";
 
@@ -37,7 +37,7 @@ namespace Flexagonator {
 
   // create a DOT graph describing which flexes you can use to get between states,
   // ignoring rotations
-  export function DotWithFlexes(allRelFlexes: RelativeFlexes[], oneway: boolean, props?: FlexDotProps): string {
+  export function dotWithFlexes(allRelFlexes: RelativeFlexes[], oneway: boolean, props?: FlexDotProps): string {
     if (!props) {
       props = defaultDotProps;
     }
