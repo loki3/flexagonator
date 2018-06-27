@@ -6,7 +6,7 @@ namespace Flexagonator {
     let i = 0;
 
     for (let c of sequence) {
-      if ((c === '>' || c === '<' || c === '^') || ('A' <= c && c <= 'Z')) {
+      if (c == ' ' || c === '>' || c === '<' || c === '^' || ('A' <= c && c <= 'Z')) {
         // we're starting a new flex, so end the previous one
         addFlex(names, sequence, start, i);
         start = i;
