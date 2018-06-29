@@ -55,8 +55,9 @@
       // for each P, flex to it & set the face properties
       var current = "";
       var i = 2;
-      const flexNames = sequence.split(" ");
-      for (var flexName of flexNames) {
+      const flexNames = Flexagonator.parseFlexSequence(sequence);
+      for (var f of flexNames) {
+        var flexName = f.fullName;
         current += flexName + " ";
         if (flexName === "P+") {
           current += "P";
