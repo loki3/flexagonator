@@ -38,7 +38,7 @@ namespace Flexagonator {
   export function drawUnfoldedObjects(canvasId: string, objects: DrawStripObjects, options: DrawStripOptions) {
     const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    ctx.clearRect(0, 0, 800, 600);
+    ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
     const unfolded = unfold(objects.flexagon.getAsLeafTrees());
     if (isTreeError(unfolded)) {
