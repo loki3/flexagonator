@@ -30,6 +30,18 @@ There are several modifiers that can be tacked on to a flex:
 P > > T'* ^ < Sh+
 ```
 
+You can declare that you want to repeat a given flex sequence by putting it in (parens) followed by the number of times to repeat.
+
+```
+// repeat sequence 6 times
+(P > Sh >) x 6
+// repeat P* twice followed by repeating a different sequence 4 times
+(P*) x 2 (^ > P*) x 4
+```
+
+
+## Generating sequences
+
 A sequence of flexes used to create a new flexagon is called a *generating sequence*.
 It typically consists of flexes followed with `*` or `+`.
 For example, the generating sequence `P* P* P*` can be used to create a pentahexaflexagon,
