@@ -1,0 +1,129 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>minimal flexagons</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+
+    function showMinimalStrip(patcount, flex, canvasId, angles) {
+      if (patcount === 0) {
+        return;
+      }
+
+      var pats = [];
+      for (var i = 1; i <= patcount; i++) {
+        pats.push(i);
+      }
+      var script = [
+        { pats: pats },
+        { flexes: flex + '+' },
+      ];
+      if (angles) {
+        script.push({ angles: angles });
+      }
+      var fm = Flexagonator.createFromScript(script);
+
+      Flexagonator.drawUnfolded(canvasId, fm, { content: Flexagonator.StripContent.FoldingAndIds });
+    }
+
+    function showPatFlex(info, canvasId) {
+      var array = JSON.parse(info);
+      showMinimalStrip(array[0], array[1], canvasId);
+    }
+
+    function showRightTriangle(patcount, flex, canvasId) {
+      var angles;
+      switch (patcount) {
+        case "6": angles = [60, 30]; break;
+        case "8": angles = [45, 45]; break;
+        case "10": angles = [36, 54]; break;
+        case "12": angles = [30, 60]; break;
+      }
+      showMinimalStrip(patcount, flex, canvasId, angles);
+    }
+
+  </script>
+</head>
+
+<body>
+  <h1>Flexagonator: creating minimal flexagons</h1>
+
+  <p>
+    From here you can create a wide variety of 'minimal' flexagons, i.e. the simplest flexagon that supports a given flex.
+  </p>
+
+  <div>
+    <label>Pinch flex:</label>
+    <select onchange="showMinimalStrip(event.target.value, 'P', 'stripP')">
+      <option value=0>(pick number of pats per side)</option>
+      <option value=4>tetraflexagon (4)</option>
+      <option value=6>hexaflexagon (6)</option>
+      <option value=8>octaflexagon (8)</option>
+      <option value=10>decaflexagon (10)</option>
+      <option value=12>dodecaflexagon (12)</option>
+    </select>
+  </div> <br/>
+  <canvas id="stripP" width="1000" height="300"></canvas> <br/>
+
+  <div>
+    <label>Pinch flex variations:</label>
+    <select onchange="showPatFlex(event.target.value, 'stripPvariants')">
+      <option value="">(pick variant)</option>
+      <option value=[8,"P44"]>P44: octaflexagon (8)</option>
+      <option value=[9,"P333"]>P333: enneaflexagon (9)</option>
+      <option value=[10,"P334"]>P334: decaflexagon (10)</option>
+      <option value=[10,"P55"]>P55: decaflexagon (10)</option>
+      <option value=[12,"P3333"]>P3333: dodecaflexagon (12)</option>
+      <option value=[12,"P444"]>P444: dodecaflexagon (12)</option>
+      <option value=[12,"P66"]>P66: dodecaflexagon (12)</option>
+    </select>
+  </div> <br/>
+  <canvas id="stripPvariants" width="1000" height="400"></canvas> <br/>
+
+  <div>
+    <label>Pyramid shuffle:</label>
+    <select onchange="showMinimalStrip(event.target.value, 'Sh', 'stripSh')">
+      <option value=0>(pick number of pats per side)</option>
+      <option value=5>pentaflexagon (5)</option>
+      <option value=6>hexaflexagon (6)</option>
+      <option value=7>heptaflexagon (7)</option>
+      <option value=8>octaflexagon (8)</option>
+      <option value=9>ennaaflexagon (9)</option>
+      <option value=10>decaflexagon (10)</option>
+      <option value=12>dodecaflexagon (12)</option>
+    </select>
+  </div> <br/>
+  <canvas id="stripSh" width="1000" height="400"></canvas> <br/>
+
+  <div>
+    <label>Flip flex:</label>
+    <select onchange="showRightTriangle(event.target.value, 'F', 'stripF')">
+      <option value=0>(pick number of pats per side)</option>
+      <option value=6>hexaflexagon (6)</option>
+      <option value=7>heptaflexagon (7)</option>
+      <option value=8>octaflexagon (8)</option>
+      <option value=9>ennaaflexagon (9)</option>
+      <option value=10>decaflexagon (10)</option>
+      <option value=12>dodecaflexagon (12)</option>
+    </select>
+  </div> <br/>
+  <canvas id="stripF" width="1000" height="400"></canvas> <br/>
+
+  <div>
+    <label>Various slots on a hexaflexagon:</label>
+    <select onchange="showMinimalStrip(6, event.target.value, 'stripSlot')">
+        <option value="">(pick type of slot flex)</option>
+        <option value="Lk">slot pocket</option>
+        <option value="Lh">slot half</option>
+        <option value="Lt">slot tuck</option>
+        <option value="Ltb">slot tuck bottom</option>
+        <option value="Lbtt">back slot tuck top</option>
+        <option value="Lbtb">back slot tuck bottom</option>
+      </select>
+  </div> <br/>
+  <canvas id="stripSlot" width="1000" height="400"></canvas> <br/>
+
+</body>
+
+</html>
