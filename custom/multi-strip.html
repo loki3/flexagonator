@@ -29,10 +29,14 @@
     }
 
     function updateUI() {
-      Flexagonator.drawUnfolded('unfolded1', fm, { content: stripContent, scale: scale, start: start[1], end: end[1] });
-      Flexagonator.drawUnfolded('unfolded2', fm, { content: stripContent, scale: scale, start: start[2], end: end[2] });
-      Flexagonator.drawUnfolded('unfolded3', fm, { content: stripContent, scale: scale, start: start[3], end: end[3] });
-      Flexagonator.drawUnfolded('unfolded4', fm, { content: stripContent, scale: scale, start: start[4], end: end[4] });
+      var captions1 = [{ text: 'a', which: 0 }, { text: 'b', which: -1 }];
+      var captions2 = [{ text: 'b', which: 0 }, { text: 'c', which: -1 }];
+      var captions3 = [{ text: 'c', which: 0 }, { text: 'd', which: -1 }];
+      var captions4 = [{ text: 'd', which: 0 }, { text: 'e', which: -1 }];
+      Flexagonator.drawUnfolded('unfolded1', fm, { captions: captions1, start: start[1], end: end[1], content: stripContent, scale: scale });
+      Flexagonator.drawUnfolded('unfolded2', fm, { captions: captions2, start: start[2], end: end[2], content: stripContent, scale: scale });
+      Flexagonator.drawUnfolded('unfolded3', fm, { captions: captions3, start: start[3], end: end[3], content: stripContent, scale: scale });
+      Flexagonator.drawUnfolded('unfolded4', fm, { captions: captions4, start: start[4], end: end[4], content: stripContent, scale: scale });
     }
 
     function statusMessage(message) {
@@ -77,7 +81,9 @@
 
   <p>
     Run a script to describe a flexagon, then specify a subset of the unfolded strip to display. Useful for strips that are too
-    long to fit on a page, or for strips that twist back on themselves.
+    long to fit on a page, or for strips that twist back on themselves. There are letters are the two ends of each sub-strip
+    that indicate how they should be connected to the other strips, e.g. 'a' connects to the end of the last strip, the 'b's
+    should be connected together, etc.
   </p>
 
   <p>
