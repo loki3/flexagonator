@@ -9,11 +9,12 @@
     var fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
     var stripContent = 0/*StripContent.FoldingLabels*/;
     var buttons = null;
+    var captions = [{ text: '*', which: 0 }, { text: '*', which: -1 }];
 
     function updateUI() {
       buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, stats: true, structure: true });
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
-      Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent });
+      Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent, captions: captions });
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {

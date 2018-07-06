@@ -14,6 +14,12 @@ namespace Flexagonator {
     Back,           // only display what's on the back side, use leaf properties
   }
 
+  // put an extra caption on the specified leaf
+  export interface DrawStripCaption {
+    readonly text: string;  // text to display
+    readonly which: number; // if >=0, offset from the start, else offset from the end
+  }
+
   export interface DrawStripOptions {
     readonly content?: StripContent;
     // [optional] indices for the first & last leaves to draw
@@ -23,6 +29,8 @@ namespace Flexagonator {
     readonly scale?: number;
     // [optional] rotation (degrees) to apply when drawing
     readonly rotation?: number;
+    // [optional] extra captions to draw on the strip
+    readonly captions?: DrawStripCaption[];
   }
 
   // draw an unfolded flexagon strip
@@ -51,7 +59,7 @@ namespace Flexagonator {
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
-    drawStrip(ctx, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation);
+    drawStrip(ctx, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
   }
 
 }

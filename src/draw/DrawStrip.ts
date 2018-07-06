@@ -1,7 +1,8 @@
 namespace Flexagonator {
 
   export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines,
-    content: StripContent, props: PropertiesForLeaves, scale?: number, rotation?: number) {
+    content: StripContent, props: PropertiesForLeaves, scale?: number,
+    rotation?: number, captions?: DrawStripCaption[]) {
 
     ctx.save();
 
@@ -25,6 +26,12 @@ namespace Flexagonator {
       drawFaceProps(ctx, leaflines.faces, transform, props, true);
     } else if (content === StripContent.Back) {
       drawFaceProps(ctx, leaflines.faces, transform, props, false);
+    }
+
+    if (captions) {
+      for (const caption of captions) {
+        drawLeafCaption(ctx, transform, leaflines, caption.which, caption.text);
+      }
     }
 
     ctx.strokeStyle = "rgb(150, 150, 150)";
@@ -128,6 +135,57 @@ namespace Flexagonator {
       ctx.fillStyle = "black";
       ctx.fillText(label, p.x, p.y);
     }
+  }
+
+
+  // draw an extra caption on the specified leaf,
+  // if (which<0), then it's an offset from the end of the string
+  function drawLeafCaption(ctx: CanvasRenderingContext2D, transform: Transform,
+    leaflines: LeafLines, which: number, text: string) {
+
+    const { face, line }: { face: LeafFace; line: Line; } = getFace(leaflines, which);
+    const p: Point = computeBasePoint(face, line, transform);
+    const len = transform.applyScale(1);
+
+    ctx.save();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = len / 9 + "px sans-serif";
+    ctx.fillText(text, p.x, p.y);
+    ctx.restore();
+  }
+
+  // figure out where to draw based on which face we want
+  function getFace(leaflines: LeafLines, which: number) {
+    var face: LeafFace;
+    var line: Line;
+    if (which == 0) {
+      face = leaflines.faces[which];
+      line = leaflines.folds[0];  // first fold
+    }
+    else if (which == -1) {
+      face = leaflines.faces[leaflines.faces.length + which];
+      line = leaflines.folds[leaflines.folds.length - 1]; // last fold
+    }
+    else if (which > 0) {
+      face = leaflines.faces[which];
+      line = { a: face.corners[0], b: face.corners[1] };
+    }
+    else {
+      face = leaflines.faces[leaflines.faces.length + which];
+      line = { a: face.corners[0], b: face.corners[1] };
+    }
+    return { face, line };
+  }
+
+  function computeBasePoint(face: LeafFace, line: Line, transform: Transform): Point {
+    const a = face.corners[0], b = face.corners[1], c = face.corners[2];
+    const incenter = getIncenter(a, b, c);
+    const middle: Point = { x: (line.a.x + line.b.x) / 2, y: (line.a.y + line.b.y) / 2 };
+    // weight toward the edge rather than center
+    const textpoint: Point = { x: (incenter.x + 3 * middle.x) / 4, y: (incenter.y + 3 * middle.y) / 4 };
+    const p = transform.apply(textpoint);
+    return p;
   }
 
 }
