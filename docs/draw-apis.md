@@ -123,6 +123,11 @@ enum StripContent {
   Back,           // only display what's on the back side, use leaf properties
 }
 
+{ // DrawStripCaption
+  text;   // text to display along one edge of the specified leaf
+  which;  // if >=0 it's an offset from the start of the strip, else it's an offset from the end
+}
+
 // DrawStripOptions
 {
   content,  // [optional] StripContent: describes what to display in each leaf, defaults to FoldingLabels
@@ -130,6 +135,7 @@ enum StripContent {
   end;      // [optional] number: index of the last leaf to draw
   scale;    // [optional] number: scale factor (approximately the number of pixels on a leaf edge)
   rotation; // [optional] number: rotation (degrees) to apply when drawing
+  captions; // [optional] DrawStripCaption[]: specify additional text to display on a given leaf
 }
 
 // example passing DrawStripOptions to drawUnfolded
@@ -155,4 +161,10 @@ const objects = {
   leafProps: fm.leafProps,
 };
 drawUnfoldedObjects('mycanvas', objects, {});
+```
+
+The following shows how you could add a `*` to the first and last edges to indicate that they should be taped together:
+
+```javascript
+drawUnfolded('mycanvas', fm, { captions: [ { text: '*', which: 0 }, { text: '*', which: -1 } ] });
 ```
