@@ -16,6 +16,14 @@ Some of its features:
 * Can figure out the series of flexes needed to get from one state to another
 
 
+## Building and running
+
+* Clone the repository, e.g. `git clone https://github.com/loki3/flexagonator.git`
+* Install dependencies, e.g. `npm install`
+* Build the Typescript project, e.g. use Visual Studio Code and choose *Tasks > Run Build Task*
+* Load one of the sample HTML files, e.g. index.html
+
+
 ## For more information
 
 * [Flexagonator documentation](docs/readme.md)
