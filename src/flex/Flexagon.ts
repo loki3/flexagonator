@@ -14,6 +14,10 @@ namespace Flexagonator {
     }
 
     static makeFromTree(trees: LeafTree[]): Flexagon | TreeError {
+      return Flexagon.makeFromTreePlus(trees, 0, false/*isFirstMirrored*/);
+    }
+
+    static makeFromTreePlus(trees: LeafTree[], whichVertex: number, isFirstMirrored: boolean): Flexagon | TreeError {
       if (trees.length < 2) {
         return { reason: TreeCode.TooFewPats, context: trees };
       }
@@ -25,7 +29,7 @@ namespace Flexagonator {
         }
         pats.push(pat);
       }
-      return new Flexagon(pats, 0, false/*isFirstMirrored*/);
+      return new Flexagon(pats, whichVertex, isFirstMirrored);
     }
 
     getPatCount(): number {
