@@ -35,4 +35,15 @@ namespace Flexagonator {
     });
   });
 
+  describe('FlexagonAngles.makeIsosceles', () => {
+    it('makes an isosceles triangle', () => {
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5]) as Flexagon;
+      const fa = FlexagonAngles.makeIsosceles(f);
+      const angles = fa.getAngles(f);
+      expect(angles[0]).toBe(72);
+      expect(angles[1]).toBe(54);
+      expect(angles[2]).toBe(54);
+    });
+  });
+
 }
