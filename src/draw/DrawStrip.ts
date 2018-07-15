@@ -72,8 +72,16 @@ namespace Flexagonator {
     }
   }
 
+  function getBaseLength(face: LeafFace, transform: Transform): number {
+    const a = lengthOf(face.corners[0], face.corners[1]);
+    const b = lengthOf(face.corners[1], face.corners[2]);
+    const c = lengthOf(face.corners[2], face.corners[0]);
+    const avg = (a + b + c) / 3;
+    return transform.applyScale(0.8 * avg);
+  }
+
   function drawFoldingLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
-    const len = transform.applyScale(1);
+    const len = getBaseLength(faces[0], transform);
 
     for (let face of faces) {
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
@@ -91,7 +99,7 @@ namespace Flexagonator {
   }
 
   function drawIds(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
-    const len = transform.applyScale(1);
+    const len = getBaseLength(faces[0], transform);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = len / 10 + "px sans-serif";
@@ -108,7 +116,7 @@ namespace Flexagonator {
   }
 
   function drawFaceProps(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform, props: PropertiesForLeaves, front: boolean) {
-    const len = transform.applyScale(1);
+    const len = getBaseLength(faces[0], transform);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
@@ -145,7 +153,7 @@ namespace Flexagonator {
 
     const { face, line }: { face: LeafFace; line: Line; } = getFace(leaflines, which);
     const p: Point = computeBasePoint(face, line, transform);
-    const len = transform.applyScale(1);
+    const len = getBaseLength(face, transform);
 
     ctx.save();
     ctx.textAlign = "center";
