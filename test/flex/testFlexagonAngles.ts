@@ -46,4 +46,38 @@ namespace Flexagonator {
     });
   });
 
+  describe('FlexagonAngles.getAnglesUsingDirection', () => {
+    it('should work with isosceles triangle', () => {
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5]) as Flexagon;
+      const fa = FlexagonAngles.makeIsosceles(f);
+
+      const angles1 = fa.getAnglesUsingDirection(f, true);
+      expect(angles1[0]).toBe(54);
+      expect(angles1[1]).toBe(72);
+      expect(angles1[2]).toBe(54);
+
+      const angles2 = fa.getAnglesUsingDirection(f, false);
+      expect(angles2[0]).toBe(54);
+      expect(angles2[1]).toBe(54);
+      expect(angles2[2]).toBe(72);
+    });
+  });
+
+  describe('FlexagonAngles.getAnglesUsingDirection', () => {
+    it('should work with 3 different angles', () => {
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
+      const fa = new FlexagonAngles(30, 60);
+
+      const angles1 = fa.getAnglesUsingDirection(f, true);
+      expect(angles1[0]).toBe(60);
+      expect(angles1[1]).toBe(30);
+      expect(angles1[2]).toBe(90);
+
+      const angles2 = fa.getAnglesUsingDirection(f, false);
+      expect(angles2[0]).toBe(90);
+      expect(angles2[1]).toBe(60);
+      expect(angles2[2]).toBe(30);
+    });
+  });
+
 }

@@ -41,8 +41,13 @@ namespace Flexagonator {
 
     // get the angles along the edge of the 1st leaf that we'll reflect the 2nd leaf across
     getUnfoldedAngles(flexagon: Flexagon, unfolded: Leaf[]): number[] {
+      return this.getAnglesUsingDirection(flexagon, unfolded[0].isClock);
+    }
+
+    // lower level version for testing
+    getAnglesUsingDirection(flexagon: Flexagon, isClock: boolean): number[] {
       const angles = this.getAngles(flexagon);
-      return unfolded[0].isClock ? [angles[2], angles[0], angles[1]] : [angles[1], angles[2], angles[0]];
+      return isClock ? [angles[1], angles[0], angles[2]] : [angles[2], angles[1], angles[0]];
     }
   }
 
