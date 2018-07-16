@@ -20,6 +20,8 @@ namespace Flexagonator {
         flexes["F"] = createFlip(patCount);
       if (patCount >= 6)
         flexes["St"] = createSilverTetra(patCount);
+      if (patCount == 8 || patCount == 10 || patCount == 12)
+        flexes["Tw"] = createTwist(patCount);
       if (patCount >= 5)
         flexes["Lt"] = createSlotTuck(patCount);
       if (patCount >= 5)
@@ -284,6 +286,22 @@ namespace Flexagonator {
     output.push([[-(leaves - 3), leaves], -(leaves - 1)]);
 
     return makeFlex("silver tetra flex", pattern, output, FlexRotation.None) as Flex;
+  }
+
+  function createTwist(patCount: number): Flex {
+    var pattern: LeafTree = [];
+    var output: LeafTree = [];
+    if (patCount == 8) {
+      pattern = [[2, -1], [-4, 3], -5, -6, [8, -7], [-10, 9], -11, -12];
+      output = [-2, -3, [5, -4], [-7, 6], -8, -9, [11, -10], [-1, 12]];
+    } else if (patCount == 10) {
+      pattern = [[1, 2], [3, 4], 5, [6, 7], 8, [9, 10], 11, [12, 13], 14, 15];
+      output = [-1, -4, [-5, 3], -7, [-8, 6], -10, [-11, 9], -13, [-14, 12], [2, -15]];
+    } else if (patCount == 12) {
+      pattern = [[1, 2], [3, 4], 5, [6, 7], 8, 9, [10, 11], [12, 13], 14, [15, 16], 17, 18];
+      output = [-1, -4, [-5, 3], -7, [-8, 6], [11, -9], -10, -13, [-14, 12], -16, [-17, 15], [2, -18]];
+    }
+    return makeFlex("twist flex", pattern, output, FlexRotation.ClockMirror) as Flex;
   }
 
   function createSlotTuck(patCount: number): Flex {
