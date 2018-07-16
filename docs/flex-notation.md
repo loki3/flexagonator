@@ -70,6 +70,7 @@ note that the linked page uses `S`, where `Sh = S <` - `Sh` was defined so that 
 * `V`: the v-flex - see [V Flex](http://loki3.com/flex/flex/v.html)
 * `F`: the flip flex - see [Flip Flex](http://loki3.com/flex/flex/flip.html)
 * `St`: the silver tetra - see [Silver Tetra](http://loki3.com/flex/flex/silver-tetra.html)
+* `Tw`: the twist flex - best on an even-ordered star flexagon, and involves multiple simple pivot flexes
 * `Lt`: the slot tuck - see [Slot Tuck](http://loki3.com/flex/flex/slot-tuck.html)
 * `Ltb`: the slot tuck bottom - same as the slot tuck, but you open it from the opposite side
 * `Lbtt`: the back slot tuck top - same as the slot tuck, but you tuck from the opposite corner
