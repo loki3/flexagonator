@@ -126,8 +126,14 @@
         case "36-54-90":
           angles = [36, 54];
           break;
+        case "36-36-108":
+          angles = [36, 36];
+          break;
         case "30-60-90":
           angles = [30, 60];
+          break;
+        case "30-30-120":
+          angles = [30, 30];
           break;
       }
       if (angles === null) {
@@ -244,12 +250,14 @@
     </select> &nbsp;&nbsp;&nbsp; angles:
     <select onchange="setAngle(event.target.value)" id="setAngle">
       <option value="iso" selected>isosceles</option>
-      <option value="60-60-60">60-60-60</option>
-      <option value="60-30-90">6: 60-30-90</option>
-      <option value="45-45-90">8: 45-45-90</option>
-      <option value="45-30-105">8: 45-30-105</option>
-      <option value="36-54-90">10: 36-54-90</option>
-      <option value="30-60-90">12: 30-60-90</option>
+      <option value="60-60-60">60-60-60 (equilateral)</option>
+      <option value="60-30-90">6: 60-30-90 (right)</option>
+      <option value="45-45-90">8: 45-45-90 (right)</option>
+      <option value="45-30-105">8: 45-30-105 (star)</option>
+      <option value="36-54-90">10: 36-54-90 (right)</option>
+      <option value="36-36-108">10: 36-36-108 (star)</option>
+      <option value="30-60-90">12: 30-60-90 (right)</option>
+      <option value="30-30-120">12: 30-30-120 (star)</option>
     </select> &nbsp;&nbsp;&nbsp; set face:
     <select onchange="setFace(event.target.value, false)">
       <option value="" selected></option>
