@@ -49,7 +49,7 @@ namespace Flexagonator {
   // return just the flexes that can't be done using other flexes
   export function getPrimeFlexes(all: Flexes): Flexes {
     const flexes: Flexes = {};
-    const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Lt", "Ltb", "Ltb'"];
+    const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Tw", "Lt", "Ltb", "Ltb'"];
 
     for (let prime of primes) {
       if (all[prime] !== undefined) {
