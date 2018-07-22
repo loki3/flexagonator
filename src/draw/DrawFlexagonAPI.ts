@@ -19,7 +19,7 @@ namespace Flexagonator {
   }
 
   // draw a flexagon in its current state, with optional colors, flexes, etc.
-  export function drawEntireFlexagon(canvasId: string, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {
+  export function drawEntireFlexagon(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
@@ -27,11 +27,11 @@ namespace Flexagonator {
       allFlexes: fm.allFlexes,
       flexesToSearch: fm.flexesToSearch,
     };
-    return drawEntireFlexagonObjects(canvasId, objects, options);
+    return drawEntireFlexagonObjects(canvas, objects, options);
   }
 
-  function drawEntireFlexagonObjects(canvasId: string, objects: DrawFlexagonObjects, options: DrawFlexagonOptions): ScriptButtons {
-    const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
+  function drawEntireFlexagonObjects(canvas: string | HTMLCanvasElement, objects: DrawFlexagonObjects, options: DrawFlexagonOptions): ScriptButtons {
+    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
     if (options.drawover === undefined || !options.drawover) {

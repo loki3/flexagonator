@@ -19,13 +19,13 @@ They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawFlexagonObjects`.
 
 ```javascript
-// canvasId: a string for the id of the canvas to draw in
+// canvas:   canvas to draw in (string | HTMLCanvasElement)
 // fm:       an instance of FlexagonManager
 // objects:  an instance of DrawFlexagonObjects
 // options:  an instance of DrawFlexagonOptions
 // RETURNS:  ScriptButtons if options.flexes is true
-function drawEntireFlexagon(canvasId, fm, options) {}
-function drawEntireFlexagonObjects(canvasId, objects, options) {}
+function drawEntireFlexagon(canvas, fm, options) {}
+function drawEntireFlexagonObjects(canvas, objects, options) {}
 ```
 
 Everything in `DrawFlexagonOptions` is optional.
@@ -104,12 +104,12 @@ They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawStripObjects`.
 
 ```javascript
-// canvasId: a string for the id of the canvas to draw in
+// canvas:   canvas to draw in (string | HTMLCanvasElement)
 // fm:       an instance of FlexagonManager
 // objects:  an instance of DrawStripObjects
 // options:  an instance of DrawStripOptions
-function drawUnfolded(canvasId, fm, options) {}
-function drawUnfoldedObjects(canvasId, objects, options) {}
+function drawUnfolded(canvas, fm, options) {}
+function drawUnfoldedObjects(canvas, objects, options) {}
 ```
 
 The following shows the options that can be used when drawing an unfolded flexagon.

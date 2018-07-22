@@ -34,17 +34,17 @@ namespace Flexagonator {
   }
 
   // draw an unfolded flexagon strip
-  export function drawUnfolded(canvasId: string, fm: FlexagonManager, options: DrawStripOptions) {
+  export function drawUnfolded(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options: DrawStripOptions) {
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
       leafProps: fm.leafProps,
     };
-    return drawUnfoldedObjects(canvasId, objects, options);
+    return drawUnfoldedObjects(canvas, objects, options);
   }
 
-  export function drawUnfoldedObjects(canvasId: string, objects: DrawStripObjects, options: DrawStripOptions) {
-    const output: HTMLCanvasElement = document.getElementById(canvasId) as HTMLCanvasElement;
+  export function drawUnfoldedObjects(canvas: string | HTMLCanvasElement, objects: DrawStripObjects, options: DrawStripOptions) {
+    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
