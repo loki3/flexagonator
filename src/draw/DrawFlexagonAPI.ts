@@ -38,13 +38,8 @@ namespace Flexagonator {
       ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
     }
 
-    const xCenter = ctx.canvas.clientWidth / 2;
-    const yCenter = ctx.canvas.clientHeight / 2;
-    const radius = ctx.canvas.clientHeight * 0.42;
-
     const showFront = (options.back === undefined || !options.back);
-    const angles = objects.angleInfo.getAngles(objects.flexagon);
-    const polygon = new Polygon(objects.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
+    const polygon = createPolygon(ctx, objects, options);
 
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure);
@@ -75,5 +70,15 @@ namespace Flexagonator {
     } else if (center === CenterAngle.LessThan360) {
       ctx.fillText("<360, doesn't open fully", 0, 40);
     }
+  }
+
+  function createPolygon(ctx: CanvasRenderingContext2D, objects: DrawFlexagonObjects, options: DrawFlexagonOptions): Polygon {
+    const xCenter = ctx.canvas.clientWidth / 2;
+    const yCenter = ctx.canvas.clientHeight / 2;
+    const radius = ctx.canvas.clientHeight * 0.42;
+
+    const showFront = (options.back === undefined || !options.back);
+    const angles = objects.angleInfo.getAngles(objects.flexagon);
+    return new Polygon(objects.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
   }
 }
