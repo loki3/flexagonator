@@ -52,7 +52,9 @@ namespace Flexagonator {
       drawStatsText(ctx, objects.flexagon, objects.angleInfo);
     }
     if (options.flexes !== undefined && options.flexes) {
-      return drawPossibleFlexes(ctx, objects.flexagon, objects.allFlexes, objects.flexesToSearch, polygon);
+      const regions = createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, false/*flip*/, polygon);
+      const height = polygon.radius / 9;
+      return drawPossibleFlexes(ctx, regions, height);
     }
     return new ScriptButtons([]);
   }
