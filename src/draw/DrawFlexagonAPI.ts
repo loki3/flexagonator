@@ -19,7 +19,11 @@ namespace Flexagonator {
   }
 
   // draw a flexagon in its current state, with optional colors, flexes, etc.
-  export function drawEntireFlexagon(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options: DrawFlexagonOptions): ScriptButtons {
+  export function drawEntireFlexagon(
+    canvas: string | HTMLCanvasElement,
+    fm: FlexagonManager,
+    options: DrawFlexagonOptions): ScriptButtons {
+
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
@@ -30,7 +34,11 @@ namespace Flexagonator {
     return drawEntireFlexagonObjects(canvas, objects, options);
   }
 
-  function drawEntireFlexagonObjects(canvas: string | HTMLCanvasElement, objects: DrawFlexagonObjects, options: DrawFlexagonOptions): ScriptButtons {
+  function drawEntireFlexagonObjects(
+    canvas: string | HTMLCanvasElement,
+    objects: DrawFlexagonObjects,
+    options: DrawFlexagonOptions): ScriptButtons {
+
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
@@ -39,7 +47,7 @@ namespace Flexagonator {
     }
 
     const showFront = (options.back === undefined || !options.back);
-    const polygon = createPolygon(ctx, objects, options);
+    const polygon = createPolygon(ctx, objects.flexagon, objects.angleInfo, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure);
@@ -72,13 +80,17 @@ namespace Flexagonator {
     }
   }
 
-  function createPolygon(ctx: CanvasRenderingContext2D, objects: DrawFlexagonObjects, options: DrawFlexagonOptions): Polygon {
+  function createPolygon(
+    ctx: CanvasRenderingContext2D,
+    flexagon: Flexagon,
+    angleInfo: FlexagonAngles,
+    showFront: boolean): Polygon {
+
     const xCenter = ctx.canvas.clientWidth / 2;
     const yCenter = ctx.canvas.clientHeight / 2;
     const radius = ctx.canvas.clientHeight * 0.42;
 
-    const showFront = (options.back === undefined || !options.back);
-    const angles = objects.angleInfo.getAngles(objects.flexagon);
-    return new Polygon(objects.flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
+    const angles = angleInfo.getAngles(flexagon);
+    return new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
   }
 }
