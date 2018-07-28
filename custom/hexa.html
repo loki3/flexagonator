@@ -23,7 +23,8 @@
     var fm = null;
 
     function updateUI() {
-      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, structure: true });
+      var regions = Flexagonator.drawEntireFlexagon('interface', fm, { structure: true });
+      buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
       const numSides = fm.flexagon.getLeafCount() / 3;

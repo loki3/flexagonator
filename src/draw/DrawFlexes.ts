@@ -10,8 +10,8 @@ namespace Flexagonator {
     ctx.textAlign = "left";
     ctx.textBaseline = "bottom";
 
-    for (const region of regions) {
-      addFlexes(ctx, region, height, buttons);
+    for (const i in regions) {
+      addFlexes(ctx, regions[i], height, buttons);
     }
     return buttons.create();
   }

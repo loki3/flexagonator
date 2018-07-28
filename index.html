@@ -12,7 +12,8 @@
     var captions = [{ text: '*', which: 0 }, { text: '*', which: -1 }];
 
     function updateUI() {
-      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, stats: true, structure: true });
+      var regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
+      buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
       Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent, captions: captions });
 

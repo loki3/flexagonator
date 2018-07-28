@@ -13,7 +13,6 @@ namespace Flexagonator {
   export interface DrawFlexagonOptions {
     readonly back?: boolean;        // draw front or back - default: false (front)
     readonly stats?: boolean;       // show stats - default: false
-    readonly flexes?: boolean;      // show possible flexes at corners - default: false
     readonly structure?: boolean;   // show pat structure - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
   }
@@ -22,7 +21,7 @@ namespace Flexagonator {
   export function drawEntireFlexagon(
     canvas: string | HTMLCanvasElement,
     fm: FlexagonManager,
-    options: DrawFlexagonOptions): ScriptButtons {
+    options: DrawFlexagonOptions): RegionForFlexes[] {
 
     const objects = {
       flexagon: fm.flexagon,
@@ -37,7 +36,7 @@ namespace Flexagonator {
   function drawEntireFlexagonObjects(
     canvas: string | HTMLCanvasElement,
     objects: DrawFlexagonObjects,
-    options: DrawFlexagonOptions): ScriptButtons {
+    options: DrawFlexagonOptions): RegionForFlexes[] {
 
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
@@ -54,12 +53,24 @@ namespace Flexagonator {
     if (options.stats !== undefined && options.stats) {
       drawStatsText(ctx, objects.flexagon, objects.angleInfo);
     }
-    if (options.flexes !== undefined && options.flexes) {
-      const regions = createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, false/*flip*/, polygon);
-      const height = polygon.radius / 9;
-      return drawPossibleFlexes(ctx, regions, height);
-    }
-    return new ScriptButtons([]);
+
+    return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, polygon);
+  }
+
+  // draw the possible flexes and return buttons describing them
+  export function drawScriptButtons(
+    canvas: string | HTMLCanvasElement,
+    flexagon: Flexagon,
+    angleInfo: FlexagonAngles,
+    showFront: boolean,
+    regions: RegionForFlexes[]): ScriptButtons {
+
+    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
+    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+
+    const polygon = createPolygon(ctx, flexagon, angleInfo, showFront);
+    const height = polygon.radius / 9;
+    return drawPossibleFlexes(ctx, regions, height);
   }
 
   function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {

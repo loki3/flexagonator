@@ -39,7 +39,8 @@
     function updateUI() {
       clearError();
 
-      buttons = Flexagonator.drawEntireFlexagon('interface', fm, { flexes: true, stats: true, structure: true });
+      var regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
+      buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
       var statusDiv = document.getElementById('status');
