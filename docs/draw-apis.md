@@ -14,7 +14,7 @@ the flexagon as described in [pat notation](pat-notation.md) and figure out how 
 
 There are two different functions you can use to draw the current state of a folded flexagon.
 Both take an object that describes various options for how the flexagon should be drawn
-and both return a `ScriptButtons` object that can be used to turn mouse clicks into flexes.
+and both return a `RegionForFlexes` object that describes where various flexes can be performed.
 They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawFlexagonObjects`.
 
@@ -30,15 +30,13 @@ function drawEntireFlexagonObjects(canvas, objects, options) {}
 
 Everything in `DrawFlexagonOptions` is optional.
 It's used to specify additional information about how the flexagon is drawn
-such as whether to draw the front or back, whether to display useful statistics, or
-whether to display which flexes can be performed where.
+such as whether to draw the front or back, and whether to display useful statistics.
 
 ```javascript
 // DrawFlexagonOptions
 {
   back: true,        // boolean: default false (front), draw front or back
   stats: true,       // boolean: default false, show stats such as the number of leaves
-  flexes: true,      // boolean: default false, show possible flexes at each corner
   structure: true,   // boolean: default false, show internal structure of each pat
   drawover: true,    // boolean: default false, draw over canvas or clear first
 }
@@ -72,13 +70,17 @@ const objects = {
 Flexagonator.drawEntireFlexagonObjects('mycanvas', objects, { stats: true, flexes: true, structure: true });
 ```
 
-If `options.flexes` is true, the draw routine will figure out which flexes can be performed at each corner,
-draw shorthand for the flexes, and return an object that can figure out how to perform a flex when it's clicked on.
-The following code demonstrates how you could do this.
+If you want to have buttons that can be used to perform flexes at the different flexagon corners,
+you can leverage the `RegionForFlexes[]` collection that is returned from the draw routines.
+You can either use the information to draw your own buttons or call `drawScriptButtons` to both
+draw the flexes and get a detailed description of where they're drawn so the buttons are functional.
+The following shows how you can hook up mouse events using these "script buttons".
 
 ```javascript
 // example using returned ScriptButtons
-var buttons = Flexagonator.drawEntireFlexagon('mycanvas', fm, { flexes: true });
+var regions = Flexagonator.drawEntireFlexagon('mycanvas', fm, {});
+// drawScriptButtons takes a canvas id, flexagon, angle info, boolean for front/back, and RegionForFlexes[]
+var buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
 var interface = document.getElementById('interface');
 interface.addEventListener('click', interfaceMouseClick, false);
 
@@ -93,6 +95,24 @@ function interfaceMouseClick(event) {
   }
 }
 
+```
+
+`RegionForFlexes` describes all the flexes that are valid at a single corner of the flexagon.
+If you want to apply a flex, you would first need to change the current vertex by applying
+what's listed in `prefix`, e.g. `>>`.
+After the flex is applied, you could move back to that original flex by applying `postfix`, e.g `<<`.
+Here's what it contains:
+
+```javascript
+// RegionForFlexes
+{
+    flexes: string[];  // flexes valid at this corner e.g. [ 'P', 'Sh' ]
+    prefix: string;    // change the current vertex, e.g. '>>'
+    postfix: string;   // restore the current vertex, e.g. '<<'
+    corner: Point;     // where the associated corner was drawn, e.g. { x: 10, y: 50 }
+    isOnLeft: boolean; // true if the point is on the left half of the flexagon
+    isOnTop: boolean;  // true if the point is on the top half of the flexagon
+}
 ```
 
 
