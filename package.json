@@ -1,6 +1,6 @@
 {
   "name": "flexagonator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "interactive flexagon flexer",
   "scripts": {
     "build": "echo Building... && npm run clean && npm run assemble && npm run test && npm run lint && echo Success!",
@@ -14,7 +14,7 @@
     "jasmine": "2.5.2",
     "jasmine-core": "2.5.2",
     "rimraf": "2.5.4",
-    "typescript": "2.8"
+    "typescript": "3.0.1"
   },
   "peerDependencies": {},
   "dependencies": {
