@@ -100,6 +100,9 @@ class Flexagon extends React.Component {
     var result = Flexagonator.runScriptItem(this.state.fm, { flexes: flexes });
     if (!Flexagonator.isError(result)) {
       this.updateCanvas(result, true);
+
+      const history = this.state.fm.getFlexHistory().join('');
+      this.props.updateProps({ value: history });
     }
   }
 

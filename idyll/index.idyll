@@ -8,10 +8,13 @@
 
 
 [var name:'numPats' value:6 /]
+[var name:'flexHistory' value:'' /]
 
 Here is a flexagon:
 
-[Flexagon width:500 height:300 numPats:numPats /]
+[Flexagon width:500 height:300 numPats:numPats value:flexHistory /]
+
+Flex history: [Display value:flexHistory /]
 
 Change the number of pats per side of the flexagon:
 
