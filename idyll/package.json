@@ -1,0 +1,16 @@
+{
+  "name": "idyll",
+  "version": "1.0.0",
+  "license": "MIT",
+  "idyll": {
+    "theme": "github",
+    "layout": "blog",
+    "css": "styles.css"
+  },
+  "dependencies": {
+    "idyll": "^3.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
+  }
+}

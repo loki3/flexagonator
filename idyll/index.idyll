@@ -1,0 +1,19 @@
+[meta title:"Flexagon" description:"Interactive explanation of flexagons" /]
+
+[Header
+  title:"Flexagonator"
+  subtitle:"A Flexagon Simulator"
+  author:"Loki3"
+  authorLink:"http://loki3.com/flex" /]
+
+
+[var name:'numPats' value:6 /]
+
+Here is a flexagon:
+
+[Flexagon width:500 height:300 numPats:numPats /]
+
+Change the number of pats per side of the flexagon:
+
+[Range min:4 max:12 step:2 value:numPats /]
+[Display value:numPats /]
