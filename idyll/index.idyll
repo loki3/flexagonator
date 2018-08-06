@@ -20,3 +20,8 @@ Change the number of pats per side of the flexagon:
 
 [Range min:4 max:12 step:2 value:numPats /]
 [Display value:numPats /]
+
+
+Drawing an unfolded strip:
+
+[Unfolded width:800 height:500 numPats:7 flexes:'(F*<<)4' /]
