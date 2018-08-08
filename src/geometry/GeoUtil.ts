@@ -46,10 +46,18 @@ namespace Flexagonator {
     return { x: x, y: y };
   }
 
-  export function lengthOf(a: Point, b: Point) {
+  export function lengthOf(a: Point, b: Point): number {
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  export function addPoints(a: Point, b: Point): Point {
+    return { x: a.x + b.x, y: a.y + b.y };
+  }
+
+  export function pointsAreEqual(a: Point, b: Point): boolean {
+    return a.x === b.x && a.y === b.y;
   }
 
 }
