@@ -1,5 +1,8 @@
 namespace Flexagonator {
 
+  const traverseColor = "rgb(180, 180, 180)";
+  const flexColor = "rgb(20, 100, 170)";
+
   // draw the graph described by a given series of flexes in {P, <, >},
   // and/or drawing the corresponding Tuckerman traverse
   export function drawPinchGraph(canvas: string | HTMLCanvasElement, flexes?: string, traverse?: string) {
@@ -12,6 +15,7 @@ namespace Flexagonator {
       if (isFlexError(traverseGraph)) {
         return traverseGraph;
       }
+      ctx.strokeStyle = traverseColor;
       drawGraph(ctx, traverseGraph);
     }
 
@@ -20,6 +24,7 @@ namespace Flexagonator {
       if (isFlexError(flexGraph)) {
         return flexGraph;
       }
+      ctx.strokeStyle = flexColor;
       drawGraph(ctx, flexGraph);
     }
     return true;
@@ -28,9 +33,8 @@ namespace Flexagonator {
   function drawGraph(ctx: CanvasRenderingContext2D, graph: PinchGraph) {
     ctx.beginPath();
     for (const point of graph.points) {
-      ctx.lineTo(point.x * 20 + 100, point.y * 20 + 100);
+      ctx.lineTo(point.x * 30 + 90, point.y * 30 + 90);
     }
-    ctx.closePath();
     ctx.stroke();
   }
 

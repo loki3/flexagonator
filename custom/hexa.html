@@ -28,6 +28,9 @@
       buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
+      var flexes = fm.getFlexHistory().join('');
+      Flexagonator.drawPinchGraph('traversal', flexes, traversal);
+
       const numSides = fm.flexagon.getLeafCount() / 3;
       var message = "number of sides: " + numSides;
       message += " ----- in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates()
@@ -86,7 +89,7 @@
         updateUI();
 
         traversal = Flexagonator.findTuckermanTraverse(fm.flexagon);
-        Flexagonator.drawPinchGraph('traversal', traversal);
+        Flexagonator.drawPinchGraph('traversal', null, traversal);
 
         const stripObjects = { flexagon: fm.getBaseFlexagon(), angleInfo: fm.getAngleInfo(), leafProps: fm.leafProps };
         Flexagonator.drawUnfoldedObjects('unfolded', stripObjects, { content: Flexagonator.StripContent.Front });
