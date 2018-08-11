@@ -21,6 +21,7 @@
 
     var buttons = null;
     var fm = null;
+    var traversal = null;
 
     function updateUI() {
       var regions = Flexagonator.drawEntireFlexagon('interface', fm, { structure: true });
@@ -83,6 +84,9 @@
         statusMessage(fm);
       } else {
         updateUI();
+
+        traversal = Flexagonator.findTuckermanTraverse(fm.flexagon);
+        Flexagonator.drawPinchGraph('traversal', traversal);
 
         const stripObjects = { flexagon: fm.getBaseFlexagon(), angleInfo: fm.getAngleInfo(), leafProps: fm.leafProps };
         Flexagonator.drawUnfoldedObjects('unfolded', stripObjects, { content: Flexagonator.StripContent.Front });
@@ -176,6 +180,7 @@
   <canvas id="interface" width="800" height="500"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
   <div id="status"></div>
+  <canvas id="traversal" width="800" height="200"></canvas>
   <canvas id="unfolded" width="800" height="600"></canvas>
   <canvas id="unfoldedBack" width="800" height="600"></canvas>
 
