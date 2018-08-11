@@ -21,7 +21,7 @@
 
     var buttons = null;
     var fm = null;
-    var traversal = null;
+    var traverse = null;
 
     function updateUI() {
       var regions = Flexagonator.drawEntireFlexagon('interface', fm, { structure: true });
@@ -29,7 +29,7 @@
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
 
       var flexes = fm.getFlexHistory().join('');
-      Flexagonator.drawPinchGraph('traversal', flexes, traversal);
+      Flexagonator.drawPinchGraph('traversal', { flexes: flexes, traverse: traverse });
 
       const numSides = fm.flexagon.getLeafCount() / 3;
       var message = "number of sides: " + numSides;
@@ -88,8 +88,8 @@
       } else {
         updateUI();
 
-        traversal = Flexagonator.findTuckermanTraverse(fm.flexagon);
-        Flexagonator.drawPinchGraph('traversal', null, traversal);
+        traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
+        Flexagonator.drawPinchGraph('traversal', { traverse: traverse });
 
         const stripObjects = { flexagon: fm.getBaseFlexagon(), angleInfo: fm.getAngleInfo(), leafProps: fm.leafProps };
         Flexagonator.drawUnfoldedObjects('unfolded', stripObjects, { content: Flexagonator.StripContent.Front });
