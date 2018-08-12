@@ -48,7 +48,7 @@ namespace Flexagonator {
       if (point.y > ymax)
         ymax = point.y;
     }
-    return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
+    return [{ x: xmin - 0.1, y: ymin - 0.1 }, { x: xmax + 0.1, y: ymax + 0.1 }];
   }
 
   // stored in a skewed coordinate system that's easy to test
