@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   describe('pinch graph', () => {
     it('complains about unknown flexes', () => {
-      const result = createPinchGraph("P>X");
+      const result = createRawPinchGraph("P>X");
       expect(isFlexError(result)).toBeTruthy();
       if (isFlexError(result)) {
         expect(result.reason).toBe(FlexCode.UnknownFlex);
@@ -11,7 +11,7 @@ namespace Flexagonator {
     });
 
     it('handles P', () => {
-      const result = createPinchGraph("P");
+      const result = createRawPinchGraph("P");
       expect(isFlexError(result)).toBeFalsy();
       if (!isFlexError(result)) {
         expect(result.points.length).toBe(2);
@@ -21,7 +21,7 @@ namespace Flexagonator {
     })
 
     it('handles pinching in a line', () => {
-      const result = createPinchGraph("PP>>>>P");
+      const result = createRawPinchGraph("PP>>>>P");
       expect(isFlexError(result)).toBeFalsy();
       if (!isFlexError(result)) {
         expect(result.points.length).toBe(4);
@@ -33,7 +33,7 @@ namespace Flexagonator {
     })
 
     it('handles pinching in a counterclockwise cycle', () => {
-      const result = createPinchGraph("P>P<P>>>><P");
+      const result = createRawPinchGraph("P>P<P>>>><P");
       expect(isFlexError(result)).toBeFalsy();
       if (!isFlexError(result)) {
         expect(result.points.length).toBe(5);
@@ -46,7 +46,7 @@ namespace Flexagonator {
     })
 
     it('handles pinching in a clockwise cycle', () => {
-      const result = createPinchGraph("PP>P>P>P");
+      const result = createRawPinchGraph("PP>P>P>P");
       expect(isFlexError(result)).toBeFalsy();
       if (!isFlexError(result)) {
         expect(result.points.length).toBe(6);

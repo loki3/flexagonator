@@ -3,17 +3,39 @@ namespace Flexagonator {
   /**
    * Creates a standard diagram showing all the states
    * accessible just through pinch flexing.
-   * Coordinates represent the triangle corners,
-   * e.g. (0,0),(1,0),(0,1), which would need to
-   * be transformed to display as equilateral triangles.
+   * Coordinates represent triangle corners.
    */
   export interface PinchGraph {
-    points: Point[];
+    readonly points: Point[];
   }
 
   // build up the graph traversed by the given sequence of flexes,
   // where flexes must be one of {P, <, >}
   export function createPinchGraph(flexes: string): PinchGraph | FlexError {
+    const raw = createRawPinchGraph(flexes);
+    if (isFlexError(raw)) {
+      return raw;
+    }
+
+    const points = transformAbstractPoints(raw.points);
+    return { points: points };
+  }
+
+  // e.g. (0,0),(1,0),(0,1) => (0,0),(1,0),(0.8,0.5)
+  function transformAbstractPoints(input: Point[]): Point[] {
+    const points: Point[] = [];
+    const yScale = Math.sqrt(3) / 2;
+    for (const p of input) {
+      const x = p.x + 0.5 * p.y;
+      const y = p.y * yScale;
+      points.push({ x: x, y: y });
+    }
+    return points;
+  }
+
+  // stored in a skewed coordinate system that's easy to test
+  // e.g. (0,0),(1,0),(0,1) represents an equilateral triangle
+  export function createRawPinchGraph(flexes: string): PinchGraph | FlexError {
     const track = new TrackPinchGraph();
 
     const sequence = parseFlexSequence(flexes);
