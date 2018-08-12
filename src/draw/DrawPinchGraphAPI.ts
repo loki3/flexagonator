@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   export interface DrawPinchOptions {
-    readonly flexes?: string;    // draw the graph for a set of flexes in {P, P', <, >}
+    readonly flexes?: string;    // draw the graph for a set of flexes in {P, P', ^, <, >}
     readonly traverse?: string;  // draw the graph for the given Tuckerman traverse
     readonly drawEnds?: boolean; // show where 'flexes' starts & ends
   }
@@ -11,7 +11,7 @@ namespace Flexagonator {
   const startColor = "rgb(20, 200, 50)";
   const endColor = "rgb(200, 20, 100)";
 
-  // draw the graph described by a given series of flexes in {P, P', <, >},
+  // draw the graph described by a given series of flexes in {P, P', ^, <, >},
   // and/or drawing the corresponding Tuckerman traverse
   export function drawPinchGraph(canvas: string | HTMLCanvasElement, options: DrawPinchOptions) {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;

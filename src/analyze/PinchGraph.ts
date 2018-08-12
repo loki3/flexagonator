@@ -12,7 +12,7 @@ namespace Flexagonator {
   }
 
   // build up the graph traversed by the given sequence of flexes,
-  // where flexes must be one of {P, P', <, >}
+  // where flexes must be one of {P, P', ^, <, >}
   export function createPinchGraph(flexes: string): PinchGraph | FlexError {
     const raw = createRawPinchGraph(flexes);
     if (isFlexError(raw)) {
@@ -65,6 +65,10 @@ namespace Flexagonator {
 
         case "P'":
           track.trackPInverse();
+          break;
+
+        case '^':
+          track.trackTurnOver();
           break;
 
         case '<':
@@ -120,6 +124,10 @@ namespace Flexagonator {
       this.current = addPoints(this.current, { x: -this.delta.x, y: -this.delta.y });
       this.points.push(this.current);
       this.rotates = 0;
+    }
+
+    trackTurnOver() {
+      this.delta = { x: -this.delta.x, y: -this.delta.y };
     }
 
     trackLeft() {
