@@ -1,9 +1,9 @@
 namespace Flexagonator {
 
   export interface DrawPinchOptions {
-    flexes?: string;    // draw the graph for a set of flexes in {P, <, >}
-    traverse?: string;  // draw the graph for the given Tuckerman traverse
-    drawEnds?: boolean; // show where 'flexes' starts & ends
+    readonly flexes?: string;    // draw the graph for a set of flexes in {P, <, >}
+    readonly traverse?: string;  // draw the graph for the given Tuckerman traverse
+    readonly drawEnds?: boolean; // show where 'flexes' starts & ends
   }
 
   const traverseColor = "rgb(180, 180, 180)";
