@@ -16,15 +16,19 @@ namespace Flexagonator {
   export function drawPinchGraph(canvas: string | HTMLCanvasElement, options: DrawPinchOptions) {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
+    const box = { x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight };
+    ctx.clearRect(0, 0, box.x, box.y);
 
+    var transform = null;
     if (options.traverse) {
       const traverseGraph = createPinchGraph(options.traverse);
       if (isFlexError(traverseGraph)) {
         return traverseGraph;
       }
+      transform = Transform.make(box, traverseGraph.min, traverseGraph.max, false);
+
       ctx.strokeStyle = traverseColor;
-      drawGraph(ctx, traverseGraph);
+      drawGraph(ctx, transform, traverseGraph);
     }
 
     if (options.flexes) {
@@ -32,37 +36,39 @@ namespace Flexagonator {
       if (isFlexError(flexGraph)) {
         return flexGraph;
       }
+      if (!transform) {
+        transform = Transform.make(box, flexGraph.min, flexGraph.max, false);
+      }
+
       ctx.strokeStyle = flexColor;
-      drawGraph(ctx, flexGraph, options.drawEnds);
+      drawGraph(ctx, transform, flexGraph, options.drawEnds);
     }
     return true;
   }
 
-  function drawGraph(ctx: CanvasRenderingContext2D, graph: PinchGraph, drawEnds?: boolean) {
+  function drawGraph(ctx: CanvasRenderingContext2D, transform: Transform, graph: PinchGraph, drawEnds?: boolean) {
     ctx.beginPath();
     for (const point of graph.points) {
-      const p = transform(point);
+      const p = transform.apply(point);
       ctx.lineTo(p.x, p.y);
     }
     ctx.stroke();
 
     if (drawEnds && graph.points.length > 1) {
+      const size = transform.applyScale(0.1);
+
       ctx.strokeStyle = startColor;
-      const start = transform(graph.points[0]);
+      const start = transform.apply(graph.points[0]);
       ctx.beginPath();
-      ctx.ellipse(start.x, start.y, 5, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(start.x, start.y, size, size, 0, 0, Math.PI * 2);
       ctx.stroke();
 
       ctx.strokeStyle = endColor;
-      const end = transform(graph.points[graph.points.length - 1]);
+      const end = transform.apply(graph.points[graph.points.length - 1]);
       ctx.beginPath();
-      ctx.ellipse(end.x, end.y, 5, 5, 0, 0, Math.PI * 2);
+      ctx.ellipse(end.x, end.y, size, size, 0, 0, Math.PI * 2);
       ctx.stroke();
     }
   }
 
-  // just a fake transform for now
-  function transform(p: Point): Point {
-    return { x: p.x * 30 + 90, y: p.y * 30 + 90 };
-  }
 }
