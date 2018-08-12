@@ -9,6 +9,8 @@ be performed at each corner, with an option for hooking up UI to buttons describ
 The routines for drawing unfolded flexagons take the internal of structure of
 the flexagon as described in [pat notation](pat-notation.md) and figure out how to turn it into an unfolded strip.
 
+There's also a function for drawing the graph of states accessible by just using the pinch flex.
+
 
 ## Drawing a folded flexagon
 
@@ -187,4 +189,29 @@ The following shows how you could add a `*` to the first and last edges to indic
 
 ```javascript
 drawUnfolded('mycanvas', fm, { captions: [ { text: '*', which: 0 }, { text: '*', which: -1 } ] });
+```
+
+
+## Drawing a pinch graph
+
+You can have it draw a graph representing all the states accessible just through pinch flexes.
+This includes any of the following: P, P', ^, <, or >.
+
+```javascript
+drawPinchGraph('mycanvas', { flexes: "PPP^>PP" });
+```
+
+The classic example is the Tuckerman Traverse, which is the quickest way to visit every state accessible by just using the pinch flex.
+The following shows how to have it figure out the Tuckerman traverse for a given flexagon and display it.
+
+```javascript
+var traverse = findTuckermanTraverse(fm.flexagon);
+drawPinchGraph('mycanvas', { traverse: traverse });
+```
+
+You can also have it overlay a flex sequence (e.g. `P>P^P<P`) on top of the Tuckerman traverse.
+The `drawEnds` option is useful if you want it to highlight the start and end of the flex squence.
+
+```javascript
+drawPinchGraph('mycanvas', { traverse: traverse, flexes: "PPP^>PP", drawEnds: true });
 ```
