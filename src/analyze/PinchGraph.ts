@@ -7,6 +7,8 @@ namespace Flexagonator {
    */
   export interface PinchGraph {
     readonly points: Point[];
+    readonly min: Point;
+    readonly max: Point;
   }
 
   // build up the graph traversed by the given sequence of flexes,
@@ -17,8 +19,9 @@ namespace Flexagonator {
       return raw;
     }
 
-    const points = transformAbstractPoints(raw.points);
-    return { points: points };
+    const points = transformAbstractPoints(raw);
+    const [min, max] = getExtents(points);
+    return { points: points, min: min, max: max };
   }
 
   // e.g. (0,0),(1,0),(0,1) => (0,0),(1,0),(0.8,0.5)
@@ -33,9 +36,24 @@ namespace Flexagonator {
     return points;
   }
 
+  function getExtents(points: Point[]): [Point, Point] {
+    let xmin = 0, ymin = 0, xmax = 0, ymax = 0;
+    for (let point of points) {
+      if (point.x < xmin)
+        xmin = point.x;
+      if (point.x > xmax)
+        xmax = point.x;
+      if (point.y < ymin)
+        ymin = point.y;
+      if (point.y > ymax)
+        ymax = point.y;
+    }
+    return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
+  }
+
   // stored in a skewed coordinate system that's easy to test
   // e.g. (0,0),(1,0),(0,1) represents an equilateral triangle
-  export function createRawPinchGraph(flexes: string): PinchGraph | FlexError {
+  export function createRawPinchGraph(flexes: string): Point[] | FlexError {
     const track = new TrackPinchGraph();
 
     const sequence = parseFlexSequence(flexes);
@@ -95,7 +113,7 @@ namespace Flexagonator {
     }
 
     getResults() {
-      return { points: this.points };
+      return this.points;
     }
 
     // rotate 'delta' either clockwise our counterclockwise
