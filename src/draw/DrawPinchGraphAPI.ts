@@ -3,10 +3,13 @@ namespace Flexagonator {
   export interface DrawPinchOptions {
     flexes?: string;    // draw the graph for a set of flexes in {P, <, >}
     traverse?: string;  // draw the graph for the given Tuckerman traverse
+    drawEnds?: boolean; // show where 'flexes' starts & ends
   }
 
   const traverseColor = "rgb(180, 180, 180)";
   const flexColor = "rgb(20, 100, 170)";
+  const startColor = "rgb(20, 200, 50)";
+  const endColor = "rgb(200, 20, 100)";
 
   // draw the graph described by a given series of flexes in {P, <, >},
   // and/or drawing the corresponding Tuckerman traverse
@@ -30,17 +33,36 @@ namespace Flexagonator {
         return flexGraph;
       }
       ctx.strokeStyle = flexColor;
-      drawGraph(ctx, flexGraph);
+      drawGraph(ctx, flexGraph, options.drawEnds);
     }
     return true;
   }
 
-  function drawGraph(ctx: CanvasRenderingContext2D, graph: PinchGraph) {
+  function drawGraph(ctx: CanvasRenderingContext2D, graph: PinchGraph, drawEnds?: boolean) {
     ctx.beginPath();
     for (const point of graph.points) {
-      ctx.lineTo(point.x * 30 + 90, point.y * 30 + 90);
+      const p = transform(point);
+      ctx.lineTo(p.x, p.y);
     }
     ctx.stroke();
+
+    if (drawEnds && graph.points.length > 1) {
+      ctx.strokeStyle = startColor;
+      const start = transform(graph.points[0]);
+      ctx.beginPath();
+      ctx.ellipse(start.x, start.y, 5, 5, 0, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = endColor;
+      const end = transform(graph.points[graph.points.length - 1]);
+      ctx.beginPath();
+      ctx.ellipse(end.x, end.y, 5, 5, 0, 0, Math.PI * 2);
+      ctx.stroke();
+    }
   }
 
+  // just a fake transform for now
+  function transform(p: Point): Point {
+    return { x: p.x * 30 + 90, y: p.y * 30 + 90 };
+  }
 }
