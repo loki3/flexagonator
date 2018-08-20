@@ -37,52 +37,28 @@ namespace Flexagonator {
     }
 
     getLeafCount(): number {
-      let total = 0;
-      for (let pat of this.pats) {
-        total += pat.getLeafCount();
-      }
-      return total;
+      return this.pats.reduce((total, pat) => total + pat.getLeafCount(), 0);
     }
 
     getAsLeafTrees(): LeafTree[] {
-      const trees: LeafTree[] = [];
-      for (let pat of this.pats) {
-        const tree: LeafTree = pat.getAsLeafTree();
-        trees.push(tree);
-      }
-      return trees;
+      return this.pats.map(pat => pat.getAsLeafTree());
     }
 
     getTopIds(): number[] {
-      const ids: number[] = [];
-      for (let pat of this.pats) {
-        ids.push(pat.getTop());
-      }
-      return ids;
+      return this.pats.map(pat => pat.getTop());
     }
 
     getBottomIds(): number[] {
-      const ids: number[] = [];
-      for (let pat of this.pats) {
-        ids.push(pat.getBottom());
-      }
-      return ids;
+      return this.pats.map(pat => pat.getBottom());
     }
 
     // get the ids for the visible leaves [ [top1, top2...], [bottom1,  bottom2...] ]
     getVisible(): number[][] {
-      const ids: number[][] = [];
-      ids.push(this.getTopIds());
-      ids.push(this.getBottomIds());
-      return ids;
+      return [this.getTopIds(), this.getBottomIds()];
     }
 
     getThickness(): number[] {
-      const thickness: number[] = [];
-      for (let pat of this.pats) {
-        thickness.push(pat.getThickness());
-      }
-      return thickness;
+      return this.pats.map(pat => pat.getThickness());
     }
 
     hasPattern(pattern: LeafTree[]): boolean {
