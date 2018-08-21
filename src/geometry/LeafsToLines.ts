@@ -64,8 +64,8 @@ namespace Flexagonator {
 
   export function getExtents(leaflines: LeafLines): [Point, Point] {
     let xmin = 0, ymin = 0, xmax = 0, ymax = 0;
-    for (let face of leaflines.faces) {
-      for (let point of face.corners) {
+    for (const face of leaflines.faces) {
+      for (const point of face.corners) {
         if (point.x < xmin)
           xmin = point.x;
         if (point.x > xmax)
@@ -125,21 +125,12 @@ namespace Flexagonator {
 
     const faces: LeafFace[] = [];
     for (let oldface of leaflines.faces) {
-      const corners: Point[] = [];
-      for (let oldcorner of oldface.corners) {
-        corners.push(rotate.point(oldcorner));
-      }
+      const corners = oldface.corners.map(oldcorner => rotate.point(oldcorner));
       faces.push({ leaf: oldface.leaf, corners: corners });
     }
 
-    const folds: Line[] = [];
-    for (let oldfold of leaflines.folds) {
-      folds.push(rotate.line(oldfold));
-    }
-    const cuts: Line[] = [];
-    for (let oldcut of leaflines.cuts) {
-      cuts.push(rotate.line(oldcut));
-    }
+    const folds: Line[] = leaflines.folds.map(oldfold => rotate.line(oldfold));
+    const cuts: Line[] = leaflines.cuts.map(oldcut => rotate.line(oldcut));
 
     return { faces: faces, folds: folds, cuts: cuts };
   }

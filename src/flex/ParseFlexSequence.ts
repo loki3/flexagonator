@@ -43,7 +43,7 @@ namespace Flexagonator {
     }
 
     getNames(): FlexName[] {
-      let state = this.states[this.states.length - 1];
+      const state = this.states[this.states.length - 1];
       return state.names;
     }
 

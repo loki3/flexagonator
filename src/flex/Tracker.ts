@@ -48,13 +48,8 @@ namespace Flexagonator {
 
     // returns which state we have, or null if we haven't seen it before
     private getIndex(state: State): number | null {
-      for (let i = 0; i < this.states.length; i++) {
-        const thisState = this.states[i];
-        if (thisState.isEqualTo(state)) {
-          return i;
-        }
-      }
-      return null;
+      const i = this.states.findIndex(thisState => thisState.isEqualTo(state));
+      return i !== -1 ? i : null;
     }
   }
 

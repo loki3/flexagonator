@@ -42,12 +42,7 @@ namespace Flexagonator {
     if (a.length !== b.length) {
       return false;
     }
-    for (let i in a) {
-      if (!areEqual(a[i], b[i])) {
-        return false;
-      }
-    }
-    return true;
+    return a.every((value, i) => areEqual(value, b[i]));
   }
 
   export function getTop(tree: LeafTree): number {
