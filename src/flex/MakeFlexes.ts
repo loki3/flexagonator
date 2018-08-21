@@ -39,7 +39,7 @@ namespace Flexagonator {
     }
 
     // add all the inverses
-    for (let flex of Object.keys(flexes)) {
+    for (const flex of Object.keys(flexes)) {
       flexes[flex + "'"] = flexes[flex].createInverse();
     }
 
@@ -51,7 +51,7 @@ namespace Flexagonator {
     const flexes: Flexes = {};
     const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Tw", "Lt", "Ltb", "Ltb'"];
 
-    for (let prime of primes) {
+    for (const prime of primes) {
       if (all[prime] !== undefined) {
         flexes[prime] = all[prime];
       }
