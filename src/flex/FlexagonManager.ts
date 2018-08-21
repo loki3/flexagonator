@@ -59,13 +59,8 @@ namespace Flexagonator {
     applyInReverse(flexStr: string | FlexName[]): boolean | FlexError {
       const forwardFlexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
       const flexNames = forwardFlexNames.reverse();
-      let inverses = "";
-      for (let flexName of flexNames) {
-        if (flexName.shouldApply) {
-          inverses += flexName.getInverse().fullName;
-          inverses += ' ';
-        }
-      }
+      const inverseArray = flexNames.map(flexName => flexName.shouldApply ? flexName.getInverse().fullName : '');
+      const inverses = inverseArray.join(' ');
       return this.applyFlexes(inverses, false);
     }
 
@@ -135,11 +130,7 @@ namespace Flexagonator {
 
     getFlexHistory(): string[] {
       const flexes = this.history.getCurrent().flexes;
-      const strings: string[] = [];
-      for (let flex of flexes) {
-        strings.push(flex.fullName);
-      }
-      return strings;
+      return flexes.map(flex => flex.fullName);
     }
 
     getBaseFlexagon(): Flexagon {
