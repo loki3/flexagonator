@@ -12,8 +12,8 @@ namespace Flexagonator {
   }
 
   export function findTuckermanTraverse3(flexagon: Flexagon, pinch: Flex, right: Flex): string {
-    var best = '';
-    var current = '';
+    let best = '';
+    let current = '';
     const tracker = Tracker.make(flexagon);
     const visited = new TrackVisited();
     while (true) {
@@ -59,7 +59,7 @@ namespace Flexagonator {
       this.total = count;
       this.visited = 0;
       this.which = [];
-      for (var i = 0; i < count; i++) {
+      for (let i = 0; i < count; i++) {
         this.which.push(false);
       }
     }

@@ -11,8 +11,8 @@ namespace Flexagonator {
     const transitions = getStateToState(allRelFlexes, true/*oneway*/);
     let str = "graph {\n";
 
-    for (let i in transitions) {
-      for (let state of transitions[i]) {
+    for (const i in transitions) {
+      for (const state of transitions[i]) {
         str += "  " + i + " -- " + state.toString() + '\n';
       }
     }
@@ -47,8 +47,8 @@ namespace Flexagonator {
     str += "graph {\n";
     const connect = oneway ? " -- " : " -> ";
 
-    for (let i in transitions) {
-      for (let state of transitions[i]) {
+    for (const i in transitions) {
+      for (const state of transitions[i]) {
         str += "  " + i + connect + state.state;
         str += getProps(state.flex, props);
         str += '\n';

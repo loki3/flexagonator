@@ -26,19 +26,13 @@ namespace Flexagonator {
 
   // e.g. (0,0),(1,0),(0,1) => (0,0),(1,0),(0.8,0.5)
   function transformAbstractPoints(input: Point[]): Point[] {
-    const points: Point[] = [];
     const yScale = Math.sqrt(3) / 2;
-    for (const p of input) {
-      const x = p.x + 0.5 * p.y;
-      const y = p.y * yScale;
-      points.push({ x: x, y: y });
-    }
-    return points;
+    return input.map(p => { return { x: p.x + 0.5 * p.y, y: p.y * yScale } });
   }
 
   function getExtents(points: Point[]): [Point, Point] {
     let xmin = 0, ymin = 0, xmax = 0, ymax = 0;
-    for (let point of points) {
+    for (const point of points) {
       if (point.x < xmin)
         xmin = point.x;
       if (point.x > xmax)

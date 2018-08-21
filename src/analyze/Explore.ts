@@ -19,7 +19,7 @@ namespace Flexagonator {
       this.right = right;
       this.over = over;
       this.flexes = {};
-      for (let f in flexes) {
+      for (const f in flexes) {
         if (f !== '>' && f !== '<' && f !== '^') {
           this.flexes[f] = flexes[f];
         }
@@ -85,7 +85,7 @@ namespace Flexagonator {
     // apply every flex at the current vertex,
     // every time we find a new state, track it
     private checkAllFlexes(flexagon: Flexagon, found: RelativeFlexes, rights: number, over: boolean) {
-      for (let f in this.flexes) {
+      for (const f in this.flexes) {
         const newFlexagon = this.flexes[f].apply(flexagon);
         if (!isFlexError(newFlexagon)) {
           let result = this.tracker.findMaybeAdd(newFlexagon);

@@ -45,17 +45,8 @@ namespace Flexagonator {
   export type RelativeFlexes = Array<RelativeFlex>;
 
   export function relativeFlexesToString(flexes: RelativeFlexes): string {
-    let str = "";
-    let first = true;
-    for (let relFlex of flexes) {
-      if (first) {
-        str = relFlex.toString();
-        first = false;
-      } else {
-        str += ", " + relFlex.toString();
-      }
-    }
-    return str;
+    const strs = flexes.map(relFlex => relFlex.toString());
+    return strs.join(', ');
   }
 
 }

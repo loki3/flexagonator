@@ -2,8 +2,8 @@ namespace Flexagonator {
 
   // represents a single step in one level of the breadth first search
   interface Step {
-    flex: RelativeFlex;
-    previous: number;   // points into Step[] from previous level
+    readonly flex: RelativeFlex;
+    readonly previous: number;   // points into Step[] from previous level
   }
   // represents every step explored at one level of the breadth first search
   type Level = Step[];
@@ -44,7 +44,7 @@ namespace Flexagonator {
       this.right = right;
       this.over = over;
       this.flexes = {};
-      for (let f in flexes) {
+      for (const f in flexes) {
         if (f !== '>' && f !== '<' && f !== '^') {
           this.flexes[f] = flexes[f];
         }
@@ -76,10 +76,10 @@ namespace Flexagonator {
         return "";
       }
 
-      var flexes = "";
+      let flexes = "";
       const finalLevel = this.levels[this.levels.length - 1];
       let stepN = finalLevel.length - 1;
-      for (var i = this.levels.length - 1; i >= 0; i--) {
+      for (let i = this.levels.length - 1; i >= 0; i--) {
         const step = this.levels[i][stepN];
         flexes = step.flex.getSequence() + ' ' + flexes;
         stepN = step.previous;
@@ -141,7 +141,7 @@ namespace Flexagonator {
     // every time we find a new state, track it.
     // return false if we've found the target flexagon
     private checkAllFlexes(flexagon: Flexagon, level: Level, previousStep: number, rights: number, over: boolean): boolean {
-      for (let f in this.flexes) {
+      for (const f in this.flexes) {
         const newFlexagon = this.flexes[f].apply(flexagon);
         if (!isFlexError(newFlexagon)) {
           let result = this.tracker.findMaybeAdd(newFlexagon);
