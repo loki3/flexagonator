@@ -21,15 +21,12 @@ namespace Flexagonator {
       if (trees.length < 2) {
         return { reason: TreeCode.TooFewPats, context: trees };
       }
-      const pats: Pat[] = [];
-      for (let tree of trees) {
-        const pat = makePat(tree);
-        if (isTreeError(pat)) {
-          return pat;
-        }
-        pats.push(pat);
+      const pats = trees.map(tree => makePat(tree));
+      const error = pats.find(pat => isTreeError(pat));
+      if (error && isTreeError(error)) {
+        return error;
       }
-      return new Flexagon(pats, whichVertex, isFirstMirrored);
+      return new Flexagon(pats as Pat[], whichVertex, isFirstMirrored);
     }
 
     getPatCount(): number {
@@ -65,12 +62,7 @@ namespace Flexagonator {
       if (this.pats.length !== pattern.length) {
         return false;
       }
-      for (let i in this.pats) {
-        if (!this.pats[i].hasPattern(pattern[i])) {
-          return false;
-        }
-      }
-      return true;
+      return this.pats.every((pat, i) => pat.hasPattern(pattern[i]));
     }
 
     matchPattern(pattern: LeafTree[]): Pat[] | PatternError {
