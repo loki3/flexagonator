@@ -12,7 +12,15 @@ const React = require('react');
  */
 class Unfolded extends React.Component {
   componentDidMount() {
-    const { numPats, flexes } = this.props;
+    this.updateCanvas(this.props);
+  }
+
+  componentWillReceiveProps(props) {
+    this.updateCanvas(props);
+  }
+
+  updateCanvas(props) {
+    const { numPats, flexes } = props;
     var pats = [];
     for (var i = 1; i <= numPats; i++) {
       pats.push(i);
