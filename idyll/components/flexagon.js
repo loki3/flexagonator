@@ -54,6 +54,7 @@ const FlexButtons = (props) => {
  * Flexagon: displays a flexagon and flex buttons at each corner
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
+ *  flexes      flexes to perform when creating the flexagon, e.g. 'Sh*>>T*^P*'
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
  * }
@@ -74,18 +75,17 @@ class Flexagon extends React.Component {
     if (this.state.fm && this.state.fm.flexagon.getPatCount() === props.numPats) {
       return null; // not updated
     }
-    var fm;
-    if (props.numPats === 6) {
-      var flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
-      fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
+    var pats = [];
+    for (var i = 1; i <= props.numPats; i++) {
+      pats.push(i);
+    }
+    const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
+    var fm = Flexagonator.FlexagonManager.make(flexagon);
+    if (this.props.flexes) {
+      fm = Flexagonator.runScriptItem(fm, { flexes: this.props.flexes });
+      this.props.updateProps({ value: this.props.flexes });
     } else {
-      var pats = [];
-      for (var i = 1; i <= props.numPats; i++) {
-        pats.push(i);
-      }
-      const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
-      fm = Flexagonator.FlexagonManager.make(flexagon);
-      fm = Flexagonator.runScriptItem(fm, { flexes: "P*P*P*" });
+      this.props.updateProps({ value: '' });
     }
     return { fm: fm, regions: [] }; // updated
   }

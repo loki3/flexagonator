@@ -8,11 +8,12 @@
 
 
 [var name:'numPats' value:6 /]
+[var name:'initialFlexes' value:'P*P*P*' /]
 [var name:'flexHistory' value:'' /]
 
 Here is a flexagon:
 
-[Flexagon width:500 height:300 numPats:numPats value:flexHistory /]
+[Flexagon width:500 height:300 numPats:numPats flexes:initialFlexes value:flexHistory /]
 
 Flex history: [Display value:flexHistory /]
 
@@ -24,4 +25,4 @@ Change the number of pats per side of the flexagon:
 
 Drawing an unfolded strip:
 
-[Unfolded width:800 height:500 numPats:7 flexes:'(F*<<)4' /]
+[Unfolded width:800 height:500 numPats:numPats flexes:initialFlexes /]
