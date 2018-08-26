@@ -41,6 +41,14 @@ This structure definition is also used to define the before and after states whe
 { pats: [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10] }
 ```
 
+If you know the *structure* you want, but the actual ids aren't important,
+you can simply specify 0's for all the ids and useful ids will be filled in for you.
+
+```javascript
+// this describes the structure, letting the system assign ids
+{ pats: [[0, 0], 0, 0, 0, [[[0, 0], 0], 0], 0] }
+```
+
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
 
 
