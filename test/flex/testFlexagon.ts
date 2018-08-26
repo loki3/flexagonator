@@ -22,6 +22,16 @@ namespace Flexagonator {
         expect(areEqual(expected[i], result[i])).toBeTruthy();
       }
     });
+    it('should start after the largest id', () => {
+      const input: LeafTree[] = [0, [0, 10], [[0, 20], [0, 0]]];
+      const expected: LeafTree[] = [21, [22, 10], [[23, 20], [24, 25]]];
+
+      const flexagon = Flexagon.makeFromTreeCheckZeros(input) as Flexagon;
+      const result = flexagon.getAsLeafTrees();
+      for (let i in result) {
+        expect(areEqual(expected[i], result[i])).toBeTruthy();
+      }
+    });
   });
 
   describe('getAsLeafTrees', () => {

@@ -23,7 +23,8 @@ namespace Flexagonator {
         return flexagon;
       }
 
-      let next = 1;
+      // find the largest id and replace all 0's in pats with an incremented counter
+      let next = flexagon.pats.map(pat => pat.findMaxId()).reduce((prev, current) => Math.max(prev, current), 0) + 1;
       const result = flexagon.pats.map(pat => pat.replaceZeros(() => { return next++; }));
       return this.makeFromPats(result, 0, false/*isFirstMirrored*/);
     }
