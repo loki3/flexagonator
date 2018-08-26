@@ -17,6 +17,17 @@ namespace Flexagonator {
       return Flexagon.makeFromTreePlus(trees, 0, false/*isFirstMirrored*/);
     }
 
+    static makeFromTreeCheckZeros(trees: LeafTree[]): Flexagon | TreeError {
+      const flexagon = this.makeFromTree(trees);
+      if (isTreeError(flexagon)) {
+        return flexagon;
+      }
+
+      let next = 1;
+      const result = flexagon.pats.map(pat => pat.replaceZeros(() => { return next++; }));
+      return this.makeFromPats(result, 0, false/*isFirstMirrored*/);
+    }
+
     static makeFromTreePlus(trees: LeafTree[], whichVertex: number, isFirstMirrored: boolean): Flexagon | TreeError {
       if (trees.length < 2) {
         return { reason: TreeCode.TooFewPats, context: trees };

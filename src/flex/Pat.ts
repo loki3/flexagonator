@@ -27,6 +27,8 @@ namespace Flexagonator {
     // returns an array where the index is the pattern number from the input
     matchPattern(pattern: LeafTree): Pat[] | PatternError;
     createPattern(pattern: LeafTree, getNextId: () => number): Pat;
+    // fill in all 0's with an incremented counter
+    replaceZeros(getNextId: () => number): Pat;
   }
 
   /*
@@ -155,6 +157,10 @@ namespace Flexagonator {
       const newRight = this.subCreate(patternArray[1], getNextId);
       return new PatPair(newLeft, newRight);
     }
+
+    replaceZeros(getNextId: () => number): Pat {
+      return this.id === 0 ? new PatLeaf(getNextId()) : this;
+    }
   }
 
   // pair of sub-pats
@@ -257,6 +263,12 @@ namespace Flexagonator {
       const patternArray = pattern as any[];
       const newLeft = this.left.createPattern(patternArray[0], getNextId);
       const newRight = this.right.createPattern(patternArray[1], getNextId);
+      return new PatPair(newLeft, newRight);
+    }
+
+    replaceZeros(getNextId: () => number): Pat {
+      const newLeft = this.left.replaceZeros(getNextId);
+      const newRight = this.right.replaceZeros(getNextId);
       return new PatPair(newLeft, newRight);
     }
   }

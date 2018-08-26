@@ -26,7 +26,7 @@ namespace Flexagonator {
 
   export function runScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
     if (item.pats !== undefined) {
-      const result = Flexagon.makeFromTree(item.pats);
+      const result = Flexagon.makeFromTreeCheckZeros(item.pats);
       if (isTreeError(result)) {
         return result;
       }

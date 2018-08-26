@@ -1,5 +1,5 @@
 namespace Flexagonator {
-  describe('makeFlexagon', () => {
+  describe('makeFromTree', () => {
     it('should fail if handed a single pat', () => {
       const trees: LeafTree[] = [[[4, 5], [6, 7]]];
       const error = Flexagon.makeFromTree(trees);
@@ -8,6 +8,19 @@ namespace Flexagonator {
         return;
       }
       expect(error.reason).toBe(TreeCode.TooFewPats);
+    });
+  });
+
+  describe('makeFromTreeCheckZeros', () => {
+    it('should fill in 0s', () => {
+      const input: LeafTree[] = [0, [0, 0], [[0, 0], [0, 0]]];
+      const expected: LeafTree[] = [1, [2, 3], [[4, 5], [6, 7]]];
+
+      const flexagon = Flexagon.makeFromTreeCheckZeros(input) as Flexagon;
+      const result = flexagon.getAsLeafTrees();
+      for (let i in result) {
+        expect(areEqual(expected[i], result[i])).toBeTruthy();
+      }
     });
   });
 

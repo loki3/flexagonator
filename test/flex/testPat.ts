@@ -262,4 +262,19 @@ namespace Flexagonator {
       }
     });
   });
+
+  describe('replaceZeros', () => {
+    it('should replace all 0s with the value of a counter', () => {
+      const original = [0, [[0, 0], 0]];
+      const pat = makePat(original) as Pat;
+
+      let next = 1;
+      const result = pat.replaceZeros(() => { return next++; });
+      const actual = result.getAsLeafTree() as any[];
+
+      const expected = [1, [[2, 3], 4]];
+      expect(areEqual(expected, actual)).toBeTruthy();
+    });
+  });
+
 }
