@@ -83,10 +83,8 @@ class Flexagon extends React.Component {
     var fm = Flexagonator.FlexagonManager.make(flexagon);
     if (this.props.flexes) {
       fm = Flexagonator.runScriptItem(fm, { flexes: this.props.flexes });
-      this.props.updateProps({ value: this.props.flexes });
-    } else {
-      this.props.updateProps({ value: '' });
     }
+    this.updateHistoryProps();
     return { fm: fm, regions: [] }; // updated
   }
 
@@ -101,10 +99,18 @@ class Flexagon extends React.Component {
     var result = Flexagonator.runScriptItem(this.state.fm, { flexes: flexes });
     if (!Flexagonator.isError(result)) {
       this.updateCanvas(result, true);
-
-      const history = this.state.fm.getFlexHistory().join('');
-      this.props.updateProps({ value: history });
+      this.updateHistoryProps();
     }
+  }
+
+  updateHistoryProps() {
+    var history = '';
+    if (this.state.fm) {
+      history = this.state.fm.getFlexHistory().join('');
+      // subtract out the generating sequence at the start
+      history = history.substring(this.props.flexes.length);
+    }
+    this.props.updateProps({ value: history });
   }
 
   componentWillReceiveProps(props) {
