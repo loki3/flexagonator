@@ -13,7 +13,7 @@
 
 Here is a flexagon:
 
-[Flexagon width:500 height:300 numPats:numPats generator:initialFlexes value:flexHistory /]
+[Flexagon width:600 height:300 numPats:numPats generator:initialFlexes value:flexHistory /]
 
 Flex history: [Display value:flexHistory /]
 

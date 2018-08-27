@@ -28,7 +28,7 @@ namespace Flexagonator {
         prefix: prefix,
         postfix: postfix,
         corner: { x: x, y: y },
-        isOnLeft: x > polygon.xCenter,
+        isOnLeft: x < polygon.xCenter,
         isOnTop: y > polygon.yCenter,
       };
       regions.push(region);
