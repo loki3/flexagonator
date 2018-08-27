@@ -54,6 +54,7 @@ const FlexButtons = (props) => {
  * Flexagon: displays a flexagon and flex buttons at each corner
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
+ *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
  * }
@@ -107,6 +108,7 @@ class Flexagon extends React.Component {
     if (this.state.fm) {
       history = this.state.fm.getFlexHistory().join('');
       // subtract out the generating sequence at the start
+      history = history.substring(this.props.generator.length);
     }
     this.props.updateProps({ value: history });
   }
