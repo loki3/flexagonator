@@ -27,7 +27,8 @@ const FlexButton = (props) => {
  * props {
  *  onClick(flexes) callback to issue when button is clicked
  *  region          RegionForFlexes: { flexes, prefix, postfix, corner, isOnLeft, isOnTop }
- *  width           width of region to put buttons
+ *  width           width of parent region
+ *  height          height of parent region
  * }
  */
 const FlexButtons = (props) => {
@@ -37,12 +38,12 @@ const FlexButtons = (props) => {
   const { flexes, prefix, postfix, corner, isOnLeft, isOnTop } = props.region;
 
   const x = isOnLeft ? props.width - corner.x : corner.x;
-  const y = corner.y;
+  const y = isOnTop ? props.height - corner.y : corner.y;
   const xpix = Math.round(x).toString() + 'px';
   const ypix = Math.round(y).toString() + 'px';
   var style = { padding: '8x', position: 'absolute' };
   isOnLeft ? style.right = xpix : style.left = xpix;
-  style.top = ypix;
+  isOnTop ? style.bottom = ypix : style.top = ypix;
 
   return <div style={style}>
     {flexes.map(flex =>
@@ -130,7 +131,7 @@ class Flexagon extends React.Component {
       <div style={{ position: 'relative', width: width, height: height }}>
         <canvas ref="canvas" width={width} height={height} />
         {this.state.regions.map(region =>
-          <FlexButtons onClick={this.handleFlexes} region={region} width={width} key={region.corner} />)}
+          <FlexButtons onClick={this.handleFlexes} region={region} width={width} height={height} key={region.corner} />)}
       </div>
     );
   }
