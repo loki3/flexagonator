@@ -35,7 +35,7 @@ const OverButton = (props) => {
   if (!props.display) {
     return null;
   }
-  return <div style={{ padding: '8x', position: 'absolute', left: '10px', bottom: '10px' }}>
+  return <div style={{ position: 'absolute', left: '10px', bottom: '40px' }}>
     <FlexButton onClick={props.onClick} flex={'^'} key={'^'} />
   </div>
 }
@@ -59,7 +59,7 @@ const FlexButtons = (props) => {
   const y = isOnTop ? props.height - corner.y : corner.y;
   const xpix = Math.round(x).toString() + 'px';
   const ypix = Math.round(y).toString() + 'px';
-  var style = { padding: '8x', position: 'absolute' };
+  var style = { position: 'absolute' };
   isOnLeft ? style.right = xpix : style.left = xpix;
   isOnTop ? style.bottom = ypix : style.top = ypix;
 
