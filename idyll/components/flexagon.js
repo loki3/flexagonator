@@ -16,11 +16,29 @@ const React = require('react');
  * }
  */
 const FlexButton = (props) => {
-  const flexes = props.prefix + props.flex + props.postfix;
+  const prefix = props.prefix ? props.prefix : '';
+  const postfix = props.postfix ? props.postfix : '';
+  const flexes = prefix + props.flex + postfix;
   return (
     <button onClick={() => props.onClick(flexes)}>{props.flex}</button>
   );
 };
+
+/**
+ * OverButton: a button for turning over the flexagon
+ * props {
+ *  onClick(flexes) callback to issue when button is clicked
+ *  display         true to display the button, false otherwise
+ * }
+ */
+const OverButton = (props) => {
+  if (!props.display) {
+    return null;
+  }
+  return <div style={{ padding: '8x', position: 'absolute', left: '10px', bottom: '10px' }}>
+    <FlexButton onClick={props.onClick} flex={'^'} key={'^'} />
+  </div>
+}
 
 /**
  * FlexButtons: all the flexes that can be applied at a corner
@@ -56,6 +74,7 @@ const FlexButtons = (props) => {
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  overButton  true to include a button for turning over the flexagon
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
  * }
@@ -132,6 +151,7 @@ class Flexagon extends React.Component {
         <canvas ref="canvas" width={width} height={height} />
         {this.state.regions.map(region =>
           <FlexButtons onClick={this.handleFlexes} region={region} width={width} height={height} key={region.corner} />)}
+        <OverButton onClick={this.handleFlexes} display={this.props.overButton} />
       </div>
     );
   }
