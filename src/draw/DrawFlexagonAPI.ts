@@ -21,7 +21,7 @@ namespace Flexagonator {
   export function drawEntireFlexagon(
     canvas: string | HTMLCanvasElement,
     fm: FlexagonManager,
-    options: DrawFlexagonOptions): RegionForFlexes[] {
+    options?: DrawFlexagonOptions): RegionForFlexes[] {
 
     const objects = {
       flexagon: fm.flexagon,
@@ -36,11 +36,14 @@ namespace Flexagonator {
   function drawEntireFlexagonObjects(
     canvas: string | HTMLCanvasElement,
     objects: DrawFlexagonObjects,
-    options: DrawFlexagonOptions): RegionForFlexes[] {
+    options?: DrawFlexagonOptions): RegionForFlexes[] {
 
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
 
+    if (!options) {
+      options = {}
+    }
     if (options.drawover === undefined || !options.drawover) {
       ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
     }
