@@ -27,15 +27,15 @@ namespace Flexagonator {
 
     for (let flex of region.flexes) {
       const metrics = ctx.measureText(flex);
-      const thisx = region.isOnLeft ? x : x - metrics.width;
-      const thisy = region.isOnTop ? y : y - h;
+      const thisx = region.isOnLeft ? x - metrics.width : x;
+      const thisy = region.isOnTop ? y - h : y;
       const thisflex = region.prefix + flex + region.postfix;
       const thisWidth = metrics.width;
 
       ctx.fillText(flex, thisx, thisy);
       buttons.addFlexButton({ x: thisx - pad, y: thisy - h - pad, w: thisWidth + pad * 2, h: h + pad * 2 }, thisflex);
 
-      x = region.isOnLeft ? x + thisWidth + spaceWidth : x - thisWidth - spaceWidth;
+      x = region.isOnLeft ? x - thisWidth - spaceWidth : x + thisWidth + spaceWidth;
     }
   }
 
