@@ -74,6 +74,8 @@ const FlexButtons = (props) => {
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  script      a flexagonator script to run
+ *  options     options used when drawing (passed to drawEntireFlexagon)
  *  overButton  true to include a button for turning over the flexagon
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
@@ -104,12 +106,15 @@ class Flexagon extends React.Component {
     if (this.props.generator) {
       fm = Flexagonator.runScriptItem(fm, { flexes: this.props.generator });
     }
+    if (this.props.script) {
+      fm = Flexagonator.runScript(fm, this.props.script);
+    }
     this.updateHistoryProps();
     return { fm: fm, regions: [] }; // updated
   }
 
   updateCanvas(fm, shouldUpdateState) {
-    var regions = Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, { stats: true, structure: true });
+    var regions = Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, this.props.options);
     if (shouldUpdateState) {
       this.setState({ fm: fm, regions: regions });
     }

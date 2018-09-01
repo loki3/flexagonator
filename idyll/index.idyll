@@ -9,11 +9,14 @@
 
 [var name:'numPats' value:6 /]
 [var name:'initialFlexes' value:'P*P*P*' /]
+[var name:'script' value:`[{searchFlexes:"P"}]` /]
+[var name:'drawOptions' value:`{structure:true}`/]
 [var name:'flexHistory' value:'' /]
 
 Here is a flexagon:
 
-[Flexagon width:500 height:300 numPats:numPats generator:initialFlexes value:flexHistory overButton:true /]
+[Flexagon width:500 height:300 numPats:numPats generator:initialFlexes script:script value:flexHistory
+ options:drawOptions overButton:true /]
 
 Flex history: [Display value:flexHistory /]
 
