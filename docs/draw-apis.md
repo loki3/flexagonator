@@ -99,6 +99,12 @@ function interfaceMouseClick(event) {
 
 ```
 
+Optionally, you can get the button regions without drawing.
+
+```javascript
+var regions = getButtonRegions(fm, width, height, true/*front*/);
+```
+
 `RegionForFlexes` describes all the flexes that are valid at a single corner of the flexagon.
 If you want to apply a flex, you would first need to change the current vertex by applying
 what's listed in `prefix`, e.g. `>>`.
