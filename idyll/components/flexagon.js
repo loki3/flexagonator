@@ -173,8 +173,8 @@ class Flexagon extends React.Component {
     return (
       <div style={{ position: 'relative', width: width, height: height }}>
         <canvas ref="canvas" width={width} height={height} />
-        {this.state.regions.map(region =>
-          <FlexButtons onClick={this.handleFlexes} region={region} width={width} height={height} key={region.corner} />)}
+        {this.state.regions.map((region, i) =>
+          <FlexButtons onClick={this.handleFlexes} region={region} width={width} height={height} key={i} />)}
         <OverButton onClick={this.handleFlexes} display={this.props.overButton} />
       </div>
     );
