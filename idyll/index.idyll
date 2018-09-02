@@ -12,13 +12,16 @@
 [var name:'script' value:`[{searchFlexes:"P"}]` /]
 [var name:'drawOptions' value:`{structure:true}`/]
 [var name:'flexHistory' value:'' /]
+[var name:'doFlexes' value:'' /]
 
 Here is a flexagon:
 
 [Flexagon width:500 height:300 numPats:numPats generator:initialFlexes script:script value:flexHistory
- options:drawOptions overButton:true /]
+ options:drawOptions overButton:true flex:doFlexes /]
 
 Flex history: [Display value:flexHistory /]
+
+[button onClick:`doFlexes='P'`]pinch[/button] [button onClick:`doFlexes='>P'`]rotate & pinch[/button]
 
 Change the number of pats per side of the flexagon:
 

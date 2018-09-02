@@ -109,6 +109,9 @@ class Flexagon extends React.Component {
     if (this.props.script) {
       fm = Flexagonator.runScript(fm, this.props.script);
     }
+    if (Flexagonator.isFlexError(fm)) {
+      return null;
+    }
     this.updateHistoryProps();
     return { fm: fm, regions: [] }; // updated
   }
@@ -138,9 +141,25 @@ class Flexagon extends React.Component {
     this.props.updateProps({ value: history });
   }
 
+  applyFlexIfPresent(props) {
+    if (!props.flex || props.flex == '') {
+      return null;
+    }
+    var fm = Flexagonator.runScriptItem(this.state.fm, { flexes: props.flex });
+    if (Flexagonator.isFlexError(fm)) {
+      return null;
+    }
+    this.props.updateProps({ flex: '' });
+    this.updateHistoryProps();
+    return { fm: fm, regions: [] }; // updated
+}
+
   componentWillReceiveProps(props) {
     var state = this.checkForNewFlexagon(props);
-    if (state !== null) {
+    if (!state) {
+      state = this.applyFlexIfPresent(props);
+    }
+    if (state) {
       this.updateCanvas(state.fm, true);
     }
   }
