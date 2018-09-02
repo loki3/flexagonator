@@ -113,7 +113,8 @@ class Flexagon extends React.Component {
       return null;
     }
     this.updateHistoryProps();
-    return { fm: fm, regions: [] }; // updated
+    const regions = Flexagonator.getButtonRegions(fm, props.width, props.height, true);
+    return { fm: fm, regions: regions }; // updated
   }
 
   updateCanvas(fm, shouldUpdateState) {
