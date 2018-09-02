@@ -40,16 +40,17 @@ namespace Flexagonator {
 
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+    const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
 
     if (!options) {
       options = {}
     }
     if (options.drawover === undefined || !options.drawover) {
-      ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
+      ctx.clearRect(0, 0, width, height);
     }
 
     const showFront = (options.back === undefined || !options.back);
-    const polygon = createPolygon(ctx, objects.flexagon, objects.angleInfo, showFront);
+    const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
     drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure);
@@ -70,10 +71,11 @@ namespace Flexagonator {
 
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+    const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
 
-    const polygon = createPolygon(ctx, flexagon, angleInfo, showFront);
-    const height = polygon.radius / 9;
-    return drawPossibleFlexes(ctx, regions, height);
+    const polygon = createPolygon(width, height, flexagon, angleInfo, showFront);
+    const bheight = polygon.radius / 9;
+    return drawPossibleFlexes(ctx, regions, bheight);
   }
 
   function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {
@@ -95,14 +97,15 @@ namespace Flexagonator {
   }
 
   function createPolygon(
-    ctx: CanvasRenderingContext2D,
+    width: number,
+    height: number,
     flexagon: Flexagon,
     angleInfo: FlexagonAngles,
     showFront: boolean): Polygon {
 
-    const xCenter = ctx.canvas.clientWidth / 2;
-    const yCenter = ctx.canvas.clientHeight / 2;
-    const radius = ctx.canvas.clientHeight * 0.42;
+    const xCenter = width / 2;
+    const yCenter = height / 2;
+    const radius = height * 0.42;
 
     const angles = angleInfo.getAngles(flexagon);
     return new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
