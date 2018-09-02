@@ -78,6 +78,11 @@ namespace Flexagonator {
     return drawPossibleFlexes(ctx, regions, bheight);
   }
 
+  export function getButtonRegions(fm: FlexagonManager, width: number, height: number, front: boolean): RegionForFlexes[] {
+    const polygon = createPolygon(width, height, fm.flexagon, fm.getAngleInfo(), front);
+    return createFlexRegions(fm.flexagon, fm.allFlexes, fm.flexesToSearch, !front, polygon);
+  }
+
   function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {
     ctx.fillStyle = "rgb(0, 0, 0)";
     ctx.textAlign = "left";
