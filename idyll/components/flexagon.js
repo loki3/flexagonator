@@ -137,7 +137,9 @@ class Flexagon extends React.Component {
     if (this.state.fm) {
       history = this.state.fm.getFlexHistory().join('');
       // subtract out the generating sequence at the start
-      history = history.substring(this.props.generator.length);
+      if (this.props.generator) {
+        history = history.substring(this.props.generator.length);
+      }
     }
     this.props.updateProps({ value: history });
   }
@@ -153,7 +155,7 @@ class Flexagon extends React.Component {
     this.props.updateProps({ flex: '' });
     this.updateHistoryProps();
     return { fm: fm, regions: [] }; // updated
-}
+  }
 
   componentWillReceiveProps(props) {
     var state = this.checkForNewFlexagon(props);

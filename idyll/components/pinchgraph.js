@@ -24,7 +24,9 @@ class PinchGraph extends React.Component {
 
     const flexagon = Flexagonator.Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]);
     var fm = Flexagonator.FlexagonManager.make(flexagon);
-    fm = Flexagonator.runScriptItem(fm, { flexes: generator });
+    if (generator) {
+      fm = Flexagonator.runScript(fm, [{ flexes: generator }, { reverseFlexes: generator }]);
+    }
 
     const traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
     Flexagonator.drawPinchGraph(this.refs.canvas, { traverse: traverse, flexes: flexes, drawEnds: true });
