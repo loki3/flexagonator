@@ -39,11 +39,11 @@ namespace Flexagonator {
       return true;
     }
 
-    // apply a series of space delimited flexes, e.g. "P > > S'+ ^ T"
+    // apply a series of flexes, e.g. "P > > S'+ ^ T"
     // as a single undoable operation
     applyFlexes(flexStr: string | FlexName[], separatelyUndoable: boolean): boolean | FlexError {
       const flexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
-      for (let flexName of flexNames) {
+      for (const flexName of flexNames) {
         const result = separatelyUndoable ? this.applyFlex(flexName) : this.rawApplyFlex(flexName);
         if (isFlexError(result)) {
           return { reason: FlexCode.CantApplyFlex, flexName: flexName.fullName };
@@ -57,7 +57,8 @@ namespace Flexagonator {
 
     // run the inverse of the flexes backwards to effectively undo a sequence
     applyInReverse(flexStr: string | FlexName[]): boolean | FlexError {
-      const forwardFlexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
+      // note: the call to map makes a copy so .reverse() won't modify the parameter passed to the function
+      const forwardFlexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr.map(f => f);
       const flexNames = forwardFlexNames.reverse();
       const inverseArray = flexNames.map(flexName => flexName.shouldApply ? flexName.getInverse().fullName : '');
       const inverses = inverseArray.join(' ');
@@ -91,28 +92,28 @@ namespace Flexagonator {
 
     setFaceLabel(label: string, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (let id of ids) {
+      for (const id of ids) {
         this.leafProps.setLabelProp(id, label);
       }
     }
 
     setUnsetFaceLabel(label: string, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (let id of ids) {
+      for (const id of ids) {
         this.leafProps.setUnsetLabelProp(id, label);
       }
     }
 
     setFaceColor(color: number, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (let id of ids) {
+      for (const id of ids) {
         this.leafProps.setColorProp(id, color);
       }
     }
 
     setUnsetFaceColor(color: number, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
-      for (let id of ids) {
+      for (const id of ids) {
         this.leafProps.setUnsetColorProp(id, color);
       }
     }
