@@ -52,37 +52,11 @@ namespace Flexagonator {
     }
 
     if (item.setFace !== undefined) {
-      if (item.setFace.front !== undefined) {
-        if (item.setFace.front.label !== undefined) {
-          fm.setFaceLabel(item.setFace.front.label, true);
-        }
-        if (item.setFace.front.color !== undefined) {
-          fm.setFaceColor(item.setFace.front.color, true);
-        }
-      }
-      if (item.setFace.back !== undefined) {
-        if (item.setFace.back.label !== undefined) {
-          fm.setFaceLabel(item.setFace.back.label, false);
-        }
-        if (item.setFace.back.color !== undefined) {
-          fm.setFaceColor(item.setFace.back.color, false);
-        }
-      }
+      doSetFace(fm, item.setFace);
     }
 
     if (item.unsetFace !== undefined) {
-      if (item.unsetFace.front.label !== undefined) {
-        fm.setUnsetFaceLabel(item.unsetFace.front.label, true);
-      }
-      if (item.unsetFace.back.label !== undefined) {
-        fm.setUnsetFaceLabel(item.unsetFace.back.label, false);
-      }
-      if (item.unsetFace.front.color !== undefined) {
-        fm.setUnsetFaceColor(item.unsetFace.front.color, true);
-      }
-      if (item.unsetFace.back.color !== undefined) {
-        fm.setUnsetFaceColor(item.unsetFace.back.color, false);
-      }
+      doUnsetFace(fm, item.unsetFace);
     }
 
     if (item.addFlex !== undefined) {
@@ -127,4 +101,38 @@ namespace Flexagonator {
     return fm;
   }
 
+
+  function doSetFace(fm: FlexagonManager, setFace: LeafProperties) {
+    if (setFace.front !== undefined) {
+      if (setFace.front.label !== undefined) {
+        fm.setFaceLabel(setFace.front.label, true);
+      }
+      if (setFace.front.color !== undefined) {
+        fm.setFaceColor(setFace.front.color, true);
+      }
+    }
+    if (setFace.back !== undefined) {
+      if (setFace.back.label !== undefined) {
+        fm.setFaceLabel(setFace.back.label, false);
+      }
+      if (setFace.back.color !== undefined) {
+        fm.setFaceColor(setFace.back.color, false);
+      }
+    }
+  }
+
+  function doUnsetFace(fm: FlexagonManager, unsetFace: LeafProperties) {
+    if (unsetFace.front.label !== undefined) {
+      fm.setUnsetFaceLabel(unsetFace.front.label, true);
+    }
+    if (unsetFace.back.label !== undefined) {
+      fm.setUnsetFaceLabel(unsetFace.back.label, false);
+    }
+    if (unsetFace.front.color !== undefined) {
+      fm.setUnsetFaceColor(unsetFace.front.color, true);
+    }
+    if (unsetFace.back.color !== undefined) {
+      fm.setUnsetFaceColor(unsetFace.back.color, false);
+    }
+  }
 }
