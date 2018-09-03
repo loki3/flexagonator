@@ -6,6 +6,7 @@ const React = require('react');
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  autoLabel   automatically label the sides based on the generating sequence
  *  options     options used when drawing (passed to drawUnfolded)
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
@@ -21,16 +22,26 @@ class Unfolded extends React.Component {
   }
 
   updateCanvas(props) {
-    const { numPats, generator } = props;
+    const { numPats, generator, autoLabel } = props;
     var pats = [];
     for (var i = 1; i <= numPats; i++) {
       pats.push(i);
     }
     const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
     var fm = Flexagonator.FlexagonManager.make(flexagon);
-    fm = Flexagonator.runScriptItem(fm, { flexes: generator });
 
-    Flexagonator.drawUnfolded(this.refs.canvas, fm, props.options);
+    var options = props.options;
+    if (autoLabel) {
+      fm = Flexagonator.runScriptItem(fm, { flexAndColor: { flexes: generator } });
+      if (!options) {
+        options = {}
+      }
+      options.content = Flexagonator.StripContent.LeafLabels;
+    } else {
+      fm = Flexagonator.runScriptItem(fm, { flexes: generator });
+    }
+
+    Flexagonator.drawUnfolded(this.refs.canvas, fm, options);
   }
 
   render() {

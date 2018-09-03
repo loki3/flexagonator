@@ -57,8 +57,8 @@ Here's the unfolded strip.
   Copy the small number from each triangle onto the back.
 
   **Fold:**
-  Find the largest pair of numbers and fold those numbers together.
-  Then find the next largest pair of numbers and fold them together.
+  Find the largest pairs of adjacent numbers and fold those numbers together.
+  Then find the next largest pairs of adjacent numbers and fold them together.
   Continue in this way until the only numbers still visible are the 1's and the 2's.
 
   **Tape:**
@@ -67,4 +67,4 @@ Here's the unfolded strip.
   [/Aside]
 [/Conditional]
 
-[Unfolded width:800 height:500 numPats:numPats generator:initialFlexes /]
+[Unfolded width:800 height:500 numPats:numPats generator:initialFlexes autoLabel:true /]
