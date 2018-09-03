@@ -34,6 +34,32 @@ Tuckerman traverse
 [PinchGraph width:800 height:200 generator:initialFlexes flexes:flexHistory /]
 
 
-Drawing an unfolded strip:
+[var name:"showFoldingHelp" value:false /]
+
+Here's the unfolded strip.
+[Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
+[Conditional if:` showFoldingHelp `]
+  [Aside]
+  **Cut:**
+  Start by printing out the strip and cutting along the outside edges.
+
+  **Prefold:**
+  After you've cut out the shape, fold and unfold along every dashed line to prepare it.
+  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after folding.
+
+  **Number:**
+  The large number on each triangle represents the number on the *front* of the triangle, while the small number represents the number on the *back*.
+  Copy the small number from each triangle onto the back.
+
+  **Fold:**
+  Find the largest pair of numbers and fold those numbers together.
+  Then find the next largest pair of numbers and fold them together.
+  Continue in this way until the only numbers still visible are the 1's and the 2's.
+
+  **Tape:**
+  You should now have a hexagon consisting of 6 equilateral triangles.
+  Tape the edges of the first and last triangles together to complete the flexagon.
+  [/Aside]
+[/Conditional]
 
 [Unfolded width:800 height:500 numPats:numPats generator:initialFlexes /]

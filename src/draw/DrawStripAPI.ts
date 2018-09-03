@@ -34,7 +34,7 @@ namespace Flexagonator {
   }
 
   // draw an unfolded flexagon strip
-  export function drawUnfolded(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options: DrawStripOptions) {
+  export function drawUnfolded(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options?: DrawStripOptions) {
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
@@ -43,7 +43,7 @@ namespace Flexagonator {
     return drawUnfoldedObjects(canvas, objects, options);
   }
 
-  export function drawUnfoldedObjects(canvas: string | HTMLCanvasElement, objects: DrawStripObjects, options: DrawStripOptions) {
+  export function drawUnfoldedObjects(canvas: string | HTMLCanvasElement, objects: DrawStripObjects, options?: DrawStripOptions) {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
@@ -55,6 +55,9 @@ namespace Flexagonator {
       return;
     }
 
+    if (!options) {
+      options = {};
+    }
     const content = options.content === undefined ? StripContent.FoldingLabels : options.content;
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));

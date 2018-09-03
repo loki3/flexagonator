@@ -6,6 +6,7 @@ const React = require('react');
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  options     options used when drawing (passed to drawUnfolded)
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
  * }
@@ -29,7 +30,7 @@ class Unfolded extends React.Component {
     var fm = Flexagonator.FlexagonManager.make(flexagon);
     fm = Flexagonator.runScriptItem(fm, { flexes: generator });
 
-    Flexagonator.drawUnfolded(this.refs.canvas, fm, { content: Flexagonator.StripContent.FoldingAndIds });
+    Flexagonator.drawUnfolded(this.refs.canvas, fm, props.options);
   }
 
   render() {
