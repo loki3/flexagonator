@@ -9,8 +9,9 @@ Script commands:
 * Defining flexagon structure
     * **pats:** create a new flexagon with the given structure
 * Flexes
-    * **flexes:** perform a series of space-delimited flexes
+    * **flexes:** perform a series of flexes
     * **reverseFlexes:** run a series of flexes in reverse, effectively undoing them
+    * **flexAndColor:** run a series of flexes, labeling and coloring new faces as they're generated
     * **searchFlexes:** a list of flexes to search, e.g. displayed from the UI
     * **addFlex:** define a new flex
 * Properties
@@ -107,6 +108,21 @@ Such a sequence is called the "generating sequence" for the flexagon.
 // create the structure necessary to perform two pinch flexes in a row
 { flexes: "P* P*" },
 ]
+```
+
+
+### the `flexAndColor` command
+
+Use the `flexAndColor` command to have it automatically label and color new faces as they're created by a flex generating sequence.
+
+It starts by labeling the top and bottom of the initial state with 1's on the front and 2's on the back.
+If colors are specified, it uses the first color for the front and the second for the back.
+From there on, whenver new leaves are created because of a generating flex (e.g. `P*` or `Sh+`),
+it will label any freshly created leaves with the next number and apply the next color,
+if there are still more in the color array.
+
+```javascript
+{ flexAndColor: { flexes: 'P* > Sh*' }, colors: [0x555555, 0x0000ff] } }
 ```
 
 
