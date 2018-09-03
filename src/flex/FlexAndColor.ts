@@ -1,9 +1,17 @@
 namespace Flexagonator {
 
+  export interface FlexAndColorOptions {
+    // a sequence of flexes
+    readonly flexes: string;
+    // make the new faces these colors
+    readonly colors?: number[];
+  }
+
   // apply a series of flexes, coloring & numbering faces whenever a * or + creates new structure
-  export function flexAndColor(fm: FlexagonManager, sequence: string, colors: number[]): boolean | FlexError {
-    const flexNames: FlexName[] = parseFlexSequence(sequence);
-    const faceProps = new FaceSetter(colors);
+  export function flexAndColor(fm: FlexagonManager, options: FlexAndColorOptions): boolean | FlexError {
+    const { flexes, colors } = options;
+    const flexNames: FlexName[] = parseFlexSequence(flexes);
+    const faceProps = new FaceSetter(colors ? colors : []);
 
     // first apply all the flexes so the proper structure is created,
     // and run them in reverse so we're back at the start

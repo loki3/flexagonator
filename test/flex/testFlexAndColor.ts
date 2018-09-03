@@ -4,7 +4,7 @@ namespace Flexagonator {
     it('should color & number newly created faces', () => {
       const empty = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
       const fm = FlexagonManager.make(empty);
-      const result = flexAndColor(fm, "P*P+PP*", [10, 20, 30, 40]);
+      const result = flexAndColor(fm, { flexes: "P*P+PP*", colors: [10, 20, 30, 40] });
       expect(result).toBe(true);
 
       // validate that every face is set

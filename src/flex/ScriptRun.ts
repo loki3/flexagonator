@@ -47,6 +47,13 @@ namespace Flexagonator {
       }
     }
 
+    if (item.flexAndColor !== undefined) {
+      const result = flexAndColor(fm, item.flexAndColor);
+      if (isFlexError(result)) {
+        return result;
+      }
+    }
+
     if (item.leafProps !== undefined) {
       fm.leafProps = new PropertiesForLeaves(item.leafProps);
     }

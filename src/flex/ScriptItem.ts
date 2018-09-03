@@ -3,10 +3,12 @@ namespace Flexagonator {
   export interface ScriptItem {
     // creates a new flexagon with the given pat structure
     readonly pats?: LeafTree[];
-    // a series of space-delimited flexes
+    // a series flexes
     readonly flexes?: string;
     // run a series of flexes in reverse, effectively undoing them
     readonly reverseFlexes?: string;
+    // run a series of flexes, number & coloring any new faces
+    readonly flexAndColor?: FlexAndColorOptions;
     // manipulate the flex history: "clear", "undo", "redo", "reset"
     readonly history?: string;
     // array of properties for every leaf
