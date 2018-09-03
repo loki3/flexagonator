@@ -26,6 +26,8 @@ namespace Flexagonator {
       drawFaceProps(ctx, leaflines.faces, transform, props, true);
     } else if (content === StripContent.Back) {
       drawFaceProps(ctx, leaflines.faces, transform, props, false);
+    } else if (content === StripContent.LeafLabels) {
+      drawLeafLabels(ctx, leaflines.faces, transform, props);
     }
 
     if (captions) {
@@ -142,6 +144,26 @@ namespace Flexagonator {
       ctx.font = len / 5 + "px sans-serif";
       ctx.fillStyle = "black";
       ctx.fillText(label, p.x, p.y);
+    }
+  }
+
+  function drawLeafLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform, props: PropertiesForLeaves) {
+    const len = getBaseLength(faces[0], transform);
+
+    for (const face of faces) {
+      const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
+      const p = transform.apply(incenter);
+      const y = p.y + len * 0.05;
+
+      ctx.textAlign = "right";
+      ctx.font = len / 5 + "px sans-serif";
+      const toplabel = props.getFaceLabel(face.leaf.id);
+      ctx.fillText(toplabel, p.x, y);
+
+      ctx.textAlign = "left";
+      ctx.font = len / 8 + "px sans-serif";
+      const bottomlabel = props.getFaceLabel(-face.leaf.id);
+      ctx.fillText(" " + bottomlabel, p.x, y);
     }
   }
 
