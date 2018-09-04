@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon,
-    props: PropertiesForLeaves, front: boolean, patstructure: boolean) {
+    props: PropertiesForLeaves, front: boolean, patstructure: boolean, showids: boolean) {
 
     const markerText = polygon.radius / 6;
     const largeText = polygon.radius / 8;
@@ -19,7 +19,7 @@ namespace Flexagonator {
     drawText(ctx, markerText, corners[0], corners[1], "*");
 
     drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), ids, props);
-    if (props !== undefined) {
+    if (showids && props !== undefined) {
       drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), ids);
     }
     if (patstructure) {

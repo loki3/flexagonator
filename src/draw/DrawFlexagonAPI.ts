@@ -15,6 +15,7 @@ namespace Flexagonator {
     readonly stats?: boolean;       // show stats - default: false
     readonly structure?: boolean;   // show pat structure - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
+    readonly showIds?: boolean;     // show leaf ids - default: true
   }
 
   // draw a flexagon in its current state, with optional colors, flexes, etc.
@@ -53,7 +54,8 @@ namespace Flexagonator {
     const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront);
 
     const showStructure = (options.structure !== undefined && options.structure);
-    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure);
+    const showIds = (options.showIds === undefined || options.showIds);
+    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds);
     if (options.stats !== undefined && options.stats) {
       drawStatsText(ctx, objects.flexagon, objects.angleInfo);
     }

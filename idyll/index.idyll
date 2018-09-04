@@ -15,7 +15,7 @@
   {reverseFlexes: initialFlexes},
   {history: 'clear'}
   ]` /]
-[var name:'drawOptions' value:`{structure:true}`/]
+[var name:'drawOptions' value:`{structure:true, showIds:false}`/]
 [var name:'flexHistory' value:'' /]
 [var name:'doFlexes' value:'' /]
 

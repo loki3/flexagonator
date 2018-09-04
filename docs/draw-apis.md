@@ -41,6 +41,7 @@ such as whether to draw the front or back, and whether to display useful statist
   stats: true,       // boolean: default false, show stats such as the number of leaves
   structure: true,   // boolean: default false, show internal structure of each pat
   drawover: true,    // boolean: default false, draw over canvas or clear first
+  showIds: true,     // boolean: default true, show leaf ids
 }
 
 // example using DrawFlexagonOptions with drawEntireFlexagon
