@@ -8,6 +8,7 @@ Script commands:
 
 * Defining flexagon structure
     * **pats:** create a new flexagon with the given structure
+    * **numPats:** create a new flexagon with the given number of pats, but only one leaf per pat
 * Flexes
     * **flexes:** perform a series of flexes
     * **reverseFlexes:** run a series of flexes in reverse, effectively undoing them
@@ -48,9 +49,21 @@ you can simply specify 0's for all the ids and useful ids will be filled in for 
 ```javascript
 // this describes the structure, letting the system assign ids
 { pats: [[0, 0], 0, 0, 0, [[[0, 0], 0], 0], 0] }
+{ pats: [1, 2, 3, 4, 5] }
 ```
 
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
+
+### the `numPats` command
+
+Use the `numPats` command to create a new flexagon with the given number of pats, but only one leaf per pat.
+This is often followed by the `flexes` command to create more complex structure in the flexagon.
+
+```javascript
+// the following two commands are equivalent
+{ pats: [1, 2, 3, 4, 5] }
+{ numPats: 5 }
+```
 
 
 ## Flexes

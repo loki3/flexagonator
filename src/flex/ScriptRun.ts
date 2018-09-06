@@ -33,6 +33,18 @@ namespace Flexagonator {
       fm = FlexagonManager.make(result);
     }
 
+    if (item.numPats !== undefined) {
+      const pats = [];
+      for (var i = 1; i <= item.numPats; i++) {
+        pats.push(i);
+      }
+      const result = Flexagon.makeFromTree(pats);
+      if (isTreeError(result)) {
+        return result;
+      }
+      fm = FlexagonManager.make(result);
+    }
+
     if (item.flexes !== undefined) {
       const result = fm.applyFlexes(item.flexes, false);
       if (isFlexError(result)) {
