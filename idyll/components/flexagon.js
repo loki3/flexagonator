@@ -97,12 +97,7 @@ class Flexagon extends React.Component {
     if (this.state.fm && this.state.fm.flexagon.getPatCount() === props.numPats) {
       return null; // not updated
     }
-    var pats = [];
-    for (var i = 1; i <= props.numPats; i++) {
-      pats.push(i);
-    }
-    const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
-    var fm = Flexagonator.FlexagonManager.make(flexagon);
+    var fm = Flexagonator.runScriptItem(fm, { numPats: props.numPats });
     if (this.props.generator) {
       fm = Flexagonator.runScriptItem(fm, { flexes: this.props.generator });
     }
