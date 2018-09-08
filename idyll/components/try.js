@@ -4,6 +4,7 @@ const React = require('react');
 /**
  * An experiment
  * props {
+ *  script      a flexagonator script to run
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
  * }
@@ -22,6 +23,18 @@ class Try extends React.Component {
 
   componentDidMount() {
     Flexagonator.drawEntireFlexagon(this.refs.canvas, this.state.fm);
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.script) {
+      var fm = Flexagonator.runScript(this.state.fm, props.script);
+      if (!Flexagonator.isFlexError(fm)) {
+        Flexagonator.drawEntireFlexagon(this.refs.canvas, fm);
+
+        this.props.updateProps({ script: null });
+        this.setState({ fm: fm });
+      }
+    }
   }
 
   render() {

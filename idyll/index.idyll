@@ -73,4 +73,8 @@ Here's the unfolded strip.
 
 ## Experiment:
 
-[Try width:800 height:500 /]
+[var name:'tryScript' value:null /]
+
+[button onClick:`tryScript=[{flexes:'Sh*'}]`]do stuff[/button]
+
+[Try width:800 height:500 script:tryScript /]
