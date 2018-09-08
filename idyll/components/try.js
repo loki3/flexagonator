@@ -4,6 +4,7 @@ const React = require('react');
 /**
  * An experiment
  * props {
+ *  numPats     create a new flexagon with the given number of pats
  *  script      a flexagonator script to run
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
@@ -17,7 +18,7 @@ class Try extends React.Component {
   constructor(props) {
     super(props);
 
-    var fm = Flexagonator.runScriptItem(null, { numPats: 7 });
+    var fm = Flexagonator.runScriptItem(null, { numPats: props.numPats });
     this.state = { fm: fm };
   }
 
@@ -26,15 +27,37 @@ class Try extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.script) {
-      var fm = Flexagonator.runScript(this.state.fm, props.script);
-      if (!Flexagonator.isFlexError(fm)) {
-        Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, { structure: true });
-
-        this.setState({ fm: fm });
-        this.props.updateProps({ script: null });
+    var script = this.buildScript(props);
+    if (script.length) {
+      var newstate = this.applyScript(script);
+      if (newstate) {
+        this.setState(newstate);
       }
     }
+  }
+
+  buildScript(props) {
+    var script = [];
+
+    if (props.numPats) {
+      script = script.concat({ numPats: props.numPats });
+      this.props.updateProps({ numPats: null });
+    }
+    if (props.script) {
+      script = script.concat(props.script);
+      this.props.updateProps({ script: null });
+    }
+
+    return script;
+  }
+
+  applyScript(script) {
+    var fm = Flexagonator.runScript(this.state.fm, script);
+    if (Flexagonator.isFlexError(fm)) {
+      return null;
+    }
+    Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, { structure: true });
+    return { fm: fm };
   }
 
   render() {
