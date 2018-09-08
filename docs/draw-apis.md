@@ -45,7 +45,7 @@ such as whether to draw the front or back, and whether to display useful statist
 }
 
 // example using DrawFlexagonOptions with drawEntireFlexagon
-Flexagonator.drawEntireFlexagon('mycanvas', fm, { stats: true, flexes: true, structure: true });
+Flexagonator.drawEntireFlexagon('mycanvas', fm, { stats: true, structure: true });
 ```
 
 Use `drawEntireFlexagon` to draw the flexagon using the properties in `FlexagonManager` as shown above.
