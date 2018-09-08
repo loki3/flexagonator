@@ -74,10 +74,13 @@ Here's the unfolded strip.
 ## Experiment:
 
 [var name:'tryPats' value:7 /]
+[var name:'tryFlexes' value:null /]
 [var name:'tryScript' value:null /]
 
-[button onClick:`tryPats=6`]6 pats[/button]
+[button onClick:`tryPats=6; tryFlexes='P+'`]6 pats[/button]
 [button onClick:`tryPats=7`]7 pats[/button]
+[button onClick:`tryPats=8; tryFlexes='P+'`]8 pats[/button]
+
 [button onClick:`tryScript=[{flexes:'Sh*'}]`]apply Sh*[/button]
 
-[Try width:800 height:500 numPats:tryPats script:tryScript /]
+[Try width:800 height:500 numPats:tryPats flexes:tryFlexes script:tryScript /]

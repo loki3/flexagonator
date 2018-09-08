@@ -5,6 +5,7 @@ const React = require('react');
  * An experiment
  * props {
  *  numPats     create a new flexagon with the given number of pats
+ *  flexes      flexes to apply to the flexaong
  *  script      a flexagonator script to run
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
@@ -18,7 +19,8 @@ class Try extends React.Component {
   constructor(props) {
     super(props);
 
-    var fm = Flexagonator.runScriptItem(null, { numPats: props.numPats });
+    var script = this.buildScript(props);
+    var fm = Flexagonator.runScript(null, script);
     this.state = { fm: fm };
   }
 
@@ -42,6 +44,10 @@ class Try extends React.Component {
     if (props.numPats) {
       script = script.concat({ numPats: props.numPats });
       this.props.updateProps({ numPats: null });
+    }
+    if (props.flexes) {
+      script = script.concat({ flexes: props.flexes });
+      this.props.updateProps({ flexes: null });
     }
     if (props.script) {
       script = script.concat(props.script);
