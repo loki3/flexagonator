@@ -5,7 +5,7 @@ const React = require('react');
  * An experiment
  * props {
  *  numPats     create a new flexagon with the given number of pats
- *  flexes      flexes to apply to the flexaong
+ *  flexes      flexes to apply to the flexagon
  *  script      a flexagonator script to run
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
