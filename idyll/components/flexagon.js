@@ -88,12 +88,38 @@ const FlexButtons = (props) => {
 class Flexagon extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { fm: null, regions: [] };
-    this.state = this.checkForNewFlexagon(props);
     this.handleFlexes = this.handleFlexes.bind(this);
+
+    var script = this.buildScript(props);
+    var fm = Flexagonator.runScript(null, script);
+    this.updateHistoryProps();
+    const regions = Flexagonator.getButtonRegions(fm, props.width, props.height, true);
+    this.state = { fm: fm, regions: regions };
+  }
+
+  buildScript(props) {
+    var script = [];
+
+    if (props.numPats) {
+      script = script.concat({ numPats: props.numPats });
+      this.props.updateProps({ numPats: null });
+    }
+    if (props.flexes) {
+      script = script.concat({ flexes: props.flexes });
+      this.props.updateProps({ flexes: null });
+    }
+    if (props.script) {
+      script = script.concat(props.script);
+      this.props.updateProps({ script: null });
+    }
+
+    return script;
   }
 
   checkForNewFlexagon(props) {
+    if (!props.numPats) {
+      return null;
+    }
     if (this.state.fm && this.state.fm.flexagon.getPatCount() === props.numPats) {
       return null; // not updated
     }
@@ -129,7 +155,7 @@ class Flexagon extends React.Component {
 
   updateHistoryProps() {
     var history = '';
-    if (this.state.fm) {
+    if (this.state && this.state.fm) {
       history = this.state.fm.getFlexHistory().join('');
     }
     this.props.updateProps({ value: history });
