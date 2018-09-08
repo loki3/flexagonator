@@ -22,17 +22,17 @@ class Try extends React.Component {
   }
 
   componentDidMount() {
-    Flexagonator.drawEntireFlexagon(this.refs.canvas, this.state.fm);
+    Flexagonator.drawEntireFlexagon(this.refs.canvas, this.state.fm, { structure: true });
   }
 
   componentWillReceiveProps(props) {
     if (props.script) {
       var fm = Flexagonator.runScript(this.state.fm, props.script);
       if (!Flexagonator.isFlexError(fm)) {
-        Flexagonator.drawEntireFlexagon(this.refs.canvas, fm);
+        Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, { structure: true });
 
-        this.props.updateProps({ script: null });
         this.setState({ fm: fm });
+        this.props.updateProps({ script: null });
       }
     }
   }
