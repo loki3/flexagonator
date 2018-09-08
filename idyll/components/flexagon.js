@@ -72,8 +72,8 @@ const FlexButtons = (props) => {
 /**
  * Flexagon: displays a flexagon and flex buttons at each corner
  * props {
- *  numPats     number of pats in the flexagon, typically in the range [4, 12]
- *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  numPats     create a new flexagon with the given number of pats, typically in [4, 12]
+ *  flexes      flexes to apply to the flexagon, e.g. 'Sh*>>T*^P*'
  *  script      a flexagonator script to run
  *  options     options used when drawing (passed to drawEntireFlexagon)
  *  overButton  true to include a button for turning over the flexagon
@@ -98,8 +98,8 @@ class Flexagon extends React.Component {
       return null; // not updated
     }
     var fm = Flexagonator.runScriptItem(fm, { numPats: props.numPats });
-    if (this.props.generator) {
-      fm = Flexagonator.runScriptItem(fm, { flexes: this.props.generator });
+    if (this.props.flexes) {
+      fm = Flexagonator.runScriptItem(fm, { flexes: this.props.flexes });
     }
     if (this.props.script) {
       fm = Flexagonator.runScript(fm, this.props.script);
@@ -131,10 +131,6 @@ class Flexagon extends React.Component {
     var history = '';
     if (this.state.fm) {
       history = this.state.fm.getFlexHistory().join('');
-      // subtract out the generating sequence at the start
-      if (this.props.generator) {
-        history = history.substring(this.props.generator.length);
-      }
     }
     this.props.updateProps({ value: history });
   }
