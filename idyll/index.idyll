@@ -70,21 +70,3 @@ Here's the unfolded strip.
 [/Conditional]
 
 [Unfolded width:800 height:500 numPats:numPats generator:initialFlexes autoLabel:true /]
-
-
-
-## Experiment:
-
-[var name:'tryPats' value:7 /]
-[var name:'tryRun' value:false /]
-[var name:'tryFlexes' value:null /]
-[var name:'tryInner' value:'P*' /]
-[derived name:'tryScript' value:`[{flexes: tryInner}]` /]
-
-[button onClick:`tryPats=6; tryFlexes='P+'`]6 pats[/button]
-[button onClick:`tryPats=7`]7 pats[/button]
-[button onClick:`tryPats=8; tryFlexes='P+'`]8 pats[/button]
-
-[button onClick:`tryRun=true; tryInner='Sh*'`]apply Sh*[/button]
-
-[Try width:800 height:500 numPats:tryPats flexes:tryFlexes runScript:tryRun script:tryScript  /]
