@@ -6,6 +6,7 @@ const React = require('react');
  * props {
  *  numPats     create a new flexagon with the given number of pats
  *  flexes      flexes to apply to the flexagon
+ *  runScript   set to true when the 'script' property should be run
  *  script      a flexagonator script to run
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
@@ -49,9 +50,9 @@ class Try extends React.Component {
       script = script.concat({ flexes: props.flexes });
       this.props.updateProps({ flexes: null });
     }
-    if (props.script) {
+    if (props.runScript) {
       script = script.concat(props.script);
-      this.props.updateProps({ script: null });
+      this.props.updateProps({ runScript: null });
     }
 
     return script;
