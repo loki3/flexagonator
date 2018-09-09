@@ -23,6 +23,9 @@ class Unfolded extends React.Component {
 
   updateCanvas(props) {
     const { numPats, generator, autoLabel } = props;
+    if (!numPats) {
+      return;
+    }
     var pats = [];
     for (var i = 1; i <= numPats; i++) {
       pats.push(i);
