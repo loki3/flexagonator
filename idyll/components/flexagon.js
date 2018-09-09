@@ -73,13 +73,14 @@ const FlexButtons = (props) => {
  * Flexagon: displays a flexagon and flex buttons at each corner
  * props {
  *  numPats     create a new flexagon with the given number of pats, typically in [4, 12]
- *  flexes      flexes to apply to the flexagon, e.g. 'Sh*>>T*^P*'
+ *  flexes      flexes to apply to the current flexagon, e.g. 'Sh*>>T*^P*'
  *  runScript   set to true when the 'script' property should be run
- *  script      a flexagonator script to run
+ *  script      a flexagonator script to run on the current flexagon
  *  options     options used when drawing (passed to drawEntireFlexagon)
  *  overButton  true to include a button for turning over the flexagon
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
+ *  value       a read-only property reflecting all the flexes applied to the flexagon
  * }
  * state {
  *  fm          current FlexagonManager encapsulating Flexagon, History, etc.
