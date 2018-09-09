@@ -74,6 +74,7 @@ const FlexButtons = (props) => {
  * props {
  *  numPats     create a new flexagon with the given number of pats, typically in [4, 12]
  *  flexes      flexes to apply to the flexagon, e.g. 'Sh*>>T*^P*'
+ *  runScript   set to true when the 'script' property should be run
  *  script      a flexagonator script to run
  *  options     options used when drawing (passed to drawEntireFlexagon)
  *  overButton  true to include a button for turning over the flexagon
@@ -100,57 +101,34 @@ class Flexagon extends React.Component {
   buildScript(props) {
     var script = [];
 
-    if (props.numPats) {
+    if (props.numPats && (!this.state || !this.state.fm || this.state.fm.flexagon.getPatCount() != props.numPats)) {
       script = script.concat({ numPats: props.numPats });
-      this.props.updateProps({ numPats: null });
     }
     if (props.flexes) {
       script = script.concat({ flexes: props.flexes });
       this.props.updateProps({ flexes: null });
     }
-    if (props.script) {
+    if (props.runScript) {
       script = script.concat(props.script);
-      this.props.updateProps({ script: null });
+      this.props.updateProps({ runScript: null });
     }
 
     return script;
   }
 
-  checkForNewFlexagon(props) {
-    if (!props.numPats) {
-      return null;
-    }
-    if (this.state.fm && this.state.fm.flexagon.getPatCount() === props.numPats) {
-      return null; // not updated
-    }
-    var fm = Flexagonator.runScriptItem(fm, { numPats: props.numPats });
-    if (this.props.flexes) {
-      fm = Flexagonator.runScriptItem(fm, { flexes: this.props.flexes });
-    }
-    if (this.props.script) {
-      fm = Flexagonator.runScript(fm, this.props.script);
-    }
+  applyScript(script) {
+    var fm = Flexagonator.runScript(this.state.fm, script);
     if (Flexagonator.isFlexError(fm)) {
       return null;
     }
+    Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, this.props.options);
     this.updateHistoryProps();
-    const regions = Flexagonator.getButtonRegions(fm, props.width, props.height, true);
-    return { fm: fm, regions: regions }; // updated
-  }
-
-  updateCanvas(fm, shouldUpdateState) {
-    var regions = Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, this.props.options);
-    if (shouldUpdateState) {
-      this.setState({ fm: fm, regions: regions });
-    }
+    const regions = Flexagonator.getButtonRegions(fm, this.props.width, this.props.height, true);
+    this.setState({ fm: fm, regions: regions });
   }
 
   handleFlexes(flexes) {
-    var result = Flexagonator.runScriptItem(this.state.fm, { flexes: flexes });
-    if (!Flexagonator.isError(result)) {
-      this.updateCanvas(result, true);
-      this.updateHistoryProps();
-    }
+    this.applyScript([{ flexes: flexes }]);
   }
 
   updateHistoryProps() {
@@ -161,31 +139,15 @@ class Flexagon extends React.Component {
     this.props.updateProps({ value: history });
   }
 
-  applyFlexIfPresent(props) {
-    if (!props.flex || props.flex == '') {
-      return null;
-    }
-    var fm = Flexagonator.runScriptItem(this.state.fm, { flexes: props.flex });
-    if (Flexagonator.isFlexError(fm)) {
-      return null;
-    }
-    this.props.updateProps({ flex: '' });
-    this.updateHistoryProps();
-    return { fm: fm, regions: [] }; // updated
-  }
-
   componentWillReceiveProps(props) {
-    var state = this.checkForNewFlexagon(props);
-    if (!state) {
-      state = this.applyFlexIfPresent(props);
-    }
-    if (state) {
-      this.updateCanvas(state.fm, true);
+    var script = this.buildScript(props);
+    if (script.length) {
+      this.applyScript(script);
     }
   }
 
   componentDidMount() {
-    this.updateCanvas(this.state.fm, false);
+    Flexagonator.drawEntireFlexagon(this.refs.canvas, this.state.fm, this.props.options);
   }
 
   render() {
