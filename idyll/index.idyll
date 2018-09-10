@@ -1,70 +1,81 @@
 [meta title:"Flexagon" description:"Interactive explanation of flexagons" /]
 
 [Header
-  title:"Flexagonator"
-  subtitle:"A Flexagon Simulator"
-  author:"Loki3"
+  title:"Tuckerman Traverse"
+  subtitle:"Using the pinch flex to visit every side of a flexagon"
+  author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
-
+[var name:'drawOptions' value:`{structure:true, showIds:false}`/]
 [var name:'numPats' value:6 /]
-[var name:'initialFlexes' value:'P*P*P*' /]
-[derived name:'script' value:`[
+
+
+[Aside]
+  [div]
+    [Inline][Flexagon width:150 height:150 numPats:6 options:`{showIds: false}` /][/Inline]
+    [Inline][Flexagon width:150 height:150 numPats:9 options:`{showIds: false}` /][/Inline]
+  [/div]
+  [div]
+    [Inline][Flexagon width:150 height:150 numPats:7 options:`{showIds: false}` /][/Inline]
+    [Inline][Flexagon width:150 height:150 numPats:12 options:`{showIds: false}` /][/Inline]
+  [/div]
+[/Aside]
+
+Flexagons are interesting puzzles made from folding strips of paper.
+You can make them from a wide variety of polygons, from different shapes of triangles, to quadrilaterals, to pentagons, or others.
+Once folded, you 'flex' them to find new sides and rearrange the polygons.
+
+The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon, thus they're called *hexaflexagons*.
+And the most common flex is the *pinch flex*, which rearranges the triangles to reveal previously hidden faces.
+But it's not obvious at first where to apply the pinch flex in order to find every face.
+
+This explorable will teach you how to use the *Tuckerman Traverse* to find all the hidden faces.
+
+
+# 3 sided hexaflexagon
+
+[var name:'sides3' value:`[
   {searchFlexes:"P"},
-  {flexAndColor: {flexes: initialFlexes, colors: [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
-  {reverseFlexes: initialFlexes},
+  {flexAndColor: {flexes: 'P*', colors:[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
+  {reverseFlexes: 'P*'},
   {history: 'clear'}
   ]` /]
-[var name:'drawOptions' value:`{structure:true, showIds:false}`/]
-[var name:'flexHistory' value:'' /]
-[var name:'doFlexes' value:'' /]
+[var name:'history3' value:'' /]
 
-Here is a flexagon:
+We'll start with the simple 3-sided hexaflexagon.
 
-[Flexagon width:500 height:300 numPats:numPats initialScript:script history:flexHistory
- options:drawOptions overButton:true flexes:doFlexes /]
+[Aside]
+  This diagram will track the faces you've visited as you pinch flex the flexagon.
+  The green circle marks the original face, and the red circle marks the current face.
 
-Flex history: [Display value:flexHistory /]
+  [PinchGraph width:400 height:100 generator:'P*' flexes:history3 /]
+[/Aside]
 
-[button onClick:`doFlexes='P'`]pinch[/button] [button onClick:`doFlexes='>P'`]rotate & pinch[/button]
+[Flexagon width:500 height:300 numPats:numPats initialScript:sides3 history:history3 options:drawOptions /]
 
-Change the number of pats per side of the flexagon:
+The unfolded strip:
 
-[Range min:4 max:12 step:2 value:numPats /]
-[Display value:numPats /]
-
-
-Tuckerman traverse
-
-[PinchGraph width:800 height:200 generator:initialFlexes flexes:flexHistory /]
+[Unfolded width:800 height:150 numPats:numPats generator:'P*' autoLabel:true /]
 
 
-[var name:"showFoldingHelp" value:false /]
+# 4 sided hexaflexagon
 
-Here's the unfolded strip.
-[Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
-[Conditional if:` showFoldingHelp `]
-  [Aside]
-  **Cut:**
-  Start by printing out the strip and cutting along the outside edges.
+[var name:'sides4' value:`[
+  {searchFlexes:"P"},
+  {flexAndColor: {flexes: 'P*P*', colors:[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
+  {reverseFlexes: 'P*P*'},
+  {history: 'clear'}
+  ]` /]
+[var name:'history4' value:'' /]
 
-  **Prefold:**
-  After you've cut out the shape, fold and unfold along every dashed line to prepare it.
-  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after folding.
+Next is the 4-sided hexaflexagon.
 
-  **Number:**
-  The large number on each triangle represents the number on the *front* of the triangle, while the small number represents the number on the *back*.
-  Copy the small number from each triangle onto the back.
+[Aside]
+  [PinchGraph width:400 height:200 generator:'P*P*' flexes:history4 /]
+[/Aside]
 
-  **Fold:**
-  Find the largest pairs of adjacent numbers and fold those numbers together.
-  Then find the next largest pairs of adjacent numbers and fold them together.
-  Continue in this way until the only numbers still visible are the 1's and the 2's.
+[Flexagon width:500 height:300 numPats:numPats initialScript:sides4 history:history4 options:drawOptions /]
 
-  **Tape:**
-  You should now have a hexagon consisting of 6 equilateral triangles.
-  Tape the edges of the first and last triangles together to complete the flexagon.
-  [/Aside]
-[/Conditional]
+The unfolded strip:
 
-[Unfolded width:800 height:500 numPats:numPats generator:initialFlexes autoLabel:true /]
+[Unfolded width:900 height:200 numPats:numPats generator:'P*P*' autoLabel:true /]
