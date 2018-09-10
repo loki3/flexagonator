@@ -1,0 +1,70 @@
+[meta title:"Flexagon" description:"Interactive explanation of flexagons" /]
+
+[Header
+  title:"Flexagonator"
+  subtitle:"A Flexagon Simulator"
+  author:"Loki3"
+  authorLink:"http://loki3.com/flex" /]
+
+
+[var name:'numPats' value:6 /]
+[var name:'initialFlexes' value:'P*P*P*' /]
+[derived name:'script' value:`[
+  {searchFlexes:"P"},
+  {flexAndColor: {flexes: initialFlexes, colors: [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
+  {reverseFlexes: initialFlexes},
+  {history: 'clear'}
+  ]` /]
+[var name:'drawOptions' value:`{structure:true, showIds:false}`/]
+[var name:'flexHistory' value:'' /]
+[var name:'doFlexes' value:'' /]
+
+Here is a flexagon:
+
+[Flexagon width:500 height:300 numPats:numPats initialScript:script history:flexHistory
+ options:drawOptions overButton:true flexes:doFlexes /]
+
+Flex history: [Display value:flexHistory /]
+
+[button onClick:`doFlexes='P'`]pinch[/button] [button onClick:`doFlexes='>P'`]rotate & pinch[/button]
+
+Change the number of pats per side of the flexagon:
+
+[Range min:4 max:12 step:2 value:numPats /]
+[Display value:numPats /]
+
+
+Tuckerman traverse
+
+[PinchGraph width:800 height:200 generator:initialFlexes flexes:flexHistory /]
+
+
+[var name:"showFoldingHelp" value:false /]
+
+Here's the unfolded strip.
+[Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
+[Conditional if:` showFoldingHelp `]
+  [Aside]
+  **Cut:**
+  Start by printing out the strip and cutting along the outside edges.
+
+  **Prefold:**
+  After you've cut out the shape, fold and unfold along every dashed line to prepare it.
+  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after folding.
+
+  **Number:**
+  The large number on each triangle represents the number on the *front* of the triangle, while the small number represents the number on the *back*.
+  Copy the small number from each triangle onto the back.
+
+  **Fold:**
+  Find the largest pairs of adjacent numbers and fold those numbers together.
+  Then find the next largest pairs of adjacent numbers and fold them together.
+  Continue in this way until the only numbers still visible are the 1's and the 2's.
+
+  **Tape:**
+  You should now have a hexagon consisting of 6 equilateral triangles.
+  Tape the edges of the first and last triangles together to complete the flexagon.
+  [/Aside]
+[/Conditional]
+
+[Unfolded width:800 height:500 numPats:numPats generator:initialFlexes autoLabel:true /]
