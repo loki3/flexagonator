@@ -81,7 +81,7 @@ const FlexButtons = (props) => {
  *  overButton    true to include a button for turning over the flexagon
  *  width         width of canvas to draw in
  *  height        height of canvas to draw in
- *  value         a read-only property reflecting all the flexes applied to the flexagon
+ *  history       a read-only property reflecting all the flexes applied to the flexagon
  * }
  * state {
  *  fm            current FlexagonManager encapsulating Flexagon, History, etc.
@@ -141,7 +141,7 @@ class Flexagon extends React.Component {
     if (this.state && this.state.fm) {
       history = this.state.fm.getFlexHistory().join('');
     }
-    this.props.updateProps({ value: history });
+    this.props.updateProps({ history: history });
   }
 
   componentWillReceiveProps(props) {

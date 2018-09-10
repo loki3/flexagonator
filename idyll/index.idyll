@@ -21,7 +21,7 @@
 
 Here is a flexagon:
 
-[Flexagon width:500 height:300 numPats:numPats initialScript:script value:flexHistory
+[Flexagon width:500 height:300 numPats:numPats initialScript:script history:flexHistory
  options:drawOptions overButton:true flexes:doFlexes /]
 
 Flex history: [Display value:flexHistory /]
