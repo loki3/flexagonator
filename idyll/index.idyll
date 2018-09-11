@@ -57,6 +57,32 @@ The unfolded strip:
 
 [Unfolded width:800 height:150 numPats:numPats generator:'P*' autoLabel:true /]
 
+[var name:"showFoldingHelp" value:false /]
+[Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
+[Conditional if:` showFoldingHelp `]
+  These instructions apply to all the strips on this page.
+
+  **Cut:**
+  Start by printing out the strip and cutting along the outside edges.
+
+  **Prefold:**
+  After you've cut out the shape, fold and unfold along every dashed line to prepare it.
+  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after folding.
+
+  **Number:**
+  The large number on each triangle represents the number on the *front* of the triangle, while the small number represents the number on the *back*.
+  Copy the small number from each triangle onto the back.
+
+  **Fold:**
+  Find the largest pairs of adjacent numbers and fold those numbers together.
+  Then find the next largest pairs of adjacent numbers and fold them together.
+  Continue in this way until the only numbers still visible are the 1's and the 2's.
+
+  **Tape:**
+  You should now have a hexagon consisting of 6 equilateral triangles.
+  Tape the edges of the first and last triangles together to complete the flexagon.
+[/Conditional]
+
 
 # 4 sided hexaflexagon
 
