@@ -53,7 +53,7 @@
         updateUI();
 
         traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
-        Flexagonator.drawPinchGraph('traversal', { traverse: traverse });
+        Flexagonator.drawPinchGraph('traversal', { traverse: traverse, drawEnds: true });
 
         const stripObjects = { flexagon: fm.getBaseFlexagon(), angleInfo: fm.getAngleInfo(), leafProps: fm.leafProps };
         Flexagonator.drawUnfoldedObjects('unfolded', stripObjects, { content: Flexagonator.StripContent.Front });

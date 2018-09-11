@@ -29,6 +29,11 @@ namespace Flexagonator {
 
       ctx.strokeStyle = traverseColor;
       drawGraph(ctx, transform, traverseGraph);
+
+      if (options.drawEnds && traverseGraph.points.length > 0) {
+        ctx.strokeStyle = startColor;
+        drawCircle(ctx, transform, traverseGraph.points[0], 0.1);
+      }
     }
 
     if (options.flexes) {
@@ -41,34 +46,31 @@ namespace Flexagonator {
       }
 
       ctx.strokeStyle = flexColor;
-      drawGraph(ctx, transform, flexGraph, options.drawEnds);
+      drawGraph(ctx, transform, flexGraph);
+
+      if (options.drawEnds && flexGraph.points.length > 0) {
+        ctx.strokeStyle = endColor;
+        drawCircle(ctx, transform, flexGraph.points[flexGraph.points.length - 1], 0.09);
+      }
     }
     return true;
   }
 
-  function drawGraph(ctx: CanvasRenderingContext2D, transform: Transform, graph: PinchGraph, drawEnds?: boolean) {
+  function drawGraph(ctx: CanvasRenderingContext2D, transform: Transform, graph: PinchGraph) {
     ctx.beginPath();
     for (const point of graph.points) {
       const p = transform.apply(point);
       ctx.lineTo(p.x, p.y);
     }
     ctx.stroke();
+  }
 
-    if (drawEnds && graph.points.length > 1) {
-      const size = transform.applyScale(0.1);
-
-      ctx.strokeStyle = startColor;
-      const start = transform.apply(graph.points[0]);
-      ctx.beginPath();
-      ctx.ellipse(start.x, start.y, size, size, 0, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.strokeStyle = endColor;
-      const end = transform.apply(graph.points[graph.points.length - 1]);
-      ctx.beginPath();
-      ctx.ellipse(end.x, end.y, size, size, 0, 0, Math.PI * 2);
-      ctx.stroke();
-    }
+  function drawCircle(ctx: CanvasRenderingContext2D, transform: Transform, p: Point, radius: number) {
+    const center = transform.apply(p);
+    const size = transform.applyScale(radius);
+    ctx.beginPath();
+    ctx.ellipse(center.x, center.y, size, size, 0, 0, Math.PI * 2);
+    ctx.stroke();
   }
 
 }
