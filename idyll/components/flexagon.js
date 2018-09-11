@@ -113,7 +113,7 @@ class Flexagon extends React.Component {
       script = script.concat({ flexes: props.flexes });
       this.props.updateProps({ flexes: null });
     }
-    if (props.runScript) {
+    if (props.runScript && props.script) {
       script = script.concat(props.script);
       this.props.updateProps({ runScript: null });
     }
