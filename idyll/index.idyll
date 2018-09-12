@@ -7,7 +7,7 @@
   authorLink:"http://loki3.com/flex" /]
 
 [var name:'drawOptions' value:`{structure:true, showIds:false}`/]
-[var name:'numPats' value:6 /]
+[var name:'defaultPats' value:6 /]
 
 
 [Aside]
@@ -51,11 +51,11 @@ We'll start with the simple 3-sided hexaflexagon.
   [PinchGraph width:400 height:100 generator:'P*' flexes:history3 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:numPats initialScript:sides3 history:history3 options:drawOptions /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides3 history:history3 options:drawOptions /]
 
 The unfolded strip:
 
-[Unfolded width:800 height:150 numPats:numPats generator:'P*' autoLabel:true /]
+[Unfolded width:800 height:150 numPats:defaultPats generator:'P*' autoLabel:true /]
 
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
@@ -100,11 +100,11 @@ Next is the 4-sided hexaflexagon.
   [PinchGraph width:400 height:200 generator:'P*P*' flexes:history4 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:numPats initialScript:sides4 history:history4 options:drawOptions /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides4 history:history4 options:drawOptions /]
 
 The unfolded strip:
 
-[Unfolded width:900 height:200 numPats:numPats generator:'P*P*' autoLabel:true /]
+[Unfolded width:900 height:200 numPats:defaultPats generator:'P*P*' autoLabel:true /]
 
 
 # 6 sided hexaflexagons
@@ -112,7 +112,7 @@ The unfolded strip:
 [var name:'runScript6' value:false /]
 [var name:'initFlex6' value:'(P*^>)4' /]
 [derived name:'sides6' value:`[
-  {pats: [1,2,3,4,5,6]},
+  {numPats: defaultPats},
   {searchFlexes:"P"},
   {flexAndColor: {flexes: initFlex6, colors:[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
   {reverseFlexes: initFlex6},
@@ -130,8 +130,8 @@ Click on the following buttons to switch between variations
   [PinchGraph width:300 height:250 generator:initFlex6 flexes:history6 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:numPats runScript:runScript6 script:sides6 history:history6 options:drawOptions /]
+[Flexagon width:500 height:300 numPats:defaultPats runScript:runScript6 script:sides6 history:history6 options:drawOptions /]
 
 The unfolded strip:
 
-[Unfolded width:1000 height:500 numPats:numPats generator:initFlex6 autoLabel:true /]
+[Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex6 autoLabel:true /]
