@@ -8,6 +8,7 @@
 
 [var name:'drawOptions' value:`{structure:true, showIds:false}`/]
 [var name:'defaultPats' value:6 /]
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 
 
 [Aside]
@@ -34,9 +35,9 @@ This explorable will teach you how to use the *Tuckerman Traverse* to find all t
 
 # 3 sided hexaflexagon
 
-[var name:'sides3' value:`[
+[derived name:'sides3' value:`[
   {searchFlexes:"P"},
-  {flexAndColor: {flexes: 'P*', colors:[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
+  {flexAndColor: { flexes: 'P*', colors: defaultColors }},
   {reverseFlexes: 'P*'},
   {history: 'clear'}
   ]` /]
@@ -86,9 +87,9 @@ The unfolded strip:
 
 # 4 sided hexaflexagon
 
-[var name:'sides4' value:`[
+[derived name:'sides4' value:`[
   {searchFlexes:"P"},
-  {flexAndColor: {flexes: 'P*P*', colors:[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
+  {flexAndColor: { flexes: 'P*P*', colors:defaultColors }},
   {reverseFlexes: 'P*P*'},
   {history: 'clear'}
   ]` /]
@@ -114,7 +115,7 @@ The unfolded strip:
 [derived name:'sides6' value:`[
   {numPats: defaultPats},
   {searchFlexes:"P"},
-  {flexAndColor: {flexes: initFlex6, colors:[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]}},
+  {flexAndColor: { flexes: initFlex6, colors:defaultColors }},
   {reverseFlexes: initFlex6},
   {history: 'clear'}
   ]` /]
