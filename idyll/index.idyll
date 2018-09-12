@@ -33,7 +33,7 @@ But it's not obvious at first where to apply the pinch flex in order to find eve
 This explorable will teach you how to use the *Tuckerman Traverse* to find all the hidden faces.
 
 
-# 3 sided hexaflexagon
+# 3-sided hexaflexagon
 
 [derived name:'sides3' value:`[
   {searchFlexes:"P"},
@@ -85,7 +85,7 @@ The unfolded strip:
 [/Conditional]
 
 
-# 4 sided hexaflexagon
+# 4-sided hexaflexagon
 
 [derived name:'sides4' value:`[
   {searchFlexes:"P"},
@@ -108,7 +108,7 @@ The unfolded strip:
 [Unfolded width:900 height:200 numPats:defaultPats generator:'P*P*' autoLabel:true /]
 
 
-# 6 sided hexaflexagons
+# 6-sided hexaflexagons
 
 [var name:'runScript6' value:false /]
 [var name:'initFlex6' value:'(P*^>)4' /]
@@ -138,7 +138,44 @@ The unfolded strip:
 [Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex6 autoLabel:true /]
 
 
-# 7 sided hexaflexagons
+# 7 and 8-sided hexaflexagons
+
+[var name:'runScript7' value:false /]
+[var name:'initFlex7' value:'P*' /]
+[derived name:'sides7' value:`[
+  {numPats: defaultPats},
+  {searchFlexes:"P"},
+  {flexAndColor: { flexes: initFlex6, colors:defaultColors }},
+  {reverseFlexes: initFlex6},
+  {history: 'clear'}
+  ]` /]
+[var name:'history7' value:'' /]
+
+There are four 7-sided hexaflexagons and seven 8-sided hexaflexagons.
+Try out the 7-sided variation
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; `]B[/Button],
+[Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; `]C[/Button], or
+[Button onClick:` initFlex7 = '(P*)5'; runScript7=true; `]D[/Button].
+Or try 8-sided variation
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; `]B[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; `]C[/Button],
+[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; `]D[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; `]E[/Button],
+[Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; `]F[/Button], or
+[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; `]G[/Button].
+
+[Aside]
+  [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
+[/Aside]
+
+[Flexagon width:500 height:300 numPats:defaultPats runScript:runScript7 script:sides7 history:history7 options:drawOptions /]
+
+The unfolded strip:
+
+[Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex7 autoLabel:true /]
+
 
 The following strip takes a little bit of extra work to assemble.
 Cut out each of the shapes, cutting along the solid lines.
