@@ -18,7 +18,7 @@
   [/div]
   [div]
     [Inline][Flexagon width:150 height:150 numPats:7 options:`{showIds: false}` /][/Inline]
-    [Inline][Flexagon width:150 height:150 numPats:12 options:`{showIds: false}` /][/Inline]
+    [Inline][Flexagon width:150 height:150 numPats:10 options:`{showIds: false}` initialScript:`{angles: [36, 54]}` /][/Inline]
   [/div]
 [/Aside]
 
