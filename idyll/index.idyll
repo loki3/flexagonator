@@ -136,3 +136,21 @@ Click on the following buttons to switch between variations
 The unfolded strip:
 
 [Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex6 autoLabel:true /]
+
+
+# 7 sided hexaflexagons
+
+The following strip takes a little bit of extra work to assemble.
+Cut out each of the shapes, cutting along the solid lines.
+Then tape 'b' to 'b' and 'c' to 'c'.
+The you can follow the same folding rules as for the other strips,
+finishing by taping 'a' to 'a'.
+
+[var name:'hepta1' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+[var name:'hepta2' value:`{start:7, end:13, scale:150, rotation:60, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
+[var name:'hepta3' value:`{start:14, scale:150, rotation:60, captions:[{ text: 'c', which: 0 }, { text: 'a', which: -1 }] }` /]
+[FullWidth]
+  [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta1 /]
+  [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta2 /]
+  [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta3 /]
+[/FullWidth]
