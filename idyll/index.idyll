@@ -123,9 +123,9 @@ The unfolded strip:
 
 There are three different 6-sided hexaflexagon, which are made from different strips and have different traversals.
 Click on the following buttons to switch between variations
-[Button onClick:` initFlex6 = '(P*)4'; runScript6=true; `]A[/Button],
+[Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runScript6=true; `]A[/Button],
 [Button onClick:` initFlex6 = '(P*^>)4'; runScript6=true; `]B[/Button], and
-[Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runScript6=true; `]C[/Button]
+[Button onClick:` initFlex6 = '(P*)4'; runScript6=true; `]C[/Button]
 
 [Aside]
   [PinchGraph width:300 height:250 generator:initFlex6 flexes:history6 /]
