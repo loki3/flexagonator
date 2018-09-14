@@ -150,21 +150,23 @@ The unfolded strip:
   {history: 'clear'}
   ]` /]
 [var name:'history7' value:'' /]
+[var name:'special7' value:0 /]
+[var name:'cheight7' value:500 /]
 
 There are four 7-sided hexaflexagons and seven 8-sided hexaflexagons.
 Try out the 7-sided variation
-[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; `]A[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; `]B[/Button],
-[Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; `]C[/Button], or
-[Button onClick:` initFlex7 = '(P*)5'; runScript7=true; `]D[/Button].
-Or try 8-sided variation
-[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; `]A[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; `]B[/Button],
-[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; `]C[/Button],
-[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; `]D[/Button],
-[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; `]E[/Button],
-[Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; `]F[/Button], or
-[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; `]G[/Button].
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
+[Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; special7=0; cheight7=500 `]C[/Button], or
+[Button onClick:` initFlex7 = '(P*)5'; runScript7=true; special7=1; cheight7=1 `]D[/Button].
+Or try an 8-sided variation
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; special7=0; cheight7=500 `]C[/Button],
+[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=0; cheight7=500 `]D[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; special7=0; cheight7=500 `]E[/Button],
+[Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; special7=0; cheight7=500 `]F[/Button], or
+[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; special7=0; cheight7=500 `]G[/Button].
 
 [Aside]
   [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
@@ -172,22 +174,37 @@ Or try 8-sided variation
 
 [Flexagon width:500 height:300 numPats:defaultPats runScript:runScript7 script:sides7 history:history7 options:drawOptions /]
 
-The unfolded strip:
+[Conditional if:` special7 == 0 `]
+  The unfolded strip:
+[/Conditional]
+[Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex7 autoLabel:true special7:special7 changeHeight:cheight7 /]
 
-[Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex7 autoLabel:true /]
+[Conditional if:` special7 == 1 `]
+  The following strip takes a little bit of extra work to assemble.
+  Cut out each of the shapes, cutting along the solid lines.
+  Then tape 'b' to 'b' and 'c' to 'c'.
+  The you can follow the same folding rules as for the other strips,
+  finishing by taping 'a' to 'a'.
 
-
-The following strip takes a little bit of extra work to assemble.
-Cut out each of the shapes, cutting along the solid lines.
-Then tape 'b' to 'b' and 'c' to 'c'.
-The you can follow the same folding rules as for the other strips,
-finishing by taping 'a' to 'a'.
-
-[var name:'hepta1' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-[var name:'hepta2' value:`{start:7, end:13, scale:150, rotation:60, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
-[var name:'hepta3' value:`{start:14, scale:150, rotation:60, captions:[{ text: 'c', which: 0 }, { text: 'a', which: -1 }] }` /]
-[FullWidth]
+  [var name:'hepta1' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+  [var name:'hepta2' value:`{start:7, end:13, scale:150, rotation:60, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
+  [var name:'hepta3' value:`{start:14, scale:150, rotation:60, captions:[{ text: 'c', which: 0 }, { text: 'a', which: -1 }] }` /]
   [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta1 /]
   [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta2 /]
   [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta3 /]
-[/FullWidth]
+[/Conditional]
+
+
+# Conclusion
+
+I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+
+I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+
+I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+
+I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+
+I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+
+I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
