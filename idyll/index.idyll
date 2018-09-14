@@ -207,6 +207,23 @@ Or try an 8-sided variation
   [Unfolded width:450 height:270 numPats:defaultPats generator:'(P*) x 4 ^ > (P*) x 2' autoLabel:true options:octa2a /]
 [/Conditional]
 
+[Conditional if:` special7 == 3 `]
+  The following strip takes a little bit of extra work to assemble.
+  Cut out each of the shapes, cutting along the solid lines.
+  Tape 'b' to 'b', 'c' to 'c', and 'd' to 'd'.
+  Then you can follow the same folding rules as for the other strips,
+  finishing by taping 'a' to 'a'.
+
+  [var name:'octa1b' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+  [var name:'octa2b' value:`{start:7, end:14, scale:150, rotation:0.01, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
+  [var name:'octa3b' value:`{start:15, end:22, scale:150, rotation:60, captions:[{ text: 'c', which: 0 }, { text: 'd', which: -1 }] }` /]
+  [var name:'octa4b' value:`{start:23, scale:150, rotation:0, captions:[{ text: 'd', which: 0 }, { text: 'a', which: -1 }] }` /]
+  [Unfolded width:500 height:300 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa1b /]
+  [Unfolded width:500 height:300 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa2b /]
+  [Unfolded width:500 height:300 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa3b /]
+  [Unfolded width:500 height:150 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa4b /]
+[/Conditional]
+
 
 # Conclusion
 
