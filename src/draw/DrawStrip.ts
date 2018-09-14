@@ -7,7 +7,7 @@ namespace Flexagonator {
     ctx.save();
 
     const box = { x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight };
-    if (rotation) {
+    if (rotation !== undefined) {
       leaflines = rotateLeafLines(leaflines, toRadians(rotation));
     } else {
       leaflines = findBestRotation(leaflines, box);

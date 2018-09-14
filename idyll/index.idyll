@@ -215,13 +215,13 @@ Or try an 8-sided variation
   finishing by taping 'a' to 'a'.
 
   [var name:'octa1b' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-  [var name:'octa2b' value:`{start:7, end:14, scale:150, rotation:0.01, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
+  [var name:'octa2b' value:`{start:7, end:14, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
   [var name:'octa3b' value:`{start:15, end:22, scale:150, rotation:60, captions:[{ text: 'c', which: 0 }, { text: 'd', which: -1 }] }` /]
   [var name:'octa4b' value:`{start:23, scale:150, rotation:0, captions:[{ text: 'd', which: 0 }, { text: 'a', which: -1 }] }` /]
-  [Unfolded width:500 height:300 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa1b /]
-  [Unfolded width:500 height:300 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa2b /]
-  [Unfolded width:500 height:300 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa3b /]
-  [Unfolded width:500 height:150 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa4b /]
+  [Unfolded width:500 height:280 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa1b /]
+  [Unfolded width:500 height:280 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa2b /]
+  [Unfolded width:500 height:280 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa3b /]
+  [Unfolded width:500 height:130 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa4b /]
 [/Conditional]
 
 
