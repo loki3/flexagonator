@@ -145,8 +145,8 @@ The unfolded strip:
 [derived name:'sides7' value:`[
   {numPats: defaultPats},
   {searchFlexes:"P"},
-  {flexAndColor: { flexes: initFlex6, colors:defaultColors }},
-  {reverseFlexes: initFlex6},
+  {flexAndColor: { flexes: initFlex7, colors:defaultColors }},
+  {reverseFlexes: initFlex7},
   {history: 'clear'}
   ]` /]
 [var name:'history7' value:'' /]
