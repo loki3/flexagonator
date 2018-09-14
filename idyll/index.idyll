@@ -163,10 +163,10 @@ Or try an 8-sided variation
 [Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
 [Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; special7=0; cheight7=500 `]C[/Button],
-[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=0; cheight7=500 `]D[/Button],
+[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=2; cheight7=1 `]D[/Button],
 [Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; special7=0; cheight7=500 `]E[/Button],
 [Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; special7=0; cheight7=500 `]F[/Button], or
-[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; special7=0; cheight7=500 `]G[/Button].
+[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; special7=3; cheight7=1 `]G[/Button].
 
 [Aside]
   [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
@@ -182,8 +182,8 @@ Or try an 8-sided variation
 [Conditional if:` special7 == 1 `]
   The following strip takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines.
-  Then tape 'b' to 'b' and 'c' to 'c'.
-  The you can follow the same folding rules as for the other strips,
+  Tape 'b' to 'b' and 'c' to 'c'.
+  Then you can follow the same folding rules as for the other strips,
   finishing by taping 'a' to 'a'.
 
   [var name:'hepta1' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
@@ -192,6 +192,19 @@ Or try an 8-sided variation
   [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta1 /]
   [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta2 /]
   [Unfolded width:400 height:300 numPats:defaultPats generator:'(P*)5' autoLabel:true options:hepta3 /]
+[/Conditional]
+
+[Conditional if:` special7 == 2 `]
+  The following strip takes a little bit of extra work to assemble.
+  Cut out each of the shapes, cutting along the solid lines and the lines between 'a' and 'b'.
+  Tape 'b' to 'b'.
+  Then you can follow the same folding rules as for the other strips,
+  finishing by taping 'a' to 'a'.
+
+  [var name:'octa1a' value:`{start:0, end:13, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+  [var name:'octa2a' value:`{start:14, scale:150, rotation:60, captions:[{ text: 'b', which: 0 }, { text: 'a', which: -1 }] }` /]
+  [Unfolded width:400 height:520 numPats:defaultPats generator:'(P*) x 4 ^ > (P*) x 2' autoLabel:true options:octa1a /]
+  [Unfolded width:450 height:270 numPats:defaultPats generator:'(P*) x 4 ^ > (P*) x 2' autoLabel:true options:octa2a /]
 [/Conditional]
 
 
