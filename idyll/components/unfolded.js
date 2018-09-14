@@ -10,6 +10,7 @@ const React = require('react');
  *  options     options used when drawing (passed to drawUnfolded)
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
+ *  changeHeight change the height after creation
  * }
  */
 class Unfolded extends React.Component {
@@ -18,6 +19,11 @@ class Unfolded extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    if (props.changeHeight && this.refs.canvas) {
+      this.refs.canvas.height = props.changeHeight;
+      this.props.updateProps({ changeHeight: null });
+    }
+
     this.updateCanvas(props);
   }
 
