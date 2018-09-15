@@ -178,6 +178,7 @@ Or try an 8-sided variation
 [/Aside]
 
 [Flexagon width:500 height:300 numPats:defaultPats runScript:runScript7 script:sides7 history:history7 options:drawOptions /]
+History: [Display value:history7 /]
 
 [Conditional if:` special7 == 0 `]
   The unfolded strip:
