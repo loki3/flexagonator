@@ -155,18 +155,23 @@ The unfolded strip:
 
 There are four 7-sided hexaflexagons and seven 8-sided hexaflexagons.
 Try out the 7-sided variation
-[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
-[Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; special7=0; cheight7=500 `]C[/Button], or
+[Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; special7=0; cheight7=500 `]C[/Button], or
 [Button onClick:` initFlex7 = '(P*)5'; runScript7=true; special7=1; cheight7=1 `]D[/Button].
 Or try an 8-sided variation
-[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
-[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; special7=0; cheight7=500 `]C[/Button],
-[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=2; cheight7=1 `]D[/Button],
-[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; special7=0; cheight7=500 `]E[/Button],
-[Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; special7=0; cheight7=500 `]F[/Button], or
-[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; special7=3; cheight7=1 `]G[/Button].
+[Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
+[Button onClick:` initFlex7 = 'P*P*P*>P*P*P+>P*P*'; runScript7=true; special7=0; cheight7=500 `]C[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; special7=0; cheight7=500 `]D[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; special7=0; cheight7=500 `]E[/Button],
+[Button onClick:` initFlex7 = 'P* P* ^>P* ^>P+<^ >P* P* P*'; runScript7=true; special7=0; cheight7=500 `]F[/Button],
+[Button onClick:` initFlex7 = 'P* ^>P* ^>P+<^ >P ^>P* ^>P+<^ >P ^>P*'; runScript7=true; special7=0; cheight7=500 `]G[/Button],
+[Button onClick:` initFlex7 = 'P* ^>P* ^>P* P* ^>P* ^>P*'; runScript7=true; special7=0; cheight7=500 `]H[/Button],
+[Button onClick:` initFlex7 = 'P* P* ^>P* ^>P+<^ >P ^>P* P*'; runScript7=true; special7=0; cheight7=500 `]I[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]J[/Button],
+[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=2; cheight7=1 `]K[/Button], or
+[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; special7=3; cheight7=1 `]L[/Button].
 
 [Aside]
   [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
