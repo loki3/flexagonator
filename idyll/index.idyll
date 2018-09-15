@@ -167,7 +167,7 @@ Or try an 8-sided variation
 [Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; special7=0; cheight7=500 `]E[/Button],
 [Button onClick:` initFlex7 = 'P* P* ^>P* ^>P+<^ >P* P* P*'; runScript7=true; special7=0; cheight7=500 `]F[/Button],
 [Button onClick:` initFlex7 = 'P* ^>P* ^>P+<^ >P ^>P* ^>P+<^ >P ^>P*'; runScript7=true; special7=0; cheight7=500 `]G[/Button],
-[Button onClick:` initFlex7 = 'P* ^>P* ^>P* P* ^>P* ^>P*'; runScript7=true; special7=0; cheight7=500 `]H[/Button],
+[Button onClick:` initFlex7 = 'P* ^>P* ^>P* P* ^>P* ^>P*'; runScript7=true; special7=4; cheight7=1 `]H[/Button],
 [Button onClick:` initFlex7 = 'P* P* ^>P* ^>P+<^ >P ^>P* P*'; runScript7=true; special7=0; cheight7=500 `]I[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]J[/Button],
 [Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=2; cheight7=1 `]K[/Button], or
@@ -227,6 +227,19 @@ Or try an 8-sided variation
   [Unfolded width:500 height:280 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa2b /]
   [Unfolded width:500 height:280 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa3b /]
   [Unfolded width:500 height:130 numPats:defaultPats generator:'(P*)6' autoLabel:true options:octa4b /]
+[/Conditional]
+
+[Conditional if:` special7 == 4 `]
+  The following strip takes a little bit of extra work to assemble.
+  Cut out each of the shapes, cutting along the solid lines.
+  Tape 'b' to 'b'.
+  Then you can follow the same folding rules as for the other strips,
+  finishing by taping 'a' to 'a'.
+
+  [var name:'octa1c' value:`{start:0, end:13, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+  [var name:'octa2c' value:`{start:14, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'a', which: -1 }] }` /]
+  [Unfolded width:530 height:400 numPats:defaultPats generator:'P* ^>P* ^>P* P* ^>P* ^>P*' autoLabel:true options:octa1c /]
+  [Unfolded width:530 height:260 numPats:defaultPats generator:'P* ^>P* ^>P* P* ^>P* ^>P*' autoLabel:true options:octa2c /]
 [/Conditional]
 
 
