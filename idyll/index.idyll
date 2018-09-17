@@ -31,7 +31,11 @@ And the most common flex is the *pinch flex*, which is one way to rearrange the 
 But it's not obvious at first where to apply the pinch flex in order to find every face.
 
 This explorable will teach you how to use the *Tuckerman Traverse* to find all the hidden faces.
-Along the way, it also introduces you to *flex notation*, which is used to describe a series of flexes.
+Along the way, it also introduces you to
+[flex notation](https://github.com/loki3/flexagonator/blob/master/docs/flex-notation.md),
+which is used to describe a series of flexes,
+and [pat notation](https://github.com/loki3/flexagonator/blob/master/docs/pat-notation.md),
+which is used to describe the internal structure of a flexagon.
 
 
 # 3-sided hexaflexagon
@@ -108,6 +112,10 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
 [var name:'history4' value:'' /]
 
 Next is the 4-sided hexaflexagon.
+After your first pinch flex, you find yourself in the middle of the diagram, with multiple paths you can take.
+What happens when you try pinch flexing at different corners?
+How can you visit every point in the diagram in the fewest number of flexes?
+Do you notice a pattern?
 
 [Aside]
   [PinchGraph width:400 height:200 generator:'P*P*' flexes:history4 /]
@@ -115,9 +123,38 @@ Next is the 4-sided hexaflexagon.
 
 [Flexagon width:500 height:300 numPats:defaultPats initialScript:sides4 history:history4 options:drawOptions /]
 
-The unfolded strip:
 
-[Unfolded width:900 height:200 numPats:defaultPats generator:'P*P*' autoLabel:true /]
+Something else to pay attention to is the notation beside each edge of the flexagon.
+This describes the internal structure of each *pat*, or stack of triangles.
+`-` indicates that there's only a single leaf in the pat, while `[- -]` indicates two leaves in a pat.
+Three leaves can be arranged either as `[[- -] -]` or `[- [- -]]`.
+If you flex a real flexagon as you flex the simulation, you can start to get a feel for what this represents.
+And if you put a unique number on every leaf, you can use those numbers instead of the dashes to make this description more explicit.
+
+[Unfolded width:1000 height:250 numPats:defaultPats generator:'P*P*' autoLabel:true /]
+
+
+# 5-sided hexaflexagon
+
+[derived name:'sides5' value:`[
+  {searchFlexes:"P"},
+  {flexAndColor: { flexes: 'P*P*P*', colors:defaultColors }},
+  {reverseFlexes: 'P*P*P*'},
+  {history: 'clear'}
+  ]` /]
+[var name:'history5' value:'' /]
+
+If you figured out a simple way to visit every state for the 4-sided version,
+does this same pattern work for visiting every state in the 5-sided variant?
+If not, perhaps a bit of experimentation can lead you to a simple pattern that works for both.
+
+[Aside]
+  [PinchGraph width:400 height:200 generator:'P*P*P*' flexes:history5 /]
+[/Aside]
+
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides5 history:history5 options:drawOptions /]
+
+[Unfolded width:900 height:400 numPats:defaultPats generator:'P*P*P*' autoLabel:true /]
 
 
 # 6-sided hexaflexagons
