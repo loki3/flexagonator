@@ -110,6 +110,13 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
   {history: 'clear'}
   ]` /]
 [var name:'history4' value:'' /]
+[var name:'runScript4' value:'' /]
+[var name:'script4' value:'' /]
+
+[Aside]
+  Pick [Button onClick:` script4 = {history: 'reset'}; runScript4 = true `]reset[/Button] to start over,
+  or [Button onClick:` script4 = {history: 'undo'}; runScript4 = true `]undo[/Button] to undo the last flex.
+[/Aside]
 
 Next is the 4-sided hexaflexagon.
 After your first pinch flex, you find yourself in the middle of the diagram, with multiple paths you can take.
@@ -121,7 +128,8 @@ Do you notice a pattern?
   [PinchGraph width:400 height:200 generator:'P*P*' flexes:history4 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides4 history:history4 options:drawOptions /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides4 history:history4
+  runScript:runScript4 script:script4 options:drawOptions /]
 
 
 Something else to pay attention to is the notation beside each edge of the flexagon.
@@ -143,6 +151,13 @@ And if you put a unique number on every leaf, you can use those numbers instead 
   {history: 'clear'}
   ]` /]
 [var name:'history5' value:'' /]
+[var name:'runScript5' value:'' /]
+[var name:'script5' value:'' /]
+
+[Aside]
+  [Button onClick:` script5 = {history: 'reset'}; runScript5 = true `]reset[/Button]
+  [Button onClick:` script5 = {history: 'undo'}; runScript5 = true `]undo[/Button]
+[/Aside]
 
 If you figured out a simple way to visit every state for the 4-sided version,
 does this same pattern work for visiting every state in the 5-sided variant?
@@ -155,7 +170,8 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
   (The history uses *flex notation* to describe the series of flexes you've performed.)
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides5 history:history5 options:drawOptions /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides5 history:history5
+  runScript:runScript5 script:script5 options:drawOptions /]
 
 *Flex notation* is used to describe a series of flexes so that you can later reproduce the exact same sequence.
 Flexes are performed relative to the 'current vertex', which is indicated by a `*` in these flexagon simulations.
