@@ -23,14 +23,15 @@
 [/Aside]
 
 Flexagons are interesting puzzles made from folding strips of paper.
-You can make them from a wide variety of polygons, from different shapes of triangles, to quadrilaterals, to pentagons, or others.
-Once folded, you 'flex' them to find new sides and rearrange the polygons.
+You can make them from a wide variety of polygons: various triangles, quadrilaterals, pentagons, and so on.
+Once folded, you 'flex' them, i.e. fold them in different ways, in order to find new sides and rearrange the polygons.
 
-The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon, thus they're called *hexaflexagons*.
-And the most common flex is the *pinch flex*, which rearranges the triangles to reveal previously hidden faces.
+The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon; thus they're called *hexaflexagons*.
+And the most common flex is the *pinch flex*, which is one way to rearrange the triangles to reveal previously hidden faces.
 But it's not obvious at first where to apply the pinch flex in order to find every face.
 
 This explorable will teach you how to use the *Tuckerman Traverse* to find all the hidden faces.
+Along the way, it also introduces you to *flex notation*, which is used to describe a series of flexes.
 
 
 # 3-sided hexaflexagon
@@ -43,10 +44,18 @@ This explorable will teach you how to use the *Tuckerman Traverse* to find all t
   ]` /]
 [var name:'history3' value:'' /]
 
-We'll start with the simple 3-sided hexaflexagon.
+We'll start with the simple 3-sided hexaflexagon (AKA trihexaflexagon).
+The hexagon below has numbers and colors on each triangle, which change as you perform a flex.
+`P` is the *flex notation* for a *pinch flex*.
+The clickable buttons labeled with a `P` indicate the corners where you can perform a pinch flex.
+Since a pinch flex involves doing a mountain-valley fold alternating every other vertex,
+the exact same pinch flex can be achieved by picking corner 1, 3, or 5 (numbered around the hexagon).
+
+Try clicking on the buttons and watch how the flexagon changes and how this is tracked in the diagram on the right.
+
 
 [Aside]
-  This diagram will track the faces you've visited as you pinch flex the flexagon.
+  This diagram tracks the faces you've visited as you pinch flex the flexagon.
   The green circle marks the original face, and the red circle marks the current face.
 
   [PinchGraph width:400 height:100 generator:'P*' flexes:history3 /]
@@ -54,7 +63,10 @@ We'll start with the simple 3-sided hexaflexagon.
 
 [Flexagon width:500 height:300 numPats:defaultPats initialScript:sides3 history:history3 options:drawOptions /]
 
-The unfolded strip:
+But everything on this page is just a simulation of an actual model.
+The fun part is in creating and flexing the real thing.
+After each simulation is the strip (AKA template, frieze, or net) you can print, fold, and optionally decorate to create a real flexagon.
+Here's the unfolded strip for the 3-sided hexaflexagon.
 
 [Unfolded width:800 height:150 numPats:defaultPats generator:'P*' autoLabel:true /]
 
