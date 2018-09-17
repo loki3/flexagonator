@@ -150,9 +150,18 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
 
 [Aside]
   [PinchGraph width:400 height:200 generator:'P*P*P*' flexes:history5 /]
+  History: [Display value:history5 /]
+
+  (The history uses *flex notation* to describe the series of flexes you've performed.)
 [/Aside]
 
 [Flexagon width:500 height:300 numPats:defaultPats initialScript:sides5 history:history5 options:drawOptions /]
+
+*Flex notation* is used to describe a series of flexes so that you can later reproduce the exact same sequence.
+Flexes are performed relative to the 'current vertex', which is indicated by a `*` in these flexagon simulations.
+Rotating the current vertex one vertex clockwise is represented by `>`, and counterclockwise by `<`.
+Thus `P>P` means a pinch flex followed by a pinch flex starting one vertex clockwise from the original corner.
+`^` means turn the flexagon over.
 
 [Unfolded width:900 height:400 numPats:defaultPats generator:'P*P*P*' autoLabel:true /]
 
@@ -170,7 +179,8 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
   ]` /]
 [var name:'history6' value:'' /]
 
-There are three different 6-sided hexaflexagon, which are made from different strips and have different traversals.
+There are three different ways to make a 6-sided hexaflexagon, each made from different strips with different traversals.
+Try applying the same pattern you used for the 4 and 5-sided hexaflexagons to see if it works.
 Click on the following buttons to switch between variations
 [Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runScript6=true; `]A[/Button],
 [Button onClick:` initFlex6 = '(P*^>)4'; runScript6=true; `]B[/Button], and
@@ -178,11 +188,22 @@ Click on the following buttons to switch between variations
 
 [Aside]
   [PinchGraph width:300 height:250 generator:initFlex6 flexes:history6 /]
+  History: [Display value:history6 /]
 [/Aside]
 
 [Flexagon width:500 height:300 numPats:defaultPats runScript:runScript6 script:sides6 history:history6 options:drawOptions /]
 
-The unfolded strip:
+[var name:"showTuckerman" value:false /]
+The Tuckerman Traverse is a general pattern that allows you to easily visit every side that's accessible using the pinch flex.
+Once you've tried finding a pattern, click on
+[Button onClick:` showTuckerman = !showTuckerman `]describe the Tuckerman Traverse[/Button]
+to see if you've found the same pattern.
+
+[Conditional if:` showTuckerman `]
+  Starting with any corner, repeatedly do a pinch flex until the structure of the flexagon no longer permits it.
+  Switch to an adjacent corner and repeat the same process, doing a pinch flex until you can't any longer.
+  This will eventually visit every part of the diagram associated with the flexagon, visiting every configuration in the process.
+[/Conditional]
 
 [Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex6 autoLabel:true /]
 
@@ -202,13 +223,13 @@ The unfolded strip:
 [var name:'special7' value:0 /]
 [var name:'cheight7' value:500 /]
 
-There are four 7-sided hexaflexagons and seven 8-sided hexaflexagons.
+Now that you know the Tuckerman Traverse, you can try it on the four 7-sided hexaflexagons and twelve 8-sided hexaflexagons.
 Try out the 7-sided variation
 [Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; special7=0; cheight7=500 `]C[/Button], or
-[Button onClick:` initFlex7 = '(P*)5'; runScript7=true; special7=1; cheight7=1 `]D[/Button].
-Or try an 8-sided variation
+[Button onClick:` initFlex7 = '(P*)5'; runScript7=true; special7=1; cheight7=1 `]D[/Button],
+and 8-sided variation
 [Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
 [Button onClick:` initFlex7 = 'P*P*P*>P*P*P+>P*P*'; runScript7=true; special7=0; cheight7=500 `]C[/Button],
