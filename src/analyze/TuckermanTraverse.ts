@@ -39,6 +39,9 @@ namespace Flexagonator {
         flexagon = afterP;
       } else {
         // couldn't pinch, so shift to next corner
+        if (current.length > 0 && current[current.length - 1] != 'P') {
+          break;  // no traverse is possible
+        }
         const afterShift = right.apply(flexagon) as Flexagon;
         current += '>';
         flexagon = afterShift;

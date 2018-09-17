@@ -169,7 +169,7 @@ Thus `P>P` means a pinch flex followed by a pinch flex starting one vertex clock
 # 6-sided hexaflexagons
 
 [var name:'runScript6' value:false /]
-[var name:'initFlex6' value:'(P*^>)4' /]
+[var name:'initFlex6' value:'' /]
 [derived name:'sides6' value:`[
   {numPats: defaultPats},
   {searchFlexes:"P"},
@@ -211,7 +211,7 @@ to see if you've found the same pattern.
 # 7 and 8-sided hexaflexagons
 
 [var name:'runScript7' value:false /]
-[var name:'initFlex7' value:'P*' /]
+[var name:'initFlex7' value:'' /]
 [derived name:'sides7' value:`[
   {numPats: defaultPats},
   {searchFlexes:"P"},
