@@ -175,10 +175,10 @@ Or try an 8-sided variation
 
 [Aside]
   [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
+  History: [Display value:history7 /]
 [/Aside]
 
 [Flexagon width:500 height:300 numPats:defaultPats runScript:runScript7 script:sides7 history:history7 options:drawOptions overButton:true /]
-History: [Display value:history7 /]
 
 [Conditional if:` special7 == 0 `]
   The unfolded strip:
