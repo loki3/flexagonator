@@ -7,6 +7,7 @@ This subproject wraps Flexagonator in a React component so interactive explanati
 To build:
 
 * follow the directions at [getting started](https://idyll-lang.org/docs/getting-started) to install Idyll
+* run `npm install` in the *flexagonator/idyll* directory
 * at a command prompt, switch into the idyll subdirectory of flexagonator and type `idyll`
 
 Note: Until Flexagonator is packaged as modules, you'll first need to build it and paste
