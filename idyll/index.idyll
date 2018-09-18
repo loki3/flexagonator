@@ -1,4 +1,4 @@
-[meta title:"Flexagon" description:"Interactive explanation of flexagons" /]
+[meta title:"Interactive Flexagon" description:"Interactive explanation of flexagons" /]
 
 [Header
   title:"Tuckerman Traverse"
@@ -330,16 +330,39 @@ and 8-sided variation
 [/Conditional]
 
 
-# Conclusion
+# Other triangles
 
-I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+So far we've been looking at 6 equilateral triangles per side,
+but there's no need to have exactly 6 per side, nor do we need to stick to equilateral triangles.
+We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
+However, this may mean that the flexagon doesn't always lie flat because the angles may not add up to 360 degrees.
 
-I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+[var name:'initFlexesN' value:'' /]
+[var name:'patCountN' value:6 /]
+[derived name:'sidesN' value:`[
+  {searchFlexes:"P"},
+  {flexAndColor: { flexes: initFlexesN, colors:defaultColors }},
+  {reverseFlexes: initFlexesN},
+  {history: 'clear'}
+  ]` /]
+[var name:'historyN' value:'' /]
+[var name:'runScriptN' value:false /]
+[var name:'runInitN' value:false /]
+[var name:'scriptN' value:'' /]
 
-I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+Try experimenting with different types of changes:
+* Switch the number of triangles per side so you have an [Button onClick:` patCountN=8; `]octaflexagon[/Button], [Button onClick:` patCountN=10; `]decaflexagon[/Button], or [Button onClick:` patCountN=12; `]dodecaflexagon[/Button].
+* Change the number of sides to [Button onClick:` initFlexesN='P*'; runInitN=true `]3[/Button], [Button onClick:` initFlexesN='P*P*'; runInitN=true `]4[/Button], or [Button onClick:` initFlexesN='P*P*P*'; runInitN=true `]5[/Button].
 
-I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+[Aside]
+  [Button onClick:` scriptN = {history: 'reset'}; runScriptN=true `]reset[/Button]
+  [Button onClick:` scriptN = {history: 'undo'}; runScriptN=true `]undo[/Button]
 
-I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+  [PinchGraph width:400 height:200 generator:initFlexesN flexes:historyN /]
+  History: [Display value:historyN /]
+[/Aside]
 
-I'll have to have enough content here that the `Conditional`s above don't cause the page to jump.
+[Flexagon width:500 height:300 numPats:patCountN initialScript:sidesN runInitial:runInitN history:historyN
+  runScript:runScriptN script:scriptN options:drawOptions /]
+
+[Unfolded width:1000 height:400 numPats:patCountN generator:initFlexesN autoLabel:true /]

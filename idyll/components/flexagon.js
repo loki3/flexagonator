@@ -73,7 +73,8 @@ const FlexButtons = (props) => {
  * Flexagon: displays a flexagon and flex buttons at each corner
  * props {
  *  numPats       create a new flexagon with the given number of pats, typically in [4, 12]
- *  initialScript script to run when numPats is changed
+ *  initialScript script to run when numPats is changed or 'runInitial' is set to true
+ *  runInitial    set to true to rerun the inital script
  *  flexes        flexes to apply to the current flexagon, e.g. 'Sh*>>T*^P*'
  *  runScript     set to true when the 'script' property should be run
  *  script        a flexagonator script to run on the current flexagon
@@ -108,6 +109,13 @@ class Flexagon extends React.Component {
       if (props.initialScript) {
         script = script.concat(props.initialScript);
       }
+    }
+    if (props.runInitial && props.initialScript) {
+      if (props.numPats) {
+        script = script.concat({ numPats: props.numPats });
+      }
+      script = script.concat(props.initialScript);
+      this.props.updateProps({ runInitial: null });
     }
     if (props.flexes) {
       script = script.concat({ flexes: props.flexes });
