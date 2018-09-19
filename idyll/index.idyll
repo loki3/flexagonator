@@ -345,11 +345,13 @@ and 8-sided variation
 So far we've been looking at 6 equilateral triangles per side,
 but there's no need to have exactly 6 per side, nor do we need to stick to equilateral triangles.
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
-However, this may mean that the flexagon doesn't always lie flat because the angles may not add up to 360 degrees.
+However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
 
 [var name:'initFlexesN' value:'' /]
 [var name:'patCountN' value:6 /]
+[var name:'anglesN' value:`[60,60]` /]
 [derived name:'sidesN' value:`[
+  {angles:anglesN},
   {searchFlexes:"P"},
   {flexAndColor: { flexes: initFlexesN, colors:defaultColors }},
   {reverseFlexes: initFlexesN},
@@ -359,10 +361,24 @@ However, this may mean that the flexagon doesn't always lie flat because the ang
 [var name:'runScriptN' value:false /]
 [var name:'runInitN' value:false /]
 [var name:'scriptN' value:'' /]
+[var name:'drawOptionsN' value:`{structure:true, showIds:false, stats:true}`/]
 
-Try experimenting with different types of changes:
-* Switch the number of triangles per side so you have an [Button onClick:` patCountN=8; `]octaflexagon[/Button], [Button onClick:` patCountN=10; `]decaflexagon[/Button], or [Button onClick:` patCountN=12; `]dodecaflexagon[/Button].
-* Change the number of sides to [Button onClick:` initFlexesN='P*'; runInitN=true `]3[/Button], [Button onClick:` initFlexesN='P*P*'; runInitN=true `]4[/Button], or [Button onClick:` initFlexesN='P*P*P*'; runInitN=true `]5[/Button].
+Try experimenting with using different types of triangles and different numbers of sides.
+
+Switch the type of triangles to an
+[Button onClick:` patCountN=8; anglesN=[45,67.5]; runInitN=true `]isosceles octaflexagon[/Button],
+[Button onClick:` patCountN=8; anglesN=[45,45]; runInitN=true `]right octaflexagon[/Button],
+[Button onClick:` patCountN=10; anglesN=[36,54]; runInitN=true `]right decaflexagon[/Button],
+[Button onClick:` patCountN=12; anglesN=[30,60]; runInitN=true `]right dodecaflexagon[/Button], or
+[Button onClick:` patCountN=12; anglesN=[30,30]; runInitN=true `]star dodecaflexagon[/Button].
+
+Change the number of sides to
+[Button onClick:` initFlexesN='P*'; runInitN=true `]3[/Button],
+[Button onClick:` initFlexesN='P*P*'; runInitN=true `]4[/Button],
+[Button onClick:` initFlexesN='P*P*P*'; runInitN=true `]5[/Button],
+[Button onClick:` initFlexesN='P*P*P+>PP*'; runInitN=true `]6a[/Button],
+[Button onClick:` initFlexesN='(P*^>)4*'; runInitN=true `]6b[/Button], or
+[Button onClick:` initFlexesN='(P*)4*'; runInitN=true `]6c[/Button].
 
 [Aside]
   [Button onClick:` scriptN = {history: 'reset'}; runScriptN=true `]reset[/Button]
@@ -373,6 +389,6 @@ Try experimenting with different types of changes:
 [/Aside]
 
 [Flexagon width:500 height:300 numPats:patCountN initialScript:sidesN runInitial:runInitN history:historyN
-  runScript:runScriptN script:scriptN options:drawOptions /]
+  runScript:runScriptN script:scriptN options:drawOptionsN overButton:true /]
 
 [Unfolded width:1000 height:400 numPats:patCountN generator:initFlexesN autoLabel:true /]
