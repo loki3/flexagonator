@@ -69,7 +69,7 @@ Try clicking on the buttons and watch how the flexagon changes and how this is t
 
 But everything on this page is just a simulation of an actual model.
 The fun part is in creating and flexing the real thing.
-After each simulation is the strip (AKA template, frieze, or net) you can print, fold, and optionally decorate to create a real flexagon.
+Following each simulation you'll find a strip of triangles (AKA template, frieze, or net) you can print, fold, and optionally decorate to create a real flexagon.
 Here's the unfolded strip for the 3-sided hexaflexagon.
 
 [Unfolded width:800 height:150 numPats:defaultPats generator:'P*' autoLabel:true /]
@@ -184,30 +184,35 @@ Thus `P>P` means a pinch flex followed by a pinch flex starting one vertex clock
 
 # 6-sided hexaflexagons
 
-[var name:'runScript6' value:false /]
 [var name:'initFlex6' value:'' /]
 [derived name:'sides6' value:`[
-  {numPats: defaultPats},
   {searchFlexes:"P"},
   {flexAndColor: { flexes: initFlex6, colors:defaultColors }},
   {reverseFlexes: initFlex6},
   {history: 'clear'}
   ]` /]
 [var name:'history6' value:'' /]
+[var name:'runScript6' value:false /]
+[var name:'runInit6' value:false /]
+[var name:'script6' value:'' /]
 
 There are three different ways to make a 6-sided hexaflexagon, each made from different strips with different traversals.
 Try applying the same pattern you used for the 4 and 5-sided hexaflexagons to see if it works.
 Click on the following buttons to switch between variations
-[Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runScript6=true; `]A[/Button],
-[Button onClick:` initFlex6 = '(P*^>)4'; runScript6=true; `]B[/Button], and
-[Button onClick:` initFlex6 = '(P*)4'; runScript6=true; `]C[/Button]
+[Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runInit6=true; `]A[/Button],
+[Button onClick:` initFlex6 = '(P*^>)4'; runInit6=true; `]B[/Button], and
+[Button onClick:` initFlex6 = '(P*)4'; runInit6=true; `]C[/Button]
 
 [Aside]
+  [Button onClick:` script6 = {history: 'reset'}; runScript6=true `]reset[/Button]
+  [Button onClick:` script6 = {history: 'undo'}; runScript6=true `]undo[/Button]
+
   [PinchGraph width:300 height:250 generator:initFlex6 flexes:history6 /]
   History: [Display value:history6 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats runScript:runScript6 script:sides6 history:history6 options:drawOptions /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides6 runInitial:runInit6 history:history6
+  runScript:runScript6 script:script6 options:drawOptions /]
 
 [var name:"showTuckerman" value:false /]
 The Tuckerman Traverse is a general pattern that allows you to easily visit every side that's accessible using the pinch flex.
@@ -226,45 +231,50 @@ to see if you've found the same pattern.
 
 # 7 and 8-sided hexaflexagons
 
-[var name:'runScript7' value:false /]
 [var name:'initFlex7' value:'' /]
 [derived name:'sides7' value:`[
-  {numPats: defaultPats},
   {searchFlexes:"P"},
   {flexAndColor: { flexes: initFlex7, colors:defaultColors }},
   {reverseFlexes: initFlex7},
   {history: 'clear'}
   ]` /]
 [var name:'history7' value:'' /]
+[var name:'runScript7' value:false /]
+[var name:'runInit7' value:false /]
+[var name:'script7' value:'' /]
 [var name:'special7' value:0 /]
 [var name:'cheight7' value:500 /]
 
 Now that you know the Tuckerman Traverse, you can try it on the four 7-sided hexaflexagons and twelve 8-sided hexaflexagons.
 Try out the 7-sided variation
-[Button onClick:` initFlex7 = '(P*^>)5'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runScript7=true; special7=0; cheight7=500 `]C[/Button], or
-[Button onClick:` initFlex7 = '(P*)5'; runScript7=true; special7=1; cheight7=1 `]D[/Button],
+[Button onClick:` initFlex7 = '(P*^>)5'; runInit7=true; special7=0; cheight7=500 `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runInit7=true; special7=0; cheight7=500 `]B[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runInit7=true; special7=0; cheight7=500 `]C[/Button], or
+[Button onClick:` initFlex7 = '(P*)5'; runInit7=true; special7=1; cheight7=1 `]D[/Button],
 and 8-sided variation
-[Button onClick:` initFlex7 = '(P*^>)6'; runScript7=true; special7=0; cheight7=500 `]A[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runScript7=true; special7=0; cheight7=500 `]B[/Button],
-[Button onClick:` initFlex7 = 'P*P*P*>P*P*P+>P*P*'; runScript7=true; special7=0; cheight7=500 `]C[/Button],
-[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runScript7=true; special7=0; cheight7=500 `]D[/Button],
-[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runScript7=true; special7=0; cheight7=500 `]E[/Button],
-[Button onClick:` initFlex7 = 'P* P* ^>P* P+ <P* P* P*'; runScript7=true; special7=0; cheight7=500 `]F[/Button],
-[Button onClick:` initFlex7 = 'P* ^>P* P+ >P ^>P* P+ >P ^>P*'; runScript7=true; special7=0; cheight7=500 `]G[/Button],
-[Button onClick:` initFlex7 = 'P* ^>P* ^>P* P* ^>P* ^>P*'; runScript7=true; special7=4; cheight7=1 `]H[/Button],
-[Button onClick:` initFlex7 = 'P* P* ^>P* P+ >P ^>P* P*'; runScript7=true; special7=0; cheight7=500 `]I[/Button],
-[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runScript7=true; special7=0; cheight7=500 `]J[/Button],
-[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runScript7=true; special7=2; cheight7=1 `]K[/Button], or
-[Button onClick:` initFlex7 = '(P*)6'; runScript7=true; special7=3; cheight7=1 `]L[/Button].
+[Button onClick:` initFlex7 = '(P*^>)6'; runInit7=true; special7=0; cheight7=500 `]A[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runInit7=true; special7=0; cheight7=500 `]B[/Button],
+[Button onClick:` initFlex7 = 'P*P*P*>P*P*P+>P*P*'; runInit7=true; special7=0; cheight7=500 `]C[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runInit7=true; special7=0; cheight7=500 `]D[/Button],
+[Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runInit7=true; special7=0; cheight7=500 `]E[/Button],
+[Button onClick:` initFlex7 = 'P* P* ^>P* P+ <P* P* P*'; runInit7=true; special7=0; cheight7=500 `]F[/Button],
+[Button onClick:` initFlex7 = 'P* ^>P* P+ >P ^>P* P+ >P ^>P*'; runInit7=true; special7=0; cheight7=500 `]G[/Button],
+[Button onClick:` initFlex7 = 'P* ^>P* ^>P* P* ^>P* ^>P*'; runInit7=true; special7=4; cheight7=1 `]H[/Button],
+[Button onClick:` initFlex7 = 'P* P* ^>P* P+ >P ^>P* P*'; runInit7=true; special7=0; cheight7=500 `]I[/Button],
+[Button onClick:` initFlex7 = 'P* P* P* P* P+ > P P*'; runInit7=true; special7=0; cheight7=500 `]J[/Button],
+[Button onClick:` initFlex7 = '(P*) x 4 ^ > (P*) x 2'; runInit7=true; special7=2; cheight7=1 `]K[/Button], or
+[Button onClick:` initFlex7 = '(P*)6'; runInit7=true; special7=3; cheight7=1 `]L[/Button].
 
 [Aside]
+  [Button onClick:` script7 = {history: 'reset'}; runScript7=true `]reset[/Button]
+  [Button onClick:` script7 = {history: 'undo'}; runScript7=true `]undo[/Button]
+
   [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
   History: [Display value:history7 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats runScript:runScript7 script:sides7 history:history7 options:drawOptions overButton:true /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides7 runInitial:runInit7 history:history7
+  runScript:runScript7 script:script7 options:drawOptions overButton:true /]
 
 [Conditional if:` special7 == 0 `]
   The unfolded strip:
