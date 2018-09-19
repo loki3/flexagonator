@@ -5,6 +5,7 @@ const React = require('react');
  * Unfolded: displays an unfolded flexagon
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
+ *  angles      center angle and the angle clockwise from the center, e.g. [30, 60]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
  *  autoLabel   automatically label the sides based on the generating sequence
  *  options     options used when drawing (passed to drawUnfolded)
@@ -28,7 +29,7 @@ class Unfolded extends React.Component {
   }
 
   updateCanvas(props) {
-    const { numPats, generator, autoLabel } = props;
+    const { numPats, generator, autoLabel, angles } = props;
     if (!numPats) {
       return;
     }
@@ -38,6 +39,12 @@ class Unfolded extends React.Component {
     }
     const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
     var fm = Flexagonator.FlexagonManager.make(flexagon);
+
+    if (angles) {
+      fm.setAngles(angles[0], angles[1]);
+    } else {
+      fm.setIsosceles();
+    }
 
     var options = props.options;
     if (autoLabel) {
