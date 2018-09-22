@@ -104,9 +104,9 @@
   <h1>Flexagonator: creating standard hexaflexagons</h1>
 
   <p>
-    This page allows you to create the standard hexaflexagons with 3 or more sides using a "flex generating sequence", i.e. create
-    the minimal necessary structure to allow the flexagon to carry out the given sequence of flexes. See "More info" at the
-    bottom for background.
+    This page allows you to create the standard hexaflexagons with 3 or more sides using a "flex generating sequence",
+    i.e. create the minimal necessary structure to allow the flexagon to carry out the given sequence of flexes.
+    See "More info" at the bottom for background.
   </p>
 
   <p>
@@ -119,20 +119,25 @@
           <option value="(P*) x 4">6: (P*) x 4</option>
           <option value="(P* ^ >) x 4">6: (P* ^ >) x 4</option>
           <option value="P* P* P+ > P P*">6: P* P* P+ > P P*</option>
+
           <!-- needs multiple strips (0,5), (6,12), (13,19), (20) -->
           <option value="(P*) x 5">7: (P*) x 5</option>
           <option value="(P* ^ >) x 5">7: (P* ^ >) x 5</option>
           <option value="P* P* P* P+ > P P*">7: P* P* P* P+ > P P*</option>
           <option value="P* P* P* ^ > P* P*">7: P* P* P* ^ > P* P*</option>
-          <!-- needs multiple strips (0,5), (6,13), (14,21), (22,23) -->
-          <option value="(P*) x 6">8: (P*) x 6</option>
-          <option value="(P* ^ >) x 6">8: (P* ^ >) x 6</option>
-          <option value="(P*) x 3 (^ > P*) x 3">8: (P*) x 3 (^ > P*) x 3</option>
-          <option value="P* P* P* P+ > P P* P*">8: P* P* P* P+ > P P* P*</option>
-          <option value="P* P* P* P* P+ > P P*">8: P* P* P* P* P+ > P P*</option>
-          <option value="(P*) x 3 ^ > (P*) x 3">8: (P*) x 3 ^ > (P*) x 3</option>
-          <!-- needs multiple strips (0,12), (13,21), (22,23) -->
-          <option value="(P*) x 4 ^ > (P*) x 2">8: (P*) x 4 ^ > (P*) x 2</option>
+
+          <option value='(P*^>)6'>8: (P*^>)6</option>
+          <option value='P* P* P* P+ > P P* P*'>8: P* P* P* P+ > P P* P*</option>
+          <option value='P*P*P*>P*P*P+>P*P*'>8: P*P*P*>P*P*P+>P*P*</option>
+          <option value='(P*) x 3 (^ > P*) x 3'>8: (P*) x 3 (^ > P*) x 3</option>
+          <option value='(P*) x 3 ^ > (P*) x 3'>8: (P*) x 3 ^ > (P*) x 3</option>
+          <option value='P* P* ^>P* P+ <P* P* P*'>8: P* P* ^>P* P+ <P* P* P*</option>
+          <option value='P* ^>P* P+ >P ^>P* P+ >P ^>P*'>8: P* ^>P* P+ >P ^>P* P+ >P ^>P*</option>
+          <option value='P* ^>P* ^>P* P* ^>P* ^>P*'>8: P* ^>P* ^>P* P* ^>P* ^>P*</option>
+          <option value='P* P* ^>P* P+ >P ^>P* P*'>8: P* P* ^>P* P+ >P ^>P* P*</option>
+          <option value='P* P* P* P* P+ > P P*'>8: P* P* P* P* P+ > P P*</option>
+          <option value='(P*) x 4 ^ > (P*) x 2'>8: (P*) x 4 ^ > (P*) x 2'</option>
+          <option value='(P*)6'>8: (P*)6</option>
         </select>
     </div>
   </p>
@@ -140,7 +145,8 @@
   <p>
     <div>
       <label>enter flex generating sequence</label>
-      <input onkeypress="applySequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" />
+      <input onkeypress='applySequence(event.keyCode, event.target.value)' id='enterFlexes' size='75' />
+
     </div>
   </p>
 
@@ -148,6 +154,7 @@
   <canvas id="backside" width="300" height="300"></canvas>
   <div id="status"></div>
   <canvas id="traversal" width="800" height="200"></canvas>
+  <br />
   <canvas id="unfolded" width="800" height="600"></canvas>
   <canvas id="unfoldedBack" width="800" height="600"></canvas>
 
@@ -163,16 +170,18 @@
 
   <h2>More info</h2>
   <p>
-    The technique used here is to apply a "flex generating sequence", i.e. create the minimal necessary structure to allow the
-    flexagon to carry out the given sequence of flexes. This technique generalizes to a wide variety of flexagons and flexes.
+    The technique used here is to apply a "flex generating sequence",
+    i.e. create the minimal necessary structure to allow the flexagon to carry out the given sequence of flexes.
+    This technique generalizes to a wide variety of flexagons and flexes.
     See <a href="http://loki3.com/flex/g4g10/Flex-Theory.pdf">Flexagon Theory</a> for more background about flexes and
     flex generating sequences.
   </p>
   <p>
-    Most flexagon theory has been aimed at hexaflexagons and the pinch flex. Here are several references for the theory around
-    pinch flexes:
+    Most flexagon theory has been aimed at hexaflexagons and the pinch flex. Here are several references for the theory
+    around pinch flexes:
     <ul>
-      <li><a href="http://erikdemaine.org/flexagons/Conrad-Hartline-1962/flexagon.html">Flexagons</a> paper by Conrad and Hartline</li>
+      <li><a href="http://erikdemaine.org/flexagons/Conrad-Hartline-1962/flexagon.html">Flexagons</a> paper by Conrad
+        and Hartline</li>
       <li><a href="http://www.drking.org.uk/hexagons/flexagons/theory1.html">Dr. King's Flexagon Theory</a></li>
       <li><a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a> from Antonio Carlos M. de Queiroz</li>
     </ul>
@@ -180,13 +189,16 @@
 
   <p>
     Figuring out a flex generating sequence from a diagram such as the ones linked from the
-    <a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a> page is relatively straight forward because the
-    diagrams capture a lot about how the pinch flex is applied. Pick a vertex to start on, then step between vertices, visiting
-    every little triangle at least once. Every little triangle needs a P* in the sequence in order to create it, which basically
-    means that you create the structure necessary to perform a single pinch flex. If you curve as you travel around the diagram,
-    simply add "P*", but if you're traveling in a straight line, add "^ > P*". You may be able to visit every triangle once
-    this way, but with some you may need to back up to a previous triangle before continuing on. One way to accomplish this
-    is to follow a P* with P'.
+    <a href="http://www.coe.ufrj.br/~acmq/hexaflexagons/">Hexaflexagons</a> page is relatively straight forward because
+    the diagrams capture a lot about how the pinch flex is applied.
+    Pick a vertex to start on, then step between vertices, visiting every little triangle at least once.
+    Every little triangle needs a P* in the sequence in order to create it, which basically means that you create the
+    structure necessary to perform a single pinch flex.
+    If you curve as you travel around the diagram, simply add "P*",
+    but if you're traveling in a straight line, add "^ > P*".
+    You may be able to visit every triangle once this way, but with some you may need to back up to a previous triangle
+    before continuing on.
+    One way to accomplish this is to follow a P* with P'.
   </p>
 </body>
 
