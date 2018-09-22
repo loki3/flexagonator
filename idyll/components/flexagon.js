@@ -35,7 +35,7 @@ const OverButton = (props) => {
   if (!props.display) {
     return null;
   }
-  return <div style={{ position: 'absolute', left: '10px', bottom: '40px' }}>
+  return <div style={{ position: 'absolute', right: '46px', bottom: '50px' }}>
     <FlexButton onClick={props.onClick} flex={'^'} key={'^'} />
   </div>
 }
