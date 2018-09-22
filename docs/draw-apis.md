@@ -38,6 +38,7 @@ such as whether to draw the front or back, and whether to display useful statist
 // DrawFlexagonOptions
 {
   back: true,        // boolean: default false (front), draw front or back
+  both: true,        // boolean: default false, draw both front & back
   stats: true,       // boolean: default false, show stats such as the number of leaves
   structure: true,   // boolean: default false, show internal structure of each pat
   drawover: true,    // boolean: default false, draw over canvas or clear first

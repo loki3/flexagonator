@@ -12,6 +12,7 @@ namespace Flexagonator {
   // list of different options for what should be drawn for a flexagon
   export interface DrawFlexagonOptions {
     readonly back?: boolean;        // draw front or back - default: false (front)
+    readonly both?: boolean;        // draw both front & back - default: false (front)
     readonly stats?: boolean;       // show stats - default: false
     readonly structure?: boolean;   // show pat structure - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
@@ -56,6 +57,10 @@ namespace Flexagonator {
     const showStructure = (options.structure !== undefined && options.structure);
     const showIds = (options.showIds === undefined || options.showIds);
     drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds);
+    if (options.both) {
+      const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
+      drawFlexagon(ctx, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, false/*showStructure*/, false/*showIds*/);
+    }
     if (options.stats !== undefined && options.stats) {
       drawStatsText(ctx, objects.flexagon, objects.angleInfo);
     }
@@ -116,5 +121,14 @@ namespace Flexagonator {
 
     const angles = angleInfo.getAngles(flexagon);
     return new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
+  }
+
+  function createBackPolygon(width: number, height: number, flexagon: Flexagon, angleInfo: FlexagonAngles): Polygon {
+    const radius = height * 0.2;
+    const xCenter = width - radius;
+    const yCenter = height - radius;
+
+    const angles = angleInfo.getAngles(flexagon);
+    return new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius, angles, false/*showFront*/);
   }
 }
