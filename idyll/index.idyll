@@ -6,7 +6,7 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
-[var name:'drawOptions' value:`{structure:true, showIds:false}`/]
+[var name:'drawOptions' value:`{structure:true, showIds:false, both:true}`/]
 [var name:'defaultPats' value:6 /]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 
@@ -361,7 +361,7 @@ However, this may mean that the flexagon doesn't always lie flat because the cen
 [var name:'runScriptN' value:false /]
 [var name:'runInitN' value:false /]
 [var name:'scriptN' value:'' /]
-[var name:'drawOptionsN' value:`{structure:true, showIds:false, stats:true}`/]
+[var name:'drawOptionsN' value:`{structure:true, showIds:false, stats:true, both:true}`/]
 
 Try experimenting with using different types of triangles and different numbers of sides.
 
