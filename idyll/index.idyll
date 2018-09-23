@@ -405,11 +405,16 @@ Note that some of these strips may have overlapping triangles.
 # What next?
 
 This intro showed you how to explore *hexaflexagons* using the *pinch flex* and the *Tuckerman Traverse*.
-It introduced *flex notation* for describing a series of flexes
-and *pat notation* for describing the internal structure of a flexagon.
-It then gave some examples of using different types of triangles to create *octaflexagons*, *decaflexagons*, and *dodecaflexagons*.
+It introduced [flex notation](https://github.com/loki3/flexagonator/blob/master/docs/flex-notation.md) for describing a series of flexes
+and [pat notation](https://github.com/loki3/flexagonator/blob/master/docs/pat-notation.md) for describing the internal structure of a flexagon.
+It then gave some examples of using different types of triangles
+to create [octaflexagons](http://loki3.com/flex/octa.html), [decaflexagons](http://loki3.com/flex/deca.html),
+and [dodecaflexagons](http://loki3.com/flex/dodeca.html).
 
 But that's just a quick taste of the large variety of flexagons and flexes.
-You can make flexagons out of any polygon, including squares, rhombi, and pentagons.
-And there are many other ways to flex them, with names like the *v-flex*, *pyramid shuffle*, and *flip flex*.
+You can make flexagons out of any polygon, including [squares](http://loki3.com/flex/square.html)
+, [trapezoids](http://loki3.com/flex/trapezoid.html), [rhombuses](http://loki3.com/flex/rhombus.html), and [pentagons](http://loki3.com/flex/multi.html).
+And there are many other ways to flex them, with names like the [v-flex](http://loki3.com/flex/flex/v.html)
+, [pyramid shuffle](http://loki3.com/flex/flex/pyramid-shuffle.html), and [flip flex](http://loki3.com/flex/flex/flip.html).
+
 Take a look at [loki3.com](http://loki3.com/flex/) for many more examples.
