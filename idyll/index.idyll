@@ -416,5 +416,11 @@ You can make flexagons out of any polygon, including [squares](http://loki3.com/
 , [trapezoids](http://loki3.com/flex/trapezoid.html), [rhombuses](http://loki3.com/flex/rhombus.html), and [pentagons](http://loki3.com/flex/multi.html).
 And there are many other ways to flex them, with names like the [v-flex](http://loki3.com/flex/flex/v.html)
 , [pyramid shuffle](http://loki3.com/flex/flex/pyramid-shuffle.html), and [flip flex](http://loki3.com/flex/flex/flip.html).
+You could take those flexagons and [decorate](http://flexagon.net) them, put [mazes](http://loki3.com/flex/maze/pyramid-maze.html) on them,
+or create [illusions](http://loki3.com/flex/maze/silver-tetra-illusion.html) with them.
 
 Take a look at [loki3.com](http://loki3.com/flex/) for many more examples.
+
+[FullWidth]
+  [img src:'static/flexagon-variety.jpg' /]
+[/FullWidth]
