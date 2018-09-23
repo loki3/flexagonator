@@ -27,7 +27,8 @@ You can make them from a wide variety of polygons: various triangles, quadrilate
 Once folded, you *flex* them, i.e. fold them in different ways, in order to find new sides and rearrange the polygons.
 
 The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon; thus they're called *hexaflexagons*.
-And the most common flex is the *pinch flex*, which is one way to rearrange the triangles to reveal previously hidden faces.
+And the most common flex is the *pinch flex*, which is one way to *flex* the shape to rearrange the triangles
+and reveal previously hidden faces.
 But it's not obvious at first where to apply the pinch flex in order to find every face.
 
 This explorable will teach you how to use the *Tuckerman Traverse* to find all the hidden faces.
@@ -35,6 +36,10 @@ Along the way, it also introduces you to [flex notation](https://github.com/loki
 which is used to describe a series of flexes,
 and [pat notation](https://github.com/loki3/flexagonator/blob/master/docs/pat-notation.md),
 which is used to describe the internal structure of a flexagon.
+
+But, first off, if you haven't seen a flexagon before, watch this introduction by Vi Hart
+to learn their history and see what folding and flexing looks like...
+[Youtube id:"VIVIegSt81k" width:500 height:300 /]
 
 
 # 3-sided hexaflexagon
@@ -395,3 +400,16 @@ Change the number of sides to
 Note that some of these strips may have overlapping triangles.
 
 [Unfolded width:1000 height:400 numPats:patCountN generator:initFlexesN autoLabel:true angles:anglesN /]
+
+
+# What next?
+
+This intro showed you how to explore *hexaflexagons* using the *pinch flex* and the *Tuckerman Traverse*.
+It introduced *flex notation* for describing a series of flexes
+and *pat notation* for describing the internal structure of a flexagon.
+It then gave some examples of using different types of triangles to create *octaflexagons*, *decaflexagons*, and *dodecaflexagons*.
+
+But that's just a quick taste of the large variety of flexagons and flexes.
+You can make flexagons out of any polygon, including squares, rhombi, and pentagons.
+And there are many other ways to flex them, with names like the *v-flex*, *pyramid shuffle*, and *flip flex*.
+Take a look at [loki3.com](http://loki3.com/flex/) for many more examples.
