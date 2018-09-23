@@ -1,8 +1,8 @@
-[meta title:"Interactive Flexagon" description:"Interactive explanation of flexagons" /]
+[meta title:"Interactive Flexagon" description:"Using the Tuckerman Traverse to explore the hidden faces of a hexaflexagon" /]
 
 [Header
-  title:"Tuckerman Traverse"
-  subtitle:"Using the pinch flex to visit every side of a flexagon"
+  title:"Flexagon Intro"
+  subtitle:"Exploring the hidden sides of hexaflexagons"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
@@ -24,14 +24,13 @@
 
 Flexagons are interesting puzzles made from folding strips of paper.
 You can make them from a wide variety of polygons: various triangles, quadrilaterals, pentagons, and so on.
-Once folded, you *flex* them, i.e. fold them in different ways, in order to find new sides and rearrange the polygons.
+Once assembled, you *flex* them, i.e. fold them in different ways, in order to find new sides and rearrange the polygons.
 
 The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon; thus they're called *hexaflexagons*.
-And the most common flex is the *pinch flex*, which is one way to *flex* the shape to rearrange the triangles
-and reveal previously hidden faces.
+And the most commonly described flex is the *pinch flex*, which can reveal previously hidden faces.
 But it's not obvious at first where to apply the pinch flex in order to find every face.
 
-This explorable will teach you how to use the *Tuckerman Traverse* to find all the hidden faces.
+This explorable will teach you how to make hexaflexagons and how to use the *Tuckerman Traverse* to find all the hidden faces.
 Along the way, it also introduces you to [flex notation](https://github.com/loki3/flexagonator/blob/master/docs/flex-notation.md),
 which is used to describe a series of flexes,
 and [pat notation](https://github.com/loki3/flexagonator/blob/master/docs/pat-notation.md),
@@ -52,15 +51,15 @@ to learn their history and see what folding and flexing looks like...
   ]` /]
 [var name:'history3' value:'' /]
 
-We'll start with the simple 3-sided hexaflexagon (AKA trihexaflexagon).
+We'll start with the simple 3-sided hexaflexagon (AKA *trihexaflexagon*).
 The hexagon below has numbers and colors on each triangle, which change as you perform a flex.
 `P` is the *flex notation* for a *pinch flex*.
-The clickable buttons labeled with a `P` indicate the corners where you can perform a pinch flex.
+The clickable buttons below that are labeled with a `P` indicate the corners where you can perform a pinch flex.
 Since a pinch flex involves doing a mountain-valley fold alternating every other vertex,
 the exact same pinch flex can be achieved by picking corner 1, 3, or 5 (numbered around the hexagon).
+`^` is the flex notation for turning the flexagon over, which is also represented with a button in the figure below.
 
 Try clicking on the buttons and watch how the flexagon changes and how this is tracked in the diagram on the right.
-The button labeled `^` turns the flexagon over.
 
 
 [Aside]
@@ -74,7 +73,7 @@ The button labeled `^` turns the flexagon over.
 
 But everything on this page is just a simulation of an actual model.
 The fun part is in creating and flexing the real thing.
-Following each simulation you'll find a strip of triangles (AKA template, frieze, or net) you can print, fold, and optionally decorate to create a real flexagon.
+Following each simulation, you'll find a strip of triangles (AKA *template*, *frieze*, or *net*) you can print, fold, and optionally decorate to create a real flexagon.
 Here's the unfolded strip for the 3-sided hexaflexagon.
 
 [Unfolded width:800 height:150 numPats:defaultPats generator:'P*' autoLabel:true /]
@@ -82,18 +81,18 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
 [Conditional if:` showFoldingHelp `]
-  These instructions apply to all the strips on this page.
+  These instructions apply to all the triangle strips on this page.
 
   **Cut:**
   Start by printing out the strip and cutting along the outside edges.
 
   **Prefold:**
   After you've cut out the shape, fold and unfold along every dashed line to prepare it.
-  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after folding.
+  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges everything is folded.
 
   **Number:**
   The large number on each triangle represents the number on the *front* of the triangle, while the small number represents the number on the *back*.
-  Copy the small number from each triangle onto the back.
+  Copy the small number from each triangle onto its backside.
 
   **Fold:**
   Find the largest pairs of adjacent numbers and fold those numbers together.
@@ -124,7 +123,7 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
 [/Aside]
 
 Next is the 4-sided hexaflexagon.
-After your first pinch flex, you find yourself in the middle of the diagram, with multiple paths you can take.
+After your first pinch flex, you find yourself in the middle of the diagram to the right, with multiple paths you can take.
 What happens when you try pinch flexing at different corners?
 How can you visit every point in the diagram in the fewest number of flexes?
 Do you notice a pattern?
@@ -136,12 +135,12 @@ Do you notice a pattern?
 [Flexagon width:500 height:300 numPats:defaultPats initialScript:sides4 history:history4
   runScript:runScript4 script:script4 options:drawOptions overButton:true /]
 
-
-Something else to pay attention to is the notation beside each edge of the flexagon.
+*Pat notation:*
+Something else to pay attention to is the notation beside each edge of the flexagon above.
 This describes the internal structure of each *pat*, or stack of triangles.
-`-` indicates that there's only a single leaf in the pat, while `[- -]` indicates two leaves in a pat.
+`-` indicates that there's only a single leaf in the pat, while `[- -]` indicates two leaves folded against each other in a pat.
 Three leaves can be arranged either as `[[- -] -]` or `[- [- -]]`.
-If you flex a real flexagon as you flex the simulation, you can start to get a feel for what this represents.
+If you flex a real flexagon while you flex the simulation, you can start to get a feel for what this represents.
 And if you put a unique number on every leaf, you can use those numbers instead of the dashes to make this description more explicit.
 
 [Unfolded width:1000 height:250 numPats:defaultPats generator:'P*P*' autoLabel:true /]
@@ -165,14 +164,14 @@ And if you put a unique number on every leaf, you can use those numbers instead 
 [/Aside]
 
 If you figured out a simple way to visit every state for the 4-sided version,
-does this same pattern work for visiting every state in the 5-sided variant?
+does this same pattern work when you try to visit every state in the 5-sided variant?
 If not, perhaps a bit of experimentation can lead you to a simple pattern that works for both.
 
 [Aside]
   [PinchGraph width:400 height:200 generator:'P*P*P*' flexes:history5 /]
   History: [Display value:history5 /]
 
-  (The history uses *flex notation* to describe the series of flexes you've performed.)
+  (This history description uses *flex notation* to describe the series of flexes you've performed.)
 [/Aside]
 
 [Flexagon width:500 height:300 numPats:defaultPats initialScript:sides5 history:history5
@@ -180,9 +179,10 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
 
 *Flex notation* is used to describe a series of flexes so that you can later reproduce the exact same sequence.
 Flexes are performed relative to the 'current vertex', which is indicated by a `*` in these flexagon simulations.
-Rotating the current vertex one vertex clockwise is represented by `>`, and counterclockwise by `<`.
-Thus `P>P` means a pinch flex followed by a pinch flex starting one vertex clockwise from the original corner.
-`^` means turn the flexagon over.
+Rotating the current vertex one vertex clockwise is represented by `>`, and counterclockwise rotation by `<`.
+Thus `P>P` says to do a pinch flex at one vertex, rotate so the vertex one step clockwise is the current vertex,
+then do one more pinch flex.
+Recall from earlier that `^` means that you turn the flexagon over, while keeping the same current vertex.
 
 [Unfolded width:900 height:400 numPats:defaultPats generator:'P*P*P*' autoLabel:true /]
 
@@ -201,12 +201,13 @@ Thus `P>P` means a pinch flex followed by a pinch flex starting one vertex clock
 [var name:'runInit6' value:false /]
 [var name:'script6' value:'' /]
 
-There are three different ways to make a 6-sided hexaflexagon, each made from different strips with different traversals.
-Try applying the same pattern you used for the 4 and 5-sided hexaflexagons to see if it works.
-Click on the following buttons to switch between variations
+There are three different ways to make a 6-sided hexaflexagon, each made from different triangle strips with different traversals.
+Try applying the same pattern you used for exploring every side of the 4 and 5-sided hexaflexagons to see if it works for the 6-sided variants.
+Click on
 [Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runInit6=true; `]A[/Button],
 [Button onClick:` initFlex6 = '(P*^>)4'; runInit6=true; `]B[/Button], and
 [Button onClick:` initFlex6 = '(P*)4'; runInit6=true; `]C[/Button]
+to switch between variations.
 
 [Aside]
   [Button onClick:` script6 = {history: 'reset'}; runScript6=true `]reset[/Button]
@@ -220,7 +221,7 @@ Click on the following buttons to switch between variations
   runScript:runScript6 script:script6 options:drawOptions overButton:true /]
 
 [var name:"showTuckerman" value:false /]
-The Tuckerman Traverse is a general pattern that allows you to easily visit every side that's accessible using the pinch flex.
+The *Tuckerman Traverse* is a general pattern that allows you to easily visit every side that's accessible using the pinch flex.
 Once you've tried finding a pattern, click on
 [Button onClick:` showTuckerman = !showTuckerman `]describe the Tuckerman Traverse[/Button]
 to see if you've found the same pattern.
@@ -229,6 +230,7 @@ to see if you've found the same pattern.
   Starting with any corner, repeatedly do a pinch flex until the structure of the flexagon no longer permits it.
   Switch to an adjacent corner and repeat the same process, doing a pinch flex until you can't any longer.
   This will eventually visit every part of the diagram associated with the flexagon, visiting every configuration in the process.
+  Furthermore, it's the shortest traversal of every state (though it isn't unique).
 [/Conditional]
 
 [Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex6 autoLabel:true /]
@@ -352,9 +354,9 @@ but there's no need to have exactly 6 per side, nor do we need to stick to equil
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
 However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
 
-[var name:'initFlexesN' value:'' /]
-[var name:'patCountN' value:6 /]
-[var name:'anglesN' value:`[60,60]` /]
+[var name:'initFlexesN' value:"(P*^>)4" /]
+[var name:'patCountN' value:14 /]
+[var name:'anglesN' value:`undefined` /]
 [derived name:'sidesN' value:`[
   {angles:anglesN},
   {searchFlexes:"P"},
@@ -383,8 +385,8 @@ Change the number of sides to
 [Button onClick:` initFlexesN='P*P*'; runInitN=true `]4[/Button],
 [Button onClick:` initFlexesN='P*P*P*'; runInitN=true `]5[/Button],
 [Button onClick:` initFlexesN='P*P*P+>PP*'; runInitN=true `]6a[/Button],
-[Button onClick:` initFlexesN='(P*^>)4*'; runInitN=true `]6b[/Button], or
-[Button onClick:` initFlexesN='(P*)4*'; runInitN=true `]6c[/Button].
+[Button onClick:` initFlexesN='(P*^>)4'; runInitN=true `]6b[/Button], or
+[Button onClick:` initFlexesN='(P*)4'; runInitN=true `]6c[/Button].
 
 [Aside]
   [Button onClick:` scriptN = {history: 'reset'}; runScriptN=true `]reset[/Button]
@@ -416,7 +418,7 @@ You can make flexagons out of any polygon, including [squares](http://loki3.com/
 , [trapezoids](http://loki3.com/flex/trapezoid.html), [rhombuses](http://loki3.com/flex/rhombus.html), and [pentagons](http://loki3.com/flex/multi.html).
 And there are many other ways to flex them, with names like the [v-flex](http://loki3.com/flex/flex/v.html)
 , [pyramid shuffle](http://loki3.com/flex/flex/pyramid-shuffle.html), and [flip flex](http://loki3.com/flex/flex/flip.html).
-You could take those flexagons and [decorate](http://flexagon.net) them, put [mazes](http://loki3.com/flex/maze/pyramid-maze.html) on them,
+It can be fun to [decorate](http://flexagon.net) them, put [mazes](http://loki3.com/flex/maze/pyramid-maze.html) on them,
 or create [illusions](http://loki3.com/flex/maze/silver-tetra-illusion.html) with them.
 
 Take a look at [loki3.com](http://loki3.com/flex/) for many more examples.
