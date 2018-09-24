@@ -358,7 +358,7 @@ but there's no need to have exactly 6 per side, nor do we need to stick to equil
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
 However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
 
-[var name:'initFlexesN' value:"(P*^>)4" /]
+[var name:'initFlexesN' value:"P*P*" /]
 [var name:'patCountN' value:14 /]
 [var name:'anglesN' value:`undefined` /]
 [derived name:'sidesN' value:`[
@@ -404,6 +404,7 @@ Change the number of sides to
   runScript:runScriptN script:scriptN options:drawOptionsN overButton:true /]
 
 Note that some of these strips may have overlapping triangles.
+Compare the number of leaves (triangles) in the strip to the number listed above to see if you might need to print multiple copies.
 
 [Unfolded width:1000 height:400 numPats:patCountN generator:initFlexesN autoLabel:true angles:anglesN /]
 
