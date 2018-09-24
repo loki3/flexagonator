@@ -173,6 +173,7 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
 
 [Aside]
   [PinchGraph width:400 height:200 generator:'P*P*P*' flexes:history5 /]
+
   History: [Display value:history5 /]
 
   (This history description uses *flex notation* to describe the series of flexes you've performed.)
@@ -185,8 +186,8 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
 Flexes are performed relative to the 'current vertex', which is indicated by a `*` in these flexagon simulations.
 Rotating the current vertex one vertex clockwise is represented by `>`, and counterclockwise rotation by `<`.
 Thus `P>P` says to do a pinch flex at one vertex, rotate so the vertex one step clockwise is the current vertex,
-then do one more pinch flex.
-Recall from earlier that `^` means that you turn the flexagon over, while keeping the same current vertex.
+then do another pinch flex.
+Recall from earlier that `^` indicates turning over the flexagon while keeping the same current vertex.
 
 [Unfolded width:900 height:400 numPats:defaultPats generator:'P*P*P*' autoLabel:true /]
 
@@ -218,6 +219,7 @@ to switch between variations.
   [Button onClick:` script6 = {history: 'undo'}; runScript6=true `]undo[/Button]
 
   [PinchGraph width:300 height:250 generator:initFlex6 flexes:history6 /]
+
   History: [Display value:history6 /]
 [/Aside]
 
@@ -256,6 +258,11 @@ to see if you've found the same pattern.
 [var name:'special7' value:0 /]
 [var name:'cheight7' value:500 /]
 
+[Aside]
+It's also interesting to watch how the *pat notation* (e.g. `[[- -] -]`) for the pats changes as you flex,
+and compare that to the actual flexagon.
+[/Aside]
+
 Now that you know the Tuckerman Traverse, you can try it on the four 7-sided hexaflexagons and twelve 8-sided hexaflexagons.
 Try out the 7-sided variation
 [Button onClick:` initFlex7 = '(P*^>)5'; runInit7=true; special7=0; cheight7=500 `]A[/Button],
@@ -281,6 +288,7 @@ and 8-sided variation
   [Button onClick:` script7 = {history: 'undo'}; runScript7=true `]undo[/Button]
 
   [PinchGraph width:300 height:250 generator:initFlex7 flexes:history7 /]
+
   History: [Display value:history7 /]
 [/Aside]
 
@@ -353,7 +361,7 @@ and 8-sided variation
 
 # Other triangles
 
-So far we've been looking at 6 equilateral triangles per side,
+So far, all the flexagons we've looked at have 6 equilateral triangles per side,
 but there's no need to have exactly 6 per side, nor do we need to stick to equilateral triangles.
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
 However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
@@ -397,6 +405,7 @@ Change the number of sides to
   [Button onClick:` scriptN = {history: 'undo'}; runScriptN=true `]undo[/Button]
 
   [PinchGraph width:400 height:200 generator:initFlexesN flexes:historyN /]
+
   History: [Display value:historyN /]
 [/Aside]
 
