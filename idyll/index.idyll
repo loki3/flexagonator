@@ -12,6 +12,10 @@
 
 
 [Aside]
+  Applying the *pinch flex* to a *hexaflexagon:*
+  [img src:'static/pinch-flex.jpg' /]
+
+  Some triangle flexagons:
   [div]
     [Inline][Flexagon width:150 height:150 numPats:6 options:`{showIds: false}` /][/Inline]
     [Inline][Flexagon width:150 height:150 numPats:9 options:`{showIds: false}` /][/Inline]
