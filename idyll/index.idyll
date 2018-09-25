@@ -1,0 +1,47 @@
+[meta title:"Flexes" description:"Various flexagon flexes" /]
+
+[Header
+  title:"Flexing"
+  subtitle:"Various flexagon flexes"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+The previous explorable showed how to use the pinch flex to explore a flexagon.
+But it turns out that there a lots of other ways to flex a flexagon, which rearrange the leaves in unexpected ways,
+flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
+
+The best way to learn new flexes is on the *minimal flexagon* that supports the flex.
+This means that the flexagon has exactly the minimum structure necessary to perform the flex.
+On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
+
+# Tuck flex
+
+Tuck flex on an equilateral hexaflexagon:
+
+[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:65, end:77, rel:0, modestbranding:1 }` /]
+
+
+# Pyramid shuffle
+
+Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
+
+[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:89, end:117, rel:0, modestbranding:1 }` /]
+
+
+# V-Flex
+
+[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
+
+
+# Flip flex
+
+Flip flex on a bronze octaflexagon and heptaflexagon:
+
+[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:120, end:145, rel:0, modestbranding:1 }` /]
+
+
+# Silver tetra
+
+Silver tetra flex on a silver tetraflexagon, right decaflexagon, and bronze dodecaflexagon:
+
+[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:147, end:176, rel:0, modestbranding:1 }` /]
