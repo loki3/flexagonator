@@ -365,6 +365,9 @@ So far, all the flexagons we've looked at have 6 equilateral triangles per side,
 but there's no need to have exactly 6 per side, nor do we need to stick to equilateral triangles.
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
 However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
+The following video demonstrates what the pinch flex looks like on a silver octaflexagon.
+
+[Youtube id:"6dJxwMXdv88" width:500 height:300 options:`{ start:114, end:158, rel:0, modestbranding:1 }` /]
 
 [var name:'initFlexesN' value:"P*P*" /]
 [var name:'patCountN' value:14 /]
@@ -386,7 +389,7 @@ Try experimenting with using different types of triangles and different numbers 
 
 Switch the type of triangles to an
 [Button onClick:` patCountN=8; anglesN=undefined; runInitN=true `]isosceles octaflexagon[/Button],
-[Button onClick:` patCountN=8; anglesN=[45,45]; runInitN=true `]right octaflexagon[/Button],
+[Button onClick:` patCountN=8; anglesN=[45,45]; runInitN=true `]silver octaflexagon[/Button],
 [Button onClick:` patCountN=10; anglesN=undefined; runInitN=true `]isosceles decaflexagon[/Button],
 [Button onClick:` patCountN=10; anglesN=[36,54]; runInitN=true `]right decaflexagon[/Button],
 [Button onClick:` patCountN=12; anglesN=undefined; runInitN=true `]isosceles dodecaflexagon[/Button], or
