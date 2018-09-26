@@ -47,7 +47,9 @@ Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
   but no bending for most other flexagons.
 [/Aside]
 
-[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:89, end:117, rel:0, modestbranding:1 }` /]
+// TODO: delete [Unfolded/] & uncomment [Youtube/]
+[Unfolded width:500 height:300 numPats:20 generator:'' /]
+// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:89, end:117, rel:0, modestbranding:1 }` /]
 
 [var name:'flexShuffle' value:'Sh+' /]
 [var name:'patsShuffle' value:6 /]
@@ -76,7 +78,9 @@ Tuck flex on an equilateral hexaflexagon:
   but no bending for most other flexagons.
 [/Aside]
 
-[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:65, end:77, rel:0, modestbranding:1 }` /]
+// TODO: delete [Unfolded/] & uncomment [Youtube/]
+[Unfolded width:500 height:300 numPats:20 generator:'' /]
+// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:65, end:77, rel:0, modestbranding:1 }` /]
 
 
 # V-Flex
@@ -87,7 +91,9 @@ The v-flex on an equilateral hexaflexagon:
   The *v-flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
 [/Aside]
 
-[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
+// TODO: delete [Unfolded/] & uncomment [Youtube/]
+[Unfolded width:500 height:300 numPats:20 generator:'' /]
+// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
 
 
 # Flip flex
@@ -100,7 +106,9 @@ Flip flex on a bronze octaflexagon and heptaflexagon:
   but not on an equilateral hexaflexagon.
 [/Aside]
 
-[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:120, end:145, rel:0, modestbranding:1 }` /]
+// TODO: delete [Unfolded/] & uncomment [Youtube/]
+[Unfolded width:500 height:300 numPats:20 generator:'' /]
+// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:120, end:145, rel:0, modestbranding:1 }` /]
 
 
 # Silver tetra
@@ -112,4 +120,6 @@ Silver tetra flex on a silver tetraflexagon, right decaflexagon, and bronze dode
   It works best on right flexagons, though it works on others with enough triangles per side.
 [/Aside]
 
-[Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:147, end:176, rel:0, modestbranding:1 }` /]
+// TODO: delete [Unfolded/] & uncomment [Youtube/]
+[Unfolded width:500 height:300 numPats:20 generator:'' /]
+// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:147, end:176, rel:0, modestbranding:1 }` /]
