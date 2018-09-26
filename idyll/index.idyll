@@ -17,16 +17,17 @@ The best way to learn new flexes is on the *minimal flexagon* that supports the 
 This means that the flexagon has exactly the minimum structure necessary to perform the flex.
 On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
 
+On this page, Greek prefixes are used to reflect the number of leaves per side, e.g. *hexaflexagon* for 6 triangles per side.
+Names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
+
 [Aside]
-Names are often proceeded by a word that describes the shape of the triangle:
-* equilateral: all sides equal
-* silver: 45-45-90 triangle
-* bronze: 30-60-90 triangle
-* right: one angle is 90 degrees
-* isosceles: two sides are equal (the default)
+  The original naming reflected this approach, e.g. *hexaflexagon* and *tetraflexagon*.
+  But you'll also occasionally see the prefix being used to describe the *polygon* used in the flexagon,
+  e.g. *pentaflexagon* to indicate that the leaves are *pentagons*.
+  My preference is to use *pentaflexagon* to mean 5 leaves per face and *pentagon flexagon* to indicate pentagonal leaves.
 [/Aside]
 
-On this page, Greek prefixes are used to reflect the number of leaves per side:
+[Float position:'left']
 * 4: tetraflexagon
 * 5: pentaflexagon
 * 6: hexaflexagon
@@ -35,7 +36,17 @@ On this page, Greek prefixes are used to reflect the number of leaves per side:
 * 9: enneaflexagon
 * 10: decaflexagon
 * 12: dodecaflexagon
+[/Float]
 
+[Float position:'right']
+* equilateral: all sides equal
+* silver: 45-45-90 triangle
+* bronze: 30-60-90 triangle
+* right: one angle is 90 degrees
+* isosceles: two sides are equal (the default)
+
+[br /][br /][br /]
+[/Float]
 
 # Pyramid shuffle
 
