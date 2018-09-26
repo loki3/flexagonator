@@ -6,8 +6,8 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
-[var name:'drawOptions' value:`{structure:true, both:true}`/]
-[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
+[var name:'unfoldedOptions' value:`{content:1}`/]
 
 The previous explorable showed how to use the pinch flex to explore a flexagon.
 But it turns out that there a lots of other ways to flex a flexagon, which rearrange the leaves in unexpected ways,
@@ -57,7 +57,7 @@ Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
 [derived name:'initShuffle' value:`[
   {angles:anglesShuffle},
   {searchFlexes:"Sh Sh'"},
-  {flexAndColor: { flexes: flexShuffle, colors:defaultColors }},
+  {flexes: flexShuffle},
   {reverseFlexes: flexShuffle}
   ]` /]
 [var name:'runInitShuffle' value:false /]
@@ -77,9 +77,16 @@ Here's a variety of different flexagons you can use to try the pyramid shuffle:
 [Button onClick:` patsShuffle=12; anglesShuffle=[30, 60]; runInitShuffle=true; `]right dodecaflexagon[/Button], or
 [Button onClick:` patsShuffle=12; anglesShuffle=[30, 30]; runInitShuffle=true; `]star dodecaflexagon[/Button].
 
-[Flexagon width:500 height:300 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:drawOptions overButton:true /]
+[Aside]
+  Every leaf (triangle) is labled with a unique id.
+  The backside of a leaf is the same as the front, only negative (e.g. 1 and -1).
+  The flexagon to the left shows you where the labels should be after folding, both on the front (the large flexagon) and the back (the small flexagon).
+  If you click the `Sh` button, you can see what the labels will look like after a successful pyramid shuffle.
+[/Aside]
 
-[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle autoLabel:true angles:anglesShuffle /]
+[Flexagon width:600 height:400 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:flexagonOptions /]
+
+[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions /]
 
 
 # Tuck flex
