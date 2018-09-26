@@ -154,6 +154,36 @@ Tuck flex on an equilateral hexaflexagon:
 [Unfolded width:500 height:300 numPats:20 generator:'' /]
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:65, end:77, rel:0, modestbranding:1 }` /]
 
+[var name:'flexTuck' value:'T+' /]
+[var name:'patsTuck' value:6 /]
+[var name:'anglesTuck' value:`undefined` /]
+[derived name:'initTuck' value:`[
+  {angles:anglesTuck},
+  {searchFlexes:"T T' T1 T1' T2 T2' T3 T3' T4 T4' T5 T5' T6 T6'"},
+  {flexes: flexTuck},
+  {reverseFlexes: flexTuck}
+  ]` /]
+[var name:'runInitTuck' value:false /]
+
+Here are some flexagons you can use to try the tuck flex:
+[Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=undefined; runInitTuck=true; `]equilateral hexaflexagon[/Button],
+[Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=[60,30]; runInitTuck=true; `]bronze hexaflexagon #1[/Button],
+[Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=[60,90]; runInitTuck=true; `]bronze hexaflexagon #2[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=7; anglesTuck=undefined; runInitTuck=true; `]heptaflexagon #1[/Button],
+[Button onClick:` flexTuck='T2+'; patsTuck=7; anglesTuck=undefined; runInitTuck=true; `]heptaflexagon #2[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=8; anglesTuck=undefined; runInitTuck=true; `]isosceles octaflexagon[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=8; anglesTuck=[45,90]; runInitTuck=true; `]silver octaflexagon #1[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=8; anglesTuck=[45,45]; runInitTuck=true; `]silver octaflexagon #2[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=10; anglesTuck=undefined; runInitTuck=true; `]isosceles decaflexagon[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=10; anglesTuck=[36, 54]; runInitTuck=true; `]right decaflexagon[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=12; anglesTuck=undefined; runInitTuck=true; `]isosceles dodecaflexagon[/Button],
+[Button onClick:` flexTuck='T1+'; patsTuck=12; anglesTuck=[30, 60]; runInitTuck=true; `]right dodecaflexagon[/Button], or
+[Button onClick:` flexTuck='T1+'; patsTuck=12; anglesTuck=[30, 30]; runInitTuck=true; `]star dodecaflexagon[/Button].
+
+[Flexagon width:600 height:400 numPats:patsTuck initialScript:initTuck runInitial:runInitTuck options:flexagonOptions /]
+
+[Unfolded width:1000 height:500 numPats:patsTuck generator:flexTuck angles:anglesTuck options:unfoldedOptions /]
+
 
 # V-Flex
 
