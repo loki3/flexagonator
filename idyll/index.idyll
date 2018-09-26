@@ -7,17 +7,17 @@
   authorLink:"http://loki3.com/flex" /]
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
-[var name:'unfoldedOptions' value:`{content:1}`/]
+[var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 
 The previous explorable showed how to use the pinch flex to explore a flexagon.
-But it turns out that there a lots of other ways to flex a flexagon, which rearrange the leaves in unexpected ways,
-flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
+But it turns out that there a lots of other ways to flex a flexagon, all of which rearrange the leaves in unexpected ways.
+We'll cover flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
 
 The best way to learn new flexes is on the *minimal flexagon* that supports the flex.
 This means that the flexagon has exactly the minimum structure necessary to perform the flex.
 On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
 
-On this page, Greek prefixes are used to reflect the number of leaves per side, e.g. *hexaflexagon* for 6 triangles per side.
+For flexagon names, Greek prefixes are used to reflect the number of leaves per side, e.g. *hexaflexagon* for 6 triangles per side.
 Names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
 
 [Aside]
@@ -96,6 +96,37 @@ Here are some flexagons you can use to try the pyramid shuffle:
 [/Aside]
 
 [Flexagon width:600 height:400 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:flexagonOptions /]
+
+[var name:"showFoldingHelp" value:false /]
+[Button onClick:` showFoldingHelp = !showFoldingHelp `]How do I fold this?[/Button]
+[Conditional if:` showFoldingHelp `]
+  These instructions apply to all the triangle strips on this page.
+
+  **Cut:**
+  Start by printing out the strip and cutting along the outside edges.
+
+  **Prefold:**
+  After you've cut out the shape, fold and unfold along every dashed line to prepare it.
+  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges everything is folded.
+
+  **Number:**
+  The large number on each triangle represents the number on the *front* of the triangle, while the smaller number next to it represents the number on the *back*.
+  Copy the smaller number in the center of each triangle onto its backside.
+  The small numbers in the corners represent the leaf's unique id, which corresponds to what's showing in the flexagon simulator above.
+
+  **Fold:**
+  Find the largest pairs of adjacent numbers and fold those numbers together.
+  Then find the next largest pairs of adjacent numbers and fold them together.
+  Continue in this way until the only numbers still visible are the 1's and the 2's.
+
+  **Tape:**
+  You should now have a polygon consisting of the appropriate number of triangles, e.g. 6 for a hexaflexagon, 7 for a heptaflexagon, etc.
+  Tape the edges of the first and last triangles together to complete the flexagon.
+
+  **Flex:**
+  The *'s on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current vertex*.
+  This is where the flex should be performed from.
+[/Conditional]
 
 [Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions /]
 
