@@ -21,10 +21,10 @@ On this page, Greek prefixes are used to reflect the number of leaves per side, 
 Names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
 
 [Aside]
-  The original naming reflected this approach, e.g. *hexaflexagon* and *tetraflexagon*.
-  But you'll also occasionally see the prefix being used to describe the *polygon* used in the flexagon,
+  The original naming reflected this approach, e.g. *hexaflexagon* for 6 triangles and *tetraflexagon* for 4 squares.
+  But you'll also occasionally see the prefix used to describe the *polygon* used in the flexagon,
   e.g. *pentaflexagon* to indicate that the leaves are *pentagons*.
-  My preference is to use *pentaflexagon* to mean 5 leaves per face and *pentagon flexagon* to indicate pentagonal leaves.
+  My preference is to use *pentaflexagon* to mean 5 leaves per face and *pentagon flexagon* to mean pentagonal leaves.
 [/Aside]
 
 [Float position:'left']
@@ -73,7 +73,7 @@ Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
   ]` /]
 [var name:'runInitShuffle' value:false /]
 
-Here's a variety of different flexagons you can use to try the pyramid shuffle:
+Here are some flexagons you can use to try the pyramid shuffle:
 [Button onClick:` patsShuffle=5; anglesShuffle=undefined; runInitShuffle=true; `]pentaflexagon[/Button],
 [Button onClick:` patsShuffle=6; anglesShuffle=undefined; runInitShuffle=true; `]equilateral hexaflexagon[/Button],
 [Button onClick:` patsShuffle=6; anglesShuffle=[60,30]; runInitShuffle=true; `]bronze hexaflexagon #1[/Button],
@@ -98,6 +98,46 @@ Here's a variety of different flexagons you can use to try the pyramid shuffle:
 [Flexagon width:600 height:400 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:flexagonOptions /]
 
 [Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions /]
+
+
+# Flip flex
+
+Flip flex on a bronze octaflexagon and heptaflexagon:
+
+[Aside]
+  The *flip flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
+  It works well on right triangle flexagons.
+  Isosceles triangle flexagons require at least 7 sides, however.
+[/Aside]
+
+// TODO: delete [Unfolded/] & uncomment [Youtube/]
+[Unfolded width:500 height:300 numPats:20 generator:'' /]
+// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:120, end:145, rel:0, modestbranding:1 }` /]
+
+[var name:'flexFlip' value:'F+' /]
+[var name:'patsFlip' value:6 /]
+[var name:'anglesFlip' value:`[60,90]` /]
+[derived name:'initFlip' value:`[
+  {angles:anglesFlip},
+  {searchFlexes:"F F'"},
+  {flexes: flexFlip},
+  {reverseFlexes: flexFlip}
+  ]` /]
+[var name:'runInitFlip' value:false /]
+
+Here are some flexagons you can use to try the flip flex:
+[Button onClick:` patsFlip=6; anglesFlip=[60,90]; runInitFlip=true; `]bronze hexaflexagon[/Button],
+[Button onClick:` patsFlip=7; anglesFlip=undefined; runInitFlip=true; `]heptaflexagon[/Button],
+[Button onClick:` patsFlip=8; anglesFlip=undefined; runInitFlip=true; `]isosceles octaflexagon[/Button],
+[Button onClick:` patsFlip=8; anglesFlip=[45,90]; runInitFlip=true; `]silver octaflexagon[/Button],
+[Button onClick:` patsFlip=10; anglesFlip=undefined; runInitFlip=true; `]isosceles decaflexagon[/Button],
+[Button onClick:` patsFlip=10; anglesFlip=[36, 90]; runInitFlip=true; `]right decaflexagon[/Button],
+[Button onClick:` patsFlip=12; anglesFlip=undefined; runInitFlip=true; `]isosceles dodecaflexagon[/Button], or
+[Button onClick:` patsFlip=12; anglesFlip=[30, 90]; runInitFlip=true; `]right dodecaflexagon[/Button].
+
+[Flexagon width:600 height:400 numPats:patsFlip initialScript:initFlip runInitial:runInitFlip options:flexagonOptions /]
+
+[Unfolded width:1000 height:500 numPats:patsFlip generator:flexFlip angles:anglesFlip options:unfoldedOptions /]
 
 
 # Tuck flex
@@ -126,21 +166,6 @@ The v-flex on an equilateral hexaflexagon:
 // TODO: delete [Unfolded/] & uncomment [Youtube/]
 [Unfolded width:500 height:300 numPats:20 generator:'' /]
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
-
-
-# Flip flex
-
-Flip flex on a bronze octaflexagon and heptaflexagon:
-
-[Aside]
-  The *flip flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
-  It works well on a bronze hexaflexagon (one made from right triangles),
-  but not on an equilateral hexaflexagon.
-[/Aside]
-
-// TODO: delete [Unfolded/] & uncomment [Youtube/]
-[Unfolded width:500 height:300 numPats:20 generator:'' /]
-// [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:120, end:145, rel:0, modestbranding:1 }` /]
 
 
 # Silver tetra
