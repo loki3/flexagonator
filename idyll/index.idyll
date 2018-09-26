@@ -167,6 +167,21 @@ The v-flex on an equilateral hexaflexagon:
 [Unfolded width:500 height:300 numPats:20 generator:'' /]
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
 
+[var name:'flexV' value:'V+' /]
+[var name:'patsV' value:6 /]
+[var name:'anglesV' value:`undefined ` /]
+[derived name:'initV' value:`[
+  {angles:anglesV},
+  {searchFlexes:"V V'"},
+  {flexes: flexV},
+  {reverseFlexes: flexV}
+  ]` /]
+[var name:'runInitV' value:false /]
+
+[Flexagon width:600 height:400 numPats:patsV initialScript:initV runInitial:runInitV options:flexagonOptions /]
+
+[Unfolded width:1000 height:400 numPats:patsV generator:flexV angles:anglesV options:unfoldedOptions /]
+
 
 # Silver tetra
 
@@ -175,8 +190,36 @@ Silver tetra flex on a silver tetraflexagon, right decaflexagon, and bronze dode
 [Aside]
   The *silver tetra flex* requires at least 4 leaves per side (i.e. a tetraflexagon).
   It works best on right flexagons, though it works on others with enough triangles per side.
+
+  It gets its name from the fact that the simplest flexagon it works on is the *silver tetraflexagon*.
 [/Aside]
 
 // TODO: delete [Unfolded/] & uncomment [Youtube/]
 [Unfolded width:500 height:300 numPats:20 generator:'' /]
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:147, end:176, rel:0, modestbranding:1 }` /]
+
+[var name:'flexSilverTetra' value:'St+' /]
+[var name:'patsSilverTetra' value:6 /]
+[var name:'anglesSilverTetra' value:`[60,90]` /]
+[derived name:'initSilverTetra' value:`[
+  {angles:anglesSilverTetra},
+  {searchFlexes:"St St'"},
+  {flexes: flexSilverTetra},
+  {reverseFlexes: flexSilverTetra}
+  ]` /]
+[var name:'runInitSilverTetra' value:false /]
+
+Here are some flexagons you can use to try the silver tetra flex:
+[Button onClick:` patsSilverTetra=4; anglesSilverTetra=undefined; runInitSilverTetra=true; `]silver tetraflexagon[/Button],
+[Button onClick:` patsSilverTetra=6; anglesSilverTetra=[60,90]; runInitSilverTetra=true; `]bronze hexaflexagon[/Button],
+[Button onClick:` patsSilverTetra=7; anglesSilverTetra=undefined; runInitSilverTetra=true; `]heptaflexagon[/Button],
+[Button onClick:` patsSilverTetra=8; anglesSilverTetra=undefined; runInitSilverTetra=true; `]isosceles octaflexagon[/Button],
+[Button onClick:` patsSilverTetra=8; anglesSilverTetra=[45,90]; runInitSilverTetra=true; `]silver octaflexagon[/Button],
+[Button onClick:` patsSilverTetra=10; anglesSilverTetra=undefined; runInitSilverTetra=true; `]isosceles decaflexagon[/Button],
+[Button onClick:` patsSilverTetra=10; anglesSilverTetra=[36, 90]; runInitSilverTetra=true; `]right decaflexagon[/Button],
+[Button onClick:` patsSilverTetra=12; anglesSilverTetra=undefined; runInitSilverTetra=true; `]isosceles dodecaflexagon[/Button], or
+[Button onClick:` patsSilverTetra=12; anglesSilverTetra=[30, 90]; runInitSilverTetra=true; `]right dodecaflexagon[/Button].
+
+[Flexagon width:600 height:400 numPats:patsSilverTetra initialScript:initSilverTetra runInitial:runInitSilverTetra options:flexagonOptions /]
+
+[Unfolded width:1000 height:500 numPats:patsSilverTetra generator:flexSilverTetra angles:anglesSilverTetra options:unfoldedOptions /]

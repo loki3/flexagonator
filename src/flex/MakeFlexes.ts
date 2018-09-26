@@ -18,7 +18,7 @@ namespace Flexagonator {
         flexes["Sh"] = createPyramidShuffle(patCount);
       if (patCount >= 6)
         flexes["F"] = createFlip(patCount);
-      if (patCount >= 6)
+      if (patCount >= 4)
         flexes["St"] = createSilverTetra(patCount);
       if (patCount == 8 || patCount == 10 || patCount == 12)
         flexes["Tw"] = createTwist(patCount);
