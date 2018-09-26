@@ -23,7 +23,7 @@ Names are often proceeded by a word that describes the shape of the triangle:
 * silver: 45-45-90 triangle
 * bronze: 30-60-90 triangle
 * right: one angle is 90 degrees
-* isosceles: two sides are equal
+* isosceles: two sides are equal (the default)
 [/Aside]
 
 On this page, Greek prefixes are used to reflect the number of leaves per side:
@@ -53,19 +53,33 @@ Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
 
 [var name:'flexShuffle' value:'Sh+' /]
 [var name:'patsShuffle' value:6 /]
+[var name:'anglesShuffle' value:`undefined` /]
 [derived name:'initShuffle' value:`[
+  {angles:anglesShuffle},
   {searchFlexes:"Sh Sh'"},
   {flexAndColor: { flexes: flexShuffle, colors:defaultColors }},
   {reverseFlexes: flexShuffle}
   ]` /]
 [var name:'runInitShuffle' value:false /]
-[var name:'scriptShuffle' value:'' /]
-[var name:'runScriptShuffle' value:false /]
 
-[Flexagon width:500 height:300 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle
-  runScript:runScriptShuffle script:scriptShuffle options:drawOptions overButton:true /]
+Here's a variety of different flexagons you can use to try the pyramid shuffle:
+[Button onClick:` patsShuffle=5; anglesShuffle=undefined; runInitShuffle=true; `]pentaflexagon[/Button],
+[Button onClick:` patsShuffle=6; anglesShuffle=undefined; runInitShuffle=true; `]equilateral hexaflexagon[/Button],
+[Button onClick:` patsShuffle=6; anglesShuffle=[60,30]; runInitShuffle=true; `]bronze hexaflexagon #1[/Button],
+[Button onClick:` patsShuffle=6; anglesShuffle=[60,90]; runInitShuffle=true; `]bronze hexaflexagon #2[/Button],
+[Button onClick:` patsShuffle=7; anglesShuffle=undefined; runInitShuffle=true; `]heptaflexagon[/Button],
+[Button onClick:` patsShuffle=8; anglesShuffle=undefined; runInitShuffle=true; `]isosceles octaflexagon[/Button],
+[Button onClick:` patsShuffle=8; anglesShuffle=[45,90]; runInitShuffle=true; `]silver octaflexagon #1[/Button],
+[Button onClick:` patsShuffle=8; anglesShuffle=[45,45]; runInitShuffle=true; `]silver octaflexagon #2[/Button],
+[Button onClick:` patsShuffle=10; anglesShuffle=undefined; runInitShuffle=true; `]isosceles decaflexagon[/Button],
+[Button onClick:` patsShuffle=10; anglesShuffle=[36, 54]; runInitShuffle=true; `]right decaflexagon[/Button],
+[Button onClick:` patsShuffle=12; anglesShuffle=undefined; runInitShuffle=true; `]isosceles dodecaflexagon[/Button],
+[Button onClick:` patsShuffle=12; anglesShuffle=[30, 60]; runInitShuffle=true; `]right dodecaflexagon[/Button], or
+[Button onClick:` patsShuffle=12; anglesShuffle=[30, 30]; runInitShuffle=true; `]star dodecaflexagon[/Button].
 
-[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle autoLabel:true /]
+[Flexagon width:500 height:300 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:drawOptions overButton:true /]
+
+[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle autoLabel:true angles:anglesShuffle /]
 
 
 # Tuck flex
