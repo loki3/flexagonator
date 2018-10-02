@@ -133,7 +133,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
 
 # Flip flex
 
-Flip flex on a bronze octaflexagon and heptaflexagon:
+Step through the images to see a flip flex on a silver octaflexagon:
 
 [Aside]
   The *flip flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
@@ -141,8 +141,8 @@ Flip flex on a bronze octaflexagon and heptaflexagon:
   Isosceles triangle flexagons require at least 7 sides, however.
 [/Aside]
 
-// TODO: delete [Unfolded/] & uncomment [Youtube/]
-[Unfolded width:500 height:300 numPats:20 generator:'' /]
+[Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
+// Video shows flip flex on a silver octaflexagon and heptaflexagon:
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:120, end:145, rel:0, modestbranding:1 }` /]
 
 [var name:'flexFlip' value:'F+' /]
