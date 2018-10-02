@@ -50,7 +50,7 @@ Names are often proceeded by a word that describes the shape of the triangle, e.
 
 # Pyramid shuffle
 
-Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
+Step through the images to see the pyramid shuffle on an equilateral hexaflexagon:
 
 [Aside]
   The *pyramid shuffle* requires at least 5 leaves per side (i.e. a pentaflexagon).
@@ -58,8 +58,8 @@ Pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
   but no bending for most other flexagons.
 [/Aside]
 
-// TODO: delete [Unfolded/] & uncomment [Youtube/]
-[Unfolded width:500 height:300 numPats:20 generator:'' /]
+[Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
+// Video shows pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:89, end:117, rel:0, modestbranding:1 }` /]
 
 [var name:'flexShuffle' value:'Sh+' /]
