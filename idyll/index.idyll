@@ -218,14 +218,14 @@ Here are some flexagons you can use to try the tuck flex:
 
 # V-Flex
 
-The v-flex on an equilateral hexaflexagon:
+Step through the images to see the v-flex on an equilateral hexaflexagon:
 
 [Aside]
   The *v-flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
 [/Aside]
 
-// TODO: delete [Unfolded/] & uncomment [Youtube/]
-[Unfolded width:500 height:300 numPats:20 generator:'' /]
+[Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
+// Video shows the v-flex on an equilateral hexaflexagon
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
 
 [var name:'flexV' value:'V+' /]
