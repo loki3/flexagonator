@@ -51,14 +51,16 @@ class Slides extends React.Component {
   render() {
     const { width, height, pattern } = this.props;
     const file = pattern.replace('*', this.state.current);
+    const disableBack = (this.state.current <= this.props.start);
+    const disableFore = (this.state.current >= this.props.end);
     return (
       <div style={{ position: 'relative', width: width, height: height }}>
         <img src={file} width={width} height={height} />
         <div style={{ position: 'absolute', left: '0px', top: '0px' }}>
-          <button onClick={this.stepFirst}>&lt;&lt;</button>
-          <button onClick={this.stepPrevious}>&lt;</button>
-          <button onClick={this.stepNext}>&gt;</button>
-          <button onClick={this.stepLast}>&gt;&gt;</button>
+          <button disabled={disableBack} onClick={this.stepFirst}>&lt;&lt;</button>
+          <button disabled={disableBack} onClick={this.stepPrevious}>&lt;</button>
+          <button disabled={disableFore} onClick={this.stepNext}>&gt;</button>
+          <button disabled={disableFore} onClick={this.stepLast}>&gt;&gt;</button>
         </div>
       </div >
     );
