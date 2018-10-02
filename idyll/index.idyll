@@ -246,7 +246,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
 
 # Silver tetra
 
-Silver tetra flex on a silver tetraflexagon, right decaflexagon, and bronze dodecaflexagon:
+Step through the images to see a silver tetra flex on a right decaflexagon:
 
 [Aside]
   The *silver tetra flex* requires at least 4 leaves per side (i.e. a tetraflexagon).
@@ -255,8 +255,8 @@ Silver tetra flex on a silver tetraflexagon, right decaflexagon, and bronze dode
   It gets its name from the fact that the simplest flexagon it works on is the *silver tetraflexagon*.
 [/Aside]
 
-// TODO: delete [Unfolded/] & uncomment [Youtube/]
-[Unfolded width:500 height:300 numPats:20 generator:'' /]
+[Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
+// Video shows the silver tetra flex on a silver tetraflexagon, right decaflexagon, and bronze dodecaflexagon:
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:147, end:176, rel:0, modestbranding:1 }` /]
 
 [var name:'flexSilverTetra' value:'St+' /]
