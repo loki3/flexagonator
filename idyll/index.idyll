@@ -9,19 +9,25 @@
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
 [var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 
-The previous explorable showed how to use the pinch flex to explore a flexagon.
-But it turns out that there a lots of other ways to flex a flexagon, all of which rearrange the leaves in unexpected ways.
-We'll cover flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
+[Aside]
+  [img src:'static/F/F5.jpg' width:120 /]   [img src:'static/F/F16.jpg' width:120 /]
+  [img src:'static/Sh/Sh5.jpg' width:120 /] [img src:'static/St/St6.jpg' width:120 /]
+  [img src:'static/T/T5.jpg' width:120 /]   [img src:'static/v/v7.jpg' width:120 /]
+[/Aside]
+
+The previous explorable showed how to use the *pinch flex* to explore a flexagon.
+But there a lots of other ways to flex a flexagon, all of which rearrange the leaves in different ways.
+On this page, we'll cover flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
 
 The best way to learn new flexes is on the *minimal flexagon* that supports the flex.
-This means that the flexagon has exactly the minimum structure necessary to perform the flex.
+This refers to the flexagon that has exactly the minimum structure necessary to perform a given flex.
 On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
 
-For flexagon names, Greek prefixes are used to reflect the number of leaves per side, e.g. *hexaflexagon* for 6 triangles per side.
-Names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
+For flexagon names, Greek prefixes are used to reflect the number of leaves per side, e.g. *hexaflexagon* indicates there are 6 triangles per side.
+Additionally, these names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
 
 [Aside]
-  The original naming reflected this approach, e.g. *hexaflexagon* for 6 triangles and *tetraflexagon* for 4 squares.
+  The early naming for flexagons reflected this approach, e.g. *hexaflexagon* for 6 triangles per side and *tetraflexagon* for 4 squares per side.
   But you'll also occasionally see the prefix used to describe the *polygon* used in the flexagon,
   e.g. *pentaflexagon* to indicate that the leaves are *pentagons*.
   My preference is to use *pentaflexagon* to mean 5 leaves per face and *pentagon flexagon* to mean pentagonal leaves.
@@ -53,7 +59,7 @@ Names are often proceeded by a word that describes the shape of the triangle, e.
 Step through the images to see the pyramid shuffle on an equilateral hexaflexagon:
 
 [Aside]
-  The *pyramid shuffle* requires at least 5 leaves per side (i.e. a pentaflexagon).
+  The *pyramid shuffle* requires at least 5 leaves per side (i.e. a pentaflexagon or greater).
   It requires mild bending of the leaves on the pentaflexagon,
   but no bending for most other flexagons.
 [/Aside]
@@ -90,7 +96,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
 
 [Aside]
   Every leaf (triangle) is labled with a unique id.
-  The backside of a leaf is the same as the front, only negative (e.g. 1 and -1).
+  The backside of a leaf has the same id as the front, only negative (e.g. 1 and -1).
   The flexagon to the left shows you where the labels should be after folding, both on the front (the large flexagon) and the back (the small flexagon).
   If you click the `Sh` button, you can see what the labels will look like after a successful pyramid shuffle.
 [/Aside]
@@ -112,7 +118,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
   **Number:**
   The large number on each triangle represents the number on the *front* of the triangle, while the smaller number next to it represents the number on the *back*.
   Copy the smaller number in the center of each triangle onto its backside.
-  The small numbers in the corners represent the leaf's unique id, which corresponds to what's showing in the flexagon simulator above.
+  Note that the small numbers in the corners represent the leaf's unique id, which corresponds to what's showing in the flexagon simulator above.
 
   **Fold:**
   Find the largest pair of adjacent numbers and fold those numbers together.
@@ -124,7 +130,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
   Tape the edges of the first and last triangles together to complete the flexagon.
 
   **Flex:**
-  The *'s on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current vertex*.
+  The *'s on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current vertex*,
   This is where the flex should be performed from.
 [/Conditional]
 
@@ -195,6 +201,17 @@ Step through the images to see a tuck flex on an equilateral hexaflexagon:
   {reverseFlexes: flexTuck}
   ]` /]
 [var name:'runInitTuck' value:false /]
+
+[Aside]
+  The tuck flex is different than the other flexes on this page in that it requires an additional opening in the flexagon
+  in order to allow enough freedom to perform the flex.
+  On the hexaflexagon, this can only happen in one place.
+  On the heptaflexagon and above, however, there are multiple ways you can add this additional opening.
+  That's why there are multiple variants for some of them, e.g. the two heptaflexagons.
+
+  There are two bronze hexaflexagon variants because there are two distinct places you could potentially perform a tuck flex:
+  at a point or at the vertex in the middle of an edge.
+[/Aside]
 
 Here are some flexagons you can use to try the tuck flex:
 [Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=undefined; runInitTuck=true; `]equilateral hexaflexagon[/Button],
