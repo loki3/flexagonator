@@ -301,3 +301,17 @@ Here are some flexagons you can use to try the silver tetra flex:
 [Flexagon width:600 height:400 numPats:patsSilverTetra initialScript:initSilverTetra runInitial:runInitSilverTetra options:flexagonOptions /]
 
 [Unfolded width:1000 height:500 numPats:patsSilverTetra generator:flexSilverTetra angles:anglesSilverTetra options:unfoldedOptions /]
+
+
+# What next?
+
+That was a quick tour of some of the many flexes that are possible, on a variety of different flexagons.
+A lot of them work on the standard hexaflexagons, rearranging them in far more ways that just the pinch flex alone,
+e.g. on the [5-sided pentaflexagon](http://loki3.com/flex/diagram/penta-hexa.html).
+Or these flexes can be used to make an interesting [puzzle](http://loki3.com/flex/maze/tridodeca-paths.html) or [maze](http://loki3.com/flex/maze/ennea-maze.html).
+
+You can find many other flexes and flexagons at [loki3.com](http://loki3.com/flex/).
+
+[FullWidth]
+  [img src:'static/flexagon-variety.jpg' /]
+[/FullWidth]
