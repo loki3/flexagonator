@@ -1,8 +1,8 @@
-[meta title:"Flexes" description:"Various flexagon flexes" /]
+[meta title:"Flexing flexagons" description:"Various flexagon flexes" /]
 
 [Header
-  title:"Flexing"
-  subtitle:"Various flexagon flexes"
+  title:"Flexing flexagons"
+  subtitle:"A short tour of different ways to flex a flexagon"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
@@ -23,7 +23,7 @@ The best way to learn new flexes is on the *minimal flexagon* that supports the 
 This refers to the flexagon that has exactly the minimum structure necessary to perform a given flex.
 On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
 
-For flexagon names, Greek prefixes are used to reflect the number of leaves per side, e.g. *hexaflexagon* indicates there are 6 triangles per side.
+For flexagon names, Greek prefixes are used to reflect the number of polygons per side, e.g. *hexaflexagon* indicates there are 6 triangles per side.
 Additionally, these names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
 
 [Aside]
