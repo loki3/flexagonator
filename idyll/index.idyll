@@ -6,6 +6,10 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
+[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
+[var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
+
+
 The [first chapter](pinch-flex.html) introduced flexagons and the pinch flex,
 describing how to use the Tuckerman Traverse to explore every side.
 The [second chapter](flexing.html) showed a variety of flexes and flexagons,
@@ -58,3 +62,25 @@ by adding either a `*` or `+` to a flex symbol.
 while `+` means that you add the structure without performing the flex.
 Thus, the 3-sided hexaflexagon has a generating sequence of `P*` or `P+`.
 The difference isn't important when it's just a single flex, but it becomes more important when there are a series of flexes.
+
+So let's look again at the minimal hexaflexagon for various flexes.
+Pick a button to see the folded flexagon with its structure (represented by `-`, `[- -]`, `[[- -] -]`, etc.)
+followed by the unfolded strip.
+
+[var name:'generator' value:'>' /]
+[derived name:'initial' value:`[
+  {searchFlexes:"F F' P Sh Sh' St St' T T' V V'"},
+  {flexes: generator}
+  ]` /]
+[var name:'runInitial' value:false /]
+
+[Button onClick:` generator='F+'; runInitial=true; `]F+[/Button],
+[Button onClick:` generator='P+'; runInitial=true; `]P+[/Button],
+[Button onClick:` generator='Sh+'; runInitial=true; `]Sh+[/Button],
+[Button onClick:` generator='St+'; runInitial=true; `]St+[/Button],
+[Button onClick:` generator='T+'; runInitial=true; `]T+[/Button],
+[Button onClick:` generator='V+'; runInitial=true; `]V+[/Button].
+
+[Flexagon width:600 height:360 numPats:6 initialScript:initial runInitial:runInitial options:flexagonOptions overButton:true /]
+
+[Unfolded width:1000 height:500 numPats:6 generator:generator options:unfoldedOptions /]
