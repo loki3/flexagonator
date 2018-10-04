@@ -11,8 +11,11 @@ describing how to use the Tuckerman Traverse to explore every side.
 The [second chapter](flexing.html) showed a variety of flexes and flexagons,
 demonstrating that there isn't always a concept of well-defined "sides" on a flexagon.
 
-This chapter will show how you can use sequences of flexes to custom design flexagons.
 A *generating sequence* is a sequence of flexes used to create the internal structure of a flexagon.
+This chapter will show how you can use generating sequences to custom design flexagons.
+
+
+# Flex notation
 
 Recall the *flex notation* that has been used to describe a series of flexes relative to the *current vertex*.
 Here's what we've defined so far:
@@ -29,5 +32,29 @@ Here's what we've defined so far:
 
 Additionally, you can add a `'` after a flex symbol to indicate that the flex should be done in reverse, e.g. `P'` or `Sh'`.
 These symbols can be strung together to describe a series of flexes, e.g. `P>>T'^<Sh`.
-Typically, the inverse of a flex is the same as turning the flexagon over,
-performing the flex, then turning it back over, e.g. `St' = ^St^`.
+
+
+# Generating structure
+
+[Aside]
+    [Flexagon width:170 height:170 numPats:6 options:`{showIds: false}` /]
+[/Aside]
+
+When the previous chapter showed the *minimal flexagon* for a given flex,
+it was using a simple *generating sequence* in order to create the flexagon.
+
+Consider starting with a hexagon.
+You can think of this as a degenerate flexagon, one that can't be flexed at all.
+What's the minimal amount of structure necessary to add to allow you to perform a pinch flex?
+
+The answer is that every other *pat* (i.e. stack of triangles in the folded flexagon) needs to have exactly two leaves in it.
+This gives you the 9-triangle straight strip that folds into the 3-sided hexaflexagon.
+
+[Unfolded width:800 height:150 numPats:6 generator:'P+' autoLabel:true /]
+
+You can express the concept of creating exactly the structure necessary to perform a flex
+by adding either a `*` or `+` to a flex symbol.
+`*` means that you add the structure and perform the flex,
+while `+` means that you add the structure without performing the flex.
+Thus, the 3-sided hexaflexagon has a generating sequence of `P*` or `P+`.
+The difference isn't important when it's just a single flex, but it becomes more important when there are a series of flexes.
