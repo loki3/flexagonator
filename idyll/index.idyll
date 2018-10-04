@@ -1,0 +1,33 @@
+[meta title:"Generating sequences" description:"Creating flexagons with flex sequences" /]
+
+[Header
+  title:"Generating sequences"
+  subtitle:"Creating flexagons with flex sequences"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+The [first chapter](pinch-flex.html) introduced flexagons and the pinch flex,
+describing how to use the Tuckerman Traverse to explore every side.
+The [second chapter](flexing.html) showed a variety of flexes and flexagons,
+demonstrating that there isn't always a concept of well-defined "sides" on a flexagon.
+
+This chapter will show how you can use sequences of flexes to custom design flexagons.
+A *generating sequence* is a sequence of flexes used to create the internal structure of a flexagon.
+
+Recall the *flex notation* that has been used to describe a series of flexes relative to the *current vertex*.
+Here's what we've defined so far:
+
+* `>` : shift the current vertex one vertex clockwise
+* `<` : shift the current vertex one vertex counterclockwise
+* `^` : turn the flexagon over, keeping the same current vertex
+* `F` : perform a flip flex
+* `P` : perform a pinch flex
+* `Sh` : perform a pyramid shuffle
+* `St` : perform a silver tetra flex
+* `T` : perform a tuck flex
+* `V` : perform a v-flex
+
+Additionally, you can add a `'` after a flex symbol to indicate that the flex should be done in reverse, e.g. `P'` or `Sh'`.
+These symbols can be strung together to describe a series of flexes, e.g. `P>>T'^<Sh`.
+Typically, the inverse of a flex is the same as turning the flexagon over,
+performing the flex, then turning it back over, e.g. `St' = ^St^`.
