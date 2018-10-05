@@ -166,12 +166,12 @@ Here are the diagrams for all the different 8-sided flexagons:
 
 # General generating sequences
 
-This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed.
+This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed on lots of different triangle flexagons.
 Type in a sequence and explore the resulting flexagon, both the simulated version and a real one to cut out and assemble.
 Note that not all flexes are available on all flexagons.
 
-[var name:'tempGenerator' value:'Sh*>T*' /]
-[var name:'fullGenerator' value:'Sh*>T*' /]
+[var name:'tempGenerator' value:'St*>>St*' /]
+[var name:'fullGenerator' value:'St*>>St*' /]
 [var name:'fullPats' value:6 /]
 [var name:'fullAngles' value:`undefined` /]
 [derived name:'fullInit' value:`[
@@ -180,6 +180,22 @@ Note that not all flexes are available on all flexagons.
   {reverseFlexes: fullGenerator}
   ]` /]
 [var name:'runFullInit' value:false /]
+
+[Aside]
+[Button onClick:` fullPats=4; fullAngles=[60,60]; runFullInit=true; `]equilateral tetraflexagon[/Button] [br/]
+[Button onClick:` fullPats=4; fullAngles=[90,45]; runFullInit=true; `]silver tetraflexagon[/Button] [br/]
+[Button onClick:` fullPats=5; fullAngles=undefined; runFullInit=true; `]pentaflexagon[/Button] [br/]
+[Button onClick:` fullPats=6; fullAngles=undefined; runFullInit=true; `]equilateral hexaflexagon[/Button] [br/]
+[Button onClick:` fullPats=6; fullAngles=[60,30]; runFullInit=true; `]bronze hexaflexagon[/Button] [br/]
+[Button onClick:` fullPats=7; fullAngles=undefined; runFullInit=true; `]heptaflexagon[/Button] [br/]
+[Button onClick:` fullPats=8; fullAngles=undefined; runFullInit=true; `]isosceles octaflexagon[/Button] [br/]
+[Button onClick:` fullPats=8; fullAngles=[45,90]; runFullInit=true; `]silver octaflexagon[/Button] [br/]
+[Button onClick:` fullPats=10; fullAngles=undefined; runFullInit=true; `]isosceles decaflexagon[/Button] [br/]
+[Button onClick:` fullPats=10; fullAngles=[36, 54]; runFullInit=true; `]right decaflexagon[/Button] [br/]
+[Button onClick:` fullPats=12; fullAngles=undefined; runFullInit=true; `]isosceles dodecaflexagon[/Button] [br/]
+[Button onClick:` fullPats=12; fullAngles=[30, 60]; runFullInit=true; `]right dodecaflexagon[/Button] [br/]
+[Button onClick:` fullPats=12; fullAngles=[30, 30]; runFullInit=true; `]star dodecaflexagon[/Button]
+[/Aside]
 
 Generating sequence: [TextInput value:tempGenerator /]
 [Button onClick:` fullGenerator=tempGenerator; runFullInit=true; `]apply[/Button]
