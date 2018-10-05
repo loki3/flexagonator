@@ -145,7 +145,7 @@ Generating sequence: [TextInput value:pinchGenerator /]
 
 [PinchGraph width:500 height:200 generator:pinchGenerator flexes:pinchGenerator /]
 
-Here are the diagrams for the 8-sided flexagons:
+Here are the diagrams for all the different 8-sided flexagons:
 
 [FullWidth]
   [PinchGraph width:230 height:200 generator:'(P*^>)6' flexes:'' /]
@@ -162,3 +162,29 @@ Here are the diagrams for the 8-sided flexagons:
   [PinchGraph width:230 height:200 generator:'(P*) x 4 ^ > (P*) x 2' flexes:'' /]
   [PinchGraph width:280 height:200 generator:'(P*)6' flexes:'' /]
 [/FullWidth]
+
+
+# General generating sequences
+
+This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed.
+Type in a sequence and explore the resulting flexagon, both the simulated version and a real one to cut out and assemble.
+Note that not all flexes are available on all flexagons.
+
+[var name:'tempGenerator' value:'Sh*>T*' /]
+[var name:'fullGenerator' value:'Sh*>T*' /]
+[var name:'fullPats' value:6 /]
+[var name:'fullAngles' value:`undefined` /]
+[derived name:'fullInit' value:`[
+  {angles:fullAngles},
+  {flexes: fullGenerator},
+  {reverseFlexes: fullGenerator}
+  ]` /]
+[var name:'runFullInit' value:false /]
+
+Generating sequence: [TextInput value:tempGenerator /]
+[Button onClick:` fullGenerator=tempGenerator; runFullInit=true; `]apply[/Button]
+
+[Flexagon width:600 height:360 numPats:fullPats initialScript:fullInit runInitial:runFullInit options:flexagonOptions overButton:true /]
+
+Unfolded strip:
+[Unfolded width:1000 height:500 numPats:fullPats generator:fullGenerator angles:fullAngles options:unfoldedOptions /]
