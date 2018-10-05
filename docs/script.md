@@ -130,7 +130,7 @@ Use the `flexAndColor` command to have it automatically label and color new face
 
 It starts by labeling the top and bottom of the initial state with 1's on the front and 2's on the back.
 If colors are specified, it uses the first color for the front and the second for the back.
-From there on, whenver new leaves are created because of a generating flex (e.g. `P*` or `Sh+`),
+From there on, whenever new leaves are created because of a generating flex (e.g. `P*` or `Sh+`),
 it will label any freshly created leaves with the next number and apply the next color,
 if there are still more in the color array.
 
