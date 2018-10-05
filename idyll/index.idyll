@@ -136,3 +136,29 @@ Below are the state diagrams for all the 5, 6, and 7-sided flexagons.
   [PinchGraph width:270 height:200 generator:'P* P* P* ^ > P* P*' flexes:'' /]
   [PinchGraph width:320 height:200 generator:'(P*)5' flexes:'' /]
 [/FullWidth]
+
+Try creating each of those diagrams by typing in a generating sequence by using any of `>`, `<`, `^`, `P`, `P*`, and `P+`.
+What's the shortest sequence for each diagram?
+
+[var name:"pinchGenerator" value:"P*P*" /]
+Generating sequence: [TextInput value:pinchGenerator /]
+
+[PinchGraph width:500 height:200 generator:pinchGenerator flexes:pinchGenerator /]
+
+Here are the diagrams for the 8-sided flexagons:
+
+[FullWidth]
+  [PinchGraph width:230 height:200 generator:'(P*^>)6' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'P* P* P* P+ > P P* P*' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'P*P*P*>P*P*P+>P*P*' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'(P*) x 3 (^ > P*) x 3' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'(P*) x 3 ^ > (P*) x 3' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'P* P* ^>P* P+ <P* P* P*' flexes:'' /]
+  [br /]
+  [PinchGraph width:230 height:200 generator:'P* ^>P* P+ >P ^>P* P+ >P ^>P*' flexes:'' /]
+  [PinchGraph width:110 height:200 generator:'P* ^>P* ^>P* P* ^>P* ^>P*' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'P* P* ^>P* P+ >P ^>P* P*' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'P* P* P* P* P+ > P P*' flexes:'' /]
+  [PinchGraph width:230 height:200 generator:'(P*) x 4 ^ > (P*) x 2' flexes:'' /]
+  [PinchGraph width:280 height:200 generator:'(P*)6' flexes:'' /]
+[/FullWidth]
