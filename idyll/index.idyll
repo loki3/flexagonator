@@ -49,7 +49,7 @@ it was using a simple *generating sequence* in order to create the flexagon.
 
 Consider starting with a hexagon.
 You can think of this as a degenerate flexagon, one that can't be flexed at all.
-What's the minimal amount of structure necessary to add to allow you to perform a pinch flex?
+What's the minimal amount of structure necessary you need to add to allow you to perform a pinch flex?
 
 The answer is that every other *pat* (i.e. stack of triangles in the folded flexagon) needs to have exactly two leaves in it.
 This gives you the 9-triangle straight strip that folds into the 3-sided hexaflexagon.
@@ -63,21 +63,19 @@ while `+` means that you add the structure without performing the flex.
 Thus, the 3-sided hexaflexagon has a generating sequence of `P*` or `P+`.
 The difference isn't important when it's just a single flex, but it becomes more important when there are a series of flexes.
 
-So let's look again at the minimal hexaflexagon for various flexes.
-Pick a button to see the folded flexagon with its structure (represented by `-`, `[- -]`, `[[- -] -]`, etc.)
-followed by the unfolded strip.
+So let's look again at the minimal hexaflexagon for some of the flexes.
+Pick a button with a generating sequence on it to see the resulting folded flexagon with its structure
+(represented by `-`, `[- -]`, `[[- -] -]`, etc.), followed by the unfolded strip.
 
 [var name:'generator' value:'>' /]
 [derived name:'initial' value:`[
-  {searchFlexes:"F F' P Sh Sh' St St' T T' V V'"},
+  {searchFlexes:"P Sh Sh' T T' V V'"},
   {flexes: generator}
   ]` /]
 [var name:'runInitial' value:false /]
 
-[Button onClick:` generator='F+'; runInitial=true; `]F+[/Button],
 [Button onClick:` generator='P+'; runInitial=true; `]P+[/Button],
 [Button onClick:` generator='Sh+'; runInitial=true; `]Sh+[/Button],
-[Button onClick:` generator='St+'; runInitial=true; `]St+[/Button],
 [Button onClick:` generator='T+'; runInitial=true; `]T+[/Button],
 [Button onClick:` generator='V+'; runInitial=true; `]V+[/Button].
 
