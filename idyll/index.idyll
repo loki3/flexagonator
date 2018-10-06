@@ -1,0 +1,11 @@
+[meta title:"Interactive flexagons" description:"A tutorial for learning about flexagons" /]
+
+[Header
+  title:"Interactive flexagons"
+  subtitle:"A tutorial for learning about flexagons"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+* [Chapter 1: ](pinch-flex.html) **Flexagon Intro** *Exploring the hidden sides of hexaflexagons*
+* [Chapter 2: ](flexing.html) **Flexing flexagons** *A short tour of different ways to flex a flexagon*
+* [Chapter 3: ](generators.html) **Generating sequences** *Creating flexagons with flex sequences*
