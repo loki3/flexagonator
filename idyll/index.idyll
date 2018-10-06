@@ -174,6 +174,7 @@ Note that not all flexes are available on all flexagons.
 [var name:'fullGenerator' value:'St*>>St*' /]
 [var name:'fullPats' value:6 /]
 [var name:'fullAngles' value:`undefined` /]
+[var name:'fullError' value:`undefined` /]
 [derived name:'fullInit' value:`[
   {angles:fullAngles},
   {flexes: fullGenerator},
@@ -198,9 +199,9 @@ Note that not all flexes are available on all flexagons.
 [/Aside]
 
 Generating sequence: [TextInput value:tempGenerator /]
-[Button onClick:` fullGenerator=tempGenerator; runFullInit=true; `]apply[/Button]
+[Button onClick:` fullGenerator=tempGenerator; runFullInit=true; `]apply[/Button]  [Display value:fullError /]
 
-[Flexagon width:600 height:360 numPats:fullPats initialScript:fullInit runInitial:runFullInit options:flexagonOptions overButton:true /]
+[Flexagon width:600 height:360 numPats:fullPats initialScript:fullInit runInitial:runFullInit options:flexagonOptions overButton:true error:fullError /]
 
 Unfolded strip:
 [Unfolded width:1000 height:500 numPats:fullPats generator:fullGenerator angles:fullAngles options:unfoldedOptions /]

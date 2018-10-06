@@ -28,8 +28,13 @@ class PinchGraph extends React.Component {
       fm = Flexagonator.runScript(fm, [{ flexes: generator }, { reverseFlexes: generator }]);
     }
 
-    const traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
-    Flexagonator.drawPinchGraph(this.refs.canvas, { traverse: traverse, flexes: flexes, drawEnds: true });
+    if (!Flexagonator.isError(fm)) {
+      const traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
+      Flexagonator.drawPinchGraph(this.refs.canvas, { traverse: traverse, flexes: flexes, drawEnds: true });
+    }
+  }
+
+  showError() {
   }
 
   render() {

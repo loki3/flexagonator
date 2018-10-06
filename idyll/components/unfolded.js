@@ -57,7 +57,9 @@ class Unfolded extends React.Component {
       fm = Flexagonator.runScriptItem(fm, { flexes: generator });
     }
 
-    Flexagonator.drawUnfolded(this.refs.canvas, fm, options);
+    if (!Flexagonator.isError(fm)) {
+      Flexagonator.drawUnfolded(this.refs.canvas, fm, options);
+    }
   }
 
   render() {

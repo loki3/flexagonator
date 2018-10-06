@@ -83,6 +83,7 @@ const FlexButtons = (props) => {
  *  width         width of canvas to draw in
  *  height        height of canvas to draw in
  *  history       a read-only property reflecting all the flexes applied to the flexagon
+ *  error         a read-only property indicating an error when processing a script
  * }
  * state {
  *  fm            current FlexagonManager encapsulating Flexagon, History, etc.
@@ -132,7 +133,10 @@ class Flexagon extends React.Component {
   applyScript(script) {
     var fm = Flexagonator.runScript(this.state.fm, script);
     if (Flexagonator.isFlexError(fm)) {
+      this.props.updateProps({ error: 'error in flex sequence' });
       return null;
+    } else {
+      this.props.updateProps({ error: undefined });
     }
     Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, this.props.options);
     this.updateHistoryProps(fm);
