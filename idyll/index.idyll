@@ -8,6 +8,7 @@
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
 [var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 
 
 The [first chapter](pinch-flex.html) introduced flexagons and the pinch flex,
@@ -166,7 +167,12 @@ Here are the diagrams for all the different 8-sided flexagons:
 
 # General generating sequences
 
-This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed on lots of different triangle flexagons.
+[Aside]
+  (It attempts to color in empty triangles after each flex in the generating sequence to make it more obvious how flexes are rearranging the leaves.)
+[/Aside]
+
+This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed.
+And you can try them on lots of different triangle flexagons.
 Type in a sequence and explore the resulting flexagon, both the simulated version and a real one to cut out and assemble.
 Note that not all flexes are available on all flexagons.
 
@@ -176,8 +182,9 @@ Note that not all flexes are available on all flexagons.
 [var name:'fullAngles' value:`undefined` /]
 [var name:'fullError' value:`undefined` /]
 [derived name:'fullInit' value:`[
+  {searchFlexes:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V"},
   {angles:fullAngles},
-  {flexes: fullGenerator},
+  {flexAndColor: { flexes: fullGenerator, colors: defaultColors }},
   {reverseFlexes: fullGenerator}
   ]` /]
 [var name:'runFullInit' value:false /]
