@@ -212,3 +212,20 @@ Generating sequence: [TextInput value:tempGenerator /]
 
 Unfolded strip:
 [Unfolded width:1000 height:500 numPats:fullPats generator:fullGenerator angles:fullAngles options:unfoldedOptions /]
+
+
+# What next?
+
+That last section should give you lots to experiment with.
+Being able to switch between a wide variety of triangle flexagons and type in arbitrary flex sequences could keep you occupied for a long time.
+Even fairly simple flexagons can have a huge number of states when you apply several types of flexes to it.
+How many states are there in a given flexagon?
+Can you reach them all?
+Can you figure out how to get back to where you started?
+Can you find new flexes that open up even more possibilities?
+
+If you want even more options, take a look at [loki3.com](http://loki3.com/flex/).
+
+[FullWidth]
+  [img src:'static/flexagon-variety.jpg' /]
+[/FullWidth]
