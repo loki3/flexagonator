@@ -55,10 +55,16 @@ namespace Flexagonator {
       switch (flex.flexName) {
         case 'P':
           track.trackP();
+          if (!flex.shouldApply) {
+            track.trackPInverse();
+          }
           break;
 
         case "P'":
           track.trackPInverse();
+          if (!flex.shouldApply) {
+            track.trackP();
+          }
           break;
 
         case '^':

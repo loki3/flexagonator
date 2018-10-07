@@ -58,6 +58,19 @@ namespace Flexagonator {
         expect(pointsAreEqual(result[5], { x: 2, y: 0 })).toBeTruthy();
       }
     })
+
+    it('handles P+', () => {
+      const result = createRawPinchGraph("PP+P");
+      expect(isFlexError(result)).toBeFalsy();
+      if (!isFlexError(result)) {
+        expect(result.length).toBe(5);
+        expect(pointsAreEqual(result[0], { x: 0, y: 0 })).toBeTruthy();
+        expect(pointsAreEqual(result[1], { x: 1, y: 0 })).toBeTruthy();
+        expect(pointsAreEqual(result[2], { x: 2, y: 0 })).toBeTruthy();
+        expect(pointsAreEqual(result[3], { x: 1, y: 0 })).toBeTruthy();
+        expect(pointsAreEqual(result[4], { x: 2, y: 0 })).toBeTruthy();
+      }
+    })
   });
 
 }
