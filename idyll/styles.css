@@ -1,0 +1,12 @@
+
+div.heading {
+  font-size: 22px;
+  font-weight: bold;
+  color: #183691;
+}
+
+div.subname {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 15px;
+}

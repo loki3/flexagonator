@@ -6,6 +6,29 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
-* [Chapter 1: ](pinch-flex.html) **Flexagon Intro** *Exploring the hidden sides of hexaflexagons*
-* [Chapter 2: ](flexing.html) **Flexing flexagons** *A short tour of different ways to flex a flexagon*
-* [Chapter 3: ](generators.html) **Generating sequences** *Creating flexagons with flex sequences*
+[hr /]
+
+[a href:'pinch-flex.html']
+  [div class:'heading'] Chapter 1: Flexagon Intro [/div]
+  [div class:'subname'] Exploring the hidden sides of hexaflexagons [/div]
+[/a]
+
+And some further explanation.
+
+[hr /]
+
+[a href:'flexing.html']
+  [div class:'heading'] Chapter 2: Flexing flexagons [/div]
+  [div class:'subname'] A short tour of different ways to flex a flexagon [/div]
+[/a]
+
+And some further explanation.
+
+[hr /]
+
+[a href:'generators.html']
+  [div class:'heading'] Chapter 3: Generating sequences [/div]
+  [div class:'subname'] Creating flexagons with flex sequences [/div]
+[/a]
+
+And some further explanation.
