@@ -32,7 +32,7 @@ Here's what we've defined so far:
 * `P` : perform a pinch flex
 * `Sh` : perform a pyramid shuffle
 * `St` : perform a silver tetra flex
-* `T` : perform a tuck flex
+* `T` : perform a tuck flex; also `T1`, `T2`, etc. to specify additional, required structure
 * `V` : perform a v-flex
 
 Additionally, you can add a `'` after a flex symbol to indicate that the flex should be done in reverse, e.g. `P'` or `Sh'`.
@@ -62,7 +62,7 @@ by adding either a `*` or `+` to a flex symbol.
 `*` means that you add the structure and perform the flex,
 while `+` means that you add the structure without performing the flex.
 Thus, the 3-sided hexaflexagon has a generating sequence of `P*` or `P+`.
-The difference isn't important when it's just a single flex, but it becomes more important when there are a series of flexes.
+The difference isn't important when it's just a single flex, but becomes more important when there are a series of flexes.
 
 So let's look again at the minimal hexaflexagon for some of the flexes.
 Pick a button with a generating sequence on it to see the resulting folded flexagon with its structure
@@ -89,18 +89,18 @@ Pick a button with a generating sequence on it to see the resulting folded flexa
 
 Let's now do something a bit more interesting:
 try to figure out generating sequences that can give us the 4, 5, 6, 7, and 8 sided flexagons from
-the [flexagon intro](http://loki3.com/flex/explore/pinch-flex.html) page.
+the [flexagon intro](http://loki3.com/flex/explore/pinch-flex.html) chapter.
 
 [Aside]
   [img src:'static/pinch-direction.png' /]
 [/Aside]
 
 First, let's get a feel for how different flexes travel around the pinch flex state diagram that we saw in that chapter.
-Let's say we've done a pinch flex, taking us from the green circle in the diagram on the right to the red circle.
+Let's say we've done a pinch flex, taking us from the green circle in the adjacent diagram to the red circle.
 
 We can now step in one of three directions, depending on what we do next:
 
-* If we do another pinch flex (`P`) in the same place, it'll take us another step to the right.
+* If we do another pinch flex (`P`) at the same corner, it'll take us another step to the right.
 * If we instead shift the current vertex one to the right before doing a pinch flex (`>P`), we'll take a step down to the left.
 * If we turn over the flexagon, shift one vertex to the right, and then do a pinch flex (`^>P`), it takes us up and to the right.
 
@@ -108,20 +108,20 @@ The one other thing to know is that once you travel along a *single* edge of a t
 all the structure necessary to allow you to pinch flex along any of the other edges of that triangle must be present.
 
 Put those facts together, and that means that applying the generating sequence `P*P*` will create exactly those two triangles in the above diagram.
-You could also use `P*^>P*` to accomplish the same thing.
-Since this is the state diagram for the 4-sided flexagon, either of those generating sequences can be used to create it.
+Alternately, you could use `P*^>P*` to accomplish the same thing.
+Since we've been looking at the state diagram for the 4-sided flexagon, either of those generating sequences can be used to create it.
 
 [Aside]
   [PinchGraph width:400 height:200 generator:'P*P*P*^>P*P*' flexes:'P*P*P*^>P*P*' /]
 [/Aside]
 
 I'll give you one more example before letting you try on your own.
-The diagram to the right is for 7-sided variant C flexagon.
-The generating sequence `P*P*P*^>P*P*` can be used to create it, though there are other possibilities as well.
-The diagram shows the path that sequence takes through the diagram, starting at the green circle and ending at the red circle.
+The diagram to the right is for the 7-sided variant C flexagon.
+The blue line shows the track that the flex sequence `P*P*P*^>P*P*` takes through the diagram, starting at the green circle and ending at the red circle.
+Since it covers one edge of every triangle, it's one possible generating sequence for that flexagon.
 
 You should now know enough to be able to figure out your own generating sequences by looking at a pinch flex diagram.
-Below are the state diagrams for all the 5, 6, and 7-sided flexagons.
+Below are the state diagrams for all of the 5, 6, and 7-sided flexagons.
 
 [FullWidth]
   [PinchGraph width:230 height:200 generator:'(P*)3' flexes:'' /]
@@ -146,7 +146,7 @@ Generating sequence: [TextInput value:pinchGenerator /]
 
 [PinchGraph width:500 height:200 generator:pinchGenerator flexes:pinchGenerator /]
 
-Here are the diagrams for all the different 8-sided flexagons:
+If you would like to try more, here are the pinch flex diagrams for all of the 8-sided flexagons:
 
 [FullWidth]
   [PinchGraph width:230 height:200 generator:'(P*^>)6' flexes:'' /]
@@ -168,12 +168,13 @@ Here are the diagrams for all the different 8-sided flexagons:
 # General generating sequences
 
 [Aside]
-  (It attempts to color in empty triangles after each flex in the generating sequence to make it more obvious how flexes are rearranging the leaves.)
+  (The simulator attempts to color in empty triangles after each flex in the generating sequence to make it more obvious how flexes are rearranging the leaves.)
 [/Aside]
 
 This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed.
 And you can try them on lots of different triangle flexagons.
-Type in a sequence and explore the resulting flexagon, both the simulated version and a real one to cut out and assemble.
+Type in a sequence and explore the resulting flexagon, both the simulated version and a real one,
+by cutting out and assembling the unfolded strips below.
 Note that not all flexes are available on all flexagons.
 
 [var name:'tempGenerator' value:'St*>>St*' /]

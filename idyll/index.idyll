@@ -1,15 +1,20 @@
 [meta title:"Interactive flexagons" description:"A tutorial for learning about flexagons" /]
 
 [Header
-  title:"Interactive flexagons"
-  subtitle:"A tutorial for learning about flexagons"
+  title:"Interactive Flexagons"
+  subtitle:"Learn to create and flex flexagons"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
 [hr /]
 
+[Preload images:`['static/F/F2.jpg', 'static/F/F3.jpg', 'static/F/F4.jpg', 'static/F/F5.jpg', 'static/F/F6.jpg',
+  'static/F/F7.jpg', 'static/F/F8.jpg', 'static/F/F9.jpg', 'static/F/F10.jpg', 'static/F/F11.jpg',
+  'static/F/F12.jpg', 'static/F/F13.jpg', 'static/F/F14.jpg', 'static/F/F15.jpg', 'static/F/F16.jpg']` /]
+
 [Aside]
   [img src:'static/pinch-flex.jpg' /]
+  [br /][br /]
   [PinchGraph width:300 height:100 generator:'(P*)5' flexes:'P*P*^>P*' /]
 [/Aside]
 
@@ -18,12 +23,12 @@
   [div className:'subname'] Exploring the hidden sides of hexaflexagons [/div]
 [/a]
 
-* Introduces the hexaflexagon, with 6 equilateral triangles per side, and the pinch flex, which reveals previously hidden sides
+* Introduces the *hexaflexagon*, with 6 equilateral triangles per side, and the *pinch flex*, a way of folding a flexagon to reveal previously hidden sides
+* Let's you explore how to visit every side of a flexagon
 * Describes *flex notation*, which can be used to precisely describe a sequence of flexes
-* Let's you try to figure out for yourself how to visit every side of a flexagon
-* Introduces the Tuckerman Traverse as a technique for visiting every side of a flexagon using the pinch flex
-* Gives both a flexagon simulation and the unfolded strip for all hexaflexagons with 3, 4, 5, 6, 7, and 8 sides
-* Finishes up by showing flexagons made up of different shapes of triangles, like 45-45-90 and 30-60-90, and different numbers of triangles per side, like 4, 8, 10, or 12
+* Introduces the *Tuckerman Traverse* as a technique for visiting every side of a flexagon using the pinch flex
+* Provides both a flexagon simulation and the unfolded strip for all hexaflexagons with 3, 4, 5, 6, 7, and 8 sides so you can make your own
+* Shows flexagons made up of different shapes of triangles, like using angles of 30-60-90 or 54-54-72, and different numbers of triangles per side, like 4, 8, 10, or 12
 
 
 [hr /]
@@ -33,13 +38,13 @@
 [/Aside]
 
 [a href:'flexing.html']
-  [div className:'heading'] Chapter 2: Flexing flexagons [/div]
+  [div className:'heading'] Chapter 2: Flexing Flexagons [/div]
   [div className:'subname'] A short tour of different ways to flex a flexagon [/div]
 [/a]
 
-* Gives a naming convention for different triangle flexagons, like *pentaflexagon* and *silver octaflexagon*
-* Defines *minimal flexagon* as the simplest flexagon that supports a given flex
-* Demonstrates a sampling of some of the interesting flexes on triangle flexagons: the pyramid shuffle, flip flex, tuck flex, v-flex, and silver tetra flex
+* Describes a naming convention for a wide variety of triangle flexagons, like *pentaflexagon* and *silver octaflexagon*
+* Defines a *minimal flexagon* as the simplest flexagon that supports a given flex
+* Demonstrates a sampling of interesting flexes on triangle flexagons: the pyramid shuffle, flip flex, tuck flex, v-flex, and silver tetra flex
 * Shows that once you generalize the types of flexes you use, the concept of "sides" of a flexagon is no longer sufficient for understanding all the states you can explore
 
 [hr /]
@@ -59,14 +64,14 @@
 [/Aside]
 
 [a href:'generators.html']
-  [div className:'heading'] Chapter 3: Generating sequences [/div]
+  [div className:'heading'] Chapter 3: Generating Sequences [/div]
   [div className:'subname'] Creating flexagons with flex sequences [/div]
 [/a]
 
-* Summarizes the *flex notation* that has been introduced for describing sequences of flexes
+* Summarizes the *flex notation* that was previously introduced for describing sequences of flexes
 * Defines a *generating sequence* as a sequence of flexes used to create the structure necessary for performing them on a given flexagon
 * Shows how different flexes move you around a pinch flex diagram
-* Gives you a tool for typing in generating sequences to see what pinch flex diagram is generated
+* Gives you an interactive tool for typing in generating sequences to see what pinch flex diagram is generated
 * Allows you to type in generating sequences consisting of any of the flexes introduced so far on a wide variety of triangle flexagons, giving you the unfolded strip that can be used to construct a working flexagon
 
 [hr /]

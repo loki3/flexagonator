@@ -1,4 +1,4 @@
-[meta title:"Interactive Flexagon" description:"Using the Tuckerman Traverse to explore the hidden faces of a hexaflexagon" /]
+[meta title:"Flexagon Intro" description:"Using the Tuckerman Traverse to explore the hidden faces of a hexaflexagon" /]
 
 [Header
   title:"Flexagon Intro"
@@ -55,10 +55,10 @@ to learn their history and see what folding and flexing looks like...
   ]` /]
 [var name:'history3' value:'' /]
 
-We'll start with the simple 3-sided hexaflexagon (AKA *trihexaflexagon*).
+We'll start with the simple 3-sided hexaflexagon (or *trihexaflexagon*).
 The hexagon below has numbers and colors on each triangle, which change as you perform a flex.
 `P` is the *flex notation* for a *pinch flex*.
-The clickable buttons below that are labeled with a `P` indicate the corners where you can perform a pinch flex.
+The clickable buttons below labeled with a `P` indicate the corners where you can perform a pinch flex.
 Since a pinch flex involves doing a mountain-valley fold alternating every other vertex,
 the exact same pinch flex can be achieved by picking corner 1, 3, or 5 (numbered around the hexagon).
 `^` is the flex notation for turning the flexagon over, which is also represented with a button in the figure below.
@@ -86,6 +86,7 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
 [Conditional if:` showFoldingHelp `]
   These instructions apply to all the triangle strips on this page.
+  You might want to start by right-clicking on the image and picking 'Save Image' in order to view the strip separately from the rest of the page.
 
   **Cut:**
   Start by printing out the strip and cutting along the outside edges.
@@ -126,7 +127,7 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
   or [Button onClick:` script4 = {history: 'undo'}; runScript4 = true `]undo[/Button] to undo the last flex.
 [/Aside]
 
-Next is the 4-sided hexaflexagon.
+Next is the 4-sided hexaflexagon (or tetrahexaflexagon).
 After your first pinch flex, you find yourself in the middle of the diagram to the right, with multiple paths you can take.
 What happens when you try pinch flexing at different corners?
 How can you visit every point in the diagram in the fewest number of flexes?
@@ -145,7 +146,7 @@ This describes the internal structure of each *pat*, or stack of triangles.
 `-` indicates that there's only a single leaf in the pat, while `[- -]` indicates two leaves folded against each other in a pat.
 Three leaves can be arranged either as `[[- -] -]` or `[- [- -]]`.
 If you flex a real flexagon while you flex the simulation, you can start to get a feel for what this represents.
-And if you put a unique number on every leaf, you can use those numbers instead of the dashes to make this description more explicit.
+And if you put a unique number on every leaf, you can use this notation to describe where each leaf is as you flex your flexagon.
 
 [Unfolded width:1000 height:250 numPats:defaultPats generator:'P*P*' autoLabel:true /]
 
@@ -206,7 +207,7 @@ Recall from earlier that `^` indicates turning over the flexagon while keeping t
 [var name:'runInit6' value:false /]
 [var name:'script6' value:'' /]
 
-There are three different ways to make a 6-sided hexaflexagon, each made from different triangle strips with different traversals.
+There are three different ways to make a 6-sided hexaflexagon (or hexahexaflexagon), each made from different triangle strips with different traversals.
 Try applying the same pattern you used for exploring every side of the 4 and 5-sided hexaflexagons to see if it works for the 6-sided variants.
 Click on
 [Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runInit6=true; `]A[/Button],
