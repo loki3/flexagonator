@@ -9,6 +9,22 @@
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
 [var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 
+[Preload images:`['static/F/F2.jpg', 'static/F/F3.jpg', 'static/F/F4.jpg', 'static/F/F5.jpg', 'static/F/F6.jpg',
+  'static/F/F7.jpg', 'static/F/F8.jpg', 'static/F/F9.jpg', 'static/F/F10.jpg', 'static/F/F11.jpg',
+  'static/F/F12.jpg', 'static/F/F13.jpg', 'static/F/F14.jpg', 'static/F/F15.jpg', 'static/F/F16.jpg']` /]
+[Preload images:`['static/Sh/Sh2.jpg', 'static/Sh/Sh3.jpg', 'static/Sh/Sh4.jpg', 'static/Sh/Sh5.jpg', 'static/Sh/Sh6.jpg',
+  'static/Sh/Sh7.jpg', 'static/Sh/Sh8.jpg', 'static/Sh/Sh9.jpg', 'static/Sh/Sh10.jpg', 'static/Sh/Sh11.jpg',
+  'static/Sh/Sh12.jpg', 'static/Sh/Sh13.jpg', 'static/Sh/Sh14.jpg', 'static/Sh/Sh15.jpg', 'static/Sh/Sh16.jpg', 'static/Sh/Sh17.jpg']` /]
+[Preload images:`['static/T/T2.jpg', 'static/T/T3.jpg', 'static/T/T4.jpg', 'static/T/T5.jpg', 'static/T/T6.jpg',
+  'static/T/T7.jpg', 'static/T/T8.jpg', 'static/T/T9.jpg', 'static/T/T10.jpg', 'static/T/T11.jpg',
+  'static/T/T12.jpg', 'static/T/T13.jpg', 'static/T/T14.jpg']` /]
+[Preload images:`['static/V/V2.jpg', 'static/V/V3.jpg', 'static/V/V4.jpg', 'static/V/V5.jpg', 'static/V/V6.jpg',
+  'static/V/V7.jpg', 'static/V/V8.jpg', 'static/V/V9.jpg', 'static/V/V10.jpg', 'static/V/V11.jpg',
+  'static/V/V12.jpg', 'static/V/V13.jpg']` /]
+[Preload images:`['static/St/St2.jpg', 'static/St/St3.jpg', 'static/St/St4.jpg', 'static/St/St5.jpg', 'static/St/St6.jpg',
+  'static/St/St7.jpg', 'static/St/St8.jpg', 'static/St/St9.jpg', 'static/St/St10.jpg', 'static/St/St11.jpg',
+  'static/St/St12.jpg', 'static/St/St13.jpg', 'static/St/St14.jpg', 'static/St/St15.jpg']` /]
+
 [Aside]
   [img src:'static/F/F5.jpg' width:120 /]   [img src:'static/F/F16.jpg' width:120 /]
   [img src:'static/Sh/Sh5.jpg' width:120 /] [img src:'static/St/St6.jpg' width:120 /]
