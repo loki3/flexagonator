@@ -1,7 +1,7 @@
-[meta title:"Generating sequences" description:"Creating flexagons with flex sequences" /]
+[meta title:"Generating Sequences" description:"Creating flexagons with flex sequences" /]
 
 [Header
-  title:"Generating sequences"
+  title:"Generating Sequences"
   subtitle:"Creating flexagons with flex sequences"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
@@ -16,8 +16,8 @@ describing how to use the Tuckerman Traverse to explore every side.
 The [second chapter](flexing.html) showed a variety of flexes and flexagons,
 demonstrating that there isn't always a concept of well-defined "sides" on a flexagon.
 
+This chapter will show how you can use *generating sequences* to custom design flexagons.
 A *generating sequence* is a sequence of flexes used to create the internal structure of a flexagon.
-This chapter will show how you can use generating sequences to custom design flexagons.
 
 
 # Flex notation
@@ -154,12 +154,13 @@ If you would like to try more, here are the pinch flex diagrams for all of the 8
   [PinchGraph width:230 height:200 generator:'P*P*P*>P*P*P+>P*P*' flexes:'' /]
   [PinchGraph width:230 height:200 generator:'(P*) x 3 (^ > P*) x 3' flexes:'' /]
   [PinchGraph width:230 height:200 generator:'(P*) x 3 ^ > (P*) x 3' flexes:'' /]
-  [PinchGraph width:230 height:200 generator:'P* P* ^>P* P+ <P* P* P*' flexes:'' /]
   [br /]
+  [PinchGraph width:230 height:200 generator:'P* P* ^>P* P+ <P* P* P*' flexes:'' /]
   [PinchGraph width:230 height:200 generator:'P* ^>P* P+ >P ^>P* P+ >P ^>P*' flexes:'' /]
   [PinchGraph width:110 height:200 generator:'P* ^>P* ^>P* P* ^>P* ^>P*' flexes:'' /]
   [PinchGraph width:230 height:200 generator:'P* P* ^>P* P+ >P ^>P* P*' flexes:'' /]
   [PinchGraph width:230 height:200 generator:'P* P* P* P* P+ > P P*' flexes:'' /]
+  [br /]
   [PinchGraph width:230 height:200 generator:'(P*) x 4 ^ > (P*) x 2' flexes:'' /]
   [PinchGraph width:280 height:200 generator:'(P*)6' flexes:'' /]
 [/FullWidth]
@@ -225,8 +226,10 @@ Can you reach them all?
 Can you figure out how to get back to where you started?
 Can you find new flexes that open up even more possibilities?
 
-If you want even more options, take a look at [loki3.com](http://loki3.com/flex/).
+Return to the [Table of Contents](index.html).
 
 [FullWidth]
+  [a href:'http://loki3.com/flex/' ]
   [img src:'static/flexagon-variety.jpg' /]
+  [/a]
 [/FullWidth]

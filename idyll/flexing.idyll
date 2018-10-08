@@ -1,7 +1,7 @@
-[meta title:"Flexing flexagons" description:"Various flexagon flexes" /]
+[meta title:"Flexing Flexagons" description:"Various flexagon flexes" /]
 
 [Header
-  title:"Flexing flexagons"
+  title:"Flexing Flexagons"
   subtitle:"A short tour of different ways to flex a flexagon"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
@@ -31,7 +31,7 @@
   [img src:'static/T/T5.jpg' width:120 /]   [img src:'static/V/V7.jpg' width:120 /]
 [/Aside]
 
-The previous explorable showed how to use the *pinch flex* to explore a flexagon.
+The [previous chapter](pinch-flex.html) showed how to use the *pinch flex* to explore a flexagon.
 But there a lots of other ways to flex a flexagon, all of which rearrange the leaves in different ways.
 On this page, we'll cover flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
 
@@ -343,8 +343,10 @@ A lot of them work on standard hexaflexagons, rearranging the leaves in far more
 e.g. on the [5-sided hexaflexagon](http://loki3.com/flex/diagram/penta-hexa.html).
 Or these flexes can be used to make an interesting [puzzle](http://loki3.com/flex/maze/tridodeca-paths.html) or [maze](http://loki3.com/flex/maze/ennea-maze.html).
 
-You can find many other flexes and flexagons at [loki3.com](http://loki3.com/flex/).
+View the next chapter, [Generating Sequences](generators.html), or look at the [Table of Contents](index.html).
 
 [FullWidth]
+  [a href:'http://loki3.com/flex/' ]
   [img src:'static/flexagon-variety.jpg' /]
+  [/a]
 [/FullWidth]
