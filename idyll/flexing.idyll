@@ -154,11 +154,11 @@ Here are some flexagons you can use to try the pyramid shuffle:
   Tape the edges of the first and last triangles together to complete the flexagon.
 
   **Flex:**
-  The *'s on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current vertex*,
+  The Sh's on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current vertex*,
   This is where the flex should be performed from.
 [/Conditional]
 
-[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions /]
+[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions endText:'Sh' /]
 
 
 # Flip flex
@@ -200,7 +200,7 @@ Here are some flexagons you can use to try the flip flex:
 
 [Flexagon width:600 height:400 numPats:patsFlip initialScript:initFlip runInitial:runInitFlip options:flexagonOptions /]
 
-[Unfolded width:1000 height:500 numPats:patsFlip generator:flexFlip angles:anglesFlip options:unfoldedOptions /]
+[Unfolded width:1000 height:500 numPats:patsFlip generator:flexFlip angles:anglesFlip options:unfoldedOptions endText:'F' /]
 
 
 # Tuck flex
@@ -259,7 +259,7 @@ Here are some flexagons you can use to try the tuck flex:
 
 [Flexagon width:600 height:400 numPats:patsTuck initialScript:initTuck runInitial:runInitTuck options:flexagonOptions /]
 
-[Unfolded width:1000 height:500 numPats:patsTuck generator:flexTuck angles:anglesTuck options:unfoldedOptions /]
+[Unfolded width:1000 height:500 numPats:patsTuck generator:flexTuck angles:anglesTuck options:unfoldedOptions endText:'T' /]
 
 
 # V-Flex
@@ -289,7 +289,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
 
 [Flexagon width:600 height:400 numPats:patsV initialScript:initV runInitial:runInitV options:flexagonOptions /]
 
-[Unfolded width:1000 height:400 numPats:patsV generator:flexV angles:anglesV options:unfoldedOptions /]
+[Unfolded width:1000 height:400 numPats:patsV generator:flexV angles:anglesV options:unfoldedOptions endText:'V' /]
 
 
 # Silver tetra
@@ -333,7 +333,7 @@ Here are some flexagons you can use to try the silver tetra flex:
 
 [Flexagon width:600 height:400 numPats:patsSilverTetra initialScript:initSilverTetra runInitial:runInitSilverTetra options:flexagonOptions /]
 
-[Unfolded width:1000 height:500 numPats:patsSilverTetra generator:flexSilverTetra angles:anglesSilverTetra options:unfoldedOptions /]
+[Unfolded width:1000 height:500 numPats:patsSilverTetra generator:flexSilverTetra angles:anglesSilverTetra options:unfoldedOptions endText:'St' /]
 
 
 # What next?

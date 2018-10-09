@@ -8,6 +8,7 @@ const React = require('react');
  *  angles      center angle and the angle clockwise from the center, e.g. [30, 60]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
  *  autoLabel   automatically label the sides based on the generating sequence
+ *  endText     text to put at the start & end of the strip
  *  options     options used when drawing (passed to drawUnfolded)
  *  width       width of canvas to draw in
  *  height      height of canvas to draw in
@@ -29,7 +30,7 @@ class Unfolded extends React.Component {
   }
 
   updateCanvas(props) {
-    const { numPats, generator, autoLabel, angles } = props;
+    const { numPats, generator, autoLabel, angles, endText } = props;
     if (!numPats) {
       return;
     }
@@ -55,6 +56,15 @@ class Unfolded extends React.Component {
       options.content = Flexagonator.StripContent.LeafLabels;
     } else {
       fm = Flexagonator.runScriptItem(fm, { flexes: generator });
+    }
+
+    if (endText) {
+      if (!options) {
+        options = {}
+      } else {
+        options = Object.create(options);
+      }
+      options.captions = [{ text: endText, which: 0 }, { text: endText, which: -1 }];
     }
 
     if (!Flexagonator.isError(fm)) {
