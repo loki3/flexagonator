@@ -77,7 +77,8 @@ not when using any of the myriad other possible flexes.
 
 # Pyramid shuffle
 
-Step through the images to see the pyramid shuffle on an equilateral hexaflexagon:
+Step through the images to see the pyramid shuffle on an equilateral hexaflexagon.
+The green circle on the first and last slides indicates where the *current vertex* starts and ends for the flex.
 
 [Aside]
   The flex notation for the pyramid shuffle is `Sh`.
