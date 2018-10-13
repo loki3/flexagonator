@@ -273,10 +273,10 @@ Try out the 7-sided variation
 and 8-sided variation
 [Button onClick:` initFlex7 = '(P*^>)6'; runInit7=true; special7=0; cheight7=500 `]A[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runInit7=true; special7=0; cheight7=500 `]B[/Button],
-[Button onClick:` initFlex7 = 'P*P*P*>P*P*P+>P*P*'; runInit7=true; special7=0; cheight7=500 `]C[/Button],
+[Button onClick:` initFlex7 = 'P*P*^>P*^>P*P+>PP*'; runInit7=true; special7=0; cheight7=500 `]C[/Button],
 [Button onClick:` initFlex7 = '(P*) x 3 (^ > P*) x 3'; runInit7=true; special7=0; cheight7=500 `]D[/Button],
 [Button onClick:` initFlex7 = '(P*) x 3 ^ > (P*) x 3'; runInit7=true; special7=0; cheight7=500 `]E[/Button],
-[Button onClick:` initFlex7 = 'P* P* ^>P* P+ <P* P* P*'; runInit7=true; special7=0; cheight7=500 `]F[/Button],
+[Button onClick:` initFlex7 = 'P* P* ^>P* P+ <P P* P*'; runInit7=true; special7=0; cheight7=500 `]F[/Button],
 [Button onClick:` initFlex7 = 'P* ^>P* P+ >P ^>P* P+ >P ^>P*'; runInit7=true; special7=0; cheight7=500 `]G[/Button],
 [Button onClick:` initFlex7 = 'P* ^>P* ^>P* P* ^>P* ^>P*'; runInit7=true; special7=4; cheight7=1 `]H[/Button],
 [Button onClick:` initFlex7 = 'P* P* ^>P* P+ >P ^>P* P*'; runInit7=true; special7=0; cheight7=500 `]I[/Button],
