@@ -1,0 +1,65 @@
+[meta title:"Pinch Flex Variations" description:"Relatives of the pinch flex on different flexagons" /]
+
+[Header
+  title:"Pinch Flex Variations"
+  subtitle:"Relatives of the pinch flex on different flexagons"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+[Aside]
+  [img src:'static/pinch-flex.jpg' /]
+[/Aside]
+
+As shown in the [Flexagon Intro](pinch-flex.html),
+when you do the standard *pinch flex*, you alternate mountain and valley folds along every corner.
+
+What's interesting is that there's a whole class of flexes that are all similar to the pinch flex,
+except that you vary the pattern of where you do mountain and valley folds.
+So instead of having a mountain fold every other corner,
+you might do a mountain fold every three or four corners.
+
+The biggest difference is that after a single such flex, the flexagon generally doesn't lie
+flat and the triangles won't all meet in the center.
+But if you continue doing a second flex in the same place,
+you'll get back to a flat flexagon where all the triangles meet in the center.
+But that's just a bunch of words.
+Let's see what this actually looks like.
+
+
+# P444
+
+[Aside]
+This flex is represented as `P444` in flex notation.
+Each 4 indicates that from one mountain fold to the next, you skip to the fourth vertex from the previous.
+[/Aside]
+
+The first example is on an *isosceles dodecaflexagon*, doing a mountain fold once every four corners.
+
+[Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
+
+Here's an unfolded strip you can use to create a working dodecaflexagon that supports the P444:
+[Unfolded width:1000 height:400 numPats:12 generator:'P444*' autoLabel:true /]
+
+
+# P334
+
+[Aside]
+This flex is represented as `P334` in flex notation.
+The 3's indicate that from one mountain fold to the next, you skip to the third vertex from the previous.
+The 4 indicates that one of those steps is to the fourth vertex.
+[/Aside]
+
+The next example is on an *isosceles decaflexagon*.
+Here you do a mountain fold, skip to the third vertex, do another mountain fold,
+then skip to the fourth vertex for the final mountain fold.
+
+[Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
+
+Here's an unfolded strip you can use to create a working decaflexagon that supports the `P334`:
+[Unfolded width:1000 height:400 numPats:10 generator:'P334*' autoLabel:true /]
+
+
+# And more
+
+Some other possibilities include `P44` on the octaflexagon, `P333` on the enneaflexagon,
+`P55` on the decaflexagon,  and `P3333` and `P66` on the dodecaflexagon.
