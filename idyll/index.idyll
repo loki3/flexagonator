@@ -6,6 +6,17 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
+[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
+[var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+
+[Preload images:`['static/P4-4-4/2.jpg', 'static/P4-4-4/3.jpg', 'static/P4-4-4/4.jpg', 'static/P4-4-4/5.jpg', 'static/P4-4-4/6.jpg',
+  'static/P4-4-4/7.jpg', 'static/P4-4-4/8.jpg', 'static/P4-4-4/9.jpg', 'static/P4-4-4/10.jpg', 'static/P4-4-4/11.jpg',
+  'static/P4-4-4/12.jpg', 'static/P4-4-4/13.jpg']` /]
+[Preload images:`['static/P3-3-4/2.jpg', 'static/P3-3-4/3.jpg', 'static/P3-3-4/4.jpg', 'static/P3-3-4/5.jpg', 'static/P3-3-4/6.jpg',
+  'static/P3-3-4/7.jpg', 'static/P3-3-4/8.jpg', 'static/P3-3-4/9.jpg', 'static/P3-3-4/10.jpg', 'static/P3-3-4/11.jpg',
+  'static/P3-3-4/12.jpg', 'static/P3-3-4/13.jpg']` /]
+
 [Aside]
   [img src:'static/pinch-flex.jpg' /]
 [/Aside]
@@ -59,7 +70,29 @@ Here's an unfolded strip you can use to create a working decaflexagon that suppo
 [Unfolded width:1000 height:400 numPats:10 generator:'P334*' autoLabel:true /]
 
 
-# And more
+# Minimal flexagons
 
-Some other possibilities include `P44` on the octaflexagon, `P333` on the enneaflexagon,
-`P55` on the decaflexagon,  and `P3333` and `P66` on the dodecaflexagon.
+[var name:'mfGenerator' value:'P334*' /]
+[var name:'mfPats' value:10 /]
+[var name:'mfAngles' value:`undefined` /]
+[derived name:'mfInit' value:`[
+  {searchFlexes:"P44 P333 P334 P55 P3333 P444 P66"},
+  {angles:mfAngles},
+  {flexAndColor: { flexes: mfGenerator, colors: defaultColors }},
+  {reverseFlexes: mfGenerator}
+  ]` /]
+[var name:'mfRunInit' value:false /]
+
+[Aside]
+* octaflexagon: [Button onClick:` mfGenerator='P44*'; mfPats=8; mfAngles=undefined; mfRunInit=true; `]P44[/Button]
+* enneaflexagon: [Button onClick:` mfGenerator='P333*'; mfPats=9; mfAngles=undefined; mfRunInit=true; `]P333[/Button]
+* decaflexagon: [Button onClick:` mfGenerator='P334*'; mfPats=10; mfAngles=undefined; mfRunInit=true; `]P334[/Button] [Button onClick:` mfGenerator='P55*'; mfPats=10; mfAngles=undefined; mfRunInit=true; `]P55[/Button]
+* dodecaflexagon: [Button onClick:` mfGenerator='P3333*'; mfPats=12; mfAngles=undefined; mfRunInit=true; `]P3333[/Button] [Button onClick:` mfGenerator='P444*'; mfPats=12; mfAngles=undefined; mfRunInit=true; `]P444[/Button] [Button onClick:` mfGenerator='P66*'; mfPats=12; mfAngles=undefined; mfRunInit=true; `]P66[/Button]
+[/Aside]
+
+Here are the minimal flexagons for many of the pinch flex variations:
+
+[Flexagon width:600 height:360 numPats:mfPats initialScript:mfInit runInitial:mfRunInit options:flexagonOptions overButton:true /]
+
+Unfolded strip:
+[Unfolded width:1000 height:500 numPats:mfPats generator:mfGenerator angles:mfAngles options:unfoldedOptions /]
