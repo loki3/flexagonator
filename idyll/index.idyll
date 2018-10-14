@@ -7,7 +7,6 @@
   authorLink:"http://loki3.com/flex" /]
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
-[var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 
 [Preload images:`['static/P4-4-4/2.jpg', 'static/P4-4-4/3.jpg', 'static/P4-4-4/4.jpg', 'static/P4-4-4/5.jpg', 'static/P4-4-4/6.jpg',
@@ -49,7 +48,7 @@ The first example is on an *isosceles dodecaflexagon*, doing a mountain fold onc
 [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
 
 Here's an unfolded strip you can use to create a working dodecaflexagon that supports the P444:
-[Unfolded width:1000 height:400 numPats:12 generator:'P444*' autoLabel:true /]
+[Unfolded width:1000 height:400 numPats:12 generator:'P444*' autoLabel:true endText:'P444' /]
 
 
 # P334
@@ -67,13 +66,13 @@ then skip to the fourth vertex for the final mountain fold.
 [Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
 
 Here's an unfolded strip you can use to create a working decaflexagon that supports the `P334`:
-[Unfolded width:1000 height:400 numPats:10 generator:'P334*' autoLabel:true /]
+[Unfolded width:1000 height:400 numPats:10 generator:'P334*' autoLabel:true endText:'P334' /]
 
 
 # Minimal flexagons
 
-[var name:'mfGenerator' value:'P334*' /]
-[var name:'mfPats' value:10 /]
+[var name:'mfGenerator' value:'P444*' /]
+[var name:'mfPats' value:12 /]
 [var name:'mfAngles' value:`undefined` /]
 [derived name:'mfInit' value:`[
   {searchFlexes:"P44 P333 P334 P55 P3333 P444 P66"},
@@ -95,4 +94,4 @@ Here are the minimal flexagons for many of the pinch flex variations:
 [Flexagon width:600 height:360 numPats:mfPats initialScript:mfInit runInitial:mfRunInit options:flexagonOptions overButton:true /]
 
 Unfolded strip:
-[Unfolded width:1000 height:500 numPats:mfPats generator:mfGenerator angles:mfAngles options:unfoldedOptions /]
+[Unfolded width:1000 height:400 numPats:mfPats generator:mfGenerator angles:mfAngles autoLabel:true endText:mfGenerator /]
