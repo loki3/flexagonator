@@ -95,3 +95,31 @@ Here are the minimal flexagons for many of the pinch flex variations:
 
 Unfolded strip:
 [Unfolded width:1000 height:400 numPats:mfPats generator:mfGenerator angles:mfAngles autoLabel:true endText:mfGenerator /]
+
+
+# More complex flexagons
+
+An interesting generating sequence pattern you can use with these pinch flex variations is `X* > X* < X'* < X* > X*`.
+If you start with one pair of sides visible, then apply that sequence, it will reveal two new sides.
+But all the intermediate states will be a mixing of the four sides.
+
+[var name:'cfGenerator' value:"P333* > P333* < P333'* < P333* > P333*" /]
+[var name:'cfPats' value:9 /]
+[derived name:'cfInit' value:`[
+  {searchFlexes:"P44 P333 P334 P55 P3333 P444 P66 P44' P333' P334' P55' P3333' P444' P66'"},
+  {flexAndColor: { flexes: cfGenerator, colors: defaultColors }},
+  {reverseFlexes: cfGenerator}
+  ]` /]
+[var name:'cfRunInit' value:false /]
+[var name:'cfSpecial' value:0 /]
+
+[Aside]
+Pick flexagon and flex:[br /]
+[Button onClick:` cfSpecial=0; cfGenerator="P333* > P333* < P333'* < P333* > P333*"; cfPats=9; cfRunInit=true; `]enneaflexagon P333[/Button] [br /]
+[Button onClick:` cfSpecial=1; cfGenerator="P334* > P334* < P334'* < P334* > P334*"; cfPats=10; cfRunInit=true; `]decaflexagon P334[/Button] [br /]
+[Button onClick:` cfSpecial=2; cfGenerator="P444* > P444* < P444'* < P444* > P444*"; cfPats=12; cfRunInit=true; `]dodecaflexagon P444[/Button] [br /]
+[Button onClick:` cfSpecial=3; cfGenerator="P3333* > P3333* < P3333'* < P3333* > P3333*"; cfPats=12; cfRunInit=true; `]dodecaflexagon P3333[/Button] [br /]
+[/Aside]
+
+Generating sequence: [Display value:cfGenerator /]
+[Flexagon width:600 height:360 numPats:cfPats initialScript:cfInit runInitial:cfRunInit options:flexagonOptions overButton:true /]
