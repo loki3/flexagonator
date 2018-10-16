@@ -202,6 +202,7 @@ Flexes to try: `^`, `>`, `<`, `P*`, `Sh*`, `F*`, `T*`, `T1*`, `V*`, `St*`, or `P
 [Button onClick:` fullPats=7; fullAngles=undefined; runFullInit=true; `]heptaflexagon[/Button] [br/]
 [Button onClick:` fullPats=8; fullAngles=undefined; runFullInit=true; `]isosceles octaflexagon[/Button] [br/]
 [Button onClick:` fullPats=8; fullAngles=[45,90]; runFullInit=true; `]silver octaflexagon[/Button] [br/]
+[Button onClick:` fullPats=9; fullAngles=undefined; runFullInit=true; `]enneaflexagon[/Button] [br/]
 [Button onClick:` fullPats=10; fullAngles=undefined; runFullInit=true; `]isosceles decaflexagon[/Button] [br/]
 [Button onClick:` fullPats=10; fullAngles=[36, 54]; runFullInit=true; `]right decaflexagon[/Button] [br/]
 [Button onClick:` fullPats=12; fullAngles=undefined; runFullInit=true; `]isosceles dodecaflexagon[/Button] [br/]
