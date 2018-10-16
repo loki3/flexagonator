@@ -107,14 +107,18 @@ But all the intermediate states will be a mixing of the four sides.
 [var name:'cfPats' value:9 /]
 [derived name:'cfInit' value:`[
   {searchFlexes:"P44 P333 P334 P55 P3333 P444 P66 P44' P333' P334' P55' P3333' P444' P66'"},
-  {flexAndColor: { flexes: cfGenerator, colors: defaultColors }},
+  {flexes: cfGenerator},
+  {reverseFlexes: cfGenerator},
+  {setFace: { front: { label: "1", color: 0x2E4172 }, back: { label: "2", color: 0x2B803E } }},
+  {flexes: cfGenerator},
+  {setFace: { front: { label: "3", color: 0xAA4439 }, back: { label: "4", color: 0x622870 } }},
   {reverseFlexes: cfGenerator}
   ]` /]
 [var name:'cfRunInit' value:false /]
 [var name:'cfSpecial' value:0 /]
 
 [Aside]
-Pick flexagon and flex:[br /]
+Pick flexagon and base flex:[br /]
 [Button onClick:` cfSpecial=0; cfGenerator="P333* > P333* < P333'* < P333* > P333*"; cfPats=9; cfRunInit=true; `]enneaflexagon P333[/Button] [br /]
 [Button onClick:` cfSpecial=1; cfGenerator="P334* > P334* < P334'* < P334* > P334*"; cfPats=10; cfRunInit=true; `]decaflexagon P334[/Button] [br /]
 [Button onClick:` cfSpecial=2; cfGenerator="P444* > P444* < P444'* < P444* > P444*"; cfPats=12; cfRunInit=true; `]dodecaflexagon P444[/Button] [br /]
