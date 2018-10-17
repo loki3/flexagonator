@@ -151,7 +151,14 @@ finishing by taping 'a' to 'a'.
 
 ## What next?
 
-More info.
+What if you tried other generating sequences using these pinch flex variations?
+
+The pinch flex variations described here all do a flex followed by a second flex at the same vertex
+because the intermediate position doesn't lie flat and the triangles don't all meet in the center.
+But what if you stopped in that intermediate state and tried flexing from there?
+What other interesting flexes can you find?
+
+Return to the [Table of Contents](index.html).
 
 [FullWidth]
   [a href:'http://loki3.com/flex/' ]
