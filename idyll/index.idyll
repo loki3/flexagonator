@@ -6,7 +6,7 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
-[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
+[var name:'flexagonOptions' value:`{structure:true, showIds:true, stats:true, both:true}`/]
 [var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 
@@ -14,10 +14,10 @@
 [var name:'doGenerator' value:'St*<<St*' /]
 [var name:'tempSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
 [var name:'doSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
-
+[var name:'tempPats' value:10 /]
 [var name:'doPats' value:10 /]
+
 [var name:'doAngles' value:`[36, 54]` /]
-[var name:'doError' value:`undefined` /]
 [derived name:'doInit' value:`[
   {searchFlexes:doSearch},
   {angles:doAngles},
@@ -25,16 +25,24 @@
   {reverseFlexes: doGenerator}
   ]` /]
 [var name:'doRunInit' value:false /]
+[var name:'theHistory' value:'' /]
+[var name:'theError' value:`undefined ` /]
 
 [Aside]
-  [Button onClick:` doGenerator=tempGenerator; doSearch=tempSearch; doRunInit=true; `]apply all[/Button]  [Display value:doError /]
+  [Button onClick:` doGenerator=tempGenerator; doSearch=tempSearch; doPats=tempPats; doRunInit=true; `]apply all[/Button]  [Display value:theError /]
   [br /]
   Generating sequence: [TextInput value:tempGenerator /]
   [br /]
   Search flexes: [TextInput value:tempSearch /]
+  [br /]
+  Pats per side: [TextInput value:tempPats /]
 [/Aside]
 
-[Flexagon width:600 height:360 numPats:doPats initialScript:doInit runInitial:doRunInit options:flexagonOptions overButton:true error:doError /]
+[Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit options:flexagonOptions
+  overButton:true error:theError history:theHistory /]
+Generator: [Display value:doGenerator /]
+[br/]
+History: [Display value:theHistory /]
 
 Unfolded strip:
 [Unfolded width:1000 height:500 numPats:doPats generator:doGenerator angles:doAngles options:unfoldedOptions /]
