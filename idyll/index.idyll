@@ -1,0 +1,38 @@
+[meta title:"Flexagon Playground" description:"General tools for exploring flexagons" /]
+
+[Header
+  title:"Flexagon Playground"
+  subtitle:"General tools for exploring flexagons"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
+[var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+
+[var name:'tempGenerator' value:'St*<<St*' /]
+[var name:'fullGenerator' value:'St*<<St*' /]
+[var name:'tempSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
+[var name:'fullSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
+
+[var name:'fullPats' value:10 /]
+[var name:'fullAngles' value:`[36, 54]` /]
+[var name:'fullError' value:`undefined` /]
+[derived name:'fullInit' value:`[
+  {searchFlexes:fullSearch},
+  {angles:fullAngles},
+  {flexAndColor: { flexes: fullGenerator, colors: defaultColors }},
+  {reverseFlexes: fullGenerator}
+  ]` /]
+[var name:'runFullInit' value:false /]
+
+Generating sequence: [TextInput value:tempGenerator /]
+[Button onClick:` fullGenerator=tempGenerator; runFullInit=true; `]apply[/Button]  [Display value:fullError /]
+[br /]
+Search flexes: [TextInput value:tempSearch /]
+[Button onClick:` fullSearch=tempSearch; runFullInit=true; `]apply[/Button]
+
+[Flexagon width:600 height:360 numPats:fullPats initialScript:fullInit runInitial:runFullInit options:flexagonOptions overButton:true error:fullError /]
+
+Unfolded strip:
+[Unfolded width:1000 height:500 numPats:fullPats generator:fullGenerator angles:fullAngles options:unfoldedOptions /]
