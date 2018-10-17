@@ -16,11 +16,15 @@
 [var name:'doSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
 [var name:'tempPats' value:10 /]
 [var name:'doPats' value:10 /]
+[var name:'tempAngle1' value:36 /]
+[var name:'doAngle1' value:36 /]
+[var name:'tempAngle2' value:54 /]
+[var name:'doAngle2' value:54 /]
+[derived name:'doAngles' value:`[doAngle1, doAngle2]` /]
 
-[var name:'doAngles' value:`[36, 54]` /]
 [derived name:'doInit' value:`[
   {searchFlexes:doSearch},
-  {angles:doAngles},
+  {angles:[doAngle1, doAngle2]},
   {flexAndColor: { flexes: doGenerator, colors: defaultColors }},
   {reverseFlexes: doGenerator}
   ]` /]
@@ -29,13 +33,18 @@
 [var name:'theError' value:`undefined ` /]
 
 [Aside]
-  [Button onClick:` doGenerator=tempGenerator; doSearch=tempSearch; doPats=tempPats; doRunInit=true; `]apply all[/Button]  [Display value:theError /]
+  [Button onClick:` doRunInit=true; doGenerator=tempGenerator; doSearch=tempSearch; doPats=tempPats; doAngle1=tempAngle1; doAngle2=tempAngle2; `]
+    apply all[/Button]  [Display value:theError /]
   [br /]
   Generating sequence: [TextInput value:tempGenerator /]
   [br /]
   Search flexes: [TextInput value:tempSearch /]
   [br /]
   Pats per side: [TextInput value:tempPats /]
+  [br /]
+  Center angle: [TextInput value:tempAngle1 /]
+  [br /]
+  Angle 2: [TextInput value:tempAngle2 /]
 [/Aside]
 
 [Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit options:flexagonOptions
