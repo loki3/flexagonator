@@ -115,80 +115,38 @@ But all the intermediate states will be a mixing of the four sides.
   {reverseFlexes: cfGenerator}
   ]` /]
 [var name:'cfRunInit' value:false /]
-[var name:'cfSpecial' value:1 /]
+[var name:'e1' value:8 /]
+[var name:'e2' value:17 /]
+[var name:'e3' value:`undefined ` /]
+[var name:'char' value:'a' /]
+[var name:'cfHeight' value:1 /]
 
 [Aside]
 Pick flexagon and base flex:[br /]
-[Button onClick:` cfSpecial=1; cfGenerator="P333* > P333* < P333'* < P333* > P333*"; cfPats=9; cfRunInit=true; `]enneaflexagon P333[/Button] [br /]
-[Button onClick:` cfSpecial=2; cfGenerator="P334* > P334* < P334'* < P334* > P334*"; cfPats=10; cfRunInit=true; `]decaflexagon P334[/Button] [br /]
-[Button onClick:` cfSpecial=3; cfGenerator="P444* > P444* < P444'* < P444* > P444*"; cfPats=12; cfRunInit=true; `]dodecaflexagon P444[/Button] [br /]
-[Button onClick:` cfSpecial=4; cfGenerator="P3333* > P3333* < P3333'* < P3333* > P3333*"; cfPats=12; cfRunInit=true; `]dodecaflexagon P3333[/Button] [br /]
+[Button onClick:` e1=8; e2=17; e3=undefined; char='a'; cfGenerator="P333* > P333* < P333'* < P333* > P333*"; cfPats=9; cfRunInit=true; cfHeight=1; `]enneaflexagon P333[/Button] [br /]
+[Button onClick:` e1=8; e2=17; e3=undefined; char='a'; cfGenerator="P334* > P334* < P334'* < P334* > P334*"; cfPats=10; cfRunInit=true; cfHeight=1; `]decaflexagon P334[/Button] [br /]
+[Button onClick:` e1=10; e2=20; e3=undefined; char='a'; cfGenerator="P444* > P444* < P444'* < P444* > P444*"; cfPats=12; cfRunInit=true; cfHeight=1; `]dodecaflexagon P444[/Button] [br /]
+[Button onClick:` e1=8; e2=17; e3=26; char='d'; cfGenerator="P3333* > P3333* < P3333'* < P3333* > P3333*"; cfPats=12; cfRunInit=true; cfHeight=300; `]dodecaflexagon P3333[/Button] [br /]
 [/Aside]
 
 Generating sequence: [Display value:cfGenerator /]
 [Flexagon width:600 height:360 numPats:cfPats initialScript:cfInit runInitial:cfRunInit options:flexagonOptions overButton:true /]
 
-[Conditional if:` cfSpecial == 1 `]
-  Cut out each of the shapes, cutting along the solid lines.
-  Tape 'b' to 'b' and 'c' to 'c'.
-  Then you can follow the same folding rules as for the other strips,
-  finishing by taping 'a' to 'a'.
+Cut out each of the shapes, cutting along the solid lines.
+Tape 'b' to 'b' and 'c' to 'c' (and 'd' to 'd' if present).
+Then you can follow the same folding rules as for the other strips,
+finishing by taping 'a' to 'a'.
 
-  [var name:'generating0' value:"P333* > P333* < P333'* < P333* > P333*" /]
-  [var name:'strip01' value:`{start:0, end:8, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-  [var name:'strip02' value:`{start:9, end:17, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
-  [var name:'strip03' value:`{start:18, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: 'a', which: -1 }] }` /]
-  [Unfolded width:400 height:300 numPats:9 generator:generating0 autoLabel:true options:strip01 /]
-  [Unfolded width:400 height:350 numPats:9 generator:generating0 autoLabel:true options:strip02 /]
-  [Unfolded width:400 height:350 numPats:9 generator:generating0 autoLabel:true options:strip03 /]
-[/Conditional]
-
-[Conditional if:` cfSpecial == 2 `]
-  Cut out each of the shapes, cutting along the solid lines.
-  Tape 'b' to 'b' and 'c' to 'c'.
-  Then you can follow the same folding rules as for the other strips,
-  finishing by taping 'a' to 'a'.
-
-  [var name:'generating1' value:"P334* > P334* < P334'* < P334* > P334*" /]
-  [var name:'strip11' value:`{start:0, end:8, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-  [var name:'strip12' value:`{start:9, end:17, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
-  [var name:'strip13' value:`{start:18, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: 'a', which: -1 }] }` /]
-  [Unfolded width:400 height:300 numPats:10 generator:generating1 autoLabel:true options:strip11 /]
-  [Unfolded width:400 height:350 numPats:10 generator:generating1 autoLabel:true options:strip12 /]
-  [Unfolded width:400 height:450 numPats:10 generator:generating1 autoLabel:true options:strip13 /]
-[/Conditional]
-
-[Conditional if:` cfSpecial == 3 `]
-  Cut out each of the shapes, cutting along the solid lines.
-  Tape 'b' to 'b' and 'c' to 'c'.
-  Then you can follow the same folding rules as for the other strips,
-  finishing by taping 'a' to 'a'.
-
-  [var name:'generating2' value:"P444* > P444* < P444'* < P444* > P444*" /]
-  [var name:'strip21' value:`{start:0, end:10, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-  [var name:'strip22' value:`{start:11, end:20, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
-  [var name:'strip23' value:`{start:21, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: 'a', which: -1 }] }` /]
-  [Unfolded width:400 height:300 numPats:12 generator:generating2 autoLabel:true options:strip21 /]
-  [Unfolded width:450 height:300 numPats:12 generator:generating2 autoLabel:true options:strip22 /]
-  [Unfolded width:400 height:300 numPats:12 generator:generating2 autoLabel:true options:strip23 /]
-[/Conditional]
-
-[Conditional if:` cfSpecial == 4 `]
-  Cut out each of the shapes, cutting along the solid lines.
-  Tape 'b' to 'b', 'c' to 'c', and 'd' to 'd'.
-  Then you can follow the same folding rules as for the other strips,
-  finishing by taping 'a' to 'a'.
-
-  [var name:'generating3' value:"P3333* > P3333* < P3333'* < P3333* > P3333*" /]
-  [var name:'strip31' value:`{start:0, end:8, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-  [var name:'strip32' value:`{start:9, end:17, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
-  [var name:'strip33' value:`{start:18, end:26, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: 'd', which: -1 }] }` /]
-  [var name:'strip34' value:`{start:27, scale:150, rotation:0, captions:[{ text: 'd', which: 0 }, { text: 'a', which: -1 }] }` /]
-  [Unfolded width:300 height:300 numPats:12 generator:generating3 autoLabel:true options:strip31 /]
-  [Unfolded width:300 height:300 numPats:12 generator:generating3 autoLabel:true options:strip32 /]
-  [Unfolded width:300 height:300 numPats:12 generator:generating3 autoLabel:true options:strip33 /]
-  [Unfolded width:300 height:300 numPats:12 generator:generating3 autoLabel:true options:strip34 /]
-[/Conditional]
+[FullWidth]
+  [derived name:'strip1' value:`{start:0, end:e1, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+  [derived name:'strip2' value:`{start:e1+1, end:e2, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
+  [derived name:'strip3' value:`{start:e2+1, end:e3, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: char, which: -1 }] }` /]
+  [derived name:'strip4' value:`{start:27, scale:150, rotation:0, captions:[{ text: 'd', which: 0 }, { text: 'a', which: -1 }] }` /]
+  [Unfolded width:400 height:350 numPats:cfPats generator:cfGenerator autoLabel:true options:strip1 /]
+  [Unfolded width:400 height:350 numPats:cfPats generator:cfGenerator autoLabel:true options:strip2 /]
+  [Unfolded width:400 height:400 numPats:cfPats generator:cfGenerator autoLabel:true options:strip3 /]
+  [Unfolded width:300 height:cfHeight numPats:cfPats generator:cfGenerator autoLabel:true options:strip4 changeHeight:cfHeight /]
+[/FullWidth]
 
 
 ## What next?
