@@ -6,11 +6,15 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
-[hr /]
-
 [Preload images:`['static/F/F2.jpg', 'static/F/F3.jpg', 'static/F/F4.jpg', 'static/F/F5.jpg', 'static/F/F6.jpg',
   'static/F/F7.jpg', 'static/F/F8.jpg', 'static/F/F9.jpg', 'static/F/F10.jpg', 'static/F/F11.jpg',
   'static/F/F12.jpg', 'static/F/F13.jpg', 'static/F/F14.jpg', 'static/F/F15.jpg', 'static/F/F16.jpg']` /]
+[Preload images:`['static/P4-4-4/2.jpg', 'static/P4-4-4/3.jpg', 'static/P4-4-4/4.jpg', 'static/P4-4-4/5.jpg', 'static/P4-4-4/6.jpg',
+  'static/P4-4-4/7.jpg', 'static/P4-4-4/8.jpg', 'static/P4-4-4/9.jpg', 'static/P4-4-4/10.jpg', 'static/P4-4-4/11.jpg',
+  'static/P4-4-4/12.jpg', 'static/P4-4-4/13.jpg']` /]
+
+[hr /]
+
 
 [Aside]
   [img src:'static/pinch-flex.jpg' /]
@@ -33,6 +37,7 @@
 
 [hr /]
 
+
 [Aside]
   [Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
 [/Aside]
@@ -49,6 +54,7 @@
 
 [hr /]
 
+
 [Aside]
   [var name:'flexagonOptions' value:`{structure:true, showIds:false}`/]
   [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
@@ -60,7 +66,7 @@
   [var name:'runInit' value:true /]
 
   [Flexagon width:350 height:200 numPats:7 initialScript:initial runInitial:runInit options:flexagonOptions /]
-  [Unfolded width:300 height:200 numPats:7 generator:'Sh*>>Sh*' autoLabel:true /]
+  [Unfolded width:300 height:150 numPats:7 generator:'Sh*>>Sh*' autoLabel:true /]
 [/Aside]
 
 [a href:'generators.html']
@@ -75,6 +81,23 @@
 * Allows you to type in generating sequences consisting of any of the flexes introduced so far on a wide variety of triangle flexagons, giving you the unfolded strip that can be used to construct a working flexagon
 
 [hr /]
+
+
+[Aside]
+  [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
+[/Aside]
+
+[a href:'pinch-variations.html']
+  [div className:'heading'] Chapter 4: Pinch Flex Variations [/div]
+  [div className:'subname'] Relatives of the pinch flex on different flexagons [/div]
+[/a]
+
+* Describes a class of flexes that are related to the standard pinch flex
+* Shows the minimal flexagon for a variety of flexes (e.g. P334 and P3333) on several flexagons (e.g. the enneaflexagon and decaflexagon)
+* Demonstrates generating sequences using these flexes to create interesting flexagons
+
+[hr /]
+
 
 For additional information, see [loki3.com](http://loki3.com/flex/).
 
