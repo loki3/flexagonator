@@ -48,7 +48,7 @@
   [br /]
   Center angle: [TextInput value:tempAngle1 /]
   [br /]
-  Angle 2: [TextInput value:tempAngle2 /]
+  Angle 2:[br/][TextInput value:tempAngle2 /]
 [/Aside]
 
 [Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit flexes:doSequence doHistory:doHistory
