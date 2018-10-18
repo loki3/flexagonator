@@ -114,7 +114,11 @@ namespace Flexagonator {
     }
 
     if (item.angles !== undefined) {
-      fm.setAngles(item.angles[0], item.angles[1]);
+      if (item.angles[0] && item.angles[1]) {
+        fm.setAngles(item.angles[0], item.angles[1]);
+      } else {
+        fm.setIsosceles();
+      }
     }
 
     return fm;

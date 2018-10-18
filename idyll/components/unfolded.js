@@ -41,7 +41,7 @@ class Unfolded extends React.Component {
     const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
     var fm = Flexagonator.FlexagonManager.make(flexagon);
 
-    if (angles) {
+    if (angles && angles[0] && angles[1]) {
       fm.setAngles(angles[0], angles[1]);
     } else {
       fm.setIsosceles();
