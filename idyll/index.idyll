@@ -23,12 +23,14 @@
 [derived name:'doAngles' value:`[doAngle1, doAngle2]` /]
 [var name:'tempSequence' value:'' /]
 [var name:'doSequence' value:'' /]
+[var name:'doHistory' value:'' /]
 
 [derived name:'doInit' value:`[
   {searchFlexes:doSearch},
   {angles:[doAngle1, doAngle2]},
   {flexAndColor: { flexes: doGenerator, colors: defaultColors }},
-  {reverseFlexes: doGenerator}
+  {reverseFlexes: doGenerator},
+  {history: 'clear'}
   ]` /]
 [var name:'doRunInit' value:false /]
 [var name:'theHistory' value:'' /]
@@ -49,8 +51,10 @@
   Angle 2: [TextInput value:tempAngle2 /]
 [/Aside]
 
-[Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit flexes:doSequence
+[Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit flexes:doSequence doHistory:doHistory
   options:flexagonOptions overButton:true error:theError history:theHistory /]
+
+[Button onClick:`doHistory='undo';`]Undo[/Button] [Button onClick:`doHistory='redo';`]Redo[/Button] [Button onClick:`doHistory='reset';`]Reset[/Button]
 
 Flex sequence: [TextInput value:tempSequence /] [Button onClick:`doSequence=tempSequence;`]Apply Sequence[/Button]
 

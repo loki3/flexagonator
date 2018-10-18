@@ -76,6 +76,7 @@ const FlexButtons = (props) => {
  *  initialScript script to run when numPats is changed or 'runInitial' is set to true
  *  runInitial    set to true to rerun the inital script
  *  flexes        flexes to apply to the current flexagon, e.g. 'Sh*>>T*^P*'
+ *  doHistory     'undo' | 'redo' | 'clear' | 'reset'
  *  runScript     set to true when the 'script' property should be run
  *  script        a flexagonator script to run on the current flexagon
  *  options       options used when drawing (passed to drawEntireFlexagon)
@@ -121,6 +122,10 @@ class Flexagon extends React.Component {
     if (props.flexes) {
       script = script.concat({ flexes: props.flexes });
       this.props.updateProps({ flexes: null });
+    }
+    if (props.doHistory) {
+      script = script.concat({ history: props.doHistory });
+      this.props.updateProps({ doHistory: null });
     }
     if (props.runScript && props.script) {
       script = script.concat(props.script);
