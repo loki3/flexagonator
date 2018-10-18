@@ -21,6 +21,8 @@
 [var name:'tempAngle2' value:54 /]
 [var name:'doAngle2' value:54 /]
 [derived name:'doAngles' value:`[doAngle1, doAngle2]` /]
+[var name:'tempSequence' value:'' /]
+[var name:'doSequence' value:'' /]
 
 [derived name:'doInit' value:`[
   {searchFlexes:doSearch},
@@ -34,7 +36,7 @@
 
 [Aside]
   [Button onClick:` doRunInit=true; doGenerator=tempGenerator; doSearch=tempSearch; doPats=tempPats; doAngle1=tempAngle1; doAngle2=tempAngle2; `]
-    apply all[/Button]  [Display value:theError /]
+    Apply Settings[/Button]  [Display value:theError /]
   [br /]
   Generating sequence: [TextInput value:tempGenerator /]
   [br /]
@@ -47,8 +49,11 @@
   Angle 2: [TextInput value:tempAngle2 /]
 [/Aside]
 
-[Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit options:flexagonOptions
-  overButton:true error:theError history:theHistory /]
+[Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit flexes:doSequence
+  options:flexagonOptions overButton:true error:theError history:theHistory /]
+
+Flex sequence: [TextInput value:tempSequence /] [Button onClick:`doSequence=tempSequence;`]Apply Sequence[/Button]
+
 Generator: [Display value:doGenerator /]
 [br/]
 History: [Display value:theHistory /]
