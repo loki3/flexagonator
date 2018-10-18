@@ -6,6 +6,24 @@
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
+[var name:"showPageHelp" value:false /]
+[Button onClick:` showPageHelp = !showPageHelp `]What is this and how do I use it?[/Button]
+[Conditional if:` showPageHelp `]
+  These tools simulate *flexagons* and the *flexes* you can use to manipulate them.
+  You can also use them to create new flexagons by printing and folding generated strips.
+
+  In order to use them, you need to understand *flexagons*, some of the variety of *flexes*,
+  and terminology like *generating sequences* and *pats*.
+  The easiest way to learn this is to go through the [Explorable Flexagons](index.html) book,
+  which explains the concepts and introduces you to much of the UI used in this page.
+  Alternately, the [Flexagon Theory](../g4g10/Flex-Theory.pdf) paper provides some of the theoretical background.
+
+  The *Flexagon Simulator* allows you to create lots of different types of triangle flexagons,
+  experiment with how various flexes modify them, and get the unfolded strip you can use to create a physical model of the flexagon.
+[/Conditional]
+
+## Flexagon Simulator
+
 [var name:'flexagonOptions' value:`{structure:true, showIds:true, stats:true, both:true}`/]
 [var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
