@@ -94,8 +94,9 @@ History: [Display value:theHistory /]
 [var name:'exploreDone' value:false /]
 [var name:'exploreExplored' value:42 /]
 [var name:'exploreFound' value:0 /]
+[var name:'exploreError' value:`undefined ` /]
 
-[Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button]
+[Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
 [Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
-  done:exploreDone explored:exploreExplored found:exploreFound /]
+  done:exploreDone explored:exploreExplored found:exploreFound error:exploreError /]
 Explored [Display value:exploreExplored /] states, found [Display value:exploreFound /] states

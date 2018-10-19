@@ -10,6 +10,7 @@ import React from 'react';
  *  done          a read-only property set to true when computation is done
  *  explored      a read-only property set to the number of states explored
  *  found         a read-only property set to the number of states found
+ *  error         a read-only property set if there's an error
  *  cols          number of columns in the input area
  *  rows          number of rows in the input area
  * }
@@ -43,11 +44,17 @@ class Explorer extends React.Component {
   // start exploration using this.state.script and optionally including ^
   start(includeOver) {
     const fm = Flexagonator.runScriptString(null, this.state.script);
+    if (Flexagonator.isError(fm)) {
+      const str = Flexagonator.errorToString(fm);
+      this.props.updateProps({ error: str });
+      return;
+    }
+
     const over = includeOver ? fm.allFlexes['^'] : undefined;
     const explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], over);
 
     this.setState({ fm: fm });
-    this.props.updateProps({ doFull: null, doOneSide: null, doCancel: null, explored: 0, found: 0 });
+    this.props.updateProps({ doFull: null, doOneSide: null, doCancel: null, explored: 0, found: 0, error: '' });
 
     this.explore(explorer);
   }
