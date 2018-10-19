@@ -12,7 +12,7 @@
   These tools simulate *flexagons* and the *flexes* you can use to manipulate them.
   You can also use them to create new flexagons by printing and folding generated strips.
 
-  In order to use them, you need to understand *flexagons*, some of the variety of *flexes*,
+  In order to understand them, you need to understand *flexagons*, some of the variety of *flexes*,
   and terminology like *generating sequences* and *pats*.
   The easiest way to learn this is to go through the [Explorable Flexagons](index.html) book,
   which explains the concepts and introduces you to much of the UI used in this page.
@@ -80,5 +80,22 @@ Generator: [Display value:doGenerator /]
 [br/]
 History: [Display value:theHistory /]
 
-Unfolded strip:
+
+## Unfolded strip:
+
 [Unfolded width:1000 height:500 numPats:doPats generator:doGenerator angles:doAngles options:unfoldedOptions /]
+
+
+## Explorer
+
+[var name:'exploreDoFull' value:false /]
+[var name:'exploreDoOneSide' value:false /]
+[var name:'exploreDoCancel' value:false /]
+[var name:'exploreDone' value:false /]
+[var name:'exploreExplored' value:42 /]
+[var name:'exploreFound' value:0 /]
+
+[Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button]
+[Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
+  done:exploreDone explored:exploreExplored found:exploreFound /]
+Explored [Display value:exploreExplored /] states, found [Display value:exploreFound /] states
