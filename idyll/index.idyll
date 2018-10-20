@@ -92,11 +92,18 @@ History: [Display value:theHistory /]
 [var name:'exploreDoOneSide' value:false /]
 [var name:'exploreDoCancel' value:false /]
 [var name:'exploreDone' value:false /]
-[var name:'exploreExplored' value:42 /]
+[var name:'exploreExplored' value:0 /]
 [var name:'exploreFound' value:0 /]
 [var name:'exploreError' value:`undefined ` /]
+[var name:'exploreGetResults' value:'' /]
+[var name:'exploreResults' value:'' /]
 
 [Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
 [Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
-  done:exploreDone explored:exploreExplored found:exploreFound error:exploreError /]
+  done:exploreDone explored:exploreExplored found:exploreFound error:exploreError getResults:exploreGetResults results:exploreResults /]
 Explored [Display value:exploreExplored /] states, found [Display value:exploreFound /] states
+
+Show [Button onClick:`exploreGetResults='dotSimple';`]DOT: state to state[/Button]
+[Button onClick:`exploreGetResults='dotFlexes';`]DOT: flexes[/Button]
+[Button onClick:`exploreGetResults='dotDirected';`]DOT: directed flexes[/Button]
+[textarea cols:80 rows:30 spellCheck:false value:exploreResults readOnly:true /]
