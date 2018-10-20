@@ -99,6 +99,18 @@
 [hr /]
 
 
+[a href:'playground.html']
+  [div className:'heading'] Appendix: Flexagon Playground [/div]
+  [div className:'subname'] General tools for exploring flexagons [/div]
+[/a]
+
+* Tools for creating new flexagons from generating sequences and exploring them using a variety of flexagons
+* Get the unfolded strip for any of your creations so you can try out the physical version
+* An explorer that can find all the states accessible with a specified set of flexes from any flexagon
+
+[hr /]
+
+
 For additional information, see [loki3.com](http://loki3.com/flex/).
 
 [FullWidth]
