@@ -53,6 +53,8 @@
 [var name:'doRunInit' value:false /]
 [var name:'theHistory' value:'' /]
 [var name:'theError' value:`undefined ` /]
+[var name:'theCurrentScript' value:`undefined ` /]
+[var name:'displayedScript' value:`undefined ` /]
 
 [Aside]
   [Button onClick:` doRunInit=true; doGenerator=tempGenerator; doSearch=tempSearch; doPats=tempPats; doAngle1=tempAngle1; doAngle2=tempAngle2; `]
@@ -70,7 +72,7 @@
 [/Aside]
 
 [Flexagon width:700 height:400 numPats:doPats initialScript:doInit runInitial:doRunInit flexes:doSequence doHistory:doHistory
-  options:flexagonOptions overButton:true error:theError history:theHistory /]
+  options:flexagonOptions overButton:true error:theError history:theHistory currentScript:theCurrentScript /]
 
 [Button onClick:`doHistory='undo';`]Undo[/Button] [Button onClick:`doHistory='redo';`]Redo[/Button] [Button onClick:`doHistory='reset';`]Reset[/Button]
 
@@ -79,6 +81,9 @@ Flex sequence: [TextInput value:tempSequence /] [Button onClick:`doSequence=temp
 Generator: [Display value:doGenerator /]
 [br/]
 History: [Display value:theHistory /]
+
+[Button onClick:`displayedScript=theCurrentScript;`]Show Current Script[/Button]
+[textarea cols:80 rows:10 spellCheck:false value:displayedScript readOnly:true /]
 
 
 ## Unfolded strip:
