@@ -8,6 +8,8 @@ const React = require('react');
  *  angles      center angle and the angle clockwise from the center, e.g. [30, 60]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
  *  autoLabel   automatically label the sides based on the generating sequence
+ *  script      a flexagonator script to run to create the flexagon used for the unfolded strip
+ *              used instead of numPats, angles, generator, & autoLabel
  *  endText     text to put at the start & end of the strip
  *  options     options used when drawing (passed to drawUnfolded)
  *  width       width of canvas to draw in
@@ -30,32 +32,39 @@ class Unfolded extends React.Component {
   }
 
   updateCanvas(props) {
-    const { numPats, generator, autoLabel, angles, endText } = props;
-    if (!numPats) {
+    const { numPats, generator, autoLabel, angles, script, endText } = props;
+    if (!numPats && !script) {
       return;
     }
-    var pats = [];
-    for (var i = 1; i <= numPats; i++) {
-      pats.push(i);
-    }
-    const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
-    var fm = Flexagonator.FlexagonManager.make(flexagon);
+    let options = props.options;
 
-    if (angles && angles[0] && angles[1]) {
-      fm.setAngles(angles[0], angles[1]);
-    } else {
-      fm.setIsosceles();
-    }
-
-    var options = props.options;
-    if (autoLabel) {
-      fm = Flexagonator.runScriptItem(fm, { flexAndColor: { flexes: generator } });
-      if (!options) {
-        options = {}
+    let fm;
+    if (script) {
+      fm = Flexagonator.runScriptString(fm, script);
+    } else if (numPats) {
+      // numPats, angles, generator, & autoLabel
+      let pats = [];
+      for (var i = 1; i <= numPats; i++) {
+        pats.push(i);
       }
-      options.content = Flexagonator.StripContent.LeafLabels;
-    } else {
-      fm = Flexagonator.runScriptItem(fm, { flexes: generator });
+      const flexagon = Flexagonator.Flexagon.makeFromTree(pats);
+      fm = Flexagonator.FlexagonManager.make(flexagon);
+
+      if (angles && angles[0] && angles[1]) {
+        fm.setAngles(angles[0], angles[1]);
+      } else {
+        fm.setIsosceles();
+      }
+
+      if (autoLabel) {
+        fm = Flexagonator.runScriptItem(fm, { flexAndColor: { flexes: generator } });
+        if (!options) {
+          options = {}
+        }
+        options.content = Flexagonator.StripContent.LeafLabels;
+      } else {
+        fm = Flexagonator.runScriptItem(fm, { flexes: generator });
+      }
     }
 
     if (endText) {
