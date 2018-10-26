@@ -122,7 +122,7 @@ History: [Display value:theHistory /]
 [Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
 [Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
   done:exploreDone explored:exploreExplored found:exploreFound error:exploreError getResults:exploreGetResults results:exploreResults /]
-Explored [Display value:exploreExplored /] states, found [Display value:exploreFound /] states
+Explored [Display value:exploreExplored format:'0' /] states, found [Display value:exploreFound format:'0' /] states
 
 Show [Button onClick:`exploreGetResults='dotSimple';`]DOT: state to state[/Button]
 [Button onClick:`exploreGetResults='dotFlexes';`]DOT: flexes[/Button]
