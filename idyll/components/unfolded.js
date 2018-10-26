@@ -76,6 +76,10 @@ class Unfolded extends React.Component {
       options.captions = [{ text: endText, which: 0 }, { text: endText, which: -1 }];
     }
 
+    if (options && typeof options.content === 'string') {
+      options.content = Number.parseInt(options.content);
+    }
+
     if (!Flexagonator.isError(fm)) {
       Flexagonator.drawUnfolded(this.refs.canvas, fm, options);
     }

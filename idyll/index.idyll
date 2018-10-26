@@ -25,7 +25,6 @@
 ## Flexagon Simulator
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:true, stats:true, both:true}`/]
-[var name:'unfoldedOptions' value:`{content:1, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 
 [var name:'tempGenerator' value:'St*<<St*' /]
@@ -88,8 +87,18 @@ History: [Display value:theHistory /]
 
 ## Unfolded strip:
 
+[var name:'unfoldedContent' value:1 /]
+[derived name:'unfoldedOptions' value:`{content:unfoldedContent, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
 [var name:'doUnfoldedScript' value:`undefined ` /]
 [var name:'displayUnfoldedScript' value:`undefined ` /]
+
+[Select value:unfoldedContent options:`[
+  {value:0, label:"All on one side - use labels that indicate folding order"},
+  {value:1, label:"All on one side - use labels that indicate folding order, show leaf ids"},
+  {value:4, label:"All on one side - use labels from leaf properties"},
+  {value:2, label:"Show front only - use leaf properties"},
+  {value:3, label:"Show back only - use leaf properties"},
+  ]` /]
 
 [Unfolded width:1000 height:500 numPats:doPats script:doUnfoldedScript generator:doGenerator angles:doAngles options:unfoldedOptions /]
 
