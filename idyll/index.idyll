@@ -88,7 +88,14 @@ History: [Display value:theHistory /]
 
 ## Unfolded strip:
 
-[Unfolded width:1000 height:500 numPats:doPats generator:doGenerator angles:doAngles options:unfoldedOptions /]
+[var name:'doUnfoldedScript' value:`undefined ` /]
+[var name:'displayUnfoldedScript' value:`undefined ` /]
+
+[Unfolded width:1000 height:500 numPats:doPats script:doUnfoldedScript generator:doGenerator angles:doAngles options:unfoldedOptions /]
+
+[Button onClick:`doUnfoldedScript=displayUnfoldedScript;`]Use Script[/Button]
+[Float position:"right"][Button onClick:`doUnfoldedScript=undefined;`]Use Simulator[/Button][/Float]
+[textarea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
 
 
 ## Explorer
