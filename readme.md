@@ -24,6 +24,16 @@ Some of its features:
 * Load one of the sample HTML files, e.g. index.html
 
 
+## Directories
+
+* *.vscode:* files that support working on Flexagonator using Visual Studio Code
+* *custom:* sample HTML files that use the Flexagonator API to create interactive flexagon tools
+* *docs:* documentation for the Flexagonator API and the notation used to describe flexagons and flexes
+* *idyll:* the source for Explorable Flexagons, an interactive book built using [Idyll](https://idyll-lang.org/) and Flexagonator
+* *src:* the source for Flexagonator
+* *test:* tests for validating Flexagonator
+
+
 ## For more information
 
 * [Flexagonator documentation](docs/readme.md)
