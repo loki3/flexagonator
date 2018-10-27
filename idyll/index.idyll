@@ -108,7 +108,7 @@ History: [Display value:theHistory /]
 
 [Button onClick:`doUnfoldedScript=displayUnfoldedScript;`]Use Script[/Button]
 [Float position:"right"][Button onClick:`doUnfoldedScript=undefined;`]Use Simulator[/Button][/Float]
-[textarea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
+[TextArea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
 
 
 [hr/]
