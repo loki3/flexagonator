@@ -10,19 +10,22 @@
 [Button onClick:` showPageHelp = !showPageHelp `]What is this and how do I use it?[/Button]
 [Conditional if:` showPageHelp `]
   These tools simulate *flexagons* and the *flexes* you can use to manipulate them.
-  You can also use them to create new flexagons by printing and folding generated strips.
+  They also give you the ability to create working flexagon model by printing and folding generated strips.
 
-  In order to understand them, you need to understand *flexagons*, some of the variety of *flexes*,
+  In order to understand the tools, you need to understand *flexagons*, some of the variety of *flexes*,
   and terminology like *generating sequences* and *pats*.
-  The easiest way to learn this is to go through the [Explorable Flexagons](index.html) book,
+  The easiest way to learn this is to go through [Explorable Flexagons](index.html),
   which explains the concepts and introduces you to much of the UI used in this page.
   Alternately, the [Flexagon Theory](../g4g10/Flex-Theory.pdf) paper provides some of the theoretical background.
 
-  The *Flexagon Simulator* allows you to create lots of different types of triangle flexagons,
-  experiment with how various flexes modify them, and get the unfolded strip you can use to create a physical model of the flexagon.
+* The *Flexagon Simulator* allows you to create lots of different types of triangle flexagons and experiment with how various flexes modify them
+* The *Unfolded Strip* section gives you the ability to generate flexagon strips to print and fold
+* The *Explorer* can be used to find every state accessible by using the given flexes
 [/Conditional]
 
-## Flexagon Simulator
+
+[hr/]
+# Flexagon Simulator
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:true, stats:true, both:true}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
@@ -82,10 +85,11 @@ Generator: [Display value:doGenerator /]
 History: [Display value:theHistory /]
 
 [Button onClick:`displayedScript=theCurrentScript;`]Show Current Script[/Button]
-[textarea cols:80 rows:10 spellCheck:false value:displayedScript readOnly:true /]
+[textarea cols:80 rows:10 spellCheck:false value:displayedScript placeholder:'qwert' /]
 
 
-## Unfolded strip:
+[hr/]
+# Unfolded Strip:
 
 [var name:'unfoldedContent' value:1 /]
 [derived name:'unfoldedOptions' value:`{content:unfoldedContent, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
@@ -107,7 +111,8 @@ History: [Display value:theHistory /]
 [textarea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
 
 
-## Explorer
+[hr/]
+# Explorer
 
 [var name:'exploreDoFull' value:false /]
 [var name:'exploreDoOneSide' value:false /]
