@@ -156,8 +156,13 @@ class Flexagon extends React.Component {
 
   updateHistoryProps(fm) {
     const history = fm.getFlexHistory().join('');
-    const currentScript = JSON.stringify(Flexagonator.makeScript(fm));
+    const currentScript = this.stringify(Flexagonator.makeScript(fm));
     this.props.updateProps({ history: history, currentScript: currentScript });
+  }
+
+  stringify(script) {
+    const pieces = script.map(item => '  ' + JSON.stringify(item));
+    return '[\n' + pieces.join(',\n') + '\n]';
   }
 
   componentWillReceiveProps(props) {
