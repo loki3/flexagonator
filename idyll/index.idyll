@@ -85,7 +85,7 @@ Generator: [Display value:doGenerator /]
 History: [Display value:theHistory /]
 
 [Button onClick:`displayedScript=theCurrentScript;`]Show Current Script[/Button]
-[textarea cols:80 rows:10 spellCheck:false value:displayedScript placeholder:'qwert' /]
+[textarea cols:80 rows:10 spellCheck:false value:displayedScript readOnly:true /]
 
 
 [hr/]
