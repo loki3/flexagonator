@@ -120,11 +120,16 @@ History: [Display value:theHistory /]
 [var name:'exploreResults' value:'' /]
 
 [Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
+[br/]
+Explored [Display value:exploreExplored format:'0' /] states, found [Display value:exploreFound format:'0' /] states
 [Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
   done:exploreDone explored:exploreExplored found:exploreFound error:exploreError getResults:exploreGetResults results:exploreResults /]
-Explored [Display value:exploreExplored format:'0' /] states, found [Display value:exploreFound format:'0' /] states
 
-Show [Button onClick:`exploreGetResults='dotSimple';`]DOT: state to state[/Button]
-[Button onClick:`exploreGetResults='dotFlexes';`]DOT: flexes[/Button]
-[Button onClick:`exploreGetResults='dotDirected';`]DOT: directed flexes[/Button]
+Show for each state: [Button onClick:`exploreGetResults='getStates';`]pat notation[/Button]
+[Button onClick:`exploreGetResults='getFlexes';`]all available flexes[/Button]
+[br/]
+Show DOT: [Button onClick:`exploreGetResults='dotSimple';`]state to state[/Button]
+[Button onClick:`exploreGetResults='dotFlexes';`]flexes[/Button]
+[Button onClick:`exploreGetResults='dotDirected';`]directed flexes[/Button]
+[br/]
 [textarea cols:80 rows:30 spellCheck:false value:exploreResults readOnly:true /]

@@ -7,7 +7,7 @@ import React from 'react';
  *  doFull        set to true to start exploring based on the script contents of the component
  *  doOneSide     same as doFull, but without ^, i.e. without turning over the flexagon
  *  doCancel      set to true to cancel the current computation
- *  getResults    set to 'dotSimple', 'dotFlexes', 'dotDirected'
+ *  getResults    set to 'getStates', 'getFlexes', 'dotSimple', 'dotFlexes', 'dotDirected'
  *                when set, it updates 'results'
  *  results       a read-only property filled with content based on 'getResults'
  *  done          a read-only property set to true when computation is done
@@ -89,6 +89,10 @@ class Explorer extends React.Component {
     const explorer = this.state.explorer;
     if (!explorer) {
       results = 'first you need to enter a script and successfully explore';
+    } else if (props.getResults == 'getStates') {
+      results = this.getStates(explorer.getFlexagons());
+    } else if (props.getResults == 'getFlexes') {
+      results = this.getFlexes(explorer.getFoundFlexes());
     } else if (props.getResults == 'dotSimple') {
       results = Flexagonator.dotSimple(explorer.getFoundFlexes());
     } else if (props.getResults == 'dotFlexes') {
@@ -97,6 +101,24 @@ class Explorer extends React.Component {
       results = Flexagonator.dotWithFlexes(explorer.getFoundFlexes(), false);
     }
     this.props.updateProps({ getResults: null, results: results });
+  }
+
+  getStates(flexagons) {
+    let str = "";
+    for (let i = 0; i < flexagons.length; i++) {
+      const tree = flexagons[i].getAsLeafTrees();
+      str += i.toString() + ": " + JSON.stringify(tree) + '\n';
+    }
+    return str;
+  }
+
+  getFlexes(found) {
+    let str = "";
+    for (let i = 0; i < found.length; i++) {
+      const s = i.toString() + ": " + Flexagonator.relativeFlexesToString(found[i]) + '\n';
+      str += s;
+    }
+    return str;
   }
 
   render() {
