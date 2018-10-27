@@ -13,6 +13,7 @@ import React from 'react';
  *  done          a read-only property set to true when computation is done
  *  explored      a read-only property set to the number of states explored
  *  found         a read-only property set to the number of states found
+ *  counts        a read-only property set to a list of flexes & their counts
  *  error         a read-only property set if there's an error
  *  cols          number of columns in the input area
  *  rows          number of rows in the input area
@@ -81,7 +82,19 @@ class Explorer extends React.Component {
       }
     }
 
-    this.props.updateProps({ done: true, explored: explorer.getExploredStates(), found: explorer.getTotalStates() });
+    const counts = this.getCounts(explorer.getFoundFlexes());
+    this.props.updateProps({ done: true, explored: explorer.getExploredStates(), found: explorer.getTotalStates(), counts: counts });
+  }
+
+  getCounts(found) {
+    const flexCounts = Flexagonator.countStatesThatSupportFlexes(found);
+    const entries = Object.entries(flexCounts);
+    let str = '';
+    for (let i = 0; i < entries.length; i++) {
+      const line = entries[i][0] + '\t' + entries[i][1] + '\n';
+      str += line;
+    }
+    return str;
   }
 
   getResults(props) {

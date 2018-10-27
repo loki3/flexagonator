@@ -115,15 +115,23 @@ History: [Display value:theHistory /]
 [var name:'exploreDone' value:false /]
 [var name:'exploreExplored' value:0 /]
 [var name:'exploreFound' value:0 /]
+[var name:'exploreCounts' value:'' /]
 [var name:'exploreError' value:`undefined ` /]
 [var name:'exploreGetResults' value:'' /]
 [var name:'exploreResults' value:'' /]
+
+[Aside]
+  States that support flexes:
+
+  [textarea cols:20 rows:10 spellCheck:false value:exploreCounts readOnly:true /]
+[/Aside]
 
 [Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
 [br/]
 Explored [Display value:exploreExplored format:'0' /] states, found [Display value:exploreFound format:'0' /] states
 [Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
-  done:exploreDone explored:exploreExplored found:exploreFound error:exploreError getResults:exploreGetResults results:exploreResults /]
+  done:exploreDone explored:exploreExplored found:exploreFound counts:exploreCounts error:exploreError
+  getResults:exploreGetResults results:exploreResults /]
 
 Show for each state: [Button onClick:`exploreGetResults='getStates';`]pat notation[/Button]
 [Button onClick:`exploreGetResults='getFlexes';`]all available flexes[/Button]
