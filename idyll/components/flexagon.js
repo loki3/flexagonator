@@ -78,7 +78,7 @@ const FlexButtons = (props) => {
  *  flexes        flexes to apply to the current flexagon, e.g. 'Sh*>>T*^P*'
  *  doHistory     'undo' | 'redo' | 'clear' | 'reset'
  *  runScript     set to true when the 'script' property should be run
- *  script        a flexagonator script to run on the current flexagon
+ *  script        a flexagonator script to run on the current flexagon (either objects or a string)
  *  options       options used when drawing (passed to drawEntireFlexagon)
  *  overButton    true to include a button for turning over the flexagon
  *  width         width of canvas to draw in
@@ -129,11 +129,28 @@ class Flexagon extends React.Component {
       this.props.updateProps({ doHistory: null });
     }
     if (props.runScript && props.script) {
-      script = script.concat(props.script);
+      const actual = this.getAsScript(props.script);
+      if (actual === '') {
+        return actual;
+      }
+      script = script.concat(actual);
       this.props.updateProps({ runScript: null });
     }
 
     return script;
+  }
+
+  getAsScript(script) {
+    if (typeof script !== 'string') {
+      return script;
+    }
+
+    try {
+      return JSON.parse(script);
+    } catch (error) {
+      this.props.updateProps({ error: 'error reading script' });
+      return '';
+    }
   }
 
   applyScript(script) {
