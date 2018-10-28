@@ -138,7 +138,7 @@ class Explorer extends React.Component {
   }
 
   render() {
-    let { cols, rows } = this.props;
+    let { value, cols, rows } = this.props;
     cols = cols ? cols : 80;
     rows = rows ? rows : 10;
 
