@@ -2,8 +2,10 @@
 import React from 'react';
 
 /**
- * Explorer: tool for exploring all the states of a flexagon
+ * Explorer: tool for exploring all the states of a flexagon,
+ *           displays a <textarea> for entering in a script describing a flexagon
  * props {
+ *  value         contents of the <textarea>
  *  doFull        set to true to start exploring based on the script contents of the component
  *  doOneSide     same as doFull, but without ^, i.e. without turning over the flexagon
  *  doCancel      set to true to cancel the current computation
@@ -35,6 +37,7 @@ class Explorer extends React.Component {
   onChange(e) {
     const script = e.currentTarget.value;
     this.setState({ script: script });
+    this.props.updateProps({ value: script });
   }
 
   componentWillReceiveProps(props) {
@@ -139,7 +142,8 @@ class Explorer extends React.Component {
     cols = cols ? cols : 80;
     rows = rows ? rows : 10;
 
-    return <textarea placeholder={'enter script'} onChange={this.onChange} cols={cols} rows={rows} spellCheck={false} />;
+    return <textarea placeholder={'enter script'} onChange={this.onChange}
+      value={value} cols={cols} rows={rows} spellCheck={false} />;
   }
 }
 
