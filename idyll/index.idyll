@@ -121,8 +121,11 @@ History: [Display value:fromHistory /]
 
 [var name:'unfoldedContent' value:1 /]
 [derived name:'unfoldedOptions' value:`{content:unfoldedContent, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
-[var name:'doUnfoldedScript' value:`undefined ` /]
-[var name:'displayUnfoldedScript' value:`undefined ` /]
+[var name:'doUnfoldedScript' value:'[{"numPats":6},{"flexes":"P*P*P*"}]' /]
+[var name:'displayUnfoldedScript' value:'[
+  {"numPats":6},
+  {"flexes":"P*P*P*"}
+]' /]
 
 [Select value:unfoldedContent options:`[
   {value:0, label:"All on one side - use labels that indicate folding order"},
@@ -132,10 +135,11 @@ History: [Display value:fromHistory /]
   {value:3, label:"Show back only - use leaf properties"},
   ]` /]
 
-[Unfolded width:1000 height:500 numPats:doPats script:doUnfoldedScript generator:doGenerator angles:doAngles options:unfoldedOptions /]
+[Unfolded width:1000 height:500 script:doUnfoldedScript options:unfoldedOptions /]
 
-[Button onClick:`doUnfoldedScript=displayUnfoldedScript;`]Use Script[/Button]
-[Float position:"right"][Button onClick:`doUnfoldedScript=undefined;`]Use Simulator[/Button][/Float]
+[Button onClick:`doUnfoldedScript=displayUnfoldedScript;`]Run Script[/Button]--
+[Button onClick:`displayUnfoldedScript=theCurrentScript; doUnfoldedScript=theCurrentScript;`]Use "Flexagon Simulator"[/Button]--
+[Button onClick:`displayUnfoldedScript=fromDisplayed; doUnfoldedScript=fromDisplayed;`]Use "Flexagon from Script"[/Button]
 [TextArea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
 
 
