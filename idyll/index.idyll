@@ -135,6 +135,10 @@ History: [Display value:theHistory /]
 
   **Run Script**: Run the [flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
   listed in the text box in order to create a new flexagon or modify an existing one.
+
+  **Show Current Script**: Fill the text box with a [flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
+  describing the state of the current flexagon.
+  Can be used with other tools on this page.
 [/Conditional]
 
 [var name:'fromRunScript' value:true /]
@@ -157,6 +161,9 @@ History: [Display value:theHistory /]
 History: [Display value:fromHistory /]
 
 [Button onClick:`fromRunScript=true; fromScript=fromDisplayed;`]Run Script[/Button]
+[Float position:'right']
+[Button onClick:`fromRunScript=true; fromDisplayed=fromCurrentScript;`]Show Current Script[/Button]
+[/Float]
 [TextArea cols:80 rows:10 spellCheck:false value:fromDisplayed placeholder:'enter script' /]
 
 [Display value:fromError /]
