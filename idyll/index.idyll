@@ -139,6 +139,7 @@ History: [Display value:theHistory /]
 
 [var name:'fromRunScript' value:true /]
 [var name:'fromScript' value:`[{numPats:6}, {flexes:'P*P*P*'}] ` /]
+[var name:'fromCurrentScript' value:`undefined ` /]
 [var name:'fromDoHistory' value:'' /]
 [var name:'fromHistory' value:'' /]
 [var name:'fromError' value:`undefined ` /]
@@ -148,7 +149,7 @@ History: [Display value:theHistory /]
 ]' /]
 
 [Flexagon width:700 height:400 doHistory:fromDoHistory options:flexagonOptions
-  runScript:fromRunScript script:fromScript
+  runScript:fromRunScript script:fromScript currentScript:fromCurrentScript
   overButton:true error:fromError history:fromHistory /]
 
 [Button onClick:`fromDoHistory='undo';`]Undo[/Button] [Button onClick:`fromDoHistory='redo';`]Redo[/Button] [Button onClick:`fromRunScript=true;`]Reset[/Button]
@@ -199,7 +200,7 @@ Labels and colors:
 
 [Button onClick:`doUnfoldedScript=displayUnfoldedScript;`]Run Script[/Button]--
 [Button onClick:`displayUnfoldedScript=theCurrentScript; doUnfoldedScript=theCurrentScript;`]Use "Flexagon Simulator"[/Button]--
-[Button onClick:`displayUnfoldedScript=fromDisplayed; doUnfoldedScript=fromDisplayed;`]Use "Flexagon from Script"[/Button]
+[Button onClick:`displayUnfoldedScript=fromCurrentScript; doUnfoldedScript=fromCurrentScript;`]Use "Flexagon from Script"[/Button]
 [TextArea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
 
 
