@@ -257,3 +257,15 @@ Show DOT: [Button onClick:`exploreGetResults='dotSimple';`]state to state[/Butto
 [Button onClick:`exploreGetResults='dotDirected';`]directed flexes[/Button]
 [br/]
 [textarea cols:80 rows:30 spellCheck:false value:exploreResults readOnly:true /]
+
+
+[FullWidth][hr/][/FullWidth]
+# What next?
+
+Go to the [Table of Contents](index.html) or the [Flexagon Pages](http://loki3.com/flex/).
+
+[FullWidth]
+  [a href:'http://loki3.com/flex/' ]
+  [img src:'static/flexagon-variety.jpg' /]
+  [/a]
+[/FullWidth]
