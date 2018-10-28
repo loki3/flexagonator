@@ -22,11 +22,41 @@
 * *Flexagon from Script* is the same, except that you create flexagons using a [flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
 * The *Unfolded Strip* section gives you the ability to generate flexagon strips to print and fold
 * The *Explorer* can be used to find every state accessible by using the given flexes
+
+  Each individual section contains additional help.
 [/Conditional]
 
 
-[hr/]
+[FullWidth][hr/][/FullWidth]
 # Flexagon Simulator
+
+[var name:"showSimulatorHelp" value:false /]
+[Button onClick:` showSimulatorHelp = !showSimulatorHelp `]What is this and how do I use it?[/Button]
+[Conditional if:` showSimulatorHelp `]
+  **The polygons**: These represent a folded flexagon, both front (the larger one) and back (the smaller one).
+  The buttons allow you to apply a flex at a given corner.
+  The `^` on the smaller polygon is used to turn over the flexagon.
+
+  **Apply Settings**: Once you have entered in your settings in the various text boxes, click `Apply Settings` to use them to create a new flexagon.
+  The `Generating sequence` is a series of flexes used to create the structure of the flexagon.
+  `Search flexes` is used to determine which flex buttons should appear on the flexagon.
+  `Pats per side` indicates the number of *pats* (stacks of triangles) to use for the flexagon.
+  `Center angle` is the angle of each triangular leaf that starts out in the center of the flexagon.
+  `Angle 2` is the first angle clockwise from the center on the first leaf.
+
+  **Undo, redo, reset**: Use to undo or redo flexes, or to start over again from the given *generating sequence*.
+
+  **Flex sequence**: Allows you to type in a sequence of flexes.
+  Click `Apply Sequence` to have it applied to the current flexagon if it can.
+
+  **Generator**: Shows the generating sequence for the current flexagon.
+
+  **History**: Shows a history of all flexes that have been applied either by clicking buttons on the flexagon or through applying a *flex sequence*.
+
+  **Show Current Script**: Fill the text box with a [flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
+  describing the state of the current flexagon.
+  Can be used with other tools on this page.
+[/Conditional]
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:true, stats:true, both:true}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
@@ -89,8 +119,23 @@ History: [Display value:theHistory /]
 [textarea cols:80 rows:10 spellCheck:false value:displayedScript readOnly:true /]
 
 
-[hr/]
+[FullWidth][hr/][/FullWidth]
 # Flexagon from Script
+
+[var name:"showScriptHelp" value:false /]
+[Button onClick:` showScriptHelp = !showScriptHelp `]What is this and how do I use it?[/Button]
+[Conditional if:` showScriptHelp `]
+  **The polygons**: These represent a folded flexagon, both front (the larger one) and back (the smaller one).
+  The buttons allow you to apply a flex at a given corner.
+  The `^` on the smaller polygon is used to turn over the flexagon.
+
+  **Undo, redo, reset**: Use to undo or redo flexes, or to start over again from the given *generating sequence*.
+
+  **History**: Shows a history of all flexes that have been applied either by clicking buttons on the flexagon or through applying a *flex sequence*.
+
+  **Run Script**: Run the [flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
+  listed in the text box in order to create a new flexagon or modify an existing one.
+[/Conditional]
 
 [var name:'fromRunScript' value:true /]
 [var name:'fromScript' value:`[{numPats:6}, {flexes:'P*P*P*'}] ` /]
@@ -116,8 +161,22 @@ History: [Display value:fromHistory /]
 [Display value:fromError /]
 
 
-[hr/]
+[FullWidth][hr/][/FullWidth]
 # Unfolded Strip:
+
+[var name:"showUnfoldedHelp" value:false /]
+[Button onClick:` showUnfoldedHelp = !showUnfoldedHelp `]What is this and how do I use it?[/Button]
+[Conditional if:` showUnfoldedHelp `]
+  **Labels and colors**: Gives you several options for how it displays labels and colors for the unfolded strip.
+  You can have it use values from the *leafProperties* portion of a script, display the leaf ids,
+  display everything on one side, or display just the properties on the front or back.
+
+  **Unfolded strip**: To make a real flexagon, print the unfolded strip, cut it out,
+  then fold like numbers on like numbers, and finish by taping together the first and last triangles.
+
+  **Run Script**: Create a new unfolded strip by running the script in the text box,
+  grabbing the one used by the *Flexagon Simulator*, or the one used by the *Flexagon from Script*.
+[/Conditional]
 
 [var name:'unfoldedContent' value:1 /]
 [derived name:'unfoldedOptions' value:`{content:unfoldedContent, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
@@ -127,6 +186,7 @@ History: [Display value:fromHistory /]
   {"flexes":"P*P*P*"}
 ]' /]
 
+Labels and colors:
 [Select value:unfoldedContent options:`[
   {value:0, label:"All on one side - use labels that indicate folding order"},
   {value:1, label:"All on one side - use labels that indicate folding order, show leaf ids"},
@@ -134,7 +194,7 @@ History: [Display value:fromHistory /]
   {value:2, label:"Show front only - use leaf properties"},
   {value:3, label:"Show back only - use leaf properties"},
   ]` /]
-
+[br/][br/]
 [Unfolded width:1000 height:500 script:doUnfoldedScript options:unfoldedOptions /]
 
 [Button onClick:`doUnfoldedScript=displayUnfoldedScript;`]Run Script[/Button]--
@@ -143,8 +203,26 @@ History: [Display value:fromHistory /]
 [TextArea cols:80 rows:10 spellCheck:false value:displayUnfoldedScript placeholder:'enter script' /]
 
 
-[hr/]
+[FullWidth][hr/][/FullWidth]
 # Explorer
+
+[var name:"showExplorerHelp" value:false /]
+[Button onClick:` showExplorerHelp = !showExplorerHelp `]What is this and how do I use it?[/Button]
+[Conditional if:` showExplorerHelp `]
+  **Explore**: Start by entering a [flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
+  that creates a flexagon.
+  Click `Explore all ` to have it use all the specified search flexes to find every accessible state (including `<`, `>`, and `^`).
+  Click `Explore without ^` to have it skip turning the flexagon over during the search.
+  Click `Cancel ` to abort the current search.
+
+  **States that support flexes**: Once an exploration has been completed,
+  this shows how many of the resulting states support each of the flexes it used during the search.
+
+  **Show**: Shows information about all the states it found after an exploration has been completed.
+  You can have it show the internal structure of each state by clicking `pat notation `
+  or all the flexes available from each state by clicking `all available flexes `.
+  Or you can have it output information in DOT format, which can be used by some graph visualization tools.
+[/Conditional]
 
 [var name:'exploreDoFull' value:false /]
 [var name:'exploreDoOneSide' value:false /]
