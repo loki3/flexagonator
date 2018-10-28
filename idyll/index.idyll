@@ -129,7 +129,7 @@ History: [Display value:theHistory /]
   The buttons allow you to apply a flex at a given corner.
   The `^` on the smaller polygon is used to turn over the flexagon.
 
-  **Undo, redo, reset**: Use to undo or redo flexes, or to start over again from the given *generating sequence*.
+  **Undo, redo**: Use to undo or redo flexes.
 
   **History**: Shows a history of all flexes that have been applied either by clicking buttons on the flexagon or through applying a *flex sequence*.
 
@@ -152,7 +152,7 @@ History: [Display value:theHistory /]
   runScript:fromRunScript script:fromScript currentScript:fromCurrentScript
   overButton:true error:fromError history:fromHistory /]
 
-[Button onClick:`fromDoHistory='undo';`]Undo[/Button] [Button onClick:`fromDoHistory='redo';`]Redo[/Button] [Button onClick:`fromRunScript=true;`]Reset[/Button]
+[Button onClick:`fromDoHistory='undo';`]Undo[/Button] [Button onClick:`fromDoHistory='redo';`]Redo[/Button]
 
 History: [Display value:fromHistory /]
 
