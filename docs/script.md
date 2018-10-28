@@ -72,10 +72,10 @@ This is often followed by the `flexes` command to create more complex structure 
 
 This allows you to specify a series of flexes to be performed on a flexagon,
 optionally creating new structure in the flexagon in order to allow the flex to be performed.
-Each flex is separated by one or more space and uses the `shorthand` field from `addFlex` for representation,
-e.g. `P > > Sh+ ^ T'`.
+A flex is describing using the `shorthand` field from `addFlex` for representation
+and can optionally be separated by one or more space, e.g. `P > > Sh+ ^ T'`.
 
-A flex is performed relative to the "current corner".
+A flex is performed relative to the *current corner* (or *current vertex*).
 You can change the current corner using the special flexes `>` and `<` or turn the flexagon over with `^`.
 
 * `>` step one corner clockwise
@@ -110,9 +110,9 @@ Additionally, there are several symbols you can tack onto a flex to modify it.
 ]
 ```
 
-One technique for creating flexagons is to start from the "base" flexagon, one where the pats only have a single leaf,
+One technique for creating flexagons is to start from the *base* flexagon, one where the pats only have a single leaf,
 then apply a series of flexes using `*` or `+` to generate the necessary structure for those flexes.
-Such a sequence is called the "generating sequence" for the flexagon.
+Such a sequence is called the *generating sequence* for the flexagon.
 
 ```javascript
 [
@@ -146,7 +146,7 @@ you should leave off the `*` or `+` if you want to ensure that no number/color c
 ### the `searchFlexes` command
 
 You can specify the flexes used by the system when it searches for which flexes can be performed on a flexagon.
-The system defaults to using a set of "prime" flexes, i.e. flexes that can't always be expressed in terms of other flexes.
+The system defaults to using a set of *prime* flexes, i.e. flexes that can't always be expressed in terms of other flexes.
 You can fetch the current list through `FlexagonManager.flexesToSearch`.
 
 ```javascript
@@ -158,13 +158,14 @@ You can fetch the current list through `FlexagonManager.flexesToSearch`.
 While Flexagonator has a lot of built-in flexes, it doesn't contain all the possible flexes.
 Therefore, you can define your own flexes.
 You specify both a full name and an abbreviated name used in flex sequences.
-See [Flex Notation](flex-notation.md) for notes on naming conventions for the names of flexes.
+See [Flex Notation](flex-notation.md) for notes on naming conventions for the names of flexes
+(basically an upper case letter optionally followed by lower case letters or numbers).
 
 After the names, you list the minimal pat structure before the flex is applied  with `input` and the resulting pat structure after the flex has been applied with `output`.
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
 Note that you should figure out the simplest pat structure needed to support your flex so that it can be applied from all appropriate configurations.
 
-One other note is that flexes are performed relative to a "current corner", which is between the first and last pat in your `input` and `output` definitions.
+One other note is that flexes are performed relative to a *current corner*, which is between the first and last pat in your `input` and `output` definitions.
 For `input`, this will typically be where you fold two leaves together when starting the flex.
 For `output`, a good rule of thumb is to make it so after you perform the flex,
 you can turn it over and, without `>` or `<`, perform the flex again to get back to the original state.
