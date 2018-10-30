@@ -83,6 +83,8 @@ The green circle on the first and last slides indicates where the *current verte
 [Aside]
   The flex notation for the pyramid shuffle is `Sh`.
   Performing the flex in reverse is `Sh'`.
+  You can also undo the pyramid shuffle by turning it over, doing the pyramid shuffle at the same vertex,
+  then turning it back over again, summarized as `Sh' = ^Sh^`.
 
   The *pyramid shuffle* requires at least 5 leaves per side (i.e. a pentaflexagon or greater).
   It requires mild bending of the leaves on the pentaflexagon,
@@ -168,6 +170,7 @@ Step through the images to see a flip flex on a silver octaflexagon:
 
 [Aside]
   The flex notation for the flip flex is `F`.
+  As with the pyramid shuffle, `F' = ^F^`.
 
   The *flip flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
   It works well on right triangle flexagons.
@@ -239,6 +242,9 @@ Step through the images to see a tuck flex on an equilateral hexaflexagon:
   On the heptaflexagon and above, however, there are multiple ways you can add this additional opening.
   That's why there are multiple variants for some of them, e.g. the two heptaflexagons.
 
+  This is also why, unlike many other flexes, `T'` isn't always the same as `^T^`.
+  This is summarized as `T' ~= ^T^`, where `~=` means *the sequences are the same only if the structure of the flexagon allows it*.
+
   There are two bronze hexaflexagon variants because there are two distinct places you could potentially perform a tuck flex:
   at a point or at the vertex in the middle of an edge.
 [/Aside]
@@ -269,6 +275,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
 
 [Aside]
   The flex notation for the v-flex is `V`.
+  `V' = ^V^`
 
   The *v-flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
 [/Aside]
@@ -299,6 +306,7 @@ Step through the images to see a silver tetra flex on a right decaflexagon:
 
 [Aside]
   The flex notation for the silver tetra flex is `St`.
+  `St' = ^St^`.
 
   The *silver tetra flex* requires at least 4 leaves per side (i.e. a tetraflexagon).
   It works best on right flexagons, though it works on others with enough triangles per side.
