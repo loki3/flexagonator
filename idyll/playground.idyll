@@ -43,6 +43,7 @@
   `Pats per side` indicates the number of *pats* (stacks of triangles) to use for the flexagon.
   `Center angle` is the angle of each triangular leaf that starts out in the center of the flexagon.
   `Angle 2` is the first angle clockwise from the center on the first leaf.
+  Note: in order to get the default isosceles triangle, clear `Center angle`.
 
   **Undo, redo, reset**: Use to undo or redo flexes, or to start over again from the given *generating sequence*.
 
