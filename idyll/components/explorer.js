@@ -57,7 +57,7 @@ class Explorer extends React.Component {
     const fm = Flexagonator.runScriptString(null, this.state.script);
     if (Flexagonator.isError(fm)) {
       const str = Flexagonator.errorToString(fm);
-      this.props.updateProps({ error: str, fm: null, explorer: null });
+      this.props.updateProps({ error: str, doFull: null, fm: null, explorer: null });
       return;
     }
 
