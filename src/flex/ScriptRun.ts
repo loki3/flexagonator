@@ -20,8 +20,12 @@ namespace Flexagonator {
   }
 
   export function runScriptString(fm: FlexagonManager, str: string): FlexagonManager | FlexError | TreeError {
-    const script = JSON.parse(str);
-    return runScript(fm, script);
+    try {
+      const script = JSON.parse(str);
+      return runScript(fm, script);
+    } catch (error) {
+      return { reason: TreeCode.ParseError, context: error };
+    }
   }
 
   export function runScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
