@@ -1,0 +1,65 @@
+[meta title:"Slot flexes" description:"Flexes that involve sliding leaves through slots" /]
+
+[Header
+  title:"Slot flexes"
+  subtitle:"Flexes that involve sliding leaves through slots"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+[var name:'unfoldedOptions' value:`{content:4}`/]
+
+
+# Slot half and slot pocket
+
+## Generating sequence: Lh+
+
+[derived name:'initLh' value:`[
+  {numPats: 6},
+  {searchFlexes: "Lh Lh'"},
+  {flexAndColor: { flexes: "Lh+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:600 height:400 numPats:6 initialScript:initLh runInitial:false options:flexagonOptions overButton:true /]
+
+[Unfolded width:1000 height:500 script:initLh options:unfoldedOptions endText:'Lh+' /]
+
+
+## Generating sequence: Lk+
+
+[derived name:'initLk' value:`[
+  {numPats: 6},
+  {searchFlexes: "Lk Lk'"},
+  {flexAndColor: { flexes: "Lk+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:600 height:400 numPats:6 initialScript:initLk runInitial:false options:flexagonOptions overButton:true /]
+
+[var name:unfoldedLk1 value:`{content:4, scale:200, rotation:90, end:5, captions:[{ text: 'Lk+', which: 0 }, { text: 'a', which: -1 }]}` /]
+[var name:unfoldedLk2 value:`{content:4, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lk+', which: -1 }]}` /]
+[FullWidth]
+  [Unfolded width:600 height:400 script:initLk options:unfoldedLk1 /]
+  [Unfolded width:600 height:400 script:initLk options:unfoldedLk2 /]
+[/FullWidth]
+
+
+## Generating sequence: Lh+Lk+
+
+[derived name:'initLhLk' value:`[
+  {numPats: 6},
+  {searchFlexes: "Lh Lh' Lk Lk' P"},
+  {flexAndColor: { flexes: "Lh*Lh' Lk*Lk'" , colors: defaultColors } },
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:600 height:400 numPats:6 initialScript:initLhLk runInitial:false options:flexagonOptions overButton:true /]
+
+[Unfolded width:1000 height:500 script:initLhLk options:unfoldedOptions endText:'Lh+Lk+' /]
+
+
+# Slot tuck top and bottom
+
+# Back Slot tuck back top and bottom
