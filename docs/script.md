@@ -135,12 +135,8 @@ it will label any freshly created leaves with the next number and apply the next
 if there are still more in the color array.
 
 ```javascript
-{ flexAndColor: { flexes: 'P* > Sh*' }, colors: [0x555555, 0x0000ff] } }
+{ flexAndColor: { flexes: 'P* > Sh*' , colors: [0x555555, 0x0000ff] } }
 ```
-
-Note that it uses the next number/color combination whenever a flex ends in `*` or `+`
-(i.e. a flex that creates the necessary structure to perform the flex), so if you know that no new leaves will be created by a flex,
-you should leave off the `*` or `+` if you want to ensure that no number/color combinations are wasted.
 
 
 ### the `searchFlexes` command

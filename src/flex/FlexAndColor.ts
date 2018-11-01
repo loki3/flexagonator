@@ -31,10 +31,12 @@ namespace Flexagonator {
         // e.g. P*
         fm.applyFlex(flexName);
         faceProps.setFaceProps(fm, true);
+        faceProps.setFaceProps(fm, false);
       } else if (flexName.shouldGenerate && !flexName.shouldApply) {
         // e.g. P+
         fm.applyFlex(flexName.flexName);  // e.g. P'
         faceProps.setFaceProps(fm, true);
+        faceProps.setFaceProps(fm, false);
         fm.applyInReverse(flexName.flexName);
       } else {
         fm.applyFlex(flexName);
@@ -51,11 +53,15 @@ namespace Flexagonator {
     }
 
     setFaceProps(fm: FlexagonManager, front: boolean): void {
-      fm.setUnsetFaceLabel((this.n + 1).toString(), front);
+      let anyset = fm.setUnsetFaceLabel((this.n + 1).toString(), front);
       if (this.n < this.colors.length) {
-        fm.setUnsetFaceColor(this.colors[this.n], front);
+        if (fm.setUnsetFaceColor(this.colors[this.n], front)) {
+          anyset = true;
+        }
       }
-      this.n++;
+      if (anyset) {
+        this.n++;
+      }
     }
   }
 }

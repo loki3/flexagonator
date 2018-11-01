@@ -97,11 +97,15 @@ namespace Flexagonator {
       }
     }
 
-    setUnsetFaceLabel(label: string, front: boolean) {
+    setUnsetFaceLabel(label: string, front: boolean): boolean {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
+      let anyset = false;
       for (const id of ids) {
-        this.leafProps.setUnsetLabelProp(id, label);
+        if (this.leafProps.setUnsetLabelProp(id, label)) {
+          anyset = true;
+        }
       }
+      return anyset;
     }
 
     setFaceColor(color: number, front: boolean) {
@@ -111,11 +115,15 @@ namespace Flexagonator {
       }
     }
 
-    setUnsetFaceColor(color: number, front: boolean) {
+    setUnsetFaceColor(color: number, front: boolean): boolean {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
+      let anyset = false;
       for (const id of ids) {
-        this.leafProps.setUnsetColorProp(id, color);
+        if (this.leafProps.setUnsetColorProp(id, color)) {
+          anyset = true;
+        }
       }
+      return anyset;
     }
 
     setAngles(center: number, clock: number) {

@@ -32,11 +32,13 @@ namespace Flexagonator {
       props.label = label;
     }
 
-    setUnsetLabelProp(id: number, label: string) {
+    setUnsetLabelProp(id: number, label: string): boolean {
       const props = this.getFacePropsToSet(id);
       if (props.label === undefined) {
         props.label = label;
+        return true;
       }
+      return false;
     }
 
     setColorProp(id: number, color: number) {
@@ -44,11 +46,13 @@ namespace Flexagonator {
       props.color = color;
     }
 
-    setUnsetColorProp(id: number, color: number) {
+    setUnsetColorProp(id: number, color: number): boolean {
       const props = this.getFacePropsToSet(id);
       if (props.color === undefined) {
         props.color = color;
+        return true;
       }
+      return false;
     }
 
     getFaceLabel(id: number): string {
