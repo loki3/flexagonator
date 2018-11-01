@@ -60,6 +60,57 @@
 [Unfolded width:1000 height:500 script:initLhLk options:unfoldedOptions endText:'Lh+Lk+' /]
 
 
-# Slot tuck top and bottom
+[hr /]
 
-# Back Slot tuck back top and bottom
+# Slot tuck and slot tuck back
+
+## Generating sequence: Lt+
+
+[derived name:'initLt' value:`[
+  {numPats: 6},
+  {searchFlexes: "Lt Lt'"},
+  {flexAndColor: { flexes: "Lt+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:600 height:400 numPats:6 initialScript:initLt runInitial:false options:flexagonOptions overButton:true /]
+
+[var name:unfoldedLt1 value:`{content:4, scale:200, rotation:90, end:5, captions:[{ text: 'Lt+', which: 0 }, { text: 'a', which: -1 }]}` /]
+[var name:unfoldedLt2 value:`{content:4, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lt+', which: -1 }]}` /]
+[FullWidth]
+  [Unfolded width:600 height:400 script:initLt options:unfoldedLt1 /]
+  [Unfolded width:600 height:400 script:initLt options:unfoldedLt2 /]
+[/FullWidth]
+
+
+## Generating sequence: Ltb+
+
+[derived name:'initLtb' value:`[
+  {numPats: 6},
+  {searchFlexes: "Ltb Ltb'"},
+  {flexAndColor: { flexes: "Ltb+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:600 height:400 numPats:6 initialScript:initLtb runInitial:false options:flexagonOptions overButton:true /]
+
+[Unfolded width:1000 height:500 script:initLtb options:unfoldedOptions endText:'Ltb+' /]
+
+
+## Generating sequence: Lt+Ltb+
+
+[derived name:'initLtLtb' value:`[
+  {numPats: 6},
+  {searchFlexes: "Lt Lt' Ltb Ltb' P"},
+  {flexAndColor: { flexes: "Lt*Lt' Ltb*Ltb'" , colors: defaultColors } },
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:600 height:400 numPats:6 initialScript:initLtLtb runInitial:false options:flexagonOptions overButton:true /]
+
+[Unfolded width:1000 height:500 script:initLtLtb options:unfoldedOptions endText:'Lt+Ltb+' /]
+
+
+[hr /]
+
+# Slot tuck bottom and back
