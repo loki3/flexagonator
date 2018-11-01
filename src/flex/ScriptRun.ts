@@ -149,17 +149,21 @@ namespace Flexagonator {
   }
 
   function doUnsetFace(fm: FlexagonManager, unsetFace: LeafProperties) {
-    if (unsetFace.front.label !== undefined) {
-      fm.setUnsetFaceLabel(unsetFace.front.label, true);
+    if (unsetFace.front !== undefined) {
+      if (unsetFace.front.label !== undefined) {
+        fm.setUnsetFaceLabel(unsetFace.front.label, true);
+      }
+      if (unsetFace.front.color !== undefined) {
+        fm.setUnsetFaceColor(unsetFace.front.color, true);
+      }
     }
-    if (unsetFace.back.label !== undefined) {
-      fm.setUnsetFaceLabel(unsetFace.back.label, false);
-    }
-    if (unsetFace.front.color !== undefined) {
-      fm.setUnsetFaceColor(unsetFace.front.color, true);
-    }
-    if (unsetFace.back.color !== undefined) {
-      fm.setUnsetFaceColor(unsetFace.back.color, false);
+    if (unsetFace.back !== undefined) {
+      if (unsetFace.back.label !== undefined) {
+        fm.setUnsetFaceLabel(unsetFace.back.label, false);
+      }
+      if (unsetFace.back.color !== undefined) {
+        fm.setUnsetFaceColor(unsetFace.back.color, false);
+      }
     }
   }
 }
