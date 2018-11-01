@@ -48,6 +48,8 @@
 
 ## Generating sequence: Lh+Lk+
 
+Try `Lh < P Lk'` or `Lk < P > P Lh'`
+
 [derived name:'initLhLk' value:`[
   {numPats: 6},
   {searchFlexes: "Lh Lh' Lk Lk' P"},
@@ -98,6 +100,8 @@
 
 
 ## Generating sequence: Lt+Ltb+
+
+Try `Lt > P < P Ltb'` or `Ltb < P Lt'`
 
 [derived name:'initLtLtb' value:`[
   {numPats: 6},
