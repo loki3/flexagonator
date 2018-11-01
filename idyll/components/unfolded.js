@@ -40,7 +40,11 @@ class Unfolded extends React.Component {
 
     let fm;
     if (script) {
-      fm = Flexagonator.runScriptString(fm, script);
+      if (typeof script === 'string') {
+        fm = Flexagonator.runScriptString(fm, script);
+      } else {
+        fm = Flexagonator.runScript(fm, script);
+      }
     } else if (numPats) {
       // numPats, angles, generator, & autoLabel
       let pats = [];
