@@ -64,7 +64,17 @@ Try `Lh < P Lk'` or `Lk < P > P Lh'`
 
 [hr /]
 
-# Slot tuck and slot tuck back
+# Slot tuck flexes
+
+The *slot tuck* flexes all start out the same way:
+slide leaves through a slot till you're looking at a position where you could apply a tuck at the top or the bottom.
+Once you do a top or bottom tuck, you can choose to open the flexagon from either the front or back.
+This gives you a total of 4 different ways to complete the flex:
+
+* `Ltf`: slot tuck top front
+* `Ltb`: slot tuck top back
+* `Lbf`: slot tuck bottom front
+* `Lbb`: slot tuck bottom back
 
 ## Generating sequence: Lt+
 
@@ -117,13 +127,13 @@ Try `Lt > P < P Ltb'` or `Ltb < P Lt'`
 
 [hr /]
 
-# Slot tuck bottom and back
-
 ## Generating sequence: Lbtt+
+
+This one is interesting because `V` accomplishes the same thing without as many structural requirements.
 
 [derived name:'initLbtt' value:`[
   {numPats: 6},
-  {searchFlexes: "Lbtt Lbtt'"},
+  {searchFlexes: "Lbtt Lbtt' V"},
   {flexAndColor: { flexes: "Lbtt+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
