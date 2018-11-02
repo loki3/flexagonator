@@ -71,10 +71,10 @@ note that the linked page uses `S`, where `Sh = S <` - `Sh` was defined so that 
 * `F`: the flip flex - see [Flip Flex](http://loki3.com/flex/flex/flip.html)
 * `St`: the silver tetra - see [Silver Tetra](http://loki3.com/flex/flex/silver-tetra.html)
 * `Tw`: the twist flex - best on an even-ordered star flexagon, and involves multiple simple pivot flexes
-* `Lt`: the slot tuck - see [Slot Tuck](http://loki3.com/flex/flex/slot-tuck.html)
-* `Ltb`: the slot tuck bottom - same as the slot tuck, but you open it from the opposite side
-* `Lbtt`: the back slot tuck top - same as the slot tuck, but you tuck from the opposite corner
-* `Lbtb`: the back slot tuck bottom - same as the slot tuck bottom, but you tuck from the opposite corner
+* `Ltf`: the slot tuck top front - see [Slot Tuck](http://loki3.com/flex/flex/slot-tuck.html)
+* `Ltb`: the slot tuck top back - same as the slot tuck, but you open it from the opposite side
+* `Lbf`: the slot tuck bottom front - same as the slot tuck top front, but you tuck from the opposite corner
+* `Lbb`: the slot tuck bottom back - same as the slot tuck top back, but you tuck from the opposite corner
 * `Lh`: the slot half - start with a slot, fold the flexagon in half, then open it up
 * `Lk`: the slot pocket - start with a slot, then do a series of pocket flexes before opening it up
 * `L3`: the slot triple pocket - do 3 pocket flexes, a slot, then 3 pocket flexes

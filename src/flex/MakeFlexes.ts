@@ -91,16 +91,16 @@ namespace Flexagonator {
     flexes["St"] = makeFlex("silver tetra flex",
       [[1, [2, 3]], 4, 5, 6, [7, [8, 9]], 10],
       [2, [[-1, 4], -3], 5, 6, 8, [[-7, 10], -9]], FlexRotation.None) as Flex;
-    flexes["Lt"] = makeFlex("slot tuck flex",
+    flexes["Ltf"] = makeFlex("slot tuck top front",
       [[[[1, 2], 3], 4], 5, 6, 7, [8, 9], 10],
       [10, [2, 4], -1, 3, 5, [8, [6, [9, -7]]]], FlexRotation.None) as Flex;
-    flexes["Ltb"] = makeFlex("slot tuck bottom",
+    flexes["Ltb"] = makeFlex("slot tuck top back",
       [[[1, [2, 3]], 4], 5, 6, 7, [8, 9], 10],
       [-4, 1, -3, [-5, 2], [[7, -9], -6], [-10, 8]], FlexRotation.ClockMirror) as Flex;
-    flexes["Lbtt"] = makeFlex("slot back tuck top",
+    flexes["Lbf"] = makeFlex("slot tuck bottom front",
       [[[1, 2], 10], [4, 3], 5, 6, [8, 7], 9],
       [[-2, -1], -3, [-5, 4], [7, -6], -8, [10, -9]], FlexRotation.CounterMirror) as Flex;
-    flexes["Lbtb"] = makeFlex("slot back tuck bottom",
+    flexes["Lbb"] = makeFlex("slot tuck bottom back",
       [[[2, -3], -1], [5, -4], 6, 7, [[-9, 10], 8], 11],
       [2, [-4, 3], -5, [[7, -8], -6], -9, [[11, 1], -10]], FlexRotation.CounterMirror) as Flex;
     flexes["Lh"] = makeFlex("slot half",

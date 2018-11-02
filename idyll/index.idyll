@@ -76,22 +76,22 @@ This gives you a total of 4 different ways to complete the flex:
 * `Lbf`: slot tuck bottom front
 * `Lbb`: slot tuck bottom back
 
-## Generating sequence: Lt+
+## Generating sequence: Ltf+
 
-[derived name:'initLt' value:`[
+[derived name:'initLtf' value:`[
   {numPats: 6},
-  {searchFlexes: "Lt Lt'"},
-  {flexAndColor: { flexes: "Lt+", colors: defaultColors }},
+  {searchFlexes: "Ltf Ltf'"},
+  {flexAndColor: { flexes: "Ltf+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLt runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLtf runInitial:false options:flexagonOptions overButton:true /]
 
-[var name:unfoldedLt1 value:`{content:4, scale:200, rotation:90, end:5, captions:[{ text: 'Lt+', which: 0 }, { text: 'a', which: -1 }]}` /]
-[var name:unfoldedLt2 value:`{content:4, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lt+', which: -1 }]}` /]
+[var name:unfoldedLtf1 value:`{content:4, scale:200, rotation:90, end:5, captions:[{ text: 'Ltf+', which: 0 }, { text: 'a', which: -1 }]}` /]
+[var name:unfoldedLtf2 value:`{content:4, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Ltf+', which: -1 }]}` /]
 [FullWidth]
-  [Unfolded width:600 height:400 script:initLt options:unfoldedLt1 /]
-  [Unfolded width:600 height:400 script:initLt options:unfoldedLt2 /]
+  [Unfolded width:600 height:400 script:initLtf options:unfoldedLtf1 /]
+  [Unfolded width:600 height:400 script:initLtf options:unfoldedLtf2 /]
 [/FullWidth]
 
 
@@ -109,75 +109,75 @@ This gives you a total of 4 different ways to complete the flex:
 [Unfolded width:1000 height:500 script:initLtb options:unfoldedOptions endText:'Ltb+' /]
 
 
-## Generating sequence: Lt+Ltb+
+## Generating sequence: Ltf+Ltb+
 
-Try `Lt > P < P Ltb'` or `Ltb < P Lt'`
+Try `Ltf > P < P Ltb'` or `Ltb < P Ltf'`
 
-[derived name:'initLtLtb' value:`[
+[derived name:'initLtfLtb' value:`[
   {numPats: 6},
-  {searchFlexes: "Lt Lt' Ltb Ltb' P"},
-  {flexAndColor: { flexes: "Lt*Lt' Ltb*Ltb'" , colors: defaultColors } },
+  {searchFlexes: "Ltf Ltf' Ltb Ltb' P"},
+  {flexAndColor: { flexes: "Ltf*Ltf' Ltb*Ltb'" , colors: defaultColors } },
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLtLtb runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLtfLtb runInitial:false options:flexagonOptions overButton:true /]
 
-[Unfolded width:1000 height:500 script:initLtLtb options:unfoldedOptions endText:'Lt+Ltb+' /]
+[Unfolded width:1000 height:500 script:initLtfLtb options:unfoldedOptions endText:'Ltf+Ltb+' /]
 
 
 [hr /]
 
-## Generating sequence: Lbtt+
+## Generating sequence: Lbf+
 
 This one is interesting because `V` accomplishes the same thing without as many structural requirements.
 
-[derived name:'initLbtt' value:`[
+[derived name:'initLbf' value:`[
   {numPats: 6},
-  {searchFlexes: "Lbtt Lbtt' V"},
-  {flexAndColor: { flexes: "Lbtt+", colors: defaultColors }},
+  {searchFlexes: "Lbf Lbf' V"},
+  {flexAndColor: { flexes: "Lbf+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLbtt runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLbf runInitial:false options:flexagonOptions overButton:true /]
 
-[Unfolded width:1000 height:500 script:initLbtt options:unfoldedOptions endText:'Lbtt+' /]
+[Unfolded width:1000 height:500 script:initLbf options:unfoldedOptions endText:'Lbf+' /]
 
 
-## Generating sequence: Lbtb+
+## Generating sequence: Lbb+
 
-[derived name:'initLbtb' value:`[
+[derived name:'initLbb' value:`[
   {numPats: 6},
-  {searchFlexes: "Lbtb Lbtb'"},
-  {flexAndColor: { flexes: "Lbtb+", colors: defaultColors }},
+  {searchFlexes: "Lbb Lbb'"},
+  {flexAndColor: { flexes: "Lbb+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLbtb runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLbb runInitial:false options:flexagonOptions overButton:true /]
 
-[Unfolded width:1000 height:500 script:initLbtb options:unfoldedOptions endText:'Lbtb+' /]
+[Unfolded width:1000 height:500 script:initLbb options:unfoldedOptions endText:'Lbb+' /]
 
 
-## Generating sequence: Lbtt+Lbtb+
+## Generating sequence: Lbf+Lbb+
 
-Try `Lbtt P < P Lbtb'` or `Lbtb < P > Lbtt'`
+Try `Lbf P < P Lbb'` or `Lbb < P > Lbf'`
 
-[derived name:'initLbttLbtb' value:`[
+[derived name:'initLbfLbb' value:`[
   {numPats: 6},
-  {searchFlexes: "Lbtt Lbtt' Lbtb Lbtb' P"},
-  {flexAndColor: { flexes: "Lbtt*Lbtt' Lbtb*Lbtb'" , colors: defaultColors } },
+  {searchFlexes: "Lbf Lbf' Lbb Lbb' P"},
+  {flexAndColor: { flexes: "Lbf*Lbf' Lbb*Lbb'" , colors: defaultColors } },
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLbttLbtb runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLbfLbb runInitial:false options:flexagonOptions overButton:true /]
 
-[Unfolded width:1000 height:500 script:initLbttLbtb options:unfoldedOptions endText:'Lbtt+Lbtb+' /]
+[Unfolded width:1000 height:500 script:initLbfLbb options:unfoldedOptions endText:'Lbf+Lbb+' /]
 
 
 [hr/]
 
-# Generating sequence: Lh+Lk+Lbtb+
+# Generating sequence: Lh+Lk+Lbb+
 
-The generating sequence `Lh+Lk+Lbtb+` gives you a flexagon that supports all 6 slot flexes we've discussed so far.
+The generating sequence `Lh+Lk+Lbb+` gives you a flexagon that supports all 6 slot flexes we've discussed so far.
 It also supports many of the other flexes from previous chapters, such as
 the pinch flex (`P`), pyramid shuffle (`Sh`), tuck flex (`T`), and v-flex (`V`).
 After trying a few of those flexes on the following flexagons, you can quickly get lost.
@@ -185,12 +185,12 @@ If you try it on a paper model, don't be afraid to take the flexagon apart and r
 
 [derived name:'initAll' value:`[
   {numPats: 6},
-  {searchFlexes: "Lh Lh' Lk Lk' Lt Lt' Ltb Ltb' Lbtt Lbtt' Lbtb Lbtb' P Sh T V"},
-  {flexes: "Lh+ Lk+ Lbtb+"},
-  {flexAndColor: { flexes: "Lh+ Lk+ Lbtb+ Ltb+ Lbtt+" , colors: defaultColors } },
+  {searchFlexes: "Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb' P Sh T V"},
+  {flexes: "Lh+ Lk+ Lbb+"},
+  {flexAndColor: { flexes: "Lh+ Lk+ Lbb+ Ltb+ Lbf+" , colors: defaultColors } },
   {history: 'clear'}
   ]` /]
 
 [Flexagon width:700 height:400 numPats:6 initialScript:initAll runInitial:false options:flexagonOptions overButton:true /]
 
-[Unfolded width:1000 height:500 script:initAll options:unfoldedOptions endText:'Lh+Lk+Lbtb+' /]
+[Unfolded width:1000 height:500 script:initAll options:unfoldedOptions endText:'Lh+Lk+Lbb+' /]
