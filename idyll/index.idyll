@@ -8,7 +8,7 @@
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
-[var name:'unfoldedOptions' value:`{content:4}`/]
+[var name:'unfoldedOptions' value:`{content:5}`/]
 
 
 # Slot half and slot pocket
@@ -38,8 +38,8 @@
 
 [Flexagon width:700 height:400 numPats:6 initialScript:initLk runInitial:false options:flexagonOptions overButton:true /]
 
-[var name:unfoldedLk1 value:`{content:4, scale:200, rotation:90, end:5, captions:[{ text: 'Lk+', which: 0 }, { text: 'a', which: -1 }]}` /]
-[var name:unfoldedLk2 value:`{content:4, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lk+', which: -1 }]}` /]
+[var name:unfoldedLk1 value:`{content:5, scale:200, rotation:90, end:5, captions:[{ text: 'Lk+', which: 0 }, { text: 'a', which: -1 }]}` /]
+[var name:unfoldedLk2 value:`{content:5, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lk+', which: -1 }]}` /]
 [FullWidth]
   [Unfolded width:600 height:400 script:initLk options:unfoldedLk1 /]
   [Unfolded width:600 height:400 script:initLk options:unfoldedLk2 /]
@@ -87,8 +87,8 @@ This gives you a total of 4 different ways to complete the flex:
 
 [Flexagon width:700 height:400 numPats:6 initialScript:initLtf runInitial:false options:flexagonOptions overButton:true /]
 
-[var name:unfoldedLtf1 value:`{content:4, scale:200, rotation:90, end:5, captions:[{ text: 'Ltf+', which: 0 }, { text: 'a', which: -1 }]}` /]
-[var name:unfoldedLtf2 value:`{content:4, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Ltf+', which: -1 }]}` /]
+[var name:unfoldedLtf1 value:`{content:5, scale:200, rotation:90, end:5, captions:[{ text: 'Ltf+', which: 0 }, { text: 'a', which: -1 }]}` /]
+[var name:unfoldedLtf2 value:`{content:5, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Ltf+', which: -1 }]}` /]
 [FullWidth]
   [Unfolded width:600 height:400 script:initLtf options:unfoldedLtf1 /]
   [Unfolded width:600 height:400 script:initLtf options:unfoldedLtf2 /]
