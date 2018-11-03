@@ -99,6 +99,18 @@
 [hr /]
 
 
+[a href:'slot-flexes.html']
+  [div className:'heading'] Chapter 5: Slot flexes [/div]
+  [div className:'subname'] Flexes that involve sliding leaves through slots [/div]
+[/a]
+
+* Describes a class of flexes called *slot flexes*
+* Demonstrates the related flexes called the *slot half* and *slot pocket*
+* Shows four *slot tuck flex* variants
+
+[hr /]
+
+
 [a href:'playground.html']
   [div className:'heading'] Appendix: Flexagon Playground [/div]
   [div className:'subname'] General tools for exploring flexagons [/div]
