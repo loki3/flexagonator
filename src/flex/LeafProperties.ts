@@ -55,12 +55,12 @@ namespace Flexagonator {
       return false;
     }
 
-    getFaceLabel(id: number): string {
+    getFaceLabel(id: number): string | undefined {
       const props = this.getFacePropsToGet(id);
       if (props !== undefined && props.label !== undefined) {
         return props.label;
       }
-      return id.toString();
+      return undefined;
     }
 
     getColorProp(id: number): number | undefined {

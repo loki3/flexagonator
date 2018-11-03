@@ -84,7 +84,7 @@ namespace Flexagonator {
     setTextProps(ctx, fontsize);
     for (let i = 0; i < ids.length; i++) {
       const id = ids[i];
-      const label = props === undefined ? id.toString() : props.getFaceLabel(id);
+      const label = props === undefined ? id.toString() : props.getFaceLabel(id) || id.toString();
       ctx.fillText(label, centers[i * 2], centers[i * 2 + 1]);
     }
   }

@@ -27,7 +27,9 @@ namespace Flexagonator {
     } else if (content === StripContent.Back) {
       drawFaceProps(ctx, leaflines.faces, transform, props, false);
     } else if (content === StripContent.LeafLabels) {
-      drawLeafLabels(ctx, leaflines.faces, transform, props);
+      drawLeafLabels(ctx, leaflines.faces, transform, props, true);
+    } else if (content === StripContent.FoldingAndLabels) {
+      drawLeafLabels(ctx, leaflines.faces, transform, props, false);
     }
 
     if (captions) {
@@ -138,7 +140,7 @@ namespace Flexagonator {
         ctx.fill();
       }
 
-      const label = props.getFaceLabel(id);
+      const label = props.getFaceLabel(id) || id.toString();
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
       ctx.font = len / 5 + "px sans-serif";
@@ -147,7 +149,7 @@ namespace Flexagonator {
     }
   }
 
-  function drawLeafLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform, props: PropertiesForLeaves) {
+  function drawLeafLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform, props: PropertiesForLeaves, useId: boolean) {
     const len = getBaseLength(faces[0], transform);
 
     for (const face of faces) {
@@ -158,12 +160,26 @@ namespace Flexagonator {
       ctx.textAlign = "right";
       ctx.font = len / 5 + "px sans-serif";
       const toplabel = props.getFaceLabel(face.leaf.id);
-      ctx.fillText(toplabel, p.x, y);
+      if (toplabel) {
+        ctx.fillStyle = "black";
+        ctx.fillText(toplabel, p.x, y);
+      } else {
+        ctx.fillStyle = "#999999";
+        const label = '.' + (useId ? face.leaf.id.toString() : face.leaf.top.toString());
+        ctx.fillText(label, p.x, y);
+      }
 
       ctx.textAlign = "left";
       ctx.font = len / 8 + "px sans-serif";
       const bottomlabel = props.getFaceLabel(-face.leaf.id);
-      ctx.fillText(" " + bottomlabel, p.x, y);
+      if (bottomlabel) {
+        ctx.fillStyle = "black";
+        ctx.fillText(" " + bottomlabel, p.x, y);
+      } else {
+        ctx.fillStyle = "#999999";
+        const label = '.' + (useId ? (-face.leaf.id).toString() : face.leaf.bottom.toString());
+        ctx.fillText(" " + label, p.x, y);
+      }
     }
   }
 
