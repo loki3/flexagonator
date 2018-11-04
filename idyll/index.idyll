@@ -11,13 +11,32 @@
 [var name:'unfoldedOptions' value:`{content:5}`/]
 
 
+The class of *slot flexes* all involve sliding leaves through a slot,
+which is combined with other moves such as *pocket flexes* and *tuck flexes*.
+There are lots of possible ways to combine various moves,
+so this chapter will just cover a fraction of what's out there to explore.
+
+The following pairs of slot flexes are *pinch complements* of each other,
+meaning that you can pinch between them if the structure of the flexagon supports it.
+
+* `Lh` *slot half flex* and `Lk` *slot pocket flex*
+* `Ltf` *slot tuck top front* and `Ltb` *slot tuck top back*
+* `Lbf` *slot tuck bottom front* and `Lbb` *slot tuck bottom back*
+
+
 # Slot half and slot pocket
 
 ## Generating sequence: Lh+
 
+[Aside]
+  The *slot half flex* requires 11 leaves.
+  You can flex to 8 different arrangements on the minimal Lh flexagon
+  by using the following flexes: `T` `T'` `V` `Lh` `Ltb` `Ltb'`.
+[/Aside]
+
 [derived name:'initLh' value:`[
   {numPats: 6},
-  {searchFlexes: "Lh Lh'"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lh+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -29,9 +48,15 @@
 
 ## Generating sequence: Lk+
 
+[Aside]
+  The *slot pocket flex* requires 12 leaves.
+  You can flex to 12 different arrangements on the minimal Lh flexagon
+  by using the following flexes: `T` `T'` `Sh` `Lk` `Ltf`.
+[/Aside]
+
 [derived name:'initLk' value:`[
   {numPats: 6},
-  {searchFlexes: "Lk Lk'"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lk+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -48,7 +73,16 @@
 
 ## Generating sequence: Lh+Lk+
 
-Try `Lh < P Lk'` or `Lk < P > P Lh'`
+[Aside]
+  The *slot half flex* and *slot pocket flex* are *pinch complements*.
+  After you do the slot, there are two different ways to open the flexagon back up
+  if the structure of the flexagon supports it.
+  Opening it up one way is the `Lh` and the other is the `Lk`.
+  Using a generating sequence of `Lh+Lk+` gives us the necessary structure.
+
+  It's interesting to note that you can pinch flex between these two states.
+  Try `Lh < P Lk'` or `Lk < P > P Lh'` to see how this works.
+[/Aside]
 
 [derived name:'initLhLk' value:`[
   {numPats: 6},
@@ -69,7 +103,7 @@ Try `Lh < P Lk'` or `Lk < P > P Lh'`
 The *slot tuck* flexes all start out the same way:
 slide leaves through a slot till you're looking at a position where you could apply a tuck at the top or the bottom.
 Once you do a top or bottom tuck, you can choose to open the flexagon from either the front or back.
-This gives you a total of 4 different ways to complete the flex:
+This gives you a total of 4 different ways to complete the flex.
 
 * `Ltf`: slot tuck top front
 * `Ltb`: slot tuck top back
@@ -78,9 +112,15 @@ This gives you a total of 4 different ways to complete the flex:
 
 ## Generating sequence: Ltf+
 
+[Aside]
+  The *slot tuck top front* requires 10 leaves.
+  You can switch between two different arrangements using `Ltf` and `Ltf'` on the minimal Ltf flexagon,
+  but you can't use any of the other flexes we've discussed.
+[/Aside]
+
 [derived name:'initLtf' value:`[
   {numPats: 6},
-  {searchFlexes: "Ltf Ltf'"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Ltf+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -97,9 +137,15 @@ This gives you a total of 4 different ways to complete the flex:
 
 ## Generating sequence: Ltb+
 
+[Aside]
+  The *slot tuck top back* requires 10 leaves.
+  You can switch between two different arrangements using `Ltb` and `Ltb'` on the minimal Ltb flexagon,
+  but you can't use any of the other flexes we've discussed.
+[/Aside]
+
 [derived name:'initLtb' value:`[
   {numPats: 6},
-  {searchFlexes: "Ltb Ltb'"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Ltb+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -111,7 +157,17 @@ This gives you a total of 4 different ways to complete the flex:
 
 ## Generating sequence: Ltf+Ltb+
 
-Try `Ltf > P < P Ltb'` or `Ltb < P Ltf'`
+[Aside]
+  The *slot tuck top front* and *slot tuck top back* are *pinch complements*.
+  After you do the slot and tuck, there are two different ways to open the flexagon back up
+  if the structure of the flexagon supports it.
+  Opening it up one way is the `Ltf` and the other is the `Ltb`.
+  Using a generating sequence of `Ltf+Ltb+` gives us the necessary structure.
+
+  You can pinch flex between these two states.
+  Try `Ltf > P < P Ltb'` or `Ltb < P Ltf'` to see how this works.
+[/Aside]
+
 
 [derived name:'initLtfLtb' value:`[
   {numPats: 6},
@@ -129,11 +185,18 @@ Try `Ltf > P < P Ltb'` or `Ltb < P Ltf'`
 
 ## Generating sequence: Lbf+
 
-This one is interesting because `V` accomplishes the same thing without as many structural requirements.
+[Aside]
+  The *slot tuck bottom front* requires 10 leaves.
+  You can flex to 5 different arrangements on the minimal Lh flexagon
+  by using the following flexes: `V` `Lbf` `Lbf'`.
+
+  It's also interesting to note that it rearranges the leaves in exactly the same way as `v`,
+  but `V` only requires 9 leaves.
+[/Aside]
 
 [derived name:'initLbf' value:`[
   {numPats: 6},
-  {searchFlexes: "Lbf Lbf' V"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lbf+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -145,9 +208,18 @@ This one is interesting because `V` accomplishes the same thing without as many 
 
 ## Generating sequence: Lbb+
 
+[Aside]
+  The *slot tuck bottom back* requires 11 leaves.
+  You can flex to 9 different arrangements on the minimal Lbb flexagon
+  by using the following flexes: `P` `T` `T'` `V` `Lbf` `Lbf'` `Lbb` `Lbb'`.
+
+  Notice that the minimal Lbb also supports Lbf, its pinch complement.
+  Try `Lbf P < P Lbb'` or `Lbb < P > Lbf'`.
+[/Aside]
+
 [derived name:'initLbb' value:`[
   {numPats: 6},
-  {searchFlexes: "Lbb Lbb'"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lbb+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -157,35 +229,22 @@ This one is interesting because `V` accomplishes the same thing without as many 
 [Unfolded width:1000 height:500 script:initLbb options:unfoldedOptions endText:'Lbb+' /]
 
 
-## Generating sequence: Lbf+Lbb+
-
-Try `Lbf P < P Lbb'` or `Lbb < P > Lbf'`
-
-[derived name:'initLbfLbb' value:`[
-  {numPats: 6},
-  {searchFlexes: "Lbf Lbf' Lbb Lbb' P"},
-  {flexAndColor: { flexes: "Lbf*Lbf' Lbb*Lbb'" , colors: defaultColors } },
-  {history: 'clear'}
-  ]` /]
-
-[Flexagon width:700 height:400 numPats:6 initialScript:initLbfLbb runInitial:false options:flexagonOptions overButton:true /]
-
-[Unfolded width:1000 height:500 script:initLbfLbb options:unfoldedOptions endText:'Lbf+Lbb+' /]
-
-
 [hr/]
 
 # Generating sequence: Lh+Lk+Lbb+
 
-The generating sequence `Lh+Lk+Lbb+` gives you a flexagon that supports all 6 slot flexes we've discussed so far.
-It also supports many of the other flexes from previous chapters, such as
-the pinch flex (`P`), pyramid shuffle (`Sh`), tuck flex (`T`), and v-flex (`V`).
-After trying a few of those flexes on the following flexagons, you can quickly get lost.
-If you try it on a paper model, don't be afraid to take the flexagon apart and refold it if you want to restart your explorations.
+[Aside]
+  The generating sequence `Lh+Lk+Lbb+` gives you a flexagon that supports all 6 slot flexes we've discussed so far.
+  If you combine these with flexes from previous chapters
+  (the pinch flex `P`, pyramid shuffle `Sh`, tuck flex `T`, and v-flex `V`),
+  there are 117 different configurations.
+  You can quickly get lost, so if you try it on a paper model,
+  don't be afraid to take the flexagon apart and refold it if you want to restart your explorations.
+[/Aside]
 
 [derived name:'initAll' value:`[
   {numPats: 6},
-  {searchFlexes: "Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb' P Sh T V"},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexes: "Lh+ Lk+ Lbb+"},
   {flexAndColor: { flexes: "Lh+ Lk+ Lbb+ Ltb+ Lbf+" , colors: defaultColors } },
   {history: 'clear'}
