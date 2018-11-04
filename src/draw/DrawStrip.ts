@@ -28,11 +28,12 @@ namespace Flexagonator {
       drawFaceProps(ctx, leaflines.faces, transform, props, false);
     } else if (content === StripContent.LeafLabels) {
       drawLeafLabels(ctx, leaflines.faces, transform, props, true);
-    } else if (content === StripContent.FoldingAndLabels) {
+    } else if (content === StripContent.LabelsAndFolding) {
       drawLeafLabels(ctx, leaflines.faces, transform, props, false);
     }
 
     if (captions) {
+      ctx.fillStyle = "black";
       for (const caption of captions) {
         drawLeafCaption(ctx, transform, leaflines, caption.which, caption.text);
       }
@@ -156,30 +157,33 @@ namespace Flexagonator {
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
       const y = p.y + len * 0.05;
+      const y2 = p.y + len * 0.22;
 
+      ctx.fillStyle = "black";
       ctx.textAlign = "right";
       ctx.font = len / 5 + "px sans-serif";
       const toplabel = props.getFaceLabel(face.leaf.id);
       if (toplabel) {
-        ctx.fillStyle = "black";
         ctx.fillText(toplabel, p.x, y);
-      } else {
-        ctx.fillStyle = "#999999";
-        const label = '.' + (useId ? face.leaf.id.toString() : face.leaf.top.toString());
-        ctx.fillText(label, p.x, y);
       }
 
       ctx.textAlign = "left";
       ctx.font = len / 8 + "px sans-serif";
       const bottomlabel = props.getFaceLabel(-face.leaf.id);
       if (bottomlabel) {
-        ctx.fillStyle = "black";
         ctx.fillText(" " + bottomlabel, p.x, y);
-      } else {
-        ctx.fillStyle = "#999999";
-        const label = '.' + (useId ? (-face.leaf.id).toString() : face.leaf.bottom.toString());
-        ctx.fillText(" " + label, p.x, y);
       }
+
+      ctx.fillStyle = "#999999";
+      ctx.textAlign = "right";
+      ctx.font = len / 8 + "px sans-serif";
+      const toplabel2 = (useId ? face.leaf.id.toString() : face.leaf.top.toString());
+      ctx.fillText(toplabel2, p.x, y2);
+
+      ctx.textAlign = "left";
+      ctx.font = len / 11 + "px sans-serif";
+      const bottomlabel2 = (useId ? (-face.leaf.id).toString() : face.leaf.bottom.toString());
+      ctx.fillText(" " + bottomlabel2, p.x, y2);
     }
   }
 

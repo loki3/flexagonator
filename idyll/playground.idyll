@@ -200,7 +200,7 @@ Labels and colors:
   {value:0, label:"All on one side - use labels that indicate folding order"},
   {value:1, label:"All on one side - use labels that indicate folding order, show leaf ids"},
   {value:4, label:"All on one side - use labels from leaf properties, default to leaf ids"},
-  {value:5, label:"All on one side - use leaf properties, default to folding order"},
+  {value:5, label:"All on one side - use leaf properties, plus folding order"},
   {value:2, label:"Show front only - use leaf properties"},
   {value:3, label:"Show back only - use leaf properties"},
   ]` /]
