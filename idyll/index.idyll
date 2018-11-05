@@ -349,6 +349,8 @@ With the following strip, tape together the two edges labeled *a* before folding
   There are 24 different arrangements available using those flexes.
 [/Aside]
 
+[Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
+
 [var name:historyL3 value:'' /]
 [var name:doHistoryL3 value:'' /]
 [derived name:'initL3' value:`[
