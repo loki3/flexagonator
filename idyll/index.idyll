@@ -12,16 +12,20 @@
 
 
 The class of *slot flexes* all involve sliding leaves through a slot,
-which is combined with other moves such as *pocket flexes* and *tuck flexes*.
+combined with other moves such as *pocket flexes* and *tuck flexes*.
 There are lots of possible ways to combine various moves,
 so this chapter will just cover a fraction of what's out there to explore.
 
-The following pairs of slot flexes are *pinch complements* of each other,
+[img src:"static/double-slot.jpg" /]
+
+On a hexaflexagon, the following pairs of slot flexes are *pinch complements* of each other,
 meaning that you can pinch between them if the structure of the flexagon supports it.
 
 * `Lh` *slot half flex* and `Lk` *slot pocket flex*
 * `Ltf` *slot tuck top front* and `Ltb` *slot tuck top back*
 * `Lbf` *slot tuck bottom front* and `Lbb` *slot tuck bottom back*
+
+The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 
 
 # Slot half and slot pocket
@@ -60,6 +64,10 @@ meaning that you can pinch between them if the structure of the flexagon support
   The *slot pocket flex* requires 12 leaves.
   You can flex to 12 different arrangements on the minimal Lk flexagon
   by using the following flexes: `T` `T'` `Sh` `Lk` `Ltf`.
+
+  There's an alternate way to do the slot pocket flex,
+  where you start with *two* pocket flexes instead of one.
+  Can you figure out how to do it?
 [/Aside]
 
 [Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
@@ -348,3 +356,19 @@ This gives you a total of 4 different ways to complete the flex.
 - [Display value:historyL3 /]
 
 [Unfolded width:1000 height:500 script:initL3 options:unfoldedOptions endText:'L3+' /]
+
+
+# What next?
+
+This chapter showed a variety of slot flexes on the hexaflexagon and pentaflexagon.
+But you can also do flexes such as the slot tuck top front and slot pocket on the heptaflexagon, octaflexagon, etc.
+You could try these out at the [Flexagon Playground](playground.html).
+And there are other ways you could try combining slots with various flexes on paper flexagons.
+
+Return to the [Table of Contents](index.html).
+
+[FullWidth]
+  [a href:'http://loki3.com/flex/' ]
+  [img src:'static/flexagon-variety.jpg' /]
+  [/a]
+[/FullWidth]
