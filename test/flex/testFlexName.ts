@@ -15,7 +15,7 @@ namespace Flexagonator {
       {
         const flex = makeFlexName("Lt'");
         expect(flex.fullName).toBe("Lt'");
-        expect(flex.baseName).toBe("Lt");
+        expect(flex.baseName).toBe("Ltf");
         expect(flex.flexName).toBe("Lt'");
         expect(flex.isInverse).toBeTruthy();
         expect(flex.shouldApply).toBeTruthy();
@@ -50,14 +50,14 @@ namespace Flexagonator {
       expect(result.length).toBe(4);
       expect(result[0]).toBe("Sh");
       expect(result[1]).toBe("Sh'");
-      expect(result[2]).toBe("Lt");
+      expect(result[2]).toBe("Ltf");
       expect(result[3]).toBe("P");
     });
     it('should not require spaces', () => {
       const result = getUniqueFlexes("Sh'+>Lt", true);
       expect(result.length).toBe(2);
       expect(result[0]).toBe("Sh'");
-      expect(result[1]).toBe("Lt");
+      expect(result[1]).toBe("Ltf");
     });
   });
 }

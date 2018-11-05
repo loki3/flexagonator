@@ -23,7 +23,7 @@ namespace Flexagonator {
       if (patCount == 8 || patCount == 10 || patCount == 12)
         flexes["Tw"] = createTwist(patCount);
       if (patCount >= 5)
-        flexes["Lt"] = createSlotTuck(patCount);
+        flexes["Ltf"] = createSlotTuck(patCount);
       if (patCount >= 5)
         flexes["Lk"] = createSlotPocket(patCount);
       if (patCount == 5)
@@ -49,7 +49,7 @@ namespace Flexagonator {
   // return just the flexes that can't be done using other flexes
   export function getPrimeFlexes(all: Flexes): Flexes {
     const flexes: Flexes = {};
-    const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Tw", "Lt", "Ltb", "Ltb'"];
+    const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'"];
 
     for (const prime of primes) {
       if (all[prime] !== undefined) {
