@@ -26,15 +26,15 @@ meaning that you can pinch between them if the structure of the flexagon support
 
 # Slot half and slot pocket
 
-## Generating sequence: Lh+
-
-[Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
+## Slot half flex: Lh
 
 [Aside]
   The *slot half flex* requires 11 leaves.
   You can flex to 8 different arrangements on the minimal Lh flexagon
   by using the following flexes: `T` `T'` `V` `Lh` `Ltb` `Ltb'`.
 [/Aside]
+
+[Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
 
 [var name:historyLh value:'' /]
 [var name:doHistoryLh value:'' /]
@@ -54,15 +54,15 @@ meaning that you can pinch between them if the structure of the flexagon support
 [Unfolded width:1000 height:500 script:initLh options:unfoldedOptions endText:'Lh+' /]
 
 
-## Generating sequence: Lk+
-
-[Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
+## Slot pocket flex: Lk
 
 [Aside]
   The *slot pocket flex* requires 12 leaves.
-  You can flex to 12 different arrangements on the minimal Lh flexagon
+  You can flex to 12 different arrangements on the minimal Lk flexagon
   by using the following flexes: `T` `T'` `Sh` `Lk` `Ltf`.
 [/Aside]
+
+[Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
 
 [var name:historyLk value:'' /]
 [var name:doHistoryLk value:'' /]
@@ -132,15 +132,15 @@ This gives you a total of 4 different ways to complete the flex.
 * `Lbf`: slot tuck bottom front
 * `Lbb`: slot tuck bottom back
 
-## Generating sequence: Ltf+
-
-[Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
+## Slot tuck top front: Ltf
 
 [Aside]
   The *slot tuck top front* requires 10 leaves.
   You can switch between two different arrangements using `Ltf` and `Ltf'` on the minimal Ltf flexagon,
   but you can't use any of the other flexes we've discussed.
 [/Aside]
+
+[Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
 
 [var name:historyLtf value:'' /]
 [var name:doHistoryLtf value:'' /]
@@ -165,15 +165,15 @@ This gives you a total of 4 different ways to complete the flex.
 [/FullWidth]
 
 
-## Generating sequence: Ltb+
-
-[Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
+## Slot tuck top back: Ltb
 
 [Aside]
   The *slot tuck top back* requires 10 leaves.
   You can switch between two different arrangements using `Ltb` and `Ltb'` on the minimal Ltb flexagon,
   but you can't use any of the other flexes we've discussed.
 [/Aside]
+
+[Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
 
 [var name:historyLtb value:'' /]
 [var name:doHistoryLtb value:'' /]
@@ -227,9 +227,7 @@ This gives you a total of 4 different ways to complete the flex.
 
 [hr /]
 
-## Generating sequence: Lbf+
-
-[Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
+## Slot tuck bottom front: Lbf
 
 [Aside]
   The *slot tuck bottom front* requires 10 leaves.
@@ -239,6 +237,8 @@ This gives you a total of 4 different ways to complete the flex.
   It's also interesting to note that it rearranges the leaves in exactly the same way as `v`,
   but `V` only requires 9 leaves.
 [/Aside]
+
+[Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
 
 [var name:historyLbf value:'' /]
 [var name:doHistoryLbf value:'' /]
@@ -258,9 +258,7 @@ This gives you a total of 4 different ways to complete the flex.
 [Unfolded width:1000 height:500 script:initLbf options:unfoldedOptions endText:'Lbf+' /]
 
 
-## Generating sequence: Lbb+
-
-[Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
+## Slot tuck bottom back: Lbb
 
 [Aside]
   The *slot tuck bottom back* requires 11 leaves.
@@ -270,6 +268,8 @@ This gives you a total of 4 different ways to complete the flex.
   Notice that the minimal Lbb also supports Lbf, its pinch complement.
   Try `Lbf P < P Lbb'` or `Lbb < P > Lbf'`.
 [/Aside]
+
+[Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
 
 [var name:historyLbb value:'' /]
 [var name:doHistoryLbb value:'' /]
@@ -337,7 +337,7 @@ This gives you a total of 4 different ways to complete the flex.
   {numPats: 5},
   {searchFlexes: "Sh L3 Ltf Lk"},
   {flexes: "L3+"},
-  {flexAndColor: { flexes: "L3+" , colors: defaultColors } },
+  {flexAndColor: { flexes: "L3+ Lk+" , colors: defaultColors } },
   {history: 'clear'}
   ]` /]
 
