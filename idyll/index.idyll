@@ -304,7 +304,7 @@ This gives you a total of 4 different ways to complete the flex.
 
 [var name:historyLhLkLbb value:'' /]
 [var name:doHistoryLhLkLbb value:'' /]
-[derived name:'initAll' value:`[
+[derived name:'initLhLkLbb' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexes: "Lh+ Lk+ Lbb+"},
@@ -312,10 +312,39 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initAll runInitial:false options:flexagonOptions overButton:true
+[Flexagon width:700 height:400 numPats:6 initialScript:initLhLkLbb runInitial:false options:flexagonOptions overButton:true
   history:historyLhLkLbb doHistory:doHistoryLhLkLbb /]
 
 [Button onClick:`doHistoryLhLkLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLkLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLkLbb='reset';`]Reset[/Button]
 - [Display value:historyLhLkLbb /]
 
-[Unfolded width:1000 height:500 script:initAll options:unfoldedOptions endText:'Lh+Lk+Lbb+' /]
+[Unfolded width:1000 height:500 script:initLhLkLbb options:unfoldedOptions endText:'Lh+Lk+Lbb+' /]
+
+
+[hr/]
+
+# Slot triple pocket: L3
+
+[Aside]
+  On a pentaflexagon, the generating sequence `L3+` gives you a flexagon with 14 leaves that supports
+  the *slot trip pocket*, the *slot pocket*, *slot tuck top front*, and the *pyramid shuffle*.
+  There are 24 different arrangements available using those flexes.
+[/Aside]
+
+[var name:historyL3 value:'' /]
+[var name:doHistoryL3 value:'' /]
+[derived name:'initL3' value:`[
+  {numPats: 5},
+  {searchFlexes: "Sh L3 Ltf Lk"},
+  {flexes: "L3+"},
+  {flexAndColor: { flexes: "L3+" , colors: defaultColors } },
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:700 height:400 numPats:5 initialScript:initL3 runInitial:false options:flexagonOptions overButton:true
+  history:historyL3 doHistory:doHistoryL3 /]
+
+[Button onClick:`doHistoryL3='undo';`]Undo[/Button] [Button onClick:`doHistoryL3='redo';`]Redo[/Button] [Button onClick:`doHistoryL3='reset';`]Reset[/Button]
+- [Display value:historyL3 /]
+
+[Unfolded width:1000 height:500 script:initL3 options:unfoldedOptions endText:'L3+' /]
