@@ -28,6 +28,8 @@ meaning that you can pinch between them if the structure of the flexagon support
 
 ## Generating sequence: Lh+
 
+[Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
+
 [Aside]
   The *slot half flex* requires 11 leaves.
   You can flex to 8 different arrangements on the minimal Lh flexagon
@@ -53,6 +55,8 @@ meaning that you can pinch between them if the structure of the flexagon support
 
 
 ## Generating sequence: Lk+
+
+[Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
 
 [Aside]
   The *slot pocket flex* requires 12 leaves.
@@ -130,6 +134,8 @@ This gives you a total of 4 different ways to complete the flex.
 
 ## Generating sequence: Ltf+
 
+[Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
+
 [Aside]
   The *slot tuck top front* requires 10 leaves.
   You can switch between two different arrangements using `Ltf` and `Ltf'` on the minimal Ltf flexagon,
@@ -160,6 +166,8 @@ This gives you a total of 4 different ways to complete the flex.
 
 
 ## Generating sequence: Ltb+
+
+[Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
 
 [Aside]
   The *slot tuck top back* requires 10 leaves.
@@ -221,6 +229,8 @@ This gives you a total of 4 different ways to complete the flex.
 
 ## Generating sequence: Lbf+
 
+[Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
+
 [Aside]
   The *slot tuck bottom front* requires 10 leaves.
   You can flex to 5 different arrangements on the minimal Lh flexagon
@@ -249,6 +259,8 @@ This gives you a total of 4 different ways to complete the flex.
 
 
 ## Generating sequence: Lbb+
+
+[Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
 
 [Aside]
   The *slot tuck bottom back* requires 11 leaves.
