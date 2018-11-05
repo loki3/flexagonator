@@ -34,6 +34,8 @@ meaning that you can pinch between them if the structure of the flexagon support
   by using the following flexes: `T` `T'` `V` `Lh` `Ltb` `Ltb'`.
 [/Aside]
 
+[var name:historyLh value:'' /]
+[var name:doHistoryLh value:'' /]
 [derived name:'initLh' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -41,7 +43,11 @@ meaning that you can pinch between them if the structure of the flexagon support
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLh runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLh runInitial:false options:flexagonOptions overButton:true
+  history:historyLh doHistory:doHistoryLh /]
+
+[Button onClick:`doHistoryLh='undo';`]Undo[/Button] [Button onClick:`doHistoryLh='redo';`]Redo[/Button] [Button onClick:`doHistoryLh='reset';`]Reset[/Button]
+- [Display value:historyLh /]
 
 [Unfolded width:1000 height:500 script:initLh options:unfoldedOptions endText:'Lh+' /]
 
@@ -54,6 +60,8 @@ meaning that you can pinch between them if the structure of the flexagon support
   by using the following flexes: `T` `T'` `Sh` `Lk` `Ltf`.
 [/Aside]
 
+[var name:historyLk value:'' /]
+[var name:doHistoryLk value:'' /]
 [derived name:'initLk' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -61,7 +69,11 @@ meaning that you can pinch between them if the structure of the flexagon support
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLk runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLk runInitial:false options:flexagonOptions overButton:true
+  history:historyLk doHistory:doHistoryLk /]
+
+[Button onClick:`doHistoryLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLk='reset';`]Reset[/Button]
+- [Display value:historyLk /]
 
 [var name:unfoldedLk1 value:`{content:5, scale:200, rotation:90, end:5, captions:[{ text: 'Lk+', which: 0 }, { text: 'a', which: -1 }]}` /]
 [var name:unfoldedLk2 value:`{content:5, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lk+', which: -1 }]}` /]
@@ -84,6 +96,8 @@ meaning that you can pinch between them if the structure of the flexagon support
   Try `Lh < P Lk'` or `Lk < P > P Lh'` to see how this works.
 [/Aside]
 
+[var name:historyLhLk value:'' /]
+[var name:doHistoryLhLk value:'' /]
 [derived name:'initLhLk' value:`[
   {numPats: 6},
   {searchFlexes: "Lh Lh' Lk Lk' P"},
@@ -91,7 +105,11 @@ meaning that you can pinch between them if the structure of the flexagon support
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLhLk runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLhLk runInitial:false options:flexagonOptions overButton:true
+  history:historyLhLk doHistory:doHistoryLhLk /]
+
+[Button onClick:`doHistoryLhLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLk='reset';`]Reset[/Button]
+- [Display value:historyLhLk /]
 
 [Unfolded width:1000 height:500 script:initLhLk options:unfoldedOptions endText:'Lh+Lk+' /]
 
@@ -118,6 +136,8 @@ This gives you a total of 4 different ways to complete the flex.
   but you can't use any of the other flexes we've discussed.
 [/Aside]
 
+[var name:historyLtf value:'' /]
+[var name:doHistoryLtf value:'' /]
 [derived name:'initLtf' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -125,7 +145,11 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLtf runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLtf runInitial:false options:flexagonOptions overButton:true
+  history:historyLtf doHistory:doHistoryLtf /]
+
+[Button onClick:`doHistoryLtf='undo';`]Undo[/Button] [Button onClick:`doHistoryLtf='redo';`]Redo[/Button] [Button onClick:`doHistoryLtf='reset';`]Reset[/Button]
+- [Display value:historyLtf /]
 
 [var name:unfoldedLtf1 value:`{content:5, scale:200, rotation:90, end:5, captions:[{ text: 'Ltf+', which: 0 }, { text: 'a', which: -1 }]}` /]
 [var name:unfoldedLtf2 value:`{content:5, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Ltf+', which: -1 }]}` /]
@@ -143,6 +167,8 @@ This gives you a total of 4 different ways to complete the flex.
   but you can't use any of the other flexes we've discussed.
 [/Aside]
 
+[var name:historyLtb value:'' /]
+[var name:doHistoryLtb value:'' /]
 [derived name:'initLtb' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -150,7 +176,11 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLtb runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLtb runInitial:false options:flexagonOptions overButton:true
+  history:historyLtb doHistory:doHistoryLtb /]
+
+[Button onClick:`doHistoryLtb='undo';`]Undo[/Button] [Button onClick:`doHistoryLtb='redo';`]Redo[/Button] [Button onClick:`doHistoryLtb='reset';`]Reset[/Button]
+- [Display value:historyLtb /]
 
 [Unfolded width:1000 height:500 script:initLtb options:unfoldedOptions endText:'Ltb+' /]
 
@@ -169,6 +199,8 @@ This gives you a total of 4 different ways to complete the flex.
 [/Aside]
 
 
+[var name:historyLtfLtb value:'' /]
+[var name:doHistoryLtfLtb value:'' /]
 [derived name:'initLtfLtb' value:`[
   {numPats: 6},
   {searchFlexes: "Ltf Ltf' Ltb Ltb' P"},
@@ -176,7 +208,11 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLtfLtb runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLtfLtb runInitial:false options:flexagonOptions overButton:true
+  history:historyLtfLtb doHistory:doHistoryLtfLtb /]
+
+[Button onClick:`doHistoryLtfLtb='undo';`]Undo[/Button] [Button onClick:`doHistoryLtfLtb='redo';`]Redo[/Button] [Button onClick:`doHistoryLtfLtb='reset';`]Reset[/Button]
+- [Display value:historyLtfLtb /]
 
 [Unfolded width:1000 height:500 script:initLtfLtb options:unfoldedOptions endText:'Ltf+Ltb+' /]
 
@@ -194,6 +230,8 @@ This gives you a total of 4 different ways to complete the flex.
   but `V` only requires 9 leaves.
 [/Aside]
 
+[var name:historyLbf value:'' /]
+[var name:doHistoryLbf value:'' /]
 [derived name:'initLbf' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -201,7 +239,11 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLbf runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLbf runInitial:false options:flexagonOptions overButton:true
+  history:historyLbf doHistory:doHistoryLbf /]
+
+[Button onClick:`doHistoryLbf='undo';`]Undo[/Button] [Button onClick:`doHistoryLbf='redo';`]Redo[/Button] [Button onClick:`doHistoryLbf='reset';`]Reset[/Button]
+- [Display value:historyLbf /]
 
 [Unfolded width:1000 height:500 script:initLbf options:unfoldedOptions endText:'Lbf+' /]
 
@@ -217,6 +259,8 @@ This gives you a total of 4 different ways to complete the flex.
   Try `Lbf P < P Lbb'` or `Lbb < P > Lbf'`.
 [/Aside]
 
+[var name:historyLbb value:'' /]
+[var name:doHistoryLbb value:'' /]
 [derived name:'initLbb' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -224,7 +268,11 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initLbb runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initLbb runInitial:false options:flexagonOptions overButton:true
+  history:historyLbb doHistory:doHistoryLbb /]
+
+[Button onClick:`doHistoryLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLbb='reset';`]Reset[/Button]
+- [Display value:historyLbb /]
 
 [Unfolded width:1000 height:500 script:initLbb options:unfoldedOptions endText:'Lbb+' /]
 
@@ -242,6 +290,8 @@ This gives you a total of 4 different ways to complete the flex.
   don't be afraid to take the flexagon apart and refold it if you want to restart your explorations.
 [/Aside]
 
+[var name:historyLhLkLbb value:'' /]
+[var name:doHistoryLhLkLbb value:'' /]
 [derived name:'initAll' value:`[
   {numPats: 6},
   {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
@@ -250,6 +300,10 @@ This gives you a total of 4 different ways to complete the flex.
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initAll runInitial:false options:flexagonOptions overButton:true /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initAll runInitial:false options:flexagonOptions overButton:true
+  history:historyLhLkLbb doHistory:doHistoryLhLkLbb /]
+
+[Button onClick:`doHistoryLhLkLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLkLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLkLbb='reset';`]Reset[/Button]
+- [Display value:historyLhLkLbb /]
 
 [Unfolded width:1000 height:500 script:initAll options:unfoldedOptions endText:'Lh+Lk+Lbb+' /]
