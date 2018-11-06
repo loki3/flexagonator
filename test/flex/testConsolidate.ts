@@ -1,11 +1,7 @@
 namespace Flexagonator {
 
   function makeFlexNames(list: string[]): FlexName[] {
-    const result: FlexName[] = [];
-    for (let f of list) {
-      result.push(makeFlexName(f));
-    }
-    return result;
+    return list.map(f => makeFlexName(f));
   }
 
   describe('addAndConsolidate', () => {
