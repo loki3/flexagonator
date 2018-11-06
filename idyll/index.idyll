@@ -10,13 +10,16 @@
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
 [var name:'unfoldedOptions' value:`{content:5}`/]
 
+[Aside]
+  The common start to several of the slot flexes:
+
+  [img src:"static/double-slot.jpg" /]
+[/Aside]
 
 The class of *slot flexes* all involve sliding leaves through a slot,
 combined with other moves such as *pocket flexes* and *tuck flexes*.
 There are lots of possible ways to combine various moves,
 so this chapter will just cover a fraction of what's out there to explore.
-
-[img src:"static/double-slot.jpg" /]
 
 On a hexaflexagon, the following pairs of slot flexes are *pinch complements* of each other,
 meaning that you can pinch between them if the structure of the flexagon supports it.
@@ -376,6 +379,7 @@ This chapter showed a variety of slot flexes on the hexaflexagon and pentaflexag
 But you can also do flexes such as the slot tuck top front and slot pocket on the heptaflexagon, octaflexagon, etc.
 You could try these out at the [Flexagon Playground](playground.html).
 And there are other ways you could try combining slots with various flexes on paper flexagons.
+Feel free to experiment!
 
 Return to the [Table of Contents](index.html).
 
