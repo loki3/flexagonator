@@ -27,7 +27,7 @@ namespace Flexagonator {
     }
 
     add(newFlexes: FlexName[], newflexagon: Flexagon, tracker: Tracker) {
-      const allflexes = addAndConsolidate(this.getCurrent().flexes, newFlexes);
+      const allflexes = addAndConsolidate(this.getCurrent().flexes, newFlexes, newflexagon.getPatCount());
       this.done.push({ flexes: allflexes, flexagon: newflexagon, tracker: tracker });
       this.undone = [];
     }

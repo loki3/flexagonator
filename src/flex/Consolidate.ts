@@ -2,7 +2,11 @@ namespace Flexagonator {
 
   // add new flexes to old, consolidating redundant rotates
   // and return the new list (which could be shorter)
-  export function addAndConsolidate(oldFlexes: ReadonlyArray<FlexName>, newFlexes: ReadonlyArray<FlexName>): FlexName[] {
+  export function addAndConsolidate(
+    oldFlexes: ReadonlyArray<FlexName>,
+    newFlexes: ReadonlyArray<FlexName>,
+    numPats: number
+  ): FlexName[] {
     // copy old list across
     const allflexes = oldFlexes.slice();
 
