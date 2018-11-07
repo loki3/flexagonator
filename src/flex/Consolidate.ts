@@ -7,34 +7,82 @@ namespace Flexagonator {
     newFlexes: ReadonlyArray<FlexName>,
     numPats: number
   ): FlexName[] {
-    // copy old list across
-    const allflexes = oldFlexes.slice();
 
-    // add new flexes, consolidating redundant rotates
-    let start = true;
-    for (let flexName of newFlexes) {
-      if (start) {
-        const last = allflexes.length > 0 ? allflexes[allflexes.length - 1].fullName : "";
-        const last2 = allflexes.length > 1 ? allflexes[allflexes.length - 2].fullName : "";
-        const flex = flexName.fullName;
-        if ((flex === '<' && last === '>') || (flex === '>' && last === '<') || (flex === '^' && last === '^')) {
-          // they cancel out
-          allflexes.pop();
-          continue;
-        } else if ((flex === '>' && last === '^' && last2 === '>') || (flex === '<' && last === '^' && last2 === '<')) {
-          // >^> is just ^
-          allflexes.pop();
-          allflexes.pop();
-          allflexes.push(makeFlexName('^'));
-          continue;
-        }
-        start = false;
-      }
-
-      allflexes.push(flexName);
+    const oldLen = oldFlexes.length;
+    const newLen = newFlexes.length;
+    if (oldLen === 0 || newLen === 0) {
+      return oldFlexes.concat(newFlexes);
     }
 
-    return allflexes;
+    const allflexes = oldFlexes.slice();
+    const oldRotates: FlexName[] = [];
+    // move trailing rotates from oldFlexes to rotates
+    for (let i = oldLen - 1; i >= 0; i--) {
+      if (!isRotate(oldFlexes[i])) {
+        break;
+      }
+      oldRotates.push(allflexes.pop() as FlexName);
+    }
+    const rotates = oldRotates.reverse();
+    // move leading rotates from newFlexes to rotates
+    let moved = newLen;
+    for (let i = 0; i < newLen; i++) {
+      if (!isRotate(newFlexes[i])) {
+        moved = i;
+        break;
+      }
+      rotates.push(newFlexes[i]);
+    }
+
+    // simplify & put it all together
+    const simpler = simplify(rotates, numPats);
+    const result = allflexes.concat(simpler).concat(newFlexes.slice(moved));
+
+    return result;
+  }
+
+  function isRotate(flexName: FlexName): boolean {
+    return flexName.fullName === '>' || flexName.fullName === '<' || flexName.fullName === '^';
+  }
+
+  function simplify(flexNames: FlexName[], numPats: number): FlexName[] {
+    // figure out what all those rotates do
+    let flipped = false;
+    const where = flexNames.reduce((prev, current) => {
+      if (current.flexName === '>') {
+        return flipped ? prev - 1 : prev + 1;
+      } else if (current.flexName === '<') {
+        return flipped ? prev + 1 : prev - 1;
+      } else {
+        flipped = !flipped;
+        return prev;
+      }
+    }, 0);
+    if (where === 0) {
+      return flipped ? [makeFlexName('^')] : [];
+    }
+
+    // come up with the shortest description
+    let left = (where < 0);
+    let steps = (Math.abs(where) % numPats);
+    if (steps > Math.floor((numPats + 1) / 2)) {
+      steps = steps - numPats;
+      if (steps < 0) {
+        left = !left;
+        steps = -steps;
+      }
+    }
+
+    // describe them in a simple form
+    const result: FlexName[] = [];
+    const name = makeFlexName(left ? '<' : '>');
+    for (let i = 0; i < steps; i++) {
+      result.push(name);
+    }
+    if (flipped) {
+      result.push(makeFlexName('^'));
+    }
+    return result;
   }
 
 }
