@@ -61,8 +61,7 @@ The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 [Flexagon width:700 height:400 numPats:6 initialScript:initLh runInitial:false options:flexagonOptions overButton:true
   history:historyLh doHistory:doHistoryLh /]
 
-[Button onClick:`doHistoryLh='undo';`]Undo[/Button] [Button onClick:`doHistoryLh='redo';`]Redo[/Button] [Button onClick:`doHistoryLh='reset';`]Reset[/Button]
-- [Display value:historyLh /]
+[Button onClick:`doHistoryLh='undo';`]Undo[/Button] [Button onClick:`doHistoryLh='redo';`]Redo[/Button] [Button onClick:`doHistoryLh='reset';`]Reset[/Button] [Display value:historyLh /]
 
 [Unfolded width:1000 height:500 script:initLh options:unfoldedOptions endText:'Lh+' /]
 
@@ -93,8 +92,7 @@ The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 [Flexagon width:700 height:400 numPats:6 initialScript:initLk runInitial:false options:flexagonOptions overButton:true
   history:historyLk doHistory:doHistoryLk /]
 
-[Button onClick:`doHistoryLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLk='reset';`]Reset[/Button]
-- [Display value:historyLk /]
+[Button onClick:`doHistoryLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLk='reset';`]Reset[/Button] [Display value:historyLk /]
 
 With the following strip, tape together the two edges labeled *a* before folding it as usual.
 
@@ -131,8 +129,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:6 initialScript:initLhLk runInitial:false options:flexagonOptions overButton:true
   history:historyLhLk doHistory:doHistoryLhLk /]
 
-[Button onClick:`doHistoryLhLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLk='reset';`]Reset[/Button]
-- [Display value:historyLhLk /]
+[Button onClick:`doHistoryLhLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLk='reset';`]Reset[/Button] [Display value:historyLhLk /]
 
 [Unfolded width:1000 height:500 script:initLhLk options:unfoldedOptions endText:'Lh+Lk+' /]
 
@@ -173,8 +170,7 @@ This gives you a total of 4 different ways to complete the flex.
 [Flexagon width:700 height:400 numPats:6 initialScript:initLtf runInitial:false options:flexagonOptions overButton:true
   history:historyLtf doHistory:doHistoryLtf /]
 
-[Button onClick:`doHistoryLtf='undo';`]Undo[/Button] [Button onClick:`doHistoryLtf='redo';`]Redo[/Button] [Button onClick:`doHistoryLtf='reset';`]Reset[/Button]
-- [Display value:historyLtf /]
+[Button onClick:`doHistoryLtf='undo';`]Undo[/Button] [Button onClick:`doHistoryLtf='redo';`]Redo[/Button] [Button onClick:`doHistoryLtf='reset';`]Reset[/Button] [Display value:historyLtf /]
 
 With the following strip, tape together the two edges labeled *a* before folding it as usual.
 
@@ -208,8 +204,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:6 initialScript:initLtb runInitial:false options:flexagonOptions overButton:true
   history:historyLtb doHistory:doHistoryLtb /]
 
-[Button onClick:`doHistoryLtb='undo';`]Undo[/Button] [Button onClick:`doHistoryLtb='redo';`]Redo[/Button] [Button onClick:`doHistoryLtb='reset';`]Reset[/Button]
-- [Display value:historyLtb /]
+[Button onClick:`doHistoryLtb='undo';`]Undo[/Button] [Button onClick:`doHistoryLtb='redo';`]Redo[/Button] [Button onClick:`doHistoryLtb='reset';`]Reset[/Button] [Display value:historyLtb /]
 
 [Unfolded width:1000 height:500 script:initLtb options:unfoldedOptions endText:'Ltb+' /]
 
@@ -240,8 +235,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:6 initialScript:initLtfLtb runInitial:false options:flexagonOptions overButton:true
   history:historyLtfLtb doHistory:doHistoryLtfLtb /]
 
-[Button onClick:`doHistoryLtfLtb='undo';`]Undo[/Button] [Button onClick:`doHistoryLtfLtb='redo';`]Redo[/Button] [Button onClick:`doHistoryLtfLtb='reset';`]Reset[/Button]
-- [Display value:historyLtfLtb /]
+[Button onClick:`doHistoryLtfLtb='undo';`]Undo[/Button] [Button onClick:`doHistoryLtfLtb='redo';`]Redo[/Button] [Button onClick:`doHistoryLtfLtb='reset';`]Reset[/Button] [Display value:historyLtfLtb /]
 
 [Unfolded width:1000 height:500 script:initLtfLtb options:unfoldedOptions endText:'Ltf+Ltb+' /]
 
@@ -273,8 +267,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:6 initialScript:initLbf runInitial:false options:flexagonOptions overButton:true
   history:historyLbf doHistory:doHistoryLbf /]
 
-[Button onClick:`doHistoryLbf='undo';`]Undo[/Button] [Button onClick:`doHistoryLbf='redo';`]Redo[/Button] [Button onClick:`doHistoryLbf='reset';`]Reset[/Button]
-- [Display value:historyLbf /]
+[Button onClick:`doHistoryLbf='undo';`]Undo[/Button] [Button onClick:`doHistoryLbf='redo';`]Redo[/Button] [Button onClick:`doHistoryLbf='reset';`]Reset[/Button] [Display value:historyLbf /]
 
 [Unfolded width:1000 height:500 script:initLbf options:unfoldedOptions endText:'Lbf+' /]
 
@@ -304,8 +297,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:6 initialScript:initLbb runInitial:false options:flexagonOptions overButton:true
   history:historyLbb doHistory:doHistoryLbb /]
 
-[Button onClick:`doHistoryLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLbb='reset';`]Reset[/Button]
-- [Display value:historyLbb /]
+[Button onClick:`doHistoryLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLbb='reset';`]Reset[/Button] [Display value:historyLbb /]
 
 [Unfolded width:1000 height:500 script:initLbb options:unfoldedOptions endText:'Lbb+' /]
 
@@ -336,8 +328,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:6 initialScript:initLhLkLbb runInitial:false options:flexagonOptions overButton:true
   history:historyLhLkLbb doHistory:doHistoryLhLkLbb /]
 
-[Button onClick:`doHistoryLhLkLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLkLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLkLbb='reset';`]Reset[/Button]
-- [Display value:historyLhLkLbb /]
+[Button onClick:`doHistoryLhLkLbb='undo';`]Undo[/Button] [Button onClick:`doHistoryLhLkLbb='redo';`]Redo[/Button] [Button onClick:`doHistoryLhLkLbb='reset';`]Reset[/Button] [Display value:historyLhLkLbb /]
 
 [Unfolded width:1000 height:500 script:initLhLkLbb options:unfoldedOptions endText:'Lh+Lk+Lbb+' /]
 
@@ -367,8 +358,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 [Flexagon width:700 height:400 numPats:5 initialScript:initL3 runInitial:false options:flexagonOptions overButton:true
   history:historyL3 doHistory:doHistoryL3 /]
 
-[Button onClick:`doHistoryL3='undo';`]Undo[/Button] [Button onClick:`doHistoryL3='redo';`]Redo[/Button] [Button onClick:`doHistoryL3='reset';`]Reset[/Button]
-- [Display value:historyL3 /]
+[Button onClick:`doHistoryL3='undo';`]Undo[/Button] [Button onClick:`doHistoryL3='redo';`]Redo[/Button] [Button onClick:`doHistoryL3='reset';`]Reset[/Button] [Display value:historyL3 /]
 
 [Unfolded width:1000 height:600 script:initL3 options:unfoldedOptions endText:'L3+' /]
 
