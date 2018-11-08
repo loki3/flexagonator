@@ -1,0 +1,54 @@
+[meta title:"New Flexes" description:"How to define flexes with pat notation" /]
+
+[Header
+  title:"New Flexes"
+  subtitle:"How to define flexes with pat notation"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+
+[Aside]
+  [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+  [derived name:'initial' value:`[
+    {searchFlexes: "ShSh'T1T1'FF'"},
+    {flexAndColor: { flexes: 'T1*>Sh*>T2*>>Sh*^', colors:defaultColors }},
+    ]` /]
+  [Flexagon width:350 height:300 numPats:7 initialScript:initial options:`{structure:true, showIds:false}` /]
+[/Aside]
+
+Why can you apply a flex in one place and not another?
+How does the flexagon simulator know where flexes can be performed?
+How does it know how the flexagon changes when you do a flex?
+
+Have you looked at the funny notation along the edges of the flexagon in the simulator and wondered what it means?
+Perhaps you noticed that `-` is next to a triangle containing only a single leaf
+and `[- -]` is next to a pair of leaves folded on top of each other.
+But then you saw `[[[- [- -]] -] -]` and figured it was too complex to worry about.
+
+Well, that notation describes the internal structure of the flexagon,
+and it's exactly that structure that determines where you can do a particular flex.
+Understanding how a flex changes that internal structure is key to understanding how a flex rearranges the leaves in a flexagon.
+
+
+# Pat notation
+
+* **Leaf**: Each individual polygon in an unfolded flexagon
+* **Pat**: A stack of leaves in a folded flexagon
+
+For example, a hexaflexagon consists of 6 pats, where each pat contains 1 or more leaves.
+Every leaf is connected to exactly two leaves in a folded flexagon, and every pat is connected to exactly two adjacent pats.
+
+* **Pat notation**: Notation used to describe how leaves are folded in a triangle flexagon, consisting of pairs of leaves and/or subpats
+
+The flexagon simulator uses `-` to represent a generic leaf,
+which is sufficient for understanding how the folds in a pat are nested.
+But a more precise notation starts by uniquely labeling every leaf and using those labels.
+
+
+[hr /]
+
+For additional information, see [loki3.com](http://loki3.com/flex/).
+
+[FullWidth]
+  [img src:'static/flexagon-variety.jpg' /]
+[/FullWidth]
