@@ -42,8 +42,27 @@ Every leaf is connected to exactly two leaves in a folded flexagon, and every pa
 
 The flexagon simulator uses `-` to represent a generic leaf,
 which is sufficient for understanding how the folds in a pat are nested.
-But a more precise notation starts by uniquely labeling every leaf and using those labels.
+But a more precise notation starts by uniquely labeling every leaf and using those labels, which helps when defining how flexes work.
 
+So enough talk.
+Let's see what this actually looks like.
+Below are unfolded strips for all the different ways to fold a pat with 2, 3, or 4 leaves.
+
+2: [Unfolded width:250 height:100 options:`{end:1, rotation:60}`
+  script:`[ {pats:[[1, 2], 100]}, {angles:[60,60]} ]` /]
+3: [Unfolded width:300 height:100 options:`{end:2}`
+  script:`[ {pats:[[1, [2, 3]], 100]}, {angles:[60,60]} ]` /]
+
+[Float position:'right']
+  4c: [Unfolded width:250 height:200 options:`{end:3, rotation:60}`
+    script:`[ {pats:[[1, [[2, 3], 4]], 100]}, {angles:[60,60]} ]` /]
+[/Float]
+
+4a: [Unfolded width:300 height:100 options:`{end:3}`
+  script:`[ {pats:[[[[1, 2], 3], 4], 100]}, {angles:[60,60]} ]` /]
+
+4b: [Unfolded width:300 height:100 options:`{end:3}`
+  script:`[ {pats:[[[1, 2], [3, 4]], 100]}, {angles:[60,60]} ]` /]
 
 [hr /]
 
