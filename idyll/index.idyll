@@ -27,7 +27,7 @@ But then you saw `[[[- [- -]] -] -]` and figured it was too complex to worry abo
 
 Well, that notation describes the internal structure of the flexagon,
 and it's exactly that structure that determines where you can do a particular flex.
-Understanding how a flex changes that internal structure is key to understanding how a flex rearranges the leaves in a flexagon.
+Understanding that internal structure is key to understanding how a flex rearranges the leaves in a flexagon.
 
 
 # Pat notation
@@ -36,7 +36,7 @@ Understanding how a flex changes that internal structure is key to understanding
 * **Pat**: A stack of leaves in a folded flexagon
 
 For example, a hexaflexagon consists of 6 pats, where each pat contains 1 or more leaves.
-Every leaf is connected to exactly two leaves in a folded flexagon, and every pat is connected to exactly two adjacent pats.
+Every leaf is connected to exactly two other leaves in a folded flexagon, and every pat is connected to exactly two adjacent pats.
 
 * **Pat notation**: Notation used to describe how leaves are folded in a triangle flexagon, consisting of pairs of leaves and/or subpats
 
@@ -44,7 +44,7 @@ The flexagon simulator uses `-` to represent a generic leaf,
 which is sufficient for understanding how the folds in a pat are nested.
 But a more precise notation starts by uniquely labeling every leaf and using those labels, which helps when defining how flexes work.
 
-So enough talk.
+Enough talk.
 Let's see what this actually looks like.
 Below are unfolded strips for all the different ways to fold a pat with 2, 3, or 4 leaves.
 
@@ -52,32 +52,46 @@ Below are unfolded strips for all the different ways to fold a pat with 2, 3, or
 Cut out each of the strips and assemble them by folding the highest pair of numbers together,
 then the next highest together and so on until you have a single pat.
 
-Note that turning over the pats labeled 3, 4a, and 4c gives you a different nesting of leaves.
-Thus there are actually 9 different leaf arrangements for pats with 1, 2, 3, or 4 leaves in them.
+Note that turning over `1`, `2`, and `4b` gives you the same nesting structure,
+but turning over `3`, `4a`, and `4c` gives you a different nesting of leaves.
+Thus there are actually 9 different leaf arrangements for pats with 1, 2, 3, or 4 leaves in them:
+`1`, `2`, `3`, `-3`, `4a`, `-4a`, `4b`, `4c`, and `-4c`.
 [/Aside]
 
-2: [Unfolded width:250 height:100 options:`{end:1, rotation:60}`
+2: [Unfolded width:250 height:100 options:`{end:1, rotation:60, captions:[{text:'2', which:0}]}`
   script:`[ {pats:[[1, 2], 100]}, {angles:[60,60]} ]` /]
-3: [Unfolded width:300 height:100 options:`{end:2}`
+3: [Unfolded width:300 height:100 options:`{end:2, captions:[{text:'3', which:0}]}`
   script:`[ {pats:[[1, [2, 3]], 100]}, {angles:[60,60]} ]` /]
 
 [Float position:'right']
-  4c: [Unfolded width:250 height:200 options:`{end:3, rotation:60}`
+  4c: [Unfolded width:250 height:200 options:`{end:3, rotation:60, captions:[{text:'4c', which:0}]}`
     script:`[ {pats:[[1, [[2, 3], 4]], 100]}, {angles:[60,60]} ]` /]
 [/Float]
 
-4a: [Unfolded width:300 height:100 options:`{end:3}`
+4a: [Unfolded width:300 height:100 options:`{end:3, captions:[{text:'4a', which:0}]}`
   script:`[ {pats:[[[[1, 2], 3], 4], 100]}, {angles:[60,60]} ]` /]
 
-4b: [Unfolded width:300 height:100 options:`{end:3}`
+4b: [Unfolded width:300 height:100 options:`{end:3, captions:[{text:'4b', which:0}]}`
   script:`[ {pats:[[[1, 2], [3, 4]], 100]}, {angles:[60,60]} ]` /]
+
+[Aside]
+  [img src:'static/4a.png' /]
+[/Aside]
 
 If you fold those sample pats and look at the results,
 you'll note that the hinges between triangles can occur at any of the three edges.
 But, it turns out that we don't have to model that detail in order to capture the important structure.
 The important part is how the hinges are nested.
+If you know the nesting, you can infer which of the three edges the hinge connects.
 
-Here's what the nesting looks like: ... useful pictures ...
+The adjacent picture gives you an exploded view of what the nesting looks like for `4a`.
+The 4 triangles represent the 4 leaves in the pat, and the colored pieces indicate where the hinges are.
+The blue coming in from the bottom left connects to the pat to the left.
+The green hinge connects the bottom leaf along the back to the leaf a couple steps up.
+The red hinge on the right connects that leaf to the top leaf,
+and the hinge on the left connects the top leaf to the leaf a couple steps below.
+Finally, the blue on the right connects to the pat on the right.
+
 
 Pat notation groups leaves and subpats together by how they're nested.
 A single leaf is `-`.
@@ -91,6 +105,7 @@ If our labels are numbers, one side can be positive and the flip side negative.
 Thus we could describe 4a as `[[[3, -2], -4], 1]` or `[[[1, 2], 3], 4]`, depending on our choice of labels.
 
 Using this, we can describe the 9 different ways to assemble pats with 4 or fewer leaves.
+The following assumes the leaves are labeled in the order they occur in the unfolded strip.
 
 [Float position:'left']
 * 1: `1`
@@ -110,8 +125,25 @@ Using this, we can describe the 9 different ways to assemble pats with 4 or fewe
 
 To describe an entire flexagon, you simply string together the descriptions of each pat, going clockwise around the flexagon.
 So a 3-sided hexaflexagon might look like `[[1, 2], 3, [4, 5], 6, [7, 8], 9]`.
+And to describe the effect of a flex, you describe the state before the flex and after the flex.
+
+But how can you use this to *predict* what a flex will do rather than simply recording what it did *after* you do the flex?
 
 # Defining a flex
+
+Here's the definition of the pinch flex on a hexaflexagon using pat notation:
+
+* before: `[[-2, 1], -3, [5, -4], 6, [-8, 7], -9]`
+* after: `[2, [-4, 3], -5, [7, -6], 8, [1, 9]]`
+
+This tells us both *if* we can do the pinch flex in a particular location
+and *how it would change the flexagon* if we actually do a pinch flex.
+
+It says that the first pat must have at least 2 leaves,
+the second pat can be anything (since every pat has at least 1 leaf),
+the third pat must have at least 2 leaves, etc.
+So if our current flexagon looks like `[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]`, we can do a pinch flex,
+but if it's `[1, 2, [3, 4], 5, [6, 7], 8]`, we can't.
 
 # Creating a new flex
 
