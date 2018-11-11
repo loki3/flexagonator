@@ -82,7 +82,8 @@ If you fold those sample pats and look at the results,
 you'll note that the hinges between triangles can occur at any of the three edges.
 But, it turns out that we don't have to model that detail in order to capture the important structure.
 The important part is how the hinges are nested.
-If you know the nesting, you can infer which of the three edges the hinge connects.
+If you know the nesting and which leaves connect to adjacent pats,
+you can infer which of the three edges the hinge connects.
 
 The adjacent picture gives you an exploded view of what the nesting looks like for `4a`.
 The 4 triangles represent the 4 leaves in the pat, and the colored pieces indicate where the hinges are.
@@ -145,7 +146,74 @@ the third pat must have at least 2 leaves, etc.
 So if our current flexagon looks like `[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]`, we can do a pinch flex,
 but if it's `[1, 2, [3, 4], 5, [6, 7], 8]`, we can't.
 
+
 # Creating a new flex
+
+
+# More details
+
+The nesting structure we've been using captures *almost* everything you need to understand where you can perform a flex.
+But there are a few missing details.
+
+1. Where a pat connects to adjacent pats
+2. If the structure suports any additional freedom that's needed in order to perform the flex
+3. Whether the angles along the edges of the flexagon allow the flex
+
+## 1. How pats are connected and rotated
+
+When a flexagon is made up of triangles with 2 or 3 different angles,
+you may have noticed that some flexes rotate the pats so that a different angle is in the center of the flexagon.
+To fully capture the behavior of flexing, you need to know how the pats are rotated or flipped.
+
+* Some flexes that don't affect rotation: `^`, `T`, `Sh`, `F`, `St`, `Lk`, `Ltf`, `L3`, `P333`, `P334`
+* Some flexes that mirror the pats: `>`, `<`
+* Some flexes that mirror and rotate pats: `P`, `V`, `Lh`, `Ltb`, `Lbf`, `Lbb`
+
+... show flexagon w/ useful stats ...
+
+## 2. Additional needed structure
+
+Some flexes need additional structure in order to provide enough freedom to perform a flex,
+even if that additional structure isn't otherwise affected by the flex.
+
+The tuck flex provides a good example of this.
+If you only write out pat notation for the part of the flexagon that changes, you get the following:
+
+* before: `[[[-2, 3], 1], 4, 5, 6, 7, 8]`
+* after: `[3, 4, 5, 6, 7, [2, [8, -1]]]`
+
+[Unfolded width:600 height:280 numPats:6 generator:'Tf+>' endText:'Tf' /]
+
+If you make that flexagon, you'll find that you can't actually flex it,
+unless you're willing to really force it and do some damage to the flexagon, or perhaps trim the leaves.
+This is because when you're doing the flex, you need to open it somewhere across from where you're doing the tuck
+in order to have enough freedom of movement.
+
+Here's what it looks like when you add in the extra flap (`[-7, 6]`) you need in order to open up the flexagon:
+
+* before: `[[[-2, 3], 1], 4, 5, [-7, 6], -8, -9]`
+* after: `[3, 4, 5, [-7, 6], -8, [2, [-9, -1]]]`
+
+[Unfolded width:600 height:350 numPats:6 generator:'T+' endText:'T' /]
+
+On flexagons with more than 6 pats, there may be multiple places you could add an extra flap to support the tuck flex.
+In *flexagonator*, the flexagon simulator, this is captured by specifying multiple tuck variants:
+`T1` if the flap is in one place, `T2` if it's in another, etc.
+This isn't ideal for general flexing, since they're actually all the same flex.
+But it's good for generating sequences because you have to be explicit about where new leaves were added.
+
+That first flex is called the `forced tuck`, or `Tf`.
+It can be useful when trying to explore every possible state for a given flexagon,
+but otherwise isn't a practical flex.
+
+## 3. Angles along the edges
+
+Some flexes only work if the angles of the triangles are within a certain fuzzy range.
+Once you start going beyond that range, it gets harder to do the flex without damaging the flexagon.
+
+A good example of this is the flip flex.
+
+
 
 [hr /]
 
