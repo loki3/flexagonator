@@ -174,7 +174,30 @@ Now we substitute those values into the *after* state of the flex.
 * result: `[-1, [[5,6],-3], -4, [10,[-8,-7]], -9, [2,[[-14,-13],[-12,-11]]]]`
 
 
-# Creating a new flex
+# Flex definitions
+
+Here are definitions of flexes we've discussed so far for the hexaflexagon:
+
+[FullWidth]
+* `>:` `[1, 2, 3, 4, 5, 6]` -> `[2, 3, 4, 5, 6, 1]`
+* **<:** `[1, 2, 3, 4, 5, 6]` -> `[6, 1, 2, 3, 4, 5]`
+* **^:** `[1, 2, 3, 4, 5, 6]` -> `[-6, -5, -4, -3, -2, -1]`
+* **F:** `[[1, 2], 3, 4, 5, [[6, 7], [8, 9]], 10]` -> `[7, [[-1, 3], [10, -2]], 4, 5, 8, [-6, -9]]`
+* **P:** `[[1, 2], 3, [4, 5], 6, [7, 8], 9]` -> `[-1, [5, -3], -4, [8, -6], -7, [2, -9]]`
+* **Sh:** `[[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10]` -> `[-6, [1, [8, [2, -10]]], 3, 4, 5, [7, 9]]`
+* **St:** `[[1, [2, 3]], 4, 5, 6, [7, [8, 9]], 10]` -> `[2, [[-1, 4], -3], 5, 6, 8, [[-7, 10], -9]]`
+* **T:** `[[[1, 2], 3], 4, 5, [6, 7], 8, 9]` -> `[2, 4, 5, [6, 7], 8, [-1, [9, -3]]]`
+* **Tf:** `[[[1, 2], 3], 4, 5, 6, 7, 8]` -> `[2, 4, 5, 6, 7, [-1, [8, -3]]]`
+* **V:** `[1, [2, 3], [4, 5], 6, 7, [8, 9]]` -> `[[3, -1], -2, -5, [-6, 4], [9, -7], -8]`
+* **Ltf:** `[[[[1, 2], 3], 4], 5, 6, 7, [8, 9], 10]` -> `[10, [2, 4], -1, 3, 5, [8, [6, [9, -7]]]]`
+* **Ltb:** `[[[1, [2, 3]], 4], 5, 6, 7, [8, 9], 10]` -> `[-4, 1, -3, [-5, 2], [[7, -9], -6], [-10, 8]]`
+* **Lbf:** `[[[1, 2], 10], [4, 3], 5, 6, [8, 7], 9]` -> `[[-2, -1], -3, [-5, 4], [7, -6], -8, [10, -9]]`
+* **Lbb:** `[[[2, -3], -1], [5, -4], 6, 7, [[-9, 10], 8], 11]` -> `[2, [-4, 3], -5, [[7, -8], -6], -9, [[11, 1], -10]]`
+* **Lh:** `[[[1, [2, 3]], 4], 5, 6, 7, [[8, 9], 10], 11]` -> `[[[11, -4], -9], 1, -3, [-5, 2], [[7, -10], -6], 8]`
+* **Lk:** `[[[[1, 2], 3], 4], 5, 6, 7, [[[8, 9], 10], 11], 12]` -> `[-8, [2, [10, [4, -12]]], -1, 3, 5, [9, [6, [11, -7]]]]`
+[/FullWidth]
+
+Many of these can be generalized to flexagons beyond just the hexaflexagon.
 
 
 # More details
@@ -183,7 +206,7 @@ The nesting structure we've been using captures *almost* everything you need to 
 But there are a few missing details.
 
 1. Where a pat connects to adjacent pats
-2. If the structure suports any additional freedom that's needed in order to perform the flex
+2. If any additional structural freedom is needed in order to perform the flex
 3. Whether the angles along the edges of the flexagon allow the flex
 
 ## 1. How pats are connected and rotated
@@ -258,6 +281,9 @@ it's an elegant flex at one vertex but practically impossible at the vertex righ
 
 Note that flexagonator doesn't know when the angles have gone beyond the acceptable range,
 so it will allow you to perform flexes in places where a physical model may not.
+
+
+# Creating a new flex
 
 
 [hr /]
