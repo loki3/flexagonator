@@ -130,7 +130,7 @@ And to describe the effect of a flex, you describe the state before the flex and
 
 But how can you use this to *predict* what a flex will do rather than simply recording what it did *after* you do the flex?
 
-# Defining a flex
+# Defining and applying a flex
 
 Here's the definition of the pinch flex on a hexaflexagon using pat notation:
 
@@ -141,10 +141,37 @@ This tells us both *if* we can do the pinch flex in a particular location
 and *how it would change the flexagon* if we actually do a pinch flex.
 
 It says that the first pat must have at least 2 leaves,
-the second pat can be anything (since pats must have at least 1 leaf),
+the second pat can be anything (since pats always have at least 1 leaf),
 the third pat must have at least 2 leaves, etc.
-So if our current flexagon looks like `[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]`, we can do a pinch flex,
-but if it's `[1, 2, [3, 4], 5, [6, 7], 8]`, we can't.
+So we can do a pinch flex if our current flexagon looks like `[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]`,
+but we can't if it's `[1, 2, [3, 4], 5, [6, 7], 8]`.
+
+Let's look at how that flex definition tells us how a given flexagon will change,
+trying out the flexagon `[[1,2], 3, [4,[5,6]], [7,8], [9,10], [[11,12],[13,14]]]`.
+To avoid confusion, let's use letters instead of numbers in the pinch flex definition:
+
+* before: `[[-b, a], -c, [e, -d], f, [-h, g], -i]`
+* after: `[b, [-d, c], -e, [g, -f], h, [a, i]]`
+
+Next, let's look at how each of the pats in the flexagon line up with pats in the *before* portion of the flex definition.
+
+* *before* pattern: `[[-b, a], -c, [e, -d], f, [-h, g], -i]`
+* flexagon state: `[[1,2], 3, [4,[5,6]], [7,8], [9,10], [[11,12],[13,14]]]`
+
+We'll also use a simple identity for how the structure changes when we turn over a pat:
+`-[a, b]` = `[-b, -a]`, in other words, turning over `[a, b]` results in `[-b, -a]`.
+
+* `[-b, a] = [1, 2]`, therefore `a = 2` and `b = -1`
+* `-c = 3`, therefore `c = -3`
+* `[e, -d] = [4, [5, 6]]`, therefore `e = 4` and `d = [-6, -5]`
+* `f = [7, 8]`
+* `[-h, g] = [9, 10]`, therefore `g = 10` and `h = -9`
+* `-i = [[11, 12], [13, 14]]`, therefore `i = [[-14, -13], [-12, -11]]`
+
+Now we substitute those values into the *after* state of the flex.
+
+* *after* pattern: `[b, [-d, c], -e, [g, -f], h, [a, i]]`
+* result: `[-1, [[5,6],-3], -4, [10,[-8,-7]], -9, [2,[[-14,-13],[-12,-11]]]]`
 
 
 # Creating a new flex
