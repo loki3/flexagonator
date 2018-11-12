@@ -169,7 +169,15 @@ To fully capture the behavior of flexing, you need to know how the pats are rota
 * Some flexes that mirror the pats: `>`, `<`
 * Some flexes that mirror and rotate pats: `P`, `V`, `Lh`, `Ltb`, `Lbf`, `Lbb`
 
-... show flexagon w/ useful stats ...
+This effect is most noticeable when the angles of the triangles are unequal or if you decorate the leaves assymetrically.
+In the following flexagon, you'll notice that it no longer lies flat after doing a pinch flex,
+but the tuck and pyramid shuffle don't affect how the triangles are rotated.
+
+// this comment works around a bug
+[Flexagon width:400 height:400 numPats:10 options:`{showIds:false, structure:true, stats:true}`
+  initialScript:`[{angles:[36,54]}, {flexes:"P+>>T1+>Sh+"}, {searchFlexes:"PShSh'T1T1'"}]` /]
+
+[Unfolded width:1000 height:350 numPats:10 generator:"P+>>T1+>Sh+" /]
 
 ## 2. Additional needed structure
 
