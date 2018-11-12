@@ -227,7 +227,7 @@ but the tuck and pyramid shuffle don't affect how the triangles are rotated.
 [Flexagon width:400 height:400 numPats:10 options:`{showIds:false, structure:true, stats:true}`
   initialScript:`[{angles:[36,54]}, {flexes:"P+>>T1+>Sh+"}, {searchFlexes:"PShSh'T1T1'"}]` /]
 
-[Unfolded width:1000 height:350 numPats:10 generator:"P+>>T1+>Sh+" /]
+[Unfolded width:1000 height:350 numPats:10 generator:"P+>>T1+>Sh+" angles:`[36,54]` /]
 
 ## 2. Additional needed structure
 
@@ -277,7 +277,7 @@ it's an elegant flex at one vertex but practically impossible at the vertex righ
 [Flexagon width:400 height:400 numPats:6 options:`{showIds:false, structure:true}`
   initialScript:`[{angles:[60,30]}, {flexes:"F+>F+"}, {searchFlexes:"FF'"}]` /]
 
-[Unfolded width:1000 height:400 numPats:6 generator:"F+>F+" endText:"F+>F+" options:`{rotation:120}` /]
+[Unfolded width:1000 height:400 numPats:6 generator:"F+>F+" endText:"F+>F+" options:`{rotation:0}` angles:`[60,30]` /]
 
 Note that flexagonator doesn't know when the angles have gone beyond the acceptable range,
 so it will allow you to perform flexes in places where a physical model may not.
