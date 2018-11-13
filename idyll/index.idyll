@@ -285,6 +285,28 @@ so it will allow you to perform flexes in places where a physical model may not.
 
 # Creating a new flex
 
+Let's say you were playing around with a silver octaflexagon where all the pats had two leaves...
+
+[var name:silverOcta22 value:`[
+  {pats:[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]},
+  {searchFlexes:"P"},
+  {angles:[45,45]}
+]`/]
+
+[Aside]
+[Unfolded width:400 height:400 numPats:8 script:silverOcta22 endText:"22" options:`{rotation:45}` /]
+[/Aside]
+
+[Flexagon width:400 height:400 numPats:8 options:`{showIds:false, structure:true, stats:true}`
+  initialScript:silverOcta22 /]
+
+...and you found a new flex that looked like this...
+
+// comment needed to workaround bug
+[Slides width:320 height:240 pattern:'static/Tw/*.jpg' start:1 end:11 /]
+
+...and you wanted to add that flex to flexagonator so you could experiment with it further.
+How would you go about creating a flex definition using pat notation?
 
 [hr /]
 
