@@ -300,19 +300,71 @@ Let's say you were playing around with a silver octaflexagon where all the pats 
 [Flexagon width:400 height:400 numPats:8 options:`{showIds:false, structure:true, stats:true}`
   initialScript:silverOcta22 /]
 
-...and you found a new flex that looked like this...
+...and you found a new flex that looked like this...[br/][br/]
 
 // comment needed to workaround bug
 [Slides width:320 height:240 pattern:'static/Tw/*.jpg' start:1 end:11 /]
 
 ...and you wanted to add that flex to flexagonator so you could experiment with it further.
-How would you go about creating a flex definition using pat notation?
+How would you go about creating a flex definition using pat notation to enable that?
+
+Well, the basic idea behind providing a flex definition
+is that you describe the state of the flexagon before the flex and the state after the flex.
+You could do that, but is it really the case that every pat has to have 2 leaves in order to perform this flex?
+If not, your definition would be too restrictive, ruling out cases where you could actually do the flex.
+So how do you address this issue?
+
+One technique is to mark every side of every leaf that you expose during the flex so you know which ones are required.
+Start by marking both of the visible sides.
+Then slowly go through the motions of doing the flex, marking each leaf as it first becomes visible.
+When you're done, paste together all the sides you didn't need and look at the results.
+
+For this particular flex, you'll find that the starting pat structure you need is
+`[[-, -], [-, -], -, -, [-, -], [-, -], -, -]`.
+Now number one side of every remaining leaf, labeling the backsides with the negative version of the front side.
+Write down the starting state, do the flex, then write down the ending state.
+You should end up with something that looks like this (though you might have chosen different labels):
+
+* before: `[[2, -1], [-4, 3], -5, -6, [8, -7], [-10, 9], -11, -12]`
+* after: `[-2, -3, [5, -4], [-7, 6], -8, -9, [11, -10], [-1, 12]]`
+
+You can add this flex definition in the [Flexagon Playground](playground.html)
+by pasting the following into the "Flexagon from Script" section:
+
+```javascript
+[
+  {"pats": [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]},
+  {"angles": [45,45]},
+  {"addFlex": {
+    "name": "my new flex",
+    "shorthand": "Mnf",
+    "input": [[2, -1], [-4, 3], -5, -6, [8, -7], [-10, 9], -11, -12],
+    "output": [-2, -3, [5, -4], [-7, 6], -8, -9, [11, -10], [-1, 12]]
+  }},
+  {"searchFlexes": "P Sh St F T1 T1' T2 T2' Mnf"}
+]
+```
+
+See flexagonator's [script API](https://github.com/loki3/flexagonator/blob/master/docs/script.md) for
+more information on what can go into a script.
+
+This flex actually has a name: the *twist flex*, with shorthand of `Tw `.
+It also works on other right triangle flexagons such as the decaflexagon and dodecaflexagon.
+
 
 [hr /]
 
 # What next?
 
-This only describes the pats in a *triangle* flexagon.
+There are lots of other flexes out there to find.
+Pat notation gives you a way to explicitly describe what the flex does.
+And the [playground](playground.html) gives you the ability to explore using any flex you define.
+
+Pat notation gives you a way to figure out what effects flexes will have.
+This gives you the ability to figure out when two flex sequences are equivalent.
+What else could you do with this notation?
+
+This page only describes the pats in a *triangle* flexagon.
 What about flexagons made from squares or other quadrilaterals?
 What about pentagons, hexagons, etc.?
 
