@@ -116,6 +116,28 @@
 [hr /]
 
 
+[Aside]
+[br/][br/][br/]
+*pre*: `[[[1,2],3], 4, 5, [6,7], 8, 9]`
+[br/]
+*post*: `[2, 4, 5, [6,7], 8, [-1,[9,-3]]]`
+[/Aside]
+
+[a href:'new-flexes.html']
+  [div className:'heading'] Chapter 6: New flexes [/div]
+  [div className:'subname'] How to define flexes with pat notation [/div]
+[/a]
+
+* Describes using *pat notation* for the internal structure of a flexagon
+* Shows how to define what a flex does by using pat notation to enumerate a flexagon's structure before and after a flex
+* Demonstrates using a flex definition to predict where you can do a flex and to predict exactly how a flexagon will change if you do the flex
+* Provides definitions of the flexes discussed so far for hexaflexagons
+* Lists additional details you need to fully understand when a flex can be performed
+* Walks through an example of how to define a new flex and how to add it to the flexagon simulator
+
+[hr /]
+
+
 [a href:'playground.html']
   [div className:'heading'] Appendix: Flexagon Playground [/div]
   [div className:'subname'] General tools for exploring flexagons [/div]
