@@ -243,10 +243,15 @@ However, other than on the 3-sided hexaflexagon, it doesn't show you all the dif
 that are possible if you use any of the other flexes that rearrange those faces.
 
 We'll look at one example to give you a flavor of what a complete traversal of every state might look like.
-This hexaflexagon has 12 leaves and 36 different states.
-You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltf`.
+The following hexaflexagon has 12 leaves and 36 different states.
+You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltb`.
 
-[var name:'typedSequence' value:'' /]
+One way to traverse every state is through the flex sequence `(Ltb>P>P>) 12`.
+Each time you click *apply* with that sequence, you can see that it visits 3 more states.
+Or you can travel clockwise around the flexagon repeatedly clicking on `Ltb`, `P`, and `P`.
+Can you find other simple sequences that visit all 36 states?
+
+[var name:'typedSequence' value:'Ltb>P>P>' /]
 [var name:'twelveSequence' value:'' /]
 [var name:'twelveScript' value:'' /]
 [var name:'twelveDoHistory' value:`undefined;` /]
@@ -258,13 +263,13 @@ You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltf`.
 [derived name:'twelveInit' value:`[
   { numPats: 6 },
   { searchFlexes: "P Sh T T' V Lh Lk Ltf Ltb Lbf Lbb" },
-  { flexAndColor: { flexes: "Ltf*T'*^<T*^Ltf*" , colors: defaultColors } },
-  { reverseFlexes: "Ltf*T'*^<T*^Ltf*" },
+  { flexAndColor: { flexes: "Ltb*>P*>P*>Ltb*>P*" , colors: defaultColors } },
+  { reverseFlexes: "Ltb*>P*>P*>Ltb*>P*" },
   { history: "clear" }
 ]`/]
 
 Flex sequence: [TextInput value:typedSequence /]
-[Button onClick:` twelveSequence=typedSequence; `]apply[/Button] [Button onClick:` twelveDoHistory='reset'; `]reset[/Button]  [Display value:twelveError /]
+[Button onClick:` twelveSequence=typedSequence; `]apply[/Button] [Display value:twelveError /]
 
 [Flexagon width:700 height:360 numPats:6 flexes:twelveSequence currentScript:twelveScript doHistory:twelveDoHistory
   initialScript:twelveInit history:twelveHistory error:twelveError overButton:true options:twelveOptions
@@ -276,7 +281,6 @@ Currently in state [Display value:twelveCurrent format:'0' /] of [Display value:
 [Display value:twelveHistory /]
 
 [Unfolded width:1000 height:150 numPats:6 script:twelveInit /]
-
 
 
 # What next?
