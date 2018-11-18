@@ -1,0 +1,99 @@
+[meta title:"Flex Sequences" description:"Equalities, primes, cycles, and traversals" /]
+
+[Aside]
+  [br/]
+  A chapter from[br/]
+  [Explorable Flexagons](index.html)
+[/Aside]
+
+[Header
+  title:"Flex Sequences"
+  subtitle:"Equalities, primes, cycles, and traversals"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+[var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+
+Now that we have a wide variety of flexes (the [pinch flex](pinch-flex.html) and [variations](pinch-variations.html),
+the [pyramid shuffle, flip, tuck, and v](flexing.html), and [various slot flexes](slot-flexes.html))
+plus [flex notation](https://github.com/loki3/flexagonator/blob/master/docs/flex-notation.md) for describing sequences of flexes
+and [pat notation](new-flexes.html) for describing the internals of flexagons,
+we have a powerful set of tools for exploring some of the really interesting aspects of flexagons.
+
+In this chapter we'll cover the following:
+
+* Interesting cycles: flex sequences that end where they begin
+* Sequences of flexes that are equal or almost equal to each other
+* *Prime flexes* that can't be replaced by other flexes
+* Traversals of every state of a flexagon
+
+
+# Cycles
+
+
+# Equalities
+
+
+# Prime flexes
+
+In mathematics, a number is prime if it isn't the product of two other numbers (more precisely, the numbers are all *positive integers*).
+
+We can adapt this idea to flexes, defining a *prime flex* as a flex that can't be decomposed into other flexes.
+Or, more precisely, we can say a flex is *prime relative to* a given set of flexes
+if the flex isn't exactly equal to any possible combination of those other flexes.
+
+Intuitively, a prime flex can get you to states that you couldn't get to by using all the other flexes.
+
+To understand this concept, let's start with a small set of flexes: `{T', Lh, Ltb}`.
+These are the *inverse tuck*, introduced in the [Flexing Flexagons chapter](flexing.html),
+and, from the [Slot Flexes chapter](slot-flexes.html), the *slot half flex* and *slot tuck top back*.
+Which flexes in that list are prime?
+
+Let's start with the flex definitions from the [New Flexes chapter](new-flexes.html).
+Note that for `T'`, we simply apply the definition of `T` in reverse.
+
+[FullWidth]
+* **T':** `[2, 4, 5, [6, 7], 8, [-1, [9, -3]]]` -> `[[[1, 2], 3], 4, 5, [6, 7], 8, 9]`
+* **Ltb:** `[[[1, [2, 3]], 4], 5, 6, 7, [8, 9], 10]` -> `[-4, 1, -3, [-5, 2], [[7, -9], -6], [-10, 8]]`
+* **Lh:** `[[[1, [2, 3]], 4], 5, 6, 7, [[8, 9], 10], 11]` -> `[[[11, -4], -9], 1, -3, [-5, 2], [[7, -10], -6], 8]`
+[/FullWidth]
+
+The first thing to note here is that `T'` only needs 9 leaves, `Ltb` needs 10, and `Lh` needs 11.
+Obviously you can't do `Ltb` or `Lh` on the minimal flexagon for `T'`, so `T'` must be prime relative to the other flexes.
+
+Similarly, you can't do `Lh` on the minimal flexagon for `Ltb`,
+but is it possible to do a `T'` flex on the minimal `Ltb`?
+Well, we know that flexagon has at least two states and that you can alternate between them using `Ltb` and `Ltb`.
+Neither of those states permit the `Ltb`, `Ltb'`, `Lh`, or `Lh'`, so there aren't additional states to examine.
+If you look carefully at the structure of the two states, you'll see that neither one matches what `T` or `T'` requires.
+Thus we can conclude that `Ltb` is prime relative to the other flexes.
+
+The one remaining question is whether or not `Lh` is prime.
+You can find the answer by starting from the initial state given above for the `Lh` flex and applying `Ltb T'`.
+
+* `[[[1, [2, 3]], 4], 5, 6, 7, [[8, 9], 10], 11]`
+* apply `Ltb`: `[-4, 1, -3, [-5, 2], [[7, -10], -6], [-11, [8, 9]]]`
+* apply `T'`: `[[[11, -4], -9], 1, -3, [-5, 2], [[7, -10], -6], 8]`
+
+When you look at that final result, you can see that's exactly what you'd get if you had applied `Lh` instead.
+Thus `Lh = Ltb T'` and we know `Lh` is not prime relative to `T'` and `Ltb`.
+
+[var name:historyLh value:'' /]
+[var name:doHistoryLh value:'' /]
+[derived name:'initLh' value:`[
+  {numPats: 6},
+  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {flexAndColor: { flexes: "Lh+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:700 height:400 numPats:6 initialScript:initLh runInitial:false options:flexagonOptions overButton:true
+  history:historyLh doHistory:doHistoryLh /]
+
+[Button onClick:`doHistoryLh='undo';`]Undo[/Button] [Button onClick:`doHistoryLh='redo';`]Redo[/Button] [Button onClick:`doHistoryLh='reset';`]Reset[/Button] [Display value:historyLh /]
+
+[Unfolded width:1000 height:500 script:initLh options:unfoldedOptions endText:'Lh+' /]
+
+
+# Traversals
