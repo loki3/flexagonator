@@ -14,6 +14,7 @@
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+[var name:'unfoldedOptions' value:`{content:5}`/]
 
 Now that we have a wide variety of flexes (the [pinch flex](pinch-flex.html) and [variations](pinch-variations.html),
 the [pyramid shuffle, flip, tuck, and v](flexing.html), and [various slot flexes](slot-flexes.html))
@@ -23,16 +24,76 @@ we have a powerful set of tools for exploring some of the really interesting asp
 
 In this chapter we'll cover the following:
 
-* Interesting cycles: flex sequences that end where they begin
 * Sequences of flexes that are equal or almost equal to each other
+* Interesting cycles: flex sequences that end where they begin
 * *Prime flexes* that can't be replaced by other flexes
 * Traversals of every state of a flexagon
 
 
+# Equalities
+
+The *identity flex*, represented by `I`, is a flex where nothing changes,
+much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
+You can use it to say that a sequence is a *cycle*, a flex that starts where it begins.
+For example, if `A>>B^C` were a cycle, you could write `I ~= A>>B^C`.
+
+
 # Cycles
 
+A *cycle* is a flex sequence that returns a flexagon back to the state it started in.
+One of the simplest cycles is a sequence of 3 pinch flexes on the basic 3-sided hexaflexagon.
 
-# Equalities
+You could write this sequence as `P>P>P`.
+Alternately, you could write it as `(P>) 3`, where the sequence to be repeated is in parenthesis, followed by the number of times it's repeated.
+Since you can do this on the minimal flexagon for the pinch flex, you can perform this sequence whenever you can do a pinch flex.
+
+[var name:historyP value:'' /]
+[var name:doHistoryP value:'' /]
+[derived name:'initP' value:`[
+  {numPats: 6},
+  {searchFlexes: "P"},
+  {flexAndColor: { flexes: "P+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:700 height:400 numPats:6 initialScript:initP runInitial:false options:flexagonOptions overButton:true
+  history:historyP doHistory:doHistoryP /]
+
+[Button onClick:`doHistoryP='undo';`]Undo[/Button] [Button onClick:`doHistoryP='redo';`]Redo[/Button] [Button onClick:`doHistoryP='reset';`]Reset[/Button] [Display value:historyP /]
+
+[Unfolded width:1000 height:200 script:initP options:`{content:5, rotation:60}` endText:'P+' /]
+
+## Single flex cycles
+
+This raises an interesting question: are there other flexes that can be performed multiple times to return you to the original state?
+
+## Pyramid shuffle cycle
+
+The following flexagon is the minimal flexagon for the pyramid shuffle.
+It supports a simple cycle of 6 flexes.
+Try clicking on the following: `Sh`, `T'`, `^`, `T`, `^`, `Sh`, `T'`, `^`, `T`, and `^`.
+You'll find that this takes you right back to the original state.
+
+[var name:historySh value:'' /]
+[var name:doHistorySh value:'' /]
+[derived name:'initSh' value:`[
+  {numPats: 6},
+  {searchFlexes: "Sh T T'"},
+  {flexAndColor: { flexes: "Sh+", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:700 height:400 numPats:6 initialScript:initSh runInitial:false options:flexagonOptions overButton:true
+  history:historySh doHistory:doHistorySh /]
+
+[Button onClick:`doHistorySh='undo';`]Undo[/Button] [Button onClick:`doHistorySh='redo';`]Redo[/Button] [Button onClick:`doHistorySh='reset';`]Reset[/Button] [Display value:historySh /]
+
+[Unfolded width:1000 height:500 script:initSh options:unfoldedOptions endText:'Sh+' /]
+
+Looking at the flex sequence that was recorded, you'll see the sequence `Sh>>T'>^T<<^` repeated twice,
+which can be written as `(Sh>>T'>^T<<^) 2`.
+Whenever you can do a pyramid shuffle, you can run through this cycle of 6 flexes.
+
 
 
 # Prime flexes
@@ -95,5 +156,33 @@ Thus `Lh = Ltb T'` and we know `Lh` is not prime relative to `T'` and `Ltb`.
 
 [Unfolded width:1000 height:500 script:initLh options:unfoldedOptions endText:'Lh+' /]
 
+Note that typically we assume that we can rotate the flexagon and turn it over (i.e. `>`, `<`, and `^`) unless otherwise stated.
+In the case above, we didn't need to rotate or turn it over.
+
+For a hexaflexagon, we discussed the following flexes:
+`F`, `P`, `Sh`, `St`, `T`, `V`, `Lh`, `Lk`, `Ltf`, `Ltb`, `Lbf`, and `Lbb`.
+Relative to that set of flexes, which ones are prime?
+How does it change if you include `Tf`, the *forced tuck*?
+
+The answers to those questions are interesting because we only need to try the prime flexes
+to most efficiently find all the states of a flexagon reachable with any flex.
+We don't need to try any flex that's not a prime, because we know that we won't find anything new.
+
+However, if our goal is to find the *shortest sequence* between two states, then every flex is useful.
+
 
 # Traversals
+
+In the [Flexagon Intro](pinch.html), you learned about the Tuckerman Traverse.
+This is a recipe for how to do a sequence of pinch flexes to see all the faces of a hexaflexagon.
+However, other than on the 3-sided hexaflexagon, it doesn't show you all the different states
+that are possible if you use any of the other flexes that rearrange those faces.
+
+
+# What next?
+
+Return to the [Table of Contents](index.html).
+
+[FullWidth]
+  [img src:'static/flexagon-variety.jpg' /]
+[/FullWidth]
