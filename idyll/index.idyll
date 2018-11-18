@@ -53,29 +53,10 @@ Since you can do this on the minimal flexagon for the pinch flex, you can perfor
 
 [Button onClick:`doHistoryP='undo';`]Undo[/Button] [Button onClick:`doHistoryP='redo';`]Redo[/Button] [Button onClick:`doHistoryP='reset';`]Reset[/Button] [Display value:historyP /]
 
-[Unfolded width:1000 height:200 script:initP options:`{content:5, rotation:60}` endText:'P+' /]
-
-
-## Single flex cycles
+[Unfolded width:1000 height:200 script:initP options:`{content:0, rotation:60}` endText:'P+' /]
 
 This raises an interesting question: are there other flexes that can be performed multiple times to return you to the original state?
-
-[var name:'tempSequence' value:'V*<' /]
-[var name:'cycleSequence' value:'' /]
-[var name:'cycleNumPats' value:6 /]
-[var name:'cycleScript' value:'' /]
-[var name:'cycleDoHistory' value:`undefined;` /]
-[var name:'cycleError' value:`undefined;` /]
-[var name:'cycleOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
-
-Flex sequence: [TextInput value:tempSequence /]
-[Button onClick:` cycleSequence=tempSequence; `]apply[/Button] [Button onClick:` cycleDoHistory='reset'; `]reset[/Button]  [Display value:cycleError /]
-
-[Flexagon width:700 height:360 numPats:cycleNumPats flexes:cycleSequence currentScript:cycleScript doHistory:cycleDoHistory
-  error:cycleError overButton:true options:cycleOptions /]
-
-Unfolded strip:
-[Unfolded width:1000 height:500 numPats:cycleNumPats script:cycleScript /]
+How about more complex sequences of flexes?
 
 
 ## Pyramid shuffle cycle
@@ -104,6 +85,33 @@ You'll find that this takes you right back to the original state.
 Looking at the flex sequence that was recorded, you'll see the sequence `Sh>>T'>^T<<^` repeated twice,
 which can be written as `(Sh>>T'>^T<<^) 2`.
 Whenever you can do a pyramid shuffle, you can run through this cycle of 6 flexes.
+
+
+## Experimenting with cycles
+
+The following simulator lets you experiment with different sequences to see if they cycle.
+Type in a sequence such as `V*<`, including the `*` on the flex so that it'll generate the needed structure if it doesn't already exist.
+Then try hitting hitting the *apply* button repeatedly, watching to see if adds new leaves.
+If it stops adding leaves, then you've found a cycle.
+Or you may notice that it consistently needs to add a certain number of leaves every time, in which case it will never return to the starting state.
+Push *reset* when you want to try a new sequence.
+
+[var name:'tempSequence' value:'V*<' /]
+[var name:'cycleSequence' value:'' /]
+[var name:'cycleNumPats' value:6 /]
+[var name:'cycleScript' value:'' /]
+[var name:'cycleDoHistory' value:`undefined;` /]
+[var name:'cycleError' value:`undefined;` /]
+[var name:'cycleOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
+
+Flex sequence: [TextInput value:tempSequence /]
+[Button onClick:` cycleSequence=tempSequence; `]apply[/Button] [Button onClick:` cycleDoHistory='reset'; `]reset[/Button]  [Display value:cycleError /]
+
+[Flexagon width:700 height:360 numPats:cycleNumPats flexes:cycleSequence currentScript:cycleScript doHistory:cycleDoHistory
+  error:cycleError overButton:true options:cycleOptions /]
+
+Unfolded strip:
+[Unfolded width:1000 height:500 numPats:cycleNumPats script:cycleScript /]
 
 
 
