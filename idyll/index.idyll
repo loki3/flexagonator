@@ -251,6 +251,8 @@ You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltf`.
 [var name:'twelveScript' value:'' /]
 [var name:'twelveDoHistory' value:`undefined;` /]
 [var name:'twelveHistory' value:'' /]
+[var name:'twelveCurrent' value:1 /]
+[var name:'twelveTotal' value:1 /]
 [var name:'twelveError' value:`undefined;` /]
 [var name:'twelveOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 [derived name:'twelveInit' value:`[
@@ -265,11 +267,14 @@ Flex sequence: [TextInput value:typedSequence /]
 [Button onClick:` twelveSequence=typedSequence; `]apply[/Button] [Button onClick:` twelveDoHistory='reset'; `]reset[/Button]  [Display value:twelveError /]
 
 [Flexagon width:700 height:360 numPats:6 flexes:twelveSequence currentScript:twelveScript doHistory:twelveDoHistory
-  initialScript:twelveInit history:twelveHistory error:twelveError overButton:true options:twelveOptions /]
+  initialScript:twelveInit history:twelveHistory error:twelveError overButton:true options:twelveOptions
+  currentState:twelveCurrent totalStates:twelveTotal /]
 
-[Button onClick:`twelveDoHistory='undo';`]Undo[/Button] [Button onClick:`twelveDoHistory='redo';`]Redo[/Button] [Button onClick:`twelveDoHistory='reset';`]Reset[/Button] [Display value:twelveHistory /]
+[Button onClick:`twelveDoHistory='undo';`]Undo[/Button] [Button onClick:`twelveDoHistory='redo';`]Redo[/Button] [Button onClick:`twelveDoHistory='reset';`]Reset[/Button]
+Currently in state [Display value:twelveCurrent format:'0' /] of [Display value:twelveTotal format:'0' /]
 
-Unfolded strip:
+[Display value:twelveHistory /]
+
 [Unfolded width:1000 height:150 numPats:6 script:twelveInit /]
 
 

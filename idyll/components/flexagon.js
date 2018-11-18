@@ -86,6 +86,8 @@ const FlexButtons = (props) => {
  *  history       a read-only property reflecting all the flexes applied to the flexagon
  *  error         a read-only property indicating an error when processing a script
  *  currentScript a read-only property containing a script describing the current state
+ *  currentState  a read-only property listing which of the states we've visited we're currently in
+ *  totalStates   a read-only property listing the total number of states we've visited
  * }
  * state {
  *  fm            current FlexagonManager encapsulating Flexagon, History, etc.
@@ -174,7 +176,9 @@ class Flexagon extends React.Component {
   updateHistoryProps(fm) {
     const history = fm.getFlexHistory().join('');
     const currentScript = this.stringify(Flexagonator.makeScript(fm));
-    this.props.updateProps({ history: history, currentScript: currentScript });
+    const currentState = fm.getCurrentState() + 1;
+    const totalStates = fm.getTotalStates();
+    this.props.updateProps({ history, currentScript, currentState, totalStates });
   }
 
   stringify(script) {
