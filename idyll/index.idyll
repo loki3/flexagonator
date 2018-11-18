@@ -24,18 +24,10 @@ we have a powerful set of tools for exploring some of the really interesting asp
 
 In this chapter we'll cover the following:
 
-* Sequences of flexes that are equal or almost equal to each other
 * Interesting cycles: flex sequences that end where they begin
 * *Prime flexes* that can't be replaced by other flexes
+* Sequences of flexes that are equal or almost equal to each other
 * Traversals of every state of a flexagon
-
-
-# Equalities
-
-The *identity flex*, represented by `I`, is a flex where nothing changes,
-much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
-You can use it to say that a sequence is a *cycle*, a flex that starts where it begins.
-For example, if `A>>B^C` were a cycle, you could write `I ~= A>>B^C`.
 
 
 # Cycles
@@ -63,9 +55,28 @@ Since you can do this on the minimal flexagon for the pinch flex, you can perfor
 
 [Unfolded width:1000 height:200 script:initP options:`{content:5, rotation:60}` endText:'P+' /]
 
+
 ## Single flex cycles
 
 This raises an interesting question: are there other flexes that can be performed multiple times to return you to the original state?
+
+[var name:'tempSequence' value:'V*<' /]
+[var name:'cycleSequence' value:'' /]
+[var name:'cycleNumPats' value:6 /]
+[var name:'cycleScript' value:'' /]
+[var name:'cycleDoHistory' value:`undefined;` /]
+[var name:'cycleError' value:`undefined;` /]
+[var name:'cycleOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
+
+Flex sequence: [TextInput value:tempSequence /]
+[Button onClick:` cycleSequence=tempSequence; `]apply[/Button] [Button onClick:` cycleDoHistory='reset'; `]reset[/Button]  [Display value:cycleError /]
+
+[Flexagon width:700 height:360 numPats:cycleNumPats flexes:cycleSequence currentScript:cycleScript doHistory:cycleDoHistory
+  error:cycleError overButton:true options:cycleOptions /]
+
+Unfolded strip:
+[Unfolded width:1000 height:500 numPats:cycleNumPats script:cycleScript /]
+
 
 ## Pyramid shuffle cycle
 
@@ -169,6 +180,14 @@ to most efficiently find all the states of a flexagon reachable with any flex.
 We don't need to try any flex that's not a prime, because we know that we won't find anything new.
 
 However, if our goal is to find the *shortest sequence* between two states, then every flex is useful.
+
+
+# Equalities
+
+The *identity flex*, represented by `I`, is a flex where nothing changes,
+much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
+You can use it to say that a sequence is a *cycle*, a flex that starts where it begins.
+For example, if `A>>B^C` were a cycle, you could write `I ~= A>>B^C`.
 
 
 # Traversals
