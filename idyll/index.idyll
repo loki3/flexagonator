@@ -108,6 +108,32 @@ Push *reset* when you want to try a new sequence.
 [var name:'cycleError' value:`undefined;` /]
 [var name:'cycleOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 
+[Aside]
+  Number of pats:
+  [Select value:cycleNumPats options:`[
+    {value:5, label:'5'}, {value:6, label:'6'}, {value:7, label:'7'}, {value:8, label:'8'},
+    {value:9, label:'9'}, {value:10, label:'10'}, {value:11, label:'11'}, {value:12, label:'12'}
+    ]` /]
+
+  Flexes to try:
+  [br/]
+  **5:** Sh Lk Ltf L3
+  [br/]
+  **6:** F P Sh St T V Lh Lk Ltf Ltb Lbf Lbb
+  [br/]
+  **7:** F Sh T1 T2 Lk Ltf
+  [br/]
+  **8:** F P P44 Sh St Tw T1 T2 T3 Lk Ltf
+  [br/]
+  **9:** F P333 Sh St T1 T2 T3 Lk Ltf
+  [br/]
+  **10:** F P334 P55 Sh St T1 T2 T3 Lk Ltf
+  [br/]
+  **11:** F Sh St T1 T2 T3 Lk Ltf
+  [br/]
+  **12:** F P P3333 P444 P66 Sh St T1 T2 T3 Lk Ltf
+[/Aside]
+
 Flex sequence: [TextInput value:tempSequence /]
 [Button onClick:` cycleSequence=tempSequence; `]apply[/Button] [Button onClick:` cycleDoHistory='reset'; `]reset[/Button]  [Display value:cycleError /]
 
@@ -123,7 +149,7 @@ Is there anything about the flex definition that can help you predict whether or
 
 What if you also include `^` (e.g. `V*^V*>>>`)?
 What interesting cycles can you find that involve multiple flexes (e.g. `V*<Sh*<`)?
-
+How do the sequences change as you change the number of pats?
 
 
 # Prime flexes
