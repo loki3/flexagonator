@@ -1,4 +1,4 @@
-[meta title:"Flex Sequences" description:"Cycles, primes, equalities, and traversals" /]
+[meta title:"Flex Sequences" description:"Cycles, traversals, primes, and equalities" /]
 
 [Aside]
   [br/]
@@ -8,7 +8,7 @@
 
 [Header
   title:"Flex Sequences"
-  subtitle:"Cycles, primes, equalities, and traversals"
+  subtitle:"Cycles, traversals, primes, and equalities"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]
 
@@ -25,9 +25,9 @@ we have a powerful set of tools for exploring some of the really interesting asp
 In this chapter we'll cover the following:
 
 * Interesting cycles: flex sequences that end where they begin
+* Traversals: cycles that visit every state of a flexagon
 * *Prime flexes* that can't be replaced by other flexes
 * Sequences of flexes that are equal or almost equal to each other
-* Traversals of every state of a flexagon
 
 
 # Cycles
@@ -152,6 +152,54 @@ What interesting cycles can you find that involve multiple flexes (e.g. `V*<Sh*<
 How do the sequences change as you change the number of pats?
 
 
+# Traversals
+
+In the [Flexagon Intro](pinch.html), you learned about the Tuckerman Traverse.
+This is a recipe for how to do a sequence of pinch flexes to see all the faces of a hexaflexagon.
+However, other than on the 3-sided hexaflexagon, it doesn't show you all the different *states*
+that are possible if you use any of the other flexes that rearrange those faces.
+
+We'll look at one example to give you a flavor of what a complete traversal of every state might look like.
+The following hexaflexagon has 12 leaves and 36 different states.
+You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltb`.
+
+One way to traverse every state is through the flex sequence `(Ltb>P>P>) 12`.
+Each time you click *apply* with that sequence, you can see that it visits 3 more states.
+Or you can travel clockwise around the flexagon repeatedly clicking on `Ltb`, `P`, and `P`.
+Can you find other simple sequences that visit all 36 states?
+
+[var name:'typedSequence' value:'Ltb>P>P>' /]
+[var name:'twelveSequence' value:'' /]
+[var name:'twelveScript' value:'' /]
+[var name:'twelveDoHistory' value:`undefined;` /]
+[var name:'twelveHistory' value:'' /]
+[var name:'twelveCurrent' value:1 /]
+[var name:'twelveTotal' value:1 /]
+[var name:'twelveError' value:`undefined;` /]
+[var name:'twelveOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
+[derived name:'twelveInit' value:`[
+  { numPats: 6 },
+  { searchFlexes: "P Sh T T' V Lh Lk Ltf Ltb Lbf Lbb" },
+  { flexAndColor: { flexes: "Ltb*>P*>P*>Ltb*>P*" , colors: defaultColors } },
+  { reverseFlexes: "Ltb*>P*>P*>Ltb*>P*" },
+  { history: "clear" }
+]`/]
+
+Flex sequence: [TextInput value:typedSequence /]
+[Button onClick:` twelveSequence=typedSequence; `]apply[/Button] [Display value:twelveError /]
+
+[Flexagon width:700 height:360 numPats:6 flexes:twelveSequence currentScript:twelveScript doHistory:twelveDoHistory
+  initialScript:twelveInit history:twelveHistory error:twelveError overButton:true options:twelveOptions
+  currentState:twelveCurrent totalStates:twelveTotal /]
+
+[Button onClick:`twelveDoHistory='undo';`]Undo[/Button] [Button onClick:`twelveDoHistory='redo';`]Redo[/Button] [Button onClick:`twelveDoHistory='reset';`]Reset[/Button]
+Currently in state [Display value:twelveCurrent format:'0' /] of [Display value:twelveTotal format:'0' /]
+
+[Display value:twelveHistory /]
+
+[Unfolded width:1000 height:150 numPats:6 script:twelveInit /]
+
+
 # Prime flexes
 
 In mathematics, a number is prime if it isn't the product of two other numbers (more precisely, the numbers are all *positive integers*).
@@ -233,54 +281,6 @@ The *identity flex*, represented by `I`, is a flex where nothing changes,
 much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
 You can use it to say that a sequence is a *cycle*, a flex that starts where it begins.
 For example, if `A>>B^C` were a cycle, you could write `I ~= A>>B^C`.
-
-
-# Traversals
-
-In the [Flexagon Intro](pinch.html), you learned about the Tuckerman Traverse.
-This is a recipe for how to do a sequence of pinch flexes to see all the faces of a hexaflexagon.
-However, other than on the 3-sided hexaflexagon, it doesn't show you all the different *states*
-that are possible if you use any of the other flexes that rearrange those faces.
-
-We'll look at one example to give you a flavor of what a complete traversal of every state might look like.
-The following hexaflexagon has 12 leaves and 36 different states.
-You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltb`.
-
-One way to traverse every state is through the flex sequence `(Ltb>P>P>) 12`.
-Each time you click *apply* with that sequence, you can see that it visits 3 more states.
-Or you can travel clockwise around the flexagon repeatedly clicking on `Ltb`, `P`, and `P`.
-Can you find other simple sequences that visit all 36 states?
-
-[var name:'typedSequence' value:'Ltb>P>P>' /]
-[var name:'twelveSequence' value:'' /]
-[var name:'twelveScript' value:'' /]
-[var name:'twelveDoHistory' value:`undefined;` /]
-[var name:'twelveHistory' value:'' /]
-[var name:'twelveCurrent' value:1 /]
-[var name:'twelveTotal' value:1 /]
-[var name:'twelveError' value:`undefined;` /]
-[var name:'twelveOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
-[derived name:'twelveInit' value:`[
-  { numPats: 6 },
-  { searchFlexes: "P Sh T T' V Lh Lk Ltf Ltb Lbf Lbb" },
-  { flexAndColor: { flexes: "Ltb*>P*>P*>Ltb*>P*" , colors: defaultColors } },
-  { reverseFlexes: "Ltb*>P*>P*>Ltb*>P*" },
-  { history: "clear" }
-]`/]
-
-Flex sequence: [TextInput value:typedSequence /]
-[Button onClick:` twelveSequence=typedSequence; `]apply[/Button] [Display value:twelveError /]
-
-[Flexagon width:700 height:360 numPats:6 flexes:twelveSequence currentScript:twelveScript doHistory:twelveDoHistory
-  initialScript:twelveInit history:twelveHistory error:twelveError overButton:true options:twelveOptions
-  currentState:twelveCurrent totalStates:twelveTotal /]
-
-[Button onClick:`twelveDoHistory='undo';`]Undo[/Button] [Button onClick:`twelveDoHistory='redo';`]Redo[/Button] [Button onClick:`twelveDoHistory='reset';`]Reset[/Button]
-Currently in state [Display value:twelveCurrent format:'0' /] of [Display value:twelveTotal format:'0' /]
-
-[Display value:twelveHistory /]
-
-[Unfolded width:1000 height:150 numPats:6 script:twelveInit /]
 
 
 # What next?
