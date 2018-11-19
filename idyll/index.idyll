@@ -314,14 +314,43 @@ In other words, there's no simpler flexagon that supports that sequence.
 
 [Button onClick:`doHistoryPTV='undo';`]Undo[/Button] [Button onClick:`doHistoryPTV='redo';`]Redo[/Button] [Button onClick:`doHistoryPTV='reset';`]Reset[/Button] [Display value:historyPTV /]
 
-[Unfolded width:1000 height:500 script:initPTV endText:'PTV' /]
+[Unfolded width:1000 height:380 script:initPTV endText:'PTV' /]
 
-We can now use `=` and `~=` to make interesting statements about how different sequences of flexes compare.
+We can now use `=` and `~=` to make interesting statements about how different sequences of flexes compare,
+adding in `!=` to mean *not equal*.
+Here are equalities for various flex inverses:
+
+* `^' = ^`
+* `<' = >`
+* `>' = <`
+* `F' = ^F^`
+* `P' = ^P^`
+* `Sh' = ^Sh^`
+* `St' = ^St^`
+* `Lh' != ^Lh^`
+* `Lk' = ^Lk^`
+* `Ltf' = ^Ltf^`
+* `T' ~= ^T^` (note the use of ~= rather than =)
+* `V' = ^V^`
 
 The *identity flex*, represented by `I`, is a flex where nothing changes,
 much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
-You can use it to say that a sequence is a *cycle*, a flex that starts where it begins.
-For example, if `A>>B^C` were a cycle, you could write `I ~= A>>B^C`.
+Here are some useful identities:
+
+* `I ~= AA'` - doing a flex and its inverse takes you back to where you started
+* `(AB)' = B'A'` - you can undo two flexes by undoing the second then undoing the first
+* if `I ~= AB`, then `A = B'`
+* if `I ~= ABC`, then `A ~= C'B'` and `C ~= B'A'`
+
+These formulas give us the ability to derive new equalities.
+For example, earlier we saw that `Lh = Ltb T'`.
+When we apply the facts from above, we can infer the following formulas:
+
+* `I ~= Lh T Ltb'`
+* `Ltb' ~= T' Lh'`
+* `T ~= Lh' Ltb`
+
+Likewise, we can derive new equalities from `P ~= T>>>V>>>`.
 
 
 # What next?
