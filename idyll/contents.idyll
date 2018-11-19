@@ -138,6 +138,25 @@
 [hr /]
 
 
+[Aside]
+* `I ~= (Sh>>T'>^T<<^) 2`
+* `I ~= (Ltb>P>P>) 12`
+* `P ~= T>>>V>>>` so `T' ~= >>>V>>>^P^`
+[/Aside]
+
+[a href:'flex-sequences.html']
+  [div className:'heading'] Chapter 7: Flex Sequences [/div]
+  [div className:'subname'] Cycles, traversals, primes, and equalities [/div]
+[/a]
+
+* Tools for finding cycles, flex sequences that end where they begin
+* Examples of traversals, cycles that visit every state of a flexagon
+* *Prime flexes* that can't be replaced by other flexes
+* Sequences of flexes that are equal or almost equal to each other
+
+[hr /]
+
+
 [a href:'playground.html']
   [div className:'heading'] Appendix: Flexagon Playground [/div]
   [div className:'subname'] General tools for exploring flexagons [/div]
