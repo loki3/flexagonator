@@ -277,6 +277,47 @@ However, if our goal is to find the *shortest sequence* between two states, then
 
 # Equalities
 
+In the section on *prime flexes*, we saw that doing a slot half flex, `Lh`, was the equivalent
+of doing a slot tuck top back, `Ltb`, followed by an inverse tuck, `T'`.
+We wrote that as `Lh = Ltb T'`.
+This *also* implies that *every* time you can do `Lh`, you could have instead used `Ltb T'` *and vice versa*.
+
+Let's look at a different case where this isn't always true.
+The following flexagon contains 11 leaves and has a generating sequence of `T*>>>V*`.
+In other words, there's no simpler flexagon that supports that sequence.
+
+[Aside]
+  Try doing `T>>>V` and looking at the resulting state.
+  If you reset and try `P` instead, you'll see that it takes you to the exact same state.
+  We already saw from the [Flexagon Intro chapter](pinch-flex.html) that you only need 9 leaves in order to do the pinch flex.
+
+  This means that every time the structure of a flexagon allows you to perform `T>>>V`,
+  you could have instead done `P`, but the reverse isn't true.
+  You can't always do `T>>>V` when you can do `P`.
+  Thus you can't say that those two sequences are always equal.
+
+  We indicate this by using `~=` instead of `=`.
+  We can say `P ~= T>>>V>>>`.
+[/Aside]
+
+[var name:historyPTV value:'' /]
+[var name:doHistoryPTV value:'' /]
+[derived name:'initPTV' value:`[
+  {numPats: 6},
+  {searchFlexes: "P T T' V"},
+  {flexAndColor: { flexes: "T*>>>V*V'>>>T'", colors: defaultColors }},
+  {history: 'clear'}
+  ]` /]
+
+[Flexagon width:700 height:400 numPats:6 initialScript:initPTV runInitial:false options:flexagonOptions overButton:true
+  history:historyPTV doHistory:doHistoryPTV /]
+
+[Button onClick:`doHistoryPTV='undo';`]Undo[/Button] [Button onClick:`doHistoryPTV='redo';`]Redo[/Button] [Button onClick:`doHistoryPTV='reset';`]Reset[/Button] [Display value:historyPTV /]
+
+[Unfolded width:1000 height:500 script:initPTV endText:'PTV' /]
+
+We can now use `=` and `~=` to make interesting statements about how different sequences of flexes compare.
+
 The *identity flex*, represented by `I`, is a flex where nothing changes,
 much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
 You can use it to say that a sequence is a *cycle*, a flex that starts where it begins.
