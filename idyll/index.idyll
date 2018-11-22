@@ -1,0 +1,231 @@
+[meta title:"Flex Compendium" description:"Details about flexes on triangle flexagons" /]
+
+[Header
+  title:"Flex Compendium"
+  subtitle:"Details about flexes on triangle flexagons"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+
+# Flex Details
+
+## Prime
+
+This lists whether or not the flex is prime relative to the rest of the flexes on this page, excluding the *forced tuck*.
+
+## Inverse
+
+For most flexes `A`, `A' = ^A^`, i.e. doing the inverse is the same as turning it over, doing the flex, then turning it back over.
+But for some flexes the before and after structures are different enough that this doesn't hold.
+The simplest way to figure out if this is true, is to use the Flexagon Simulator in the [Flexagon Playground](playground.html).
+Try the generating sequence `A*` then `A*^A*^`.
+If they both create a flexagon with the same number of leaves, then `A' = ^A^`, otherwise `A' != ^A^`.
+
+This is a useful detail to know when you're trying to explore all the states of a flexagon,
+because you'll need to include a flex's inverse in the search if `A` is prime and `A' != ^A^`.
+
+
+# Rotations
+
+## Shift vertex
+
+`<` and `>`
+
+## Turn over
+
+`^`
+
+# Triangle flexes
+
+## F: flip flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "F' = ^F^"},
+  {property: 'Number of pats', value: "6 or more"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "only works with certain leaf angles"}
+]`/]
+
+## L3: slot triple pocket flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "L3' = ^L3^"},
+  {property: 'Number of pats', value: "5"},
+  {property: 'Number of leaves', value: "N + 9"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+Interestingly, `L3 = < St' > St' > St' <`, so you could say `L3` isn't prime.
+But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in practice.
+
+## Lh: slot half flex
+
+[Table data: `[
+  {property: 'Prime?', value: "no, Lh = Ltb T'"},
+  {property: 'Inverse', value: "Lh' != ^Lh^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 5"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Lk: slot pocket
+
+[Table data: `[
+  {property: 'Prime?', value: "no, Lk = Ltf > Sh"},
+  {property: 'Inverse', value: "Lk' = ^Lk^"},
+  {property: 'Number of pats', value: "5 or more"},
+  {property: 'Number of leaves', value: "N + 6"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Lbf: slot tuck bottom front flex
+
+[Table data: `[
+  {property: 'Prime?', value: "no, Lbf ~= V"},
+  {property: 'Inverse', value: "Lbf' != ^Lbf^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Lbb: slot tuck bottom back flex
+
+[Table data: `[
+  {property: 'Prime?', value: "no, Lbb = Lbf < P' >"},
+  {property: 'Inverse', value: "Lbb' != ^Lbb^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 5"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Ltf: slot tuck top front flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "Ltf' = ^Ltf^"},
+  {property: 'Number of pats', value: "5 or more"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Ltb: slot tuck top back flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "Ltb' != ^Ltb^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## P: pinch flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "P' = ^P^"},
+  {property: 'Number of pats', value: "even"},
+  {property: 'Number of leaves', value: "N * 3 / 2"},
+  {property: 'Special requirements', value: "yes"}
+]`/]
+
+## Pinch variations
+
+[Table data: `[
+  {property: 'Prime?', value: ""},
+  {property: 'Inverse', value: ""},
+  {property: 'Number of pats', value: ""},
+  {property: 'Number of leaves', value: ""},
+  {property: 'Special requirements', value: ""}
+]`/]
+
+P44
+P333
+P334
+P55
+P3333
+P444
+P66
+
+## Sh: pyramid shuffle flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "Sh' = ^Sh^"},
+  {property: 'Number of pats', value: "5 or more"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## St: silver tetra flex
+
+[Table data: `[
+  {property: 'Prime?', value: "no, St = "},
+  {property: 'Inverse', value: "St' = ^St^"},
+  {property: 'Number of pats', value: "4 or more"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "only works with certain leaf angles"}
+]`/]
+
+## T: tuck flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "T' ~= ^T^"},
+  {property: 'Number of pats', value: "6 or more"},
+  {property: 'Number of leaves', value: "N + 3"},
+  {property: 'Special requirements', value: "additional needed structure"}
+]`/]
+
+T1, T2...
+
+## Tf: forced tuck
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "Tf' = ^Tf^"},
+  {property: 'Number of pats', value: "6 or more"},
+  {property: 'Number of leaves', value: "N + 2"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Tt: tuck top flex
+
+[Table data: `[
+  {property: 'Prime?', value: "no, Tt = T > P <"},
+  {property: 'Inverse', value: "Tt' != ^Tt'^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "additional needed structure"}
+]`/]
+
+## Tk: ticket flex
+
+[Table data: `[
+  {property: 'Prime?', value: "no, Tk = Ltb' T << V ^"},
+  {property: 'Inverse', value: "Tk' != ^Tk^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 5"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+## Tw: twist flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "Tw' = ^Tw^"},
+  {property: 'Number of pats', value: "8 or more, even"},
+  {property: 'Number of leaves', value: "N + N/2"},
+  {property: 'Special requirements', value: "only works with certain leaf angles"}
+]`/]
+
+## V: v flex
+
+[Table data: `[
+  {property: 'Prime?', value: "yes"},
+  {property: 'Inverse', value: "V' = ^V^"},
+  {property: 'Number of pats', value: "6"},
+  {property: 'Number of leaves', value: "N + 3"},
+  {property: 'Special requirements', value: ""}
+]`/]
