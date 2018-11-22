@@ -133,20 +133,60 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ## Pinch variations
 
 [Table data: `[
-  {property: 'Prime?', value: ""},
-  {property: 'Inverse', value: ""},
-  {property: 'Number of pats', value: ""},
-  {property: 'Number of leaves', value: ""},
-  {property: 'Special requirements', value: ""}
+  {property: 'Prime?', value: "no, P44 = T2 (>)4 T1 (>)4"},
+  {property: 'Inverse', value: "P44' = ^P44^"},
+  {property: 'Number of pats', value: "8"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "no"}
 ]`/]
 
-P44
-P333
-P334
-P55
-P3333
-P444
-P66
+[Table data: `[
+  {property: 'Prime?', value: "no, P333 = T1 (>)3 T1 (>)3 T3 (>)3"},
+  {property: 'Inverse', value: "P333' = ^P333^"},
+  {property: 'Number of pats', value: "9"},
+  {property: 'Number of leaves', value: "N + 6"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+[Table data: `[
+  {property: 'Prime?', value: "no, P334 = T1 (>)3 T1 (>)3 T1 (>)4"},
+  {property: 'Inverse', value: "P334' = ^P334^"},
+  {property: 'Number of pats', value: "10"},
+  {property: 'Number of leaves', value: "N + 6"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+[Table data: `[
+  {property: 'Prime?', value: "no, P55 = T3 (>)5 T2 (>)5"},
+  {property: 'Inverse', value: "P55' = ^P55^"},
+  {property: 'Number of pats', value: "10"},
+  {property: 'Number of leaves', value: ""},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+[Table data: `[
+  {property: 'Prime?', value: "P3333 = T1 (>)3 T1 (>)3 T1 (>)3 T3 (>)3"},
+  {property: 'Inverse', value: "P3333' = ^P3333^"},
+  {property: 'Number of pats', value: "12"},
+  {property: 'Number of leaves', value: "N + 8"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+[Table data: `[
+  {property: 'Prime?', value: "no, P444 = T2 (>)4 T2 (>)4 T1 (>)4"},
+  {property: 'Inverse', value: "P444' = ^P444^"},
+  {property: 'Number of pats', value: "12"},
+  {property: 'Number of leaves', value: "N + 6"},
+  {property: 'Special requirements', value: "no"}
+]`/]
+
+[Table data: `[
+  {property: 'Prime?', value: "no, P66 = T4 (>)6 T3 (>)6"},
+  {property: 'Inverse', value: "P66' = ^P66^"},
+  {property: 'Number of pats', value: "12"},
+  {property: 'Number of leaves', value: "N + 4"},
+  {property: 'Special requirements', value: "no"}
+]`/]
 
 ## Sh: pyramid shuffle flex
 
