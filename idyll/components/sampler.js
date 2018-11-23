@@ -13,8 +13,9 @@ const Unfolded = require('./unfolded');
  * state {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  patOptions  array of different numbers of pats
- *  initial     initial script for <Flexagon/>
- *  runInitial  true when initial script should be rerun
+ *  history     contains all the flexes applied to the current flexagon
+ *  initial     passed to <Flexagon/>
+ *  runInitial  passed to <Flexagon/>
  * }
  */
 class Sampler extends React.Component {
@@ -22,7 +23,7 @@ class Sampler extends React.Component {
     super(props);
     this.updateProps = this.updateProps.bind(this);
     this.handleNumPats = this.handleNumPats.bind(this);
-    this.state = { numPats: props.numPats, initial: this.buildInitial(props.numPats, props) };
+    this.state = { numPats: props.numPats, initial: this.buildInitial(props.numPats, props), history: '' };
   }
 
   buildInitial(numPats, props) {
@@ -39,11 +40,23 @@ class Sampler extends React.Component {
 
   updateProps(newprops) {
     this.props.updateProps(newprops);
+    if (newprops.history) {
+      this.setState({ history: newprops.history });
+    }
   }
 
   handleNumPats(e) {
     const numPats = e.target.value;
-    this.setState({ numPats, initial: this.buildInitial(numPats, this.props), runInitial: true });
+    this.setState({
+      numPats,
+      initial: this.buildInitial(numPats, this.props),
+      runInitial: true,
+      history: ''
+    });
+  }
+
+  handleHistory(doHistory) {
+    // this.props.updateProps({ doHistory });
   }
 
   getNumPatsText(n) {
@@ -71,17 +84,33 @@ class Sampler extends React.Component {
     );
   }
 
+  renderHistory() {
+    const { history } = this.state;
+    return (<div>
+      <button onClick={e => this.handleHistory('undo')}>Undo</button>
+      &nbsp;
+      <button onClick={e => this.handleHistory('redo')}>Redo</button>
+      &nbsp;
+      <button onClick={e => this.handleHistory('reset')}>Reset</button>
+      &nbsp;
+      {history}
+    </div>);
+  }
+
   render() {
     const { generator } = this.props;
     const { numPats, initial, runInitial } = this.state;
-    const flexagonOptions = { structure: true, showIds: false, both: true };
+    const flexagonOptions = { structure: true, showIds: false, both: true, stats: true };
 
     return (
       <div>
         number of pats: {this.renderSelectNumPats()}
 
         <Flexagon updateProps={this.updateProps} width={700} height={400} numPats={numPats}
-          initialScript={initial} runInitial={runInitial} options={flexagonOptions} overButton={true} />
+          initialScript={initial} runInitial={runInitial} options={flexagonOptions}
+          overButton={true} />
+        {this.renderHistory()}
+
         <Unfolded width={1000} height={500} numPats={numPats} generator={generator} />
       </div>
     );
