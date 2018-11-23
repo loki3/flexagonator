@@ -88,6 +88,7 @@ const FlexButtons = (props) => {
  *  currentScript a read-only property containing a script describing the current state
  *  currentState  a read-only property listing which of the states we've visited we're currently in
  *  totalStates   a read-only property listing the total number of states we've visited
+ *  updateProps   a function to call when the component updates its properties
  * }
  * state {
  *  fm            current FlexagonManager encapsulating Flexagon, History, etc.
