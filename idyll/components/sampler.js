@@ -15,7 +15,7 @@ const Unfolded = require('./unfolded');
  *  patOptions  array of different numbers of pats
  *  history     contains all the flexes applied to the current flexagon
  *  initial     passed to <Flexagon/>
- *  runInitial  passed to <Flexagon/>
+ *  doNext      used to trigger a single command that will be reset next time
  * }
  */
 class Sampler extends React.Component {
@@ -23,7 +23,12 @@ class Sampler extends React.Component {
     super(props);
     this.updateProps = this.updateProps.bind(this);
     this.handleNumPats = this.handleNumPats.bind(this);
-    this.state = { numPats: props.numPats, initial: this.buildInitial(props.numPats, props), history: '' };
+    this.state = {
+      numPats: props.numPats,
+      initial: this.buildInitial(props.numPats, props),
+      history: '',
+      doNext: {}
+    };
   }
 
   buildInitial(numPats, props) {
@@ -41,7 +46,7 @@ class Sampler extends React.Component {
   updateProps(newprops) {
     this.props.updateProps(newprops);
     if (newprops.history) {
-      this.setState({ history: newprops.history });
+      this.setState({ history: newprops.history, doNext: {} });
     }
   }
 
@@ -50,13 +55,16 @@ class Sampler extends React.Component {
     this.setState({
       numPats,
       initial: this.buildInitial(numPats, this.props),
-      runInitial: true,
-      history: ''
+      history: '',
+      doNext: { runInitial: true }
     });
   }
 
   handleHistory(doHistory) {
-    // this.props.updateProps({ doHistory });
+    if (doHistory === 'reset') {
+      this.setState({ history: '' });
+    }
+    this.setState({ doNext: { doHistory } });
   }
 
   getNumPatsText(n) {
@@ -99,7 +107,8 @@ class Sampler extends React.Component {
 
   render() {
     const { generator } = this.props;
-    const { numPats, initial, runInitial } = this.state;
+    const { numPats, initial, doNext } = this.state;
+    const { runInitial, doHistory } = doNext;
     const flexagonOptions = { structure: true, showIds: false, both: true, stats: true };
 
     return (
@@ -108,7 +117,7 @@ class Sampler extends React.Component {
 
         <Flexagon updateProps={this.updateProps} width={700} height={400} numPats={numPats}
           initialScript={initial} runInitial={runInitial} options={flexagonOptions}
-          overButton={true} />
+          doHistory={doHistory} overButton={true} />
         {this.renderHistory()}
 
         <Unfolded width={1000} height={500} numPats={numPats} generator={generator} />
