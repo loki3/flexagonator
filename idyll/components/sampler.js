@@ -27,6 +27,8 @@ class Sampler extends React.Component {
       numPats: props.numPats,
       initial: this.buildInitial(props.numPats, props),
       history: '',
+      currentState: 1,
+      totalStates: 1,
       doNext: {}
     };
   }
@@ -46,7 +48,12 @@ class Sampler extends React.Component {
   updateProps(newprops) {
     this.props.updateProps(newprops);
     if (newprops.history) {
-      this.setState({ history: newprops.history, doNext: {} });
+      this.setState({
+        history: newprops.history,
+        currentState: newprops.currentState,
+        totalStates: newprops.totalStates,
+        doNext: {}
+      });
     }
   }
 
@@ -56,6 +63,8 @@ class Sampler extends React.Component {
       numPats,
       initial: this.buildInitial(numPats, this.props),
       history: '',
+      currentState: 1,
+      totalStates: 1,
       doNext: { runInitial: true }
     });
   }
@@ -107,7 +116,7 @@ class Sampler extends React.Component {
 
   render() {
     const { generator } = this.props;
-    const { numPats, initial, doNext } = this.state;
+    const { numPats, initial, currentState, totalStates, doNext } = this.state;
     const { runInitial, doHistory } = doNext;
     const flexagonOptions = { structure: true, showIds: false, both: true, stats: true };
 
@@ -118,6 +127,7 @@ class Sampler extends React.Component {
         <Flexagon updateProps={this.updateProps} width={700} height={400} numPats={numPats}
           initialScript={initial} runInitial={runInitial} options={flexagonOptions}
           doHistory={doHistory} overButton={true} />
+        Currently in state {currentState} of {totalStates}<br />
         {this.renderHistory()}
 
         <Unfolded width={1000} height={500} numPats={numPats} generator={generator} />
