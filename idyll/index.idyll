@@ -39,6 +39,8 @@ because you'll need to include a flex's inverse in the search if `A` is prime an
 
 ## F: flip flex
 
+[Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
+
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "F' = ^F^"},
@@ -48,6 +50,8 @@ because you'll need to include a flex's inverse in the search if `A` is prime an
 ]`/]
 
 ## L3: slot triple pocket flex
+
+[Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -62,6 +66,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 ## Lh: slot half flex
 
+[Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
+
 [Table data: `[
   {property: 'Prime?', value: "no, Lh = Ltb T'"},
   {property: 'Inverse', value: "Lh' != ^Lh^"},
@@ -71,6 +77,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ]`/]
 
 ## Lk: slot pocket
+
+[Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
 
 [Table data: `[
   {property: 'Prime?', value: "no, Lk = Ltf > Sh"},
@@ -82,6 +90,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 ## Lbf: slot tuck bottom front flex
 
+[Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
+
 [Table data: `[
   {property: 'Prime?', value: "no, Lbf ~= V"},
   {property: 'Inverse', value: "Lbf' != ^Lbf^"},
@@ -91,6 +101,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ]`/]
 
 ## Lbb: slot tuck bottom back flex
+
+[Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
 
 [Table data: `[
   {property: 'Prime?', value: "no, Lbb = Lbf < P' >"},
@@ -102,6 +114,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 ## Ltf: slot tuck top front flex
 
+[Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
+
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "Ltf' = ^Ltf^"},
@@ -112,6 +126,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 ## Ltb: slot tuck top back flex
 
+[Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
+
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "Ltb' != ^Ltb^"},
@@ -121,6 +137,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ]`/]
 
 ## P: pinch flex
+
+[img src:'static/pinch-flex.jpg' /]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -148,6 +166,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
   {property: 'Special requirements', value: "no"}
 ]`/]
 
+[Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
+
 [Table data: `[
   {property: 'Prime?', value: "no, P334 = T1 (>)3 T1 (>)3 T1 (>)4"},
   {property: 'Inverse', value: "P334' = ^P334^"},
@@ -172,6 +192,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
   {property: 'Special requirements', value: "no"}
 ]`/]
 
+[Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
+
 [Table data: `[
   {property: 'Prime?', value: "no, P444 = T2 (>)4 T2 (>)4 T1 (>)4"},
   {property: 'Inverse', value: "P444' = ^P444^"},
@@ -190,6 +212,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 ## Sh: pyramid shuffle flex
 
+[Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
+
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "Sh' = ^Sh^"},
@@ -200,6 +224,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 ## St: silver tetra flex
 
+[Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
+
 [Table data: `[
   {property: 'Prime?', value: "no, St = "},
   {property: 'Inverse', value: "St' = ^St^"},
@@ -209,6 +235,8 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ]`/]
 
 ## T: tuck flex
+
+[Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -260,12 +288,14 @@ T1, T2...
   {property: 'Special requirements', value: "only works with certain leaf angles"}
 ]`/]
 
-## V: v flex
+## V: v-flex
+
+[Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "V' = ^V^"},
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 3"},
-  {property: 'Special requirements', value: ""}
+  {property: 'Special requirements', value: "no"}
 ]`/]
