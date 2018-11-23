@@ -7,7 +7,38 @@
   authorLink:"http://loki3.com/flex" /]
 
 
+This is a collection of flexes that work on triangle flexagons,
+some of which also work on flexagons made up of squares, pentagons, etc.
+It is not intended to be a complete list.
+
+[Aside]
+`F` : flip flex[br/]
+`L3` : slot triple pocket flex[br/]
+`Lh` : slot half flex[br/]
+`Lk` : slot pocket[br/]
+`Lbf` : slot tuck bottom front flex[br/]
+`Lbb` : slot tuck bottom back flex[br/]
+`Ltf` : slot tuck top front flex[br/]
+`Ltb` : slot tuck top back flex[br/]
+`P` : pinch flex[br/]
+`P44`, `P333`, `P334`, `P55`, `P3333`, `P444`, `P66`: pinch variations[br/]
+`Sh` : pyramid shuffle flex[br/]
+`St` : silver tetra flex[br/]
+`T` : tuck flex[br/]
+`T1`, `T2`, `T3`...: tuck variations[br/]
+`Tf` : forced tuck[br/]
+`Tt` : tuck top flex[br/]
+`Tk` : ticket flex[br/]
+`Tw` : twist flex[br/]
+`V` : v-flex[br/]
+[/Aside]
+
+
 # Flex Details
+
+Each flex contains details about the flex, e.g. if it's *prime*, which flexagons it works on,
+and the *pat notation* that describes how it changes the internal structure of the flexagon.
+Here is more background on some of those details.
 
 ## Prime
 
@@ -23,6 +54,25 @@ If they both create a flexagon with the same number of leaves, then `A' = ^A^`, 
 
 This is a useful detail to know when you're trying to explore all the states of a flexagon,
 because you'll need to include a flex's inverse in the search if `A` is prime and `A' != ^A^`.
+
+## Number of pats
+
+A *pat* is a stack of leaves in a flexagon.
+There are 6 pats in a hexaflexagon, 8 in an octaflexagon, etc.
+Many flexes work on a range of flexagons, e.g. the *pyramid shuffle* works on any flexagon with 5 or more pats.
+
+## Number of leaves
+
+A *leaf* is one of the individual polygons in a flexagon.
+Each flex will list the number of leaves in the *minimal flexagon*, i.e. the simplest flexagon that supports that flex.
+It will be expressed as a function of the number of pats.
+For example, the flip flex needs 4 more leaves than there are pats, described as *N + 4*.
+
+## Special requirements
+
+Some flexes may need something additional in order to work.
+For example, the *silver tetra flex* works best on *right triangle flexagons*, and may not work on some flexagons.
+More details on these requirements can be found on the [New Flexes](new-flexes.html) page under *More details*.
 
 
 # Rotations
@@ -53,6 +103,10 @@ because you'll need to include a flex's inverse in the search if `A` is prime an
 
 [Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
 
+[Aside]
+  TO DO: Does this flex generalize beyond the pentaflexagon?
+[/Aside]
+
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "L3' = ^L3^"},
@@ -67,6 +121,10 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ## Lh: slot half flex
 
 [Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
+
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "no, Lh = Ltb T'"},
@@ -92,6 +150,10 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 
 [Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
 
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
+
 [Table data: `[
   {property: 'Prime?', value: "no, Lbf ~= V"},
   {property: 'Inverse', value: "Lbf' != ^Lbf^"},
@@ -103,6 +165,10 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ## Lbb: slot tuck bottom back flex
 
 [Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
+
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "no, Lbb = Lbf < P' >"},
@@ -127,6 +193,10 @@ But, since the pentaflexagon doesn't support the silver tetra, `L3` is prime in 
 ## Ltb: slot tuck top back flex
 
 [Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
+
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -260,6 +330,10 @@ T1, T2...
 
 ## Tt: tuck top flex
 
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
+
 [Table data: `[
   {property: 'Prime?', value: "no, Tt = T > P <"},
   {property: 'Inverse', value: "Tt' != ^Tt'^"},
@@ -270,6 +344,10 @@ T1, T2...
 
 ## Tk: ticket flex
 
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
+
 [Table data: `[
   {property: 'Prime?', value: "no, Tk = Ltb' T << V ^"},
   {property: 'Inverse', value: "Tk' != ^Tk^"},
@@ -279,6 +357,10 @@ T1, T2...
 ]`/]
 
 ## Tw: twist flex
+
+[Aside]
+  TO DO: Does this flex work on a star hexaflexagon?
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -291,6 +373,10 @@ T1, T2...
 ## V: v-flex
 
 [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
+
+[Aside]
+  TO DO: Does this flex generalize beyond the hexaflexagon?
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
