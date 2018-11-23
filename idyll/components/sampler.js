@@ -21,7 +21,7 @@ const Unfolded = require('./unfolded');
 class Sampler extends React.Component {
   constructor(props) {
     super(props);
-    this.updateProps = this.updateProps.bind(this);
+    this.updateFromFlexagon = this.updateFromFlexagon.bind(this);
     this.handleNumPats = this.handleNumPats.bind(this);
     this.state = {
       numPats: props.numPats,
@@ -45,8 +45,7 @@ class Sampler extends React.Component {
     return initial;
   }
 
-  updateProps(newprops) {
-    this.props.updateProps(newprops);
+  updateFromFlexagon(newprops) {
     if (newprops.history) {
       this.setState({
         history: newprops.history,
@@ -55,6 +54,13 @@ class Sampler extends React.Component {
         doNext: {}
       });
     }
+  }
+
+  handleHistory(doHistory) {
+    if (doHistory === 'reset') {
+      this.setState({ history: '' });
+    }
+    this.setState({ doNext: { doHistory } });
   }
 
   handleNumPats(e) {
@@ -67,13 +73,6 @@ class Sampler extends React.Component {
       totalStates: 1,
       doNext: { runInitial: true }
     });
-  }
-
-  handleHistory(doHistory) {
-    if (doHistory === 'reset') {
-      this.setState({ history: '' });
-    }
-    this.setState({ doNext: { doHistory } });
   }
 
   getNumPatsText(n) {
@@ -124,7 +123,7 @@ class Sampler extends React.Component {
       <div>
         number of pats: {this.renderSelectNumPats()}
 
-        <Flexagon updateProps={this.updateProps} width={700} height={400} numPats={numPats}
+        <Flexagon updateProps={this.updateFromFlexagon} width={700} height={400} numPats={numPats}
           initialScript={initial} runInitial={runInitial} options={flexagonOptions}
           doHistory={doHistory} overButton={true} />
         Currently in state {currentState} of {totalStates}<br />
