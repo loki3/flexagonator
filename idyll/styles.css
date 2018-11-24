@@ -13,5 +13,6 @@ div.subname {
 }
 
 h2.flex {
+  font-weight: bold;
   color: #8a181e;
 }

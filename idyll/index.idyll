@@ -7,31 +7,37 @@
   authorLink:"http://loki3.com/flex" /]
 
 
+[Aside]
+### Flexes:
+
+[link text:'F: flip flex' url:'#F' /][br/]
+[link text:'Sh : pyramid shuffle flex' url:'#Sh' /][br/]
+[link text:'St : silver tetra flex' url:'#St' /][br/]
+[link text:'Tk : ticket flex' url:'#Tk' /][br/]
+[link text:'Tw : twist flex' url:'#Tw' /][br/]
+[link text:'V : v-flex' url:'#V' /][br/]
+[br/]
+pinch flexes:
+* [link text:'P : pinch flex' url:'#P' /][br/]
+* [link text:'P44' url:'#P44' /], [link text:'P333' url:'#P333' /], [link text:'P334' url:'#P334' /], [link text:'P55' url:'#P55' /],
+* [link text:'P3333' url:'#P3333' /], [link text:'P444' url:'#P444' /], [link text:'P66' url:'#P66' /][br/]
+slot flexes:
+* [link text:'L3 : slot triple pocket flex' url:'#L3' /][br/]
+* [link text:'Lh : slot half flex' url:'#Lh' /][br/]
+* [link text:'Lk : slot pocket' url:'#Lk' /][br/]
+* [link text:'Lbf : slot tuck bottom front flex' url:'#Lbf' /][br/]
+* [link text:'Lbb : slot tuck bottom back flex' url:'#Lbb' /][br/]
+* [link text:'Ltf : slot tuck top front flex' url:'#Ltf' /][br/]
+* [link text:'Ltb : slot tuck top back flex' url:'#Ltb' /][br/]
+tuck flexes:
+* [link text:'T, T1, T2... : tuck flex' url:'#T' /][br/]
+* [link text:'Tf : forced tuck' url:'#Tf' /][br/]
+* [link text:'Tt : tuck top flex' url:'#Tt' /][br/]
+[/Aside]
+
 This is a collection of flexes that work on triangle flexagons,
 some of which also work on flexagons made up of squares, pentagons, etc.
 It is not intended to be a complete list.
-
-[Aside]
-`F` : flip flex[br/]
-`L3` : slot triple pocket flex[br/]
-`Lh` : slot half flex[br/]
-`Lk` : slot pocket[br/]
-`Lbf` : slot tuck bottom front flex[br/]
-`Lbb` : slot tuck bottom back flex[br/]
-`Ltf` : slot tuck top front flex[br/]
-`Ltb` : slot tuck top back flex[br/]
-`P` : pinch flex[br/]
-`P44`, `P333`, `P334`, `P55`, `P3333`, `P444`, `P66`: pinch variations[br/]
-`Sh` : pyramid shuffle flex[br/]
-`St` : silver tetra flex[br/]
-`T` : tuck flex[br/]
-`T1`, `T2`, `T3`...: tuck variations[br/]
-`Tf` : forced tuck[br/]
-`Tt` : tuck top flex[br/]
-`Tk` : ticket flex[br/]
-`Tw` : twist flex[br/]
-`V` : v-flex[br/]
-[/Aside]
 
 
 # Flex Details
@@ -88,6 +94,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
 # Triangle flexes
 
 [Aside][hr/][/Aside][hr/]
+[a name:'F'/]
 [h2 className:"flex"]F: flip flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
@@ -104,6 +111,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'L3'/]
 [h2 className:"flex"]L3: slot triple pocket flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
@@ -127,6 +135,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Lh'/]
 [h2 className:"flex"]Lh: slot half flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
@@ -147,6 +156,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Lk'/]
 [h2 className:"flex"]Lk: slot pocket[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
@@ -163,6 +173,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Lbf'/]
 [h2 className:"flex"]Lbf: slot tuck bottom front flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
@@ -183,6 +194,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Lbb'/]
 [h2 className:"flex"]Lbb: slot tuck bottom back flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
@@ -203,6 +215,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Ltf'/]
 [h2 className:"flex"]Ltf: slot tuck top front flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
@@ -219,6 +232,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Ltb'/]
 [h2 className:"flex"]Ltb: slot tuck top back flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
@@ -239,6 +253,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P'/]
 [h2 className:"flex"]P: pinch flex[/h2]
 
 [img src:'static/pinch-flex.jpg' /]
@@ -255,6 +270,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P44'/]
 [h2 className:"flex"]P44: pinch 44[/h2]
 
 [Table data: `[
@@ -269,6 +285,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P333'/]
 [h2 className:"flex"]P333: pinch 333[/h2]
 
 [Table data: `[
@@ -283,6 +300,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P334'/]
 [h2 className:"flex"]P334: pinch 334[/h2]
 
 [Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
@@ -299,6 +317,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P55'/]
 [h2 className:"flex"]P55: pinch 55[/h2]
 
 [Table data: `[
@@ -313,6 +332,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P3333'/]
 [h2 className:"flex"]P3333: pinch 3333[/h2]
 
 [Table data: `[
@@ -327,6 +347,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P444'/]
 [h2 className:"flex"]P444: pinch 444[/h2]
 
 [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
@@ -343,6 +364,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'P66'/]
 [h2 className:"flex"]P66: pinch 66[/h2]
 
 [Table data: `[
@@ -357,6 +379,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Sh'/]
 [h2 className:"flex"]Sh: pyramid shuffle flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
@@ -373,6 +396,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'St'/]
 [h2 className:"flex"]St: silver tetra flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
@@ -393,6 +417,7 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'T'/]
 [h2 className:"flex"]T: tuck flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
@@ -411,6 +436,7 @@ T1, T2...
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Tf'/]
 [h2 className:"flex"]Tf: forced tuck[/h2]
 
 [Table data: `[
@@ -425,6 +451,7 @@ T1, T2...
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Tt'/]
 [h2 className:"flex"]Tt: tuck top flex[/h2]
 
 [Aside]
@@ -443,6 +470,7 @@ T1, T2...
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Tk'/]
 [h2 className:"flex"]Tk: ticket flex[/h2]
 
 [Aside]
@@ -461,6 +489,7 @@ T1, T2...
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'Tw'/]
 [h2 className:"flex"]Tw: twist flex[/h2]
 
 [Aside]
@@ -479,6 +508,7 @@ T1, T2...
 
 
 [Aside][hr/][/Aside][hr/]
+[a name:'V'/]
 [h2 className:"flex"]V: v-flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
