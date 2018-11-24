@@ -87,8 +87,8 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
 
 # Triangle flexes
 
-[hr/]
-## F: flip flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]F: flip flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
 
@@ -103,8 +103,8 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
 [Sampler generator:'F+' patType:7 patOptions:`['6R', 7, 8, '8R', 9, 10, '10R', 11, 12, '12R']` /]
 
 
-[hr/]
-## L3: slot triple pocket flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]L3: slot triple pocket flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
 
@@ -126,8 +126,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'L3+' patType:5 patOptions:`[5]` /]
 
 
-[hr/]
-## Lh: slot half flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Lh: slot half flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
 
@@ -146,8 +146,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Lh+' patType:6 patOptions:`[6]` /]
 
 
-[hr/]
-## Lk: slot pocket
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Lk: slot pocket[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
 
@@ -162,8 +162,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` /]
 
 
-[hr/]
-## Lbf: slot tuck bottom front flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Lbf: slot tuck bottom front flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
 
@@ -182,8 +182,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Lbf+' patType:6 patOptions:`[6]` /]
 
 
-[hr/]
-## Lbb: slot tuck bottom back flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Lbb: slot tuck bottom back flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
 
@@ -202,8 +202,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Lbb+' patType:6 patOptions:`[6]` /]
 
 
-[hr/]
-## Ltf: slot tuck top front flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Ltf: slot tuck top front flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
 
@@ -218,8 +218,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` /]
 
 
-[hr/]
-## Ltb: slot tuck top back flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Ltb: slot tuck top back flex[/h2]
 
 [Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
 
@@ -238,8 +238,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Ltb+' patType:6 patOptions:`[6]` /]
 
 
-[hr/]
-## P: pinch flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P: pinch flex[/h2]
 
 [img src:'static/pinch-flex.jpg' /]
 
@@ -254,8 +254,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'P+' patType:6 patOptions:`[6, '6r', 8, '8r', 10, '10r', 12, '12r']` /]
 
 
-[hr/]
-## Pinch variations
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P44: pinch 44[/h2]
 
 [Table data: `[
   {property: 'Prime?', value: "no, P44 = T2 (>)4 T1 (>)4"},
@@ -267,6 +267,10 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 [Sampler generator:'P44+' patType:8 patOptions:`[8]` /]
 
+
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P333: pinch 333[/h2]
+
 [Table data: `[
   {property: 'Prime?', value: "no, P333 = T1 (>)3 T1 (>)3 T3 (>)3"},
   {property: 'Inverse', value: "P333' = ^P333^"},
@@ -276,6 +280,10 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 ]`/]
 
 [Sampler generator:'P333+' patType:9 patOptions:`[9]` /]
+
+
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P334: pinch 334[/h2]
 
 [Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
 
@@ -289,6 +297,10 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 [Sampler generator:'P334+' patType:10 patOptions:`[10]` /]
 
+
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P55: pinch 55[/h2]
+
 [Table data: `[
   {property: 'Prime?', value: "no, P55 = T3 (>)5 T2 (>)5"},
   {property: 'Inverse', value: "P55' = ^P55^"},
@@ -299,6 +311,10 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 [Sampler generator:'P55+' patType:10 patOptions:`[10]` /]
 
+
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P3333: pinch 3333[/h2]
+
 [Table data: `[
   {property: 'Prime?', value: "P3333 = T1 (>)3 T1 (>)3 T1 (>)3 T3 (>)3"},
   {property: 'Inverse', value: "P3333' = ^P3333^"},
@@ -308,6 +324,10 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 ]`/]
 
 [Sampler generator:'P3333+' patType:12 patOptions:`[12]` /]
+
+
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P444: pinch 444[/h2]
 
 [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
 
@@ -321,6 +341,10 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 
 [Sampler generator:'P444+' patType:12 patOptions:`[12]` /]
 
+
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]P66: pinch 66[/h2]
+
 [Table data: `[
   {property: 'Prime?', value: "no, P66 = T4 (>)6 T3 (>)6"},
   {property: 'Inverse', value: "P66' = ^P66^"},
@@ -332,8 +356,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'P66+' patType:12 patOptions:`[12]` /]
 
 
-[hr/]
-## Sh: pyramid shuffle flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Sh: pyramid shuffle flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
 
@@ -348,8 +372,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'Sh+' patType:6 patOptions:`[5, 6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
-[hr/]
-## St: silver tetra flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]St: silver tetra flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
 
@@ -368,8 +392,8 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
 [Sampler generator:'St+' patType:'8r' patOptions:`['6R', '8R', 9, 10, '10R', 11, 12, '12R']` /]
 
 
-[hr/]
-## T: tuck flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]T: tuck flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
 
@@ -386,8 +410,8 @@ T1, T2...
 [Sampler generator:'T1+' patType:7 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
-[hr/]
-## Tf: forced tuck
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Tf: forced tuck[/h2]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -400,8 +424,8 @@ T1, T2...
 [Sampler generator:'Tf+' patType:6 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
-[hr/]
-## Tt: tuck top flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Tt: tuck top flex[/h2]
 
 [Aside]
   TO DO: Does this flex generalize beyond the hexaflexagon?
@@ -418,8 +442,8 @@ T1, T2...
 [Sampler generator:'Tt+' patType:6 patOptions:`[6]` /]
 
 
-[hr/]
-## Tk: ticket flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Tk: ticket flex[/h2]
 
 [Aside]
   TO DO: Does this flex generalize beyond the hexaflexagon?
@@ -436,8 +460,8 @@ T1, T2...
 [Sampler generator:'Tk+' patType:6 patOptions:`[6]` /]
 
 
-[hr/]
-## Tw: twist flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]Tw: twist flex[/h2]
 
 [Aside]
   TO DO: Does this flex work on a star hexaflexagon?
@@ -454,8 +478,8 @@ T1, T2...
 [Sampler generator:'Tw+' patType:'8R' patOptions:`['8R', '10S', '12S']` /]
 
 
-[hr/]
-## V: v-flex
+[Aside][hr/][/Aside][hr/]
+[h2 className:"flex"]V: v-flex[/h2]
 
 [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
 
