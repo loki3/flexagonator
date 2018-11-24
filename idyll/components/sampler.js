@@ -6,13 +6,14 @@ const Unfolded = require('./unfolded');
 /**
  * Sampler: show a flexagon, controls, and an unfolded version
  * props {
- *  numPats     number of pats in the flexagon, typically in the range [4, 12]
- *  angles      center angle and the angle clockwise from the center, e.g. [30, 60]
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  patType     number of pats in the flexagon, typically in the range [4, 12], plus optional angleType
+ *              'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
+ *  patOptions  array of different patType
  * }
  * state {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
- *  patOptions  array of different numbers of pats
+ *  angleType   'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
  *  history     contains all the flexes applied to the current flexagon
  *  initial     passed to <Flexagon/>
  *  doNext      used to trigger a single command that will be reset next time
@@ -23,9 +24,14 @@ class Sampler extends React.Component {
     super(props);
     this.updateFromFlexagon = this.updateFromFlexagon.bind(this);
     this.handleNumPats = this.handleNumPats.bind(this);
+
+    const [numPats, angleType] = valueToNumberAndType(props.patType);
+    const angles = typeToAngles(numPats, angleType);
     this.state = {
-      numPats: props.numPats,
-      initial: this.buildInitial(props.numPats, props),
+      numPats,
+      angleType,
+      angles,
+      initial: this.buildInitial(numPats, angles, props),
       history: '',
       currentState: 1,
       totalStates: 1,
@@ -33,11 +39,12 @@ class Sampler extends React.Component {
     };
   }
 
-  buildInitial(numPats, props) {
+  buildInitial(numPats, angles, props) {
     const { generator } = props;
     const colors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
     const initial = [
       { numPats },
+      { angles },
       { flexAndColor: { flexes: generator, colors: colors } },
       { reverseFlexes: generator },
       { history: 'clear' }
@@ -64,10 +71,15 @@ class Sampler extends React.Component {
   }
 
   handleNumPats(e) {
-    const numPats = e.target.value;
+    const value = e.target.value;
+    const [numPats, angleType] = valueToNumberAndType(value);
+    const angles = typeToAngles(numPats, angleType);
+
     this.setState({
       numPats,
-      initial: this.buildInitial(numPats, this.props),
+      angleType,
+      angles,
+      initial: this.buildInitial(numPats, angles, this.props),
       history: '',
       currentState: 1,
       totalStates: 1,
@@ -75,27 +87,12 @@ class Sampler extends React.Component {
     });
   }
 
-  getNumPatsText(n) {
-    switch (n) {
-      case 4: return "4: tetraflexagon";
-      case 5: return "5: pentaflexagon";
-      case 6: return "6: hexaflexagon";
-      case 7: return "7: heptaflexagon";
-      case 8: return "8: octaflexagon";
-      case 9: return "9: enneaflexagon";
-      case 10: return "10: decaflexagon";
-      case 11: return "11: undecaflexagon";
-      case 12: return "12: decaflexagon";
-    }
-    return n.toString();
-  }
-
   renderSelectNumPats() {
     const { patOptions } = this.props;
     const { numPats } = this.state;
     return (
       <select value={numPats} onChange={this.handleNumPats}>
-        {patOptions.map(n => <option value={n} key={n}>{this.getNumPatsText(n)}</option>)}
+        {patOptions.map(n => <option value={n} key={n}>{getNumPatsText(n)}</option>)}
       </select>
     );
   }
@@ -115,7 +112,7 @@ class Sampler extends React.Component {
 
   render() {
     const { generator } = this.props;
-    const { numPats, initial, currentState, totalStates, doNext } = this.state;
+    const { numPats, angles, initial, currentState, totalStates, doNext } = this.state;
     const { runInitial, doHistory } = doNext;
     const flexagonOptions = { structure: true, showIds: false, both: true, stats: true };
 
@@ -129,10 +126,72 @@ class Sampler extends React.Component {
         Currently in state {currentState} of {totalStates}<br />
         {this.renderHistory()}
 
-        <Unfolded width={1000} height={500} numPats={numPats} generator={generator} />
+        <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} />
       </div>
     );
   }
 };
+
+// input: a number or a string that consists of a number followed by 'r' or 'R' for right triangles
+//    or 's' or 'S' for stars - an upper case letter rotates the flexagon by one vertex
+// output: [number, 'i' | 'r' | 'R' | 's' | 'S']
+function valueToNumberAndType(value) {
+  let numPats = 6;
+  let angleType = 'i';  // isosceles
+
+  if (typeof (value) === "number") {
+    numPats = value;
+  } else if (typeof (value) === "string") {
+    numPats = parseInt(value);
+
+    const which = value[value.length - 1];
+    if (which === 'r' || which === 'R' || which === 's' || which === 'S') {
+      // right triangle or star
+      angleType = which;
+    }
+  }
+  return [numPats, angleType];
+}
+
+function typeToAngles(numPats, angleType) {
+  switch (numPats) {
+    case 4: return angleType === 'r' ? [90, 45] : undefined;
+    case 5: return undefined;
+    case 6: return angleType === 'r' ? [60, 30] : angleType === 'R' ? [60, 90] : undefined;
+    case 7: return undefined;
+    case 8: return angleType === 'r' ? [45, 45] : angleType === 'R' ? [45, 90] : undefined;
+    case 9: return undefined;
+    case 10: return angleType === 'r' ? [36, 54] : angleType === 'R' ? [36, 90] : undefined;
+    case 11: return undefined;
+    case 12: return angleType === 'r' ? [30, 60] : angleType === 'R' ? [30, 90] : angleType === 's' ? [30, 30] : undefined;
+  }
+}
+
+function getNumPatsText(n) {
+  switch (n) {
+    case 4: return "4: tetraflexagon";
+    case '4r': return "4: silver tetraflexagon #1";
+    case '4R': return "4: silver tetraflexagon #2";
+    case 5: return "5: pentaflexagon";
+    case 6: return "6: hexaflexagon";
+    case '6r': return "6: bronze hexaflexagon #1";
+    case '6R': return "6: bronze hexaflexagon #2";
+    case 7: return "7: heptaflexagon";
+    case 8: return "8: octaflexagon";
+    case '8r': return "8: silver octaflexagon #1";
+    case '8R': return "8: silver octaflexagon #2";
+    case 9: return "9: enneaflexagon";
+    case 10: return "10: decaflexagon";
+    case '10r': return "10: right decaflexagon #1";
+    case '10R': return "10: right decaflexagon #2";
+    case '10s': return "10: star decaflexagon";
+    case 11: return "11: undecaflexagon";
+    case 12: return "12: decaflexagon";
+    case '12r': return "12: right decaflexagon #1";
+    case '12R': return "12: right decaflexagon #2";
+    case '12s': return "12: star decaflexagon";
+  }
+  return n.toString();
+}
 
 module.exports = Sampler;
