@@ -20,8 +20,9 @@
 [br/]
 pinch flexes:
 * [link text:'P : pinch flex' url:'#P' /][br/]
-* [link text:'P44' url:'#P44' /], [link text:'P333' url:'#P333' /], [link text:'P334' url:'#P334' /], [link text:'P55' url:'#P55' /],
-* [link text:'P3333' url:'#P3333' /], [link text:'P444' url:'#P444' /], [link text:'P66' url:'#P66' /][br/]
+* [link text:'P44' url:'#P44' /], [link text:'P55' url:'#P55' /], [link text:'P66' url:'#P66' /]
+* [link text:'P333' url:'#P333' /], [link text:'P334' url:'#P334' /], [link text:'P444' url:'#P444' /]
+* [link text:'P3333' url:'#P3333' /]
 slot flexes:
 * [link text:'L3 : slot triple pocket flex' url:'#L3' /][br/]
 * [link text:'Lh : slot half flex' url:'#Lh' /][br/]
