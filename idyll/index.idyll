@@ -10,6 +10,7 @@
 [Aside]
 ### Flexes:
 
+[link text:'> < ^: rotations' url:'#Rotations' /][br/]
 [link text:'F: flip flex' url:'#F' /][br/]
 [link text:'Sh : pyramid shuffle flex' url:'#Sh' /][br/]
 [link text:'St : silver tetra flex' url:'#St' /][br/]
@@ -48,14 +49,16 @@ Here is more background on some of those details.
 
 ## Prime
 
-This lists whether or not the flex is prime relative to the rest of the flexes on this page, excluding the *forced tuck*.
+This lists whether or not the flex is prime relative to the rest of the flexes on this page, excluding the [a href:'#Tf']*forced tuck*[/a].
 
 ## Inverse
 
-For most flexes `A`, `A' = ^A^`, i.e. doing the inverse is the same as turning it over, doing the flex, then turning it back over.
+For most flexes `A`, the following equality is true: `A' = ^A^`,
+i.e. doing the inverse is the same as turning it over, doing the flex, then turning it back over.
 But for some flexes the before and after structures are different enough that this doesn't hold.
 The simplest way to figure out if this is true, is to use the Flexagon Simulator in the [Flexagon Playground](playground.html).
-Try the generating sequence `A*` then `A*^A*^`.
+First try the generating sequence `A*`.
+Then compare that to the flexagon you get from the generating seuqence `A*^A*^`.
 If they both create a flexagon with the same number of leaves, then `A' = ^A^`, otherwise `A' != ^A^`.
 
 This is a useful detail to know when you're trying to explore all the states of a flexagon,
@@ -81,23 +84,25 @@ For example, the *silver tetra flex* works best on *right triangle flexagons*, a
 More details on these requirements can be found on the [New Flexes](new-flexes.html) page under *More details*.
 
 
+[a name:'Rotations'/]
 # Rotations
 
-## Shift vertex
+*Rotations* simply change the *current vertex*, i.e. the vertex where the next flex starts.
 
-`<` and `>`
+* `<`: Shift the current vertex one step counterclockwise (to the left if the current vertex is at the top)
+* `>`: Shift the current vertex one step clockwise (to the right if the current vertex is at the top)
+* '^': Turn over the flexagon, keep the same current vertex
 
-## Turn over
-
-`^`
 
 # Triangle flexes
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'F'/]
 [h2 className:"flex"]F: flip flex[/h2]
 
-[Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
+[Aside]
+  [Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -105,18 +110,18 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of pats', value: "6 or more"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "only works with certain leaf angles"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'F+' patType:7 patOptions:`['6R', 7, 8, '8R', 9, 10, '10R', 11, 12, '12R']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'L3'/]
 [h2 className:"flex"]L3: slot triple pocket flex[/h2]
 
-[Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
-
 [Aside]
+  [Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
+
   TO DO: Does this flex generalize beyond the pentaflexagon?
 [/Aside]
 
@@ -126,21 +131,18 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of pats', value: "5"},
   {property: 'Number of leaves', value: "N + 9"},
   {property: 'Special requirements', value: "no"}
-]`/]
-
-In theory, `L3 = < St' > St' > St' <`,
-but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in practice.
+]`/][br/]
 
 [Sampler generator:'L3+' patType:5 patOptions:`[5]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Lh'/]
 [h2 className:"flex"]Lh: slot half flex[/h2]
 
-[Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
-
 [Aside]
+  [Slides width:426 height:240 pattern:'static/Lh/*.jpg' start:1 end:17 /]
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
@@ -150,16 +152,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 5"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Lh+' patType:6 patOptions:`[6]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Lk'/]
 [h2 className:"flex"]Lk: slot pocket[/h2]
 
-[Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
+[Aside]
+  [Slides width:426 height:240 pattern:'static/Lk/*.jpg' start:1 end:18 /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "no, Lk = Ltf > Sh"},
@@ -167,18 +171,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "5 or more"},
   {property: 'Number of leaves', value: "N + 6"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Lbf'/]
 [h2 className:"flex"]Lbf: slot tuck bottom front flex[/h2]
 
-[Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
-
 [Aside]
+  [Slides width:426 height:240 pattern:'static/Lbf/*.jpg' start:1 end:18 /]
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
@@ -188,18 +192,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Lbf+' patType:6 patOptions:`[6]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Lbb'/]
 [h2 className:"flex"]Lbb: slot tuck bottom back flex[/h2]
 
-[Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
-
 [Aside]
+  [Slides width:426 height:240 pattern:'static/Lbb/*.jpg' start:1 end:21 /]
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
@@ -209,16 +213,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 5"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Lbb+' patType:6 patOptions:`[6]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Ltf'/]
 [h2 className:"flex"]Ltf: slot tuck top front flex[/h2]
 
-[Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
+[Aside]
+  [Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -226,18 +232,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "5 or more"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Ltb'/]
 [h2 className:"flex"]Ltb: slot tuck top back flex[/h2]
 
-[Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
-
 [Aside]
+  [Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
@@ -247,16 +253,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Ltb+' patType:6 patOptions:`[6]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P'/]
 [h2 className:"flex"]P: pinch flex[/h2]
 
-[img src:'static/pinch-flex.jpg' /]
+[Aside]
+  [img src:'static/pinch-flex.jpg' /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -264,12 +272,12 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "even"},
   {property: 'Number of leaves', value: "N * 3 / 2"},
   {property: 'Special requirements', value: "yes"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P+' patType:6 patOptions:`[6, '6r', 8, '8r', 10, '10r', 12, '12r']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P44'/]
 [h2 className:"flex"]P44: pinch 44[/h2]
 
@@ -279,12 +287,12 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "8"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P44+' patType:8 patOptions:`[8]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P333'/]
 [h2 className:"flex"]P333: pinch 333[/h2]
 
@@ -294,16 +302,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "9"},
   {property: 'Number of leaves', value: "N + 6"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P333+' patType:9 patOptions:`[9]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P334'/]
 [h2 className:"flex"]P334: pinch 334[/h2]
 
-[Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
+[Aside]
+  [Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "no, P334 = T1 (>)3 T1 (>)3 T1 (>)4"},
@@ -311,12 +321,12 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "10"},
   {property: 'Number of leaves', value: "N + 6"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P334+' patType:10 patOptions:`[10]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P55'/]
 [h2 className:"flex"]P55: pinch 55[/h2]
 
@@ -326,12 +336,12 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "10"},
   {property: 'Number of leaves', value: ""},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P55+' patType:10 patOptions:`[10]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P3333'/]
 [h2 className:"flex"]P3333: pinch 3333[/h2]
 
@@ -341,16 +351,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "12"},
   {property: 'Number of leaves', value: "N + 8"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P3333+' patType:12 patOptions:`[12]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P444'/]
 [h2 className:"flex"]P444: pinch 444[/h2]
 
-[Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
+[Aside]
+  [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "no, P444 = T2 (>)4 T2 (>)4 T1 (>)4"},
@@ -358,12 +370,12 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "12"},
   {property: 'Number of leaves', value: "N + 6"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P444+' patType:12 patOptions:`[12]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'P66'/]
 [h2 className:"flex"]P66: pinch 66[/h2]
 
@@ -373,16 +385,18 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "12"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'P66+' patType:12 patOptions:`[12]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Sh'/]
 [h2 className:"flex"]Sh: pyramid shuffle flex[/h2]
 
-[Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
+[Aside]
+  [Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -390,37 +404,43 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "5 or more"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Sh+' patType:6 patOptions:`[5, 6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'St'/]
 [h2 className:"flex"]St: silver tetra flex[/h2]
 
-[Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
-
 [Aside]
-  TO DO: does this work with variations #1 and #2?
+  [Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
+
+  TO DO: does this work with both variations #1 and #2?
+  [br/]Document the variations
 [/Aside]
 
 [Table data: `[
-  {property: 'Prime?', value: "no, St = "},
+  {property: 'Prime?', value: "no, St = > T' <<^ T <^"},
   {property: 'Inverse', value: "St' = ^St^"},
   {property: 'Number of pats', value: "4 or more"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "only works with certain leaf angles"}
-]`/]
+]`/][br/]
 
-[Sampler generator:'St+' patType:'8r' patOptions:`['6R', '8R', 9, 10, '10R', 11, 12, '12R']` /]
+[Sampler generator:'St+' patType:'8R' patOptions:`['6R', '8R', 9, 10, '10R', 11, 12, '12R']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'T'/]
 [h2 className:"flex"]T: tuck flex[/h2]
 
-[Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
+[Aside]
+  [Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
+
+  TO DO: fix generating sequence for hexa
+  [br/]TO DO: explain T1, etc.
+[/Aside]
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -428,14 +448,14 @@ but the pentaflexagon doesn't support the silver tetra, so `L3` is prime in prac
   {property: 'Number of pats', value: "6 or more"},
   {property: 'Number of leaves', value: "N + 3"},
   {property: 'Special requirements', value: "additional needed structure"}
-]`/]
+]`/][br/]
 
 T1, T2...
 
 [Sampler generator:'T1+' patType:7 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Tf'/]
 [h2 className:"flex"]Tf: forced tuck[/h2]
 
@@ -445,12 +465,12 @@ T1, T2...
   {property: 'Number of pats', value: "6 or more"},
   {property: 'Number of leaves', value: "N + 2"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Tf+' patType:6 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Tt'/]
 [h2 className:"flex"]Tt: tuck top flex[/h2]
 
@@ -464,12 +484,12 @@ T1, T2...
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "additional needed structure"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Tt+' patType:6 patOptions:`[6]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Tk'/]
 [h2 className:"flex"]Tk: ticket flex[/h2]
 
@@ -483,12 +503,12 @@ T1, T2...
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 5"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Tk+' patType:6 patOptions:`[6]` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'Tw'/]
 [h2 className:"flex"]Tw: twist flex[/h2]
 
@@ -502,18 +522,18 @@ T1, T2...
   {property: 'Number of pats', value: "8 or more, even"},
   {property: 'Number of leaves', value: "N + N/2"},
   {property: 'Special requirements', value: "only works with certain leaf angles"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'Tw+' patType:'8R' patOptions:`['8R', '10S', '12S']` /]
 
 
-[Aside][hr/][/Aside][hr/]
+[hr/]
 [a name:'V'/]
 [h2 className:"flex"]V: v-flex[/h2]
 
-[Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
-
 [Aside]
+  [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
@@ -523,6 +543,6 @@ T1, T2...
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 3"},
   {property: 'Special requirements', value: "no"}
-]`/]
+]`/][br/]
 
 [Sampler generator:'V+' patType:6 patOptions:`[6]` /]
