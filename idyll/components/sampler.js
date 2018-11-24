@@ -89,9 +89,10 @@ class Sampler extends React.Component {
 
   renderSelectNumPats() {
     const { patOptions } = this.props;
-    const { numPats } = this.state;
+    const { numPats, angleType } = this.state;
+    const patType = angleType === 'i' ? numPats : numPats.toString() + angleType;
     return (
-      <select value={numPats} onChange={this.handleNumPats}>
+      <select value={patType} onChange={this.handleNumPats}>
         {patOptions.map(n => <option value={n} key={n}>{getNumPatsText(n)}</option>)}
       </select>
     );
@@ -118,7 +119,7 @@ class Sampler extends React.Component {
 
     return (
       <div>
-        number of pats: {this.renderSelectNumPats()}
+        Select flexagon type: {this.renderSelectNumPats()}
 
         <Flexagon updateProps={this.updateFromFlexagon} width={700} height={400} numPats={numPats}
           initialScript={initial} runInitial={runInitial} options={flexagonOptions}
