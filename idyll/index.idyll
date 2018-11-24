@@ -174,7 +174,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
-[Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` /]
+[Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:4 scale:140 /]
 
 
 [hr/]
@@ -235,7 +235,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
-[Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` /]
+[Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:4 scale:140 /]
 
 
 [hr/]
@@ -468,7 +468,7 @@ T1, T2...
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
-[Sampler generator:'Tf+' patType:6 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
+[Sampler generator:'Tf+' patType:6 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` split:4 scale:140 /]
 
 
 [hr/]

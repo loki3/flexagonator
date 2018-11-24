@@ -7,9 +7,10 @@ const Unfolded = require('./unfolded');
  * Sampler: show a flexagon, controls, and an unfolded version
  * props {
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
- *  patType     number of pats in the flexagon, typically in the range [4, 12], plus optional angleType
+ *  patType     default number of pats in the flexagon, typically in the range [4, 12], plus optional angleType
  *              'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
- *  patOptions  array of different patType
+ *  patOptions  array of different patTypes that can be switched between
+ *  split       [optional] draw the unfolded strip in 2 pieces, split at the given leaf
  * }
  * state {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
@@ -23,7 +24,7 @@ class Sampler extends React.Component {
   constructor(props) {
     super(props);
     this.updateFromFlexagon = this.updateFromFlexagon.bind(this);
-    this.handleNumPats = this.handleNumPats.bind(this);
+    this.handleFlexagonType = this.handleFlexagonType.bind(this);
 
     const [numPats, angleType] = valueToNumberAndType(props.patType);
     const angles = typeToAngles(numPats, angleType);
@@ -79,7 +80,7 @@ class Sampler extends React.Component {
     this.setState({ doNext: { doHistory } });
   }
 
-  handleNumPats(e) {
+  handleFlexagonType(e) {
     const value = e.target.value;
     const [numPats, angleType] = valueToNumberAndType(value);
     const angles = typeToAngles(numPats, angleType);
@@ -96,12 +97,12 @@ class Sampler extends React.Component {
     });
   }
 
-  renderSelectNumPats() {
+  renderFlexagonType() {
     const { patOptions } = this.props;
     const { numPats, angleType } = this.state;
     const patType = angleType === 'i' ? numPats : numPats.toString() + angleType;
     return (
-      <select value={patType} onChange={this.handleNumPats}>
+      <select value={patType} onChange={this.handleFlexagonType}>
         {patOptions.map(n => <option value={n} key={n}>{getNumPatsText(n)}</option>)}
       </select>
     );
@@ -120,23 +121,36 @@ class Sampler extends React.Component {
     </div>);
   }
 
+  renderUnfolded() {
+    const { generator, split, scale } = this.props;
+    const { numPats, angles } = this.state;
+    if (split === undefined || scale === undefined) {
+      return <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} endText={generator} />;
+    }
+
+    const options1 = { scale, end: split, captions: [{ text: generator, which: 0 }, { text: 'a', which: -1 }] };
+    const options2 = { scale, start: split + 1, captions: [{ text: generator, which: -1 }, { text: 'a', which: 0 }] };
+    return (<div>
+      <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} options={options1} />
+      <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} options={options2} />
+    </div>);
+  }
+
   render() {
-    const { generator } = this.props;
-    const { numPats, angles, initial, currentState, totalStates, doNext } = this.state;
+    const { numPats, initial, currentState, totalStates, doNext } = this.state;
     const { runInitial, doHistory } = doNext;
     const flexagonOptions = { structure: true, showIds: false, both: true, stats: true };
 
     return (
       <div>
-        Select flexagon type: {this.renderSelectNumPats()}
+        Select flexagon type: {this.renderFlexagonType()}
 
         <Flexagon updateProps={this.updateFromFlexagon} width={700} height={400} numPats={numPats}
           initialScript={initial} runInitial={runInitial} options={flexagonOptions}
           doHistory={doHistory} overButton={true} />
         Currently in state {currentState} of {totalStates}<br />
         {this.renderHistory()}
-
-        <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} endText={generator} />
+        {this.renderUnfolded()}
       </div>
     );
   }
