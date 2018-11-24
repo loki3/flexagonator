@@ -161,9 +161,9 @@ function typeToAngles(numPats, angleType) {
     case 7: return undefined;
     case 8: return angleType === 'r' ? [45, 45] : angleType === 'R' ? [45, 90] : undefined;
     case 9: return undefined;
-    case 10: return angleType === 'r' ? [36, 54] : angleType === 'R' ? [36, 90] : undefined;
+    case 10: return angleType === 'r' ? [36, 54] : angleType === 'R' ? [36, 90] : angleType === 's' ? [36, 36] : angleType === 'S' ? [36, 108] : undefined;
     case 11: return undefined;
-    case 12: return angleType === 'r' ? [30, 60] : angleType === 'R' ? [30, 90] : angleType === 's' ? [30, 30] : undefined;
+    case 12: return angleType === 'r' ? [30, 60] : angleType === 'R' ? [30, 90] : angleType === 's' ? [30, 30] : angleType === 'S' ? [30, 120] : undefined;
   }
 }
 
@@ -184,12 +184,14 @@ function getNumPatsText(n) {
     case 10: return "10: decaflexagon";
     case '10r': return "10: right decaflexagon #1";
     case '10R': return "10: right decaflexagon #2";
-    case '10s': return "10: star decaflexagon";
+    case '10s': return "10: star decaflexagon #1";
+    case '10S': return "10: star decaflexagon #2";
     case 11: return "11: undecaflexagon";
     case 12: return "12: decaflexagon";
     case '12r': return "12: right decaflexagon #1";
     case '12R': return "12: right decaflexagon #2";
-    case '12s': return "12: star decaflexagon";
+    case '12s': return "12: star decaflexagon #1";
+    case '12S': return "12: star decaflexagon #2";
   }
   return n.toString();
 }
