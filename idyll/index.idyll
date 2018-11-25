@@ -113,6 +113,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "only works with certain leaf angles"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [1,2]. 3, ... i, ... [[n-4,n-3],[n-2,n-1]], n ]`
+* out: `[ n-3, [[-1,3],[n,-2]] ... i, ... n-2, [-(n-4),-(n-1)] ]`
+[/FullWidth]
+
 [Sampler generator:'F+' patType:7 patOptions:`['6R', 7, 8, '8R', 9, 10, '10R', 11, 12, '12R']` /]
 
 
@@ -133,6 +138,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of leaves', value: "N + 9"},
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [[[12,-11],-13],10], [[[2,-1],-3],-14], -4, [[[-7,6],8],-5], 9 ]`
+* out: `[ -2, [6,[-3,[-5,4]]], 7, [-11,[8,[10,-9]]], [-1,[-12,[-14,13]]] ]`
+[/FullWidth]
 
 [Sampler generator:'L3+' patType:5 patOptions:`[5]` /]
 
@@ -155,6 +165,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [[1,[2,3]],4], 5, 6, 7, [[8,9],10], 11 ]`
+* out: `[ [[11,-4],-9], 1, -3, [-5,2], [[7,-10],-6], 8 ]`
+[/FullWidth]
+
 [Sampler generator:'Lh+' patType:6 patOptions:`[6]` /]
 
 
@@ -173,6 +188,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of leaves', value: "N + 6"},
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [[[1,2],3],4], ... i, ... n-5, [[[n-4,n-3],n-2],n-1], n ]`
+* out: `[ -(n-4), [2,[n-2,[4,-n]]], -1, 3, ... i, ... [n-3,[n-6,[n-1,-(n-5)]]] ]`
+[/FullWidth]
 
 [Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:5 scale:`[300, 280, 220, 205, 175, 165, 145, 135]` /]
 
@@ -195,6 +215,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [[1,2],10], [4,3], 5, 6, [8,7], 9 ]`
+* out: `[ [-2,-1], -3, [-5,4], [7,-6], -8, [10,-9] ]`
+[/FullWidth]
+
 [Sampler generator:'Lbf+' patType:6 patOptions:`[6]` /]
 
 
@@ -216,6 +241,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [[2,-3],-1], [5,-4], 6, 7, [[-9,10],8], 11 ]`
+* out: `[ 2, [-4,3], -5, [[7,-8],-6], -9, [[11,1],-10] ]`
+[/FullWidth]
+
 [Sampler generator:'Lbb+' patType:6 patOptions:`[6]` /]
 
 
@@ -234,6 +264,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [[[1,2],3],4] ... i, ... n-4, n-3, [n-2,n-1], n ]`
+* out: `[ n, [2,4] -1, 3 ... i, ... [n-2,[n-4,[n-1,-(n-3)]]] ]`
+[/FullWidth]
 
 [Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:4 scale:`[300, 310, 280, 240, 190, 165, 145, 130]` /]
 
@@ -256,6 +291,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [[1,[2,3]],4], 5, 6, 7, [8,9], 10 ]`
+* out: `[ -4, 1, -3, [-5,2], [[7,-9],-6], [-10,8] ]`
+[/FullWidth]
+
 [Sampler generator:'Ltb+' patType:6 patOptions:`[6]` /]
 
 
@@ -274,6 +314,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of leaves', value: "N * 3 / 2"},
   {property: 'Special requirements', value: "yes"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [1,2], 3, ... [i,i+1], i+2, ... [n-2,n-1], n ]`
+* out: `[ -1, [5,-3] ... -i, [i+4,-(i+2)], ... -(n-2), [2,-n] ]`
+[/FullWidth]
 
 [Sampler generator:'P+' patType:6 patOptions:`[6, '6r', 8, '8r', 10, '10r', 12, '12r']` /]
 
@@ -407,6 +452,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [1,2], 3, ... i, ... [[[n-4,n-3],n-2],n-1], n ]`
+* out: `[ -(n-4), [1,[n-2,[2,-n]]], 3, ... i, ... [n-3,n-1] ]`
+[/FullWidth]
+
 [Sampler generator:'Sh+' patType:6 patOptions:`[5, 6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
@@ -417,8 +467,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
 [Aside]
   [Slides width:320 height:240 pattern:'static/St/St*.jpg' start:1 end:15 /]
 
-  TO DO: does this work with both variations #1 and #2?
-  [br/]Document the variations
+  TO DO: Document the variations
 [/Aside]
 
 [Table data: `[
@@ -428,6 +477,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "only works with certain leaf angles"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [1,[2,3]], 4, ... i, ... [n-3,[n-2,n-1]], n ]`
+* out: `[ 2, [[-1,4]-3], ... i, ... n-2, [[^n-3,n],-(n-1)] ]`
+[/FullWidth]
 
 [Sampler generator:'St+' patType:'8R' patOptions:`['6R', '8R', 9, 10, '10R', 11, 12, '12R']` /]
 
@@ -453,6 +507,11 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
 
 T1, T2...
 
+[FullWidth]
+* in: `[ [[1,2],3], 4, ... [i,i+1], ... n-1, n ]`
+* out: `[ 2, 4, ... [i,i+1], ... n-1, [-1,[n,-3]] ]`
+[/FullWidth]
+
 [Sampler generator:'T1+' patType:7 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
@@ -467,6 +526,11 @@ T1, T2...
   {property: 'Number of leaves', value: "N + 2"},
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [[1,2],3], 4 ... n-1, n ]`
+* out: `[ 2, 4, ... n-1, [-1,[n,-3]] ]`
+[/FullWidth]
 
 [Sampler generator:'Tf+'
   patType:6 patOptions:`[6, '6r', '6R', 7,   8, '8r', '8R', 9,  10, '10r', '10R', 11, 12, '12r', '12R']`
@@ -489,6 +553,11 @@ T1, T2...
   {property: 'Special requirements', value: "additional needed structure"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ [[2,-3],-1], [5,-4], 6, [-8,7], -9, -10 ]`
+* out: `[ [-4,3], -5, [7,-6], 8, [[-10,1],9], 2 ]`
+[/FullWidth]
+
 [Sampler generator:'Tt+' patType:6 patOptions:`[6]` /]
 
 
@@ -508,6 +577,11 @@ T1, T2...
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
+[FullWidth]
+* in: `[ 1, 2, 3, [4,5], [[[6,7],8],9], [10,11] ]`
+* out: `[ 6, [-9,-7], [-5,-4], -3, -2, [[11,-8],[-1,10]] ]`
+[/FullWidth]
+
 [Sampler generator:'Tk+' patType:6 patOptions:`[6]` /]
 
 
@@ -516,6 +590,8 @@ T1, T2...
 [h2 className:"flex"]Tw: twist flex[/h2]
 
 [Aside]
+  [Slides width:320 height:240 pattern:'static/Tw/*.jpg' start:1 end:11 /]
+
   TO DO: Does this flex work on a star hexaflexagon?
 [/Aside]
 
@@ -526,6 +602,15 @@ T1, T2...
   {property: 'Number of leaves', value: "N + N/2"},
   {property: 'Special requirements', value: "only works with certain leaf angles"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ [2,-1], [-4,3], -5, -6, [8,-7], [-10,9], -11, -12 ]`
+* out: `[ -2, -3, [5,-4], [-7,6], -8, -9, [11,-10], [-1,12] ]`
+* in: `[ [1,2], [3,4], 5, [6,7], 8, [9,10], 11, [12,13], 14, 15 ]`
+* out: `[ -1, -4, [-5,3], -7, [-8,6], -10, [-11,9], -13, [-14,12], [2,-15] ]`
+* in: `[ [1,2], [3,4], 5, [6,7], 8, 9, [10,11], [12,13], 14, [15,16], 17, 18 ]`
+* out: `[ -1, -4, [-5,3], -7, [-8,6], [11,-9], -10, -13, [-14,12], -16, [-17,15], [2,-18] ]`
+[/FullWidth]
 
 [Sampler generator:'Tw+' patType:'8R' patOptions:`['8R', '10S', '12S']`
   split:`[undefined, 2, 8]` scale:`[undefined, 170, 250]` /]
@@ -548,5 +633,10 @@ T1, T2...
   {property: 'Number of leaves', value: "N + 3"},
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
+
+[FullWidth]
+* in: `[ 1, [2,3], [4,5], 6, 7, [8,9] ]`
+* out: `[ [3,-1], -2, -5, [-6,4], [9,-7], -8 ]`
+[/FullWidth]
 
 [Sampler generator:'V+' patType:6 patOptions:`[6]` /]
