@@ -10,13 +10,18 @@ const Unfolded = require('./unfolded');
  *  patType     default number of pats in the flexagon, typically in the range [4, 12], plus optional angleType
  *              'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
  *  patOptions  array of different patTypes that can be switched between
- *  split       [optional] draw the unfolded strip in 2 pieces, split at the given leaf
+ *  split       [optional] draw the unfolded strip in 2 pieces, split at the given leaf; could be a number or array
+ *  scale       [optional] use the given scale for both strips; could be a number of array
  * }
  * state {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  angleType   'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
+ *  angles      [center angle, clockwise angle]
+ *  selected    which of the patOptions is currently selected
  *  history     contains all the flexes applied to the current flexagon
  *  initial     passed to <Flexagon/>
+ *  currentState which state the flexagon is currently in
+ *  totalStates how many total states have been found in the flexagon
  *  doNext      used to trigger a single command that will be reset next time
  * }
  */
@@ -89,6 +94,7 @@ class Sampler extends React.Component {
       numPats,
       angleType,
       angles,
+      selected: e.target.selectedIndex,
       initial: this.buildInitial(numPats, angles, this.props),
       history: '',
       currentState: 1,
@@ -123,13 +129,19 @@ class Sampler extends React.Component {
 
   renderUnfolded() {
     const { generator, split, scale } = this.props;
-    const { numPats, angles } = this.state;
+    const { numPats, angles, selected } = this.state;
     if (split === undefined || scale === undefined) {
       return <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} endText={generator} />;
     }
 
-    const options1 = { scale, end: split, captions: [{ text: generator, which: 0 }, { text: 'a', which: -1 }] };
-    const options2 = { scale, start: split + 1, captions: [{ text: generator, which: -1 }, { text: 'a', which: 0 }] };
+    const where = typeof (split) === 'number' ? split : selected === undefined ? split[0] : split[selected];
+    const theScale = typeof (scale) === 'number' ? scale : selected === undefined ? scale[0] : scale[selected];
+    if (where === undefined) {
+      return <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} endText={generator} />;
+    }
+
+    const options1 = { scale: theScale, end: where, captions: [{ text: generator, which: 0 }, { text: 'a', which: -1 }] };
+    const options2 = { scale: theScale, start: where + 1, captions: [{ text: generator, which: -1 }, { text: 'a', which: 0 }] };
     return (<div>
       <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} options={options1} />
       <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} options={options2} />

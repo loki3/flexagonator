@@ -174,7 +174,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
-[Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:4 scale:140 /]
+[Sampler generator:'Lk+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:5 scale:`[300, 280, 220, 205, 175, 165, 145, 135]` /]
 
 
 [hr/]
@@ -235,7 +235,7 @@ More details on these requirements can be found on the [New Flexes](new-flexes.h
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
-[Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:4 scale:140 /]
+[Sampler generator:'Ltf+' patType:5 patOptions:`[5, 6, 7, 8, 9, 10, 11, 12]` split:4 scale:`[300, 310, 280, 240, 190, 165, 145, 130]` /]
 
 
 [hr/]
@@ -468,7 +468,9 @@ T1, T2...
   {property: 'Special requirements', value: "no"}
 ]`/][br/]
 
-[Sampler generator:'Tf+' patType:6 patOptions:`[6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` split:4 scale:140 /]
+[Sampler generator:'Tf+'
+  patType:6 patOptions:`[6, '6r', '6R', 7,   8, '8r', '8R', 9,  10, '10r', '10R', 11, 12, '12r', '12R']`
+  split:5   scale:    `[285, 280, 280, 250, 270, 270, 230, 240, 210, 210,  200,  190, 170, 185,  150]` /]
 
 
 [hr/]
@@ -525,7 +527,8 @@ T1, T2...
   {property: 'Special requirements', value: "only works with certain leaf angles"}
 ]`/][br/]
 
-[Sampler generator:'Tw+' patType:'8R' patOptions:`['8R', '10S', '12S']` /]
+[Sampler generator:'Tw+' patType:'8R' patOptions:`['8R', '10S', '12S']`
+  split:`[undefined, 2, 8]` scale:`[undefined, 170, 250]` /]
 
 
 [hr/]
