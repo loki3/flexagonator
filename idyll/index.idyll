@@ -112,6 +112,10 @@ For example, if `n=7`, then the final pat of the resulting flexagon (`[-(n-4),-(
 
 # Triangle flexes
 
+This flex works especially well on flexagons with right angles, though only at the "points" of the flexagon.
+The heptaflexagon, with 7 pats, has just enough freedom to be able to do the flip flex,
+though it can be tricky to carry out if you haven't done it before.
+
 [hr/]
 [a name:'F'/]
 [h2 className:"flex"]F: flip flex[/h2]
@@ -317,6 +321,11 @@ For example, if `n=7`, then the final pat of the resulting flexagon (`[-(n-4),-(
 [hr/]
 [a name:'P'/]
 [h2 className:"flex"]P: pinch flex[/h2]
+
+With the pinch flex, you "pinch" every other vertex all the way around the flexagon,
+then open it back up from the center.
+There are variations on higher order flexagons (like the octaflexagon or decaflexagon)
+where you skip more than one vertex between pinches.
 
 [Aside]
   [img src:'static/pinch-flex.jpg' /]
@@ -534,6 +543,10 @@ T1, T2...
 [a name:'Tf'/]
 [h2 className:"flex"]Tf: forced tuck[/h2]
 
+The forced tuck requires you to modify the flexagon in some way,
+either trimming off large portions or damaging it as you try to flex.
+It's the same as the tuck flex but without the additional flap that allows you to open up the flexagon.
+
 [Table data: `[
   {property: 'Prime?', value: "yes"},
   {property: 'Inverse', value: "Tf' = ^Tf^"},
@@ -554,7 +567,9 @@ T1, T2...
 
 [hr/]
 [a name:'Tt'/]
-[h2 className:"flex"]Tt: tuck top flex[/h2]
+[h2 className:"flex"]Tt: tuck top front flex[/h2]
+
+The *tuck top front flex* is the same as the tuck flex except that you open it up from the front rather than the back.
 
 [Aside]
   TO DO: Does this flex generalize beyond the hexaflexagon?
@@ -580,6 +595,10 @@ T1, T2...
 [a name:'Tk'/]
 [h2 className:"flex"]Tk: ticket flex[/h2]
 
+The *ticket flex* gets its name from the partial flexes used in it: `T'KKT`.
+You start with an inverse tuck `T'`, but instead of opening it all the way,
+you do a pair of pocket flexes `K`, and finally a tuck `T`.
+
 [Aside]
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
@@ -604,10 +623,10 @@ T1, T2...
 [a name:'Tw'/]
 [h2 className:"flex"]Tw: twist flex[/h2]
 
+This flex works best when the leaves are isosceles triangles, with one of the equal angles pointing at the center.
+
 [Aside]
   [Slides width:320 height:240 pattern:'static/Tw/*.jpg' start:1 end:11 /]
-
-  TO DO: Does this flex work on a star hexaflexagon?
 [/Aside]
 
 [Table data: `[
