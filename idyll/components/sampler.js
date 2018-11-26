@@ -49,19 +49,20 @@ class Sampler extends React.Component {
   buildInitial(numPats, angles, props) {
     const { generator } = props;
     const colors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
-    let searchFlexes = "F L3 Lh Lk Lbf Lbb Ltf Ltb Ltb' P P44 P333 P334 P55 P3333 P444 P66 Sh T T' T1 T1' T2 T2' T3 T3' T4 T4' Ttf Tk Tw V";
+    let searchFlexes = "F L3 Lh Lk Lbf Lbb Ltf Ltb Ltb' P P44 P333 P334 P55 P3333 P444 P66 Sh T T' T1 T1' T2 T2' T3 T3' T4 T4' Ttf Tk Tk' Tw V";
     if (numPats !== 5) {
       searchFlexes += " St";
     }
     if (generator === 'Tf+') {
       searchFlexes += " Tf";
     }
+    const flexes = generator === 'T1+' && numPats === 6 ? 'T+' : generator;
 
     const initial = [
       { numPats },
       { angles },
-      { flexAndColor: { flexes: generator, colors: colors } },
-      { reverseFlexes: generator },
+      { flexAndColor: { flexes: flexes, colors: colors } },
+      { reverseFlexes: flexes },
       { searchFlexes },
       { history: 'clear' }
     ];
@@ -139,21 +140,22 @@ class Sampler extends React.Component {
   renderUnfolded() {
     const { generator, split, scale } = this.props;
     const { numPats, actualAngles, selected } = this.state;
+    const flexes = generator === 'T1+' && numPats === 6 ? 'T+' : generator;
     if (split === undefined || scale === undefined) {
-      return <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} endText={generator} />;
+      return <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={flexes} endText={flexes} />;
     }
 
     const where = typeof (split) === 'number' ? split : selected === undefined ? split[0] : split[selected];
     const theScale = typeof (scale) === 'number' ? scale : selected === undefined ? scale[0] : scale[selected];
     if (where === undefined) {
-      return <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} endText={generator} />;
+      return <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={flexes} endText={flexes} />;
     }
 
-    const options1 = { scale: theScale, end: where, captions: [{ text: generator, which: 0 }, { text: 'a', which: -1 }] };
-    const options2 = { scale: theScale, start: where + 1, captions: [{ text: generator, which: -1 }, { text: 'a', which: 0 }] };
+    const options1 = { scale: theScale, end: where, captions: [{ text: flexes, which: 0 }, { text: 'a', which: -1 }] };
+    const options2 = { scale: theScale, start: where + 1, captions: [{ text: flexes, which: -1 }, { text: 'a', which: 0 }] };
     return (<div>
-      <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} options={options1} />
-      <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} options={options2} />
+      <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={flexes} options={options1} />
+      <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={flexes} options={options2} />
     </div>);
   }
 

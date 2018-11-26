@@ -525,11 +525,14 @@ where you skip more than one vertex between pinches.
 [a name:'T'/]
 [h2 className:"flex"]T: tuck flex[/h2]
 
+The tuck flex requires a little bit of extra freedom in the flexagon in order to open it up enough to perform the flex.
+On a hexaflexagon, this means the vertex directly opposite the current vertex needs to open.
+On flexagons with more pats (heptaflexagon, octaflexagon, etc.), there are multiple vertices that could open to provide the needed freedom of movement.
+To distinguish between all the different places where the flexagon could have that additional freedom,
+a number is tacked on to `T` to indicate which vertex, e.g. `T1`, `T2`, etc.
+
 [Aside]
   [Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
-
-  TO DO: fix generating sequence for hexa
-  [br/]TO DO: explain T1, etc.
 [/Aside]
 
 [Table data: `[
@@ -540,8 +543,6 @@ where you skip more than one vertex between pinches.
   {property: 'Special requirements', value: "additional needed structure"},
   {property: '3 1 1 2 1 1', value: '1 1 1 2 1 -3'}
 ]`/][br/]
-
-T1, T2...
 
 [FullWidth]
 * in: `[ [[1,2],3], 4, ... [i,i+1], ... n-1, n ]`
