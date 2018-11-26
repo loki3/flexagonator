@@ -17,6 +17,7 @@ const Unfolded = require('./unfolded');
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  angleType   'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
  *  angles      [center angle, clockwise angle]
+ *  actualAngles the angles may get rotated as a result of various flexes - use these for the unfolded flexagon
  *  selected    which of the patOptions is currently selected
  *  history     contains all the flexes applied to the current flexagon
  *  initial     passed to <Flexagon/>
@@ -76,6 +77,14 @@ class Sampler extends React.Component {
         doNext: {}
       });
     }
+    if (newprops.currentScript) {
+      const actualAngles = JSON.parse(newprops.currentScript).filter(n => n.angles !== undefined)[0].angles;
+
+      if (this.state.actualAngles === undefined ||
+        actualAngles[0] !== this.state.actualAngles[0] || actualAngles[1] !== this.state.actualAngles[1]) {
+        this.setState({ actualAngles });
+      }
+    }
   }
 
   handleHistory(doHistory) {
@@ -129,22 +138,22 @@ class Sampler extends React.Component {
 
   renderUnfolded() {
     const { generator, split, scale } = this.props;
-    const { numPats, angles, selected } = this.state;
+    const { numPats, actualAngles, selected } = this.state;
     if (split === undefined || scale === undefined) {
-      return <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} endText={generator} />;
+      return <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} endText={generator} />;
     }
 
     const where = typeof (split) === 'number' ? split : selected === undefined ? split[0] : split[selected];
     const theScale = typeof (scale) === 'number' ? scale : selected === undefined ? scale[0] : scale[selected];
     if (where === undefined) {
-      return <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} endText={generator} />;
+      return <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} endText={generator} />;
     }
 
     const options1 = { scale: theScale, end: where, captions: [{ text: generator, which: 0 }, { text: 'a', which: -1 }] };
     const options2 = { scale: theScale, start: where + 1, captions: [{ text: generator, which: -1 }, { text: 'a', which: 0 }] };
     return (<div>
-      <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} options={options1} />
-      <Unfolded width={1000} height={500} numPats={numPats} angles={angles} generator={generator} options={options2} />
+      <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} options={options1} />
+      <Unfolded width={1000} height={500} numPats={numPats} angles={actualAngles} generator={generator} options={options2} />
     </div>);
   }
 
