@@ -76,7 +76,7 @@ namespace Flexagonator {
     flexes["Tf"] = makeFlex("forced tuck",
       [[[1, 2], 3], 4, 5, 6, 7, 8],
       [2, 4, 5, 6, 7, [-1, [8, -3]]], FlexRotation.None) as Flex;
-    flexes["Tt"] = makeFlex("tuck top",
+    flexes["Ttf"] = makeFlex("tuck top front",
       [[[2, -3], -1], [5, -4], 6, [-8, 7], -9, -10],
       [[-4, 3], -5, [7, -6], 8, [[-10, 1], 9], 2], FlexRotation.None) as Flex;
     flexes["Sh"] = makeFlex("pyramid shuffle",

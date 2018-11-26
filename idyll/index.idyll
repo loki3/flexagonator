@@ -34,7 +34,7 @@ slot flexes:
 tuck flexes:
 * [link text:'T, T1, T2... : tuck flex' url:'#T' /][br/]
 * [link text:'Tf : forced tuck' url:'#Tf' /][br/]
-* [link text:'Tt : tuck top flex' url:'#Tt' /][br/]
+* [link text:'Ttf : tuck top front flex' url:'#Ttf' /][br/]
 [/Aside]
 
 This is a collection of flexes that work on triangle flexagons,
@@ -579,8 +579,8 @@ It's the same as the tuck flex but without the additional flap that allows you t
 
 
 [hr/]
-[a name:'Tt'/]
-[h2 className:"flex"]Tt: tuck top front flex[/h2]
+[a name:'Ttf'/]
+[h2 className:"flex"]Ttf: tuck top front flex[/h2]
 
 The *tuck top front flex* is the same as the tuck flex except that you open it up from the front rather than the back.
 
@@ -589,8 +589,8 @@ The *tuck top front flex* is the same as the tuck flex except that you open it u
 [/Aside]
 
 [Table data: `[
-  {property: 'Prime?', value: "no, Tt = T > P <"},
-  {property: 'Inverse', value: "Tt' != ^Tt'^"},
+  {property: 'Prime?', value: "no, Ttf = T > P <"},
+  {property: 'Inverse', value: "Ttf' != ^Ttf'^"},
   {property: 'Number of pats', value: "6"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "additional needed structure"},
@@ -602,7 +602,7 @@ The *tuck top front flex* is the same as the tuck flex except that you open it u
 * out: `[ [-4,3], -5, [7,-6], 8, [[-10,1],9], 2 ]`
 [/FullWidth]
 
-[Sampler generator:'Tt+' patType:6 patOptions:`[6]` /]
+[Sampler generator:'Ttf+' patType:6 patOptions:`[6]` /]
 
 
 [hr/]

@@ -64,7 +64,7 @@ performed, these variants describe which opposite hinge needs to exist
 * `Tf`: forced tuck - same as the tuck flex, but doesn't require an opening on the opposite side - note that this
 flex can be very hard to do without damaging the flexagon, so it's generally just used for simulation to explore
 the states of a flexagon
-* `Tt`: the tuck top flex - same as the tuck flex, but you open up the front instead of the back after doing the tuck
+* `Ttf`: the tuck top front flex - same as the tuck flex, but you open up the front instead of the back after doing the tuck
 * `Sh`: the pyramid shuffle - see [Pyramid Shuffle](http://loki3.com/flex/flex/pyramid-shuffle.html) -
 note that the linked page uses `S`, where `Sh = S <` - `Sh` was defined so that `Sh = ^ Sh ^`
 * `V`: the v-flex - see [V Flex](http://loki3.com/flex/flex/v.html)

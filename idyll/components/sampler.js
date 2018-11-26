@@ -49,7 +49,7 @@ class Sampler extends React.Component {
   buildInitial(numPats, angles, props) {
     const { generator } = props;
     const colors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
-    let searchFlexes = "F L3 Lh Lk Lbf Lbb Ltf Ltb Ltb' P P44 P333 P334 P55 P3333 P444 P66 Sh T T' T1 T1' T2 T2' T3 T3' T4 T4' Tt Tk Tw V";
+    let searchFlexes = "F L3 Lh Lk Lbf Lbb Ltf Ltb Ltb' P P44 P333 P334 P55 P3333 P444 P66 Sh T T' T1 T1' T2 T2' T3 T3' T4 T4' Ttf Tk Tw V";
     if (numPats !== 5) {
       searchFlexes += " St";
     }
