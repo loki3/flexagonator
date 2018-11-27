@@ -1,7 +1,16 @@
-[meta title:"Slot flexes" description:"Flexes that involve sliding leaves through slots" /]
+[meta title:"Slot Flexes" description:"Flexes that involve sliding leaves through slots" /]
+
+[Aside]
+  [br/]
+  A chapter from[br/]
+  [Explorable Flexagons](index.html)
+
+  Next chapter:[br/]
+  [New Flexes](new-flexes.html)
+[/Aside]
 
 [Header
-  title:"Slot flexes"
+  title:"Slot Flexes"
   subtitle:"Flexes that involve sliding leaves through slots"
   author:"Scott Sherman"
   authorLink:"http://loki3.com/flex" /]

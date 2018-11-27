@@ -1,5 +1,14 @@
 [meta title:"Flexing Flexagons" description:"Various flexagon flexes" /]
 
+[Aside]
+  [br/]
+  A chapter from[br/]
+  [Explorable Flexagons](index.html)
+
+  Next chapter:[br/]
+  [Generating Sequences](generators.html)
+[/Aside]
+
 [Header
   title:"Flexing Flexagons"
   subtitle:"A short tour of different ways to flex a flexagon"

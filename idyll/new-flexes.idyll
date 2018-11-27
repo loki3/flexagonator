@@ -1,5 +1,14 @@
 [meta title:"New Flexes" description:"How to define flexes with pat notation" /]
 
+[Aside]
+  [br/]
+  A chapter from[br/]
+  [Explorable Flexagons](index.html)
+
+  Next chapter:[br/]
+  [Flex Sequences](flex-sequences.html)
+[/Aside]
+
 [Header
   title:"New Flexes"
   subtitle:"How to define flexes with pat notation"
