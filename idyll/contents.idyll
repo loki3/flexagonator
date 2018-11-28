@@ -169,6 +169,18 @@
 [hr /]
 
 
+[a href:'flex-compendium.html']
+  [div className:'heading'] Appendix: Flex Compendium [/div]
+  [div className:'subname'] Details about flexes on triangle flexagons [/div]
+[/a]
+
+* Reference guide to a wide variety of flexes on triangle flexagons
+* Shows sample slides and sample strips to fold on various triangle flexagons
+* Shows flex definitions in pat notation, etc.
+
+[hr /]
+
+
 For additional information, see [loki3.com](http://loki3.com/flex/).
 
 [FullWidth]
