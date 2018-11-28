@@ -1,5 +1,11 @@
 [meta title:"Flex Compendium" description:"Details about flexes on triangle flexagons" /]
 
+[Aside]
+  [br/]
+  An appendix from[br/]
+  [Explorable Flexagons](index.html)
+[/Aside]
+
 [Header
   title:"Flex Compendium"
   subtitle:"Details about flexes on triangle flexagons"
@@ -112,13 +118,13 @@ For example, if `n=7`, then the final pat of the resulting flexagon (`[-(n-4),-(
 
 # Triangle flexes
 
-This flex works especially well on flexagons with right angles, though only at the "points" of the flexagon.
-The heptaflexagon, with 7 pats, has just enough freedom to be able to do the flip flex,
-though it can be tricky to carry out if you haven't done it before.
-
 [hr/]
 [a name:'F'/]
 [h2 className:"flex"]F: flip flex[/h2]
+
+This flex works especially well on flexagons with right angles, though only at the "points" of the flexagon.
+The heptaflexagon, with 7 pats, has just enough freedom to be able to do the flip flex,
+though it can be tricky to carry out if you haven't done it before.
 
 [Aside]
   [Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
@@ -691,5 +697,16 @@ This flex works best when the leaves are isosceles triangles, with one of the eq
 [/FullWidth]
 
 [Sampler generator:'V+' patType:6 patOptions:`[6]` /]
+
+[FullWidth][hr/][/FullWidth]
+# What next?
+
+Go to the [Table of Contents](index.html) or the [Flexagon Pages](http://loki3.com/flex/).
+
+[FullWidth]
+  [a href:'http://loki3.com/flex/' ]
+  [img src:'static/flexagon-variety.jpg' /]
+  [/a]
+[/FullWidth]
 
 [Copyright/]

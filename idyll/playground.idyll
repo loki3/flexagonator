@@ -1,5 +1,11 @@
 [meta title:"Flexagon Playground" description:"General tools for exploring flexagons" /]
 
+[Aside]
+  [br/]
+  An appendix from[br/]
+  [Explorable Flexagons](index.html)
+[/Aside]
+
 [Header
   title:"Flexagon Playground"
   subtitle:"General tools for exploring flexagons"
