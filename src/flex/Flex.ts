@@ -106,17 +106,18 @@ namespace Flexagonator {
       return (whichVertex + 2) % 3;
     }
 
-    // generate the structure necessary to perform this flex
+    // generate the structure necessary to perform this flex, and keep track of how leaves get split
     // note: it doesn't actually apply the flex
-    createPattern(flexagon: Flexagon): Flexagon {
+    createPattern(flexagon: Flexagon): [Flexagon, Split[]] {
       const newPats: Pat[] = [];
+      const splits: Split[] = [];
       let nextId = flexagon.getLeafCount() + 1;
       for (let i in this.pattern) {
-        const newPat = flexagon.pats[i].createPattern(this.pattern[i], () => { return nextId++; });
+        const newPat = flexagon.pats[i].createPattern(this.pattern[i], () => { return nextId++; }, splits);
         newPats.push(newPat);
       }
 
-      return Flexagon.makeFromPats(newPats, flexagon.whichVertex, flexagon.isFirstMirrored);
+      return [Flexagon.makeFromPats(newPats, flexagon.whichVertex, flexagon.isFirstMirrored), splits];
     }
   }
 
