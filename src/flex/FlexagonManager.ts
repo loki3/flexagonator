@@ -73,13 +73,15 @@ namespace Flexagonator {
         return { reason: FlexCode.UnknownFlex, flexName: name };
       }
 
-      const [input] = flexName.shouldGenerate
+      const [input, splits] = flexName.shouldGenerate
         ? this.allFlexes[name].createPattern(this.flexagon)
         : [this.flexagon, []];
       const result = flexName.shouldApply ? this.allFlexes[name].apply(input) : input;
       if (isFlexError(result)) {
         return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
+
+      splits.forEach(split => this.leafProps.adjustForSplit(split));
 
       if (flexName.shouldGenerate && this.flexagon.getLeafCount() !== result.getLeafCount()) {
         // whenever we add new structure, start tracking over again

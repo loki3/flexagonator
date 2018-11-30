@@ -74,4 +74,20 @@ namespace Flexagonator {
       expect(props.getColorAsRGBString(1)).toBe("rgb(1,2,3)");
     });
   });
+
+  describe('adjustForSplit', () => {
+    it('should move leaf properties from -top to bottom', () => {
+      const propArray: LeafProperties[] = [
+        { front: { color: 123 }, back: { color: 456 } },
+        { front: {}, back: {} }
+      ];
+      const props = new PropertiesForLeaves(propArray);
+      props.adjustForSplit({ topId: 1, bottomId: -2 });
+
+      expect(props.getColorProp(1)).toBe(123);
+      expect(props.getColorProp(-1)).toBe(undefined);
+      expect(props.getColorProp(2)).toBe(undefined);
+      expect(props.getColorProp(-2)).toBe(456);
+    });
+  });
 }

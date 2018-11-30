@@ -82,6 +82,23 @@ namespace Flexagonator {
         + (color & 0xff).toString() + ")";
     }
 
+    // move properties to a different id based on how a leaf was split
+    adjustForSplit(split: Split) {
+      const idToRemove = -split.topId;
+      const oldprops = this.getFacePropsToGet(idToRemove);
+      if (oldprops === undefined) {
+        return;
+      }
+
+      const idToAdd = split.bottomId;
+      const newprops = this.getFacePropsToSet(idToAdd);
+      newprops.color = oldprops.color;
+      newprops.label = oldprops.label;
+
+      oldprops.color = undefined;
+      oldprops.label = undefined;
+    }
+
     private getFacePropsToGet(id: number): LeafFaceProperties | undefined {
       const leafProps = this.props[Math.abs(id) - 1]
       if (leafProps === undefined || leafProps === null) {
