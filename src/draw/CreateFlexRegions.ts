@@ -11,15 +11,20 @@ namespace Flexagonator {
     readonly isOnTop: boolean;
   }
 
-  // for every corner of a flexagon, figure out which flexes can be performed
+  // for every corner of a flexagon, figure out which flexes can be performed,
+  // if 'generate', then it allows every flex in generate-mode, e.g. 'P*'
   export function createFlexRegions(flexagon: Flexagon, allFlexes: Flexes,
-    flexesToSearch: Flexes, flip: boolean, polygon: Polygon): RegionForFlexes[] {
+    flexesToSearch: Flexes, flip: boolean, generate: boolean, polygon: Polygon
+  ): RegionForFlexes[] {
 
     const regions: RegionForFlexes[] = [];
     const corners = polygon.getCorners();
+    const genFlexes: string[] = generate ? getGenFlexes(flexesToSearch) : [];
     let prefix = "", postfix = "";
     for (let i = 0; i < flexagon.getPatCount(); i++) {
-      const flexes: string[] = checkForFlexesAtVertex(flexagon, allFlexes, flexesToSearch, flip, i);
+      const flexes: string[] = generate
+        ? genFlexes
+        : checkForFlexesAtVertex(flexagon, allFlexes, flexesToSearch, flip, i);
 
       const x = corners[i * 2];
       const y = corners[i * 2 + 1];
@@ -37,6 +42,10 @@ namespace Flexagonator {
       postfix += "<";
     }
     return regions;
+  }
+
+  function getGenFlexes(flexes: Flexes): string[] {
+    return Object.keys(flexes).map(name => name + '*');
   }
 
 }

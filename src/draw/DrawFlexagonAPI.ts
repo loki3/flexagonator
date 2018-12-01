@@ -17,6 +17,7 @@ namespace Flexagonator {
     readonly structure?: boolean;   // show pat structure - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
     readonly showIds?: boolean;     // show leaf ids - default: true
+    readonly generate?: boolean;    // include every flex with * added - default: false
   }
 
   // draw a flexagon in its current state, with optional colors, flexes, etc.
@@ -65,7 +66,8 @@ namespace Flexagonator {
       drawStatsText(ctx, objects.flexagon, objects.angleInfo);
     }
 
-    return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, polygon);
+    const generate = (options.generate !== undefined && options.generate);
+    return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, generate, polygon);
   }
 
   // draw the possible flexes and return buttons describing them
@@ -85,9 +87,11 @@ namespace Flexagonator {
     return drawPossibleFlexes(ctx, regions, bheight);
   }
 
-  export function getButtonRegions(fm: FlexagonManager, width: number, height: number, front: boolean): RegionForFlexes[] {
+  export function getButtonRegions(fm: FlexagonManager, width: number, height: number, front: boolean, generate?: boolean
+  ): RegionForFlexes[] {
+    generate = (generate !== undefined && generate);
     const polygon = createPolygon(width, height, fm.flexagon, fm.getAngleInfo(), front);
-    return createFlexRegions(fm.flexagon, fm.allFlexes, fm.flexesToSearch, !front, polygon);
+    return createFlexRegions(fm.flexagon, fm.allFlexes, fm.flexesToSearch, !front, generate, polygon);
   }
 
   function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {

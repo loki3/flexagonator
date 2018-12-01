@@ -43,6 +43,7 @@ such as whether to draw the front or back, and whether to display useful statist
   structure: true,   // boolean: default false, show internal structure of each pat
   drawover: true,    // boolean: default false, draw over canvas or clear first
   showIds: true,     // boolean: default true, show leaf ids
+  generate: true,    // boolean: default false, include every flex with * added, e.g. P*
 }
 
 // example using DrawFlexagonOptions with drawEntireFlexagon
@@ -105,6 +106,10 @@ Optionally, you can get the button regions without drawing.
 
 ```javascript
 var regions = getButtonRegions(fm, width, height, true/*front*/);
+
+// or if you want everything listed under fm.flexesToSearch to be marked with a *,
+// e.g. P* so that you can generate the structure needed for any flex at any vertex
+var regions = getButtonRegions(fm, width, height, true/*front*/, true/*generate*/);
 ```
 
 `RegionForFlexes` describes all the flexes that are valid at a single corner of the flexagon.

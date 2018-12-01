@@ -103,7 +103,8 @@ class Flexagon extends React.Component {
     var script = this.buildScript(props);
     var fm = Flexagonator.runScript(null, script);
     this.updateHistoryProps(fm);
-    const regions = Flexagonator.getButtonRegions(fm, props.width, props.height, true);
+    const generate = this.props.options ? this.props.options.generate : false;
+    const regions = Flexagonator.getButtonRegions(fm, props.width, props.height, true, generate);
     this.state = { fm: fm, regions: regions };
   }
 
@@ -166,7 +167,8 @@ class Flexagon extends React.Component {
     }
     Flexagonator.drawEntireFlexagon(this.refs.canvas, fm, this.props.options);
     this.updateHistoryProps(fm);
-    const regions = Flexagonator.getButtonRegions(fm, this.props.width, this.props.height, true);
+    const generate = this.props.options ? this.props.options.generate : false;
+    const regions = Flexagonator.getButtonRegions(fm, this.props.width, this.props.height, true, generate);
     this.setState({ fm: fm, regions: regions });
   }
 
