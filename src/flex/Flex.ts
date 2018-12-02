@@ -106,11 +106,11 @@ namespace Flexagonator {
       return (whichVertex + 2) % 3;
     }
 
-    // generate the structure necessary to perform this flex, and keep track of how leaves get split
+    // generate the structure necessary to perform this flex, and keep track of new subpats
     // note: it doesn't actually apply the flex
-    createPattern(flexagon: Flexagon): [Flexagon, Split[]] {
+    createPattern(flexagon: Flexagon): [Flexagon, Pat[]] {
       const newPats: Pat[] = [];
-      const splits: Split[] = [];
+      const splits: Pat[] = [];
       let nextId = flexagon.getLeafCount() + 1;
       for (let i in this.pattern) {
         const newPat = flexagon.pats[i].createPattern(this.pattern[i], () => { return nextId++; }, splits);

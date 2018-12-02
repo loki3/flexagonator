@@ -7,12 +7,6 @@ namespace Flexagonator {
     FoundFlipped,
   }
 
-  /** info about a leaf that was split in order to permit a flex */
-  export interface Split {
-    readonly topId: number;     // id that was preserved
-    readonly bottomId: number;  // new id that corresponded to -id
-  }
-
   /*
     A single pat (stack of polygons) in a flexagon
   */
@@ -33,8 +27,8 @@ namespace Flexagonator {
     hasPattern(pattern: LeafTree): boolean;
     // returns an array where the index is the pattern number from the input
     matchPattern(pattern: LeafTree): Pat[] | PatternError;
-    // create structure necessary to support pattern, tracking split leaves
-    createPattern(pattern: LeafTree, getNextId: () => number, splits: Split[]): Pat;
+    // create structure necessary to support pattern, tracking new subpats split from single leaves
+    createPattern(pattern: LeafTree, getNextId: () => number, splits: Pat[]): Pat;
     // fill in all 0's with an incremented counter
     replaceZeros(getNextId: () => number): Pat;
   }
@@ -142,7 +136,7 @@ namespace Flexagonator {
       return match;
     }
 
-    createPattern(pattern: LeafTree, getNextId: () => number, splits: Split[]): Pat {
+    createPattern(pattern: LeafTree, getNextId: () => number, splits: Pat[]): Pat {
       if (typeof (pattern) === "number") {
         return this.makeCopy();
       }
@@ -157,8 +151,9 @@ namespace Flexagonator {
       });
       const newRight = this.subCreate(patternArray[1], getNextId);
 
-      splits.push({ topId: this.id, bottomId: newRight.getBottom() });
-      return new PatPair(newLeft, newRight);
+      const newpat = new PatPair(newLeft, newRight);
+      splits.push(newpat);
+      return newpat;
     }
 
     // recurse through 'pattern', creating substructure as needed
@@ -276,7 +271,7 @@ namespace Flexagonator {
       return { expected: pattern, actual: [this.left, this.right] };
     }
 
-    createPattern(pattern: LeafTree, getNextId: () => number, splits: Split[]): Pat {
+    createPattern(pattern: LeafTree, getNextId: () => number, splits: Pat[]): Pat {
       if (typeof (pattern) === "number") {
         return this.makeCopy();
       }

@@ -82,7 +82,7 @@ namespace Flexagonator {
         { front: {}, back: {} }
       ];
       const props = new PropertiesForLeaves(propArray);
-      props.adjustForSplit({ topId: 1, bottomId: -2 });
+      props.adjustForSplit(1, -2);
 
       expect(props.getColorProp(1)).toBe(123);
       expect(props.getColorProp(-1)).toBe(undefined);

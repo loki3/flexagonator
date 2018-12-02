@@ -198,7 +198,7 @@ namespace Flexagonator {
       { // original=1, pattern=3  =>  1
         const pat = makePat(1) as Pat;
         const pattern = 3;
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return 2; }, splits);
         expect(result.getAsLeafTree()).toBe(1);
         expect(splits.length).toBe(0);
@@ -206,7 +206,7 @@ namespace Flexagonator {
       { // original=[1,2], pattern=3  => [1,2]
         const pat = makePat([1, 2]) as Pat;
         const pattern = 3;
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return 3; }, splits);
         const pair = result.getAsLeafTree() as any[];
         expect(pair[0]).toBe(1);
@@ -216,7 +216,7 @@ namespace Flexagonator {
       { // original=[1,2], pattern=[3,4]  => [1,2]
         const pat = makePat([1, 2]) as Pat;
         const pattern = [3, 4];
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return 3; }, splits);
         const pair = result.getAsLeafTree() as any[];
         expect(pair[0]).toBe(1);
@@ -231,33 +231,33 @@ namespace Flexagonator {
       { // original=1, pattern=[3,4]  => [1,5]
         const pat = makePat(1) as Pat;
         const pattern = [3, 4];
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return 5; }, splits);
         const pair = result.getAsLeafTree() as any[];
         expect(pair[0]).toBe(1);
         expect(pair[1]).toBe(5);
         expect(splits.length).toBe(1);
-        expect(splits[0].topId).toBe(1);
-        expect(splits[0].bottomId).toBe(-5);
+        expect(splits[0].getTop()).toBe(1);
+        expect(splits[0].getBottom()).toBe(-5);
       }
       { // original=[1,2], pattern=[3,[4,5]]  => [1,[2,6]]
         const pat = makePat([1, 2]) as Pat;
         const pattern = [3, [4, 5]];
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return 6; }, splits);
         const tree = result.getAsLeafTree() as any[];
         expect(tree[0]).toBe(1);
         expect(tree[1][0]).toBe(2);
         expect(tree[1][1]).toBe(6);
         expect(splits.length).toBe(1);
-        expect(splits[0].topId).toBe(2);
-        expect(splits[0].bottomId).toBe(-6);
+        expect(splits[0].getTop()).toBe(2);
+        expect(splits[0].getBottom()).toBe(-6);
       }
       { // original=1, pattern=[[2,3],[4,5]]  => [[1,6],[7,8]]
         const pat = makePat(1) as Pat;
         const pattern = [[2, 3], [4, 5]];
         let next = 6;
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return next++; }, splits);
         const tree = result.getAsLeafTree() as any[];
         expect(tree[0][0]).toBe(1);
@@ -265,28 +265,28 @@ namespace Flexagonator {
         expect(tree[1][0]).toBe(7);
         expect(tree[1][1]).toBe(8);
         expect(splits.length).toBe(1);
-        expect(splits[0].topId).toBe(1);
-        expect(splits[0].bottomId).toBe(-8);
+        expect(splits[0].getTop()).toBe(1);
+        expect(splits[0].getBottom()).toBe(-8);
       }
       { // original=1, pattern=[[2,3],4]]  => [[1,6],7]
         const pat = makePat(1) as Pat;
         const pattern = [[2, 3], 4];
         let next = 6;
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return next++; }, splits);
         const tree = result.getAsLeafTree() as any[];
         expect(tree[0][0]).toBe(1);
         expect(tree[0][1]).toBe(6);
         expect(tree[1]).toBe(7);
         expect(splits.length).toBe(1);
-        expect(splits[0].topId).toBe(1);
-        expect(splits[0].bottomId).toBe(-7);
+        expect(splits[0].getTop()).toBe(1);
+        expect(splits[0].getBottom()).toBe(-7);
       }
       { // original=[1,2], pattern=[[3,4],[5,6]]  => [[1,7],[2,8]]
         const pat = makePat([1, 2]) as Pat;
         const pattern = [[3, 4], [5, 6]];
         let next = 7;
-        const splits: Split[] = [];
+        const splits: Pat[] = [];
         const result = pat.createPattern(pattern, () => { return next++; }, splits);
         const tree = result.getAsLeafTree() as any[];
         expect(tree[0][0]).toBe(1);
@@ -294,10 +294,10 @@ namespace Flexagonator {
         expect(tree[1][0]).toBe(2);
         expect(tree[1][1]).toBe(8);
         expect(splits.length).toBe(2);
-        expect(splits[0].topId).toBe(1);
-        expect(splits[0].bottomId).toBe(-7);
-        expect(splits[1].topId).toBe(2);
-        expect(splits[1].bottomId).toBe(-8);
+        expect(splits[0].getTop()).toBe(1);
+        expect(splits[0].getBottom()).toBe(-7);
+        expect(splits[1].getTop()).toBe(2);
+        expect(splits[1].getBottom()).toBe(-8);
       }
     });
   });

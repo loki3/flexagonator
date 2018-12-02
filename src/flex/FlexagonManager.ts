@@ -81,7 +81,7 @@ namespace Flexagonator {
         return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
 
-      splits.forEach(split => this.leafProps.adjustForSplit(split));
+      splits.forEach(split => this.leafProps.adjustForSplit(split.getTop(), split.getBottom()));
 
       if (flexName.shouldGenerate && this.flexagon.getLeafCount() !== result.getLeafCount()) {
         // whenever we add new structure, start tracking over again
