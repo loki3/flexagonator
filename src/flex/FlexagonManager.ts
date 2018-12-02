@@ -8,6 +8,7 @@ namespace Flexagonator {
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     flexesToSearch: Flexes;
+    interpolateNewLeaves: boolean = false;
     private angleInfo: FlexagonAngles = new FlexagonAngles(60, 60);
     private tracker: Tracker;
     private readonly history: History;
@@ -81,7 +82,11 @@ namespace Flexagonator {
         return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
 
-      splits.forEach(split => this.leafProps.adjustForSplit(split.getTop(), split.getBottom()));
+      if (this.interpolateNewLeaves) {
+        splits.forEach(split => interpolateLeaves(split, this.leafProps));
+      } else {
+        splits.forEach(split => this.leafProps.adjustForSplit(split.getTop(), split.getBottom()));
+      }
 
       if (flexName.shouldGenerate && this.flexagon.getLeafCount() !== result.getLeafCount()) {
         // whenever we add new structure, start tracking over again
