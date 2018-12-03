@@ -8,7 +8,7 @@ namespace Flexagonator {
     leafProps: PropertiesForLeaves;
     readonly allFlexes: Flexes;
     flexesToSearch: Flexes;
-    interpolateNewLeaves: boolean = false;
+    interpolateNewLeaves?: 'never' | 'justColor' | 'colorAndLabel' = undefined;
     private angleInfo: FlexagonAngles = new FlexagonAngles(60, 60);
     private tracker: Tracker;
     private readonly history: History;
@@ -82,8 +82,8 @@ namespace Flexagonator {
         return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
 
-      if (this.interpolateNewLeaves) {
-        splits.forEach(split => interpolateLeaves(split, this.leafProps));
+      if (this.interpolateNewLeaves === 'colorAndLabel' || this.interpolateNewLeaves === 'justColor') {
+        splits.forEach(split => interpolateLeaves(split, this.leafProps, this.interpolateNewLeaves === 'colorAndLabel'));
       } else {
         splits.forEach(split => this.leafProps.adjustForSplit(split.getTop(), split.getBottom()));
       }

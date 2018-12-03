@@ -1,17 +1,19 @@
 namespace Flexagonator {
 
   // label & color new leaves by interpolating between the values on the old leaves
-  export function interpolateLeaves(pat: Pat, props: PropertiesForLeaves) {
+  export function interpolateLeaves(pat: Pat, props: PropertiesForLeaves, doLabels?: boolean) {
     // e.g. when from 'a' to [a,b], where each letter is an id and has top & bottom properties
     // {top,bottom} -> [{top,(top+bottom)/2}, {(top+bottom)/2,bottom}]
     // {a,b} -> [{a,(a+b)/2}, {(a+b)/2,b}]
     const oldId = pat.getTop();
 
-    const topLabel = getLabelAsNumber(props, oldId);
-    const bottomLabel = getLabelAsNumber(props, -oldId);
-    if (topLabel !== undefined && bottomLabel !== undefined) {
-      recurse(topLabel, bottomLabel, pat.getAsLeafTree(),
-        (id: number, v: number) => props.setLabelProp(id, v.toString()));
+    if (doLabels) {
+      const topLabel = getLabelAsNumber(props, oldId);
+      const bottomLabel = getLabelAsNumber(props, -oldId);
+      if (topLabel !== undefined && bottomLabel !== undefined) {
+        recurse(topLabel, bottomLabel, pat.getAsLeafTree(),
+          (id: number, v: number) => props.setLabelProp(id, v.toString()));
+      }
     }
 
     const topColor = props.getColorProp(oldId);

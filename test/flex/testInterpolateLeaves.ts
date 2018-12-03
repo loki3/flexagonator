@@ -7,7 +7,7 @@ namespace Flexagonator {
       ];
       const pfl = new PropertiesForLeaves(props);
       const split = makePat([1, 2]) as Pat;
-      interpolateLeaves(split, pfl);
+      interpolateLeaves(split, pfl, true);
 
       expect(pfl.getFaceLabel(1)).toBe("1");
       expect(pfl.getColorProp(1)).toBe(3);

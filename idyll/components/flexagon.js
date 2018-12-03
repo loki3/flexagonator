@@ -81,6 +81,7 @@ const FlexButtons = (props) => {
  *  script        a flexagonator script to run on the current flexagon (either objects or a string)
  *  options       options used when drawing (passed to drawEntireFlexagon)
  *  overButton    true to include a button for turning over the flexagon
+ *  interpolate   undefined | 'never' | 'justColor' | 'colorAndLabel' - interpolate new leaf properties - default: undefined
  *  width         width of canvas to draw in
  *  height        height of canvas to draw in
  *  history       a read-only property reflecting all the flexes applied to the flexagon
@@ -100,8 +101,11 @@ class Flexagon extends React.Component {
     super(props);
     this.handleFlexes = this.handleFlexes.bind(this);
 
-    var script = this.buildScript(props);
-    var fm = Flexagonator.runScript(null, script);
+    const script = this.buildScript(props);
+    const fm = Flexagonator.runScript(null, script);
+    if (props.interpolate !== undefined) {
+      fm.interpolateNewLeaves = props.interpolateNewLeaves;
+    }
     this.updateHistoryProps(fm);
     const generate = this.props.options ? this.props.options.generate : false;
     const regions = Flexagonator.getButtonRegions(fm, props.width, props.height, true, generate);
@@ -159,6 +163,9 @@ class Flexagon extends React.Component {
 
   applyScript(script) {
     const fm = Flexagonator.runScript(this.state.fm, script);
+    if (this.props.interpolate !== undefined) {
+      fm.interpolateNewLeaves = this.props.interpolateNewLeaves;
+    }
     if (Flexagonator.isFlexError(fm)) {
       this.props.updateProps({ error: 'error in flex sequence' });
       return null;
