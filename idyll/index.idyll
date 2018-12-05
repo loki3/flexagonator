@@ -106,17 +106,25 @@ Other flexes may have something like `[i,i+1]` to indicate two leaves in a pat.
 For example, if `n=7`, then the final pat of the resulting flexagon (`[-(n-4),-(n-1)]`) would be `[-3,-6]`.
 
 
+# How to fold
+
+The section for every flex shows what the unfolded strip looks like, even as you switch between different types of flexagons.
+The following are general instructions for creating a real working flexagon from the strips:
+
+[HowToFold /]
+
+
 [a name:'Rotations'/]
-# Rotations
+# *Rotations*
 
 *Rotations* simply change the *current vertex*, i.e. the vertex where the next flex starts.
 
 * `<`: Shift the current vertex one step counterclockwise (to the left if the current vertex is at the top)
 * `>`: Shift the current vertex one step clockwise (to the right if the current vertex is at the top)
-* '^': Turn over the flexagon, keep the same current vertex
+* `^`: Turn over the flexagon, keep the same current vertex
 
 
-# Triangle flexes
+# *Triangle flexes*
 
 [hr/]
 [a name:'F'/]
