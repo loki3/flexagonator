@@ -82,6 +82,15 @@ namespace Flexagonator {
     });
   });
 
+  describe('getStructureById', () => {
+    it('should include just the portion of a pat that includes the specified ids', () => {
+      const original = [[-12, [-2, [-11, 13]]], [1, [3, [4, 5]]]];
+      const pat = makePat(original) as Pat;
+      const result = pat.getStructureLTEId(2);
+      expect(result).toBe("[[: [-2 :]] [1 :]]");
+    });
+  });
+
   describe('getString', () => {
     it('should return a string representing the leaves & structure of the pat', () => {
       const original = [[-12, [-2, [-11, 13]]], 9];

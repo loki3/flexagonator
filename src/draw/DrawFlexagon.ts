@@ -1,7 +1,13 @@
 namespace Flexagonator {
 
+  export enum StructureType {
+    None,
+    All,
+    TopIds,  // only show structure when id <= numpats
+  }
+
   export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon,
-    props: PropertiesForLeaves, front: boolean, patstructure: boolean, showids: boolean) {
+    props: PropertiesForLeaves, front: boolean, patstructure: StructureType, showids: boolean) {
 
     const markerText = polygon.radius / 6;
     const largeText = polygon.radius / 8;
@@ -22,8 +28,8 @@ namespace Flexagonator {
     if (showids && props !== undefined) {
       drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), ids);
     }
-    if (patstructure) {
-      drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon);
+    if (patstructure !== StructureType.None) {
+      drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon, patstructure);
     }
   }
 
@@ -72,10 +78,16 @@ namespace Flexagonator {
     ctx.font = fontsize.toString() + "px sans-serif";
   }
 
-  function drawPatStructures(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], flexagon: Flexagon) {
+  function drawPatStructures(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], flexagon: Flexagon, patstructure: StructureType) {
+    if (patstructure === StructureType.None) {
+      return;
+    }
     setTextProps(ctx, fontsize);
     for (let i = 0; i < flexagon.getPatCount(); i++) {
-      const structure: string = flexagon.pats[i].getStructure();
+      const pat = flexagon.pats[i];
+      const structure: string = patstructure === StructureType.All
+        ? pat.getStructure()
+        : pat.getStructureLTEId(flexagon.getPatCount());
       ctx.fillText(structure, centers[i * 2], centers[i * 2 + 1]);
     }
   }

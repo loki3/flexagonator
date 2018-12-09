@@ -15,6 +15,7 @@ namespace Flexagonator {
     readonly both?: boolean;        // draw both front & back - default: false (front)
     readonly stats?: boolean;       // show stats - default: false
     readonly structure?: boolean;   // show pat structure - default: false
+    readonly structureTopIds?: boolean; // show pat structure that includes ids <= numpats - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
     readonly showIds?: boolean;     // show leaf ids - default: true
     readonly generate?: boolean;    // include every flex with * added - default: false
@@ -55,12 +56,12 @@ namespace Flexagonator {
     const showFront = (options.back === undefined || !options.back);
     const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront);
 
-    const showStructure = (options.structure !== undefined && options.structure);
+    const showStructure = getStructureType(options);
     const showIds = (options.showIds === undefined || options.showIds);
     drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds);
     if (options.both) {
       const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
-      drawFlexagon(ctx, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, false/*showStructure*/, false/*showIds*/);
+      drawFlexagon(ctx, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);
     }
     if (options.stats !== undefined && options.stats) {
       drawStatsText(ctx, objects.flexagon, objects.angleInfo);
@@ -68,6 +69,13 @@ namespace Flexagonator {
 
     const generate = (options.generate !== undefined && options.generate);
     return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, generate, polygon);
+  }
+
+  function getStructureType(options?: DrawFlexagonOptions): StructureType {
+    if (options === undefined) {
+      return StructureType.None
+    }
+    return options.structure ? StructureType.All : (options.structureTopIds ? StructureType.TopIds : StructureType.None);
   }
 
   // draw the possible flexes and return buttons describing them

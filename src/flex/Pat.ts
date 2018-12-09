@@ -19,6 +19,7 @@ namespace Flexagonator {
     getBottom(): number;
     getThickness(): number;
     getStructure(): string;
+    getStructureLTEId(id: number): string;
     getString(): string;
     findId(id: number): WhereLeaf;
     findMinId(): number;  // min(abs(id))
@@ -101,6 +102,11 @@ namespace Flexagonator {
 
     getStructure(): string {
       return '-';
+    }
+
+    getStructureLTEId(id: number): string {
+      const thisId = Math.abs(this.id);
+      return thisId <= id ? this.id.toString() : '';
     }
 
     getString(): string {
@@ -207,6 +213,15 @@ namespace Flexagonator {
 
     getStructure(): string {
       return '[' + this.left.getStructure() + ' ' + this.right.getStructure() + ']';
+    }
+
+    getStructureLTEId(id: number): string {
+      const left = this.left.getStructureLTEId(id);
+      const right = this.right.getStructureLTEId(id);
+      if (left === '' && right === '') {
+        return '';
+      }
+      return '[' + (left === '' ? ':' : left) + ' ' + (right === '' ? ':' : right) + ']';
     }
 
     getString(): string {

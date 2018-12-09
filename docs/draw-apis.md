@@ -41,6 +41,7 @@ such as whether to draw the front or back, and whether to display useful statist
   both: true,        // boolean: default false, draw both front & back
   stats: true,       // boolean: default false, show stats such as the number of leaves
   structure: true,   // boolean: default false, show internal structure of each pat
+  structureTopIds:   // boolean: default false, show pat structure that includes ids <= numpats
   drawover: true,    // boolean: default false, draw over canvas or clear first
   showIds: true,     // boolean: default true, show leaf ids
   generate: true,    // boolean: default false, include every flex with * added, e.g. P*
