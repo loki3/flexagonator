@@ -160,30 +160,36 @@ namespace Flexagonator {
       const y2 = p.y + len * 0.22;
 
       ctx.fillStyle = "black";
-      ctx.textAlign = "right";
-      ctx.font = len / 5 + "px sans-serif";
       const toplabel = props.getFaceLabel(face.leaf.id);
       if (toplabel) {
+        ctx.textAlign = "right";
+        ctx.font = len / 5 + "px sans-serif";
         ctx.fillText(toplabel, p.x, y);
       }
 
-      ctx.textAlign = "left";
-      ctx.font = len / 8 + "px sans-serif";
       const bottomlabel = props.getFaceLabel(-face.leaf.id);
       if (bottomlabel) {
+        ctx.textAlign = "left";
+        ctx.font = len / 8 + "px sans-serif";
         ctx.fillText(" " + bottomlabel, p.x, y);
       }
 
       ctx.fillStyle = "#999999";
-      ctx.textAlign = "right";
-      ctx.font = len / 8 + "px sans-serif";
-      const toplabel2 = (useId ? face.leaf.id.toString() : face.leaf.top.toString());
-      ctx.fillText(toplabel2, p.x, y2);
+      // this logic is intended to make it so LeafLabels doesn't display folding numbers if there are leaf properties,
+      // but LabelsAndFolding will always display the folding numbers
+      if (!toplabel || !useId) {
+        ctx.textAlign = "right";
+        ctx.font = len / 8 + "px sans-serif";
+        const toplabel2 = (useId ? face.leaf.id.toString() : face.leaf.top.toString());
+        ctx.fillText(toplabel2, p.x, y2);
+      }
 
-      ctx.textAlign = "left";
-      ctx.font = len / 11 + "px sans-serif";
-      const bottomlabel2 = (useId ? (-face.leaf.id).toString() : face.leaf.bottom.toString());
-      ctx.fillText(" " + bottomlabel2, p.x, y2);
+      if (!bottomlabel || !useId) {
+        ctx.textAlign = "left";
+        ctx.font = len / 11 + "px sans-serif";
+        const bottomlabel2 = (useId ? (-face.leaf.id).toString() : face.leaf.bottom.toString());
+        ctx.fillText(" " + bottomlabel2, p.x, y2);
+      }
     }
   }
 
