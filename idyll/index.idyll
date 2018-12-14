@@ -16,36 +16,38 @@
 [Aside]
 ### Flexes:
 
-[link text:'> < ^: rotations' url:'#Rotations' /][br/]
-[link text:'F: flip flex' url:'#F' /][br/]
-[link text:'Sh : pyramid shuffle flex' url:'#Sh' /][br/]
-[link text:'St : silver tetra flex' url:'#St' /][br/]
-[link text:'Tk : ticket flex' url:'#Tk' /][br/]
-[link text:'Tw : twist flex' url:'#Tw' /][br/]
-[link text:'V : v-flex' url:'#V' /][br/]
-[br/]
+rotations:
+* [link text:'> < ^' url:'#Rotations' /]
+various flexes:
+* [link text:'F: flip flex' url:'#F' /]
+* [link text:'Sh : pyramid shuffle flex' url:'#Sh' /]
+* [link text:'St : silver tetra flex' url:'#St' /]
+* [link text:'Tk : ticket flex' url:'#Tk' /]
+* [link text:'Tw : twist flex' url:'#Tw' /]
+* [link text:'V : v-flex' url:'#V' /]
 pinch flexes:
-* [link text:'P : pinch flex' url:'#P' /][br/]
+* [link text:'P : pinch flex' url:'#P' /]
 * [link text:'P44' url:'#P44' /], [link text:'P55' url:'#P55' /], [link text:'P66' url:'#P66' /]
 * [link text:'P333' url:'#P333' /], [link text:'P334' url:'#P334' /], [link text:'P444' url:'#P444' /]
 * [link text:'P3333' url:'#P3333' /]
 slot flexes:
-* [link text:'L3 : slot triple pocket flex' url:'#L3' /][br/]
-* [link text:'Lh : slot half flex' url:'#Lh' /][br/]
-* [link text:'Lk : slot pocket' url:'#Lk' /][br/]
-* [link text:'Lbf : slot tuck bottom front flex' url:'#Lbf' /][br/]
-* [link text:'Lbb : slot tuck bottom back flex' url:'#Lbb' /][br/]
-* [link text:'Ltf : slot tuck top front flex' url:'#Ltf' /][br/]
-* [link text:'Ltb : slot tuck top back flex' url:'#Ltb' /][br/]
+* [link text:'L3 : slot triple pocket flex' url:'#L3' /]
+* [link text:'Lh : slot half flex' url:'#Lh' /]
+* [link text:'Lk : slot pocket' url:'#Lk' /]
+* [link text:'Lbf : slot tuck bottom front flex' url:'#Lbf' /]
+* [link text:'Lbb : slot tuck bottom back flex' url:'#Lbb' /]
+* [link text:'Ltf : slot tuck top front flex' url:'#Ltf' /]
+* [link text:'Ltb : slot tuck top back flex' url:'#Ltb' /]
 tuck flexes:
-* [link text:'T, T1, T2... : tuck flex' url:'#T' /][br/]
-* [link text:'Tf : forced tuck' url:'#Tf' /][br/]
-* [link text:'Ttf : tuck top front flex' url:'#Ttf' /][br/]
+* [link text:'T, T1, T2... : tuck flex' url:'#T' /]
+* [link text:'Tf : forced tuck' url:'#Tf' /]
+* [link text:'Ttf : tuck top front flex' url:'#Ttf' /]
 [/Aside]
 
 This is a collection of flexes that work on triangle flexagons,
 some of which also work on flexagons made up of squares, pentagons, etc.
-It is not intended to be a complete list.
+
+*Note: This is not intended to be a complete list.*
 
 
 # Flex Details
@@ -60,11 +62,11 @@ This lists whether or not the flex is prime relative to the rest of the flexes o
 
 ## Inverse
 
-For most flexes `A`, the following equality is true: `A' = ^A^`,
-i.e. doing the inverse is the same as turning it over, doing the flex, then turning it back over.
+For a given flex `A`, the following equality is often true: `A' = ^A^`,
+i.e. doing flex in reverse is the same as turning it over, doing the flex, then turning it back over.
 But for some flexes the before and after structures are different enough that this doesn't hold.
-The simplest way to figure out if this is true, is to use the Flexagon Simulator in the [Flexagon Playground](playground.html).
-First try the generating sequence `A*`.
+The simplest way to figure out if this is true is to use the Flexagon Simulator in the [Flexagon Playground](playground.html).
+First try the generating sequence `A*`, which creates the necessary structure for the flex and performs the flex.
 Then compare that to the flexagon you get from the generating seuqence `A*^A*^`.
 If they both create a flexagon with the same number of leaves, then `A' = ^A^`, otherwise `A' != ^A^`.
 
@@ -86,13 +88,13 @@ For example, the flip flex needs 4 more leaves than there are pats, described as
 
 ## Special requirements
 
-Some flexes may need something additional in order to work.
+Some flexes may have additional requirements of the flexagon in order to work.
 For example, the *silver tetra flex* works best on *right triangle flexagons*, and may not work on some flexagons.
 More details on these requirements can be found on the [New Flexes](new-flexes.html) page under *More details*.
 
 ## Flex definition
 
-Each section contains the flex definition as defined using *pat notation* as described in the [New Flexes](new-flexes.html) chapter.
+Each section contains the flex definition using *pat notation* as described in the [New Flexes](new-flexes.html) chapter.
 Flexes that apply to a range of different numbers of pats use a generalized form.
 For example, the following is the definition for the *flip flex*:
 
@@ -114,6 +116,8 @@ The following are general instructions for creating a real working flexagon from
 [HowToFold /]
 
 
+[FullWidth][hr/][/FullWidth]
+
 [a name:'Rotations'/]
 # *Rotations*
 
@@ -130,7 +134,8 @@ The following are general instructions for creating a real working flexagon from
 [a name:'F'/]
 [h2 className:"flex"]F: flip flex[/h2]
 
-This flex works especially well on flexagons with right angles, though only at the "points" of the flexagon.
+This flex works especially well on flexagons with right angles, though only at the "points" of the bounding polygon,
+not at the vertices in the middle of an edge.
 The heptaflexagon, with 7 pats, has just enough freedom to be able to do the flip flex,
 though it can be tricky to carry out if you haven't done it before.
 
@@ -162,7 +167,8 @@ though it can be tricky to carry out if you haven't done it before.
 [Aside]
   [Slides width:320 height:240 pattern:'static/L3/*.jpg' start:1 end:37 /]
 
-  TO DO: Does this flex generalize beyond the pentaflexagon?
+  [br/]
+  TO DO: Generalize
 [/Aside]
 
 [Table data: `[
