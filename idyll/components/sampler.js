@@ -8,14 +8,14 @@ const Unfolded = require('./unfolded');
  * props {
  *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
  *  patType     default number of pats in the flexagon, typically in the range [4, 12], plus optional angleType
- *              'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
+ *              'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2, 'e': equilateral
  *  patOptions  array of different patTypes that can be switched between
  *  split       [optional] draw the unfolded strip in 2 pieces, split at the given leaf; could be a number or array
  *  scale       [optional] use the given scale for both strips; could be a number or array
  * }
  * state {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
- *  angleType   'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2
+ *  angleType   'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2, 'e': equilateral
  *  angles      [center angle, clockwise angle]
  *  actualAngles the angles may get rotated as a result of various flexes - use these for the unfolded flexagon
  *  selected    which of the patOptions is currently selected
@@ -181,7 +181,7 @@ class Sampler extends React.Component {
 
 // input: a number or a string that consists of a number followed by 'r' or 'R' for right triangles
 //    or 's' or 'S' for stars - an upper case letter rotates the flexagon by one vertex
-// output: [number, 'i' | 'r' | 'R' | 's' | 'S']
+// output: [number, 'i' | 'r' | 'R' | 's' | 'S' | 'e']
 function valueToNumberAndType(value) {
   let numPats = 6;
   let angleType = 'i';  // isosceles
@@ -192,7 +192,7 @@ function valueToNumberAndType(value) {
     numPats = parseInt(value);
 
     const which = value[value.length - 1];
-    if (which === 'r' || which === 'R' || which === 's' || which === 'S') {
+    if (which === 'r' || which === 'R' || which === 's' || which === 'S' || which === 'e') {
       // right triangle or star
       angleType = which;
     }
@@ -201,6 +201,9 @@ function valueToNumberAndType(value) {
 }
 
 function typeToAngles(numPats, angleType) {
+  if (angleType === 'e') {
+    return [60, 60];
+  }
   switch (numPats) {
     case 4: return angleType === 'r' ? [90, 45] : undefined;
     case 5: return undefined;
@@ -217,6 +220,7 @@ function typeToAngles(numPats, angleType) {
 function getNumPatsText(n) {
   switch (n) {
     case 4: return "4: tetraflexagon";
+    case '4e': return "4: tetraflexagon";
     case '4r': return "4: silver tetraflexagon #1";
     case '4R': return "4: silver tetraflexagon #2";
     case 5: return "5: pentaflexagon";
