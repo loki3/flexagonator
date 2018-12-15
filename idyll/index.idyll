@@ -61,6 +61,18 @@ Here is more background on some of those details.
 
 This lists whether or not the flex is prime relative to the rest of the flexes on this page, excluding the [a href:'#Tf']*forced tuck*[/a].
 
+Prime flexes by number of pats:
+
+* 4: [link text:'P' url:'#P' /]
+* 5: [link text:'L3' url:'#L3' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /]
+* 6: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Ltb' url:'#Ltb' /], [link text:"Ltb'" url:'#Ltb' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'V' url:'#V' /]
+* 7: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
+* 8: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
+* 9: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
+* 10: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
+* 11: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
+* 12: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
+
 ## Inverse
 
 For a given flex `A`, the following equality is often true: `A' = ^A^`,
@@ -374,7 +386,7 @@ where you skip more than one vertex between pinches.
 * out: `[ -1, [5,-3] ... -i, [i+4,-(i+2)], ... -(n-2), [2,-n] ]`
 [/FullWidth]
 
-[Sampler generator:'P+' patType:6 patOptions:`[6, '6r', 8, '8r', 10, '10r', 12, '12r']` /]
+[Sampler generator:'P+' patType:6 patOptions:`['4e', 6, '6r', 8, '8r', 10, '10r', 12, '12r']` /]
 
 
 [hr/]
