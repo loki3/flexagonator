@@ -48,6 +48,7 @@ This is a collection of flexes that work on triangle flexagons,
 some of which also work on flexagons made up of squares, pentagons, etc.
 
 *Note: This is not intended to be a complete list.*
+There are other variants, other flexes, and other types of flexagons.
 
 
 # Flex Details
@@ -495,6 +496,8 @@ where you skip more than one vertex between pinches.
 
 [Aside]
   [Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
+
+  TO DO: Describe variant
 [/Aside]
 
 [Table data: `[
@@ -576,9 +579,11 @@ a number is tacked on to `T` to indicate which vertex, e.g. `T1`, `T2`, etc.
 [a name:'Tf'/]
 [h2 className:"flex"]Tf: forced tuck[/h2]
 
-The forced tuck requires you to modify the flexagon in some way,
+The forced tuck is of theoretical interest more than practical,
+since it requires you to modify the flexagon in some way,
 either trimming off large portions or damaging it as you try to flex.
-It's the same as the tuck flex but without the additional flap that allows you to open up the flexagon.
+It's the same as the tuck flex but without the additional flap that allows you to open up the flexagon,
+thus it's useful if you're trying to explore every state of a given flexagon that's reachable via flexes.
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
@@ -693,6 +698,7 @@ This flex works best when the leaves are isosceles triangles, with one of the eq
 [Aside]
   [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
 
+  TO DO: Describe some of the variants
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
