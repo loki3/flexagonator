@@ -623,6 +623,8 @@ thus it's useful if you're trying to explore every state of a given flexagon tha
 The *tuck top front flex* is the same as the tuck flex except that you open it up from the front rather than the back.
 
 [Aside]
+  [Slides width:423 height:240 pattern:'static/Ttf/*.jpg' start:1 end:13 /]
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
@@ -649,9 +651,12 @@ The *tuck top front flex* is the same as the tuck flex except that you open it u
 
 The *ticket flex* gets its name from the partial flexes used in it: `T'KKT`.
 You start with an inverse tuck `T'`, but instead of opening it all the way,
-you do a pair of pocket flexes `K`, and finally a tuck `T`.
+you do a pair of pocket flexes `K`, and finally open it up as you would a `Ttf`.
+There are variants where you start with a `T'` or `Ttf'` and end by opening it up
+as you would a `T` or `Ttf`.
 
 [Aside]
+  [Slides width:423 height:240 pattern:'static/Tk/*.jpg' start:1 end:31 /]
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
