@@ -181,6 +181,17 @@
 [hr /]
 
 
+[a href:'references.html']
+  [div className:'heading'] Flexagon References [/div]
+  [div className:'subname'] Sources for additional flexagon information [/div]
+[/a]
+
+* Bibliography for papers and publications
+* Additional references
+
+[hr /]
+
+
 For additional information, see [loki3.com](http://loki3.com/flex/).
 
 [FullWidth]
