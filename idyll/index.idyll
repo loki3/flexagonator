@@ -1,6 +1,19 @@
-# References
+[meta title:"Flexagon References" description:"Sources for additional flexagon information" /]
 
-## Papers and publications
+[Aside]
+  [br/]
+  Main content:[br/]
+  [Explorable Flexagons](index.html)
+[/Aside]
+
+[Header
+  title:"Flexagon References"
+  subtitle:"Sources for additional flexagon information"
+  authorLink:"http://loki3.com/flex" /]
+
+[hr/]
+
+# Papers and publications
 
 [Biblio author:'Anderson, Thomas; McLean, T. Bruce; Pajoohesh, Homeira; Smith, Chasen'
   title:'The combinatorics of all regular flexagons'
@@ -82,7 +95,7 @@
   link:'https://www.springer.com/us/book/9789048125029' /]
 
 [Biblio author:'Sherman, Scott'
-  title:'Flex Theory, G4G11'
+  title:'Flex Theory, G4G10'
   date:'March 2012'
   link:'http://loki3.com/flex/g4g10/Flex-Theory.pdf' /]
 
@@ -92,7 +105,7 @@
   link:'https://www.jstor.org/stable/3608342?seq=1#page_scan_tab_contents' /]
 
 
-## Other resources
+# Other resources
 
 [Biblio author:'De Queioroz, Antonio'
  title:'The HexaFind Program'
@@ -112,3 +125,14 @@
 [Biblio author:'Sherman, Scott'
   title:'Flexagons'
   link:'http://loki3.com/flex' /]
+
+
+[hr /]
+
+[FullWidth]
+  [a href:'http://loki3.com/flex/' ]
+  [img src:'static/flexagon-variety.jpg' /]
+  [/a]
+[/FullWidth]
+
+[Copyright/]
