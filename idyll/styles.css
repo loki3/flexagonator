@@ -16,3 +16,13 @@ h2.flex {
   font-weight: bold;
   color: #8a181e;
 }
+
+div.biblio {
+  padding-left:20px;
+  text-indent: -20px;
+}
+
+span.biblio-title {
+  font-style: italic;
+  font-weight: bold;
+}
