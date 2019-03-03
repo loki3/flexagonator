@@ -63,6 +63,7 @@ What's the minimal amount of structure necessary you need to add to allow you to
 
 The answer is that every other *pat* (i.e. stack of triangles in the folded flexagon) needs to have exactly two leaves in it.
 This gives you the 9-triangle straight strip that folds into the 3-sided hexaflexagon.
+(Recall that the large numbers go on the front of the strip and the small numbers on the back.)
 
 [Unfolded width:800 height:150 numPats:6 generator:'P+' autoLabel:true /]
 
@@ -107,18 +108,21 @@ the [flexagon intro](http://loki3.com/flex/explore/pinch-flex.html) chapter.
 First, let's get a feel for how different flexes travel around the pinch flex state diagram that we saw in that chapter.
 Let's say we've done a pinch flex, taking us from the green circle in the adjacent diagram to the red circle.
 
-We can now step in one of three directions, depending on what we do next:
+We can now step in one of four directions, depending on what we do next:
 
-* If we do another pinch flex (`P`) at the same corner, it'll take us another step to the right.
-* If we instead shift the current vertex one to the right before doing a pinch flex (`>P`), we'll take a step down to the left.
-* If we turn over the flexagon, shift one vertex to the right, and then do a pinch flex (`^>P`), it takes us up and to the right.
+* If we do another pinch flex (`P`) at the same corner, it'll take us another step in the same direction, traveling along the adjacent triangle.
+* If we instead shift the current vertex one to the right before doing a pinch flex (`>P`), we'll step clockwise around the same triangle.
+* If we turn over the flexagon, shift one vertex to the right, and then do a pinch flex (`^>P`), our path will take a slight left turn onto the adjacent triangle.
+* If we do the pinch flex in reverse (`P'`) or turn over the flexagon and do a pinch flex (`^P`), we return back to where we started
 
 The one other thing to know is that once you travel along a *single* edge of a triangle in the pinch flex state diagram,
 all the structure necessary to allow you to pinch flex along any of the other edges of that triangle must be present.
 
 Put those facts together, and that means that applying the generating sequence `P*P*` will create exactly those two triangles in the above diagram.
 Alternately, you could use `P*^>P*` to accomplish the same thing.
-Since we've been looking at the state diagram for the 4-sided flexagon, either of those generating sequences can be used to create it.
+However, `P*>P*` will not, because it only travels along the first triangle, not the second.
+Since we've been looking at the state diagram for the 4-sided flexagon,
+this tells us that either of the generating sequences `P*P*` or `P*^>P*` can be used to create it.
 
 [Aside]
   [PinchGraph width:400 height:200 generator:'P*P*P*^>P*P*' flexes:'P*P*P*^>P*P*' /]
@@ -127,7 +131,8 @@ Since we've been looking at the state diagram for the 4-sided flexagon, either o
 I'll give you one more example before letting you try on your own.
 The diagram to the right is for the 7-sided variant C flexagon.
 The blue line shows the track that the flex sequence `P*P*P*^>P*P*` takes through the diagram, starting at the green circle and ending at the red circle.
-Since it covers one edge of every triangle, it's one possible generating sequence for that flexagon.
+Since it contains an edge of every triangle, it's one possible generating sequence for that flexagon.
+And since it only contains a *single* edge of each triangle, it's the shortest possible generating sequence, though it's not unique.
 
 You should now know enough to be able to figure out your own generating sequences by looking at a pinch flex diagram.
 Below are the state diagrams for all of the 5, 6, and 7-sided flexagons.
@@ -147,8 +152,9 @@ Below are the state diagrams for all of the 5, 6, and 7-sided flexagons.
   [PinchGraph width:320 height:200 generator:'(P*)5' flexes:'' /]
 [/FullWidth]
 
-Try creating each of those diagrams by typing in a generating sequence by using any of `>`, `<`, `^`, `P`, `P*`, and `P+`.
+Try creating each of those diagrams by typing in a generating sequence using any of `>`, `<`, `^`, `P`, and `P*`.
 What's the shortest sequence for each diagram?
+What if you include `P+` (the equivalent of `P*P'`)?
 
 [var name:"pinchGenerator" value:"P*P*" /]
 Generating sequence: [TextInput value:pinchGenerator /]
@@ -178,7 +184,8 @@ If you would like to try more, here are the pinch flex diagrams for all of the 8
 # General generating sequences
 
 [Aside]
-  (The simulator attempts to color in empty triangles after each flex in the generating sequence to make it more obvious how flexes are rearranging the leaves.)
+  (The simulator attempts to color in any newly created triangles after each flex in the generating sequence
+  to make it more obvious how flexes are rearranging the leaves.)
 [/Aside]
 
 This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed.
