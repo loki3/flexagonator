@@ -106,7 +106,7 @@ The green circle on the first and last slides indicates where the *current verte
 
 [var name:'flexShuffle' value:'Sh+' /]
 [var name:'patsShuffle' value:6 /]
-[var name:'anglesShuffle' value:`undefined` /]
+[var name:'anglesShuffle' value:`[60,60]` /]
 [derived name:'initShuffle' value:`[
   {angles:anglesShuffle},
   {searchFlexes:"Sh Sh'"},
@@ -235,7 +235,7 @@ Step through the images to see a tuck flex on an equilateral hexaflexagon:
 
 [var name:'flexTuck' value:'T+' /]
 [var name:'patsTuck' value:6 /]
-[var name:'anglesTuck' value:`undefined` /]
+[var name:'anglesTuck' value:`[60,60]` /]
 [derived name:'initTuck' value:`[
   {angles:anglesTuck},
   {searchFlexes:"T T' T1 T1' T2 T2' T3 T3' T4 T4' T5 T5' T6 T6'"},
@@ -295,7 +295,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
 
 [var name:'flexV' value:'V+' /]
 [var name:'patsV' value:6 /]
-[var name:'anglesV' value:`undefined ` /]
+[var name:'anglesV' value:`[60,60]` /]
 [derived name:'initV' value:`[
   {angles:anglesV},
   {searchFlexes:"V V'"},
