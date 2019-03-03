@@ -12,4 +12,5 @@ To build:
 * at a command prompt, switch into the idyll subdirectory of flexagonator and type `idyll`
 
 Note: Until Flexagonator is packaged as modules, you'll first need to build it and paste
-the resulting build/out.js file into the bottom of idyll/components/flexagon.js file.
+the resulting build/out.js file into the bottom of various files in idyll/components:
+  explorer.js, flexagon.js, pinchgraph.js, and unfolded.js.
