@@ -85,7 +85,7 @@ Try clicking on the buttons and watch how the flexagon changes and how this is t
 
 [Flexagon width:500 height:300 numPats:defaultPats initialScript:sides3 history:history3 options:drawOptions overButton:true /]
 
-But everything on this page is just a simulation of an actual model.
+But, of course, everything on this page is just a simulation of an actual model.
 The fun part is in creating and flexing the real thing.
 Following each simulation, you'll find a strip of triangles (AKA *template*, *frieze*, or *net*) you can print, fold, and optionally decorate to create a real flexagon.
 Here's the unfolded strip for the 3-sided hexaflexagon.
@@ -175,7 +175,7 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
 
 *Flex notation* is used to describe a series of flexes so that you can later reproduce the exact same sequence.
 Flexes are performed relative to the 'current vertex', which is indicated by a `*` in these flexagon simulations.
-Rotating the current vertex one vertex clockwise is represented by `>`, and counterclockwise rotation by `<`.
+Shifting the current vertex one vertex clockwise is represented by `>`, and shifting counterclockwise by `<`.
 Thus `P>P` says to do a pinch flex at one vertex, rotate so the vertex one step clockwise is the current vertex,
 then do another pinch flex.
 Recall from earlier that `^` indicates turning over the flexagon while keeping the same current vertex.
@@ -309,7 +309,7 @@ and 8-sided variation
 [Conditional if:` special7 == 2 `]
   The following strip takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines and the lines between 'a' and 'b'.
-  Tape 'b' to 'b'.
+  Tape one edge marked with 'b' to the other 'b' edge.
   Then you can follow the same folding rules as for the other strips,
   finishing by taping 'a' to 'a'.
 
@@ -339,7 +339,7 @@ and 8-sided variation
 [Conditional if:` special7 == 4 `]
   The following strip takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines.
-  Tape 'b' to 'b'.
+  Tape one edge marked with 'b' to the other 'b' edge.
   Then you can follow the same folding rules as for the other strips,
   finishing by taping 'a' to 'a'.
 
