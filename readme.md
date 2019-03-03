@@ -20,7 +20,7 @@ Some of its features:
 
 * Clone the repository, e.g. `git clone https://github.com/loki3/flexagonator.git`
 * Install dependencies, e.g. `npm install`
-* Build the Typescript project, e.g. use Visual Studio Code and choose *Tasks > Run Build Task*
+* Build the Typescript project, e.g. use Visual Studio Code and choose *Terminal > Run Build Task*
 * Load one of the sample HTML files, e.g. index.html
 
 
@@ -29,7 +29,8 @@ Some of its features:
 * *.vscode:* files that support working on Flexagonator using Visual Studio Code
 * *custom:* sample HTML files that use the Flexagonator API to create interactive flexagon tools
 * *docs:* documentation for the Flexagonator API and the notation used to describe flexagons and flexes
-* *idyll:* the source for Explorable Flexagons, an interactive book built using [Idyll](https://idyll-lang.org/) and Flexagonator
+* *idyll:* the source for [Explorable Flexagons](http://loki3.com/flex/explore/),
+  an interactive book built using [Idyll](https://idyll-lang.org/) and Flexagonator
 * *src:* the source for Flexagonator
 * *test:* tests for validating Flexagonator
 
