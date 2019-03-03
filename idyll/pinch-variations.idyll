@@ -82,7 +82,7 @@ Here's an unfolded strip you can use to create a working decaflexagon that suppo
 
 [var name:'mfGenerator' value:'P444*' /]
 [var name:'mfPats' value:12 /]
-[var name:'mfAngles' value:`undefined` /]
+[var name:'mfAngles' value:`[30, 75]` /]
 [derived name:'mfInit' value:`[
   {searchFlexes:"P44 P333 P334 P55 P3333 P444 P66"},
   {angles:mfAngles},
