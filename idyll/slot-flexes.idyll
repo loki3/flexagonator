@@ -30,21 +30,28 @@ combined with other moves such as *pocket flexes* and *tuck flexes*.
 There are lots of possible ways to combine various moves,
 so this chapter will just cover a fraction of what's out there to explore.
 
-On a hexaflexagon, the following pairs of slot flexes are *pinch complements* of each other,
-meaning that you can pinch between them if the structure of the flexagon supports it.
-
-* `Lh` *slot half flex* and `Lk` *slot pocket flex*
-* `Ltf` *slot tuck top front* and `Ltb` *slot tuck top back*
-* `Lbf` *slot tuck bottom front* and `Lbb` *slot tuck bottom back*
-
-The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
-
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
 [Conditional if:` showFoldingHelp `]
   These instructions apply to all the triangle strips on this page.
   [HowToFold hasBoth:true /]
 [/Conditional]
+
+## Pinch Complements
+
+Say you have a pair of flexes `A` and `B`, some starting state `s`,
+state `a` that you get when you apply flex `A` from `s`,
+and state `b` that you get when you apply flex `B` from `s`.
+`A` and `B` are *pinch complements* if you can pinch flex from state `a` to state `b`
+if the flexagon has enough internal structure to support it.
+
+On a hexaflexagon, the following pairs of slot flexes are *pinch complements* of each other.
+
+* `Lh` *slot half flex* and `Lk` *slot pocket flex*
+* `Ltf` *slot tuck top front* and `Ltb` *slot tuck top back*
+* `Lbf` *slot tuck bottom front* and `Lbb` *slot tuck bottom back*
+
+The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 
 # Slot half and slot pocket
 
@@ -120,7 +127,7 @@ With the following strip, tape together the two edges labeled *a* before folding
   After you do the slot, there are two different ways to open the flexagon back up
   if the structure of the flexagon supports it.
   Opening it up one way is the `Lh` and the other is the `Lk`.
-  Using a generating sequence of `Lh+Lk+` gives us the necessary structure.
+  Using a generating sequence of `Lh+Lk+` creates the necessary structure.
 
   It's interesting to note that you can pinch flex between these two states.
   Try `Lh < P Lk'` or `Lk < P > P Lh'` to see how this works.
@@ -161,8 +168,8 @@ This gives you a total of 4 different ways to complete the flex.
 
 [Aside]
   The *slot tuck top front* requires 10 leaves.
-  You can switch between two different arrangements using `Ltf` and `Ltf'` on the minimal Ltf flexagon,
-  but you can't use any of the other flexes we've discussed.
+  Even with all the flexes we've discussed, the minimal Ltf flexagon only has two possible states,
+  which you can get to using `Ltf` and `Ltf'`.
 [/Aside]
 
 [Slides width:426 height:240 pattern:'static/Ltf/*.jpg' start:1 end:21 /]
@@ -195,8 +202,8 @@ With the following strip, tape together the two edges labeled *a* before folding
 
 [Aside]
   The *slot tuck top back* requires 10 leaves.
-  You can switch between two different arrangements using `Ltb` and `Ltb'` on the minimal Ltb flexagon,
-  but you can't use any of the other flexes we've discussed.
+  Even with all the flexes we've discussed, the minimal Ltb flexagon only has two possible states,
+  which you can get to using `Ltb` and `Ltb'`.
 [/Aside]
 
 [Slides width:426 height:240 pattern:'static/Ltb/*.jpg' start:1 end:20 /]
@@ -225,7 +232,7 @@ With the following strip, tape together the two edges labeled *a* before folding
   After you do the slot and tuck, there are two different ways to open the flexagon back up
   if the structure of the flexagon supports it.
   Opening it up one way is the `Ltf` and the other is the `Ltb`.
-  Using a generating sequence of `Ltf+Ltb+` gives us the necessary structure.
+  Using a generating sequence of `Ltf+Ltb+` creates the necessary structure.
 
   You can pinch flex between these two states.
   Try `Ltf > P < P Ltb'` or `Ltb < P Ltf'` to see how this works.
@@ -258,7 +265,7 @@ With the following strip, tape together the two edges labeled *a* before folding
   You can flex to 5 different arrangements on the minimal Lh flexagon
   by using the following flexes: `V` `Lbf` `Lbf'`.
 
-  It's also interesting to note that it rearranges the leaves in exactly the same way as `v`,
+  It's also interesting to note that it rearranges the leaves in exactly the same way as `V`,
   but `V` only requires 9 leaves.
 [/Aside]
 
@@ -319,7 +326,7 @@ With the following strip, tape together the two edges labeled *a* before folding
   The generating sequence `Lh+Lk+Lbb+` gives you a flexagon that supports all 6 slot flexes we've discussed so far.
   If you combine these with flexes from previous chapters
   (the pinch flex `P`, pyramid shuffle `Sh`, tuck flex `T`, and v-flex `V`),
-  there are 117 different configurations.
+  there are 117 different configurations reachable with combinations of those flexes.
   You can quickly get lost, so if you try it on a paper model,
   don't be afraid to take the flexagon apart and refold it if you want to restart your explorations.
 [/Aside]
@@ -348,7 +355,7 @@ With the following strip, tape together the two edges labeled *a* before folding
 
 [Aside]
   On a pentaflexagon, the generating sequence `L3+` gives you a flexagon with 14 leaves that supports
-  the *slot trip pocket*, the *slot pocket*, *slot tuck top front*, and the *pyramid shuffle*.
+  the *slot triple pocket* (`L3`), the *slot pocket* (`Lk`), *slot tuck top front* (`Ltf`), and the *pyramid shuffle* (`Sh`).
   There are 24 different arrangements available using those flexes.
 [/Aside]
 
