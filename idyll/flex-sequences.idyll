@@ -107,8 +107,8 @@ Push *reset* when you want to try a new sequence.
 [var name:'cycleScript' value:'' /]
 [var name:'cycleCurrent' value:1 /]
 [var name:'cycleTotal' value:1 /]
-[var name:'cycleDoHistory' value:`undefined;` /]
-[var name:'cycleError' value:`undefined;` /]
+[var name:'cycleDoHistory' value:'' /]
+[var name:'cycleError' value:'' /]
 [var name:'cycleOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 
 [Aside]
@@ -175,11 +175,11 @@ Can you find other simple sequences that visit all 36 states?
 [var name:'typedSequence' value:'Ltb>P>P>' /]
 [var name:'twelveSequence' value:'' /]
 [var name:'twelveScript' value:'' /]
-[var name:'twelveDoHistory' value:`undefined;` /]
+[var name:'twelveDoHistory' value:'' /]
 [var name:'twelveHistory' value:'' /]
 [var name:'twelveCurrent' value:1 /]
 [var name:'twelveTotal' value:1 /]
-[var name:'twelveError' value:`undefined;` /]
+[var name:'twelveError' value:'' /]
 [var name:'twelveOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 [derived name:'twelveInit' value:`[
   { numPats: 6 },
