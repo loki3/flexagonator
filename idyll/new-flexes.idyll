@@ -49,7 +49,8 @@ Every leaf is connected to exactly two other leaves in a folded flexagon, and ev
 
 * **Pat notation**: Notation used to describe how leaves are folded in a triangle flexagon, consisting of pairs of leaves and/or subpats
 
-The notation displayed by the flexagon simulator doesn't differentiate between leaves, just using `-` to represent a generic leaf.
+The notation displayed by the flexagon simulator doesn't differentiate between individual leaves.
+It uses `-` to represent a generic leaf.
 This is sufficient when you just need to understand how the folds in a pat are nested.
 But if you want to understand how flexes work,
 you use a more precise notation by uniquely labeling every leaf and using those labels instead of `-`.
@@ -95,12 +96,12 @@ The important part is how the hinges are nested.
 If you know the nesting and which leaves connect to adjacent pats,
 you can infer which of the three edges the hinge connects.
 
-The adjacent picture gives you an exploded view of what the nesting looks like for `4a`.
+The adjacent picture of triangles and colored hinges gives you an exploded view of what the nesting looks like for `4a`.
 The 4 triangles represent the 4 leaves in the pat, and the colored pieces indicate where the hinges are.
 The blue coming in from the bottom left connects to the pat to the left.
-The green hinge connects the bottom leaf along the back to the leaf a couple steps up.
+The green hinge connects the bottom leaf along the back to the leaf a couple levels up.
 The red hinge on the right connects that leaf to the top leaf,
-and the hinge on the left connects the top leaf to the leaf a couple steps below.
+and the hinge on the left connects the top leaf to the leaf a couple levels below.
 Finally, the blue on the right connects to the pat on the right.
 
 
@@ -136,30 +137,43 @@ The following assumes the leaves are labeled in the order they occur in the unfo
 
 To describe an entire flexagon, you simply string together the descriptions of each pat, going clockwise around the flexagon.
 So a 3-sided hexaflexagon might look like `[[1, 2], 3, [4, 5], 6, [7, 8], 9]`.
-And to describe the effect of a flex, you describe the state before the flex and after the flex.
+To describe the effect of a flex, you note the state before the flex and after the flex.
 
 But how can you use this to *predict* what a flex will do rather than simply recording what it did *after* you do the flex?
 
 # Defining and applying a flex
+
+// idyll bug: if I delete this [Aside], the next one disappears
+[Aside /]
 
 Here's the definition of the pinch flex on a hexaflexagon using pat notation:
 
 * before: `[[-2, 1], -3, [5, -4], 6, [-8, 7], -9]`
 * after: `[2, [-4, 3], -5, [7, -6], 8, [1, 9]]`
 
+[Aside]
+  A flex definition in pat notation lists its *before* and *after* state.
+
+  It can be used to figure out *if* a flex can be performed and *how the flexagon changes* if the flex is applied.
+[/Aside]
+
 This tells us both *if* we can do the pinch flex in a particular location
 and *how it would change the flexagon* if we did.
 
-It says that the first pat must have at least 2 leaves (`[-2, 1]`),
+Each pat in the flexagon must have *at least* the structure described by the *before* state in order to support the pinch flex.
+The first pat must have at least 2 leaves (`[-2, 1]`),
 the second pat (`-3`) can be anything (since pats always have at least 1 leaf),
 the third pat must have at least 2 leaves (`[5, -4]`), etc.
-So we can do a pinch flex if our current flexagon looks like `[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]`,
-but we can't if it's `[1, 2, [3, 4], 5, [6, 7], 8]`.
+So, for example, we can do a pinch flex if our current flexagon looks like `[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]`,
+but not if it's `[1, 2, [3, 4], 5, [6, 7], 8]`.
 
-Let's look at how that flex definition tells us how a given flexagon will change,
-using the example of `[[1,2], 3, [4,[5,6]], [7,8], [9,10], [[11,12],[13,14]]]`.
-To avoid confusing the before/after patterns with the structure of the flexagon we're transforming,
-we'll use letters instead of numbers in the pinch flex definition:
+Let's look at how that flex definition tells us how a given flexagon will change.
+We'll start with a flexagon that has the following structure:
+
+* flexagon: `[[1,2], 3, [4,[5,6]], [7,8], [9,10], [[11,12],[13,14]]]`
+
+To avoid confusing the flex's before/after patterns with the structure of the flexagon we're transforming,
+we'll use numbers for the flexagon structure and letters for the pinch flex definition:
 
 * before: `[[-b, a], -c, [e, -d], f, [-h, g], -i]`
 * after: `[b, [-d, c], -e, [g, -f], h, [a, i]]`
@@ -168,6 +182,10 @@ Next, let's look at how each of the pats in the flexagon lines up with pats in t
 
 * *before* pattern: `[[-b, a], -c, [e, -d], f, [-h, g], -i]`
 * flexagon state: `[[1,2], 3, [4,[5,6]], [7,8], [9,10], [[11,12],[13,14]]]`
+
+[Aside]
+  `-[a, b]` = `[-b, -a]`
+[/Aside]
 
 We'll also use a simple identity for how the structure changes when we turn over a pat:
 `-[a, b]` = `[-b, -a]`, in other words, turning over `[a, b]` results in `[-b, -a]`.
@@ -210,7 +228,7 @@ Here are definitions of flexes we've discussed so far for the hexaflexagon:
 * **Lk:** `[[[[1, 2], 3], 4], 5, 6, 7, [[[8, 9], 10], 11], 12]` -> `[-8, [2, [10, [4, -12]]], -1, 3, 5, [9, [6, [11, -7]]]]`
 [/FullWidth]
 
-Many of these can be generalized to flexagons beyond just the hexaflexagon.
+Many of these can be generalized to flexagons beyond just the triangle hexaflexagon.
 
 
 # More details
@@ -237,7 +255,7 @@ In the following flexagon, you'll notice that it no longer lies flat after doing
 but the tuck and pyramid shuffle don't affect how the triangles are rotated.
 
 // this comment works around a bug
-[Flexagon width:400 height:400 numPats:10 options:`{showIds:false, structure:true, stats:true}`
+[Flexagon width:500 height:400 numPats:10 options:`{showIds:false, structure:true, stats:true}`
   initialScript:`[{angles:[36,54]}, {flexes:"P+>>T1+>Sh+"}, {searchFlexes:"PShSh'T1T1'"}]` /]
 
 [Unfolded width:1000 height:350 numPats:10 generator:"P+>>T1+>Sh+" angles:`[36,54]` /]
@@ -253,22 +271,23 @@ If you only write out pat notation for the part of the flexagon that changes, yo
 * before: `[[[-2, 3], 1], 4, 5, 6, 7, 8]`
 * after: `[3, 4, 5, 6, 7, [2, [8, -1]]]`
 
-[Unfolded width:600 height:280 numPats:6 generator:'Tf+>' endText:'Tf' /]
+[Unfolded width:600 height:250 numPats:6 generator:'Tf+>' endText:'Tf' /]
 
 If you make that flexagon, you'll find that you can't actually flex it,
 unless you're willing to really force it and do some damage to the flexagon, or perhaps trim the leaves.
 This is because when you're doing the flex, you need to open it somewhere *across* from where you're doing the tuck
 in order to have enough freedom of movement.
 
-Here's what it looks like when you add in the extra flap (`[-7, 6]`) you need in order to open up the flexagon:
+Here's what the pats look like when you add in the extra flap (`[-7, 6]`) you need in order to open up the flexagon during flexing:
 
 * before: `[[[-2, 3], 1], 4, 5, [-7, 6], -8, -9]`
 * after: `[3, 4, 5, [-7, 6], -8, [2, [-9, -1]]]`
 
-[Unfolded width:600 height:350 numPats:6 generator:'T+' endText:'T' /]
+[Unfolded width:600 height:400 numPats:6 generator:'T+' endText:'T' /]
 
 On flexagons with more than 6 pats, there may be multiple places you could add an extra flap to support the tuck flex.
-In *flexagonator*, the flexagon simulator, this is captured by specifying multiple tuck variants:
+In [flexagonator](https://github.com/loki3/flexagonator), the flexagon simulator used for these interactive simulations,
+this is captured by specifying multiple tuck variants:
 `T1` if the flap is in one place, `T2` if it's in another, etc.
 This isn't ideal for general flexing, since they're actually all the same flex.
 But it's good when specifying a generating sequence because you have to be explicit about where new leaves were added.
@@ -285,7 +304,7 @@ Once you start going beyond that range, it gets harder to do the flex without da
 A good example of this is the flip flex.
 On some flexagons, like a hexaflexagon made of 30-60-90 triangles,
 it's an elegant flex at one vertex but practically impossible at the vertex right next to it.
-If you create the following flexagon, you'll find that you can only do one of the possible flip flexes.
+If you create the following flexagon, you'll find that you can only do one of the two flip flexes that are theoretically possible.
 
 [Flexagon width:400 height:400 numPats:6 options:`{showIds:false, structure:true}`
   initialScript:`[{angles:[60,30]}, {flexes:"F+>F+"}, {searchFlexes:"FF'"}]` /]
@@ -323,9 +342,9 @@ How would you go about creating a flex definition using pat notation to enable t
 
 Well, the basic idea behind providing a flex definition
 is that you describe the state of the flexagon before the flex and the state after the flex.
-You could do that, but is it really the case that every pat has to have 2 leaves in order to perform this flex
-even though the flexagon you tried it on does?
-If not, your definition would be too restrictive, ruling out cases where you could actually do the flex.
+You could do that for this flexagon, but is it really the case that every pat has to have 2 leaves in order to perform this flex
+just because the flexagon you tried it on does?
+If not, your definition wouldn't be general enough, ruling out cases where you could actually do the flex.
 How do you address this issue?
 
 One technique is to mark every side of every leaf that you expose during the flex so you know which ones are required.
@@ -335,6 +354,7 @@ When you're done, paste together all the sides you didn't need and look at the r
 
 For this particular flex, you'll find that the starting pat structure you need is
 `[[-, -], [-, -], -, -, [-, -], [-, -], -, -]`.
+You only need 12 leaves, not the full 16 leaves that the original flexagon had.
 Now number one side of every remaining leaf, labeling the backsides with the negative version of the front side.
 Write down the starting state, do the flex, then write down the ending state.
 You should end up with something that looks like this (though you might have chosen different labels):
