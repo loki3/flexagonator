@@ -92,9 +92,9 @@
   ]` /]
 [var name:'doRunInit' value:false /]
 [var name:'theHistory' value:'' /]
-[var name:'theError' value:`undefined ` /]
-[var name:'theCurrentScript' value:`undefined ` /]
-[var name:'displayedScript' value:`undefined ` /]
+[var name:'theError' value:'' /]
+[var name:'theCurrentScript' value:'' /]
+[var name:'displayedScript' value:'' /]
 
 [Aside]
   [Button onClick:` doRunInit=true; doGenerator=tempGenerator; doSearch=tempSearch; doPats=tempPats; doAngle1=tempAngle1; doAngle2=tempAngle2; `]
@@ -150,10 +150,10 @@ History: [Display value:theHistory /]
 
 [var name:'fromRunScript' value:true /]
 [var name:'fromScript' value:`[{numPats:6}, {flexes:'P*P*P*'}] ` /]
-[var name:'fromCurrentScript' value:`undefined ` /]
+[var name:'fromCurrentScript' value:'' /]
 [var name:'fromDoHistory' value:'' /]
 [var name:'fromHistory' value:'' /]
-[var name:'fromError' value:`undefined ` /]
+[var name:'fromError' value:'' /]
 [var name:'fromDisplayed' value:'[
   {"numPats":6},
   {"flexes":"P*P*P*"}
@@ -247,7 +247,7 @@ Labels and colors:
 [var name:'exploreExplored' value:0 /]
 [var name:'exploreFound' value:0 /]
 [var name:'exploreCounts' value:'' /]
-[var name:'exploreError' value:`undefined ` /]
+[var name:'exploreError' value:'' /]
 [var name:'exploreGetResults' value:'' /]
 [var name:'exploreResults' value:'' /]
 
