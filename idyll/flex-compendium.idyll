@@ -53,7 +53,7 @@ There are other variants, other flexes, and other types of flexagons.
 
 # Flex Details
 
-Each flex contains details about the flex, e.g. if it's *prime*, which flexagons it works on,
+Each flex description contains details about the flex, e.g. if it's *prime*, which flexagons it works on,
 and the *pat notation* that describes how it changes the internal structure of the flexagon.
 Here is more background on some of those details.
 
@@ -80,11 +80,11 @@ i.e. doing flex in reverse is the same as turning it over, doing the flex, then 
 But for some flexes the before and after structures are different enough that this doesn't hold.
 The simplest way to figure out if this is true is to use the Flexagon Simulator in the [Flexagon Playground](playground.html).
 First try the generating sequence `A*`, which creates the necessary structure for the flex and performs the flex.
-Then compare that to the flexagon you get from the generating seuqence `A*^A*^`.
+Then compare that to the flexagon you get from the generating seuqence `A* ^ A* ^`.
 If they both create a flexagon with the same number of leaves, then `A' = ^A^`, otherwise `A' != ^A^`.
 
 This is a useful detail to know when you're trying to explore all the states of a flexagon,
-because you'll need to include a flex's inverse in the search if `A` is prime and `A' != ^A^`.
+because you'll need to include a flex's inverse in the search if `A` and `A'` are prime but `A' != ^A^`.
 
 ## Number of pats
 
@@ -96,7 +96,7 @@ Many flexes work on a range of flexagons, e.g. the *pyramid shuffle* works on an
 
 A *leaf* is one of the individual polygons in a flexagon.
 Each flex will list the number of leaves in the *minimal flexagon*, i.e. the simplest flexagon that supports that flex.
-It will be expressed as a function of the number of pats.
+It will be expressed as a function of N, the number of pats.
 For example, the flip flex needs 4 more leaves than there are pats, described as *N + 4*.
 
 ## Special requirements
@@ -104,6 +104,12 @@ For example, the flip flex needs 4 more leaves than there are pats, described as
 Some flexes may have additional requirements of the flexagon in order to work.
 For example, the *silver tetra flex* works best on *right triangle flexagons*, and may not work on some flexagons.
 More details on these requirements can be found on the [New Flexes](new-flexes.html) page under *More details*.
+
+## Pat shorthand
+
+The left-hand side shows shorthand for the *before* state of the flexagon,
+while the right-hand side shows shorthand for the *after* state of the flexagon.
+Possibilities include 1, 2, 3, -3, 4a, -4a, 4b, 4c, and -4c, as described on the [New Flexes](new-flexes.html) page.
 
 ## Flex definition
 
@@ -114,7 +120,7 @@ For example, the following is the definition for the *flip flex*:
 * in: `[ [1,2], 3, ... i, ... [[n-4,n-3],[n-2,n-1]], n ]`
 * out: `[ n-3, [[-1,3],[n,-2]] ... i, ... n-2, [-(n-4),-(n-1)] ]`
 
-The pattern between the pairs of ...'s applies to every unspecified leaf.
+The pattern between the pairs of ...'s applies to every unspecified pat.
 In this case, it simply means that all those pats have a single leaf in them.
 Other flexes may have something like `[i,i+1]` to indicate two leaves in a pat.
 `n` refers to the number of pats.
@@ -716,6 +722,7 @@ This flex works best when the leaves are isosceles triangles, with one of the eq
   [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
 
   TO DO: Describe some of the variants
+
   TO DO: Does this flex generalize beyond the hexaflexagon?
 [/Aside]
 
