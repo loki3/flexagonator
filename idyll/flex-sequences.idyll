@@ -87,7 +87,7 @@ You'll find that this takes you right back to the original state.
 [Unfolded width:1000 height:500 script:initSh options:unfoldedOptions endText:'Sh+' /]
 
 Looking at the flex sequence that was recorded, you'll see the sequence `Sh>>T'>^T<<^` repeated twice
-(well, the trailing rotates might look different, but that's just an artifact of how the simulator tracks rotations).
+(well, the trailing `>` and `^` might look different, but that's just an artifact of how the simulator tracks the current vertex).
 This can be written as `(Sh>>T'>^T<<^) 2`.
 Whenever you can do a pyramid shuffle, you can run through this cycle of 6 flexes.
 
@@ -96,7 +96,7 @@ Whenever you can do a pyramid shuffle, you can run through this cycle of 6 flexe
 
 The following simulator lets you experiment with different sequences to see if they cycle.
 Type in a sequence such as `V*<` or `F*>>>`, including the `*` on the flex so that it'll generate the needed structure if it doesn't already exist.
-Then try hitting the *apply* button repeatedly, watching to see if adds new leaves.
+Then try hitting the *apply* button repeatedly, watching to see if it adds new leaves.
 If it stops adding leaves, then you've found a cycle.
 Or you may notice that it consistently needs to add a certain number of leaves every time, in which case it will never return to the starting state.
 Push *reset* when you want to try a new sequence.
@@ -168,7 +168,8 @@ The following hexaflexagon has 12 leaves and 36 different states.
 You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltb`.
 
 One way to traverse every state is through the flex sequence `(Ltb>P>P>) 12`.
-Each time you click *apply* with that sequence, you can see that it visits 3 more states.
+Each time you click *apply* with that sequence, you can see that it visits 3 more states
+(this is listed next to the Undo/Redo/Reset buttons).
 Or you can travel clockwise around the flexagon repeatedly clicking on `Ltb`, `P`, and `P`.
 Can you find other simple sequences that visit all 36 states?
 
@@ -206,7 +207,7 @@ Currently in state [Display value:twelveCurrent format:'0' /] of [Display value:
 
 # Prime flexes
 
-In mathematics, a number is prime if it isn't the product of two other numbers (more precisely, the numbers are all *positive integers*).
+In mathematics, a number is prime if it isn't the product of two other numbers (more precisely, *positive integers* greater than 1).
 
 We can adapt this idea to flexes, defining a *prime flex* as a flex that can't be decomposed into other flexes.
 Or, more precisely, we can say a flex is *prime relative to* a given set of flexes
@@ -245,8 +246,10 @@ You can find the answer by starting from the initial state given above for the `
 * apply `Ltb`: `[-4, 1, -3, [-5, 2], [[7, -10], -6], [-11, [8, 9]]]`
 * apply `T'`: `[[[11, -4], -9], 1, -3, [-5, 2], [[7, -10], -6], 8]`
 
-When you look at that final result, you can see that's exactly what you'd get if you had applied `Lh` instead.
+When you look at that final result, you can see that it's exactly what you'd get if you had applied `Lh` instead.
 Thus `Lh = Ltb T'` and we know `Lh` is not prime relative to `T'` and `Ltb`.
+
+The following flexagonn has a generating sequence of `Lh+` and supports both `T'` and `Ltb`.
 
 [var name:historyLh value:'' /]
 [var name:doHistoryLh value:'' /]
@@ -301,6 +304,7 @@ In other words, there's no simpler flexagon where you could do the sequence `T>>
   Thus you can't say that those two sequences are always equal.
 
   We indicate this with `~=` instead of `=`, so we write `P ~= T>>>V>>>`.
+  We pronounce `~=` as *sometimes equal*.
 [/Aside]
 
 [var name:historyPTV value:'' /]
@@ -320,7 +324,7 @@ In other words, there's no simpler flexagon where you could do the sequence `T>>
 [Unfolded width:1000 height:380 script:initPTV endText:'PTV' /]
 
 We can use `=` and `~=` to make interesting statements about how different sequences of flexes compare,
-adding in `!=` to mean *not equal*.
+adding in `!=` to mean *never equal*.
 Here are equalities for various flex inverses:
 
 * `^' = ^`
@@ -330,7 +334,7 @@ Here are equalities for various flex inverses:
 * `P' = ^P^`
 * `Sh' = ^Sh^`
 * `St' = ^St^`
-* `Lh' != ^Lh^`
+* `Lh' != ^Lh^` (note that this is different from many other flexes)
 * `Lk' = ^Lk^`
 * `Ltf' = ^Ltf^`
 * `T' ~= ^T^` (note the use of ~= rather than =)
@@ -340,8 +344,8 @@ The *identity flex*, represented by `I`, is a flex where nothing changes,
 much like `0` in addition (`n + 0 = n`) or `1` in multiplication (`n * 1 = n`).
 Here are some useful identities and rules:
 
-* `I ~= AA'` - doing a flex and its inverse takes you back to where you started
-* `(AB)' = B'A'` - you can undo two flexes by undoing the second then undoing the first
+* `I ~= AA'` : doing a flex followed by its inverse takes you back to where you started
+* `(AB)' = B'A'` : you can undo a sequence of two flexes by undoing the second then undoing the first
 * if `I ~= AB`, then `A = B'`
 * if `I ~= ABC`, then `A ~= C'B'` and `C ~= B'A'`
 
