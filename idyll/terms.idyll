@@ -1,0 +1,226 @@
+[meta title:"Flexagon Terms" description:"References for various flexagon terms" /]
+
+[Header
+  title:"Flexagon Terms"
+  subtitle:"References for various flexagon terms"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+
+* [link text:'An unfolded flexagon' url:'#unfolded' /]: strip, plan, frieze, net, template
+* [link text:'The visible portion of a flexagon' url:'#face' /]: face
+* [link text:'Leaf' url:'#leaf' /]
+* [link text:'Pat' url:'#pat' /]
+* [link text:'Pentagon variations' url:'#naming' /]: flexagon naming
+
+
+[hr /]
+[a name:'unfolded'/]
+# An unfolded flexagon
+
+[Unfolded width:1000 height:300 numPats:9 generator:'P333+' /]
+
+## strip
+
+* Martin Gardner's [original column on hexaflexagons](http://geofhagopian.net/papers/GARDNER01.pdf)
+  "The decahexaflexagon (10 faces) has 82 different variations, all folded from weirdly bent *strips*"
+* Oakley and Wisner (1957) [Flexagons](http://geofhagopian.net/papers/flexagon01.pdf)
+  "Next, score the *strip* very carefully into ten equilateral triangle."
+* Conrad & Hartline (1962), [Building and Operating the Flexagon](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node3.html)
+  "The term 'plan' refers to the pattern of the paper *strip* from which the flexagon is folded up."
+* Harold V. McIntosh [Strips of Paper](http://delta.cs.cinvestav.mx/~mcintosh/comun/gonafle/node3.html)
+
+## plan
+
+* Conrad & Hartline (1962), [Building and Operating the Flexagon](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node3.html)
+  "The term *plan* refers to the pattern of the paper strip from which the flexagon is folded up."
+
+
+## frieze
+
+* Harold V. McIntosh [Stacks of Polygons](http://delta.cs.cinvestav.mx/~mcintosh/comun/gonafle/node4.html)
+
+"Once the *strip*, or *frieze*, has been drawn..."
+
+## net
+
+* Les Pook, e.g. [Flexagons Inside Out](https://www.amazon.com/Flexagons-Inside-Out-Pook/dp/0521525748)
+
+"The *net* for a paper model of a simple hexaflexagon is shown in Fig. 1.1."
+
+## template
+
+* Robin Moseley's [flexagon.net](http://flexagon.net/)
+
+
+[hr /]
+[a name:'face'/]
+# The visible portion of a flexagon, unique arrangements
+
+## face
+
+* [Martin Gardner's original column on hexaflexagons](http://geofhagopian.net/papers/GARDNER01.pdf)
+
+"Stone did some thinking about it overnight, and on the following day confirmed his belief
+(arrived at by pure cerebration) that a more complicated hexagonal model could be folded
+with six *faces* instead of only three."
+
+* Les Pook, [Flexagons Inside Out](https://www.amazon.com/Flexagons-Inside-Out-Pook/dp/0521525748)
+
+"The simplest hexaflexagon on which all six possible arrangements of a *face* occur is the seven faced hexaflexagon..."
+
+## unique arrangement
+
+* Oakley and Wisner (1957) [Flexagons](http://geofhagopian.net/papers/flexagon01.pdf)
+
+"If the flexagon is turned over, three pinches will exhibit three new (mathematical) *faces* since now the pat numbers run counterclockwise."
+
+"A *physical face* is that collection of the six uppermost triangles, one to a pat, regardless of orientation."
+
+"East different orientation of these six triangles, with respect to each other, determines what is called a *mathematical face*"
+
+* Les Pook, [Flexagons Inside Out](https://www.amazon.com/Flexagons-Inside-Out-Pook/dp/0521525748)
+
+"Hexaflexagon *face arrangements*.  The arrangement of the leaves making up a face of a hexaflexagon
+change as it is flexed from one main position to another."
+
+
+[hr /]
+[a name:'leaf'/]
+# Leaf
+
+* Conrad & Hartline (1962), [Building and Operating the Flexagon](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node3.html)
+
+"Each triangle of paper making up the pats is called a 'leaf'."
+
+* Les Pook, [Flexagons Inside Out](https://www.amazon.com/Flexagons-Inside-Out-Pook/dp/0521525748)
+
+"The individual polygons used to make flexagons, in this case triangles, are called 'leaves'."
+
+
+[hr /]
+[a name:'pat'/]
+# Pat
+
+* Oakley and Wisner (1957) [Flexagons](http://geofhagopian.net/papers/flexagon01.pdf)
+
+"...indicating what we shall call pats, run clockwise.
+Each of pats 1, III, V contains a single triangle (piece of paper), each of pats II, IV, VI contains two triangle."
+
+* Conrad & Hartline (1962), [Building and Operating the Flexagon](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node3.html)
+
+"In order to lay it flat, it has been symmetrically squashed out, giving six distinct hinged sections,
+each of which is called a 'pat'."
+
+* Les Pook, [Flexagons Inside Out](https://www.amazon.com/Flexagons-Inside-Out-Pook/dp/0521525748)
+
+"Both the single leaves and the folded piles are called 'pats'."
+
+
+[hr /]
+[a name:'naming'/]
+# What do you call these?
+
+[Aside]
+The first two look like pentagons.
+The next four have leaves that are pentagons.
+[/Aside]
+
+[img src:'static/terms/pentaflexagon.jpg' height:150/]
+[img src:'static/terms/right-decaflexagon.jpg' height:150/]
+[img src:'static/terms/pentagon-flexagon.jpg' height:150/]
+[img src:'static/terms/pentagon-hexaflexagon.jpg' height:150/]
+[img src:'static/terms/pentagon-hexaflexagon-ring.jpg' height:150/]
+[img src:'static/terms/pentagon-octaflexagon.jpg' height:150/]
+
+## pentaflexagon
+
+[Aside]
+5 triangular leaves per face.
+[/Aside]
+
+[img src:'static/terms/pentaflexagon.jpg' height:200/]
+
+* Scott Sherman [Pentaflexagon](file:///C:/Users/Scott%20Sherman/Documents/loki3.com/flex/penta.html)
+
+I use a Greek prefix for the number of polygons per face.
+This follows the naming that Martin Gardner first described:
+the hexaflexagon has 6 triangles per face and the tetraflexagon has 4 squares per face.
+
+If I needed to distinguish it from a flexagon with non-triangular leaves,
+I would call it a *triangle pentaflexagon*.
+
+## right decaflexagon
+
+[Aside]
+10 right triangle leaves per face.
+[/Aside]
+
+[img src:'static/terms/right-decaflexagon.jpg' height:200/]
+
+* Scott Sherman [Right Decaflexagon](file:///C:/Users/Scott%20Sherman/Documents/loki3.com/flex/deca.html#right)
+
+Why do I use deca (10) instead of penta (5), since it looks like a pentagon?
+Because it behaves like other decaflexagons (e.g. the isoceles decaflexagon and star decaflexagon),
+not like the pentaflexagon listed above.
+And I prefix it with *right* because flexagons made of right triangles have a similar feel to each other,
+e.g. the [silver tetra flex](http://loki3.com/flex/explore/flex-compendium.html#St) works well on them.
+
+The two pieces I find most valuable here are *the number of leaves per face*
+and *the shape of the leaves*.
+The shape of the flexagon isn't nearly as useful for understanding how the flexagon will behave,
+so I don't include it in the name.
+
+## pentagon flexagon or pentagonal flexagon
+
+[Aside]
+4 pentagonal leaves per face.
+[/Aside]
+
+[img src:'static/terms/pentagon-flexagon.jpg' height:200/]
+
+* Harold V. McIntosh [Pentagonal Flexagons](http://delta.cs.cinvestav.mx/~mcintosh/comun/pentags/pentags.html)
+
+Similarly, I refer to *triangle flexagons* as those whose leaves are triangles,
+*quadrilateral flexagons* as those whose leaves are quadrilaterals, and so on.
+
+## pentagon hexaflexagon
+
+[Aside]
+6 pentagonal leaves per face.
+[/Aside]
+
+[img src:'static/terms/pentagon-hexaflexagon.jpg' height:200/]
+[img src:'static/terms/pentagon-hexaflexagon-ring.jpg' height:200/]
+
+I use *hexaflexagon* to refer to the fact that there are 6 leaves per face.
+I prefix it with pentagon because that's the polygon used for each leaf.
+
+## pentagon octaflexagon
+
+[Aside]
+8 pentagonal leaves per face.
+[/Aside]
+
+[img src:'static/terms/pentagon-octaflexagon.jpg' height:200/]
+
+Similar to *pentagon hexaflexagon*.
+Thus you could argue that the *pentagon flexagon* listed above could be more precisely called a *pentagon tetraflexagon*.
+
+## pentahexaflexagon
+
+[Aside]
+Naming based on the number of faces.
+[/Aside]
+
+Martin Gardner used an additional prefix to refer to the number of distinct faces,
+so a *pentahexaflexagon* would be a hexaflexagon with 5 distinct faces.
+This only makes sense if you restrict yourself to the pinch flex,
+so I don't find it to be a useful concept in general, but it is pretty widely used.
+
+Note that this naming doesn't differentiate between the different varieties.
+For example, there are [three different strips](http://flexagon.net/) that fold into a hexahexaflexagon.
+
+I instead use [generating sequences](http://loki3.com/flex/explore/generators.html),
+which works both to describe different varieties and to describe various flexes other than the pinch flex.
+The three hexahexaflexagons are `(P*)3 P'>(P*)2`, `(P*^>)4`, and `(P*)4`.
