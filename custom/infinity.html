@@ -1,0 +1,349 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>Infinite Flexagonator</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    var flexagon = Flexagonator.Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]);
+    var fm = Flexagonator.FlexagonManager.make(flexagon);
+    var stripContent = 0/*StripContent.FoldingLabels*/;
+    var buttons = null;
+    var captions = [{ text: '*', which: 0 }, { text: '*', which: -1 }];
+
+    fm.interpolateNewLeaves = 'colorAndLabel';
+    Flexagonator.runScript(fm, [
+      { setFace: { front: { label: "0", color: 0xAA4439 }, back: { label: "1024", color: 0x2B803E } } },
+      { searchFlexes: "P Sh T T' V Ltf Ltb" }
+    ]);
+
+    function updateUI() {
+      var regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, generate: true, structureTopIds: true });
+      buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
+      Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
+      Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent, captions: captions });
+
+      var historyBox = document.getElementById('history');
+      if (historyBox !== null) {
+        var history = fm.getFlexHistory().join(' ');
+        historyBox.value = history;
+      }
+
+      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+
+      var scriptDiv = document.getElementById('script');
+      if (scriptDiv !== null) {
+        scriptDiv.innerHTML = "";
+      }
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
+      }
+    }
+
+    function newFlexagons(value) {
+      var leaftree = null;
+      var props = undefined;
+      switch (value) {
+        case "4": leaftree = [1, 2, 3, 4]; break;
+        case "5": leaftree = [1, 2, 3, 4, 5]; break;
+        case "6": leaftree = [1, 2, 3, 4, 5, 6]; break;
+        case "6,6": leaftree = Flexagonator.hexaHexaLeafTree; props = Flexagonator.hexaHexaProperties; break;
+        case "7": leaftree = [1, 2, 3, 4, 5, 6, 7]; break;
+        case "8": leaftree = [1, 2, 3, 4, 5, 6, 7, 8]; break;
+        case "9": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9]; break;
+        case "10": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; break;
+        case "12": leaftree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; break;
+      }
+
+      if (leaftree != null) {
+        var flexagon = Flexagonator.Flexagon.makeFromTree(leaftree);
+        fm = Flexagonator.FlexagonManager.make(flexagon, props);
+        fm.interpolateNewLeaves = true;
+        updateUI();
+
+        var angleBox = document.getElementById('setAngle');
+        if (angleBox !== null) {
+          angleBox.value = "iso";
+        }
+
+        reportAvailable();
+      }
+    }
+
+    function reportAvailable() {
+      var availableDiv = document.getElementById('available');
+      if (availableDiv !== null) {
+        var str = "";
+        for (var f in fm.allFlexes) {
+          str += f.toString() + " ";
+        }
+        var available = "available flexes: " + str;
+        availableDiv.innerHTML = available;
+      }
+    }
+
+
+    function setFace(label, onlyUnset) {
+      var color;
+      switch (label) {
+        case "1": color = 0x2E4172; break;
+        case "2": color = 0x2B803E; break;
+        case "3": color = 0xAA4439; break;
+        case "4": color = 0x622870; break;
+        case "5": color = 0xffff00; break;
+        case "6": color = 0x553900; break;
+        case "7": color = 0xdddddd; break;
+        case "8": color = 0x999999; break;
+      }
+      if (label !== "") {
+        if (onlyUnset) {
+          fm.setUnsetFaceLabel(label, true);
+          fm.setUnsetFaceColor(color, true);
+        } else {
+          fm.setFaceLabel(label, true);
+          fm.setFaceColor(color, true);
+        }
+        updateUI();
+      }
+    }
+
+    function setAngle(value) {
+      var angles = null;
+      switch (value) {
+        case "iso":
+          break;
+        case "60-60-60":
+          angles = [60, 60];
+          break;
+        case "60-30-90":
+          angles = [60, 30];
+          break;
+        case "45-45-90":
+          angles = [45, 45];
+          break;
+        case "45-30-105":
+          angles = [45, 30];
+          break;
+        case "36-54-90":
+          angles = [36, 54];
+          break;
+        case "36-36-108":
+          angles = [36, 36];
+          break;
+        case "30-60-90":
+          angles = [30, 60];
+          break;
+        case "30-30-120":
+          angles = [30, 30];
+          break;
+      }
+      if (angles === null) {
+        fm.setIsosceles();
+      } else {
+        fm.setAngles(angles[0], angles[1]);
+      }
+      updateUI();
+    }
+
+    function resetFaces() {
+      fm.leafProps.reset();
+      updateUI();
+    }
+
+    function flexAndShow(flex) {
+      var result = fm.applyFlex(flex);
+      if (result === true) {
+        updateUI();
+      } else {
+        statusMessage(result);
+      }
+    }
+
+    function applySequence(key, sequence) {
+      if (key == 13) {
+        var result = fm.applyFlexes(sequence, true);
+        if (result === true) {
+          updateUI();
+        } else {
+          statusMessage(result);
+        }
+      }
+    }
+
+    function reset() {
+      fm.undoAll();
+      updateUI();
+    }
+
+    function undo() {
+      fm.undo();
+      updateUI();
+    }
+
+    function redo() {
+      fm.redo();
+      updateUI();
+    }
+
+    function seeScript() {
+      var scriptBox = document.getElementById('script');
+      if (scriptBox !== null) {
+        var str = JSON.stringify(Flexagonator.makeScript(fm));
+        scriptBox.value = str;
+      }
+    }
+
+    function runScript() {
+      var scriptBox = document.getElementById('script');
+      if (scriptBox !== null) {
+        statusMessage("error parsing script");
+        var result = Flexagonator.runScriptString(fm, scriptBox.value);
+        if (Flexagonator.isError(result)) {
+          statusMessage(result);
+        } else {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+
+    function interfaceMouseMove(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event) {
+      var script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      if (script != null) {
+        var result = Flexagonator.runScriptItem(fm, script);
+        if (!Flexagonator.isError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+
+    function backsideMouseMove(event) {
+      event.target.style.cursor = 'pointer';
+    }
+
+    function backsideMouseClick(event) {
+      flexAndShow('^');
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Infinite Flexagonator</h1>
+
+  <p>
+    base flexagon:
+    <select onchange="newFlexagons(event.target.value)">
+      <option value="4">tetra</option>
+      <option value="5">penta</option>
+      <option value="6">hexa</option>
+      <option value="6,6" selected>6-sided hexa</option>
+      <option value="7">hepta</option>
+      <option value="8">octa</option>
+      <option value="9">ennea</option>
+      <option value="10">deca</option>
+      <option value="12">dodeca</option>
+    </select> &nbsp;&nbsp;&nbsp; angles:
+    <select onchange="setAngle(event.target.value)" id="setAngle">
+      <option value="iso" selected>isosceles</option>
+      <option value="60-60-60">60-60-60 (equilateral)</option>
+      <option value="60-30-90">6: 60-30-90 (right)</option>
+      <option value="45-45-90">8: 45-45-90 (right)</option>
+      <option value="45-30-105">8: 45-30-105 (star)</option>
+      <option value="36-54-90">10: 36-54-90 (right)</option>
+      <option value="36-36-108">10: 36-36-108 (star)</option>
+      <option value="30-60-90">12: 30-60-90 (right)</option>
+      <option value="30-30-120">12: 30-30-120 (star)</option>
+    </select> &nbsp;&nbsp;&nbsp; set face:
+    <select onchange="setFace(event.target.value, false)">
+      <option value="" selected></option>
+      <option value="1">1: blue</option>
+      <option value="2">2: green</option>
+      <option value="3">3: red</option>
+      <option value="4">4: purple</option>
+      <option value="5">5: yellow</option>
+      <option value="6">6: brown</option>
+      <option value="7">7: light grey</option>
+      <option value="8">8: dark grey</option>
+    </select> &nbsp;&nbsp;&nbsp; change unset leaves:
+    <select onchange="setFace(event.target.value, true)">
+      <option value="" selected></option>
+      <option value="1">1: blue</option>
+      <option value="2">2: green</option>
+      <option value="3">3: red</option>
+      <option value="4">4: purple</option>
+      <option value="5">5: yellow</option>
+      <option value="6">6: brown</option>
+      <option value="7">7: light grey</option>
+      <option value="8">8: dark grey</option>
+    </select> &nbsp;&nbsp;&nbsp;
+    <input onclick="resetFaces();" type="button" value="reset faces" />
+  </p>
+
+    <p>
+      <div id="available"></div>
+      To create the structure necessary to apply a flex and apply it, follow it with * (e.g. P*). To create the
+      necessary
+      structure
+      without applying it, follow it with + (e.g. P+).
+    </p>
+
+    <p>
+      <div>
+        <label>enter flex sequence</label>
+        <input onkeypress="applySequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false"/>
+  </div>
+    </p>
+    <p>
+      <input onclick="reset();" type="button" value="reset" />
+      <input onclick="undo();" type="button" value="undo" />
+      <input onclick="redo();" type="button" value="redo" />
+      <textarea id="history" readonly=true cols="70" rows="1"></textarea>
+    </p>
+
+    <canvas id="interface" width="800" height="400"></canvas>
+    <canvas id="backside" width="300" height="300"></canvas>
+    <div id="status"></div>
+    <canvas id="unfolded" width="800" height="600"></canvas>
+
+    <p>
+      <input onclick="stripContent = 0; updateUI();" type="button" value="show folding numbers" />
+      <input onclick="stripContent = 1; updateUI();" type="button" value="folding numbers + ids" />
+      <input onclick="stripContent = 2; updateUI();" type="button" value="front colors and labels" />
+      <input onclick="stripContent = 3; updateUI();" type="button" value="back colors and labels" />
+  </p>
+
+      <p>
+        <input onclick="seeScript();" type="button" value="see script" />
+        <input onclick="runScript();" type="button" value="run script" />
+        <br />
+        <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
+      </p>
+
+      <script type="text/javascript">
+        updateUI();
+        reportAvailable();
+
+        var interface = document.getElementById('interface');
+        interface.addEventListener('mousemove', interfaceMouseMove, false);
+        interface.addEventListener('click', interfaceMouseClick, false);
+        var backside = document.getElementById('backside');
+        backside.addEventListener('mousemove', backsideMouseMove, false);
+        backside.addEventListener('click', backsideMouseClick, false);
+      </script>
+
+</body>
+
+</html>
