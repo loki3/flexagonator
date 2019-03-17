@@ -39,7 +39,7 @@ We'll start by looking at a couple examples before giving you the tools to exper
 
 One of the simplest cycles is a sequence of 3 pinch flexes on the basic 3-sided hexaflexagon.
 You could write this sequence as `P>P>P>`.
-Alternately, you could write it as `(P>) 3`, where the sequence to be repeated is in parenthesis, followed by the number of times it's repeated.
+Alternately, you could write it as `(P>) 3`, where the sequence to be repeated is in parentheses, followed by the number of times it's repeated.
 Since you can do this on the minimal flexagon for the pinch flex, you can perform this sequence whenever you can do a pinch flex.
 
 [var name:historyP value:'' /]
@@ -130,11 +130,11 @@ Push *reset* when you want to try a new sequence.
   [br/]
   **9:** F P333 Sh St T1 T2 T3 Lk Ltf
   [br/]
-  **10:** F P334 P55 Sh St T1 T2 T3 Lk Ltf
+  **10:** F P334 P55 Sh St Tw T1 T2 T3 Lk Ltf
   [br/]
   **11:** F Sh St T1 T2 T3 Lk Ltf
   [br/]
-  **12:** F P P3333 P444 P66 Sh St T1 T2 T3 Lk Ltf
+  **12:** F P P3333 P444 P66 Sh St Tw T1 T2 T3 Lk Ltf
 [/Aside]
 
 Flex sequence: [TextInput value:tempSequence /]
