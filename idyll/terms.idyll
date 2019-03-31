@@ -13,6 +13,7 @@ Topics:
 * [link text:'Useful concepts and notation' url:'#concepts' /]
 * [link text:'Naming of flexagon traits' url:'#naming' /]
 * [link text:'Flexes' url:'#flexes' /]
+* [link text:'Describing a specific flexagon and template' url:'#specific' /]
 [/Aside]
 
 
@@ -186,3 +187,50 @@ The following lists traits of flexagons I feel should have names, followed by my
   `>`, `<`, `^` are special symbols that indicate rotating the flexagon or turning it over to change the *current vertex*.
   [/dd]
 [/dl]
+
+[hr /]
+
+
+[a name:'specific'/]
+# Describing a specific flexagon and template
+
+## Conrad & Hartline
+
+The [Conrad & Hartline paper](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/flexagon.html)
+describes every leaf in a template using +'s and -'s to tell you which edge to reflect the next leaf over
+plus numbers on the front and back of each leaf.
+The numbers also indicate how to fold the flexagon.
+If you add in the angles of the leaf polygon, this gives a complete description of a unique flexagon.
+
+See [Maps and Plans](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node5.html)
+and [Proper Flexagons](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node10.html)
+for discussion.
+
+## Flexagonator script
+
+A [Flexagonator script](https://github.com/loki3/flexagonator/blob/master/docs/script.md)
+has a couple different ways to describe a specific triangle flexagon.
+A unique template can be derived from these descriptions.
+
+You can specify the angles of a leaf by listing the angle in the center of the flexagon
+followed by the angle clockwise from the center on the first leaf.
+If the angles aren't specified, it's assumed to be an isosceles triangle flexagon
+with a central angle chosen such that the *main position* lies flat.
+
+One option is to specify the number of *pats* in the *main position* and a *generating sequence*.
+
+```javascript
+[
+  { "numPats": 6 },
+  { "flexes": "(P*^>)5" },
+  { "angles": [60, 30] }
+]
+```
+
+Another option is to describe the internal structure of one state of the flexagon using *pat notation*.
+
+```javascript
+[
+  { "pats": [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10] }
+]
+```
