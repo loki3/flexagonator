@@ -12,6 +12,7 @@ Topics:
 * [link text:'Basic terms' url:'#basic' /]
 * [link text:'Useful concepts and notation' url:'#concepts' /]
 * [link text:'Naming of flexagon traits' url:'#naming' /]
+* [link text:'Flexes' url:'#flexes' /]
 [/Aside]
 
 
@@ -151,5 +152,37 @@ The following lists traits of flexagons I feel should have names, followed by my
   Note that I suggest this because it's widely used, though it's often not unique
   (e.g. there are 3 different triangle hexa-hexaflexagons)
   and doesn't apply to flexagons whose generating sequence has flexes other than the pinch flex.
+  [/dd]
+[/dl]
+
+[hr /]
+
+
+[a name:'flexes'/]
+# Flexes
+
+[dl]
+  [dt]Flexes used in publications[/dt]
+  [dd]
+  Pinch flex, v-flex, box flex
+  [/dd]
+
+  [dt]Flexes I've used for triangle flexes[/dt]
+  [dd]
+  Pocket flex, tuck, pyramid shuffle, flip, silver tetra, various slots, ticket, and variations of the pinch flex.
+  [br/][br/]
+  See the [Flex Compendium](flex-compendium.html) for a longer list.
+  [/dd]
+
+  [dt]Notation[/dt]
+  [dd]
+  For use in *flex notation*, each flex gets assigned shorthand to uniquely identify it.
+  A flex's shorthand starts with a capital letter, alternately followed by one or more lower case letters or numbers,
+  e.g. `P`, `Sh`, `P333`.
+  There are additional modifiers that can be added to the flex shorthand:
+* `'` for inverse, e.g. `P'`
+* `+` to indicate that the necessary internal structure should be created in the flexagon, e.g. `P+`
+* `*` is the equivalent of `+` followed by applying the flex, e.g. `P* = P+ P`
+  `>`, `<`, `^` are special symbols that indicate rotating the flexagon or turning it over to change the *current vertex*.
   [/dd]
 [/dl]
