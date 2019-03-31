@@ -14,6 +14,7 @@ Topics:
 * [link text:'Naming of flexagon traits' url:'#naming' /]
 * [link text:'Flexes' url:'#flexes' /]
 * [link text:'Describing a specific flexagon and template' url:'#specific' /]
+* [link text:'Flexagon definition' url:'#definition' /]
 [/Aside]
 
 
@@ -51,7 +52,10 @@ Topics:
   [/dd]
 
   [dt]flex[/dt]
-  [dd]Manipulate a flexagon through various folds to change the arrangement of its *pats* and *leaves*[/dd]
+  [dd]
+  A series of modifications to a flexagon that takes it from one valid state to another,
+  where the modifications consist of folding together, unfolding, and sliding pats
+  [/dd]
 [/dl]
 
 [hr /]
@@ -234,3 +238,57 @@ Another option is to describe the internal structure of one state of the flexago
   { "pats": [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10] }
 ]
 ```
+
+[hr /]
+
+
+[a name:'definition'/]
+# Flexagon definition
+
+Papers and publications on flexagons generally start out with a vague description of what a flexagon is,
+perhaps include the story of who first discovered them,
+and follow that with a discussion of some specific aspects.
+But I don't recall having seen a good definition of exactly what a flexagon is
+and how it differs from related mechanical paper folding constructs.
+
+Here are my definitions from my G4G10 paper on [Flex Theory](http://loki3.com/flex/g4g10/Flex-Theory.pdf):
+
+[dl]
+  [dt]leaf[/dt]
+  [dd]
+  A single polygon
+  [/dd]
+
+  [dt]f-linkage[/dt]
+  [dd]
+  A chain of leaves where every leaf is connected along exactly two edges to mirror images of itself
+  [/dd]
+
+  [dt]pat[/dt]
+  [dd]
+  A portion of an f-linkage where the leaves are folded along edges such that the mirrored edges of the leaves all align
+  [/dd]
+
+  [dt]leaf splitting[/dt]
+  [dd]
+  Consider a leaf l[sub]0[/sub] in a pat.
+  It’s connected to leaf l[sub]1[/sub] across edge e[sub]1[/sub] and to leaf l[sub]2[/sub] across edge e[sub]2[/sub],
+  leaving its third edge e[sub]3[/sub] unconnected.
+  If you think of the leaf as having a small amount of thickness, you can slice it in two,
+  leaving the two new leaves connected across e[sub]3[/sub].
+  One of the new leaves is connected across e[sub]1[/sub] to l[sub]1[/sub] while the other is connected across e[sub]2[/sub] to l[sub]2[/sub].
+
+  There are two ways to perform this leaf splitting,
+  with either the top leaf connected across e[sub]1[/sub] and the lower leaf across e[sub]2[/sub] or vice versa.
+  The choice you make for the first leaf splitting operation determines the handedness of the flexagon.
+  Every leaf splitting operation thereafter must use the same handedness; otherwise you no longer have a valid flexagon.
+  [/dd]
+
+  [dt]flexagon[/dt]
+  [dd]
+  An f-linkage of pats where every pat and sub-pat has been created through leaf splitting and has the same handedness
+  [/dd]
+[/dl]
+
+I also referred to [Maps and Plans](http://delta.cs.cinvestav.mx/~mcintosh/comun/flexagon/node5.html)
+in the Conrad & Hartline paper for more discussion around leaf splitting.
