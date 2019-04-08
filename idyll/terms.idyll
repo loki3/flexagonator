@@ -25,6 +25,9 @@ Topics:
   [dt]leaf[/dt]
   [dd]A single polygon in a flexagon[/dd]
 
+  [dt]rigid leaf[/dt]
+  [dd]A leaf that is not allowed to bend[/dd]
+
   [dt]pat[/dt]
   [dd]A stack of polygons in a flexagon[/dd]
 
@@ -55,6 +58,11 @@ Topics:
   [dd]
   A series of modifications to a flexagon that takes it from one valid state to another,
   where the modifications consist of folding together, unfolding, and sliding pats
+  [/dd]
+
+  [dt]rigid flex[/dt]
+  [dd]
+  A flex with the restriction that there is no bending of leaves
   [/dd]
 [/dl]
 
@@ -119,7 +127,7 @@ The following lists traits of flexagons I feel should have names, followed by my
 [dl]
   [dt]The polygon used for *leaves*[/dt]
   [dd]
-  Preface *flexagon* with the polygon, e.g. "traingle flexagon" or "hexagon flexagon".
+  Preface *flexagon* with the polygon, e.g. "triangle flexagon" or "hexagon flexagon".
   [br/][br/]
   For example, the following is called a *pentagon flexagon* because the leaves are pentagons.
   [br/]
@@ -142,8 +150,7 @@ The following lists traits of flexagons I feel should have names, followed by my
   [dd]
   For triangle flexagons, use terms that capture properties like symmetry and right angles
   that impact the flexes that can be performed.
-  These include *equilateral*, *silver* (45-45-90), *bronze* (30-60-90), *isosceles*
-  (other than equilateral and sivler), and *right* (other than silver and bronze).
+  These include *equilateral*, *silver* (45-45-90), *bronze* (30-60-90), *isosceles*, and *right*.
   [br/][br/]
   Special quadrilaterals include *square*, *kite*, *rhombus*, and *trapezoid*.
   [br/][br/]
@@ -176,7 +183,7 @@ The following lists traits of flexagons I feel should have names, followed by my
 [dl]
   [dt]Flexes used in publications[/dt]
   [dd]
-  Pinch flex, v-flex, box flex
+  Pinch flex, v-flex, box flex, pass-through, reverse pass-through, snap flex, twist flex, interleaf flex
   [/dd]
 
   [dt]Flexes I've used for triangle flexes[/dt]
