@@ -141,7 +141,7 @@ namespace Flexagonator {
         ctx.fill();
       }
 
-      const label = props.getFaceLabel(id) || id.toString();
+      const label = props.getFaceLabel(id) || (front ? face.leaf.top.toString() : face.leaf.bottom.toString());
       const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
       ctx.font = len / 5 + "px sans-serif";
