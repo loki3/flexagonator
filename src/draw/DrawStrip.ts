@@ -39,8 +39,12 @@ namespace Flexagonator {
       }
     }
 
+    // alternate gray & white dashes
     ctx.strokeStyle = "rgb(150, 150, 150)";
     ctx.setLineDash([10, 5]);
+    drawLines(ctx, leaflines.folds, transform);
+    ctx.strokeStyle = "white";
+    ctx.setLineDash([0, 10, 5, 0]);
     drawLines(ctx, leaflines.folds, transform);
 
     ctx.strokeStyle = "black";
