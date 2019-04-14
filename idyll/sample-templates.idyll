@@ -1,0 +1,112 @@
+[meta title:"Sample templates" description:"Templates for the workshop" /]
+
+[Header
+  title:"Sample templates"
+  subtitle:"Templates for the workshop"
+  author:"Scott Sherman"
+  authorLink:"http://loki3.com/flex" /]
+
+[var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
+
+# F
+
+[Unfolded width:900 height:500 numPats:6 generator:'F+' endText:'F' angles:`[60,90]` options:`{rotation:120}` /]
+[Unfolded width:1000 height:600 numPats:8 generator:'F+' endText:'F' angles:`[45,90]` options:`{rotation:0}` /]
+
+[var name:'bronze6FScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:bronze6FScript
+  initialScript:`[{angles:[60, 90]}, {flexAndColor: { flexes: "F+", colors: defaultColors }}]` /]
+[Unfolded width:860 height:500 numPats:6 script:bronze6FScript endText:'F' options:`{content:2, rotation:120}` /]
+[Unfolded width:860 height:500 numPats:6 script:bronze6FScript endText:'F' options:`{content:3, rotation:300}` /]
+
+[var name:'silver8FScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver8FScript
+  initialScript:`[{angles:[45, 90]}, {flexAndColor: { flexes: "F+", colors: defaultColors }}]` /]
+[Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:2, rotation:0}` /]
+[Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:3, rotation:180}` /]
+
+# Sh
+
+[Unfolded width:900 height:500 numPats:6 generator:'Sh+' endText:'Sh' options:`{rotation:120}` /]
+[Unfolded width:900 height:600 numPats:7 generator:'Sh+' endText:'Sh' options:`{rotation:180}` /]
+[Unfolded width:900 height:600 numPats:8 generator:'Sh+' endText:'Sh1' angles:`[45,45]` options:`{rotation:0}` /]
+[Unfolded width:900 height:600 numPats:8 generator:'Sh+' endText:'Sh2' angles:`[45,90]` options:`{rotation:0}` /]
+
+[var name:'equi6ShScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:equi6ShScript
+  initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
+[Unfolded width:750 height:500 numPats:6 script:equi6ShScript endText:'Sh' options:`{content:2, rotation:120}` /]
+[Unfolded width:750 height:500 numPats:6 script:equi6ShScript endText:'Sh' options:`{content:3, rotation:300}` /]
+
+[var name:'heptaShScript' value:'' /]
+[Flexagon width:200 height:200 numPats:7 currentScript:heptaShScript
+  initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
+[Unfolded width:640 height:500 numPats:7 script:heptaShScript endText:'Sh' options:`{content:2, rotation:180}` /]
+[Unfolded width:640 height:500 numPats:7 script:heptaShScript endText:'Sh' options:`{content:3, rotation:0}` /]
+
+[var name:'silver1ShScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver1ShScript
+  initialScript:`[{angles:[45, 45]}, {flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
+[Unfolded width:740 height:600 numPats:8 script:silver1ShScript endText:'Sh' options:`{content:2, rotation:0}` /]
+[Unfolded width:740 height:600 numPats:8 script:silver1ShScript endText:'Sh' options:`{content:3, rotation:180}` /]
+
+[var name:'silver2ShScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver2ShScript
+  initialScript:`[{angles:[45, 90]}, {flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
+[Unfolded width:740 height:600 numPats:8 script:silver2ShScript endText:'Sh' options:`{content:2, rotation:0}` /]
+[Unfolded width:740 height:600 numPats:8 script:silver2ShScript endText:'Sh' options:`{content:3, rotation:180}` /]
+
+# T
+
+[Unfolded width:900 height:500 numPats:6 generator:'T+' endText:'T' options:`{rotation:0}` /]
+[Unfolded width:900 height:500 numPats:6 generator:'T+' endText:'T' angles:`[60,30]` options:`{rotation:240}` /]
+[Unfolded width:1000 height:600 numPats:8 generator:'T2+' endText:'T' angles:`[45,45]` options:`{rotation:90}` /]
+
+[var name:'equi6TScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:equi6TScript
+  initialScript:`[{flexAndColor: { flexes: "T+", colors: defaultColors }}]` /]
+[Unfolded width:670 height:500 numPats:6 script:equi6TScript endText:'T' options:`{content:2, rotation:0}` /]
+[Unfolded width:670 height:500 numPats:6 script:equi6TScript endText:'T' options:`{content:3, rotation:180}` /]
+
+[var name:'bronze6TScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:bronze6TScript
+  initialScript:`[{angles:[60, 30]}, {flexAndColor: { flexes: "T+", colors: defaultColors }}]` /]
+[Unfolded width:575 height:500 numPats:6 script:bronze6TScript endText:'T' options:`{content:2, rotation:240}` /]
+[Unfolded width:575 height:500 numPats:6 script:bronze6TScript endText:'T' options:`{content:3, rotation:60}` /]
+
+[var name:'silver8TScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver8TScript
+  initialScript:`[{angles:[45,45]}, {flexAndColor: { flexes: "T2+", colors: defaultColors }}]` /]
+[Unfolded width:1000 height:400 numPats:8 script:silver8TScript endText:'T' options:`{content:2, rotation:90}` /]
+[Unfolded width:1000 height:400 numPats:8 script:silver8TScript endText:'T' options:`{content:3, rotation:270}` /]
+
+# V
+
+[Unfolded width:900 height:400 numPats:6 generator:'V+' endText:'V' options:`{rotation:60}` /]
+
+[var name:'equi6VScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:equi6VScript
+  initialScript:`[{flexAndColor: { flexes: "V+", colors: defaultColors }}]` /]
+[Unfolded width:900 height:400 numPats:6 script:equi6VScript endText:'V' options:`{content:2, rotation:60}` /]
+[Unfolded width:900 height:400 numPats:6 script:equi6VScript endText:'V' options:`{content:3, rotation:240}` /]
+
+# (F*<)4 hepta
+
+[Unfolded width:1200 height:300 numPats:7 generator:'(F*<)4' endText:'(F<)4' options:`{rotation:77}` /]
+
+[var name:'heptaF4Script' value:'' /]
+[Flexagon width:200 height:200 numPats:7 currentScript:heptaF4Script
+  initialScript:`[{flexAndColor: { flexes: "(F*<)4", colors: defaultColors }}]` /]
+[Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:2, rotation:77}` /]
+[Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:3, rotation:257}` /]
+
+# right deca
+
+[Unfolded width:1200 height:800 numPats:10 generator:'<<<<Sh+<Sh+<<F+<<St+<<St+' angles:`[36,54]`
+  options:`{rotation:90, captions:[{text:'Sh', which:-7}, {text:'Sh', which:-10}, {text:'St', which:6}, {text:'(F)', which:9}]}` /]
+
+[var name:'decaScript' value:'' /]
+[Flexagon width:200 height:200 numPats:10 currentScript:decaScript
+  initialScript:`[{angles:[36,90]}, {flexAndColor: { flexes: "<<<<Sh+<Sh+<<F+<<St+<<St+", colors: defaultColors }}]` /]
+[Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:2, rotation:90}` /]
+[Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:3, rotation:270}` /]
