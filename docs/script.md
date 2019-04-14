@@ -138,6 +138,10 @@ if there are still more in the color array.
 { flexAndColor: { flexes: 'P* > Sh*' , colors: [0x555555, 0x0000ff] } }
 ```
 
+*Note: The labels it uses don't always correspond to a folding sequence.*
+By default, flexagonator labels leaves in pairs that serve as instructions for how to fold the flexagon.
+But for flexes such as the flip flex, the labels created by `flexAndColor` aren't sufficient for showing you how to fold.
+
 
 ### the `searchFlexes` command
 
