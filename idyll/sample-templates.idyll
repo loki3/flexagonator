@@ -14,15 +14,45 @@
 [Unfolded width:900 height:500 numPats:6 generator:'F+' endText:'F' angles:`[60,90]` options:`{rotation:120}` /]
 [Unfolded width:1000 height:600 numPats:8 generator:'F+' endText:'F' angles:`[45,90]` options:`{rotation:0}` /]
 
+[derived name:'makeBronze6F' value:`[
+{"numPats":6},{"angles":[60,90]},{"flexes":"F+"},
+{"leafProps":[
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"5", "color":defaultColors[4] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"5", "color":defaultColors[4] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"3", "color":defaultColors[2] } },
+  { "front":{ "label":"3", "color":defaultColors[2] }, "back":{ "label":"2", "color":defaultColors[1] } }
+]}
+]` /]
 [var name:'bronze6FScript' value:'' /]
-[Flexagon width:200 height:200 numPats:6 currentScript:bronze6FScript
-  initialScript:`[{angles:[60, 90]}, {flexAndColor: { flexes: "F+", colors: defaultColors }}]` /]
+[Flexagon width:200 height:200 numPats:6 currentScript:bronze6FScript initialScript:makeBronze6F /]
 [Unfolded width:860 height:500 numPats:6 script:bronze6FScript endText:'F' options:`{content:2, rotation:120}` /]
 [Unfolded width:860 height:500 numPats:6 script:bronze6FScript endText:'F' options:`{content:3, rotation:300}` /]
 
+[derived name:'makeSilver8F' value:`[
+{"numPats":8},{"angles":[45,90]},{"flexes":"F+"},
+{"leafProps":[
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"5", "color":defaultColors[4] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"5", "color":defaultColors[4] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"3", "color":defaultColors[2] } },
+  { "front":{ "label":"3", "color":defaultColors[2] }, "back":{ "label":"2", "color":defaultColors[1] } }
+]}
+]` /]
 [var name:'silver8FScript' value:'' /]
-[Flexagon width:200 height:200 numPats:8 currentScript:silver8FScript
-  initialScript:`[{angles:[45, 90]}, {flexAndColor: { flexes: "F+", colors: defaultColors }}]` /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver8FScript initialScript:makeSilver8F /]
 [Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:2, rotation:0}` /]
 [Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:3, rotation:180}` /]
 
