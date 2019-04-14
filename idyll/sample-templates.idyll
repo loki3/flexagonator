@@ -136,8 +136,41 @@
 [Unfolded width:1200 height:800 numPats:10 generator:'<<<<Sh+<Sh+<<F+<<St+<<St+' angles:`[36,54]`
   options:`{rotation:90, captions:[{text:'Sh', which:-7}, {text:'Sh', which:-10}, {text:'St', which:6}, {text:'(F)', which:9}]}` /]
 
+[derived name:'makeDeca' value:`[
+{"numPats":10},{"angles":[36,90]},{"flexes":"<<<<Sh+<Sh+<<F+<<St+<<St+"},
+{"leafProps":[
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"5", "color":defaultColors[4] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"6", "color":defaultColors[5] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"6", "color":defaultColors[5] } },
+
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"1", "color":defaultColors[0] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"4", "color":defaultColors[3] } },
+
+  { "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"6", "color":defaultColors[5] } },
+  null,
+  { "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"2", "color":defaultColors[1] } },
+
+  { "front":{ "label":"6", "color":defaultColors[5] } },
+  { "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"5", "color":defaultColors[4] }, "back":{ "label":"4", "color":defaultColors[3] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"3", "color":defaultColors[2] } },
+
+  { "front":{ "label":"3", "color":defaultColors[2] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"3", "color":defaultColors[2] } },
+  { "front":{ "label":"3", "color":defaultColors[2] }, "back":{ "label":"2", "color":defaultColors[1] } },
+  { "front":{ "label":"4", "color":defaultColors[3] }, "back":{ "label":"3", "color":defaultColors[2] } },
+  { "front":{ "label":"3", "color":defaultColors[2] }, "back":{ "label":"2", "color":defaultColors[1] } }
+]}
+]` /]
 [var name:'decaScript' value:'' /]
-[Flexagon width:200 height:200 numPats:10 currentScript:decaScript
-  initialScript:`[{angles:[36,90]}, {flexAndColor: { flexes: "<<<<Sh+<Sh+<<F+<<St+<<St+", colors: defaultColors }}]` /]
+[Flexagon width:200 height:200 numPats:10 currentScript:decaScript initialScript:makeDeca /]
 [Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:2, rotation:90}` /]
 [Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:3, rotation:270}` /]
