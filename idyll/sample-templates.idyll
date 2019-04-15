@@ -72,8 +72,8 @@
 [var name:'heptaShScript' value:'' /]
 [Flexagon width:200 height:200 numPats:7 currentScript:heptaShScript
   initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
-[Unfolded width:640 height:500 numPats:7 script:heptaShScript endText:'Sh' options:`{content:2, rotation:180}` /]
-[Unfolded width:640 height:500 numPats:7 script:heptaShScript endText:'Sh' options:`{content:3, rotation:0}` /]
+[Unfolded width:790 height:600 numPats:7 script:heptaShScript endText:'Sh' options:`{content:2, rotation:180}` /]
+[Unfolded width:790 height:600 numPats:7 script:heptaShScript endText:'Sh' options:`{content:3, rotation:0}` /]
 
 [var name:'silver1ShScript' value:'' /]
 [Flexagon width:200 height:200 numPats:8 currentScript:silver1ShScript
@@ -114,12 +114,26 @@
 # V
 
 [Unfolded width:900 height:400 numPats:6 generator:'V+' endText:'V' options:`{rotation:60}` /]
+[Unfolded width:1000 height:150 numPats:6 generator:'(V*>)4' endText:'(V>)4' options:`{rotation:-60}` /]
+[Unfolded width:1200 height:150 numPats:6 generator:'(V*<)7' endText:'(V<)7' options:`{rotation:60}` /]
 
 [var name:'equi6VScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6VScript
   initialScript:`[{flexAndColor: { flexes: "V+", colors: defaultColors }}]` /]
 [Unfolded width:900 height:400 numPats:6 script:equi6VScript endText:'V' options:`{content:2, rotation:60}` /]
 [Unfolded width:900 height:400 numPats:6 script:equi6VScript endText:'V' options:`{content:3, rotation:240}` /]
+
+[var name:'equi6VRightScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:equi6VRightScript
+  initialScript:`[{flexAndColor: { flexes: "(V*>)4(<V')4", colors: defaultColors }},{"searchFlexes":"P Sh V Ltf"}]` /]
+[Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript endText:'(V>)4' options:`{content:2, rotation:-60}` /]
+[Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript endText:'(V>)4' options:`{content:3, rotation:120}` /]
+
+[var name:'equi6VLeftScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:equi6VLeftScript
+  initialScript:`[{flexAndColor: { flexes: "(V*<)7(>V')7", colors: defaultColors }},{"searchFlexes":"P Sh V Ltf"}]` /]
+[Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript endText:'(V<)7' options:`{content:2, rotation:60}` /]
+[Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript endText:'(V<)7' options:`{content:3, rotation:-120}` /]
 
 # (F*<)4 hepta
 
