@@ -7,7 +7,7 @@
   authorLink:"http://loki3.com/flex" /]
 
 // [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
-[var name:'defaultColors' value:`[0x4e6ebf, 0x45cd62, 0xb4483c, 0xffff00, 0xb249cc, 0x805600, 0x70cce1, 0xff6201, 0xdddddd, 0x999999]` /]
+[var name:'defaultColors' value:`[0x4e6ebf, 0x45cd62, 0xb4483c, 0xffff00, 0xb249cc, 0x805600, 0x70cce1, 0xffa231, 0xdddddd, 0x999999]` /]
 
 # F
 
@@ -32,7 +32,7 @@
 [var name:'bronze6FScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:bronze6FScript initialScript:makeBronze6F /]
 [Unfolded width:860 height:500 numPats:6 script:bronze6FScript endText:'F' options:`{content:2, rotation:120}` /]
-[Unfolded width:860 height:500 numPats:6 script:bronze6FScript endText:'F' options:`{content:3, rotation:300}` /]
+[Unfolded width:860 height:500 numPats:6 script:bronze6FScript options:`{content:3, rotation:300}` /]
 
 [derived name:'makeSilver8F' value:`[
 {"numPats":8},{"angles":[45,90]},{"flexes":"F+"},
@@ -54,7 +54,7 @@
 [var name:'silver8FScript' value:'' /]
 [Flexagon width:200 height:200 numPats:8 currentScript:silver8FScript initialScript:makeSilver8F /]
 [Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:2, rotation:0}` /]
-[Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:3, rotation:180}` /]
+[Unfolded width:770 height:600 numPats:8 script:silver8FScript options:`{content:3, rotation:180}` /]
 
 # Sh
 
@@ -67,25 +67,25 @@
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6ShScript
   initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
 [Unfolded width:750 height:500 numPats:6 script:equi6ShScript endText:'Sh' options:`{content:2, rotation:120}` /]
-[Unfolded width:750 height:500 numPats:6 script:equi6ShScript endText:'Sh' options:`{content:3, rotation:300}` /]
+[Unfolded width:750 height:500 numPats:6 script:equi6ShScript options:`{content:3, rotation:300}` /]
 
 [var name:'heptaShScript' value:'' /]
 [Flexagon width:200 height:200 numPats:7 currentScript:heptaShScript
   initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
 [Unfolded width:790 height:600 numPats:7 script:heptaShScript endText:'Sh' options:`{content:2, rotation:180}` /]
-[Unfolded width:790 height:600 numPats:7 script:heptaShScript endText:'Sh' options:`{content:3, rotation:0}` /]
+[Unfolded width:790 height:600 numPats:7 script:heptaShScript options:`{content:3, rotation:0}` /]
 
 [var name:'silver1ShScript' value:'' /]
 [Flexagon width:200 height:200 numPats:8 currentScript:silver1ShScript
   initialScript:`[{angles:[45, 45]}, {flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
 [Unfolded width:740 height:600 numPats:8 script:silver1ShScript endText:'Sh' options:`{content:2, rotation:0}` /]
-[Unfolded width:740 height:600 numPats:8 script:silver1ShScript endText:'Sh' options:`{content:3, rotation:180}` /]
+[Unfolded width:740 height:600 numPats:8 script:silver1ShScript options:`{content:3, rotation:180}` /]
 
 [var name:'silver2ShScript' value:'' /]
 [Flexagon width:200 height:200 numPats:8 currentScript:silver2ShScript
   initialScript:`[{angles:[45, 90]}, {flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
 [Unfolded width:740 height:600 numPats:8 script:silver2ShScript endText:'Sh' options:`{content:2, rotation:0}` /]
-[Unfolded width:740 height:600 numPats:8 script:silver2ShScript endText:'Sh' options:`{content:3, rotation:180}` /]
+[Unfolded width:740 height:600 numPats:8 script:silver2ShScript options:`{content:3, rotation:180}` /]
 
 # T
 
@@ -96,19 +96,19 @@
 [var name:'equi6TScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6TScript
   initialScript:`[{flexAndColor: { flexes: "T+", colors: defaultColors }}]` /]
-[Unfolded width:670 height:500 numPats:6 script:equi6TScript endText:'T' options:`{content:2, rotation:0}` /]
+[Unfolded width:670 height:500 numPats:6 script:equi6TScript options:`{content:2, rotation:0}` /]
 [Unfolded width:670 height:500 numPats:6 script:equi6TScript endText:'T' options:`{content:3, rotation:180}` /]
 
 [var name:'bronze6TScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:bronze6TScript
   initialScript:`[{angles:[60, 30]}, {flexAndColor: { flexes: "T+", colors: defaultColors }}]` /]
-[Unfolded width:575 height:500 numPats:6 script:bronze6TScript endText:'T' options:`{content:2, rotation:240}` /]
+[Unfolded width:575 height:500 numPats:6 script:bronze6TScript options:`{content:2, rotation:240}` /]
 [Unfolded width:575 height:500 numPats:6 script:bronze6TScript endText:'T' options:`{content:3, rotation:60}` /]
 
 [var name:'silver8TScript' value:'' /]
 [Flexagon width:200 height:200 numPats:8 currentScript:silver8TScript
   initialScript:`[{angles:[45,45]}, {flexAndColor: { flexes: "T2+", colors: defaultColors }}]` /]
-[Unfolded width:1000 height:400 numPats:8 script:silver8TScript endText:'T' options:`{content:2, rotation:90}` /]
+[Unfolded width:1000 height:400 numPats:8 script:silver8TScript options:`{content:2, rotation:90}` /]
 [Unfolded width:1000 height:400 numPats:8 script:silver8TScript endText:'T' options:`{content:3, rotation:270}` /]
 
 # V
@@ -132,8 +132,8 @@
 [var name:'equi6VLeftScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6VLeftScript
   initialScript:`[{flexAndColor: { flexes: "(V*<)7(>V')7", colors: defaultColors }},{"searchFlexes":"P Sh V Ltf"}]` /]
-[Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript endText:'(V<)7' options:`{content:2, rotation:60}` /]
-[Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript endText:'(V<)7' options:`{content:3, rotation:-120}` /]
+[Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:2, rotation:60, captions: [{which:-2, text:'(V<)7'}]}` /]
+[Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:3, rotation:-120, captions: [{which:1, text:'(V<)7'}]}` /]
 
 # (F*<)4 hepta
 
@@ -141,7 +141,7 @@
 
 [var name:'heptaF4Script' value:'' /]
 [Flexagon width:200 height:200 numPats:7 currentScript:heptaF4Script
-  initialScript:`[{flexAndColor: { flexes: "(F*<)4", colors: defaultColors }}]` /]
+  initialScript:`[{flexAndColor: { flexes: "(F*<)4(>F')4", colors: defaultColors }}, {searchFlexes:"P Sh F"}]` /]
 [Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:2, rotation:77}` /]
 [Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:3, rotation:257}` /]
 
@@ -188,3 +188,8 @@
 [Flexagon width:200 height:200 numPats:10 currentScript:decaScript initialScript:makeDeca /]
 [Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:2, rotation:90}` /]
 [Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:3, rotation:270}` /]
+
+
+# ennea
+
+[Unfolded width:1000 height:300 numPats:9 generator:"P333*" endText:"P333" options:`{rotation:90}` /]
