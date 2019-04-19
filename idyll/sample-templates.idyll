@@ -127,7 +127,7 @@
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6VRightScript
   initialScript:`[{flexAndColor: { flexes: "(V*>)4(<V')4", colors: defaultColors }},{"searchFlexes":"P Sh V Ltf"}]` /]
 [Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript endText:'(V>)4' options:`{content:2, rotation:-60}` /]
-[Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript endText:'(V>)4' options:`{content:3, rotation:120}` /]
+[Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript options:`{content:3, rotation:120}` /]
 
 [var name:'equi6VLeftScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6VLeftScript
@@ -142,7 +142,7 @@
 [var name:'heptaF4Script' value:'' /]
 [Flexagon width:200 height:200 numPats:7 currentScript:heptaF4Script
   initialScript:`[{flexAndColor: { flexes: "(F*<)4(>F')4", colors: defaultColors }}, {searchFlexes:"P Sh F"}]` /]
-[Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:2, rotation:77}` /]
+[Unfolded width:1200 height:220 numPats:7 script:heptaF4Script options:`{content:2, rotation:77}` /]
 [Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:3, rotation:257}` /]
 
 # right deca
@@ -190,6 +190,12 @@
 [Unfolded width:1120 height:800 numPats:10 script:decaScript options:`{content:3, rotation:270}` /]
 
 
-# ennea
+# ennea P333
 
-[Unfolded width:1000 height:300 numPats:9 generator:"P333*" endText:"P333" options:`{rotation:90}` /]
+[Unfolded width:1200 height:300 numPats:9 generator:"P333+" endText:"P333" options:`{rotation:120}` /]
+
+[var name:'P333Script' value:'' /]
+[Flexagon width:200 height:200 numPats:9 currentScript:P333Script
+  initialScript:`[{flexAndColor: { flexes: "P333+", colors: defaultColors }}, {searchFlexes:"P333 Sh F"}]` /]
+[Unfolded width:1180 height:300 numPats:9 script:P333Script endText:'P333' options:`{content:2, rotation:120}` /]
+[Unfolded width:1180 height:300 numPats:9 script:P333Script options:`{content:3, rotation:300}` /]
