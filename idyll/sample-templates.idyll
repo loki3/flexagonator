@@ -135,9 +135,19 @@
 [Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:2, rotation:60, captions: [{which:-2, text:'(V<)7'}]}` /]
 [Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:3, rotation:-120, captions: [{which:1, text:'(V<)7'}]}` /]
 
+# 6-faced silver
+
+[Unfolded width:1200 height:300 numPats:8 angles:`[45,45]` generator:'P*P*^PP >P*P*>P*P*' endText:'6-faces' options:`{rotation:45}` /]
+
+[var name:'silver6FaceScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver6FaceScript
+  initialScript:`[{flexAndColor: { flexes: "P*P*^PP >P*P*>P*P*", colors: defaultColors }}, {angles: [45,45]}, {searchFlexes:"P Sh F Tw T"}]` /]
+[Unfolded width:1200 height:300 numPats:8 script:silver6FaceScript options:`{content:2, rotation:45}` /]
+[Unfolded width:1200 height:300 numPats:8 script:silver6FaceScript endText:'6-faces' options:`{content:3, rotation:225}` /]
+
 # (F*<)4 hepta
 
-[Unfolded width:1200 height:300 numPats:7 generator:'(F*<)4' endText:'(F<)4' options:`{rotation:77}` /]
+[Unfolded width:1200 height:450 numPats:7 generator:'(F*<)4' endText:'(F<)4' options:`{rotation:90}` /]
 
 [var name:'heptaF4Script' value:'' /]
 [Flexagon width:200 height:200 numPats:7 currentScript:heptaF4Script
@@ -199,3 +209,11 @@
   initialScript:`[{flexAndColor: { flexes: "P333+", colors: defaultColors }}, {searchFlexes:"P333 Sh F"}]` /]
 [Unfolded width:1180 height:300 numPats:9 script:P333Script endText:'P333' options:`{content:2, rotation:120}` /]
 [Unfolded width:1180 height:300 numPats:9 script:P333Script options:`{content:3, rotation:300}` /]
+
+[Unfolded width:1200 height:800 numPats:9 generator:"(P333*<)4 (>P333')4" endText:"(P333<)4" options:`{rotation:90}` /]
+
+[var name:'P333x4Script' value:'' /]
+[Flexagon width:200 height:200 numPats:9 currentScript:P333x4Script
+  initialScript:`[{flexAndColor: { flexes: "(P333*<)4 (>P333')4", colors: defaultColors }}, {searchFlexes:"P333 Sh F"}]` /]
+[Unfolded width:920 height:800 numPats:9 script:P333x4Script options:`{content:2, rotation:90}` /]
+[Unfolded width:920 height:800 numPats:9 script:P333x4Script endText:'(P333<)4' options:`{content:3, rotation:270}` /]
