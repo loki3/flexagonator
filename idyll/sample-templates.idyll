@@ -135,7 +135,13 @@
 [Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:2, rotation:60, captions: [{which:-2, text:'(V<)7'}]}` /]
 [Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:3, rotation:-120, captions: [{which:1, text:'(V<)7'}]}` /]
 
-# 6-faced silver
+# `P*P*^PP >P*P*>P*P*`
+
+## 6-faced bronze hexa
+
+[Unfolded width:1000 height:500 numPats:6 angles:`[60,30]` generator:'P*P*^PP >P*P*>P*P*' options:`{rotation:150}` /]
+
+## 6-faced silver octa
 
 [Unfolded width:1200 height:300 numPats:8 angles:`[45,45]` generator:'P*P*^PP >P*P*>P*P*' endText:'6-faces' options:`{rotation:45}` /]
 
@@ -144,6 +150,14 @@
   initialScript:`[{flexAndColor: { flexes: "P*P*^PP >P*P*>P*P*", colors: defaultColors }}, {angles: [45,45]}, {searchFlexes:"P Sh F Tw T"}]` /]
 [Unfolded width:1200 height:300 numPats:8 script:silver6FaceScript options:`{content:2, rotation:45}` /]
 [Unfolded width:1200 height:300 numPats:8 script:silver6FaceScript endText:'6-faces' options:`{content:3, rotation:225}` /]
+
+## 6-faced right deca
+
+[Unfolded width:1100 height:800 numPats:10 angles:`[36,54]` generator:'P*P*^PP >P*P*>P*P*' options:`{rotation:126}` /]
+
+## 6-faced bronze dodeca
+
+[Unfolded width:1000 height:1000 numPats:12 angles:`[30,60]` generator:'P*P*^PP >P*P*>P*P*' endText:'6-faces' options:`{rotation:0}` /]
 
 # (F*<)4 hepta
 
