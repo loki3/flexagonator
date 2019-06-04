@@ -27,12 +27,12 @@
   [div className:'subname'] Exploring the hidden sides of hexaflexagons [/div]
 [/a]
 
-* Introduces the *hexaflexagon*, with 6 equilateral triangles per side, and the *pinch flex*, a way of folding a flexagon to reveal previously hidden sides
-* Let's you explore how to visit every side of a flexagon
+* Introduces the *hexaflexagon*, with 6 equilateral triangles per face, and the *pinch flex*, a way of folding a flexagon to reveal previously hidden faces
+* Let's you explore how to visit every face of a flexagon
 * Describes *flex notation*, which can be used to precisely describe a sequence of flexes
-* Introduces the *Tuckerman Traverse* as a technique for visiting every side of a flexagon using the pinch flex
-* Provides both a flexagon simulation and the unfolded strip for all hexaflexagons with 3, 4, 5, 6, 7, and 8 sides so you can make your own
-* Shows flexagons made up of different shapes of triangles, like using angles of 30-60-90 or 54-54-72, and different numbers of triangles per side, like 4, 8, 10, or 12
+* Introduces the *Tuckerman Traverse* as a technique for visiting every face of a flexagon using the pinch flex
+* Provides both a flexagon simulation and the unfolded strip for all hexaflexagons with 3, 4, 5, 6, 7, and 8 faces so you can make your own
+* Shows flexagons made up of different shapes of triangles, like using angles of 30-60-90 or 54-54-72, and different numbers of triangles per face, like 4, 8, 10, or 12
 
 
 [hr /]
@@ -50,7 +50,7 @@
 * Describes a naming convention for a wide variety of triangle flexagons, like *pentaflexagon* and *silver octaflexagon*
 * Defines a *minimal flexagon* as the simplest flexagon that supports a given flex
 * Demonstrates a sampling of interesting flexes on triangle flexagons: the pyramid shuffle, flip flex, tuck flex, v-flex, and silver tetra flex
-* Shows that once you generalize the types of flexes you use, the concept of "sides" of a flexagon is no longer sufficient for understanding all the states you can explore
+* Shows that once you generalize the types of flexes you use, the concept of "faces" of a flexagon is no longer sufficient for understanding all the states you can explore
 
 [hr /]
 

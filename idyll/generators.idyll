@@ -21,9 +21,9 @@
 
 
 The [first chapter](pinch-flex.html) introduced flexagons and the pinch flex,
-describing how to use the Tuckerman Traverse to explore every side.
+describing how to use the Tuckerman Traverse to explore every face.
 The [second chapter](flexing.html) showed a variety of flexes and flexagons,
-demonstrating that there isn't always a concept of well-defined "sides" on a flexagon.
+demonstrating that there isn't always a concept of well-defined "faces" on a flexagon.
 
 This chapter will show how you can use *generating sequences* to custom design flexagons.
 A *generating sequence* is a sequence of flexes used to create the internal structure of a flexagon.
@@ -62,7 +62,7 @@ You can think of this as a degenerate flexagon, one that can't be flexed at all.
 What's the minimal amount of structure necessary you need to add to allow you to perform a pinch flex?
 
 The answer is that every other *pat* (i.e. stack of triangles in the folded flexagon) needs to have exactly two leaves in it.
-This gives you the 9-triangle straight strip that folds into the 3-sided hexaflexagon.
+This gives you the 9-triangle straight strip that folds into the 3-faced hexaflexagon.
 (Recall that the large numbers go on the front of the strip and the small numbers on the back.)
 
 [Unfolded width:800 height:150 numPats:6 generator:'P+' autoLabel:true /]
@@ -71,7 +71,7 @@ You can express the concept of creating exactly the structure necessary to perfo
 by adding either a `*` or `+` to a flex symbol.
 `*` means that you add the structure and perform the flex,
 while `+` means that you add the structure without performing the flex.
-Thus, the 3-sided hexaflexagon has a generating sequence of `P*` or `P+`.
+Thus, the 3-faced hexaflexagon has a generating sequence of `P*` or `P+`.
 The difference isn't important when it's just a single flex, but becomes more important when there are a series of flexes.
 
 So let's look again at the minimal hexaflexagon for some of the flexes.
@@ -98,7 +98,7 @@ Pick a button with a generating sequence on it to see the resulting folded flexa
 # Pinch flex sequences
 
 Let's now do something a bit more interesting:
-try to figure out generating sequences that can give us the 4, 5, 6, 7, and 8 sided flexagons from
+try to figure out generating sequences that can give us the 4, 5, 6, 7, and 8 faced flexagons from
 the [flexagon intro](http://loki3.com/flex/explore/pinch-flex.html) chapter.
 
 [Aside]
@@ -121,7 +121,7 @@ all the structure necessary to allow you to pinch flex along any of the other ed
 Put those facts together, and that means that applying the generating sequence `P*P*` will create exactly those two triangles in the above diagram.
 Alternately, you could use `P*^>P*` to accomplish the same thing.
 However, `P*>P*` will not, because it only travels along the first triangle, not the second.
-Since we've been looking at the state diagram for the 4-sided flexagon,
+Since we've been looking at the state diagram for the 4-faced flexagon,
 this tells us that either of the generating sequences `P*P*` or `P*^>P*` can be used to create it.
 
 [Aside]
@@ -129,13 +129,13 @@ this tells us that either of the generating sequences `P*P*` or `P*^>P*` can be 
 [/Aside]
 
 I'll give you one more example before letting you try on your own.
-The diagram to the right is for the 7-sided variant C flexagon.
+The diagram to the right is for the 7-faced variant C flexagon.
 The blue line shows the track that the flex sequence `P*P*P*^>P*P*` takes through the diagram, starting at the green circle and ending at the red circle.
 Since it contains an edge of every triangle, it's one possible generating sequence for that flexagon.
 And since it only contains a *single* edge of each triangle, it's the shortest possible generating sequence, though it's not unique.
 
 You should now know enough to be able to figure out your own generating sequences by looking at a pinch flex diagram.
-Below are the state diagrams for all of the 5, 6, and 7-sided flexagons.
+Below are the state diagrams for all of the 5, 6, and 7-faced flexagons.
 
 [FullWidth]
   [PinchGraph width:230 height:200 generator:'(P*)3' flexes:'' /]
@@ -161,7 +161,7 @@ Generating sequence: [TextInput value:pinchGenerator /]
 
 [PinchGraph width:500 height:200 generator:pinchGenerator flexes:pinchGenerator /]
 
-If you would like to try more, here are the pinch flex diagrams for all of the 8-sided flexagons:
+If you would like to try more, here are the pinch flex diagrams for all of the 8-faced flexagons:
 
 [FullWidth]
   [PinchGraph width:230 height:200 generator:'(P*^>)6' flexes:'' /]

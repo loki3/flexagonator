@@ -37,7 +37,7 @@ We'll start by looking at a couple examples before giving you the tools to exper
 
 ## Basic pinch flex cycle
 
-One of the simplest cycles is a sequence of 3 pinch flexes on the basic 3-sided hexaflexagon.
+One of the simplest cycles is a sequence of 3 pinch flexes on the basic 3-faced hexaflexagon.
 You could write this sequence as `P>P>P>`.
 Alternately, you could write it as `(P>) 3`, where the sequence to be repeated is in parentheses, followed by the number of times it's repeated.
 Since you can do this on the minimal flexagon for the pinch flex, you can perform this sequence whenever you can do a pinch flex.
@@ -160,7 +160,7 @@ How do the sequences change as you change the number of pats?
 
 In the [Flexagon Intro](pinch.html), you learned about the Tuckerman Traverse.
 This is a recipe for how to do a sequence of pinch flexes to see all the faces of a hexaflexagon.
-However, other than on the 3-sided hexaflexagon, it doesn't show you all the different *states*
+However, other than on the 3-faced hexaflexagon, it doesn't show you all the different *states*
 that are possible if you use any of the many flexes that rearrange those faces.
 
 We'll look at one example to give you a flavor of what a complete traversal of every state might look like.

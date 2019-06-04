@@ -38,7 +38,7 @@
 
 Flexagons are interesting puzzles made from folding strips of paper.
 You can make them from a wide variety of polygons: various triangles, quadrilaterals, pentagons, and so on.
-Once assembled, you *flex* them, i.e. fold them in different ways, in order to find new sides and rearrange the polygons.
+Once assembled, you *flex* them, i.e. fold them in different ways, in order to find new faces and rearrange the polygons.
 
 The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon; thus they're called *hexaflexagons*.
 And the most commonly described flex is the *pinch flex*, which can reveal previously hidden faces.
@@ -55,9 +55,9 @@ to learn their history and see what folding and flexing look like...
 [Youtube id:"VIVIegSt81k" width:500 height:300 /]
 
 
-# 3-sided hexaflexagon
+# 3-faced hexaflexagon
 
-[derived name:'sides3' value:`[
+[derived name:'faces3' value:`[
   {searchFlexes:"P"},
   {flexAndColor: { flexes: 'P*', colors: defaultColors }},
   {reverseFlexes: 'P*'},
@@ -65,7 +65,7 @@ to learn their history and see what folding and flexing look like...
   ]` /]
 [var name:'history3' value:'' /]
 
-We'll start with the simple 3-sided hexaflexagon (or *trihexaflexagon*).
+We'll start with the simple 3-faced hexaflexagon (or *trihexaflexagon*).
 The hexagon below has numbers and colors on each triangle, which change as you perform a flex.
 `P` is the *flex notation* for a *pinch flex*.
 The clickable buttons below labeled with a `P` indicate the corners where you can perform a pinch flex.
@@ -83,12 +83,12 @@ Try clicking on the buttons and watch how the flexagon changes and how this is t
   [PinchGraph width:400 height:100 generator:'P*' flexes:history3 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides3 history:history3 options:drawOptions overButton:true /]
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:faces3 history:history3 options:drawOptions overButton:true /]
 
 But, of course, everything on this page is just a simulation of an actual model.
 The fun part is in creating and flexing the real thing.
 Following each simulation, you'll find a strip of triangles (AKA *template*, *frieze*, or *net*) you can print, fold, and optionally decorate to create a real flexagon.
-Here's the unfolded strip for the 3-sided hexaflexagon.
+Here's the unfolded strip for the 3-faced hexaflexagon.
 
 [Unfolded width:800 height:150 numPats:defaultPats generator:'P*' autoLabel:true /]
 
@@ -100,9 +100,9 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
 [/Conditional]
 
 
-# 4-sided hexaflexagon
+# 4-faced hexaflexagon
 
-[derived name:'sides4' value:`[
+[derived name:'faces4' value:`[
   {searchFlexes:"P"},
   {flexAndColor: { flexes: 'P*P*', colors:defaultColors }},
   {reverseFlexes: 'P*P*'},
@@ -117,7 +117,7 @@ Here's the unfolded strip for the 3-sided hexaflexagon.
   or [Button onClick:` script4 = {history: 'undo'}; runScript4 = true `]undo[/Button] to undo the last flex.
 [/Aside]
 
-Next is the 4-sided hexaflexagon (or tetrahexaflexagon).
+Next is the 4-faced hexaflexagon (or tetrahexaflexagon).
 After your first pinch flex, you find yourself in the middle of the diagram to the right, with multiple paths you can take.
 What happens when you try pinch flexing at different corners?
 How can you visit every point in the diagram in the fewest number of flexes?
@@ -127,7 +127,7 @@ Do you notice a pattern?
   [PinchGraph width:400 height:200 generator:'P*P*' flexes:history4 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides4 history:history4
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:faces4 history:history4
   runScript:runScript4 script:script4 options:drawOptions overButton:true /]
 
 *Pat notation:*
@@ -141,9 +141,9 @@ And if you put a unique number on every leaf, you can use this notation to descr
 [Unfolded width:1000 height:250 numPats:defaultPats generator:'P*P*' autoLabel:true /]
 
 
-# 5-sided hexaflexagon
+# 5-faced hexaflexagon
 
-[derived name:'sides5' value:`[
+[derived name:'faces5' value:`[
   {searchFlexes:"P"},
   {flexAndColor: { flexes: 'P*P*P*', colors:defaultColors }},
   {reverseFlexes: 'P*P*P*'},
@@ -158,8 +158,8 @@ And if you put a unique number on every leaf, you can use this notation to descr
   [Button onClick:` script5 = {history: 'undo'}; runScript5 = true `]undo[/Button]
 [/Aside]
 
-If you figured out a simple way to visit every state for the 4-sided version,
-does this same pattern work when you try to visit every state in the 5-sided variant?
+If you figured out a simple way to visit every state for the 4-faced version,
+does this same pattern work when you try to visit every state in the 5-faced variant?
 If not, perhaps a bit of experimentation can lead you to a simple pattern that works for both.
 
 [Aside]
@@ -170,7 +170,7 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
   (This history description uses *flex notation* to describe the series of flexes you've performed.)
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides5 history:history5
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:faces5 history:history5
   runScript:runScript5 script:script5 options:drawOptions overButton:true /]
 
 *Flex notation* is used to describe a series of flexes so that you can later reproduce the exact same sequence.
@@ -183,10 +183,10 @@ Recall from earlier that `^` indicates turning over the flexagon while keeping t
 [Unfolded width:900 height:400 numPats:defaultPats generator:'P*P*P*' autoLabel:true /]
 
 
-# 6-sided hexaflexagons
+# 6-faced hexaflexagons
 
 [var name:'initFlex6' value:'' /]
-[derived name:'sides6' value:`[
+[derived name:'faces6' value:`[
   {searchFlexes:"P"},
   {flexAndColor: { flexes: initFlex6, colors:defaultColors }},
   {reverseFlexes: initFlex6},
@@ -197,8 +197,8 @@ Recall from earlier that `^` indicates turning over the flexagon while keeping t
 [var name:'runInit6' value:false /]
 [var name:'script6' value:'' /]
 
-There are three different ways to make a 6-sided hexaflexagon (or hexahexaflexagon), each made from different triangle strips with different traversals.
-Try applying the same pattern you used for exploring every side of the 4 and 5-sided hexaflexagons to see if it works for the 6-sided variants.
+There are three different ways to make a 6-faced hexaflexagon (or hexahexaflexagon), each made from different triangle strips with different traversals.
+Try applying the same pattern you used for exploring every face of the 4 and 5-faced hexaflexagons to see if it works for the 6-faced variants.
 Click on
 [Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runInit6=true; `]A[/Button],
 [Button onClick:` initFlex6 = '(P*^>)4'; runInit6=true; `]B[/Button], and
@@ -214,11 +214,11 @@ to switch between variations.
   History: [Display value:history6 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides6 runInitial:runInit6 history:history6
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:faces6 runInitial:runInit6 history:history6
   runScript:runScript6 script:script6 options:drawOptions overButton:true /]
 
 [var name:"showTuckerman" value:false /]
-The *Tuckerman Traverse* is a general pattern that allows you to easily visit every side that's accessible using the pinch flex.
+The *Tuckerman Traverse* is a general pattern that allows you to easily visit every face that's accessible using the pinch flex.
 Once you've tried finding a pattern, click on
 [Button onClick:` showTuckerman = !showTuckerman `]describe the Tuckerman Traverse[/Button]
 to see if you've found the same pattern.
@@ -233,10 +233,10 @@ to see if you've found the same pattern.
 [Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex6 autoLabel:true /]
 
 
-# 7 and 8-sided hexaflexagons
+# 7 and 8-faced hexaflexagons
 
 [var name:'initFlex7' value:'' /]
-[derived name:'sides7' value:`[
+[derived name:'faces7' value:`[
   {searchFlexes:"P"},
   {flexAndColor: { flexes: initFlex7, colors:defaultColors }},
   {reverseFlexes: initFlex7},
@@ -254,13 +254,13 @@ It's also interesting to watch how the *pat notation* (e.g. `[[- -] -]`) for the
 and compare that to the actual flexagon.
 [/Aside]
 
-Now that you know the Tuckerman Traverse, you can try it on the four 7-sided hexaflexagons and twelve 8-sided hexaflexagons.
-Try out the 7-sided variation
+Now that you know the Tuckerman Traverse, you can try it on the four 7-faced hexaflexagons and twelve 8-faced hexaflexagons.
+Try out the 7-faced variation
 [Button onClick:` initFlex7 = '(P*^>)5'; runInit7=true; special7=0; cheight7=500 `]A[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P+ > P P*'; runInit7=true; special7=0; cheight7=500 `]B[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* ^ > P* P*'; runInit7=true; special7=0; cheight7=500 `]C[/Button], or
 [Button onClick:` initFlex7 = '(P*)5'; runInit7=true; special7=1; cheight7=1 `]D[/Button],
-and 8-sided variation
+and 8-faced variation
 [Button onClick:` initFlex7 = '(P*^>)6'; runInit7=true; special7=0; cheight7=500 `]A[/Button],
 [Button onClick:` initFlex7 = 'P* P* P* P+ > P P* P*'; runInit7=true; special7=0; cheight7=500 `]B[/Button],
 [Button onClick:` initFlex7 = 'P*P*^>P*^>P*P+>PP*'; runInit7=true; special7=0; cheight7=500 `]C[/Button],
@@ -283,7 +283,7 @@ and 8-sided variation
   History: [Display value:history7 /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:defaultPats initialScript:sides7 runInitial:runInit7 history:history7
+[Flexagon width:500 height:300 numPats:defaultPats initialScript:faces7 runInitial:runInit7 history:history7
   runScript:runScript7 script:script7 options:drawOptions overButton:true /]
 
 [Conditional if:` special7 == 0 `]
@@ -352,8 +352,8 @@ and 8-sided variation
 
 # Other triangles
 
-So far, all the flexagons we've looked at have 6 equilateral triangles per side,
-but there's no need to have exactly 6 per side, nor do we need to stick to equilateral triangles.
+So far, all the flexagons we've looked at have 6 equilateral triangles per face,
+but there's no need to have exactly 6 per face, nor do we need to stick to equilateral triangles.
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
 However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
 The following video demonstrates what the pinch flex looks like on a silver octaflexagon.
@@ -363,7 +363,7 @@ The following video demonstrates what the pinch flex looks like on a silver octa
 [var name:'initFlexesN' value:"P*P*" /]
 [var name:'patCountN' value:14 /]
 [var name:'anglesN' value:`undefined` /]
-[derived name:'sidesN' value:`[
+[derived name:'facesN' value:`[
   {angles:anglesN},
   {searchFlexes:"P"},
   {flexAndColor: { flexes: initFlexesN, colors:defaultColors }},
@@ -375,7 +375,7 @@ The following video demonstrates what the pinch flex looks like on a silver octa
 [var name:'runInitN' value:false /]
 [var name:'scriptN' value:'' /]
 
-Try experimenting with using different types of triangles and different numbers of sides.
+Try experimenting with using different types of triangles and different numbers of faces.
 
 Switch the type of triangles to an
 [Button onClick:` patCountN=8; anglesN=undefined; runInitN=true `]isosceles octaflexagon[/Button],
@@ -385,7 +385,7 @@ Switch the type of triangles to an
 [Button onClick:` patCountN=12; anglesN=undefined; runInitN=true `]isosceles dodecaflexagon[/Button], or
 [Button onClick:` patCountN=12; anglesN=[30,60]; runInitN=true `]right dodecaflexagon[/Button].
 
-Change the number of sides to
+Change the number of faces to
 [Button onClick:` initFlexesN='P*'; runInitN=true `]3[/Button],
 [Button onClick:` initFlexesN='P*P*'; runInitN=true `]4[/Button],
 [Button onClick:` initFlexesN='P*P*P*'; runInitN=true `]5[/Button],
@@ -402,7 +402,7 @@ Change the number of sides to
   History: [Display value:historyN /]
 [/Aside]
 
-[Flexagon width:500 height:300 numPats:patCountN initialScript:sidesN runInitial:runInitN history:historyN
+[Flexagon width:500 height:300 numPats:patCountN initialScript:facesN runInitial:runInitN history:historyN
   runScript:runScriptN script:scriptN options:drawOptionsN overButton:true /]
 
 Note that some of these strips may have overlapping triangles.

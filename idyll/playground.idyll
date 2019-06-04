@@ -46,7 +46,7 @@
   **Apply Settings**: Once you have entered in your settings in the various text boxes, click `Apply Settings` to use them to create a new flexagon.
   The `Generating sequence` is a series of flexes used to create the structure of the flexagon.
   `Search flexes` is used to determine which flex buttons should appear on the flexagon.
-  `Pats per side` indicates the number of *pats* (stacks of triangles) to use for the flexagon.
+  `Pats per face` indicates the number of *pats* (stacks of triangles) to use for the flexagon.
   `Center angle` is the angle of each triangular leaf that starts out in the center of the flexagon.
   `Angle 2` is the first angle clockwise from the center on the first leaf.
   Note: in order to get the default isosceles triangle, clear `Center angle`.
@@ -104,7 +104,7 @@
   [br /]
   Search flexes:[br/][TextInput value:tempSearch /]
   [br /]
-  Pats per side:[br/][TextInput value:tempPats /]
+  Pats per face:[br/][TextInput value:tempPats /]
   [br /]
   Center angle:[br/][TextInput value:tempAngle1 /]
   [br /]
@@ -184,7 +184,7 @@ History: [Display value:fromHistory /]
 [Conditional if:` showUnfoldedHelp `]
   **Labels and colors**: Gives you several options for how it displays labels and colors for the unfolded strip.
   You can have it use values from the *leafProperties* portion of a script, display the leaf ids,
-  display everything on one side, or display just the properties on the front or back.
+  display everything on one face, or display just the properties on the front or back.
 
   **Unfolded strip**: To make a real flexagon, print the unfolded strip, cut it out,
   then fold like numbers on like numbers, and finish by taping together the first and last triangles.
@@ -203,10 +203,10 @@ History: [Display value:fromHistory /]
 
 Labels and colors:
 [Select value:unfoldedContent options:`[
-  {value:0, label:"All on one side - use labels that indicate folding order"},
-  {value:1, label:"All on one side - use labels that indicate folding order, show leaf ids"},
-  {value:4, label:"All on one side - use labels from leaf properties, default to leaf ids"},
-  {value:5, label:"All on one side - use leaf properties, plus folding order"},
+  {value:0, label:"All on one face - use labels that indicate folding order"},
+  {value:1, label:"All on one face - use labels that indicate folding order, show leaf ids"},
+  {value:4, label:"All on one face - use labels from leaf properties, default to leaf ids"},
+  {value:5, label:"All on one face - use leaf properties, plus folding order"},
   {value:2, label:"Show front only - use leaf properties"},
   {value:3, label:"Show back only - use leaf properties"},
   ]` /]
@@ -242,7 +242,7 @@ Labels and colors:
 [/Conditional]
 
 [var name:'exploreDoFull' value:false /]
-[var name:'exploreDoOneSide' value:false /]
+[var name:'exploreDoOneFace' value:false /]
 [var name:'exploreDoCancel' value:false /]
 [var name:'exploreDone' value:false /]
 [var name:'exploreExplored' value:0 /]
@@ -258,10 +258,10 @@ Labels and colors:
   [textarea cols:20 rows:10 spellCheck:false value:exploreCounts readOnly:true /]
 [/Aside]
 
-[Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneSide=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
+[Button onClick:`exploreDoFull=true;`]Explore all[/Button] - [Button onClick:`exploreDoOneFace=true;`]Explore without ^[/Button] - [Button onClick:`exploreDoCancel=true;`]Cancel[/Button] [Display value:exploreError /]
 [br/]
 Explored [Display value:exploreExplored format:'0' /] states, found [Display value:exploreFound format:'0' /] states
-[Explorer doFull:exploreDoFull doOneSide:exploreDoOneSide doCancel:exploreDoCancel
+[Explorer doFull:exploreDoFull doOneFace:exploreDoOneFace doCancel:exploreDoCancel
   done:exploreDone explored:exploreExplored found:exploreFound counts:exploreCounts error:exploreError
   getResults:exploreGetResults results:exploreResults /]
 

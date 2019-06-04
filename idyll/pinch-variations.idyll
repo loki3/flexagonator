@@ -109,8 +109,8 @@ Unfolded strip:
 # More complex flexagons
 
 An interesting generating sequence pattern you can use with these pinch flex variations is `X* > X* < X'* < X* > X*`.
-If you start with one pair of sides visible, then apply that sequence, it will reveal two new sides.
-But all the intermediate states will be a mixing of the four sides.
+If you start with one pair of faces visible, then apply that sequence, it will reveal two new faces.
+But all the intermediate states will be a mixing of the four faces.
 
 [var name:'cfGenerator' value:"P333* > P333* < P333'* < P333* > P333*" /]
 [var name:'cfPats' value:9 /]

@@ -48,11 +48,11 @@ The best way to learn new flexes is on the *minimal flexagon* that supports the 
 This refers to the flexagon that has exactly the minimum structure necessary to perform a given flex.
 On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
 
-For flexagon names, prefixes are used to reflect the number of polygons per side, e.g. *hexaflexagon* indicates there are 6 triangles per side.
+For flexagon names, prefixes are used to reflect the number of polygons per face, e.g. *hexaflexagon* indicates there are 6 triangles per face.
 Additionally, these names are often proceeded by a word that describes the shape of the triangle, e.g. *right* for a right triangle.
 
 [Aside]
-  The early naming for flexagons reflected this approach, e.g. *hexaflexagon* for 6 triangles per side and *tetraflexagon* for 4 squares per side.
+  The early naming for flexagons reflected this approach, e.g. *hexaflexagon* for 6 triangles per face and *tetraflexagon* for 4 squares per face.
   But you'll also occasionally see the prefix used to describe the *polygon* used in the flexagon,
   e.g. *pentaflexagon* to indicate that the leaves are *pentagons*.
   My preference is to use *pentaflexagon* to mean 5 leaves per face and *pentagon flexagon* to mean pentagonal leaves.
@@ -79,9 +79,9 @@ Additionally, these names are often proceeded by a word that describes the shape
 [br /][br /][br /]
 [/Float]
 
-You may also see an additional prefix used to indicate the number of sides in the flexagon.
-For example, a *pentahexaflexagon* is a 5-sided hexaflexagon.
-But, as you'll see below, the concept of a "side" of a flexagon only makes sense when using the pinch flex,
+You may also see an additional prefix used to indicate the number of faces in the flexagon.
+For example, a *pentahexaflexagon* is a 5-faced hexaflexagon.
+But, as you'll see below, the concept of a "face" of a flexagon only makes sense when using the pinch flex,
 not when using any of the myriad other possible flexes.
 
 # Pyramid shuffle
@@ -95,7 +95,7 @@ The green circle on the first and last slides indicates where the *current verte
   You can also undo the pyramid shuffle by turning it over, doing the pyramid shuffle at the same vertex,
   then turning it back over again, summarized as `Sh' = ^Sh^`.
 
-  The *pyramid shuffle* requires at least 5 leaves per side (i.e. a pentaflexagon or greater).
+  The *pyramid shuffle* requires at least 5 leaves per face (i.e. a pentaflexagon or greater).
   It requires mild bending of the leaves on the pentaflexagon,
   but no bending for most other flexagons.
 [/Aside]
@@ -181,9 +181,9 @@ Step through the images to see a flip flex on a silver octaflexagon:
   The flex notation for the flip flex is `F`.
   As with the pyramid shuffle, `F' = ^F^`.
 
-  The *flip flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
+  The *flip flex* requires at least 6 leaves per face (i.e. a hexaflexagon).
   It works well on right triangle flexagons.
-  Isosceles triangle flexagons require at least 7 sides, however.
+  Isosceles triangle flexagons require at least 7 faces, however.
 [/Aside]
 
 [Slides width:320 height:240 pattern:'static/F/F*.jpg' start:1 end:16 /]
@@ -224,7 +224,7 @@ Step through the images to see a tuck flex on an equilateral hexaflexagon:
   The flex notation for the tuck flex is `T`.
   Or, to specify which additional flap needs to open, you can use `T1`, `T2`, etc.
 
-  The *tuck flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
+  The *tuck flex* requires at least 6 leaves per face (i.e. a hexaflexagon).
   It requires mild bending of the leaves on an equilateral hexaflexagon,
   but no bending for most other flexagons.
 [/Aside]
@@ -286,7 +286,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
   The flex notation for the v-flex is `V`.
   `V' = ^V^`
 
-  The *v-flex* requires at least 6 leaves per side (i.e. a hexaflexagon).
+  The *v-flex* requires at least 6 leaves per face (i.e. a hexaflexagon).
 [/Aside]
 
 [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
@@ -317,8 +317,8 @@ Step through the images to see a silver tetra flex on a right decaflexagon:
   The flex notation for the silver tetra flex is `St`.
   `St' = ^St^`.
 
-  The *silver tetra flex* requires at least 4 leaves per side (i.e. a tetraflexagon).
-  It works best on right flexagons, though it works on others with enough triangles per side.
+  The *silver tetra flex* requires at least 4 leaves per face (i.e. a tetraflexagon).
+  It works best on right flexagons, though it works on others with enough triangles per face.
 
   It gets its name from the fact that the simplest flexagon it works on is the *silver tetraflexagon*.
 [/Aside]
@@ -358,7 +358,7 @@ Here are some flexagons you can use to try the silver tetra flex:
 
 That was a quick tour of some of the many flexes that are possible on a variety of different flexagons.
 A lot of them work on standard hexaflexagons, rearranging the leaves in far more ways that just the pinch flex alone,
-e.g. on the [5-sided hexaflexagon](http://loki3.com/flex/diagram/penta-hexa.html).
+e.g. on the [5-faced hexaflexagon](http://loki3.com/flex/diagram/penta-hexa.html).
 Or these flexes can be used to make an interesting [puzzle](http://loki3.com/flex/maze/tridodeca-paths.html) or [maze](http://loki3.com/flex/maze/ennea-maze.html).
 
 View the next chapter, [Generating Sequences](generators.html), or look at the [Table of Contents](index.html).

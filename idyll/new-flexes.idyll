@@ -136,7 +136,7 @@ The following assumes the leaves are labeled in the order they occur in the unfo
 .
 
 To describe an entire flexagon, you simply string together the descriptions of each pat, going clockwise around the flexagon.
-So a 3-sided hexaflexagon might look like `[[1, 2], 3, [4, 5], 6, [7, 8], 9]`.
+So a 3-faced hexaflexagon might look like `[[1, 2], 3, [4, 5], 6, [7, 8], 9]`.
 To describe the effect of a flex, you note the state before the flex and after the flex.
 
 But how can you use this to *predict* what a flex will do rather than simply recording what it did *after* you do the flex?
@@ -347,15 +347,15 @@ just because the flexagon you tried it on does?
 If not, your definition wouldn't be general enough, ruling out cases where you could actually do the flex.
 How do you address this issue?
 
-One technique is to mark every side of every leaf that you expose during the flex so you know which ones are required.
-Start by marking every leaf on both of the visible sides.
+One technique is to mark every face of every leaf that you expose during the flex so you know which ones are required.
+Start by marking every leaf on both of the visible faces.
 Then slowly go through the motions of doing the flex, marking each leaf as it first becomes visible.
-When you're done, paste together all the sides you didn't need and look at the results.
+When you're done, paste together all the faces you didn't need and look at the results.
 
 For this particular flex, you'll find that the starting pat structure you need is
 `[[-, -], [-, -], -, -, [-, -], [-, -], -, -]`.
 You only need 12 leaves, not the full 16 leaves that the original flexagon had.
-Now number one side of every remaining leaf, labeling the backsides with the negative version of the front side.
+Now number one face of every remaining leaf, labeling the backsides with the negative version of the front side.
 Write down the starting state, do the flex, then write down the ending state.
 You should end up with something that looks like this (though you might have chosen different labels):
 
