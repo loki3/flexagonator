@@ -62,8 +62,8 @@ You can think of this as a degenerate flexagon, one that can't be flexed at all.
 What's the minimal amount of structure necessary you need to add to allow you to perform a pinch flex?
 
 The answer is that every other *pat* (i.e. stack of triangles in the folded flexagon) needs to have exactly two leaves in it.
-This gives you the 9-triangle straight strip that folds into the 3-faced hexaflexagon.
-(Recall that the large numbers go on the front of the strip and the small numbers on the back.)
+This gives you the 9-triangle straight template that folds into the 3-faced hexaflexagon.
+(Recall that the large numbers go on the front of the template and the small numbers on the back.)
 
 [Unfolded width:800 height:150 numPats:6 generator:'P+' autoLabel:true /]
 
@@ -76,7 +76,7 @@ The difference isn't important when it's just a single flex, but becomes more im
 
 So let's look again at the minimal hexaflexagon for some of the flexes.
 Pick a button with a generating sequence on it to see the resulting folded flexagon with its structure
-(represented by `-`, `[- -]`, `[[- -] -]`, etc.), followed by the unfolded strip.
+(represented by `-`, `[- -]`, `[[- -] -]`, etc.), followed by the unfolded template.
 
 [var name:'generator' value:'>' /]
 [derived name:'initial' value:`[
@@ -191,7 +191,7 @@ If you would like to try more, here are the pinch flex diagrams for all of the 8
 This final section gives you the freedom to try out generating sequences that consist of any of the other flexes we've discussed.
 And you can try them on lots of different triangle flexagons.
 Type in a sequence and explore the resulting flexagon, both the simulated version and a real one,
-by cutting out and assembling the unfolded strips below.
+by cutting out and assembling the templates below.
 Note that not all flexes are available on all flexagons.
 
 Flexes to try: `^`, `>`, `<`, `P*`, `Sh*`, `F*`, `T*`, `T1*`, `V*`, `St*`, or `P+`, etc.
@@ -231,7 +231,7 @@ Generating sequence: [TextInput value:tempGenerator /]
 
 [Flexagon width:600 height:360 numPats:fullPats initialScript:fullInit runInitial:runFullInit options:flexagonOptions overButton:true error:fullError /]
 
-Unfolded strip:
+Template:
 [Unfolded width:1000 height:500 numPats:fullPats generator:fullGenerator angles:fullAngles options:unfoldedOptions /]
 
 

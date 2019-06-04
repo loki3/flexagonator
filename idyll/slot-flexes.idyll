@@ -33,7 +33,7 @@ so this chapter will just cover a fraction of what's out there to explore.
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
 [Conditional if:` showFoldingHelp `]
-  These instructions apply to all the triangle strips on this page.
+  These instructions apply to all the templates on this page.
   [HowToFold hasBoth:true /]
 [/Conditional]
 
@@ -110,7 +110,7 @@ The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 
 [Button onClick:`doHistoryLk='undo';`]Undo[/Button] [Button onClick:`doHistoryLk='redo';`]Redo[/Button] [Button onClick:`doHistoryLk='reset';`]Reset[/Button] [Display value:historyLk /]
 
-With the following strip, tape together the two edges labeled *a* before folding it as usual.
+With the following template, tape together the two edges labeled *a* before folding it as usual.
 
 [var name:unfoldedLk1 value:`{content:5, scale:200, rotation:90, end:5, captions:[{ text: 'Lk+', which: 0 }, { text: 'a', which: -1 }]}` /]
 [var name:unfoldedLk2 value:`{content:5, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Lk+', which: -1 }]}` /]
@@ -188,7 +188,7 @@ This gives you a total of 4 different ways to complete the flex.
 
 [Button onClick:`doHistoryLtf='undo';`]Undo[/Button] [Button onClick:`doHistoryLtf='redo';`]Redo[/Button] [Button onClick:`doHistoryLtf='reset';`]Reset[/Button] [Display value:historyLtf /]
 
-With the following strip, tape together the two edges labeled *a* before folding it as usual.
+With the following template, tape together the two edges labeled *a* before folding it as usual.
 
 [var name:unfoldedLtf1 value:`{content:5, scale:200, rotation:90, end:5, captions:[{ text: 'Ltf+', which: 0 }, { text: 'a', which: -1 }]}` /]
 [var name:unfoldedLtf2 value:`{content:5, scale:200, rotation:90, start:6, captions:[{ text: 'a', which: 0 }, { text: 'Ltf+', which: -1 }]}` /]

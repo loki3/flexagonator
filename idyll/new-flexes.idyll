@@ -57,10 +57,10 @@ you use a more precise notation by uniquely labeling every leaf and using those 
 
 Enough talk.
 Let's see what this actually looks like.
-Below are unfolded strips for all the different ways to fold a pat with 2, 3, or 4 leaves (1 leaf is trivial).
+Below are templates for all the different ways to fold a pat with 2, 3, or 4 leaves (1 leaf is trivial).
 
 [Aside]
-Cut out each of the strips and assemble them by folding the highest pair of numbers together,
+Cut out each of the templates and assemble them by folding the highest pair of numbers together,
 then the next highest together and so on until you have a single pat.
 
 Note that turning over `1`, `2`, and `4b` gives you the exact same nesting structure,
@@ -117,7 +117,7 @@ If our labels are numbers, one side can be positive and the flip side negative.
 Thus we could describe 4a as `[[[3, -2], -4], 1]` or `[[[1, 2], 3], 4]`, depending on our choice of labels.
 
 Using this, we can describe the 9 different ways to assemble pats with 4 or fewer leaves.
-The following assumes the leaves are labeled in the order they occur in the unfolded strip.
+The following assumes the leaves are labeled in the order they occur in the unfolded template.
 
 [Float position:'left']
 * 1: `1`

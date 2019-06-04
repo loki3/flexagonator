@@ -32,14 +32,14 @@ class HowToFold extends React.Component {
     return (
       <div>
         <p>
-          You might want to start by right-clicking on the image and picking 'Save Image' in order to view the strip separately from the rest of the page.
+          You might want to start by right-clicking on the image and picking 'Save Image' in order to view the template separately from the rest of the page.
         </p>
         <p>
-          <b>Cut:</b> Start by printing out the strip and cutting along the outside edges.
+          <b>Cut:</b> Start by printing out the template and cutting along the outside edges.
         </p>
         <p>
           <b>Prefold:</b> After you've cut out the shape, fold and unfold along every dashed line to prepare it.
-          Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after everything is folded.
+          Note that the first and last triangle in the template have dashed lines to indicate where to tape the edges after everything is folded.
         </p>
         <p>
           <b>Number:</b> {toNumber}

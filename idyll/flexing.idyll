@@ -142,14 +142,14 @@ Here are some flexagons you can use to try the pyramid shuffle:
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]How do I fold this?[/Button]
 [Conditional if:` showFoldingHelp `]
-  These instructions apply to all the triangle strips on this page.
+  These instructions apply to all the templates on this page.
 
   **Cut:**
-  Start by printing out the strip and cutting along the outside edges.
+  Start by printing out the template and cutting along the outside edges.
 
   **Prefold:**
   After you've cut out the shape, fold and unfold along every dashed line to prepare it.
-  Note that the first and last triangle in the strip have dashed lines to indicate where to tape the edges after everything is folded.
+  Note that the first and last triangle in the template have dashed lines to indicate where to tape the edges after everything is folded.
 
   **Number:**
   The large number on each triangle represents the number on the *front* of the triangle, while the smaller number next to it represents the number on the *back*.

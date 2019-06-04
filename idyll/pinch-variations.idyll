@@ -56,7 +56,7 @@ The first example is on an *isosceles dodecaflexagon*, doing a mountain fold onc
 
 [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
 
-Here's an unfolded strip you can use to create a working dodecaflexagon that supports the P444:
+Here's a template you can use to create a working dodecaflexagon that supports the P444:
 [Unfolded width:1000 height:400 numPats:12 generator:'P444*' autoLabel:true endText:'P444' /]
 
 
@@ -74,7 +74,7 @@ then skip to the fourth vertex for the final mountain fold.
 
 [Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
 
-Here's an unfolded strip you can use to create a working decaflexagon that supports the `P334`:
+Here's a template you can use to create a working decaflexagon that supports the `P334`:
 [Unfolded width:1000 height:400 numPats:10 generator:'P334*' autoLabel:true endText:'P334' /]
 
 
@@ -102,7 +102,7 @@ Here are the minimal flexagons for many of the pinch flex variations:
 
 [Flexagon width:600 height:360 numPats:mfPats initialScript:mfInit runInitial:mfRunInit options:flexagonOptions overButton:true /]
 
-Unfolded strip:
+Template:
 [Unfolded width:1000 height:400 numPats:mfPats generator:mfGenerator angles:mfAngles autoLabel:true endText:mfGenerator /]
 
 
@@ -143,18 +143,18 @@ Generating sequence: [Display value:cfGenerator /]
 
 Cut out each of the shapes, cutting along the solid lines.
 Tape 'b' to 'b' and 'c' to 'c' (and 'd' to 'd' if present).
-Then you can follow the same folding rules as for the other strips,
+Then you can follow the same folding rules as for the other templates,
 finishing by taping 'a' to 'a'.
 
 [FullWidth]
-  [derived name:'strip1' value:`{start:0, end:e1, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
-  [derived name:'strip2' value:`{start:e1+1, end:e2, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
-  [derived name:'strip3' value:`{start:e2+1, end:e3, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: char, which: -1 }] }` /]
-  [derived name:'strip4' value:`{start:27, scale:150, rotation:0, captions:[{ text: 'd', which: 0 }, { text: 'a', which: -1 }] }` /]
-  [Unfolded width:400 height:350 numPats:cfPats generator:cfGenerator autoLabel:true options:strip1 /]
-  [Unfolded width:400 height:350 numPats:cfPats generator:cfGenerator autoLabel:true options:strip2 /]
-  [Unfolded width:400 height:400 numPats:cfPats generator:cfGenerator autoLabel:true options:strip3 /]
-  [Unfolded width:300 height:cfHeight numPats:cfPats generator:cfGenerator autoLabel:true options:strip4 changeHeight:cfHeight /]
+  [derived name:'template1' value:`{start:0, end:e1, scale:150, rotation:0, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
+  [derived name:'template2' value:`{start:e1+1, end:e2, scale:150, rotation:0, captions:[{ text: 'b', which: 0 }, { text: 'c', which: -1 }] }` /]
+  [derived name:'template3' value:`{start:e2+1, end:e3, scale:150, rotation:0, captions:[{ text: 'c', which: 0 }, { text: char, which: -1 }] }` /]
+  [derived name:'template4' value:`{start:27, scale:150, rotation:0, captions:[{ text: 'd', which: 0 }, { text: 'a', which: -1 }] }` /]
+  [Unfolded width:400 height:350 numPats:cfPats generator:cfGenerator autoLabel:true options:template1 /]
+  [Unfolded width:400 height:350 numPats:cfPats generator:cfGenerator autoLabel:true options:template2 /]
+  [Unfolded width:400 height:400 numPats:cfPats generator:cfGenerator autoLabel:true options:template3 /]
+  [Unfolded width:300 height:cfHeight numPats:cfPats generator:cfGenerator autoLabel:true options:template4 changeHeight:cfHeight /]
 [/FullWidth]
 
 

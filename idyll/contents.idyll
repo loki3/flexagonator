@@ -31,7 +31,7 @@
 * Let's you explore how to visit every face of a flexagon
 * Describes *flex notation*, which can be used to precisely describe a sequence of flexes
 * Introduces the *Tuckerman Traverse* as a technique for visiting every face of a flexagon using the pinch flex
-* Provides both a flexagon simulation and the unfolded strip for all hexaflexagons with 3, 4, 5, 6, 7, and 8 faces so you can make your own
+* Provides both a flexagon simulation and the unfolded template for all hexaflexagons with 3, 4, 5, 6, 7, and 8 faces so you can make your own
 * Shows flexagons made up of different shapes of triangles, like using angles of 30-60-90 or 54-54-72, and different numbers of triangles per face, like 4, 8, 10, or 12
 
 
@@ -78,7 +78,7 @@
 * Defines a *generating sequence* as a sequence of flexes used to create the structure necessary for performing them on a given flexagon
 * Shows how different flexes move you around a pinch flex diagram
 * Gives you an interactive tool for typing in generating sequences to see what pinch flex diagram is generated
-* Allows you to type in generating sequences consisting of any of the flexes introduced so far on a wide variety of triangle flexagons, giving you the unfolded strip that can be used to construct a working flexagon
+* Allows you to type in generating sequences consisting of any of the flexes introduced so far on a wide variety of triangle flexagons, giving you the unfolded template that can be used to construct a working flexagon
 
 [hr /]
 
@@ -163,7 +163,7 @@
 [/a]
 
 * Tools for creating new flexagons from generating sequences or scripts and exploring them using a variety of flexes
-* Get the unfolded strip for any of your creations so you can try out the physical version
+* Get the unfolded template for any of your creations so you can try out the physical version
 * An explorer that can find all the states accessible with a specified set of flexes from any flexagon
 
 [hr /]
@@ -175,7 +175,7 @@
 [/a]
 
 * Reference guide to a wide variety of flexes on triangle flexagons
-* Shows sample slides and sample strips to fold on various triangle flexagons
+* Shows sample slides and sample templates to fold on various triangle flexagons
 * Shows flex definitions in pat notation, etc.
 
 [hr /]

@@ -88,14 +88,14 @@ Try clicking on the buttons and watch how the flexagon changes and how this is t
 But, of course, everything on this page is just a simulation of an actual model.
 The fun part is in creating and flexing the real thing.
 Following each simulation, you'll find a strip of triangles (AKA *template*, *frieze*, or *net*) you can print, fold, and optionally decorate to create a real flexagon.
-Here's the unfolded strip for the 3-faced hexaflexagon.
+Here's the unfolded template for the 3-faced hexaflexagon.
 
 [Unfolded width:800 height:150 numPats:defaultPats generator:'P*' autoLabel:true /]
 
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
 [Conditional if:` showFoldingHelp `]
-  These instructions apply to all the triangle strips on this page.
+  These instructions apply to all the triangle templates on this page.
   [HowToFold result:"a hexagon consisting of 6 equilateral triangles"/]
 [/Conditional]
 
@@ -197,7 +197,7 @@ Recall from earlier that `^` indicates turning over the flexagon while keeping t
 [var name:'runInit6' value:false /]
 [var name:'script6' value:'' /]
 
-There are three different ways to make a 6-faced hexaflexagon (or hexahexaflexagon), each made from different triangle strips with different traversals.
+There are three different ways to make a 6-faced hexaflexagon (or hexahexaflexagon), each made from different templates with different traversals.
 Try applying the same pattern you used for exploring every face of the 4 and 5-faced hexaflexagons to see if it works for the 6-faced variants.
 Click on
 [Button onClick:` initFlex6 = 'P* P* P+ > P P*'; runInit6=true; `]A[/Button],
@@ -287,15 +287,15 @@ and 8-faced variation
   runScript:runScript7 script:script7 options:drawOptions overButton:true /]
 
 [Conditional if:` special7 == 0 `]
-  The unfolded strip:
+  The unfolded template:
 [/Conditional]
 [Unfolded width:1000 height:500 numPats:defaultPats generator:initFlex7 autoLabel:true special7:special7 changeHeight:cheight7 /]
 
 [Conditional if:` special7 == 1 `]
-  The following strip takes a little bit of extra work to assemble.
+  The following template takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines.
   Tape 'b' to 'b' and 'c' to 'c'.
-  Then you can follow the same folding rules as for the other strips,
+  Then you can follow the same folding rules as for the other templates,
   finishing by taping 'a' to 'a'.
 
   [var name:'hepta1' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
@@ -307,10 +307,10 @@ and 8-faced variation
 [/Conditional]
 
 [Conditional if:` special7 == 2 `]
-  The following strip takes a little bit of extra work to assemble.
+  The following template takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines and the lines between 'a' and 'b'.
   Tape one edge marked with 'b' to the other 'b' edge.
-  Then you can follow the same folding rules as for the other strips,
+  Then you can follow the same folding rules as for the other templates,
   finishing by taping 'a' to 'a'.
 
   [var name:'octa1a' value:`{start:0, end:13, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
@@ -320,10 +320,10 @@ and 8-faced variation
 [/Conditional]
 
 [Conditional if:` special7 == 3 `]
-  The following strip takes a little bit of extra work to assemble.
+  The following template takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines.
   Tape 'b' to 'b', 'c' to 'c', and 'd' to 'd'.
-  Then you can follow the same folding rules as for the other strips,
+  Then you can follow the same folding rules as for the other templates,
   finishing by taping 'a' to 'a'.
 
   [var name:'octa1b' value:`{start:0, end:6, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
@@ -337,10 +337,10 @@ and 8-faced variation
 [/Conditional]
 
 [Conditional if:` special7 == 4 `]
-  The following strip takes a little bit of extra work to assemble.
+  The following template takes a little bit of extra work to assemble.
   Cut out each of the shapes, cutting along the solid lines.
   Tape one edge marked with 'b' to the other 'b' edge.
-  Then you can follow the same folding rules as for the other strips,
+  Then you can follow the same folding rules as for the other templates,
   finishing by taping 'a' to 'a'.
 
   [var name:'octa1c' value:`{start:0, end:13, scale:150, rotation:60, captions:[{ text: 'a', which: 0 }, { text: 'b', which: -1 }] }` /]
@@ -405,8 +405,8 @@ Change the number of faces to
 [Flexagon width:500 height:300 numPats:patCountN initialScript:facesN runInitial:runInitN history:historyN
   runScript:runScriptN script:scriptN options:drawOptionsN overButton:true /]
 
-Note that some of these strips may have overlapping triangles.
-Compare the number of leaves (triangles) in the strip to the number listed above to see if you might need to print multiple copies.
+Note that some of these templates may have overlapping triangles.
+Compare the number of leaves (triangles) in the template to the number listed above to see if you might need to print multiple copies.
 
 [Unfolded width:1000 height:400 numPats:patCountN generator:initFlexesN autoLabel:true angles:anglesN /]
 

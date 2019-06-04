@@ -129,8 +129,8 @@ For example, if `n=7`, then the final pat of the resulting flexagon (`[-(n-4),-(
 
 # How to fold
 
-The section for every flex shows what the unfolded strip looks like, even as you switch between different types of flexagons.
-The following are general instructions for creating a real working flexagon from the strips:
+The section for every flex shows what the unfolded template looks like, even as you switch between different types of flexagons.
+The following are general instructions for creating a real working flexagon from the templates:
 
 [HowToFold /]
 
