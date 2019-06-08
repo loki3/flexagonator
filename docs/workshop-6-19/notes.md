@@ -8,7 +8,7 @@
 
 **pat**
 
-> a stack of polygons in a flexagon
+> a stack of leaves in a flexagon
 
 **face**
 
@@ -24,7 +24,7 @@
 
 **minimal flexagon**
 
-> the flexagon with the fewest leaves that supports a given flex
+> the flexagon with the fewest leaves that supports a given flex or flexes
 
 **cycle**
 
