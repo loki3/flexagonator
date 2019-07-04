@@ -50,6 +50,7 @@ namespace Flexagonator {
       expect(flexes["T1"]).toBeDefined();
       expect(flexes["T2"]).toBeDefined();
       expect(flexes["T3"]).toBeDefined();
+      expect(flexes["Un1'"]).toBeDefined();
 
       const Pin = [[1, 2], 3, [4, 5], 6, [7, 8], 9, [10, 11], 12];
       const Pout = [-1, [5, -3], -4, [8, -6], -7, [11, -9], -10, [2, -12]];
@@ -75,6 +76,11 @@ namespace Flexagonator {
       const Ltout = [12, [2, 4], -1, 3, 5, 6, 7, [10, [8, [11, -9]]]];
       expect(areLTArraysEqual(flexes["Ltf"].pattern, Ltin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Ltf"].output, Ltout)).toBeTruthy();
+
+      const Un1in = [[2, -1], 3, 4, 5, 6, [[[9, -8], -10], 7], -11, -12];
+      const Un1out = [-9, -10, [2, [-11, [-1, 12]]], 3, 4, 5, 6, [-8, 7]];
+      expect(areLTArraysEqual(flexes["Un1"].pattern, Un1in)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["Un1"].output, Un1out)).toBeTruthy();
     });
   });
 }
