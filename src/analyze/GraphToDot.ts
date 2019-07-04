@@ -31,6 +31,13 @@ namespace Flexagonator {
     V: "color=green",
     Sh: "color=red",
     T: "color=blue",
+    T1: "color=blue",
+    T2: "color=blue",
+    T3: "color=blue",
+    T4: "color=blue",
+    T5: "color=blue",
+    T6: "color=blue",
+    T7: "color=blue",
     Lt: "color=orange",
     F: "color=magenta",
   }
