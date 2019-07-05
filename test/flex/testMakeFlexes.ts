@@ -81,6 +81,11 @@ namespace Flexagonator {
       const Un1out = [-9, -10, [2, [-11, [-1, 12]]], 3, 4, 5, 6, [-8, 7]];
       expect(areLTArraysEqual(flexes["Un1"].pattern, Un1in)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Un1"].output, Un1out)).toBeTruthy();
+
+      const Un2in = [1, [-5, [2, [4, -3]]], -6, -7, -8, -9, -10, [12, -11]];
+      const Un2out = [3, [-5, 4], -6, -7, -8, -9, [[-12, 1], [-10, 11]], 2];
+      expect(areLTArraysEqual(flexes["Un2"].pattern, Un2in)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["Un2"].output, Un2out)).toBeTruthy();
     });
   });
 }

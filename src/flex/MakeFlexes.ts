@@ -30,6 +30,8 @@ namespace Flexagonator {
         flexes["L3"] = createSlotTriplePocket();
       if (patCount >= 6)
         flexes["Un1"] = createUnnamed1(patCount);
+      if (patCount >= 6)
+        flexes["Un2"] = createUnnamed2(patCount);
 
       flexes["Tf"] = createForcedTuck(patCount);
       for (let i = 0; i < patCount - 5; i++) {
@@ -117,6 +119,9 @@ namespace Flexagonator {
     flexes["Un1"] = makeFlex("unnamed 1",
       [[2, -1], 3, 4, [[[7, -6], -8], 5], -9, -10],
       [-7, -8, [2, [-9, [-1, 10]]], 3, 4, [-6, 5]], FlexRotation.None) as Flex;
+    flexes["Un2"] = makeFlex("unnamed 2",
+      [1, [-5, [2, [4, -3]]], -6, -7, -8, [10, -9]],
+      [3, [-5, 4], -6, -7, [[-10, 1], [-8, 9]], 2], FlexRotation.None) as Flex;
 
     return flexes;
   }
@@ -449,6 +454,32 @@ namespace Flexagonator {
     output.push([4 - leaves, leaves - 5]);
 
     return makeFlex("unnamed 1", pattern, output, FlexRotation.None) as Flex;
+  }
+
+  function createUnnamed2(patCount: number): Flex {
+    // (1) (-5(2(4,-3))) (-6) ... (i) ... (^n-2) (n,^n-1)
+    // (3) (-5,4) (-6) ... (i) ... ((^n,1)(^n-2,n-1)) (2)
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
+    const leaves = patCount + 4;
+
+    pattern.push(1);
+    pattern.push([-5, [2, [4, -3]]]);
+    for (let i = 6; i <= leaves - 2; i++) {
+      pattern.push(-i);
+    }
+    pattern.push([leaves, 1 - leaves]);
+
+    // post
+    output.push(3);
+    output.push([-5, 4]);
+    for (let i = 6; i <= leaves - 3; i++) {
+      output.push(-i);
+    }
+    output.push([[-leaves, 1], [2 - leaves, leaves - 1]]);
+    output.push(2);
+
+    return makeFlex("unnamed 2", pattern, output, FlexRotation.None) as Flex;
   }
 
 }
