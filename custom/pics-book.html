@@ -12,6 +12,12 @@
       var fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4 });
     }
+
+    function drawFlexagonSimple(canvasId, numPats, angles) {
+      var script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
+      var fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
+    }
   </script>
 </head>
 
@@ -28,6 +34,50 @@
   <canvas id="hexa-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
     drawStripSimple("hexa-hexa", 6, "P* P* P+ > P P*", 120);
+  </script>
+
+  <h2>naming</h2>
+
+  <h3>triangle flexagons</h3>
+  <canvas id="triangle-hexa" width="250" height="250"></canvas>
+  <canvas id="triangle-bronze-hexa" width="250" height="250"></canvas>
+  <canvas id="triangle-hepta" width="250" height="250"></canvas>
+  <canvas id="triangle-star-deca" width="250" height="250"></canvas>
+  <script type="text/javascript">
+    drawFlexagonSimple("triangle-hexa", 6);
+    drawFlexagonSimple("triangle-bronze-hexa", 6, [60, 90]);
+    drawFlexagonSimple("triangle-hepta", 7);
+    drawFlexagonSimple("triangle-star-deca", 10, [36, 108]);
+  </script>
+
+  <h3>bronze flexagons</h3>
+  <canvas id="bronze-tetra" width="250" height="250"></canvas>
+  <canvas id="bronze-hexa" width="250" height="250"></canvas>
+  <canvas id="bronze-dodeca" width="250" height="250"></canvas>
+  <script type="text/javascript">
+    drawFlexagonSimple("bronze-tetra", 4, [90, 30]);
+    drawFlexagonSimple("bronze-hexa", 6, [60, 90]);
+    drawFlexagonSimple("bronze-dodeca", 12, [30, 60]);
+  </script>
+
+  <h3>hexaflexagons</h3>
+  <canvas id="hexa1" width="250" height="250"></canvas>
+  <canvas id="hexa2" width="250" height="250"></canvas>
+  <canvas id="hexa3" width="250" height="250"></canvas>
+  <script type="text/javascript">
+    drawFlexagonSimple("hexa1", 6);
+    drawFlexagonSimple("hexa2", 6, [60, 90]);
+    drawFlexagonSimple("hexa3", 6, [60, 105]);
+  </script>
+
+  <h3>dodecaflexagons</h3>
+  <canvas id="dodeca1" width="250" height="250"></canvas>
+  <canvas id="dodeca2" width="250" height="250"></canvas>
+  <canvas id="dodeca3" width="250" height="250"></canvas>
+  <script type="text/javascript">
+    drawFlexagonSimple("dodeca1", 12);
+    drawFlexagonSimple("dodeca2", 12, [30, 90]);
+    drawFlexagonSimple("dodeca3", 12, [30, 120]);
   </script>
 
 </body>
