@@ -45,6 +45,7 @@ such as whether to draw the front or back, and whether to display useful statist
   drawover: true,    // boolean: default false, draw over canvas or clear first
   showIds: true,     // boolean: default true, show leaf ids
   showCurrent: true, // boolean: default true, show an indicator next to the current vertex
+  showNumbers: true; // boolean: default true, show the face numbers
   generate: true,    // boolean: default false, include every flex with * added, e.g. P*
 }
 

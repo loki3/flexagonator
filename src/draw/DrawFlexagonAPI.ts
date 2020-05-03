@@ -19,6 +19,7 @@ namespace Flexagonator {
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
     readonly showIds?: boolean;     // show leaf ids - default: true
     readonly showCurrent?: boolean; // show an indicator next to the current vertex - default: true
+    readonly showNumbers?: boolean; // show the face numbers - default: true
     readonly generate?: boolean;    // include every flex with * added - default: false
   }
 
@@ -60,7 +61,8 @@ namespace Flexagonator {
     const showStructure = getStructureType(options);
     const showIds = (options.showIds === undefined || options.showIds);
     const showCurrent = (options.showCurrent === undefined || options.showCurrent);
-    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent);
+    const showNumbers = (options.showNumbers === undefined || options.showNumbers);
+    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers);
     if (options.both) {
       const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
       drawFlexagon(ctx, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);
