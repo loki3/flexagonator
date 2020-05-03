@@ -1,0 +1,35 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>book illustrations</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    // draw an unfolded strip on the given canvas
+    // canvasId: string, numPats: number, flexes: string, rotation: number
+    function drawStripSimple(canvasId, numPats, flexes, rotation) {
+      var script = [{ numPats: numPats, flexAndColor: { flexes: flexes } }];
+      var fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4 });
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Book illustrations</h1>
+
+  <h2>tri-hexaflexagon strip</h2>
+  <canvas id="tri-hexa" width="800" height="180"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("tri-hexa", 6, "P*", 120);
+  </script>
+
+  <h2>hexa-hexaflexagon strip</h2>
+  <canvas id="hexa-hexa" width="1200" height="180"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("hexa-hexa", 6, "P* P* P+ > P P*", 120);
+  </script>
+
+</body>
+
+</html>
