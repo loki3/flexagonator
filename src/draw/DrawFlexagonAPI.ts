@@ -18,6 +18,7 @@ namespace Flexagonator {
     readonly structureTopIds?: boolean; // show pat structure that includes ids <= numpats - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
     readonly showIds?: boolean;     // show leaf ids - default: true
+    readonly showCurrent?: boolean; // show an indicator next to the current vertex - default: true
     readonly generate?: boolean;    // include every flex with * added - default: false
   }
 
@@ -58,7 +59,8 @@ namespace Flexagonator {
 
     const showStructure = getStructureType(options);
     const showIds = (options.showIds === undefined || options.showIds);
-    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds);
+    const showCurrent = (options.showCurrent === undefined || options.showCurrent);
+    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent);
     if (options.both) {
       const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
       drawFlexagon(ctx, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);

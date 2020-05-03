@@ -44,6 +44,7 @@ such as whether to draw the front or back, and whether to display useful statist
   structureTopIds:   // boolean: default false, show pat structure that includes ids <= numpats
   drawover: true,    // boolean: default false, draw over canvas or clear first
   showIds: true,     // boolean: default true, show leaf ids
+  showCurrent: true, // boolean: default true, show an indicator next to the current vertex
   generate: true,    // boolean: default false, include every flex with * added, e.g. P*
 }
 
