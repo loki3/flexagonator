@@ -13,6 +13,7 @@
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4 });
     }
 
+    // draw a folded flexagon, just showing the outline of the leaves
     function drawFlexagonSimple(canvasId, numPats, angles) {
       var script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
       var fm = Flexagonator.createFromScript(script);
@@ -24,17 +25,35 @@
 <body>
   <h1>Book illustrations</h1>
 
-  <h2>tri-hexaflexagon strip</h2>
+  <hr />
+
+  <h2>Part One: Pinch Flex and Variations</h2>
+
+  <h3>tri-hexaflexagon strip</h3>
   <canvas id="tri-hexa" width="800" height="180"></canvas>
   <script type="text/javascript">
     drawStripSimple("tri-hexa", 6, "P*", 120);
   </script>
 
-  <h2>hexa-hexaflexagon strip</h2>
+  <h3>tetra-hexaflexagon strip</h3>
+  <canvas id="tetra-hexa" width="1200" height="220"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("tetra-hexa", 6, "(P*)2", 90);
+  </script>
+
+  <h3>penta-hexaflexagon strip</h3>
+  <canvas id="penta-hexa" width="1200" height="500"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("penta-hexa", 6, "(P*)3", 60);
+  </script>
+
+  <h3>hexa-hexaflexagon strip</h3>
   <canvas id="hexa-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
     drawStripSimple("hexa-hexa", 6, "P* P* P+ > P P*", 120);
   </script>
+
+  <hr />
 
   <h2>naming</h2>
 
