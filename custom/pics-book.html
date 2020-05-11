@@ -13,6 +13,13 @@
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4, start: start, end: end });
     }
 
+    // draw an unfolded strip on the given canvas
+    // pass in a full script & full options for drawUnfolded
+    function drawStripComplex(canvasId, script, drawOptions) {
+      var fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
+    }
+
     // draw a folded flexagon, just showing the outline of the leaves
     function drawFlexagonSimple(canvasId, numPats, angles) {
       var script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
@@ -71,6 +78,39 @@
     var sequence = A + B + A + C + A + B + A + C + A + B + A;
     drawStripSimple("icositetra-hexa", 6, sequence, 120, 0, 23);
   </script>
+
+  <h3>equilateral triangle tri-tetraflexagon strip</h3>
+  <canvas id="tri-tetra" width="1200" height="220"></canvas>
+  <script type="text/javascript">
+    var script = [{ numPats: 4, flexAndColor: { flexes: "P*" }, angles: [60, 60] }];
+    var drawOptions = { rotation: 120, content: 4 };
+    drawStripComplex("tri-tetra", script, drawOptions);
+  </script>
+
+  <h3>equilateral triangle penta-tetraflexagon strip</h3>
+  <canvas id="penta-tetra" width="1200" height="500"></canvas>
+  <script type="text/javascript">
+    var script = [{ numPats: 4, flexAndColor: { flexes: "(P*)3" }, angles: [60, 60] }];
+    var drawOptions = { rotation: 60, content: 4 };
+    drawStripComplex("penta-tetra", script, drawOptions);
+  </script>
+
+  <h3>equilateral triangle tri-octaflexagon strip</h3>
+  <canvas id="tri-octa" width="1200" height="220"></canvas>
+  <script type="text/javascript">
+    var script = [{ numPats: 8, flexAndColor: { flexes: "P*" }, angles: [60, 60] }];
+    var drawOptions = { rotation: 120, content: 4 };
+    drawStripComplex("tri-octa", script, drawOptions);
+  </script>
+
+  <h3>equilateral triangle penta-octaflexagon strip</h3>
+  <canvas id="penta-octa" width="1200" height="500"></canvas>
+  <script type="text/javascript">
+    var script = [{ numPats: 8, flexAndColor: { flexes: "(P*)3" }, angles: [60, 60] }];
+    var drawOptions = { rotation: 60, content: 4 };
+    drawStripComplex("penta-octa", script, drawOptions);
+  </script>
+
   <hr />
 
   <h2>naming</h2>
