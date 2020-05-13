@@ -3,6 +3,15 @@
 
 <head>
   <title>book illustrations</title>
+
+  <style>
+    th {
+      font-family: Arial;
+      text-align: center;
+    }
+
+  </style>
+
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     // draw an unfolded strip on the given canvas
@@ -155,6 +164,60 @@
     drawFlexagonSimple("dodeca1", 12);
     drawFlexagonSimple("dodeca2", 12, [30, 90]);
     drawFlexagonSimple("dodeca3", 12, [30, 120]);
+  </script>
+
+  <h2>naming #2</h2>
+
+  <table>
+    <tr>
+      <th>equilateral triangle<br/>hexaflexagon</th>
+      <th>bronze triangle<br/>hexaflexagon</th>
+      <th>isosceles triangle<br/>heptaflexagon</th>
+    </tr>
+    <tr>
+      <th></th>
+    </tr>
+    <tr>
+      <th>[3:60]-[6:120]-flexagon</th>
+      <th>[3:30,60,90]-[6:60,180]-flexagon</th>
+      <th>[3:52,64,64]-[7:129]-flexagon</th>
+    </tr>
+    <tr>
+      <td><canvas id="t-hexa" width="250" height="250"></canvas></td>
+      <td><canvas id="t-bronze-hexa" width="250" height="250"></canvas></td>
+      <td><canvas id="t-hepta" width="250" height="250"></canvas></td>
+    </tr>
+  </table>
+  <script type="text/javascript">
+    drawFlexagonSimple("t-hexa", 6);
+    drawFlexagonSimple("t-bronze-hexa", 6, [60, 90]);
+    drawFlexagonSimple("t-hepta", 7);
+  </script>
+
+  <table>
+    <tr>
+      <th>isosceles triangle<br/>dodecaflexagon</th>
+      <th>bronze triangle<br/>dodecaflexagon</th>
+      <th>isosceles star<br/>dodecaflexagon</th>
+    </tr>
+    <tr>
+      <th></th>
+    </tr>
+    <tr>
+      <th>[3:30,75,75]-[12:150]-flexagon</th>
+      <th>[3:30,60,90]-[12:120,180]-flexagon</th>
+      <th>&nbsp;[3:30,30,120]-[12:60,240]-flexagon</th>
+    </tr>
+    <tr>
+      <td><canvas id="t-iso-dodeca" width="250" height="250"></canvas></td>
+      <td><canvas id="t-bronze-dodeca" width="250" height="250"></canvas></td>
+      <td><canvas id="t-star-dodeca" width="250" height="250"></canvas></td>
+    </tr>
+  </table>
+  <script type="text/javascript">
+    drawFlexagonSimple("t-iso-dodeca", 12);
+    drawFlexagonSimple("t-bronze-dodeca", 12, [30, 90]);
+    drawFlexagonSimple("t-star-dodeca", 12, [30, 120]);
   </script>
 
 </body>
