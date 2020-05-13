@@ -45,11 +45,17 @@
 
   <h2>Part One: Pinch Flex and Variations</h2>
 
+  <!-- 3 faces-->
+  <h3>3 faces</h3>
+
   <h3>tri-hexaflexagon strip</h3>
   <canvas id="tri-hexa" width="800" height="180"></canvas>
   <script type="text/javascript">
     drawStripSimple("tri-hexa", 6, "P*", 120);
   </script>
+
+  <!-- 4, 5, & 6 faces-->
+  <h3>4, 5, & 6 faces</h3>
 
   <h3>tetra-hexaflexagon strip</h3>
   <canvas id="tetra-hexa" width="1200" height="220"></canvas>
@@ -69,6 +75,9 @@
     drawStripSimple("hexa-hexa", 6, "P* P* P+ > P P*", 120);
   </script>
 
+  <!-- longer templates -->
+  <h3>longer templates</h3>
+
   <h3>dodeca-hexaflexagon strip</h3>
   <canvas id="dodeca-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
@@ -87,6 +96,9 @@
     var sequence = A + B + A + C + A + B + A + C + A + B + A;
     drawStripSimple("icositetra-hexa", 6, sequence, 120, 0, 23);
   </script>
+
+  <!-- triangle tetra & octa -->
+  <h3>triangle tetra & octa</h3>
 
   <h3>equilateral triangle tri-tetraflexagon strip</h3>
   <canvas id="tri-tetra" width="1200" height="220"></canvas>
@@ -120,7 +132,30 @@
     drawStripComplex("penta-octa", script, drawOptions);
   </script>
 
+  <!-- pinch flex variations -->
+  <h3>pinch flex variations</h3>
+
+  <h3>P444</h3>
+  <canvas id="P444" width="1200" height="400"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("P444", 12, "P444*");
+  </script>
+
+  <h3>P333</h3>
+  <canvas id="P333" width="1200" height="400"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("P333", 9, "P333*");
+  </script>
+
+  <h3>P334</h3>
+  <canvas id="P334" width="1200" height="400"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("P334", 10, "P334*");
+  </script>
+
   <hr />
+
+  <!-- Appendices-->
 
   <h2>naming</h2>
 
