@@ -22,6 +22,14 @@
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4, start: start, end: end });
     }
 
+    // draw an unfolded strip for a generating sequence that's not just pinch flexes
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles) {
+      var script = [{ numPats: numPats, flexAndColor: { flexes: flexes }, angles: angles }];
+      var fm = Flexagonator.createFromScript(script);
+      var options = { rotation: rotation, content: 0, captions: [{ text: flexes, which: 0 }] }
+      Flexagonator.drawUnfolded(canvasId, fm, options);
+    }
+
     // draw an unfolded strip on the given canvas
     // pass in a full script & full options for drawUnfolded
     function drawStripComplex(canvasId, script, drawOptions) {
@@ -261,6 +269,8 @@
   <img src="pics-book/square-Bt.png" width=900 /><br/><br/>
   <img src="pics-book/square-box-bottom.jpg" /><br/><br/>
   <img src="pics-book/square-Bb.png" width=900 /><br/><br/>
+  <img src="pics-book/square8.png" width=900 /><br/><br/>
+  <img src="pics-book/square10.png" width=800 /><br/><br/>
 
   <h2 id="tuck">tuck flex</h2>
 
@@ -281,6 +291,11 @@
   <br/>
   <img src="../idyll/static/T/T13.jpg" width="150"/>
   <img src="../idyll/static/T/T14.jpg" width="150"/>
+  <br/><br/>
+  <canvas id="T-minimal" width="900" height="500"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("T-minimal", 6, "T*", 30);
+  </script>
 
   <h2 id="pyramid shuffle">pyramid shuffle</h2>
 
@@ -304,6 +319,11 @@
   <img src="../idyll/static/Sh/Sh15.jpg" width="150"/>
   <img src="../idyll/static/Sh/Sh16.jpg" width="150"/>
   <img src="../idyll/static/Sh/Sh17.jpg" width="150"/>
+  <br/><br/>
+  <canvas id="Sh-minimal" width="800" height="500"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("Sh-minimal", 6, "Sh*", 60);
+  </script>
 
   <h2 id="flip">flip flex</h2>
 
@@ -326,6 +346,11 @@
   <img src="../idyll/static/F/F14.jpg" width="150"/>
   <img src="../idyll/static/F/F15.jpg" width="150"/>
   <img src="../idyll/static/F/F16.jpg" width="150"/>
+  <br/><br/>
+  <canvas id="F-minimal" width="900" height="600"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("F-minimal", 8, "F*", 45, [45, 90]);
+  </script>
 
   <h2 id="vflex">v flex</h2>
 
@@ -344,6 +369,11 @@
   <img src="../idyll/static/V/V11.jpg" width="150"/>
   <img src="../idyll/static/V/V12.jpg" width="150"/>
   <img src="../idyll/static/V/V13.jpg" width="150"/>
+  <br/><br/>
+  <canvas id="V-minimal" width="900" height="450"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("V-minimal", 6, "V*", 120);
+  </script>
 
   <h2 id="silver tetra">silver tetra flex</h2>
 
@@ -365,6 +395,11 @@
   <img src="../idyll/static/St/St13.jpg" width="150"/>
   <img src="../idyll/static/St/St14.jpg" width="150"/>
   <img src="../idyll/static/St/St15.jpg" width="150"/>
+  <br/><br/>
+  <canvas id="St-minimal" width="900" height="450"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("St-minimal", 6, "St*", -30, [60, 90]);
+  </script>
 
   <hr />
 
