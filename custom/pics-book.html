@@ -41,12 +41,38 @@
 <body>
   <h1>Book illustrations</h1>
 
+  <ul>
+    <li><a href="#part1">Part One: Pinch Flex and Variations</a></li>
+    <ul>
+      <li><a href="#3faces">3 faces</a></li>
+      <li><a href="#456faces">4, 5, 6 faces</a></li>
+      <li><a href="#longer">longer templates</a></li>
+      <li><a href="#tetra-octa">triangle tetra & octaflexagons</a></li>
+      <li><a href="#pinch-variations">pinch variations</a></li>
+    </ul>
+    <li><a href="#part2">Part Two: Flexes</a></li>
+    <ul>
+      <li><a href="#book">book flex</a></li>
+      <li><a href="#box">box flex</a></li>
+      <li><a href="#tuck">tuck flex</a></li>
+      <li><a href="#pyramid shuffle">pyramid shuffle</a></li>
+      <li><a href="#flip">flip flex</a></li>
+      <li><a href="#vflex">v flex</a></li>
+      <li><a href="#silver tetra">silver tetra flex</a></li>
+    </ul>
+    <li><a href="#appendices">Appendices</a></li>
+    <ul>
+      <li><a href="#naming">naming</a></li>
+      <li><a href="#naming2">naming #2</a></li>
+    </ul>
+  </ul>
+
   <hr />
 
-  <h2>Part One: Pinch Flex and Variations</h2>
+  <h2 id="part1">Part One: Pinch Flex and Variations</h2>
 
   <!-- 3 faces-->
-  <h3>3 faces</h3>
+  <h3 id="3faces">3 faces</h3>
 
   <h3>tri-hexaflexagon</h3>
   <img src="../idyll/static/pinch-flex.jpg" /><br/><br/>
@@ -56,7 +82,7 @@
   </script>
 
   <!-- 4, 5, & 6 faces-->
-  <h3>4, 5, & 6 faces</h3>
+  <h3 id="456faces">4, 5, & 6 faces</h3>
 
   <h3>tetra-hexaflexagon strip</h3>
   <canvas id="tetra-hexa" width="1200" height="220"></canvas>
@@ -77,7 +103,7 @@
   </script>
 
   <!-- longer templates -->
-  <h3>longer templates</h3>
+  <h3 id="longer">longer templates</h3>
 
   <h3>dodeca-hexaflexagon strip</h3>
   <canvas id="dodeca-hexa" width="1200" height="180"></canvas>
@@ -99,7 +125,7 @@
   </script>
 
   <!-- triangle tetra & octa -->
-  <h3>triangle tetra & octa</h3>
+  <h3 id="tetra-octa">triangle tetra & octa</h3>
 
   <h3>equilateral triangle tri-tetraflexagon strip</h3>
   <canvas id="tri-tetra" width="1200" height="220"></canvas>
@@ -134,7 +160,7 @@
   </script>
 
   <!-- pinch flex variations -->
-  <h3>pinch flex variations</h3>
+  <h3 id="pinch-variations">pinch flex variations</h3>
 
   <h3>P444</h3>
   <canvas id="P444" width="1200" height="400"></canvas>
@@ -188,11 +214,27 @@
 
   <hr />
 
+  <!-- Part 2-->
+
+  <h2 id="part2">Part Two: Flexes</h2>
+
+  <h2 id="book">book flex</h2>
+  <h2 id="box">box flex</h2>
+  <h2 id="tuck">tuck flex</h2>
+  <h2 id="pyramid shuffle">pyramid shuffle</h2>
+  <h2 id="flip">flip flex</h2>
+  <h2 id="vflex">v flex</h2>
+  <h2 id="silver tetra">silver tetra flex</h2>
+
+  <hr />
+
   <!-- Appendices-->
 
-  <h2>naming</h2>
+  <h2 id="appendices">Appendices</h2>
 
-  <h3>triangle flexagons</h3>
+  <h3 id="naming">naming</h3>
+
+  <h4>triangle flexagons</h4>
   <canvas id="triangle-hexa" width="250" height="250"></canvas>
   <canvas id="triangle-bronze-hexa" width="250" height="250"></canvas>
   <canvas id="triangle-hepta" width="250" height="250"></canvas>
@@ -204,7 +246,7 @@
     drawFlexagonSimple("triangle-star-deca", 10, [36, 108]);
   </script>
 
-  <h3>bronze flexagons</h3>
+  <h4>bronze flexagons</h4>
   <canvas id="bronze-tetra" width="250" height="250"></canvas>
   <canvas id="bronze-hexa" width="250" height="250"></canvas>
   <canvas id="bronze-dodeca" width="250" height="250"></canvas>
@@ -214,7 +256,7 @@
     drawFlexagonSimple("bronze-dodeca", 12, [30, 60]);
   </script>
 
-  <h3>hexaflexagons</h3>
+  <h4>hexaflexagons</h4>
   <canvas id="hexa1" width="250" height="250"></canvas>
   <canvas id="hexa2" width="250" height="250"></canvas>
   <canvas id="hexa3" width="250" height="250"></canvas>
@@ -224,7 +266,7 @@
     drawFlexagonSimple("hexa3", 6, [60, 105]);
   </script>
 
-  <h3>dodecaflexagons</h3>
+  <h4>dodecaflexagons</h4>
   <canvas id="dodeca1" width="250" height="250"></canvas>
   <canvas id="dodeca2" width="250" height="250"></canvas>
   <canvas id="dodeca3" width="250" height="250"></canvas>
@@ -234,7 +276,7 @@
     drawFlexagonSimple("dodeca3", 12, [30, 120]);
   </script>
 
-  <h2>naming #2</h2>
+  <h3 id="naming2">naming #2</h3>
 
   <table>
     <tr>
