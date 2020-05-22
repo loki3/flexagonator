@@ -33,6 +33,8 @@ namespace Flexagonator {
     readonly rotation?: number;
     // [optional] extra captions to draw on the strip
     readonly captions?: DrawStripCaption[];
+    // [optional] for each pat in the folded flexagon, true/false indicates the next pat is clock/counter
+    readonly directions?: boolean[];
   }
 
   // draw an unfolded flexagon strip
@@ -50,16 +52,16 @@ namespace Flexagonator {
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
-    const unfolded = unfold(objects.flexagon.getAsLeafTrees());
+    if (!options) {
+      options = {};
+    }
+    const unfolded = unfold(objects.flexagon.getAsLeafTrees(), options.directions);
     if (isTreeError(unfolded)) {
       console.log("error unfolding flexagon");
       console.log(unfolded);
       return;
     }
 
-    if (!options) {
-      options = {};
-    }
     const content = options.content === undefined ? StripContent.FoldingLabels : options.content;
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));

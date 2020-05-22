@@ -10,7 +10,9 @@ namespace Flexagonator {
 
   // unfold a flexagon into a strip of leaves containing information
   // on how to fold it back into the original flexagon
-  export function unfold(tree: LeafTree[]): Leaf[] | TreeError {
+  // optional: for every top-level LeafTree, describe whether to go clockwise
+  //    or counterclockwise to get to the next pat
+  export function unfold(tree: LeafTree[], directions?: boolean[]): Leaf[] | TreeError {
     if (typeof (tree) === "number") {
       return { reason: TreeCode.TooFewPats, context: tree };
     }
@@ -19,7 +21,7 @@ namespace Flexagonator {
     let next = 3;
     const getNext = () => { return next++; };
 
-    const foldpats = toFoldPats(tree);
+    const foldpats = toFoldPats(tree, directions);
     const resultFoldpats = unfoldAll(foldpats, getNext);
     return toLeaves(resultFoldpats);
   }
@@ -36,12 +38,15 @@ namespace Flexagonator {
 
   //----- conversion routines
 
-  function toFoldPats(tree: LeafTree[]): FoldPat[] {
-    // note: this assumes that all the triangles meet in the middle.
+  function toFoldPats(tree: LeafTree[], directions?: boolean[]): FoldPat[] {
+    // note: if !directions, this assumes that all the triangles meet in the middle.
     // if you want to unfold a different arrangement, change the
-    //   the direction (isClock) of the appropriate pats
+    //   the direction (isClock) of the appropriate pats by passing in 'directions'
     const foldpats = tree.map((pat) => { return { pat: pat, numbers: [1, 2], isClock: true } });
-    return foldpats;
+    if (!directions || tree.length !== directions.length) {
+      return foldpats;
+    }
+    return foldpats.map((pat, i) => { return { ...pat, isClock: directions[i] } });
   }
 
   function toLeaves(foldpats: FoldPat[]): Leaf[] {

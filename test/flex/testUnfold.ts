@@ -18,9 +18,7 @@ namespace Flexagonator {
         expect(areLeafsEqual(result[n], { id: n + 1, top: 1, bottom: 2, isClock: true })).toBeTruthy();
       }
     });
-  });
 
-  describe('unfold', () => {
     it('unfolds a simple pair of pats', () => {
       const result1 = unfold([[3, -4], 5]);
       if (isTreeError(result1)) {
@@ -42,9 +40,7 @@ namespace Flexagonator {
       expect(areLeafsEqual(result2[1], { id: 5, top: 3, bottom: 2, isClock: false })).toBeTruthy();
       expect(areLeafsEqual(result2[2], { id: 4, top: 3, bottom: 1, isClock: true })).toBeTruthy();
     });
-  });
 
-  describe('unfold', () => {
     it('unfolds more complex pats', () => {
       const result1 = unfold([[[1, [2, 3]], 4], 5, [6, [7, 8]]]);
       if (isTreeError(result1)) {
@@ -60,6 +56,21 @@ namespace Flexagonator {
       expect(areLeafsEqual(result1[5], { id: -7, top: 7, bottom: 6, isClock: false })).toBeTruthy();
       expect(areLeafsEqual(result1[6], { id: 8, top: 7, bottom: 2, isClock: true })).toBeTruthy();
       expect(areLeafsEqual(result1[7], { id: -6, top: 6, bottom: 1, isClock: true })).toBeTruthy();
+    });
+
+    it('passes thru custom directions between pats', () => {
+      const result = unfold([1, 2, 3, 4, 5], [false, true, false, true, false]);
+      if (isTreeError(result)) {
+        fail();
+        return;
+      }
+
+      expect(result.length).toBe(5);
+      for (let i in result) {
+        const n = Number.parseInt(i);
+        const isClock = (n % 2) === 1;
+        expect(areLeafsEqual(result[n], { id: n + 1, top: 1, bottom: 2, isClock })).toBeTruthy();
+      }
     });
   });
 
