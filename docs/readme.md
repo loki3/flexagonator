@@ -41,7 +41,8 @@
 * Limited flexagon structure:
     * It only supports triangles, not any other polygons ([squares](http://loki3.com/flex/square.html), pentagons, etc.).
     * The leaves must be connected across edges, not [points](http://loki3.com/flex/point-flexagon.html).
-    * When drawing folded flexagons or unfolding flexagons, it assumes all triangles in the folded version meet in the middle.
+    * When drawing folded flexagons, it assumes all triangles meet in the middle.
+      Note that drawing an unfolded flexagon *doesn't* assume the leaves in the folded flexagon meet in the middle.
 * It only looks at pat structure when determining if a flex can be performed,
   though there are other reasons the flex might not be possible:
     * The flex may require additional openings in the physical flexagon that aren't otherwise impacted by the flex.
