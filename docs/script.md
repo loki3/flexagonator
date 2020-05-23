@@ -85,8 +85,8 @@ Since the second pat is a mirror image of the first, the second angle correspond
 By default, Flexagonator assumes that each pat is connected clockwise from the previous,
 relative to the vertex pointing at the center of the flexagon.
 The end result is a flexagon where every pat meets in the center of the flexagon.
-To change this behavior, you can describe how each pat is connected to the previous command using the `directions` command.
-If you think of the previous pat connected to the current pat's bottom edge,
+To change this behavior, you can describe how each pat is connected to the previous pat using the `directions` command.
+If you think of the previous pat being connected to the current pat's bottom edge,
 then `false` or `0` indicates that the next pat is connected to the left edge
 and `true` or `1` indicates it's connected to the right edge.
 There should be one entry in the array for every pat in the flexagon.
