@@ -66,6 +66,35 @@ This is often followed by the `flexes` command to create more complex structure 
 { numPats: 5 }
 ```
 
+### the `angles` command
+
+By default, Flexagonator chooses isosceles triangles where the center angle is 360 / the number of pats.
+To override this, use the `angles` command.
+It takes an array of two numbers: the center angle and the angle immediately clockwise.
+You can specify the third angle, but it's ignored.
+Note that this describes the triangle corresponding to the first leaf on the first pat.
+Since the second pat is a mirror image of the first, the second angle corresponds to the angle immediately counterclockwise from the center.
+
+```javascript
+// the leaf angle in the middle of the flexagon is 30
+{ angles: [30, 60] }
+```
+
+### the `directions` command
+
+By default, Flexagonator assumes that each pat is connected clockwise from the previous,
+relative to the vertex pointing at the center of the flexagon.
+The end result is a flexagon where every pat meets in the center of the flexagon.
+To change this behavior, you can describe how each pat is connected to the previous command using the `directions` command.
+If you think of the previous pat connected to the current pat's bottom edge,
+then `false` or `0` indicates that the next pat is connected to the left edge
+and `true` or `1` indicates it's connected to the right edge.
+There should be one entry in the array for every pat in the flexagon.
+
+```javascript
+{ directions: [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1] }
+```
+
 
 ## Flexes
 
@@ -235,20 +264,6 @@ Both use the same `front` and `back` settings as `leafProps`.
 // then set all the faces that weren't previously set
 { unsetFace: { front: { label: "3", color: 0xAA4439 }, back: { label: "4", color: 0x622870 } } },
 ]
-```
-
-### the `angles` command
-
-By default, Flexagonator chooses isosceles triangles where the center angle is 360 / the number of pats.
-To override this, use the `angles` command.
-It takes an array of two numbers: the center angle and the angle immediately clockwise.
-You can specify the third angle, but it's ignored.
-Note that this describes the triangle corresponding to the first leaf on the first pat.
-Since the second pat is a mirror image of the first, the second angle corresponds to the angle immediately counterclockwise from the center.
-
-```javascript
-// the leaf angle in the middle of the flexagon is 30
-{ angles: [30, 60] }
 ```
 
 
