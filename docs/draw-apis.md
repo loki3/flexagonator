@@ -176,7 +176,6 @@ enum StripContent {
   scale;    // [optional] number: scale factor (approximately the number of pixels on a leaf edge)
   rotation; // [optional] number: rotation (degrees) to apply when drawing
   captions; // [optional] DrawStripCaption[]: specify additional text to display on a given leaf
-  directions; // [optiona] boolean[]: true/false indicates the next pat is clockwise/counterclockwise
 }
 
 // example passing DrawStripOptions to drawUnfolded
@@ -192,6 +191,7 @@ as shown below.
 {
   flexagon,   // Flexagon
   angleInfo,  // FlexagonAngles
+  directions, // boolean[], optional
   leafProps,  // PropertiesForLeaves
 }
 

@@ -5,6 +5,10 @@ namespace Flexagonator {
     readonly pats?: LeafTree[];
     // specify the number of pats for a new flexagon
     readonly numPats?: number;
+    // for first leaf: [center angle, clockwise angle]
+    readonly angles?: number[];
+    // how each pat is connected to the previous pat, 0: left, 1: right (if edge at bottom)
+    readonly directions?: boolean[];
     // a series flexes
     readonly flexes?: string;
     // run a series of flexes in reverse, effectively undoing them
@@ -23,8 +27,6 @@ namespace Flexagonator {
     readonly addFlex?: FlexDef;
     // a list of flexes to search
     readonly searchFlexes?: string;
-    // for first leaf: [center angle, clockwise angle]
-    readonly angles?: number[];
   }
 
 }

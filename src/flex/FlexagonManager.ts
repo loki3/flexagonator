@@ -10,6 +10,7 @@ namespace Flexagonator {
     flexesToSearch: Flexes;
     interpolateNewLeaves?: 'never' | 'justColor' | 'colorAndLabel' = undefined;
     private angleInfo: FlexagonAngles = new FlexagonAngles(60, 60);
+    private directions?: boolean[];
     private tracker: Tracker;
     private readonly history: History;
 
@@ -144,6 +145,13 @@ namespace Flexagonator {
 
     getAngleInfo(): FlexagonAngles {
       return this.angleInfo;
+    }
+
+    setDirections(directions?: boolean[]) {
+      this.directions = directions;
+    }
+    getDirections(): boolean[] | undefined {
+      return this.directions;
     }
 
     getFlexHistory(): string[] {

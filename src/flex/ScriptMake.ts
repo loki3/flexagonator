@@ -11,6 +11,9 @@ namespace Flexagonator {
     }
     script.push(makeFlexesToSearch(fm));
     script.push({ angles: fm.getAngleInfo().getAngles(fm.flexagon) });
+    if (fm.getDirections()) {
+      script.push({ directions: fm.getDirections() });
+    }
     return script;
   }
 

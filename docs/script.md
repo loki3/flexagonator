@@ -1,7 +1,7 @@
 # Scripting Flexagonator
 
 You can run a script to create a flexagon, apply flexes, and customize a flexagon.
-Scripts be used when creating custom UI for a specific flexagon or category of flexagon.
+Scripts can be used when creating custom UI for a specific flexagon or category of flexagon.
 They can also be used as a way to transport the current state of a flexagon from one custom UI to another.
 
 Script commands:
@@ -9,6 +9,8 @@ Script commands:
 * Defining flexagon structure
     * **pats:** create a new flexagon with the given structure
     * **numPats:** create a new flexagon with the given number of pats, but only one leaf per pat
+    * **angles:** set the angles for first leaf: [center angle, clockwise angle]
+    * **directions:** set how each pat is connected to the previous pat, 0: left, 1: right (if edge at bottom)
 * Flexes
     * **flexes:** perform a series of flexes
     * **reverseFlexes:** run a series of flexes in reverse, effectively undoing them
@@ -19,7 +21,6 @@ Script commands:
     * **leafProps:** describe the properties for every leaf
     * **setFace:** set properties for the entire face (front and/or back)
     * **unsetFace:** set properties for just the portion of the current face that's not already set (front and/or back)
-    * **angles:** set the angles for first leaf: [center angle, clockwise angle]
 * History
     * **history:** manipulate the history that tracks which flexes have been performed
 

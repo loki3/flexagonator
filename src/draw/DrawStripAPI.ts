@@ -4,6 +4,7 @@ namespace Flexagonator {
   export interface DrawStripObjects {
     readonly flexagon: Flexagon;
     readonly angleInfo: FlexagonAngles;
+    readonly directions?: boolean[];
     readonly leafProps: PropertiesForLeaves;
   }
 
@@ -33,8 +34,6 @@ namespace Flexagonator {
     readonly rotation?: number;
     // [optional] extra captions to draw on the strip
     readonly captions?: DrawStripCaption[];
-    // [optional] for each pat in the folded flexagon, true/false indicates the next pat is clock/counter
-    readonly directions?: boolean[];
   }
 
   // draw an unfolded flexagon strip
@@ -42,6 +41,7 @@ namespace Flexagonator {
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
+      directions: fm.getDirections(),
       leafProps: fm.leafProps,
     };
     return drawUnfoldedObjects(canvas, objects, options);
@@ -52,16 +52,16 @@ namespace Flexagonator {
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
-    if (!options) {
-      options = {};
-    }
-    const unfolded = unfold(objects.flexagon.getAsLeafTrees(), options.directions);
+    const unfolded = unfold(objects.flexagon.getAsLeafTrees(), objects.directions);
     if (isTreeError(unfolded)) {
       console.log("error unfolding flexagon");
       console.log(unfolded);
       return;
     }
 
+    if (!options) {
+      options = {};
+    }
     const content = options.content === undefined ? StripContent.FoldingLabels : options.content;
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));

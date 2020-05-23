@@ -49,6 +49,18 @@ namespace Flexagonator {
       fm = FlexagonManager.make(result);
     }
 
+    if (item.angles !== undefined) {
+      if (item.angles[0] && item.angles[1]) {
+        fm.setAngles(item.angles[0], item.angles[1]);
+      } else {
+        fm.setIsosceles();
+      }
+    }
+
+    if (item.directions !== undefined) {
+      fm.setDirections(item.directions);
+    }
+
     if (item.flexes !== undefined) {
       const result = fm.applyFlexes(item.flexes, false);
       if (isFlexError(result)) {
@@ -115,14 +127,6 @@ namespace Flexagonator {
         }
       }
       fm.flexesToSearch = flexes;
-    }
-
-    if (item.angles !== undefined) {
-      if (item.angles[0] && item.angles[1]) {
-        fm.setAngles(item.angles[0], item.angles[1]);
-      } else {
-        fm.setIsosceles();
-      }
     }
 
     return fm;
