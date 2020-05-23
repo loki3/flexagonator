@@ -199,6 +199,16 @@
     drawStripSimple("P444", 12, "P444*");
   </script>
 
+  <p>
+    you can do a P444h (half of a P444) on this one & it'll still be flat,
+    though the leaves no longer meet in the middle
+  </p>
+  <canvas id="P444-half" width="1200" height="250"></canvas>
+  <script type="text/javascript">
+    var script = [{ "pats": [1, 2, 3, [0, 0], 5, 6, 7, [0, 0], 9, 10, 11, [0, 0]] }, { "angles": [30, 60, 90] }];
+    drawStripComplex("P444-half", script, { rotation: 60, content: 0 });
+  </script>
+
   <h3>P333</h3>
   <canvas id="P333" width="1200" height="400"></canvas>
   <script type="text/javascript">
@@ -461,7 +471,7 @@
     <tr>
       <th>equilateral triangle<br/>hexa-flexagon</th>
       <th>bronze triangle<br/>hexa-flexagon<br/>(triangle)</th>
-      <th>isosceles triangle<br/>hepta-flexagon</th>
+      <th>hepta-flexagon</th>
     </tr>
     <tr>
       <td><canvas id="t-hexa" width="250" height="250"></canvas></td>
