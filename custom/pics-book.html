@@ -68,6 +68,7 @@
       <li><a href="#flip">flip flex</a></li>
       <li><a href="#vflex">v flex</a></li>
       <li><a href="#silver tetra">silver tetra flex</a></li>
+      <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
     </ul>
     <li><a href="#appendices">Appendices</a></li>
     <ul>
@@ -414,6 +415,54 @@
   <canvas id="St-minimal" width="900" height="450"></canvas>
   <script type="text/javascript">
     drawStripSequence("St-minimal", 6, "St*", -30, [60, 90]);
+  </script>
+
+  <h2 id="hexa-silver-dodeca">hexagonal silver dodeca</h2>
+
+  <canvas id="silverDodecaHexa1" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa2" width="1200" height="200"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa3" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa4" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa5" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa6" width="1000" height="600"></canvas><br/><br/>
+  <script type="text/javascript">
+    var angles = [45, 90];
+    var directions = [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1];
+    function drawStripFromFlexes(canvasId, flexes, rotation, text) {
+      var halfFlex = {
+        "addFlex": {
+          "name": "half flex",
+          "shorthand": "H",
+          "input": [1, 2, [-4, 3], -5, -6, -7, -8, -9, [11, -10], 12, 13, 14],
+          "output": [-13, [1, -14], 2, 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12]
+        }
+      };
+      var slideFlex = {
+        "addFlex": {
+          "name": "slide",
+          "shorthand": "Sl",
+          "input": [1, [-3, 2], -4, -5, [7, -6], 8, 9, [-11, 10], -12, -13, [15, -14], 16],
+          "output": [-14, -15, [1, -16], 2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [-13, 12]]
+        }
+      };
+      var tuck12 = {
+        "addFlex": {
+          "name": "tuck 12",
+          "shorthand": "T12",
+          "input": [[[-2, 3], 1], 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+          "output": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [2, [14, -1]]]
+        }
+      };
+      var script = [{ numPats: 12, angles, directions }, halfFlex, slideFlex, tuck12, { flexes }];
+      var fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: 0, captions: [{ text, which: 0 }] });
+    }
+    drawStripFromFlexes('silverDodecaHexa1', 'H+', 45, 'H');
+    drawStripFromFlexes('silverDodecaHexa2', 'H*H*', 90, 'HH');
+    drawStripFromFlexes('silverDodecaHexa3', 'Sl+', 0, 'Sl');
+    drawStripFromFlexes('silverDodecaHexa4', '<T12+>', 90, '<T12');
+    drawStripFromFlexes('silverDodecaHexa5', '>>T12+<<', 180, '>>T12');
+    drawStripFromFlexes('silverDodecaHexa6', '<T12+>>>T12+>>>T12+>>>T12+>>>>', 90, "T12's");
   </script>
 
   <hr />
