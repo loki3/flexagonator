@@ -41,11 +41,11 @@
 [/Aside]
 
 The [previous chapter](pinch-flex.html) showed how to use the *pinch flex* to explore a flexagon.
-But there a lots of other ways to flex a flexagon, all of which rearrange the leaves in different ways.
+But there lots of other ways to flex a flexagon, all of which rearrange the leaves in different ways.
 On this page, we'll cover flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
 
-The best way to learn new flexes is on the *minimal flexagon* that supports the flex.
-This refers to the flexagon that has exactly the minimum structure necessary to perform a given flex.
+The best way to learn a new flex is on the *minimal flexagon* that supports the flex,
+which is the flexagon that has exactly the minimum structure necessary to perform a given flex.
 On this page you'll find a variety of flexes, and the option of trying out the minimal flexagon with a variety of flexagons.
 
 For flexagon names, prefixes are used to reflect the number of polygons per face, e.g. *hexaflexagon* indicates there are 6 triangles per face.
