@@ -84,13 +84,17 @@
 
   <canvas id="intro-tri" width="800" height="180"></canvas>
   <script type="text/javascript">
-    drawStripSimple("intro-tri", 6, "P*", 120);
+    var script = [{ numPats: 6, flexAndColor: { flexes: "P*" } }];
+    var options = { rotation: 120, content: 6 };
+    drawStripComplex("intro-tri", script, options);
   </script>
   <img src="../idyll/static/pinch-flex.jpg" /><br/><br/>
 
   <canvas id="intro-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
-    drawStripSimple("intro-hexa", 6, "P* P* P+ > P P*", 120);
+    var script = [{ numPats: 6, flexAndColor: { flexes: "P* P* P+ > P P*" } }];
+    var options = { rotation: 120, content: 6 };
+    drawStripComplex("intro-hexa", script, options);
   </script>
 
   <img src="pics-book/square-book.jpg" /><br/><br/>
