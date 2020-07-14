@@ -16,8 +16,8 @@
   <script type="text/javascript">
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number
-    function drawStripSimple(canvasId, numPats, flexes, rotation, start, end) {
-      var script = [{ numPats: numPats, flexAndColor: { flexes: flexes } }];
+    function drawStripSimple(canvasId, numPats, flexes, rotation, start, end, angles) {
+      var script = [{ numPats: numPats, flexAndColor: { flexes: flexes }, angles }];
       var fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4, start: start, end: end });
     }
@@ -73,6 +73,10 @@
     <li><a href="#part3">Part Three: Learning</a></li>
     <ul>
       <li><a href="#naming">naming</a></li>
+    </ul>
+    <li><a href="#part4">Part Four: Fun</a></li>
+    <ul>
+      <li><a href="#popups">popups</a></li>
     </ul>
   </ul>
 
@@ -559,6 +563,40 @@
     drawFlexagonSimple("t-iso-dodeca", 12);
     drawFlexagonSimple("t-bronze-dodeca", 12, [30, 90]);
     drawFlexagonSimple("t-star-dodeca", 12, [30, 120]);
+  </script>
+  <hr />
+
+  <!-- part 4 -->
+
+  <h2 id="part4">Part 4: Fun</h2>
+
+  <h3 id="popups">popups</h3>
+
+  <p>right triangle tetraflexagon</p>
+  <canvas id="right-tetra4a" width="400" height="250"></canvas>
+  <canvas id="right-tetra4b" width="300" height="250"></canvas>
+  <script type="text/javascript">
+    var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2" } }];
+    drawStripComplex("right-tetra4a", script,
+      { rotation: -45, content: 0, start: 0, end: 7, captions: [{ text: "*", which: 0 }, { text: "a", which: -1 }] });
+    drawStripComplex("right-tetra4b", script,
+      { rotation: -45, content: 0, start: 8, end: 9, captions: [{ text: "a", which: 0 }, { text: "*", which: -1 }] });
+  </script>
+
+  <p>equilateral triangle tetraflexagons</p>
+  <canvas id="equi-tetra3" width="800" height="250"></canvas><br/>
+  <canvas id="equi-tetra5" width="800" height="600"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("equi-tetra3", 4, "P*", 120, undefined, undefined, [60, 60]);
+    drawStripSimple("equi-tetra5", 4, "P*(^>P*)2", 60, undefined, undefined, [60, 60]);
+  </script>
+
+  <p>animal pentaflexagon</p>
+  <canvas id="animal-penta" width="800" height="700"></canvas>
+  <script type="text/javascript">
+    var script = [{ "pats": [0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0], 0] }, { "angles": [72, 54] }];
+    var options = { rotation: 72, content: 0 };
+    drawStripComplex("animal-penta", script, options);
   </script>
 
 </body>
