@@ -61,4 +61,18 @@ namespace Flexagonator {
     }
   });
 
+  it('should prefer generator over pinchFaces', () => {
+    const name: NamePieces = { generator: 'F*>S*', pinchFaces: 'icosa' };
+    const [script, errors] = namePiecesToScript(name);
+    expect(script.length).toBe(1);
+    expect(errors.length).toBe(0);
+
+    const flexes = script[0].flexes;
+    if (flexes === undefined) {
+      fail('script[0].flexes should exist');
+    } else {
+      expect(flexes).toBe('F*>S*');
+    }
+  });
+
 }

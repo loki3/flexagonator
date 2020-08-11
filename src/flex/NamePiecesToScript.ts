@@ -13,6 +13,7 @@ namespace Flexagonator {
 
     if (name.generator) {
       // a generating sequence is more specific than pinchFaces, so try it first
+      info.add({ flexes: name.generator });
     } else if (name.pinchFaces) {
       const [script, error] = pinchFacesToScript(name.pinchFaces);
       info.add(script);
