@@ -5,20 +5,33 @@ namespace Flexagonator {
    */
   export function namePiecesToScript(name: NamePieces): [ScriptItem[], NamePiecesError[]] {
     const info: InfoStorer = new InfoStorer();
+
     if (name.leafShape) {
       const item = leafShapeToScript(name.leafShape);
       info.add(item);
     }
+
+    if (name.generator) {
+      // a generating sequence is more specific than pinchFaces, so try it first
+    } else if (name.pinchFaces) {
+      const [script, error] = pinchFacesToScript(name.pinchFaces);
+      info.add(script);
+      info.add(error);
+    }
+
     return [info.script, info.errors];
   }
 
   /** errors/warnings encountered in namePiecesToScript */
   export interface NamePiecesError {
-    readonly nameError: 'unknown leafShape';
+    readonly nameError:
+    'unknown leafShape' |
+    'need at least 2 pinch faces' |
+    'warning: there are multiple possibilities for pinch face count';
     readonly propValue?: string;
   }
   export function isNamePiecesError(result: any): result is NamePiecesError {
-    return (result as NamePiecesError).nameError !== undefined;
+    return result && (result as NamePiecesError).nameError !== undefined;
   }
 
   // convenient way to track script & errors
@@ -26,12 +39,41 @@ namespace Flexagonator {
     readonly script: ScriptItem[] = [];
     readonly errors: NamePiecesError[] = [];
 
-    add(item: ScriptItem | NamePiecesError): void {
+    add(item: ScriptItem | NamePiecesError | null): void {
       if (isNamePiecesError(item)) {
         this.errors.push(item);
-      } else {
+      } else if (item !== null) {
         this.script.push(item);
       }
+    }
+  }
+
+  function greekPrefixToNumber(prefix: GreekNumberType): number {
+    switch (prefix) {
+      case 'di': return 2;
+      case 'tri': return 3;
+      case 'tetra': return 4;
+      case 'penta': return 5;
+      case 'hexa': return 6;
+      case 'hepta': return 7;
+      case 'octa': return 8;
+      case 'ennea': return 9;
+      case 'deca': return 10;
+      case 'hendeca': return 11;
+      case 'dodeca': return 12;
+      case 'trideca': return 13;
+      case 'tetradeca': return 14;
+      case 'pentadeca': return 15;
+      case 'hexadeca': return 16;
+      case 'heptadeca': return 17;
+      case 'octadeca': return 18;
+      case 'enneadeca': return 19;
+      case 'icosa': return 20;
+      case 'icosihena': return 21;
+      case 'icosidi': return 22;
+      case 'icositri': return 23;
+      case 'icositetra': return 24;
+      default: return 0;
     }
   }
 
@@ -50,6 +92,29 @@ namespace Flexagonator {
       default:
         return { nameError: 'unknown leafShape', propValue: leafShape };
     }
+  }
+
+  function pinchFacesToScript(pinchFaces: GreekNumberType): [ScriptItem | null, NamePiecesError | null] {
+    const n = greekPrefixToNumber(pinchFaces);
+    if (n < 2) {
+      return [null, { nameError: 'need at least 2 pinch faces', propValue: pinchFaces }];
+    } else if (n === 2) {
+      // don't need to do anything because it defaults to 2 faces
+      return [null, null];
+    } else if (n < 6) {
+      // 3, 4, 5 are all unambiguous
+      const script: ScriptItem = { flexes: 'P*'.repeat(n - 2) };
+      return [script, null];
+    } else if (n === 6) {
+      // we'll assume they want the "straight strip" version
+      const script: ScriptItem = { flexes: 'P* P* P+ > P P*' };
+      const error: NamePiecesError = { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces };
+      return [script, error];
+    }
+    // >6 is ambiguous
+    const script: ScriptItem = { flexes: 'P*'.repeat(n - 2) };
+    const error: NamePiecesError = { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces };
+    return [script, error];
   }
 
 }

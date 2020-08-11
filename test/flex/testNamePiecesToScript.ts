@@ -32,4 +32,33 @@ namespace Flexagonator {
     });
   });
 
+  it('should map pinchFaces to flexes', () => {
+    const name: NamePieces = { pinchFaces: 'penta' };
+    const [script, errors] = namePiecesToScript(name);
+    expect(script.length).toBe(1);
+    expect(errors.length).toBe(0);
+
+    const flexes = script[0].flexes;
+    if (flexes === undefined) {
+      fail('script[0].flexes should exist');
+    } else {
+      expect(flexes).toBe('P*P*P*');
+    }
+  });
+
+  it('should complain if pinchFlexes is invalid', () => {
+    const name = { pinchFaces: 'blah' };
+    const [script, errors] = namePiecesToScript(name as NamePieces);
+    expect(script.length).toBe(0);
+    expect(errors.length).toBe(1);
+
+    const error = errors[0];
+    if (error === undefined) {
+      fail('errors[0] should exist');
+    } else {
+      expect(error.nameError).toBe('need at least 2 pinch faces');
+      expect(error.propValue).toBe('blah');
+    }
+  });
+
 }
