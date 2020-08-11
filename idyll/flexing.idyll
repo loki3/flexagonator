@@ -137,7 +137,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
   If you click the `S` button, you can see what the labels will look like after a successful pyramid shuffle.
 [/Aside]
 
-[Flexagon width:600 height:400 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:flexagonOptions /]
+[Flexagon width:600 height:400 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:flexagonOptions overButton:true /]
 
 [var name:"showFoldingHelp" value:false /]
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]How do I fold this?[/Button]
@@ -211,7 +211,7 @@ Here are some flexagons you can use to try the flip flex:
 [Button onClick:` patsFlip=12; anglesFlip=undefined; runInitFlip=true; `]isosceles dodecaflexagon[/Button], or
 [Button onClick:` patsFlip=12; anglesFlip=[30, 90]; runInitFlip=true; `]right dodecaflexagon[/Button].
 
-[Flexagon width:600 height:400 numPats:patsFlip initialScript:initFlip runInitial:runInitFlip options:flexagonOptions /]
+[Flexagon width:600 height:400 numPats:patsFlip initialScript:initFlip runInitial:runInitFlip options:flexagonOptions overButton:true /]
 
 [Unfolded width:1000 height:500 numPats:patsFlip generator:flexFlip angles:anglesFlip options:unfoldedOptions endText:'F' /]
 
@@ -273,7 +273,7 @@ Here are some flexagons you can use to try the tuck flex:
 [Button onClick:` flexTuck='T1+'; patsTuck=12; anglesTuck=[30, 60]; runInitTuck=true; `]right dodecaflexagon[/Button], or
 [Button onClick:` flexTuck='T1+'; patsTuck=12; anglesTuck=[30, 30]; runInitTuck=true; `]star dodecaflexagon[/Button].
 
-[Flexagon width:600 height:400 numPats:patsTuck initialScript:initTuck runInitial:runInitTuck options:flexagonOptions /]
+[Flexagon width:600 height:400 numPats:patsTuck initialScript:initTuck runInitial:runInitTuck options:flexagonOptions overButton:true /]
 
 [Unfolded width:1000 height:500 numPats:patsTuck generator:flexTuck angles:anglesTuck options:unfoldedOptions endText:'T' /]
 
@@ -304,7 +304,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
   ]` /]
 [var name:'runInitV' value:false /]
 
-[Flexagon width:600 height:400 numPats:patsV initialScript:initV runInitial:runInitV options:flexagonOptions /]
+[Flexagon width:600 height:400 numPats:patsV initialScript:initV runInitial:runInitV options:flexagonOptions overButton:true /]
 
 [Unfolded width:1000 height:400 numPats:patsV generator:flexV angles:anglesV options:unfoldedOptions endText:'V' /]
 
@@ -349,7 +349,7 @@ Here are some flexagons you can use to try the silver tetra flex:
 [Button onClick:` patsSilverTetra=12; anglesSilverTetra=undefined; runInitSilverTetra=true; `]isosceles dodecaflexagon[/Button], or
 [Button onClick:` patsSilverTetra=12; anglesSilverTetra=[30, 90]; runInitSilverTetra=true; `]right dodecaflexagon[/Button].
 
-[Flexagon width:600 height:400 numPats:patsSilverTetra initialScript:initSilverTetra runInitial:runInitSilverTetra options:flexagonOptions /]
+[Flexagon width:600 height:400 numPats:patsSilverTetra initialScript:initSilverTetra runInitial:runInitSilverTetra options:flexagonOptions overButton:true /]
 
 [Unfolded width:1000 height:500 numPats:patsSilverTetra generator:flexSilverTetra angles:anglesSilverTetra options:unfoldedOptions endText:'St' /]
 
