@@ -10,7 +10,7 @@ const React = require('react');
  * FlexButton: a button for applying a flex at a corner
  * props {
  *  onClick(flexes) callback to issue when button is clicked
- *  flex            flex to perform, e.g. Sh
+ *  flex            flex to perform, e.g. S
  *  prefix          shifts to perform before flex, e.g. >>
  *  postfix         shifts to perform after flex e.g. <<
  * }
@@ -75,7 +75,7 @@ const FlexButtons = (props) => {
  *  numPats       create a new flexagon with the given number of pats, typically in [4, 12]
  *  initialScript script to run when numPats is changed or 'runInitial' is set to true
  *  runInitial    set to true to rerun the inital script
- *  flexes        flexes to apply to the current flexagon, e.g. 'Sh*>>T*^P*'
+ *  flexes        flexes to apply to the current flexagon, e.g. 'S*>>T*^P*'
  *  doHistory     'undo' | 'redo' | 'clear' | 'reset'
  *  runScript     set to true when the 'script' property should be run
  *  script        a flexagonator script to run on the current flexagon (either objects or a string)

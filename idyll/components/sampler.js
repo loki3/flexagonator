@@ -6,7 +6,7 @@ const Unfolded = require('./unfolded');
 /**
  * Sampler: show a flexagon, controls, and an unfolded version
  * props {
- *  generator   flex generating sequence for flexagon, e.g. 'Sh*>>T*^P*'
+ *  generator   flex generating sequence for flexagon, e.g. 'S*>>T*^P*'
  *  patType     default number of pats in the flexagon, typically in the range [4, 12], plus optional angleType
  *              'i': isosceles, 'r': right #1, 'R': right #2, 's': star #1, or 'S': star #2, 'e': equilateral
  *  patOptions  array of different patTypes that can be switched between
@@ -49,7 +49,7 @@ class Sampler extends React.Component {
   buildInitial(numPats, angles, props) {
     const { generator } = props;
     const colors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
-    let searchFlexes = "F L3 Lh Lh' Lk Lbf Lbf' Lbb Lbb' Ltf Ltb Ltb' P P44 P333 P334 P55 P3333 P444 P66 Sh T T' T1 T1' T2 T2' T3 T3' T4 T4' Ttf Ttf' Tk Tk' Tw V";
+    let searchFlexes = "F L3 Lh Lh' Lk Lbf Lbf' Lbb Lbb' Ltf Ltb Ltb' P P44 P333 P334 P55 P3333 P444 P66 S T T' T1 T1' T2 T2' T3 T3' T4 T4' Ttf Ttf' Tk Tk' Tw V";
     if (numPats !== 5) {
       searchFlexes += " St";
     }

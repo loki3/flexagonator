@@ -8,7 +8,7 @@ or `^` (turn the flexagon over).
 
 Flex notation uses an abbreviated name for each flex, which should start with capital letter.
 This can be followed by a series of lower case letters or numbers,
-for example, `P`, `Sh`, `F3`, `Ltb`, or `P334`.
+for example, `P`, `S`, `F3`, `Ltb`, or `P334`.
 This makes it easy to find the beginning of a flex in a series of flexes.
 
 Some important notes about flexes:
@@ -22,19 +22,19 @@ The flexagon must have the proper structure.
 
 There are several modifiers that can be tacked on to a flex:
 
-* `'`: a flex name followed by a single quote refers to the *inverse* of a flex, i.e. the flex performed in reverse, e.g. `P'` or `Sh'`
+* `'`: a flex name followed by a single quote refers to the *inverse* of a flex, i.e. the flex performed in reverse, e.g. `P'` or `S'`
 * `+`: if the current state of the flexagon doesn't support the given flex, create the internal structure necessary to support it *without* applying the flex, e.g. `F3+` or `Ltb'+`
 * `*`: same as `+`, but apply the flex after creating the necessary structure, e.g. `T*` or `P334'*`
 
 ```
-P > > T'* ^ < Sh+
+P > > T'* ^ < S+
 ```
 
 You can declare that you want to repeat a given flex sequence by putting it in (parens) followed by the number of times to repeat.
 
 ```
 // repeat sequence 6 times
-(P > Sh >) x 6
+(P > S >) x 6
 // repeat P* twice followed by repeating a different sequence 4 times
 (P*) x 2 (^ > P*) x 4
 ```
@@ -65,8 +65,7 @@ performed, these variants describe which opposite hinge needs to exist
 flex can be very hard to do without damaging the flexagon, so it's generally just used for simulation to explore
 the states of a flexagon
 * `Ttf`: the tuck top front flex - same as the tuck flex, but you open up the front instead of the back after doing the tuck
-* `Sh`: the pyramid shuffle - see [Pyramid Shuffle](http://loki3.com/flex/flex/pyramid-shuffle.html) -
-note that the linked page uses `S`, where `Sh = S <` - `Sh` was defined so that `Sh = ^ Sh ^`
+* `S`: the pyramid shuffle - see [Pyramid Shuffle](http://loki3.com/flex/flex/pyramid-shuffle.html)
 * `V`: the v-flex - see [V Flex](http://loki3.com/flex/flex/v.html)
 * `F`: the flip flex - see [Flip Flex](http://loki3.com/flex/flex/flip.html)
 * `St`: the silver tetra - see [Silver Tetra](http://loki3.com/flex/flex/silver-tetra.html)

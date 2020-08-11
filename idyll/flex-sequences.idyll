@@ -67,28 +67,28 @@ You'll get to try for yourself in the *Experimenting with cycles* section below.
 
 The following flexagon is the minimal flexagon for the pyramid shuffle.
 It supports a simple cycle of 6 flexes.
-Try clicking on the following: `Sh`, `T'`, `^`, `T`, `^`, `Sh`, `T'`, `^`, `T`, and `^`.
+Try clicking on the following: `S`, `T'`, `^`, `T`, `^`, `S`, `T'`, `^`, `T`, and `^`.
 You'll find that this takes you right back to the original state.
 
-[var name:historySh value:'' /]
-[var name:doHistorySh value:'' /]
-[derived name:'initSh' value:`[
+[var name:historyS value:'' /]
+[var name:doHistoryS value:'' /]
+[derived name:'initS' value:`[
   {numPats: 6},
-  {searchFlexes: "Sh T T'"},
-  {flexAndColor: { flexes: "Sh+", colors: defaultColors }},
+  {searchFlexes: "S T T'"},
+  {flexAndColor: { flexes: "S+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
 
-[Flexagon width:700 height:400 numPats:6 initialScript:initSh runInitial:false options:flexagonOptions overButton:true
-  history:historySh doHistory:doHistorySh /]
+[Flexagon width:700 height:400 numPats:6 initialScript:initS runInitial:false options:flexagonOptions overButton:true
+  history:historyS doHistory:doHistoryS /]
 
-[Button onClick:`doHistorySh='undo';`]Undo[/Button] [Button onClick:`doHistorySh='redo';`]Redo[/Button] [Button onClick:`doHistorySh='reset';`]Reset[/Button] [Display value:historySh /]
+[Button onClick:`doHistoryS='undo';`]Undo[/Button] [Button onClick:`doHistoryS='redo';`]Redo[/Button] [Button onClick:`doHistoryS='reset';`]Reset[/Button] [Display value:historyS /]
 
-[Unfolded width:1000 height:500 script:initSh options:unfoldedOptions endText:'Sh+' /]
+[Unfolded width:1000 height:500 script:initS options:unfoldedOptions endText:'S+' /]
 
-Looking at the flex sequence that was recorded, you'll see the sequence `Sh>>T'>^T<<^` repeated twice
+Looking at the flex sequence that was recorded, you'll see the sequence `S>T'>^T<<^` repeated twice
 (well, the trailing `>` and `^` might look different, but that's just an artifact of how the simulator tracks the current vertex).
-This can be written as `(Sh>>T'>^T<<^) 2`.
+This can be written as `(S>T'>^T<<^) 2`.
 Whenever you can do a pyramid shuffle, you can run through this cycle of 6 flexes.
 
 
@@ -120,21 +120,21 @@ Push *reset* when you want to try a new sequence.
 
   Flexes to try:
   [br/]
-  **5:** Sh Lk Ltf L3
+  **5:** S Lk Ltf L3
   [br/]
-  **6:** F P Sh St T V Lh Lk Ltf Ltb Lbf Lbb
+  **6:** F P S St T V Lh Lk Ltf Ltb Lbf Lbb
   [br/]
-  **7:** F Sh T1 T2 Lk Ltf
+  **7:** F S T1 T2 Lk Ltf
   [br/]
-  **8:** F P P44 Sh St Tw T1 T2 T3 Lk Ltf
+  **8:** F P P44 S St Tw T1 T2 T3 Lk Ltf
   [br/]
-  **9:** F P333 Sh St T1 T2 T3 Lk Ltf
+  **9:** F P333 S St T1 T2 T3 Lk Ltf
   [br/]
-  **10:** F P334 P55 Sh St Tw T1 T2 T3 Lk Ltf
+  **10:** F P334 P55 S St Tw T1 T2 T3 Lk Ltf
   [br/]
-  **11:** F Sh St T1 T2 T3 Lk Ltf
+  **11:** F S St T1 T2 T3 Lk Ltf
   [br/]
-  **12:** F P P3333 P444 P66 Sh St Tw T1 T2 T3 Lk Ltf
+  **12:** F P P3333 P444 P66 S St Tw T1 T2 T3 Lk Ltf
 [/Aside]
 
 Flex sequence: [TextInput value:tempSequence /]
@@ -147,12 +147,12 @@ Currently in state [Display value:cycleCurrent format:'0' /] of [Display value:c
 
 [Unfolded width:1000 height:500 numPats:cycleNumPats script:cycleScript /]
 
-What happens when you try a single flex (e.g. `P`, `V`, `Sh`, or `Ltb`) with 0 or more rotations (e.g. `V*`, `V*>`, `V*>>`)?
+What happens when you try a single flex (e.g. `P`, `V`, `S`, or `Ltb`) with 0 or more rotations (e.g. `V*`, `V*>`, `V*>>`)?
 Which single flexes can form a cycle and which ones can't?
 Is there anything about the flex definition that can help you predict whether or not a single flex can lead to a cycle?
 
 What if you also include `^` (e.g. `V*^V*>>>`)?
-What interesting cycles can you find that involve multiple flexes (e.g. `V*<Sh*<`)?
+What interesting cycles can you find that involve multiple flexes (e.g. `V*<S*<<`)?
 How do the sequences change as you change the number of pats?
 
 
@@ -165,7 +165,7 @@ that are possible if you use any of the many flexes that rearrange those faces.
 
 We'll look at one example to give you a flavor of what a complete traversal of every state might look like.
 The following hexaflexagon has 12 leaves and 36 different states.
-You can visit all 36 states using flexes such as `P`, `V`, `T`, `Sh`, and `Ltb`.
+You can visit all 36 states using flexes such as `P`, `V`, `T`, `S`, and `Ltb`.
 
 One way to traverse every state is through the flex sequence `(Ltb>P>P>) 12`.
 Each time you click *apply* with that sequence, you can see that it visits 3 more states
@@ -184,7 +184,7 @@ Can you find other simple sequences that visit all 36 states?
 [var name:'twelveOptions' value:`{structure:true, showIds:false, both:true, stats:true}`/]
 [derived name:'twelveInit' value:`[
   { numPats: 6 },
-  { searchFlexes: "P Sh T T' V Lh Lk Ltf Ltb Lbf Lbb" },
+  { searchFlexes: "P S T T' V Lh Lk Ltf Ltb Lbf Lbb" },
   { flexAndColor: { flexes: "Ltb*>P*>P*>Ltb*>P*" , colors: defaultColors } },
   { reverseFlexes: "Ltb*>P*>P*>Ltb*>P*" },
   { history: "clear" }
@@ -255,7 +255,7 @@ The following flexagonn has a generating sequence of `Lh+` and supports both `T'
 [var name:doHistoryLh value:'' /]
 [derived name:'initLh' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lh+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -271,7 +271,7 @@ Note that typically we assume that we can rotate the flexagon and turn it over (
 In the case above, we didn't need to rotate or turn it over.
 
 For a hexaflexagon, we have discussed the following flexes:
-`F`, `P`, `Sh`, `St`, `T`, `V`, `Lh`, `Lk`, `Ltf`, `Ltb`, `Lbf`, and `Lbb`.
+`F`, `P`, `S`, `St`, `T`, `V`, `Lh`, `Lk`, `Ltf`, `Ltb`, `Lbf`, and `Lbb`.
 Relative to that set of flexes, which ones are prime?
 How does it change if you include `Tf`, the *forced tuck*?
 
@@ -332,7 +332,7 @@ Here are equalities for various flex inverses:
 * `>' = <`
 * `F' = ^F^`
 * `P' = ^P^`
-* `Sh' = ^Sh^`
+* `S' = ^>S<^` (note that this is different from most other flexes)
 * `St' = ^St^`
 * `Lh' != ^Lh^` (note that this is different from many other flexes)
 * `Lk' = ^Lk^`

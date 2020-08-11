@@ -41,7 +41,7 @@
 [/Aside]
 
 The [previous chapter](pinch-flex.html) showed how to use the *pinch flex* to explore a flexagon.
-But there lots of other ways to flex a flexagon, all of which rearrange the leaves in different ways.
+But there are lots of other ways to flex a flexagon, all of which rearrange the leaves in different ways.
 On this page, we'll cover flexes like the *tuck flex*, *pyramid shuffle*, and *v-flex*.
 
 The best way to learn a new flex is on the *minimal flexagon* that supports the flex,
@@ -90,10 +90,10 @@ Step through the images to see the pyramid shuffle on an equilateral hexaflexago
 The green circle on the first and last slides indicates where the *current vertex* starts and ends for the flex.
 
 [Aside]
-  The flex notation for the pyramid shuffle is `Sh`.
-  Performing the flex in reverse is `Sh'`.
-  You can also undo the pyramid shuffle by turning it over, doing the pyramid shuffle at the same vertex,
-  then turning it back over again, summarized as `Sh' = ^Sh^`.
+  The flex notation for the pyramid shuffle is `S`.
+  Performing the flex in reverse is `S'`.
+  You can also undo the pyramid shuffle by turning it over, doing the pyramid shuffle one vertex to the right (clockwise),
+  then turning it back over again, summarized as `S' = ^>Sh<^`.
 
   The *pyramid shuffle* requires at least 5 leaves per face (i.e. a pentaflexagon or greater).
   It requires mild bending of the leaves on the pentaflexagon,
@@ -104,12 +104,12 @@ The green circle on the first and last slides indicates where the *current verte
 // Video shows pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:89, end:117, rel:0, modestbranding:1 }` /]
 
-[var name:'flexShuffle' value:'Sh+' /]
+[var name:'flexShuffle' value:'S+' /]
 [var name:'patsShuffle' value:6 /]
 [var name:'anglesShuffle' value:`[60,60]` /]
 [derived name:'initShuffle' value:`[
   {angles:anglesShuffle},
-  {searchFlexes:"Sh Sh'"},
+  {searchFlexes:"S S'"},
   {flexes: flexShuffle},
   {reverseFlexes: flexShuffle}
   ]` /]
@@ -134,7 +134,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
   Every leaf (triangle) is labled with a unique id.
   The backside of a leaf has the same id as the front, only negative (e.g. 1 and -1).
   The flexagon to the left shows you where the labels should be after folding, both on the front (the large flexagon) and the back (the small flexagon).
-  If you click the `Sh` button, you can see what the labels will look like after a successful pyramid shuffle.
+  If you click the `S` button, you can see what the labels will look like after a successful pyramid shuffle.
 [/Aside]
 
 [Flexagon width:600 height:400 numPats:patsShuffle initialScript:initShuffle runInitial:runInitShuffle options:flexagonOptions /]
@@ -170,7 +170,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
   This is where the flex should be performed from.
 [/Conditional]
 
-[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions endText:'Sh' /]
+[Unfolded width:1000 height:500 numPats:patsShuffle generator:flexShuffle angles:anglesShuffle options:unfoldedOptions endText:'S' /]
 
 
 # Flip flex

@@ -17,15 +17,15 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("S")], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(1);
-      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("S");
 
       history.add([makeFlexName("T")], flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
-      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("S");
       expect(history.getCurrent().flexes[1].fullName).toBe("T");
     });
   });
@@ -39,16 +39,16 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(makeFlexNames(["Sh", "P"]), flexagon, tracker);
+      history.add(makeFlexNames(["S", "P"]), flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(2);
-      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("S");
       expect(history.getCurrent().flexes[1].fullName).toBe("P");
 
       history.add(makeFlexNames(["T", "F"]), flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
-      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("S");
       expect(history.getCurrent().flexes[1].fullName).toBe("P");
       expect(history.getCurrent().flexes[2].fullName).toBe("T");
       expect(history.getCurrent().flexes[3].fullName).toBe("F");
@@ -64,11 +64,11 @@ namespace Flexagonator {
       expect(history.canUndo()).toBe(false);
       expect(history.getCurrent().flexes.length).toBe(0);
 
-      history.add(makeFlexNames(["Sh", ">", ">", ">"]), flexagon, tracker);
+      history.add(makeFlexNames(["S", ">", ">", ">"]), flexagon, tracker);
       history.add(makeFlexNames(["<", "<", "P", "<"]), flexagon, tracker);
       expect(history.canUndo()).toBe(true);
       expect(history.getCurrent().flexes.length).toBe(4);
-      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("S");
       expect(history.getCurrent().flexes[1].fullName).toBe(">");
       expect(history.getCurrent().flexes[2].fullName).toBe("P");
       expect(history.getCurrent().flexes[3].fullName).toBe("<");
@@ -81,13 +81,13 @@ namespace Flexagonator {
       const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("S")], flexagon, tracker);
       history.add([makeFlexName("T")], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
 
       history.undo();
       expect(history.getCurrent().flexes.length).toBe(1);
-      expect(history.getCurrent().flexes[0].fullName).toBe("Sh");
+      expect(history.getCurrent().flexes[0].fullName).toBe("S");
 
       history.undo();
       expect(history.getCurrent().flexes.length).toBe(0);
@@ -103,7 +103,7 @@ namespace Flexagonator {
       const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("S")], flexagon, tracker);
       history.add([makeFlexName("T")], flexagon, tracker);
       history.add([makeFlexName("P")], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(3);
@@ -120,7 +120,7 @@ namespace Flexagonator {
       const tracker = Tracker.make(flexagon);
 
       const history: History = new History(flexagon, tracker);
-      history.add([makeFlexName("Sh")], flexagon, tracker);
+      history.add([makeFlexName("S")], flexagon, tracker);
       history.add([makeFlexName("T")], flexagon, tracker);
       expect(history.getCurrent().flexes.length).toBe(2);
       expect(history.canRedo()).toBe(false);

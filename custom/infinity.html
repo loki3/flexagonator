@@ -14,7 +14,7 @@
     fm.interpolateNewLeaves = 'colorAndLabel';
     Flexagonator.runScript(fm, [
       { setFace: { front: { label: "0", color: 0xAA4439 }, back: { label: "1024", color: 0x2B803E } } },
-      { searchFlexes: "P Sh T T' V Ltf Ltb" }
+      { searchFlexes: "P S T T' V Ltf Ltb" }
     ]);
 
     function updateUI() {
@@ -292,57 +292,57 @@
     <input onclick="resetFaces();" type="button" value="reset faces" />
   </p>
 
-    <p>
-      <div id="available"></div>
-      To create the structure necessary to apply a flex and apply it, follow it with * (e.g. P*). To create the
-      necessary
-      structure
-      without applying it, follow it with + (e.g. P+).
-    </p>
-
-    <p>
-      <div>
-        <label>enter flex sequence</label>
-        <input onkeypress="applySequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false"/>
-  </div>
-    </p>
-    <p>
-      <input onclick="reset();" type="button" value="reset" />
-      <input onclick="undo();" type="button" value="undo" />
-      <input onclick="redo();" type="button" value="redo" />
-      <textarea id="history" readonly=true cols="70" rows="1"></textarea>
-    </p>
-
-    <canvas id="interface" width="800" height="400"></canvas>
-    <canvas id="backside" width="300" height="300"></canvas>
-    <div id="status"></div>
-    <canvas id="unfolded" width="800" height="600"></canvas>
-
-    <p>
-      <input onclick="stripContent = 0; updateUI();" type="button" value="show folding numbers" />
-      <input onclick="stripContent = 1; updateUI();" type="button" value="folding numbers + ids" />
-      <input onclick="stripContent = 2; updateUI();" type="button" value="front colors and labels" />
-      <input onclick="stripContent = 3; updateUI();" type="button" value="back colors and labels" />
+  <p>
+  <div id="available"></div>
+  To create the structure necessary to apply a flex and apply it, follow it with * (e.g. P*). To create the
+  necessary
+  structure
+  without applying it, follow it with + (e.g. P+).
   </p>
 
-      <p>
-        <input onclick="seeScript();" type="button" value="see script" />
-        <input onclick="runScript();" type="button" value="run script" />
-        <br />
-        <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
-      </p>
+  <p>
+  <div>
+    <label>enter flex sequence</label>
+    <input onkeypress="applySequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false"/>
+  </div>
+  </p>
+  <p>
+    <input onclick="reset();" type="button" value="reset" />
+    <input onclick="undo();" type="button" value="undo" />
+    <input onclick="redo();" type="button" value="redo" />
+    <textarea id="history" readonly=true cols="70" rows="1"></textarea>
+  </p>
 
-      <script type="text/javascript">
-        updateUI();
-        reportAvailable();
+  <canvas id="interface" width="800" height="400"></canvas>
+  <canvas id="backside" width="300" height="300"></canvas>
+  <div id="status"></div>
+  <canvas id="unfolded" width="800" height="600"></canvas>
 
-        var interface = document.getElementById('interface');
-        interface.addEventListener('mousemove', interfaceMouseMove, false);
-        interface.addEventListener('click', interfaceMouseClick, false);
-        var backside = document.getElementById('backside');
-        backside.addEventListener('mousemove', backsideMouseMove, false);
-        backside.addEventListener('click', backsideMouseClick, false);
-      </script>
+  <p>
+    <input onclick="stripContent = 0; updateUI();" type="button" value="show folding numbers" />
+    <input onclick="stripContent = 1; updateUI();" type="button" value="folding numbers + ids" />
+    <input onclick="stripContent = 2; updateUI();" type="button" value="front colors and labels" />
+    <input onclick="stripContent = 3; updateUI();" type="button" value="back colors and labels" />
+  </p>
+
+  <p>
+    <input onclick="seeScript();" type="button" value="see script" />
+    <input onclick="runScript();" type="button" value="run script" />
+    <br />
+    <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
+  </p>
+
+  <script type="text/javascript">
+    updateUI();
+    reportAvailable();
+
+    var interface = document.getElementById('interface');
+    interface.addEventListener('mousemove', interfaceMouseMove, false);
+    interface.addEventListener('click', interfaceMouseClick, false);
+    var backside = document.getElementById('backside');
+    backside.addEventListener('mousemove', backsideMouseMove, false);
+    backside.addEventListener('click', backsideMouseClick, false);
+  </script>
 
 </body>
 

@@ -74,7 +74,7 @@ Topics:
 
 [dl]
   [dt]flex notation[/dt]
-  [dd]Describes a sequence of flexes, e.g. `P>F'>>^Sh`[/dd]
+  [dd]Describes a sequence of flexes, e.g. `P>F'>>^S`[/dd]
 
   [dt]pat notation[/dt]
   [dd]Describes the internal structure of a triangle flexagon, e.g. `[1, [2,3], [[4,5],6], 7]`[/dd]
@@ -197,7 +197,7 @@ The following lists traits of flexagons I feel should have names, followed by my
   [dd]
   For use in *flex notation*, each flex gets assigned shorthand to uniquely identify it.
   A flex's shorthand starts with a capital letter, alternately followed by one or more lower case letters or numbers,
-  e.g. `P`, `Sh`, `P333`.
+  e.g. `P`, `S`, `P333`.
   There are additional modifiers that can be added to the flex shorthand:
 * `'` for inverse, e.g. `P'`
 * `+` to indicate that the necessary internal structure should be created in the flexagon, e.g. `P+`

@@ -103,7 +103,7 @@ There should be one entry in the array for every pat in the flexagon.
 This allows you to specify a series of flexes to be performed on a flexagon,
 optionally creating new structure in the flexagon in order to allow the flex to be performed.
 A flex is describing using the `shorthand` field from `addFlex` for representation
-and can optionally be separated by one or more space, e.g. `P > > Sh+ ^ T'`.
+and can optionally be separated by one or more space, e.g. `P > > S+ ^ T'`.
 
 A flex is performed relative to the *current corner* (or *current vertex*).
 You can change the current corner using the special flexes `>` and `<` or turn the flexagon over with `^`.
@@ -120,23 +120,23 @@ Here are some examples of flexes:
 * `P` the pinch flex, usable on flexagons with an even number of pats
 * `V` the v-flex; while it can be applied to a variety of flexagons, Flexagonator currently only defines it for hexaflexagons
 * `T` the tuck flex
-* `Sh` the pyramid shuffle
+* `S` the pyramid shuffle
 * `F` the flip flex
 
 Additionally, there are several symbols you can tack onto a flex to modify it.
 
 * `'` apply the inverse of the flex, e.g. `P'`
 * `+` generate the structure necessary for the flex without applying it, e.g. `T+`
-* `*` generate the structure necessary for the flex and apply it, e.g. `Sh*`
+* `*` generate the structure necessary for the flex and apply it, e.g. `S*`
 
 ```javascript
 [
 // perform the given flexes in order
-{ flexes: "P > > V' ^ Sh" },
+{ flexes: "P > > V' ^ S" },
 // create the structure necessary to perform two pinch flexes in a row
 { flexes: "P* P*" },
 // run the given flexes backwards
-{ reverseFlexes: "P > > V' ^ Sh" }
+{ reverseFlexes: "P > > V' ^ S" }
 ]
 ```
 
@@ -160,12 +160,12 @@ Use the `flexAndColor` command to have it automatically label and color new face
 
 It starts by labeling the top and bottom of the initial state with 1's on the front and 2's on the back.
 If colors are specified, it uses the first color for the front and the second for the back.
-From there on, whenever new leaves are created because of a generating flex (e.g. `P*` or `Sh+`),
+From there on, whenever new leaves are created because of a generating flex (e.g. `P*` or `S+`),
 it will label any freshly created leaves with the next number and apply the next color,
 if there are still more in the color array.
 
 ```javascript
-{ flexAndColor: { flexes: 'P* > Sh*' , colors: [0x555555, 0x0000ff] } }
+{ flexAndColor: { flexes: 'P* > S*' , colors: [0x555555, 0x0000ff] } }
 ```
 
 *Note: The labels it uses don't always correspond to a folding sequence.*
@@ -180,7 +180,7 @@ The system defaults to using a set of *prime* flexes, i.e. flexes that can't alw
 You can fetch the current list through `FlexagonManager.flexesToSearch`.
 
 ```javascript
-{ searchFlexes: "P V T T' Sh" }
+{ searchFlexes: "P V T T' S" }
 ```
 
 ### the `addFlex` command
@@ -221,7 +221,7 @@ which takes the values `0`, `1`, `2`, or `3` in JSON or one of the following val
 * `FlexRotation.Mirror`:        same center vertex, flexagon is mirrored
 
 This describes how the top leaf in the first pat rotates when the flex is performed.
-For many flexes (such as `T`, `Sh`, and `F`), rotation doesn't change, so you can rely on the default of `None`.
+For many flexes (such as `T`, `S`, and `F`), rotation doesn't change, so you can rely on the default of `None`.
 But for other flexs (such as `P` and `V`), the leaves rotate so a different corner of the leaf triangle is pointing into the center.
 When you change the current corner with `>` or `<`, the leaves are mirrored, not rotated, so they use `FlexRotation.Mirror`.
 
@@ -260,7 +260,7 @@ Both use the same `front` and `back` settings as `leafProps`.
 // set all the visible faces, front & back
 { setFace: { front: { label: "1", color: 0x2E4172 }, back: { label: "2", color: 0x2B803E } } },
 // apply a pyramid shuffle
-{ flexes: "Sh" },
+{ flexes: "S" },
 // then set all the faces that weren't previously set
 { unsetFace: { front: { label: "3", color: 0xAA4439 }, back: { label: "4", color: 0x622870 } } },
 ]

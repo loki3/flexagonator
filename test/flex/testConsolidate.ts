@@ -6,11 +6,11 @@ namespace Flexagonator {
 
   describe('addAndConsolidate', () => {
     it('should consolidate unneeded rotates', () => {
-      const old = makeFlexNames(["Sh", ">", ">", ">"]);
+      const old = makeFlexNames(["S", ">", ">", ">"]);
       const more = makeFlexNames(["<", "<", "P", "<"]);
       const actual = addAndConsolidate(old, more, 10);
       expect(actual.length).toBe(4);
-      expect(actual[0].fullName).toBe("Sh");
+      expect(actual[0].fullName).toBe("S");
       expect(actual[1].fullName).toBe(">");
       expect(actual[2].fullName).toBe("P");
       expect(actual[3].fullName).toBe("<");

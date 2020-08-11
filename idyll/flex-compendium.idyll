@@ -20,7 +20,7 @@ rotations:
 * [link text:'> < ^' url:'#Rotations' /]
 various flexes:
 * [link text:'F: flip flex' url:'#F' /]
-* [link text:'Sh : pyramid shuffle flex' url:'#Sh' /]
+* [link text:'S : pyramid shuffle flex' url:'#S' /]
 * [link text:'St : silver tetra flex' url:'#St' /]
 * [link text:'Tk : ticket flex' url:'#Tk' /]
 * [link text:'Tw : twist flex' url:'#Tw' /]
@@ -64,14 +64,14 @@ This lists whether or not the flex is prime relative to the rest of the flexes o
 Prime flexes by number of pats:
 
 * 4: [link text:'P' url:'#P' /]
-* 5: [link text:'L3' url:'#L3' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /]
-* 6: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Ltb' url:'#Ltb' /], [link text:"Ltb'" url:'#Ltb' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'V' url:'#V' /]
-* 7: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
-* 8: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
-* 9: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
-* 10: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
-* 11: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
-* 12: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'Sh' url:'#Sh' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
+* 5: [link text:'L3' url:'#L3' /], [link text:'Ltf' url:'#Ltf' /], [link text:'S' url:'#S' /]
+* 6: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'Ltb' url:'#Ltb' /], [link text:"Ltb'" url:'#Ltb' /], [link text:'P' url:'#P' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'V' url:'#V' /]
+* 7: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
+* 8: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
+* 9: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
+* 10: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
+* 11: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /]
+* 12: [link text:'F' url:'#F' /], [link text:'Ltf' url:'#Ltf' /], [link text:'P' url:'#P' /], [link text:'S' url:'#S' /], [link text:'T' url:'#T' /], [link text:"T'" url:'#T' /], [link text:'Tw' url:'#Tw' /]
 
 ## Inverse
 
@@ -243,7 +243,7 @@ though it can be tricky to carry out if you haven't done it before.
 [/Aside]
 
 [Table data: `[
-  {property: 'Prime?', value: "no, Lk = Ltf > Sh"},
+  {property: 'Prime?', value: "no, Lk = Ltf > S <"},
   {property: 'Inverse', value: "Lk' = ^Lk^"},
   {property: 'Number of pats', value: "5 or more"},
   {property: 'Number of leaves', value: "N + 6"},
@@ -509,8 +509,8 @@ where you skip more than one vertex between pinches.
 
 
 [hr/]
-[a name:'Sh'/]
-[h2 className:"flex"]Sh: pyramid shuffle flex[/h2]
+[a name:'S'/]
+[h2 className:"flex"]S: pyramid shuffle flex[/h2]
 
 [Aside]
   [Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
@@ -520,7 +520,7 @@ where you skip more than one vertex between pinches.
 
 [Table data: `[
   {property: 'Prime?', value: "yes"},
-  {property: 'Inverse', value: "Sh' = ^Sh^"},
+  {property: 'Inverse', value: "S' = ^>S<^"},
   {property: 'Number of pats', value: "5 or more"},
   {property: 'Number of leaves', value: "N + 4"},
   {property: 'Special requirements', value: "no"},
@@ -532,7 +532,7 @@ where you skip more than one vertex between pinches.
 * out: `[ -(n-4), [1,[n-2,[2,-n]]], 3, ... i, ... [n-3,n-1] ]`
 [/FullWidth]
 
-[Sampler generator:'Sh+' patType:6 patOptions:`[5, 6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
+[Sampler generator:'S+' patType:6 patOptions:`[5, 6, '6r', '6R', 7, 8, '8r', '8R', 9, 10, '10r', '10R', 11, 12, '12r', '12R']` /]
 
 
 [hr/]

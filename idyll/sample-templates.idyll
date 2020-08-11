@@ -56,36 +56,36 @@
 [Unfolded width:770 height:600 numPats:8 script:silver8FScript endText:'F' options:`{content:2, rotation:0}` /]
 [Unfolded width:770 height:600 numPats:8 script:silver8FScript options:`{content:3, rotation:180}` /]
 
-# Sh
+# S
 
-[Unfolded width:900 height:500 numPats:6 generator:'Sh+' endText:'Sh' options:`{rotation:120}` /]
-[Unfolded width:900 height:600 numPats:7 generator:'Sh+' endText:'Sh' options:`{rotation:180}` /]
-[Unfolded width:900 height:600 numPats:8 generator:'Sh+' endText:'Sh1' angles:`[45,45]` options:`{rotation:0}` /]
-[Unfolded width:900 height:600 numPats:8 generator:'Sh+' endText:'Sh2' angles:`[45,90]` options:`{rotation:0}` /]
+[Unfolded width:900 height:500 numPats:6 generator:'S+' endText:'S' options:`{rotation:120}` /]
+[Unfolded width:900 height:600 numPats:7 generator:'S+' endText:'S' options:`{rotation:180}` /]
+[Unfolded width:900 height:600 numPats:8 generator:'S+' endText:'S1' angles:`[45,45]` options:`{rotation:0}` /]
+[Unfolded width:900 height:600 numPats:8 generator:'S+' endText:'S2' angles:`[45,90]` options:`{rotation:0}` /]
 
-[var name:'equi6ShScript' value:'' /]
-[Flexagon width:200 height:200 numPats:6 currentScript:equi6ShScript
-  initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
-[Unfolded width:750 height:500 numPats:6 script:equi6ShScript endText:'Sh' options:`{content:2, rotation:120}` /]
-[Unfolded width:750 height:500 numPats:6 script:equi6ShScript options:`{content:3, rotation:300}` /]
+[var name:'equi6SScript' value:'' /]
+[Flexagon width:200 height:200 numPats:6 currentScript:equi6SScript
+  initialScript:`[{flexAndColor: { flexes: "S+", colors: defaultColors }}]` /]
+[Unfolded width:750 height:500 numPats:6 script:equi6SScript endText:'S' options:`{content:2, rotation:120}` /]
+[Unfolded width:750 height:500 numPats:6 script:equi6SScript options:`{content:3, rotation:300}` /]
 
-[var name:'heptaShScript' value:'' /]
-[Flexagon width:200 height:200 numPats:7 currentScript:heptaShScript
-  initialScript:`[{flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
-[Unfolded width:790 height:600 numPats:7 script:heptaShScript endText:'Sh' options:`{content:2, rotation:180}` /]
-[Unfolded width:790 height:600 numPats:7 script:heptaShScript options:`{content:3, rotation:0}` /]
+[var name:'heptaSScript' value:'' /]
+[Flexagon width:200 height:200 numPats:7 currentScript:heptaSScript
+  initialScript:`[{flexAndColor: { flexes: "S+", colors: defaultColors }}]` /]
+[Unfolded width:790 height:600 numPats:7 script:heptaSScript endText:'S' options:`{content:2, rotation:180}` /]
+[Unfolded width:790 height:600 numPats:7 script:heptaSScript options:`{content:3, rotation:0}` /]
 
-[var name:'silver1ShScript' value:'' /]
-[Flexagon width:200 height:200 numPats:8 currentScript:silver1ShScript
-  initialScript:`[{angles:[45, 45]}, {flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
-[Unfolded width:740 height:600 numPats:8 script:silver1ShScript endText:'Sh' options:`{content:2, rotation:0}` /]
-[Unfolded width:740 height:600 numPats:8 script:silver1ShScript options:`{content:3, rotation:180}` /]
+[var name:'silver1SScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver1SScript
+  initialScript:`[{angles:[45, 45]}, {flexAndColor: { flexes: "S+", colors: defaultColors }}]` /]
+[Unfolded width:740 height:600 numPats:8 script:silver1SScript endText:'S' options:`{content:2, rotation:0}` /]
+[Unfolded width:740 height:600 numPats:8 script:silver1SScript options:`{content:3, rotation:180}` /]
 
-[var name:'silver2ShScript' value:'' /]
-[Flexagon width:200 height:200 numPats:8 currentScript:silver2ShScript
-  initialScript:`[{angles:[45, 90]}, {flexAndColor: { flexes: "Sh+", colors: defaultColors }}]` /]
-[Unfolded width:740 height:600 numPats:8 script:silver2ShScript endText:'Sh' options:`{content:2, rotation:0}` /]
-[Unfolded width:740 height:600 numPats:8 script:silver2ShScript options:`{content:3, rotation:180}` /]
+[var name:'silver2SScript' value:'' /]
+[Flexagon width:200 height:200 numPats:8 currentScript:silver2SScript
+  initialScript:`[{angles:[45, 90]}, {flexAndColor: { flexes: "S+", colors: defaultColors }}]` /]
+[Unfolded width:740 height:600 numPats:8 script:silver2SScript endText:'S' options:`{content:2, rotation:0}` /]
+[Unfolded width:740 height:600 numPats:8 script:silver2SScript options:`{content:3, rotation:180}` /]
 
 # T
 
@@ -125,13 +125,13 @@
 
 [var name:'equi6VRightScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6VRightScript
-  initialScript:`[{flexAndColor: { flexes: "(V*>)4(<V')4", colors: defaultColors }},{"searchFlexes":"P Sh V Ltf"}]` /]
+  initialScript:`[{flexAndColor: { flexes: "(V*>)4(<V')4", colors: defaultColors }},{"searchFlexes":"P S V Ltf"}]` /]
 [Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript endText:'(V>)4' options:`{content:2, rotation:-60}` /]
 [Unfolded width:1000 height:150 numPats:6 script:equi6VRightScript options:`{content:3, rotation:120}` /]
 
 [var name:'equi6VLeftScript' value:'' /]
 [Flexagon width:200 height:200 numPats:6 currentScript:equi6VLeftScript
-  initialScript:`[{flexAndColor: { flexes: "(V*<)7(>V')7", colors: defaultColors }},{"searchFlexes":"P Sh V Ltf"}]` /]
+  initialScript:`[{flexAndColor: { flexes: "(V*<)7(>V')7", colors: defaultColors }},{"searchFlexes":"P S V Ltf"}]` /]
 [Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:2, rotation:60, captions: [{which:-2, text:'(V<)7'}]}` /]
 [Unfolded width:1200 height:150 numPats:6 script:equi6VLeftScript options:`{content:3, rotation:-120, captions: [{which:1, text:'(V<)7'}]}` /]
 
@@ -146,7 +146,7 @@
 ## 6-faced silver octa
 
 [var name:'silver6FaceScript' value:`[
-  {"numPats":8},{"angles":[45,45]},{flexAndColor: { flexes: "P*P*^PP >P*P*>P*P* P'P'<P'P'<^", colors: defaultColors }}, {searchFlexes:"P Sh F Tw T"} ]` /]
+  {"numPats":8},{"angles":[45,45]},{flexAndColor: { flexes: "P*P*^PP >P*P*>P*P* P'P'<P'P'<^", colors: defaultColors }}, {searchFlexes:"P S F Tw T"} ]` /]
 [Unfolded width:1200 height:300 numPats:8 script:silver6FaceScript options:`{content:4, rotation:-45}` /]
 
 [Flexagon width:200 height:200 numPats:8 initialScript:silver6FaceScript /]
@@ -171,17 +171,17 @@
 
 [var name:'heptaF4Script' value:'' /]
 [Flexagon width:200 height:200 numPats:7 currentScript:heptaF4Script
-  initialScript:`[{flexAndColor: { flexes: "(F*<)4(>F')4", colors: defaultColors }}, {searchFlexes:"P Sh F"}]` /]
+  initialScript:`[{flexAndColor: { flexes: "(F*<)4(>F')4", colors: defaultColors }}, {searchFlexes:"P S F"}]` /]
 [Unfolded width:1200 height:220 numPats:7 script:heptaF4Script options:`{content:2, rotation:77}` /]
 [Unfolded width:1200 height:220 numPats:7 script:heptaF4Script endText:'(F<)4' options:`{content:3, rotation:257}` /]
 
 # right deca
 
-[Unfolded width:1200 height:800 numPats:10 generator:'<<<<Sh+<Sh+<<F+<<St+<<St+' angles:`[36,54]`
-  options:`{rotation:90, captions:[{text:'Sh', which:-7}, {text:'Sh', which:-10}, {text:'St', which:6}, {text:'(F)', which:9}]}` /]
+[Unfolded width:1200 height:800 numPats:10 generator:'<<<<S+<S+<<F+<<St+<<St+' angles:`[36,54]`
+  options:`{rotation:90, captions:[{text:'S', which:-7}, {text:'S', which:-10}, {text:'St', which:6}, {text:'(F)', which:9}]}` /]
 
 [derived name:'makeDeca' value:`[
-{"numPats":10},{"angles":[36,90]},{"flexes":"<<<<Sh+<Sh+<<F+<<St+<<St+"},
+{"numPats":10},{"angles":[36,90]},{"flexes":"<<<<S+<S+<<F+<<St+<<St+"},
 {"leafProps":[
   { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"2", "color":defaultColors[1] } },
   { "front":{ "label":"1", "color":defaultColors[0] }, "back":{ "label":"5", "color":defaultColors[4] } },
@@ -226,7 +226,7 @@
 
 [var name:'P333Script' value:'' /]
 [Flexagon width:200 height:200 numPats:9 currentScript:P333Script
-  initialScript:`[{flexAndColor: { flexes: "P333+", colors: defaultColors }}, {searchFlexes:"P333 Sh F"}]` /]
+  initialScript:`[{flexAndColor: { flexes: "P333+", colors: defaultColors }}, {searchFlexes:"P333 S F"}]` /]
 [Unfolded width:1180 height:300 numPats:9 script:P333Script endText:'P333' options:`{content:2, rotation:120}` /]
 [Unfolded width:1180 height:300 numPats:9 script:P333Script options:`{content:3, rotation:300}` /]
 
@@ -234,6 +234,6 @@
 
 [var name:'P333x4Script' value:'' /]
 [Flexagon width:200 height:200 numPats:9 currentScript:P333x4Script
-  initialScript:`[{flexAndColor: { flexes: "(P333*<)4 (>P333')4", colors: defaultColors }}, {searchFlexes:"P333 Sh F"}]` /]
+  initialScript:`[{flexAndColor: { flexes: "(P333*<)4 (>P333')4", colors: defaultColors }}, {searchFlexes:"P333 S F"}]` /]
 [Unfolded width:920 height:800 numPats:9 script:P333x4Script options:`{content:2, rotation:90}` /]
 [Unfolded width:920 height:800 numPats:9 script:P333x4Script endText:'(P333<)4' options:`{content:3, rotation:270}` /]

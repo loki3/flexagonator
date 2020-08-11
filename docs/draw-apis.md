@@ -124,7 +124,7 @@ Here's what it contains:
 ```javascript
 // RegionForFlexes
 {
-    flexes: string[];  // flexes valid at this corner e.g. [ 'P', 'Sh' ]
+    flexes: string[];  // flexes valid at this corner e.g. [ 'P', 'S' ]
     prefix: string;    // change the current vertex, e.g. '>>'
     postfix: string;   // restore the current vertex, e.g. '<<'
     corner: Point;     // where the associated corner was drawn, e.g. { x: 10, y: 50 }

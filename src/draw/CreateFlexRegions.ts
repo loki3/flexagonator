@@ -3,7 +3,7 @@ namespace Flexagonator {
   // a list of flexes associated with a corner of a flexagon,
   // you can tack on the prefix & postfix to preserve the current vertex
   export interface RegionForFlexes {
-    readonly flexes: string[];  // e.g. [ 'P', 'Sh' ]
+    readonly flexes: string[];  // e.g. [ 'P', 'S' ]
     readonly prefix: string;    // e.g. '>>'
     readonly postfix: string;   // e.g. '<<'
     readonly corner: Point;

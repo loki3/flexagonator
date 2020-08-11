@@ -15,7 +15,9 @@ namespace Flexagonator {
       if (patCount % 2 == 0)
         flexes["P"] = createPinch(patCount);
       if (patCount >= 5)
-        flexes["Sh"] = createPyramidShuffle(patCount);
+        flexes["S"] = createPyramidShuffle(patCount);
+      if (patCount >= 5)
+        flexes["Sh"] = createPyramidShuffleDeprecated(patCount);
       if (patCount >= 6)
         flexes["F"] = createFlip(patCount);
       if (patCount >= 4)
@@ -53,7 +55,7 @@ namespace Flexagonator {
   // return just the flexes that can't be done using other flexes
   export function getPrimeFlexes(all: Flexes): Flexes {
     const flexes: Flexes = {};
-    const primes = ["P", "Sh", "T", "T'", "Tf", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'"];
+    const primes = ["P", "S", "T", "T'", "Tf", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'"];
 
     for (const prime of primes) {
       if (all[prime] !== undefined) {
@@ -83,7 +85,10 @@ namespace Flexagonator {
     flexes["Ttf"] = makeFlex("tuck top front",
       [[[2, -3], -1], [5, -4], 6, [-8, 7], -9, -10],
       [[-4, 3], -5, [7, -6], 8, [[-10, 1], 9], 2], FlexRotation.None) as Flex;
-    flexes["Sh"] = makeFlex("pyramid shuffle",
+    flexes["S"] = makeFlex("pyramid shuffle",
+      [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10],
+      [[1, [8, [2, -10]]], 3, 4, 5, [7, 9], -6], FlexRotation.None) as Flex;
+    flexes["Sh"] = makeFlex("pyramid shuffle (deprecated)",
       [[1, 2], 3, 4, 5, [[[6, 7], 8], 9], 10],
       [-6, [1, [8, [2, -10]]], 3, 4, 5, [7, 9]], FlexRotation.None) as Flex;
     flexes["V"] = makeFlex("v flex",
@@ -225,6 +230,33 @@ namespace Flexagonator {
 
   function createPyramidShuffle(patCount: number): Flex {
     // (1,2) (3) ... (i) ... (((n-4,n-3)n-2)n-1) (n)
+    // (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1) (^n-4)
+    const pattern: LeafTree = [];
+    const output: LeafTree = [];
+    const leaves = patCount + 4;
+
+    pattern.push([1, 2]);
+    for (let i = 3; i < patCount; i++) {
+      pattern.push(i);
+    }
+    pattern.push([[[leaves - 4, leaves - 3], leaves - 2], leaves - 1]);
+    pattern.push(leaves);
+
+    // post
+    output.push([1, [leaves - 2, [2, -leaves]]]);
+    for (let i = 3; i < patCount; i++) {
+      output.push(i);
+    }
+    output.push([leaves - 3, leaves - 1]);
+    output.push(-(leaves - 4));
+
+    return makeFlex("pyramid shuffle", pattern, output, FlexRotation.None) as Flex;
+  }
+
+  // NOTE: this was a failed attempt at redefining how the pyramid shuffle behaved,
+  //  currently kept around just in case any old scripts need it
+  function createPyramidShuffleDeprecated(patCount: number): Flex {
+    // (1,2) (3) ... (i) ... (((n-4,n-3)n-2)n-1) (n)
     // (^n-4) (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1)
     const pattern: LeafTree = [];
     const output: LeafTree = [];
@@ -245,7 +277,7 @@ namespace Flexagonator {
     }
     output.push([leaves - 3, leaves - 1]);
 
-    return makeFlex("pyramid shuffle", pattern, output, FlexRotation.None) as Flex;
+    return makeFlex("pyramid shuffle (deprecated)", pattern, output, FlexRotation.None) as Flex;
   }
 
   function createFlip(patCount: number): Flex {

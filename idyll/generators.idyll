@@ -39,13 +39,13 @@ Here's what we've defined so far:
 * `^` : turn the flexagon over, keeping the same current vertex
 * `F` : perform a flip flex
 * `P` : perform a pinch flex
-* `Sh` : perform a pyramid shuffle
+* `S` : perform a pyramid shuffle
 * `St` : perform a silver tetra flex
 * `T` : perform a tuck flex; also `T1`, `T2`, etc. to specify additional, required structure
 * `V` : perform a v-flex
 
-Additionally, you can add a `'` after a flex symbol to indicate that the flex should be done in reverse, e.g. `P'` or `Sh'`.
-These symbols can be strung together to describe a series of flexes, e.g. `P>>T'^<Sh`.
+Additionally, you can add a `'` after a flex symbol to indicate that the flex should be done in reverse, e.g. `P'` or `S'`.
+These symbols can be strung together to describe a series of flexes, e.g. `P>>T'^<S`.
 
 
 # Generating structure
@@ -80,13 +80,13 @@ Pick a button with a generating sequence on it to see the resulting folded flexa
 
 [var name:'generator' value:'>' /]
 [derived name:'initial' value:`[
-  {searchFlexes:"P Sh Sh' T T' V V'"},
+  {searchFlexes:"P S S' T T' V V'"},
   {flexes: generator}
   ]` /]
 [var name:'runInitial' value:false /]
 
 [Button onClick:` generator='P+'; runInitial=true; `]P+[/Button],
-[Button onClick:` generator='Sh+'; runInitial=true; `]Sh+[/Button],
+[Button onClick:` generator='S+'; runInitial=true; `]S+[/Button],
 [Button onClick:` generator='T+'; runInitial=true; `]T+[/Button],
 [Button onClick:` generator='V+'; runInitial=true; `]V+[/Button].
 
@@ -194,7 +194,7 @@ Type in a sequence and explore the resulting flexagon, both the simulated versio
 by cutting out and assembling the templates below.
 Note that not all flexes are available on all flexagons.
 
-Flexes to try: `^`, `>`, `<`, `P*`, `Sh*`, `F*`, `T*`, `T1*`, `V*`, `St*`, or `P+`, etc.
+Flexes to try: `^`, `>`, `<`, `P*`, `S*`, `F*`, `T*`, `T1*`, `V*`, `St*`, or `P+`, etc.
 
 [var name:'tempGenerator' value:'St*<<St*' /]
 [var name:'fullGenerator' value:'St*<<St*' /]
@@ -202,7 +202,7 @@ Flexes to try: `^`, `>`, `<`, `P*`, `Sh*`, `F*`, `T*`, `T1*`, `V*`, `St*`, or `P
 [var name:'fullAngles' value:`[36, 54]` /]
 [var name:'fullError' value:`undefined` /]
 [derived name:'fullInit' value:`[
-  {searchFlexes:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V"},
+  {searchFlexes:"F P S St T T' T1 T1' T2 T2' T3 T3' V"},
   {angles:fullAngles},
   {flexAndColor: { flexes: fullGenerator, colors: defaultColors }},
   {reverseFlexes: fullGenerator}

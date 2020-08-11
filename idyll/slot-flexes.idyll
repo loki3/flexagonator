@@ -69,7 +69,7 @@ The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 [var name:doHistoryLh value:'' /]
 [derived name:'initLh' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lh+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -87,7 +87,7 @@ The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 [Aside]
   The *slot pocket flex* requires 12 leaves.
   You can flex to 12 different arrangements on the minimal Lk flexagon
-  by using the following flexes: `T` `T'` `Sh` `Lk` `Ltf`.
+  by using the following flexes: `T` `T'` `S` `Lk` `Ltf`.
 
   There's an alternate way to do the slot pocket flex,
   where you start with *two* pocket flexes instead of one.
@@ -100,7 +100,7 @@ The chapter will conclude with the *slot triple pocket* `L3` on a pentaflexagon.
 [var name:doHistoryLk value:'' /]
 [derived name:'initLk' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lk+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -178,7 +178,7 @@ This gives you a total of 4 different ways to complete the flex.
 [var name:doHistoryLtf value:'' /]
 [derived name:'initLtf' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Ltf+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -212,7 +212,7 @@ With the following template, tape together the two edges labeled *a* before fold
 [var name:doHistoryLtb value:'' /]
 [derived name:'initLtb' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Ltb+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -275,7 +275,7 @@ With the following template, tape together the two edges labeled *a* before fold
 [var name:doHistoryLbf value:'' /]
 [derived name:'initLbf' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lbf+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -305,7 +305,7 @@ With the following template, tape together the two edges labeled *a* before fold
 [var name:doHistoryLbb value:'' /]
 [derived name:'initLbb' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexAndColor: { flexes: "Lbb+", colors: defaultColors }},
   {history: 'clear'}
   ]` /]
@@ -325,7 +325,7 @@ With the following template, tape together the two edges labeled *a* before fold
 [Aside]
   The generating sequence `Lh+Lk+Lbb+` gives you a flexagon that supports all 6 slot flexes we've discussed so far.
   If you combine these with flexes from previous chapters
-  (the pinch flex `P`, pyramid shuffle `Sh`, tuck flex `T`, and v-flex `V`),
+  (the pinch flex `P`, pyramid shuffle `S`, tuck flex `T`, and v-flex `V`),
   there are 117 different configurations reachable with combinations of those flexes.
   You can quickly get lost, so if you try it on a paper model,
   don't be afraid to take the flexagon apart and refold it if you want to restart your explorations.
@@ -335,7 +335,7 @@ With the following template, tape together the two edges labeled *a* before fold
 [var name:doHistoryLhLkLbb value:'' /]
 [derived name:'initLhLkLbb' value:`[
   {numPats: 6},
-  {searchFlexes: "P Sh T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
+  {searchFlexes: "P S T T' V Lh Lh' Lk Lk' Ltf Ltf' Ltb Ltb' Lbf Lbf' Lbb Lbb'"},
   {flexes: "Lh+ Lk+ Lbb+"},
   {flexAndColor: { flexes: "Lh+ Lk+ Lbb+ Ltb+ Lbf+" , colors: defaultColors } },
   {history: 'clear'}
@@ -355,7 +355,7 @@ With the following template, tape together the two edges labeled *a* before fold
 
 [Aside]
   On a pentaflexagon, the generating sequence `L3+` gives you a flexagon with 14 leaves that supports
-  the *slot triple pocket* (`L3`), the *slot pocket* (`Lk`), *slot tuck top front* (`Ltf`), and the *pyramid shuffle* (`Sh`).
+  the *slot triple pocket* (`L3`), the *slot pocket* (`Lk`), *slot tuck top front* (`Ltf`), and the *pyramid shuffle* (`S`).
   There are 24 different arrangements available using those flexes.
 [/Aside]
 
@@ -365,7 +365,7 @@ With the following template, tape together the two edges labeled *a* before fold
 [var name:doHistoryL3 value:'' /]
 [derived name:'initL3' value:`[
   {numPats: 5},
-  {searchFlexes: "Sh L3 Ltf Lk"},
+  {searchFlexes: "S L3 Ltf Lk"},
   {flexes: "L3+"},
   {flexAndColor: { flexes: "L3+ Lk+" , colors: defaultColors } },
   {history: 'clear'}

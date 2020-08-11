@@ -70,8 +70,8 @@
 
 [var name:'tempGenerator' value:'St*<<St*' /]
 [var name:'doGenerator' value:'St*<<St*' /]
-[var name:'tempSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
-[var name:'doSearch' value:"F P Sh St T T' T1 T1' T2 T2' T3 T3' V" /]
+[var name:'tempSearch' value:"F P S St T T' T1 T1' T2 T2' T3 T3' V" /]
+[var name:'doSearch' value:"F P S St T T' T1 T1' T2 T2' T3 T3' V" /]
 [var name:'tempPats' value:10 /]
 [var name:'doPats' value:10 /]
 [var name:'tempAngle1' value:36 /]

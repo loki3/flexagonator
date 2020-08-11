@@ -59,14 +59,14 @@
   [var name:'flexagonOptions' value:`{structure:true, showIds:false}`/]
   [var name:'defaultColors' value:`[0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999]` /]
   [derived name:'initial' value:`[
-    {searchFlexes: "ShSh'T1T1'T2T2'FF'"},
-    {flexAndColor: { flexes: 'Sh*>>Sh*', colors:defaultColors }},
-    {reverseFlexes: 'Sh*>>Sh*'}
+    {searchFlexes: "SS'T1T1'T2T2'FF'"},
+    {flexAndColor: { flexes: 'S*>S*<', colors:defaultColors }},
+    {reverseFlexes: 'S*>S*<'}
     ]` /]
   [var name:'runInit' value:true /]
 
   [Flexagon width:350 height:200 numPats:7 initialScript:initial runInitial:runInit options:flexagonOptions /]
-  [Unfolded width:300 height:150 numPats:7 generator:'Sh*>>Sh*' autoLabel:true /]
+  [Unfolded width:300 height:150 numPats:7 generator:'S*>S*<' autoLabel:true /]
 [/Aside]
 
 [a href:'generators.html']
@@ -139,7 +139,7 @@
 
 
 [Aside]
-* `I ~= (Sh>>T'>^T<<^) 2`
+* `I ~= (S>T'>^T<<^) 2`
 * `I ~= (Ltb>P>P>) 12`
 * `P ~= T>>>V>>>` so `T' ~= >>>V>>>^P^`
 [/Aside]
