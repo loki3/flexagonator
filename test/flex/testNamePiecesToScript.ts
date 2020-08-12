@@ -35,7 +35,7 @@ namespace Flexagonator {
       const name: NamePieces = { leafShape: 'bronze' };
       const [script, errors] = namePiecesToScript(name);
       expect(script.length).toBe(1);
-      expect(errors.length).toBe(0);
+      expect(errors.length).toBe(1);
 
       const angles = script[0].angles;
       if (angles === undefined) {
@@ -43,6 +43,13 @@ namespace Flexagonator {
       } else {
         expect(angles[0]).toBe(30);
         expect(angles[1]).toBe(60);
+      }
+
+      const error = errors[0];
+      if (error === undefined) {
+        fail('errors[0] should exist');
+      } else {
+        expect(error.nameError).toBe('missing the number of pats');
       }
     });
 
@@ -65,7 +72,7 @@ namespace Flexagonator {
       const name: NamePieces = { pinchFaces: 'penta' };
       const [script, errors] = namePiecesToScript(name);
       expect(script.length).toBe(1);
-      expect(errors.length).toBe(0);
+      expect(errors.length).toBe(1);
 
       const flexes = script[0].flexes;
       if (flexes === undefined) {
@@ -94,13 +101,27 @@ namespace Flexagonator {
       const name: NamePieces = { generator: 'F*>S*', pinchFaces: 'icosa' };
       const [script, errors] = namePiecesToScript(name);
       expect(script.length).toBe(1);
-      expect(errors.length).toBe(0);
+      expect(errors.length).toBe(1);
 
       const flexes = script[0].flexes;
       if (flexes === undefined) {
         fail('script[0].flexes should exist');
       } else {
         expect(flexes).toBe('F*>S*');
+      }
+    });
+
+    it('should complain if numPats and pats.length are different', () => {
+      const name: NamePieces = { patsPrefix: 'tetra', pats: [0, 0, 0] };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(2);
+      expect(errors.length).toBe(1);
+
+      const error = errors[0];
+      if (error === undefined) {
+        fail('errors[0] should exist');
+      } else {
+        expect(error.nameError).toBe('numPats, pats, and directions should represent the same count');
       }
     });
 

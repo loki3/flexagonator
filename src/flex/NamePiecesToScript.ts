@@ -34,6 +34,12 @@ namespace Flexagonator {
       info.add(error);
     }
 
+    // if there were no complaints, validate that the results will produce a valid flexagon
+    if (info.errors.length === 0) {
+      const finalError = validateScript(info.script);
+      info.add(finalError);
+    }
+
     return [info.script, info.errors];
   }
 
@@ -43,7 +49,10 @@ namespace Flexagonator {
     | 'unknown patsPrefix'
     | 'unknown leafShape'
     | 'need at least 2 pinch faces'
-    | 'warning: there are multiple possibilities for pinch face count';
+    | 'warning: there are multiple possibilities for pinch face count'
+    | 'missing the number of pats'
+    | 'numPats, pats, and directions should represent the same count'
+    ;
     readonly propValue?: string;
   }
   export function isNamePiecesError(result: any): result is NamePiecesError {
@@ -139,6 +148,33 @@ namespace Flexagonator {
     const script: ScriptItem = { flexes: 'P*'.repeat(n - 2) };
     const error: NamePiecesError = { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces };
     return [script, error];
+  }
+
+  // make sure the generated script is ok
+  function validateScript(script: ScriptItem[]): NamePiecesError | null {
+    // need either numPats or pats
+    const numPats = script.filter(item => item.numPats !== undefined);
+    const pats = script.filter(item => item.pats !== undefined);
+    if (numPats.length === 0 && pats.length === 0) {
+      return { nameError: 'missing the number of pats' };
+    }
+
+    // numPats, pats.length, & directions.length should all match
+    const patsArray = pats.length > 0 ? pats[0].pats : undefined;
+    const directions = script.filter(item => item.directions !== undefined);
+    const directionsArray = directions.length > 0 ? directions[0].directions : undefined;
+    const a = numPats.length === 0 ? 0 : (numPats[0].numPats ? numPats[0].numPats : 0);
+    const b = pats.length === 0 ? 0 : (patsArray ? patsArray.length : 0);
+    const c = directions.length === 0 ? 0 : (directionsArray ? directionsArray.length : 0);
+    if (a !== 0 && b !== 0 && a !== b) {
+      return { nameError: 'numPats, pats, and directions should represent the same count' };
+    } else if (a !== 0 && c !== 0 && a !== c) {
+      return { nameError: 'numPats, pats, and directions should represent the same count' };
+    } else if (b !== 0 && c !== 0 && b !== c) {
+      return { nameError: 'numPats, pats, and directions should represent the same count' };
+    }
+
+    return null;
   }
 
 }
