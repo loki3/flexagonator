@@ -6,11 +6,19 @@ namespace Flexagonator {
   export function namePiecesToScript(name: NamePieces): [ScriptItem[], NamePiecesError[]] {
     const info: InfoStorer = new InfoStorer();
 
+    // patsPrefix -> numPats
+    if (name.patsPrefix) {
+      const item = patsPrefixToScript(name.patsPrefix);
+      info.add(item);
+    }
+
+    // leafShape -> angles
     if (name.leafShape) {
       const item = leafShapeToScript(name.leafShape);
       info.add(item);
     }
 
+    // generator | pinchFaces -> flexes
     if (name.generator) {
       // a generating sequence is more specific than pinchFaces, so try it first
       info.add({ flexes: name.generator });
@@ -26,9 +34,10 @@ namespace Flexagonator {
   /** errors/warnings encountered in namePiecesToScript */
   export interface NamePiecesError {
     readonly nameError:
-    'unknown leafShape' |
-    'need at least 2 pinch faces' |
-    'warning: there are multiple possibilities for pinch face count';
+    | 'unknown patsPrefix'
+    | 'unknown leafShape'
+    | 'need at least 2 pinch faces'
+    | 'warning: there are multiple possibilities for pinch face count';
     readonly propValue?: string;
   }
   export function isNamePiecesError(result: any): result is NamePiecesError {
@@ -49,7 +58,7 @@ namespace Flexagonator {
     }
   }
 
-  function greekPrefixToNumber(prefix: GreekNumberType): number {
+  function greekPrefixToNumber(prefix: GreekNumberType): number | null {
     switch (prefix) {
       case 'di': return 2;
       case 'tri': return 3;
@@ -74,8 +83,16 @@ namespace Flexagonator {
       case 'icosidi': return 22;
       case 'icositri': return 23;
       case 'icositetra': return 24;
-      default: return 0;
+      default: return null;
     }
+  }
+
+  function patsPrefixToScript(patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
+    const n = greekPrefixToNumber(patsPrefix);
+    if (n === null) {
+      return { nameError: 'unknown patsPrefix', propValue: patsPrefix };
+    }
+    return { numPats: n };
   }
 
   // convert leafShape to ScriptItem
@@ -97,7 +114,7 @@ namespace Flexagonator {
 
   function pinchFacesToScript(pinchFaces: GreekNumberType): [ScriptItem | null, NamePiecesError | null] {
     const n = greekPrefixToNumber(pinchFaces);
-    if (n < 2) {
+    if (n === null || n < 2) {
       return [null, { nameError: 'need at least 2 pinch faces', propValue: pinchFaces }];
     } else if (n === 2) {
       // don't need to do anything because it defaults to 2 faces
