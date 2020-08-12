@@ -18,6 +18,12 @@ namespace Flexagonator {
       info.add(item);
     }
 
+    // pats -> pats
+    if (name.pats) {
+      const item = { pats: name.pats };
+      info.add(item);
+    }
+
     // generator | pinchFaces -> flexes
     if (name.generator) {
       // a generating sequence is more specific than pinchFaces, so try it first
