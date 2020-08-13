@@ -44,7 +44,7 @@ namespace Flexagonator {
         fail('script[1].angles should exist');
       } else {
         expect(angles[0]).toBe(60);
-        expect(angles[1]).toBe(30);
+        expect(angles[1]).toBe(90);
       }
     });
 

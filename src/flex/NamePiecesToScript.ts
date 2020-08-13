@@ -119,15 +119,21 @@ namespace Flexagonator {
 
   // convert overallShape to ScriptItem by leveraging patsPrefix
   function overallShapeToScript(overallShape: OverallShapeType, patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
-    if (overallShape === 'triangular' && patsPrefix === 'hexa') {
-      return { angles: [60, 30] };
-    } else if (overallShape === 'square' && patsPrefix === 'octa') {
-      return { angles: [45, 45] };
-    } else if (overallShape === 'pentagonal' && patsPrefix === 'deca') {
-      return { angles: [36, 54] };
-    } else if (overallShape === 'hexagonal' && patsPrefix === 'dodeca') {
-      return { angles: [30, 60] };
+    const n = greekPrefixToNumber(patsPrefix);
+
+    // all pats meet in middle, leaves are right triangles
+    if ((overallShape === 'triangular' && n === 6)
+      || (overallShape === 'square' && n === 8)
+      || (overallShape === 'pentagonal' && n === 10)
+      || (overallShape === 'hexagonal' && n === 12)
+      || (overallShape === 'heptagonal' && n === 14)
+      || (overallShape === 'octagonal' && n === 16)
+      || (overallShape === 'enneagonal' && n === 18)
+      || (overallShape === 'decagonal' && n === 20)
+    ) {
+      return { angles: [360 / n, 90] };
     }
+
     return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };
   }
 
