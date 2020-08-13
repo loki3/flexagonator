@@ -12,6 +12,12 @@ namespace Flexagonator {
       info.add(item);
     }
 
+    // overallShape + patsPrefix -> angles
+    if (name.overallShape && name.patsPrefix) {
+      const item = overallShapeToScript(name.overallShape as OverallShapeType, name.patsPrefix);
+      info.add(item);
+    }
+
     // leafShape -> angles
     if (name.leafShape) {
       const item = leafShapeToScript(name.leafShape);
@@ -47,6 +53,7 @@ namespace Flexagonator {
   export interface NamePiecesError {
     readonly nameError:
     | 'unknown patsPrefix'
+    | 'unrecognized overall shape'
     | 'unknown leafShape'
     | 'need at least 2 pinch faces'
     | 'warning: there are multiple possibilities for pinch face count'
@@ -108,6 +115,20 @@ namespace Flexagonator {
       return { nameError: 'unknown patsPrefix', propValue: patsPrefix };
     }
     return { numPats: n };
+  }
+
+  // convert overallShape to ScriptItem by leveraging patsPrefix
+  function overallShapeToScript(overallShape: OverallShapeType, patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
+    if (overallShape === 'triangular' && patsPrefix === 'hexa') {
+      return { angles: [60, 30] };
+    } else if (overallShape === 'square' && patsPrefix === 'octa') {
+      return { angles: [45, 45] };
+    } else if (overallShape === 'pentagonal' && patsPrefix === 'deca') {
+      return { angles: [36, 54] };
+    } else if (overallShape === 'hexagonal' && patsPrefix === 'dodeca') {
+      return { angles: [30, 60] };
+    }
+    return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };
   }
 
   // convert leafShape to ScriptItem

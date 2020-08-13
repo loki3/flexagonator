@@ -31,6 +31,23 @@ namespace Flexagonator {
       }
     });
 
+    it('should use overallShape with patsPrefix to set angles', () => {
+      // triangular hexaflexagon
+      const name: NamePieces = { overallShape: 'triangular', patsPrefix: 'hexa' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(2);
+      expect(errors.length).toBe(0);
+
+      expect(script[0].numPats).toBe(6);
+      const angles = script[1].angles;
+      if (angles === undefined) {
+        fail('script[1].angles should exist');
+      } else {
+        expect(angles[0]).toBe(60);
+        expect(angles[1]).toBe(30);
+      }
+    });
+
     it('should map leafShape to angles', () => {
       const name: NamePieces = { leafShape: 'bronze' };
       const [script, errors] = namePiecesToScript(name);
