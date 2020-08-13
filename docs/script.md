@@ -23,6 +23,8 @@ Script commands:
     * **unsetFace:** set properties for just the portion of the current face that's not already set (front and/or back)
 * History
     * **history:** manipulate the history that tracks which flexes have been performed
+* Flexagon name
+    * **name:** translate a standard flexagon name into the appropriate properties for describing that flexagon
 
 Note that all the examples listed here are in JavaScript.
 If you're transporting scripts around, they may instead be in JSON, which is almost the same except all the property names are wrapped in quotes.
@@ -288,3 +290,40 @@ The `history` command allows you to manipulate the history list.
 { history: "clear" }
 ]
 ```
+
+
+## Flexagon name
+
+### the `name` command
+
+This takes a standard flexagon name and generates the script commands necessary to create the given flexagon.
+For example, `silver tetra-octaflexagon` is translated into the following:
+
+```javascript
+[
+  { "numPats": 8 },
+  { "angles": [45,45] },  // same as [45,45,90]
+  { "flexes": "P*P*" }
+]
+```
+
+Note that without additional clarification, many names are ambiguous, in which case one option will be chosen.
+In the above example, it could have instead chosen `"angles": [45,90]`, which would have generated a different template.
+
+Names must match the naming convention:
+`[overall shape] [leaf shape] [pinch faces]-[pat count prefix]flexagon`, with the following meanings:
+
+* `overall shape`
+    * an adjective such as 'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal'
+    * can sometimes be combined with `leaf shape` to set `numPats` and `angles` and possibly `directions`
+* `leaf shape`:
+    * one of 'triangle' | 'equilateral triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle'
+    * defines the `angles` property with the order of the angles chosen smallest first, e.g. [30, 60, 90]
+* `pinch faces`
+    * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
+    * defines the `flexes` property for a generating sequence that will create the specified number of pinch faces,
+      e.g. "P*P*P*" for penta;
+      note: this is ambiguous for 6 or greater, since there are multiple possible generating sequences and templates
+* `pat count prefix`
+    * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
+    * defines the `patCount` property unambiguously

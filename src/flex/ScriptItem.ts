@@ -1,6 +1,9 @@
 namespace Flexagonator {
 
   export interface ScriptItem {
+    // a name that follows the convention of "<overall shape> <leaf shape> <pinch faces>-<pat count>flexagon",
+    // which can be used to determine properties such as pats, numPats, angles, etc.
+    readonly name?: string;
     // creates a new flexagon with the given pat structure
     readonly pats?: LeafTree[];
     // specify the number of pats for a new flexagon

@@ -29,6 +29,19 @@ namespace Flexagonator {
   }
 
   export function runScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
+    if (item.name !== undefined) {
+      const pieces = namePiecesFromName(item.name);
+      const [script, errors] = namePiecesToScript(pieces);
+      if (script.length > 0) {
+        const result = runScript(fm, script);
+        return result;
+      }
+      if (errors.length > 0) {
+        // return error
+      }
+      return fm;
+    }
+
     if (item.pats !== undefined) {
       const result = Flexagon.makeFromTreeCheckZeros(item.pats);
       if (isTreeError(result)) {
