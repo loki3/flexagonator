@@ -31,7 +31,7 @@ namespace Flexagonator {
       }
     });
 
-    it('should use overallShape with patsPrefix to set angles', () => {
+    it('should use overallShape with patsPrefix to set angles when pats meet in middle', () => {
       // triangular hexaflexagon
       const name: NamePieces = { overallShape: 'triangular', patsPrefix: 'hexa' };
       const [script, errors] = namePiecesToScript(name);
@@ -45,6 +45,23 @@ namespace Flexagonator {
       } else {
         expect(angles[0]).toBe(60);
         expect(angles[1]).toBe(90);
+      }
+    });
+
+    it('should use overallShape with patsPrefix to set angles for stars', () => {
+      // star decaflexagon
+      const name: NamePieces = { overallShape: 'star', patsPrefix: 'deca' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(2);
+      expect(errors.length).toBe(0);
+
+      expect(script[0].numPats).toBe(10);
+      const angles = script[1].angles;
+      if (angles === undefined) {
+        fail('script[1].angles should exist');
+      } else {
+        expect(angles[0]).toBe(36);
+        expect(angles[1]).toBe(36);
       }
     });
 

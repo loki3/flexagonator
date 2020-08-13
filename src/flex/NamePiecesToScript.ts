@@ -120,6 +120,9 @@ namespace Flexagonator {
   // convert overallShape to ScriptItem by leveraging patsPrefix
   function overallShapeToScript(overallShape: OverallShapeType, patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
     const n = greekPrefixToNumber(patsPrefix);
+    if (n === null) {
+      return { nameError: 'missing the number of pats' };
+    }
 
     // all pats meet in middle, leaves are right triangles
     if ((overallShape === 'triangular' && n === 6)
@@ -132,6 +135,17 @@ namespace Flexagonator {
       || (overallShape === 'decagonal' && n === 20)
     ) {
       return { angles: [360 / n, 90] };
+    }
+
+    // stars, pats meet in the middle
+    if (overallShape === 'star' && (n % 2 === 0 && n >= 6)) {
+      switch (n) {
+        // 6 & 8 are somewhat arbitrary, since an isosceles triangle wouldn't make a star
+        case 6: return { angles: [60, 15] };
+        case 8: return { angles: [45, 30] };
+        // all others are isosceles triangles
+        default: return { angles: [360 / n, 360 / n] };
+      }
     }
 
     return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };

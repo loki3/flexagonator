@@ -21,9 +21,10 @@ namespace Flexagonator {
   export type OverallShapeType =
     'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal' | 'heptagonal' | 'octagonal' | 'enneagonal' |
     'decagonal' | 'hendecagonal' | 'dodecagonal' |
+    'star' |
     'square' | 'rectanglular' | 'rhombic';
 
-  // limited to various triangles because other shapes currently aren't supported
+  // limited to various triangles because other shapes (like squares and pentagons) currently aren't supported
   export type LeafShapeType = 'triangle' | 'equilateral triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle';
 
   // greek number prefixes (simplified) - see https://en.wikipedia.org/wiki/List_of_polygons#List_of_n-gons_by_Greek_numerical_prefixes
