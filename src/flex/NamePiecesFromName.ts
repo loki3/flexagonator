@@ -12,10 +12,34 @@ namespace Flexagonator {
       return {};
     }
 
+    const [overallShape, leafShape] = getShapes(words.slice(0, words.length - 1));
     const pinchFaces = getPinchFaces(words[words.length - 1]);
     const patsPrefix = getPatsPrefix(words[words.length - 1]);
 
-    return { pinchFaces, patsPrefix };
+    return { overallShape, leafShape, pinchFaces, patsPrefix };
+  }
+
+  // in 'triangular bronze penta-hexaflexagon', extract 'triangular' & 'bronze'
+  function getShapes(words: string[]): [string | undefined, LeafShapeType | undefined] {
+    if (words.length === 0) {
+      return [undefined, undefined];
+    }
+    const lastWord = words[words.length - 1];
+    const secondToLastWord = words.length > 1 ? words[words.length - 2] : '';
+    if (lastWord === 'silver' || lastWord === 'bronze'
+      || (lastWord === 'triangle' && (secondToLastWord !== 'equilateral' && secondToLastWord !== 'silver' && secondToLastWord !== 'bronze'))) {
+      // single word for leafShape
+      const overallShape = words.length === 1 ? undefined : words.slice(0, words.length - 1).join(' ');
+      return [overallShape, lastWord]
+    }
+    if (lastWord === 'triangle' && (secondToLastWord == 'equilateral' || secondToLastWord == 'silver' || 'bronze')) {
+      // two words for leafShape
+      const overallShape = words.length === 2 ? undefined : words.slice(0, words.length - 2).join(' ');
+      const leafShape = (secondToLastWord + ' ' + lastWord) as LeafShapeType;
+      return [overallShape, leafShape];
+    }
+    // only overall shape
+    return [words.join(' '), undefined];
   }
 
   // in 'triangular bronze penta-hexaflexagon', extract 'penta'

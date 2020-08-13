@@ -24,8 +24,29 @@ namespace Flexagonator {
     });
 
     it('should find both pinchFaces & patsPrefix', () => {
-      const pieces2 = namePiecesFromName('triangular bronze penta-hexaflexagon');
-      expect(compare(pieces2, { pinchFaces: 'penta', patsPrefix: 'hexa' })).toBeTruthy();
+      const pieces = namePiecesFromName('penta-hexaflexagon');
+      expect(compare(pieces, { pinchFaces: 'penta', patsPrefix: 'hexa' })).toBeTruthy();
+    });
+
+    it('should find overallShape', () => {
+      const pieces = namePiecesFromName('heptagonal flexagon');
+      expect(compare(pieces, { overallShape: 'heptagonal' })).toBeTruthy();
+    });
+
+    it('should find leafShape', () => {
+      const pieces = namePiecesFromName('bronze flexagon');
+      expect(compare(pieces, { leafShape: 'bronze' })).toBeTruthy();
+
+      const pieces2 = namePiecesFromName('bronze triangle flexagon');
+      expect(compare(pieces2, { leafShape: 'bronze triangle' })).toBeTruthy();
+    });
+
+    it('should find both overallShape & leafShape', () => {
+      const pieces = namePiecesFromName('triangular bronze flexagon');
+      expect(compare(pieces, { overallShape: 'triangular', leafShape: 'bronze' })).toBeTruthy();
+
+      const pieces2 = namePiecesFromName('hexagonal ring bronze triangle flexagon');
+      expect(compare(pieces2, { overallShape: 'hexagonal ring', leafShape: 'bronze triangle' })).toBeTruthy();
     });
 
   });
