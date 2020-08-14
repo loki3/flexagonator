@@ -21,7 +21,7 @@ namespace Flexagonator {
   export type OverallShapeType =
     'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal' | 'heptagonal' | 'octagonal' | 'enneagonal' |
     'decagonal' | 'hendecagonal' | 'dodecagonal' |
-    'star' |
+    'star' | 'octagonal ring' | 'decagonal ring' |
     'square' | 'rectanglular' | 'rhombic';
 
   // limited to various triangles because other shapes (like squares and pentagons) currently aren't supported

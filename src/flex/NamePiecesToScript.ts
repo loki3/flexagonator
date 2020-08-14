@@ -71,10 +71,15 @@ namespace Flexagonator {
     readonly script: ScriptItem[] = [];
     readonly errors: NamePiecesError[] = [];
 
-    add(item: ScriptItem | NamePiecesError | null): void {
+    add(item: ScriptItem | ScriptItem[] | NamePiecesError | null): void {
+      if (item === null) {
+        return;
+      }
       if (isNamePiecesError(item)) {
         this.errors.push(item);
-      } else if (item !== null) {
+      } else if (Array.isArray(item)) {
+        item.forEach(i => this.script.push(i));
+      } else {
         this.script.push(item);
       }
     }
@@ -118,7 +123,7 @@ namespace Flexagonator {
   }
 
   // convert overallShape to ScriptItem by leveraging patsPrefix
-  function overallShapeToScript(overallShape: OverallShapeType, patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
+  function overallShapeToScript(overallShape: OverallShapeType, patsPrefix: GreekNumberType): ScriptItem[] | NamePiecesError {
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
       return { nameError: 'missing the number of pats' };
@@ -134,21 +139,46 @@ namespace Flexagonator {
       || (overallShape === 'enneagonal' && n === 18)
       || (overallShape === 'decagonal' && n === 20)
     ) {
-      return { angles: [360 / n, 90] };
+      return [{ angles: [360 / n, 90] }];
     }
 
     // stars, pats meet in the middle
     if (overallShape === 'star' && (n % 2 === 0 && n >= 6)) {
       switch (n) {
         // 6 & 8 are somewhat arbitrary, since an isosceles triangle wouldn't make a star
-        case 6: return { angles: [60, 15] };
-        case 8: return { angles: [45, 30] };
+        case 6: return [{ angles: [60, 15] }];
+        case 8: return [{ angles: [45, 30] }];
         // all others are isosceles triangles
-        default: return { angles: [360 / n, 360 / n] };
+        default: return [{ angles: [360 / n, 360 / n] }];
+      }
+    }
+
+    // rings with a hole in the middle
+    if (overallShape.endsWith(' ring')) {
+      if ((overallShape.startsWith('octagonal') && n === 12)
+        || (overallShape.startsWith('decagonal') && n === 15)
+        || (overallShape.startsWith('dodecagonal') && n === 18)
+        || (overallShape.startsWith('tetradecagonal') && n === 21)
+        || (overallShape.startsWith('hexadecagonal') && n === 24)
+      ) {
+        return computeRing1Script(n);
       }
     }
 
     return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };
+  }
+
+  /// compute a ring flexagon where there's a single pat along each of the n/3 inside edges that form a regular (n/3)-gon
+  function computeRing1Script(n: number): ScriptItem[] {
+    const sides = 2 * n / 3;
+    const total = (sides - 2) * 180;
+    // total = sides * a + n * b = sides * a + n * (180 - 2a)
+    const a = (total - 180 * n) / (sides - 2 * n);
+
+    let d: boolean[] = [];
+    for (let i = 0; i < n / 3; i++) { d = d.concat([true, false, true]); }
+
+    return [{ angles: [a, 180 - 2 * a] }, { directions: d }]
   }
 
   // convert leafShape to ScriptItem

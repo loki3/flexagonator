@@ -65,6 +65,31 @@ namespace Flexagonator {
       }
     });
 
+    it('should use overallShape with patsPrefix to set angles for rings', () => {
+      // star decaflexagon
+      const name: NamePieces = { overallShape: 'decagonal ring', patsPrefix: 'pentadeca' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(3);
+      expect(errors.length).toBe(0);
+
+      expect(script[0].numPats).toBe(15);
+      const angles = script[1].angles;
+      if (angles === undefined) {
+        fail('script[1].angles should exist');
+      } else {
+        expect(angles[0]).toBe(63);
+        expect(angles[1]).toBe(54);
+      }
+      const directions = script[2].directions;
+      if (directions === undefined) {
+        fail('script[2].directions should exist');
+      } else {
+        expect(directions.length).toBe(15);
+        expect(directions[0]).toBe(true);
+        expect(directions[1]).toBe(false);
+      }
+    });
+
     it('should map leafShape to angles', () => {
       const name: NamePieces = { leafShape: 'bronze' };
       const [script, errors] = namePiecesToScript(name);
