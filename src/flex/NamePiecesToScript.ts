@@ -165,6 +165,17 @@ namespace Flexagonator {
       }
     }
 
+    // square hexadeca
+    if (overallShape === 'square' && n === 16) {
+      const directions = repeat([true, true, false, false], 4);
+      return [{ angles: [67.5, 90] }, { directions }]
+    }
+    // rhombic hexadeca
+    if (overallShape === 'rhombic' && n === 16) {
+      const directions = repeat([true, true, false, true, true, false, true, true], 2);
+      return [{ angles: [30, 90] }, { directions }]
+    }
+
     return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };
   }
 
