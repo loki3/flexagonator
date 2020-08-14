@@ -66,87 +66,6 @@ namespace Flexagonator {
     return result && (result as NamePiecesError).nameError !== undefined;
   }
 
-  // convenient way to track script & errors
-  class InfoStorer {
-    readonly script: ScriptItem[] = [];
-    readonly errors: NamePiecesError[] = [];
-
-    add(item: ScriptItem | ScriptItem[] | NamePiecesError | null): void {
-      if (item === null) {
-        return;
-      }
-      if (isNamePiecesError(item)) {
-        this.errors.push(item);
-      } else if (Array.isArray(item)) {
-        item.forEach(i => this.script.push(i));
-      } else {
-        this.script.push(item);
-      }
-    }
-  }
-
-  function greekPrefixToNumber(prefix: GreekNumberType): number | null {
-    switch (prefix) {
-      case 'di': return 2;
-      case 'tri': return 3;
-      case 'tetra': return 4;
-      case 'penta': return 5;
-      case 'hexa': return 6;
-      case 'hepta': return 7;
-      case 'octa': return 8;
-      case 'ennea': return 9;
-      case 'deca': return 10;
-      case 'hendeca': return 11;
-      case 'dodeca': return 12;
-      case 'trideca': return 13;
-      case 'tetradeca': return 14;
-      case 'pentadeca': return 15;
-      case 'hexadeca': return 16;
-      case 'heptadeca': return 17;
-      case 'octadeca': return 18;
-      case 'enneadeca': return 19;
-      case 'icosa': return 20;
-      case 'icosihena': return 21;
-      case 'icosidi': return 22;
-      case 'icositri': return 23;
-      case 'icositetra': return 24;
-      default: return null;
-    }
-  }
-
-  function adjectiveToNumber(adj: string): number | null {
-    if (adj.startsWith('triangular')) {
-      return 3;
-    } else if (adj.startsWith('square')) {
-      return 4;
-    } else if (adj.startsWith('pentagonal')) {
-      return 5;
-    } else if (adj.startsWith('hexagonal')) {
-      return 6;
-    } else if (adj.startsWith('heptagonal')) {
-      return 7;
-    } else if (adj.startsWith('octagonal')) {
-      return 8;
-    } else if (adj.startsWith('enneagonal')) {
-      return 9;
-    } else if (adj.startsWith('decagonal')) {
-      return 10;
-    } else if (adj.startsWith('hendecagonal')) {
-      return 11;
-    } else if (adj.startsWith('dodecagonal')) {
-      return 12;
-    } else if (adj.startsWith('tridecagonal')) {
-      return 13;
-    } else if (adj.startsWith('tetradecagonal')) {
-      return 14;
-    } else if (adj.startsWith('pentadecagonal')) {
-      return 15;
-    } else if (adj.startsWith('hexadecagonal')) {
-      return 16;
-    }
-    return null;
-  }
-
   function patsPrefixToScript(patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
@@ -325,6 +244,88 @@ namespace Flexagonator {
     return null;
   }
 
+  // convenient way to track script & errors
+  class InfoStorer {
+    readonly script: ScriptItem[] = [];
+    readonly errors: NamePiecesError[] = [];
+
+    add(item: ScriptItem | ScriptItem[] | NamePiecesError | null): void {
+      if (item === null) {
+        return;
+      }
+      if (isNamePiecesError(item)) {
+        this.errors.push(item);
+      } else if (Array.isArray(item)) {
+        item.forEach(i => this.script.push(i));
+      } else {
+        this.script.push(item);
+      }
+    }
+  }
+
+  function greekPrefixToNumber(prefix: GreekNumberType): number | null {
+    switch (prefix) {
+      case 'di': return 2;
+      case 'tri': return 3;
+      case 'tetra': return 4;
+      case 'penta': return 5;
+      case 'hexa': return 6;
+      case 'hepta': return 7;
+      case 'octa': return 8;
+      case 'ennea': return 9;
+      case 'deca': return 10;
+      case 'hendeca': return 11;
+      case 'dodeca': return 12;
+      case 'trideca': return 13;
+      case 'tetradeca': return 14;
+      case 'pentadeca': return 15;
+      case 'hexadeca': return 16;
+      case 'heptadeca': return 17;
+      case 'octadeca': return 18;
+      case 'enneadeca': return 19;
+      case 'icosa': return 20;
+      case 'icosihena': return 21;
+      case 'icosidi': return 22;
+      case 'icositri': return 23;
+      case 'icositetra': return 24;
+      default: return null;
+    }
+  }
+
+  function adjectiveToNumber(adj: string): number | null {
+    if (adj.startsWith('triangular')) {
+      return 3;
+    } else if (adj.startsWith('square')) {
+      return 4;
+    } else if (adj.startsWith('pentagonal')) {
+      return 5;
+    } else if (adj.startsWith('hexagonal')) {
+      return 6;
+    } else if (adj.startsWith('heptagonal')) {
+      return 7;
+    } else if (adj.startsWith('octagonal')) {
+      return 8;
+    } else if (adj.startsWith('enneagonal')) {
+      return 9;
+    } else if (adj.startsWith('decagonal')) {
+      return 10;
+    } else if (adj.startsWith('hendecagonal')) {
+      return 11;
+    } else if (adj.startsWith('dodecagonal')) {
+      return 12;
+    } else if (adj.startsWith('tridecagonal')) {
+      return 13;
+    } else if (adj.startsWith('tetradecagonal')) {
+      return 14;
+    } else if (adj.startsWith('pentadecagonal')) {
+      return 15;
+    } else if (adj.startsWith('hexadecagonal')) {
+      return 16;
+    }
+    return null;
+  }
+
+  // repeat a directions array
   function repeat(a: boolean[], n: number): boolean[] {
     let r: boolean[] = [];
     for (let i = 0; i < n; i++) { r = r.concat(a); }
