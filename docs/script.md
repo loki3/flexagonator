@@ -315,7 +315,7 @@ Names must match the naming convention:
 
 * `overall shape`
     * an adjective such as 'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal'
-    * can sometimes be combined with `leaf shape` to set `numPats` and `angles` and possibly `directions`
+    * can sometimes be combined with `pat count` and/or `leaf shape` to set `angles` and possibly `directions`
 * `leaf shape`:
     * one of 'triangle' | 'equilateral triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle'
     * defines the `angles` property with the order of the angles chosen smallest first, e.g. [30, 60, 90]

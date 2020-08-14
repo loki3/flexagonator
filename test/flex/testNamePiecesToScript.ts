@@ -90,6 +90,32 @@ namespace Flexagonator {
       }
     });
 
+    it('should use overallShape with patsPrefix and leafShape to set angles', () => {
+      // star decaflexagon
+      const name: NamePieces = { overallShape: 'hexagonal', patsPrefix: 'dodeca', leafShape: 'silver' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(4);
+      expect(errors.length).toBe(0);
+
+      expect(script[0].numPats).toBe(12);
+      // note: there's a redundant 'angles' here that gets overriddent
+      const angles = script[2].angles;
+      if (angles === undefined) {
+        fail('script[2].angles should exist');
+      } else {
+        expect(angles[0]).toBe(45);
+        expect(angles[1]).toBe(90); // note: different from default for 'silver flexagon'
+      }
+      const directions = script[3].directions;
+      if (directions === undefined) {
+        fail('script[3].directions should exist');
+      } else {
+        expect(directions.length).toBe(12);
+        expect(directions[0]).toBe(false);
+        expect(directions[1]).toBe(true);
+      }
+    });
+
     it('should map leafShape to angles', () => {
       const name: NamePieces = { leafShape: 'bronze' };
       const [script, errors] = namePiecesToScript(name);

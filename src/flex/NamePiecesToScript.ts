@@ -12,15 +12,15 @@ namespace Flexagonator {
       info.add(item);
     }
 
-    // overallShape + patsPrefix -> angles
-    if (name.overallShape && name.patsPrefix) {
-      const item = overallShapeToScript(name.overallShape as OverallShapeType, name.patsPrefix);
-      info.add(item);
-    }
-
     // leafShape -> angles
     if (name.leafShape) {
       const item = leafShapeToScript(name.leafShape);
+      info.add(item);
+    }
+
+    // overallShape + patsPrefix + leafShape -> angles, directions
+    if (name.overallShape && name.patsPrefix) {
+      const item = overallShapeToScript(name.overallShape as OverallShapeType, name.patsPrefix, name.leafShape);
       info.add(item);
     }
 
@@ -123,10 +123,24 @@ namespace Flexagonator {
   }
 
   // convert overallShape to ScriptItem by leveraging patsPrefix
-  function overallShapeToScript(overallShape: OverallShapeType, patsPrefix: GreekNumberType): ScriptItem[] | NamePiecesError {
+  function overallShapeToScript(
+    overallShape: OverallShapeType, patsPrefix: GreekNumberType, leafShape?: LeafShapeType
+  ): ScriptItem[] | NamePiecesError {
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
       return { nameError: 'missing the number of pats' };
+    }
+
+    // check these before the others, because they're more specific
+    // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
+    if (overallShape === 'hexagonal' && leafShape && leafShape.startsWith('silver')) {
+      if (n === 12) {
+        const directions = repeat([false, true, true], 4);
+        return [{ angles: [45, 90] }, { directions }];
+      } else if (n === 14) {
+        const directions = repeat([true, false, true, true, true, true, false], 2);
+        return [{ angles: [90, 45] }, { directions }];
+      }
     }
 
     // all pats meet in middle, leaves are right triangles
