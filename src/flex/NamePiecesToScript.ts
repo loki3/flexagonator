@@ -177,6 +177,13 @@ namespace Flexagonator {
       ) {
         return computeRing1Script(n);
       }
+      if ((overallShape.startsWith('triangular') && n === 12)
+        || (overallShape.startsWith('square') && n === 16)
+        || (overallShape.startsWith('pentagonal') && n === 20)
+        || (overallShape.startsWith('hexagonal') && n === 24)
+      ) {
+        return computeRing2Script(n);
+      }
     }
 
     // square hexadeca
@@ -201,7 +208,15 @@ namespace Flexagonator {
     const a = (total - 180 * n) / (sides - 2 * n);
 
     const directions = repeat([true, false, true], n / 3);
-    return [{ angles: [a, 180 - 2 * a] }, { directions }]
+    return [{ angles: [a, 180 - 2 * a] }, { directions }];
+  }
+
+  /// compute a ring flexagon where there are 2 right triangle pats along each of the n/4 inside edges that form a regular (n/4)-gon
+  function computeRing2Script(n: number): ScriptItem[] {
+    const sides = n / 4;
+    const a = 180 * (sides - 2) / (4 * sides);  // each corner of the outer polygon has 4 triangles in it
+    const directions = repeat([true, false, false, true], n / 4);
+    return [{ angles: [90 - a, a] }, { directions }];
   }
 
   // convert leafShape to ScriptItem
