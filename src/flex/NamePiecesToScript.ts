@@ -98,11 +98,6 @@ namespace Flexagonator {
       }
     }
 
-    // all pats meet in middle, leaves are right triangles
-    if (sides !== null && sides >= 3 && sides === n / 2) {
-      return [{ angles: [360 / n, 90] }];
-    }
-
     // stars, pats meet in the middle
     if (overallShape === 'star' && (n % 2 === 0 && n >= 6)) {
       switch (n) {
@@ -115,12 +110,19 @@ namespace Flexagonator {
     }
 
     // rings with a hole in the middle
-    if (overallShape.endsWith(' ring')) {
+    if (overallShape.endsWith('ring')) {
+      // e.g. octagonal ring dodecaflexagon
       if (sides !== null && sides >= 8 && sides === 2 * n / 3) {
         return computeRing1Script(n);
       }
+      // e.g. triangular ring dodecaflexagon
       if (sides !== null && sides >= 3 && sides === n / 4) {
         return computeRing2Script(n);
+      }
+      // e.g. hexagonal ring isosceles dodecaflexagon
+      // octagonal ring isosceles hexadecaflexagon
+      if (sides !== null && sides >= 6 && sides === n / 2 && leafShape && leafShape.startsWith('isosceles')) {
+        return computeRing3Script(n);
       }
     }
 
@@ -133,6 +135,11 @@ namespace Flexagonator {
     if (overallShape === 'rhombic' && n === 16) {
       const directions = repeat([true, true, false, true, true, false, true, true], 2);
       return [{ angles: [30, 90] }, { directions }]
+    }
+
+    // all pats meet in middle, leaves are right triangles
+    if (sides !== null && sides >= 3 && sides === n / 2) {
+      return [{ angles: [360 / n, 90] }];
     }
 
     return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };
@@ -155,6 +162,15 @@ namespace Flexagonator {
     const a = 180 * (sides - 2) / (4 * sides);  // each corner of the outer polygon has 4 triangles in it
     const directions = repeat([true, false, false, true], n / 4);
     return [{ angles: [90 - a, a] }, { directions }];
+  }
+
+  /// compute a ring flexagon where there are 2 isosceles triangle pats along each of the n/2 inside edges
+  function computeRing3Script(n: number): ScriptItem[] {
+    // if you drew a reguluar (n/4)-gon, each corner would contain 2 full triangles & 2 half triangles
+    const sides = n / 4;
+    const a = ((180 * (sides - 2)) / sides) / 3;
+    const directions = repeat([true, false, false, true], n / 4);
+    return [{ angles: [(180 - a) / 2, a] }, { directions }];
   }
 
   // convert leafShape to ScriptItem
@@ -188,6 +204,8 @@ namespace Flexagonator {
         return { angles: [30, 60] };
       case 'right':
       case 'right triangle':
+      case 'isosceles':
+      case 'isosceles triangle':
         return {};  // not enough information
       default:
         return { nameError: 'unknown leafShape', propValue: leafShape };

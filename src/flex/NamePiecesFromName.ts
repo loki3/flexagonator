@@ -26,13 +26,13 @@ namespace Flexagonator {
     }
     const lastWord = words[words.length - 1];
     const secondToLastWord = words.length > 1 ? words[words.length - 2] : '';
-    if (lastWord === 'silver' || lastWord === 'bronze' || lastWord === 'right'
-      || (lastWord === 'triangle' && (secondToLastWord !== 'equilateral' && secondToLastWord !== 'silver' && secondToLastWord !== 'bronze' && secondToLastWord !== 'right'))) {
+    if (lastWord === 'silver' || lastWord === 'bronze' || lastWord === 'right' || lastWord === 'isosceles'
+      || (lastWord === 'triangle' && (secondToLastWord !== 'equilateral' && secondToLastWord !== 'silver' && secondToLastWord !== 'bronze' && secondToLastWord !== 'right' && secondToLastWord != 'isosceles'))) {
       // single word for leafShape
       const overallShape = words.length === 1 ? undefined : words.slice(0, words.length - 1).join(' ');
       return [overallShape, lastWord]
     }
-    if (lastWord === 'triangle' && (secondToLastWord == 'equilateral' || secondToLastWord == 'silver' || secondToLastWord == 'bronze' || secondToLastWord == 'right')) {
+    if (lastWord === 'triangle' && (secondToLastWord === 'equilateral' || secondToLastWord === 'silver' || secondToLastWord === 'bronze' || secondToLastWord === 'right' || secondToLastWord === 'isosceles')) {
       // two words for leafShape
       const overallShape = words.length === 2 ? undefined : words.slice(0, words.length - 2).join(' ');
       const leafShape = (secondToLastWord + ' ' + lastWord) as LeafShapeType;
