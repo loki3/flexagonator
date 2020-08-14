@@ -161,6 +161,7 @@ enum StripContent {
   Back,           // only display what's on the back side, use leaf properties
   LeafLabels,     // put everything on one side, use labels from the leaf properties
   LabelsAndFolding, // put everything on one side, use labels from the leaf properties plus folding order
+  Empty,          // don't label the leaves
 }
 
 { // DrawStripCaption
