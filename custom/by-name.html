@@ -1,0 +1,99 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>flexagon variety</title>
+
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    // draw a flexagon from its name
+    function drawFlexagon(canvasId, name, rotation) {
+      var fm = Flexagonator.createFromScript([{ name }]);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: 6 });
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Flexagon Naming</h1>
+
+  <table>
+    <tr>
+      <th></th>
+      <th>isosceles</th>
+      <th>right</th>
+      <th>star</th>
+    </tr>
+    <tr>
+      <th>tetraflexagon</th>
+      <th></th>
+      <th><canvas id="tetra1" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>pentaflexagon</th>
+      <th><canvas id="penta" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>hexaflexagon</th>
+      <th><canvas id="hexa1" width="100" height="100"></canvas></th>
+      <th><canvas id="hexa2" width="100" height="100"></canvas></th>
+      <th><canvas id="hexa3" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>heptaflexagon</th>
+      <th><canvas id="hepta" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>octaflexagon</th>
+      <th><canvas id="octa1" width="100" height="100"></canvas></th>
+      <th><canvas id="octa2" width="100" height="100"></canvas></th>
+      <th><canvas id="octa3" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>enneaflexagon</th>
+      <th><canvas id="ennea" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>decaflexagon</th>
+      <th><canvas id="deca1" width="100" height="100"></canvas></th>
+      <th><canvas id="deca2" width="100" height="100"></canvas></th>
+      <th><canvas id="deca3" width="100" height="100"></canvas></th>
+    </tr>
+    <tr>
+      <th>dodecaflexagon</th>
+      <th><canvas id="dodeca1" width="100" height="100"></canvas></th>
+      <th><canvas id="dodeca2" width="100" height="100"></canvas></th>
+      <th><canvas id="dodeca3" width="100" height="100"></canvas></th>
+    </tr>
+  </table>
+
+  <script type="text/javascript">
+    drawFlexagon("tetra1", "silver tetraflexagon", 45);
+
+    drawFlexagon("penta", "pentaflexagon", 18);
+
+    drawFlexagon("hexa1", "hexaflexagon", 0);
+    drawFlexagon("hexa2", "bronze hexaflexagon", 30);
+    drawFlexagon("hexa3", "star hexaflexagon", -30);
+
+    drawFlexagon("hepta", "heptaflexagon", -12);
+
+    drawFlexagon("octa1", "octaflexagon", 0);
+    drawFlexagon("octa2", "silver octaflexagon", 0);
+    drawFlexagon("octa3", "star octaflexagon", 45);
+
+    drawFlexagon("ennea", "enneaflexagon", 10);
+
+    drawFlexagon("deca1", "decaflexagon", 0);
+    drawFlexagon("deca2", "right decaflexagon", -18);
+    drawFlexagon("deca3", "star decaflexagon", 18);
+
+    drawFlexagon("dodeca1", "dodecaflexagon", 0);
+    drawFlexagon("dodeca2", "bronze dodecaflexagon", 30);
+    drawFlexagon("dodeca3", "star dodecaflexagon", 0);
+  </script>
+
+</body>
+
+</html>
