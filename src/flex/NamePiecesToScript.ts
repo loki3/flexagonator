@@ -175,10 +175,8 @@ namespace Flexagonator {
     // total = sides * a + n * b = sides * a + n * (180 - 2a)
     const a = (total - 180 * n) / (sides - 2 * n);
 
-    let d: boolean[] = [];
-    for (let i = 0; i < n / 3; i++) { d = d.concat([true, false, true]); }
-
-    return [{ angles: [a, 180 - 2 * a] }, { directions: d }]
+    const directions = repeat([true, false, true], n / 3);
+    return [{ angles: [a, 180 - 2 * a] }, { directions }]
   }
 
   // convert leafShape to ScriptItem
@@ -246,6 +244,12 @@ namespace Flexagonator {
     }
 
     return null;
+  }
+
+  function repeat(a: boolean[], n: number): boolean[] {
+    let r: boolean[] = [];
+    for (let i = 0; i < n; i++) { r = r.concat(a); }
+    return r;
   }
 
 }
