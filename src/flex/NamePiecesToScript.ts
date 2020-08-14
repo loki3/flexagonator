@@ -175,6 +175,8 @@ namespace Flexagonator {
       const n = greekPrefixToNumber(patsPrefix);
       if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 4) {
         return { angles: [90, 45] };
+      } else if (leafShape.startsWith('bronze') && n === 4) {
+        return { angles: [90, 30] };
       } else if ((leafShape.startsWith('bronze') || leafShape.startsWith('right')) && n === 6) {
         return { angles: [60, 90] };
       } else if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 8) {
