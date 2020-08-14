@@ -319,6 +319,7 @@ Names must match the naming convention:
 * `leaf shape`:
     * one of 'triangle' | 'equilateral triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle'
     * defines the `angles` property with the order of the angles chosen smallest first, e.g. [30, 60, 90]
+    * can sometimes be combined with `pat count` to help pick the proper orientation of `angles`
 * `pinch faces`
     * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
     * defines the `flexes` property for a generating sequence that will create the specified number of pinch faces,

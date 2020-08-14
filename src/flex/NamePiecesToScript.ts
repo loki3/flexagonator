@@ -14,7 +14,7 @@ namespace Flexagonator {
 
     // leafShape -> angles
     if (name.leafShape) {
-      const item = leafShapeToScript(name.leafShape);
+      const item = leafShapeToScript(name.leafShape, name.patsPrefix);
       info.add(item);
     }
 
@@ -205,7 +205,24 @@ namespace Flexagonator {
   }
 
   // convert leafShape to ScriptItem
-  function leafShapeToScript(leafShape: LeafShapeType): ScriptItem | NamePiecesError {
+  function leafShapeToScript(leafShape: LeafShapeType, patsPrefix?: GreekNumberType): ScriptItem | NamePiecesError {
+    if (patsPrefix) {
+      // leafShape & patsPrefix may require a specific orientation
+      const n = greekPrefixToNumber(patsPrefix);
+      if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 4) {
+        return { angles: [90, 45] };
+      } else if ((leafShape.startsWith('bronze') || leafShape.startsWith('right')) && n === 6) {
+        return { angles: [60, 90] };
+      } else if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 8) {
+        return { angles: [45, 90] };
+      } else if ((leafShape.startsWith('bronze') || leafShape.startsWith('right')) && n === 12) {
+        return { angles: [30, 90] };
+      } else if (leafShape.startsWith('right') && n !== null && n % 2 === 0) {
+        return { angles: [360 / n, 90] };
+      }
+    }
+
+    // just leafShape by itself
     switch (leafShape) {
       case 'triangle':
       case 'equilateral triangle':
@@ -216,6 +233,9 @@ namespace Flexagonator {
       case 'bronze':
       case 'bronze triangle':
         return { angles: [30, 60] };
+      case 'right':
+      case 'right triangle':
+        return {};  // not enough information
       default:
         return { nameError: 'unknown leafShape', propValue: leafShape };
     }
