@@ -2,7 +2,20 @@
 <html>
 
 <head>
-  <title>flexagon variety</title>
+  <title>flexagons by name</title>
+
+  <style>
+    body {
+      font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      font-weight: normal;
+    }
+
+  </style>
 
   <script src="../build/out.js"></script>
   <script type="text/javascript">
@@ -29,7 +42,7 @@
     </tr>
     <tr>
       <th>tetraflexagon</th>
-      <th></th>
+      <th>(doesn't lay flat)</th>
       <th><canvas id="tetra1" width="100" height="100"></canvas></th>
     </tr>
     <tr>
@@ -100,23 +113,23 @@
 
   <table>
     <tr>
-      <th>octagonal ring dodecaflexagon</th>
+      <th>octagonal ring <br/> dodecaflexagon</th>
       <th><canvas id="ring8-12" width="100" height="100"></canvas></th>
     </tr>
     <tr>
-      <th>decagonal ring pentadecaflexagon</th>
+      <th>decagonal ring <br/> pentadecaflexagon</th>
       <th><canvas id="ring10-15" width="100" height="100"></canvas></th>
     </tr>
     <tr>
-      <th>dodecagonal ring octadecaflexagon</th>
+      <th>dodecagonal ring <br/> octadecaflexagon</th>
       <th><canvas id="ring12-18" width="100" height="100"></canvas></th>
     </tr>
     <tr>
-      <th>tetradecagonal ring icosihenaflexagon</th>
+      <th>tetradecagonal ring <br/> icosihenaflexagon</th>
       <th><canvas id="ring14-21" width="100" height="100"></canvas></th>
     </tr>
     <tr>
-      <th>hexadecagonal ring icositetraflexagon</th>
+      <th>hexadecagonal ring <br/> icositetraflexagon</th>
       <th><canvas id="ring16-24" width="100" height="100"></canvas></th>
     </tr>
   </table>
@@ -133,28 +146,24 @@
 
   <table>
     <tr>
-      <th>hexagonal silver dodecaflexagon</th>
+      <th>hexagonal silver <br/> dodecaflexagon</th>
       <th><canvas id="misc1" width="200" height="100"></canvas></th>
-    </tr>
-    <tr>
-      <th>hexagonal silver tetradecaflexagon</th>
+      <th>hexagonal silver <br/> tetradecaflexagon</th>
       <th><canvas id="misc2" width="100" height="100"></canvas></th>
     </tr>
     <tr>
-      <th>square hexadecaflexagon</th>
-      <th><canvas id="misc3" width="100" height="100"></canvas></th>
-    </tr>
-    <tr>
-      <th>rhombic hexadecaflexagon</th>
-      <th><canvas id="misc4" width="200" height="100"></canvas></th>
+      <th>rhombic <br/> hexadecaflexagon</th>
+      <th><canvas id="misc3" width="200" height="100"></canvas></th>
+      <th>square <br/> hexadecaflexagon</th>
+      <th><canvas id="misc4" width="100" height="100"></canvas></th>
     </tr>
   </table>
 
   <script type="text/javascript">
     drawFlexagon("misc1", "hexagonal silver dodecaflexagon", 90);
     drawFlexagon("misc2", "hexagonal silver tetradecaflexagon", 0);
-    drawFlexagon("misc3", "square hexadecaflexagon", 0);
-    drawFlexagon("misc4", "rhombic hexadecaflexagon", 90);
+    drawFlexagon("misc3", "rhombic hexadecaflexagon", 90);
+    drawFlexagon("misc4", "square hexadecaflexagon", 0);
   </script>
 
 </body>
