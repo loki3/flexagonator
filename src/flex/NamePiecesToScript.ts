@@ -114,6 +114,39 @@ namespace Flexagonator {
     }
   }
 
+  function adjectiveToNumber(adj: string): number | null {
+    if (adj.startsWith('triangular')) {
+      return 3;
+    } else if (adj.startsWith('square')) {
+      return 4;
+    } else if (adj.startsWith('pentagonal')) {
+      return 5;
+    } else if (adj.startsWith('hexagonal')) {
+      return 6;
+    } else if (adj.startsWith('heptagonal')) {
+      return 7;
+    } else if (adj.startsWith('octagonal')) {
+      return 8;
+    } else if (adj.startsWith('enneagonal')) {
+      return 9;
+    } else if (adj.startsWith('decagonal')) {
+      return 10;
+    } else if (adj.startsWith('hendecagonal')) {
+      return 11;
+    } else if (adj.startsWith('dodecagonal')) {
+      return 12;
+    } else if (adj.startsWith('tridecagonal')) {
+      return 13;
+    } else if (adj.startsWith('tetradecagonal')) {
+      return 14;
+    } else if (adj.startsWith('pentadecagonal')) {
+      return 15;
+    } else if (adj.startsWith('hexadecagonal')) {
+      return 16;
+    }
+    return null;
+  }
+
   function patsPrefixToScript(patsPrefix: GreekNumberType): ScriptItem | NamePiecesError {
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
@@ -126,14 +159,17 @@ namespace Flexagonator {
   function overallShapeToScript(
     overallShape: OverallShapeType, patsPrefix: GreekNumberType, leafShape?: LeafShapeType
   ): ScriptItem[] | NamePiecesError {
+    // number of pats
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
       return { nameError: 'missing the number of pats' };
     }
+    // number of sides in overall polygon, not including specific shapes like 'rhombic'
+    const sides = adjectiveToNumber(overallShape);
 
     // check these before the others, because they're more specific
     // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
-    if (overallShape === 'hexagonal' && leafShape && leafShape.startsWith('silver')) {
+    if (sides === 6 && leafShape && leafShape.startsWith('silver')) {
       if (n === 12) {
         const directions = repeat([false, true, true], 4);
         return [{ angles: [45, 90] }, { directions }];
@@ -144,15 +180,7 @@ namespace Flexagonator {
     }
 
     // all pats meet in middle, leaves are right triangles
-    if ((overallShape === 'triangular' && n === 6)
-      || (overallShape === 'square' && n === 8)
-      || (overallShape === 'pentagonal' && n === 10)
-      || (overallShape === 'hexagonal' && n === 12)
-      || (overallShape === 'heptagonal' && n === 14)
-      || (overallShape === 'octagonal' && n === 16)
-      || (overallShape === 'enneagonal' && n === 18)
-      || (overallShape === 'decagonal' && n === 20)
-    ) {
+    if (sides !== null && sides >= 3 && sides === n / 2) {
       return [{ angles: [360 / n, 90] }];
     }
 
@@ -169,19 +197,10 @@ namespace Flexagonator {
 
     // rings with a hole in the middle
     if (overallShape.endsWith(' ring')) {
-      if ((overallShape.startsWith('octagonal') && n === 12)
-        || (overallShape.startsWith('decagonal') && n === 15)
-        || (overallShape.startsWith('dodecagonal') && n === 18)
-        || (overallShape.startsWith('tetradecagonal') && n === 21)
-        || (overallShape.startsWith('hexadecagonal') && n === 24)
-      ) {
+      if (sides !== null && sides >= 8 && sides === 2 * n / 3) {
         return computeRing1Script(n);
       }
-      if ((overallShape.startsWith('triangular') && n === 12)
-        || (overallShape.startsWith('square') && n === 16)
-        || (overallShape.startsWith('pentagonal') && n === 20)
-        || (overallShape.startsWith('hexagonal') && n === 24)
-      ) {
+      if (sides !== null && sides >= 3 && sides === n / 4) {
         return computeRing2Script(n);
       }
     }
