@@ -112,13 +112,15 @@ namespace Flexagonator {
       // e.g. octagonal ring dodecaflexagon
       if (sides !== null && sides >= 8 && sides === 2 * n / 3) {
         return computeRing1Script(n);
+      } if (sides !== null && sides === 6 && n === 18) {
+        // hexagonal ring octadecaflexagon is special because the pattern would suggest it should be dodecagonal
+        return computeRing1Script(n);
       }
       // e.g. triangular ring dodecaflexagon
       if (sides !== null && sides >= 3 && sides === n / 4) {
         return computeRing2Script(n);
       }
       // e.g. hexagonal ring isosceles dodecaflexagon
-      // octagonal ring isosceles hexadecaflexagon
       if (sides !== null && sides >= 6 && sides === n / 2 && leafShape && leafShape.startsWith('isosceles')) {
         return computeRing3Script(n);
       }
