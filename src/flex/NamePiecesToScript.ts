@@ -84,18 +84,6 @@ namespace Flexagonator {
     // number of sides in overall polygon, not including specific shapes like 'rhombic'
     const sides = adjectiveToNumber(overallShape);
 
-    // check these before the others, because they're more specific
-    // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
-    if (sides === 6 && leafShape && leafShape.startsWith('silver')) {
-      if (n === 12) {
-        const directions = repeat([false, true, true], 4);
-        return { angles: [45, 90], directions };
-      } else if (n === 14) {
-        const directions = repeat([true, false, true, true, true, true, false], 2);
-        return { angles: [90, 45], directions };
-      }
-    }
-
     // stars, pats meet in the middle
     if (overallShape === 'star' && (n % 2 === 0 && n >= 6)) {
       switch (n) {
@@ -129,6 +117,16 @@ namespace Flexagonator {
     // hexagonal equilateral triangle decaflexagon
     if (sides === 6 && leafShape === 'equilateral triangle' && n === 10) {
       return { directions: repeat([true, true, false, true, true], 2) };
+    }
+    // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
+    if (sides === 6 && leafShape && leafShape.startsWith('silver')) {
+      if (n === 12) {
+        const directions = repeat([false, true, true], 4);
+        return { angles: [45, 90], directions };
+      } else if (n === 14) {
+        const directions = repeat([true, false, true, true, true, true, false], 2);
+        return { angles: [90, 45], directions };
+      }
     }
     // rhombic hexadeca
     if (overallShape === 'rhombic' && n === 16) {
