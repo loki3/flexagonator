@@ -20,9 +20,9 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     // draw a flexagon from its name
-    function drawFlexagon(canvasId, name, rotation) {
+    function drawFlexagon(canvasId, name, rotation, showNumbers) {
       var fm = Flexagonator.createFromScript([{ name }]);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: 6 });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: showNumbers ? 0 : 6 });
     }
   </script>
 </head>
@@ -282,6 +282,46 @@
   <script type="text/javascript">
     drawFlexagon("shape-deca", "decaflexagon", 0);
     drawFlexagon("shape-ring10-20", "decagonal ring isosceles icosaflexagon", 0);
+  </script>
+
+  <!-- unfolded pinch flaces -->
+  <h2>Names including number of pinch faces</h2>
+
+  <p>tri-tetraflexagon, tetra-tetraflexagon, hexa-tetraflexagon</p>
+
+  <canvas id="pinch-tetra3" width="350" height="200"></canvas>
+  <canvas id="pinch-tetra4" width="250" height="300"></canvas>
+  <canvas id="pinch-tetra6" width="500" height="200"></canvas>
+  <script type="text/javascript">
+    drawFlexagon("pinch-tetra3", "tri-tetraflexagon", 90, true);
+    drawFlexagon("pinch-tetra4", "tetra-tetraflexagon", 0, true);
+    drawFlexagon("pinch-tetra6", "hexa-tetraflexagon", -45, true);
+  </script>
+
+  <p>tri-hexaflexagon, tetra-hexaflexagon, penta-hexaflexagon, hexa-hexaflexagon</p>
+
+  <canvas id="pinch-hexa3" width="350" height="100"></canvas>
+  <canvas id="pinch-hexa4" width="350" height="200"></canvas>
+  <canvas id="pinch-hexa5" width="450" height="300"></canvas>
+  <canvas id="pinch-hexa6" width="900" height="150"></canvas>
+  <script type="text/javascript">
+    drawFlexagon("pinch-hexa3", "tri-hexaflexagon", 120, true);
+    drawFlexagon("pinch-hexa4", "tetra-hexaflexagon", 90, true);
+    drawFlexagon("pinch-hexa5", "penta-hexaflexagon", 60, true);
+    drawFlexagon("pinch-hexa6", "hexa-hexaflexagon", -60, true);
+  </script>
+
+  <p>bronze tri-hexaflexagon, tetra-hexaflexagon, penta-hexaflexagon, hexa-hexaflexagon</p>
+
+  <canvas id="pinch-bronze-hexa3" width="300" height="180"></canvas>
+  <canvas id="pinch-bronze-hexa4" width="350" height="300"></canvas>
+  <canvas id="pinch-bronze-hexa5" width="450" height="300"></canvas>
+  <canvas id="pinch-bronze-hexa6" width="900" height="150"></canvas>
+  <script type="text/javascript">
+    drawFlexagon("pinch-bronze-hexa3", "bronze tri-hexaflexagon", 120, true);
+    drawFlexagon("pinch-bronze-hexa4", "bronze tetra-hexaflexagon", 0, true);
+    drawFlexagon("pinch-bronze-hexa5", "bronze penta-hexaflexagon", 60, true);
+    drawFlexagon("pinch-bronze-hexa6", "bronze hexa-hexaflexagon", 90, true);
   </script>
 
 </body>
