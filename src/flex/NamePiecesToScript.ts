@@ -126,6 +126,10 @@ namespace Flexagonator {
       }
     }
 
+    // hexagonal equilateral triangle decaflexagon
+    if (sides === 6 && leafShape === 'equilateral triangle' && n === 10) {
+      return { directions: repeat([true, true, false, true, true], 2) };
+    }
     // rhombic hexadeca
     if (overallShape === 'rhombic' && n === 16) {
       const directions = repeat([true, true, false, true, true, false, true, true], 2);
