@@ -94,21 +94,20 @@ namespace Flexagonator {
       // star decaflexagon
       const name: NamePieces = { overallShape: 'hexagonal', patsPrefix: 'dodeca', leafShape: 'silver' };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(4);
+      expect(script.length).toBe(3);
       expect(errors.length).toBe(0);
 
       expect(script[0].numPats).toBe(12);
-      // note: there's a redundant 'angles' here that gets overriddent
-      const angles = script[2].angles;
+      const angles = script[1].angles;
       if (angles === undefined) {
-        fail('script[2].angles should exist');
+        fail('script[1].angles should exist');
       } else {
         expect(angles[0]).toBe(45);
         expect(angles[1]).toBe(90); // note: different from default for 'silver flexagon'
       }
-      const directions = script[3].directions;
+      const directions = script[2].directions;
       if (directions === undefined) {
-        fail('script[3].directions should exist');
+        fail('script[2].directions should exist');
       } else {
         expect(directions.length).toBe(12);
         expect(directions[0]).toBe(false);
@@ -199,7 +198,7 @@ namespace Flexagonator {
     it('should complain if numPats and pats.length are different', () => {
       const name: NamePieces = { patsPrefix: 'tetra', pats: [0, 0, 0] };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(2);
+      expect(script.length).toBe(1);
       expect(errors.length).toBe(1);
 
       const error = errors[0];
