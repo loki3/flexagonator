@@ -35,9 +35,8 @@ namespace Flexagonator {
       // a generating sequence is more specific than pinchFaces, so try it first
       info.add({ flexes: name.generator });
     } else if (name.pinchFaces) {
-      const [item, error] = pinchFacesToScript(name.pinchFaces);
+      const item = pinchFacesToScript(name.pinchFaces);
       info.add(item);
-      info.add(error);
     }
 
     // if there were no complaints, validate that the results will produce a valid flexagon
@@ -65,10 +64,10 @@ namespace Flexagonator {
     return result && (result as NamePiecesError).nameError !== undefined;
   }
 
-  function patsPrefixToScript(patsPrefix: GreekNumberType): Description | NamePiecesError {
+  function patsPrefixToScript(patsPrefix: GreekNumberType): Description {
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
-      return { nameError: 'unknown patsPrefix', propValue: patsPrefix };
+      return { error: { nameError: 'unknown patsPrefix', propValue: patsPrefix } };
     }
     return { numPats: n };
   }
@@ -76,11 +75,11 @@ namespace Flexagonator {
   // convert overallShape to ScriptItem by leveraging patsPrefix
   function overallShapeToScript(
     overallShape: OverallShapeType, patsPrefix: GreekNumberType, leafShape?: LeafShapeType
-  ): Description | NamePiecesError {
+  ): Description {
     // number of pats
     const n = greekPrefixToNumber(patsPrefix);
     if (n === null) {
-      return { nameError: 'missing the number of pats' };
+      return { error: { nameError: 'missing the number of pats' } };
     }
     // number of sides in overall polygon, not including specific shapes like 'rhombic'
     const sides = adjectiveToNumber(overallShape);
@@ -136,7 +135,7 @@ namespace Flexagonator {
       return { angles: [360 / n, 90] };
     }
 
-    return { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix };
+    return { error: { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix } };
   }
 
   /// compute a ring flexagon where there's a single pat along each of the n/3 inside edges that form a regular (n/3)-gon
@@ -168,7 +167,7 @@ namespace Flexagonator {
   }
 
   // convert leafShape to ScriptItem
-  function leafShapeToScript(leafShape: LeafShapeType, patsPrefix?: GreekNumberType): Description | NamePiecesError {
+  function leafShapeToScript(leafShape: LeafShapeType, patsPrefix?: GreekNumberType): Description {
     if (patsPrefix) {
       // leafShape & patsPrefix may require a specific orientation
       const n = greekPrefixToNumber(patsPrefix);
@@ -204,31 +203,32 @@ namespace Flexagonator {
       case 'isosceles triangle':
         return {};  // not enough information
       default:
-        return { nameError: 'unknown leafShape', propValue: leafShape };
+        return { error: { nameError: 'unknown leafShape', propValue: leafShape } };
     }
   }
 
-  function pinchFacesToScript(pinchFaces: GreekNumberType): [Description | null, NamePiecesError | null] {
+  function pinchFacesToScript(pinchFaces: GreekNumberType): Description {
     const n = greekPrefixToNumber(pinchFaces);
     if (n === null || n < 2) {
-      return [null, { nameError: 'need at least 2 pinch faces', propValue: pinchFaces }];
+      return { error: { nameError: 'need at least 2 pinch faces', propValue: pinchFaces } };
     } else if (n === 2) {
       // don't need to do anything because it defaults to 2 faces
-      return [null, null];
+      return {};
     } else if (n < 6) {
       // 3, 4, 5 are all unambiguous
-      const script: ScriptItem = { flexes: 'P*'.repeat(n - 2) };
-      return [script, null];
+      return { flexes: 'P*'.repeat(n - 2) };
     } else if (n === 6) {
       // we'll assume they want the "straight strip" version
-      const script: ScriptItem = { flexes: 'P* P* P+ > P P*' };
-      const error: NamePiecesError = { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces };
-      return [script, error];
+      return {
+        flexes: 'P* P* P+ > P P*',
+        error: { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces }
+      };
     }
     // >6 is ambiguous
-    const script: ScriptItem = { flexes: 'P*'.repeat(n - 2) };
-    const error: NamePiecesError = { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces };
-    return [script, error];
+    return {
+      flexes: 'P*'.repeat(n - 2),
+      error: { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces }
+    };
   }
 
   function greekPrefixToNumber(prefix: GreekNumberType): number | null {
@@ -305,17 +305,11 @@ namespace Flexagonator {
     private description: Description = {};
     readonly errors: NamePiecesError[] = [];
 
-    // !! encapsulate all options under Description
-    add(item: Description | NamePiecesError | null): void {
-      // !! track Description rather than ScriptItem[]
-      if (item === null) {
-        return;
-      }
-      if (isNamePiecesError(item)) {
-        this.errors.push(item);
-        return;
-      }
+    add(item: Description): void {
       this.description = { ...this.description, ...item };
+      if (this.description.error) {
+        this.errors.push(this.description.error);
+      }
     }
 
     asScript(): ScriptItem[] {
@@ -364,6 +358,8 @@ namespace Flexagonator {
     readonly angles?: number[];
     readonly directions?: boolean[];
     readonly flexes?: string;
+
+    readonly error?: NamePiecesError;
   }
 
 }
