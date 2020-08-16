@@ -112,9 +112,14 @@ namespace Flexagonator {
       if (sides >= 6 && sides === n / 2 && leafShape && leafShape.startsWith('isosceles')) {
         return computeRing3Script(n);
       }
+
       // hexagonal ring tetradecaflexagon
       if (sides === 6 && n === 14) {
         return { angles: [60, 60], directions: repeat([true, false, true, true, true, false, true], 2) };
+      }
+      // octagonal ring tetradecaflexagon
+      if (sides === 8 && n === 14) {
+        return { angles: [72, 72], directions: repeat([false, true, true, false, true, true, false], 2) };
       }
     }
 
