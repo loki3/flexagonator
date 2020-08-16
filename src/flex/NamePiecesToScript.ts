@@ -258,8 +258,11 @@ namespace Flexagonator {
       return { pats };
     } else if (numPats % 2 === 0) {
       // odd number of faces & even number of pats, so pats alternate structure
-      // to do
-      return {};
+      const one = getPatStructure(Math.floor(n / 2)) as number[];
+      const two = getPatStructure(Math.floor(n / 2) + 1) as number[];
+      const pair = one.concat(two);
+      const pats = repeat(pair, numPats / 2) as LeafTree[];
+      return { pats };
     }
     // can't create an odd number of faces if there's an odd number of pats
     return {};
@@ -270,6 +273,7 @@ namespace Flexagonator {
     // could put more effort into coming up with a general algorithm,
     // but this is good enough for now
     switch (n) {
+      case 1: return [0];
       case 2: return [[0, 0]];
       case 3: return [[0, [0, 0]]];
       case 4: return [[[0, 0], [0, 0]]];
