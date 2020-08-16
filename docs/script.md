@@ -326,8 +326,8 @@ Names must match the naming convention:
         * if all pats meet in the middle and there's an even number of pats,
           it defines the `flexes` property for a generating sequence that will create
           the specified number of faces, e.g. "P*P*P*" for 5 faces
-        * otherwise, it will attempt to create the necessary structure,
-          though there's no guarantee all faces will appear intact
+        * otherwise, it will attempt to create the necessary pat structure,
+          though there's no guarantee all faces will appear intact when flexing
     * note: this is ambiguous for 6 or greater, since there are multiple possibilities
 * `pat count prefix`
     * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
