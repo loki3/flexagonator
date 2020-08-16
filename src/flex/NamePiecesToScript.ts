@@ -30,12 +30,12 @@ namespace Flexagonator {
       info.add(item);
     }
 
-    // generator | faceCount -> flexes
+    // generator | faceCount -> flexes | pats
     if (name.generator) {
       // a generating sequence is more specific than faceCount, so try it first
       info.add({ flexes: name.generator });
     } else if (name.faceCount) {
-      const item = faceCountToFlexes(name.faceCount);
+      const item = faceCountToScript(info, name.faceCount);
       info.add(item);
     }
 
@@ -215,28 +215,44 @@ namespace Flexagonator {
     }
   }
 
-  function faceCountToFlexes(faceCount: GreekNumberType): Description {
+  function faceCountToScript(info: InfoStorer, faceCount: GreekNumberType): Description {
     const n = greekPrefixToNumber(faceCount);
     if (n === null || n < 2) {
       return { error: { nameError: 'need a face count of at least 2', propValue: faceCount } };
     } else if (n === 2) {
       // don't need to do anything because it defaults to 2 faces
       return {};
-    } else if (n < 6) {
+    }
+
+    if (info.doPatsMeetInCenter() && info.isEven()) {
+      // use a generating sequence
+      return faceCountToFlexes(n);
+    }
+    // create pat structure if possible
+    return faceCountToPats(n);
+  }
+
+  function faceCountToFlexes(n: number): Description {
+    if (n < 6) {
       // 3, 4, 5 are all unambiguous
       return { flexes: 'P*'.repeat(n - 2) };
     } else if (n === 6) {
       // we'll assume they want the "straight strip" version
       return {
         flexes: 'P* P* P+ > P P*',
-        error: { nameError: 'warning: there are multiple possibilities for face count', propValue: faceCount }
+        error: { nameError: 'warning: there are multiple possibilities for face count', propValue: n.toString() }
       };
     }
     // >6 is ambiguous
     return {
       flexes: 'P*'.repeat(n - 2),
-      error: { nameError: 'warning: there are multiple possibilities for face count', propValue: faceCount }
+      error: { nameError: 'warning: there are multiple possibilities for face count', propValue: n.toString() }
     };
+  }
+
+  function faceCountToPats(n: number): Description {
+    // to do
+    return {};
   }
 
   function greekPrefixToNumber(prefix: GreekNumberType): number | null {
@@ -337,6 +353,23 @@ namespace Flexagonator {
         script.push({ flexes: this.description.flexes });
       }
       return script;
+    }
+
+    getNumPats(): number | null {
+      if (this.description.numPats) {
+        return this.description.numPats;
+      } else if (this.description.pats) {
+        return this.description.pats.length;
+      }
+      return null;
+    }
+    isEven(): boolean {
+      const numPats = this.getNumPats();
+      return numPats === null ? false : numPats % 2 === 0;
+    }
+
+    doPatsMeetInCenter(): boolean {
+      return this.description.directions === undefined;
     }
 
     validate() {

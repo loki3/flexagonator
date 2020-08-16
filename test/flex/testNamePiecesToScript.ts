@@ -152,15 +152,16 @@ namespace Flexagonator {
       }
     });
 
-    it('should map faceCount to flexes', () => {
-      const name: NamePieces = { faceCount: 'penta' };
+    it('should map faceCount to flexes if numPats is even & pats meet in the middle', () => {
+      const name: NamePieces = { faceCount: 'penta', patsPrefix: 'tetra' };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(1);
-      expect(errors.length).toBe(1);
+      expect(script.length).toBe(2);
+      expect(errors.length).toBe(0);
 
-      const flexes = script[0].flexes;
+      // script[0] is numPats
+      const flexes = script[1].flexes;
       if (flexes === undefined) {
-        fail('script[0].flexes should exist');
+        fail('script[1].flexes should exist');
       } else {
         expect(flexes).toBe('P*P*P*');
       }
