@@ -113,6 +113,10 @@ namespace Flexagonator {
         return computeRing3Script(n);
       }
 
+      // hexagonal ring dodecaflexagon
+      if (sides === 6 && n === 12) {
+        return { angles: [60, 60], directions: repeat([true, true, false, true], 3) };
+      }
       // hexagonal ring tetradecaflexagon
       if (sides === 6 && n === 14) {
         return { angles: [60, 60], directions: repeat([true, false, true, true, true, false, true], 2) };
