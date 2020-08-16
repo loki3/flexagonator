@@ -4,7 +4,7 @@ namespace Flexagonator {
    * convert a name like 'octagonal dodecaflexagon' into NamePieces,
    * which represents the different pieces extracted from the name
    *
-   * [overall shape] [leaf shape] [pinch faces]-[pat count prefix]flexagon [(details)]
+   * [overall shape] [leaf shape] [face count]-[pat count prefix]flexagon [(details)]
    */
   export function namePiecesFromName(name: string): NamePieces {
     const words = name.split(' ');
@@ -13,10 +13,10 @@ namespace Flexagonator {
     }
 
     const [overallShape, leafShape] = getShapes(words.slice(0, words.length - 1));
-    const pinchFaces = getPinchFaces(words[words.length - 1]);
+    const faceCount = getFaceCount(words[words.length - 1]);
     const patsPrefix = getPatsPrefix(words[words.length - 1]);
 
-    return { overallShape, leafShape, pinchFaces, patsPrefix };
+    return { overallShape, leafShape, faceCount, patsPrefix };
   }
 
   // in 'triangular bronze penta-hexaflexagon', extract 'triangular' & 'bronze'
@@ -43,7 +43,7 @@ namespace Flexagonator {
   }
 
   // in 'triangular bronze penta-hexaflexagon', extract 'penta'
-  function getPinchFaces(word: string): GreekNumberType | undefined {
+  function getFaceCount(word: string): GreekNumberType | undefined {
     const chunks = word.split('-');
     return chunks.length >= 2 ? chunks[0] as GreekNumberType : undefined;
   }

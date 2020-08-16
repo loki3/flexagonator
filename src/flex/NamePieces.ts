@@ -5,8 +5,8 @@ namespace Flexagonator {
     readonly overallShape?: OverallShapeType | string;
     // shape of a leaf
     readonly leafShape?: LeafShapeType;
-    // number of pinch faces
-    readonly pinchFaces?: GreekNumberType;
+    // theoretical number of faces
+    readonly faceCount?: GreekNumberType;
     // number of pats in the main position
     readonly patsPrefix?: GreekNumberType;
     // total number of leaves

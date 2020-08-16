@@ -311,7 +311,7 @@ Note that without additional clarification, many names are ambiguous, in which c
 In the above example, it could have instead chosen `"angles": [45,90]`, which would have generated a different template.
 
 Names must match the naming convention:
-`[overall shape] [leaf shape] [pinch faces]-[pat count prefix]flexagon`, with the following meanings:
+`[overall shape] [leaf shape] [face count]-[pat count prefix]flexagon`, with the following meanings:
 
 * `overall shape`
     * an adjective such as 'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal'
@@ -320,11 +320,15 @@ Names must match the naming convention:
     * one of 'triangle' | 'equilateral triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle'
     * defines the `angles` property with the order of the angles chosen smallest first, e.g. [30, 60, 90]
     * can sometimes be combined with `pat count` to help pick the proper orientation of `angles`
-* `pinch faces`
+* `face count`
     * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
-    * defines the `flexes` property for a generating sequence that will create the specified number of pinch faces,
-      e.g. "P*P*P*" for penta;
-      note: this is ambiguous for 6 or greater, since there are multiple possible generating sequences and templates
+    * creates the structure necessary to theoretically have `face count` faces, if possible
+        * if all pats meet in the middle and there's an even number of pats,
+          it defines the `flexes` property for a generating sequence that will create
+          the specified number of faces, e.g. "P*P*P*" for 5 faces
+        * otherwise, it will attempt to create the necessary structure,
+          though there's no guarantee all faces will appear intact
+    * note: this is ambiguous for 6 or greater, since there are multiple possibilities
 * `pat count prefix`
     * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
     * defines the `patCount` property unambiguously

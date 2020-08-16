@@ -152,8 +152,8 @@ namespace Flexagonator {
       }
     });
 
-    it('should map pinchFaces to flexes', () => {
-      const name: NamePieces = { pinchFaces: 'penta' };
+    it('should map faceCount to flexes', () => {
+      const name: NamePieces = { faceCount: 'penta' };
       const [script, errors] = namePiecesToScript(name);
       expect(script.length).toBe(1);
       expect(errors.length).toBe(1);
@@ -166,8 +166,8 @@ namespace Flexagonator {
       }
     });
 
-    it('should complain if pinchFlexes is invalid', () => {
-      const name = { pinchFaces: 'blah' };
+    it('should complain if faceCount is invalid', () => {
+      const name = { faceCount: 'blah' };
       const [script, errors] = namePiecesToScript(name as NamePieces);
       expect(script.length).toBe(0);
       expect(errors.length).toBe(1);
@@ -176,13 +176,13 @@ namespace Flexagonator {
       if (error === undefined) {
         fail('errors[0] should exist');
       } else {
-        expect(error.nameError).toBe('need at least 2 pinch faces');
+        expect(error.nameError).toBe('need a face count of at least 2');
         expect(error.propValue).toBe('blah');
       }
     });
 
-    it('should prefer generator over pinchFaces', () => {
-      const name: NamePieces = { generator: 'F*>S*', pinchFaces: 'icosa' };
+    it('should prefer generator over faceCount', () => {
+      const name: NamePieces = { generator: 'F*>S*', faceCount: 'icosa' };
       const [script, errors] = namePiecesToScript(name);
       expect(script.length).toBe(1);
       expect(errors.length).toBe(1);

@@ -30,12 +30,12 @@ namespace Flexagonator {
       info.add(item);
     }
 
-    // generator | pinchFaces -> flexes
+    // generator | faceCount -> flexes
     if (name.generator) {
-      // a generating sequence is more specific than pinchFaces, so try it first
+      // a generating sequence is more specific than faceCount, so try it first
       info.add({ flexes: name.generator });
-    } else if (name.pinchFaces) {
-      const item = pinchFacesToScript(name.pinchFaces);
+    } else if (name.faceCount) {
+      const item = faceCountToFlexes(name.faceCount);
       info.add(item);
     }
 
@@ -53,8 +53,8 @@ namespace Flexagonator {
     | 'unknown patsPrefix'
     | 'unrecognized overall shape'
     | 'unknown leafShape'
-    | 'need at least 2 pinch faces'
-    | 'warning: there are multiple possibilities for pinch face count'
+    | 'need a face count of at least 2'
+    | 'warning: there are multiple possibilities for face count'
     | 'missing the number of pats'
     | 'numPats, pats, and directions should represent the same count'
     ;
@@ -215,10 +215,10 @@ namespace Flexagonator {
     }
   }
 
-  function pinchFacesToScript(pinchFaces: GreekNumberType): Description {
-    const n = greekPrefixToNumber(pinchFaces);
+  function faceCountToFlexes(faceCount: GreekNumberType): Description {
+    const n = greekPrefixToNumber(faceCount);
     if (n === null || n < 2) {
-      return { error: { nameError: 'need at least 2 pinch faces', propValue: pinchFaces } };
+      return { error: { nameError: 'need a face count of at least 2', propValue: faceCount } };
     } else if (n === 2) {
       // don't need to do anything because it defaults to 2 faces
       return {};
@@ -229,13 +229,13 @@ namespace Flexagonator {
       // we'll assume they want the "straight strip" version
       return {
         flexes: 'P* P* P+ > P P*',
-        error: { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces }
+        error: { nameError: 'warning: there are multiple possibilities for face count', propValue: faceCount }
       };
     }
     // >6 is ambiguous
     return {
       flexes: 'P*'.repeat(n - 2),
-      error: { nameError: 'warning: there are multiple possibilities for pinch face count', propValue: pinchFaces }
+      error: { nameError: 'warning: there are multiple possibilities for face count', propValue: faceCount }
     };
   }
 
