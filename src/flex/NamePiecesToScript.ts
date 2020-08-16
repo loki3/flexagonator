@@ -96,21 +96,25 @@ namespace Flexagonator {
     }
 
     // rings with a hole in the middle
-    if (overallShape.endsWith('ring')) {
+    if (overallShape.endsWith('ring') && sides !== null) {
       // e.g. octagonal ring dodecaflexagon
-      if (sides !== null && sides >= 8 && sides === 2 * n / 3) {
+      if (sides >= 8 && sides === 2 * n / 3) {
         return computeRing1Script(n);
-      } if (sides !== null && sides === 6 && n === 18) {
+      } if (sides === 6 && n === 18) {
         // hexagonal ring octadecaflexagon is special because the pattern would suggest it should be dodecagonal
         return computeRing1Script(n);
       }
       // e.g. triangular ring dodecaflexagon
-      if (sides !== null && sides >= 3 && sides === n / 4) {
+      if (sides >= 3 && sides === n / 4) {
         return computeRing2Script(n);
       }
       // e.g. hexagonal ring isosceles dodecaflexagon
-      if (sides !== null && sides >= 6 && sides === n / 2 && leafShape && leafShape.startsWith('isosceles')) {
+      if (sides >= 6 && sides === n / 2 && leafShape && leafShape.startsWith('isosceles')) {
         return computeRing3Script(n);
+      }
+      // hexagonal ring tetradecaflexagon
+      if (sides === 6 && n === 14) {
+        return { angles: [60, 60], directions: repeat([true, false, true, true, true, false, true], 2) };
       }
     }
 
