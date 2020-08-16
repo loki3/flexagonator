@@ -167,6 +167,20 @@ namespace Flexagonator {
       }
     });
 
+    it("should map faceCount to pats if it's even & numPats is odd", () => {
+      const name: NamePieces = { faceCount: 'tetra', patsPrefix: 'penta' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(1);
+      expect(errors.length).toBe(0);
+
+      const pats = script[0].pats;
+      if (pats === undefined) {
+        fail('script[0].pats should exist');
+      } else {
+        expect(pats.length).toBe(5);
+      }
+    });
+
     it('should complain if faceCount is invalid', () => {
       const name = { faceCount: 'blah' };
       const [script, errors] = namePiecesToScript(name as NamePieces);

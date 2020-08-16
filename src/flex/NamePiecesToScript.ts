@@ -229,7 +229,8 @@ namespace Flexagonator {
       return faceCountToFlexes(n);
     }
     // create pat structure if possible
-    return faceCountToPats(n);
+    const numPats = info.getNumPats();
+    return numPats === null ? {} : faceCountToPats(n, numPats);
   }
 
   function faceCountToFlexes(n: number): Description {
@@ -250,9 +251,38 @@ namespace Flexagonator {
     };
   }
 
-  function faceCountToPats(n: number): Description {
-    // to do
+  function faceCountToPats(n: number, numPats: number): Description {
+    if (n % 2 === 0) {
+      // even number of faces, so every pat is the same
+      const pats = repeat(getPatStructure(n / 2), numPats) as LeafTree[];
+      return { pats };
+    } else if (numPats % 2 === 0) {
+      // odd number of faces & even number of pats, so pats alternate structure
+      // to do
+      return {};
+    }
+    // can't create an odd number of faces if there's an odd number of pats
     return {};
+  }
+
+  // create a well-balanced pat structure with the given number of faces in it
+  function getPatStructure(n: number): any {
+    // could put more effort into coming up with a general algorithm,
+    // but this is good enough for now
+    switch (n) {
+      case 2: return [[0, 0]];
+      case 3: return [[0, [0, 0]]];
+      case 4: return [[[0, 0], [0, 0]]];
+      case 5: return [[[[0, 0], 0], [0, 0]]];
+      case 6: return [[[[0, 0], 0], [[0, 0], 0]]];
+      case 7: return [[[[0, 0], [0, 0]], [[0, 0], 0]]];
+      case 8: return [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]]];
+      case 9: return [[[[[0, 0], 0], [0, 0]], [[0, 0], [0, 0]]]];
+      case 10: return [[[[[0, 0], 0], [0, 0]], [[[0, 0], 0], [0, 0]]]];
+      case 11: return [[[[[0, 0], 0], [[0, 0], 0]], [[[0, 0], 0], [0, 0]]]];
+      case 12: return [[[[[0, 0], 0], [[0, 0], 0]], [[[0, 0], 0], [[0, 0], 0]]]];
+    }
+    return [];
   }
 
   function greekPrefixToNumber(prefix: GreekNumberType): number | null {
@@ -317,9 +347,9 @@ namespace Flexagonator {
     return null;
   }
 
-  // repeat a directions array
-  function repeat(a: boolean[], n: number): boolean[] {
-    let r: boolean[] = [];
+  // repeat an array
+  function repeat<T>(a: T[], n: number): T[] {
+    let r: T[] = [];
     for (let i = 0; i < n; i++) { r = r.concat(a); }
     return r;
   }
