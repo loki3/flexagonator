@@ -24,8 +24,21 @@ namespace Flexagonator {
       this.history = new History(flexagon, this.tracker.getCopy());
     }
 
+    // assume an isosceles flexagon where pats meet in the middle
     static make(flexagon: Flexagon, leafProps?: LeafProperties[]) {
       return new FlexagonManager(flexagon, leafProps);
+    }
+
+    // assume 'flexagon' only contains pats so we should borrow other info from 'other' if appropriate
+    static makeFromPats(flexagon: Flexagon, other: FlexagonManager) {
+      const fm = new FlexagonManager(flexagon);
+      if (!other.angleInfo.isDefault) {
+        fm.angleInfo = other.angleInfo;
+      }
+      if (other.directions && other.directions.length === flexagon.getPatCount()) {
+        fm.directions = other.directions;
+      }
+      return fm;
     }
 
     // apply a single flex;

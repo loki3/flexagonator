@@ -47,7 +47,7 @@ namespace Flexagonator {
       if (isTreeError(result)) {
         return result;
       }
-      fm = FlexagonManager.make(result);
+      fm = FlexagonManager.makeFromPats(result, fm);
     }
 
     if (item.numPats !== undefined) {
