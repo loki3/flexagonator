@@ -3,7 +3,7 @@ namespace Flexagonator {
   describe('FlexagonAngles.getAngles', () => {
     it('understands basics', () => {
       const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
-      const fa = new FlexagonAngles(50, 60);
+      const fa = FlexagonAngles.makeAngles(50, 60);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(50);
       expect(angles[1]).toBe(60);
@@ -11,7 +11,7 @@ namespace Flexagonator {
     });
     it('understands current vertex', () => {
       const f = Flexagon.makeFromTreePlus([1, 2, 3, 4, 5, 6], 1, false) as Flexagon;
-      const fa = new FlexagonAngles(50, 60);
+      const fa = FlexagonAngles.makeAngles(50, 60);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(60);
       expect(angles[1]).toBe(70);
@@ -19,7 +19,7 @@ namespace Flexagonator {
     });
     it('understands mirror', () => {
       const f = Flexagon.makeFromTreePlus([1, 2, 3, 4, 5, 6], 0, true) as Flexagon;
-      const fa = new FlexagonAngles(50, 60);
+      const fa = FlexagonAngles.makeAngles(50, 60);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(50);
       expect(angles[1]).toBe(70);
@@ -27,7 +27,7 @@ namespace Flexagonator {
     });
     it('understands current vertex with mirror', () => {
       const f = Flexagon.makeFromTreePlus([1, 2, 3, 4, 5, 6], 1, true) as Flexagon;
-      const fa = new FlexagonAngles(50, 60);
+      const fa = FlexagonAngles.makeAngles(50, 60);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(60);
       expect(angles[1]).toBe(50);
@@ -66,7 +66,7 @@ namespace Flexagonator {
   describe('FlexagonAngles.getAnglesUsingDirection', () => {
     it('should work with 3 different angles', () => {
       const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
-      const fa = new FlexagonAngles(30, 60);
+      const fa = FlexagonAngles.makeAngles(30, 60);
 
       const angles1 = fa.getAnglesUsingDirection(f, true);
       expect(angles1[0]).toBe(60);

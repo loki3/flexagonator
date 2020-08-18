@@ -11,13 +11,22 @@ namespace Flexagonator {
   export class FlexagonAngles {
     // angleCenter: angle in the center of the flexagon
     // angleClock:  angle clockwise from the center
-    constructor(private readonly angleCenter: number, private readonly angleClock: number) {
+    // isDefault: is this a default set of angles or was it explicitly set?
+    private constructor(private readonly angleCenter: number, private readonly angleClock: number, readonly isDefault: boolean) {
+    }
+
+    static makeDefault(): FlexagonAngles {
+      return new FlexagonAngles(60, 60, true);
+    }
+
+    static makeAngles(angleCenter: number, angleClock: number): FlexagonAngles {
+      return new FlexagonAngles(angleCenter, angleClock, false);
     }
 
     static makeIsosceles(flexagon: Flexagon): FlexagonAngles {
       const center = 360 / flexagon.getPatCount();
       const clock = (180 - center) / 2;
-      return new FlexagonAngles(center, clock);
+      return new FlexagonAngles(center, clock, false);
     }
 
     // [center angle, clockwise, clockwise]

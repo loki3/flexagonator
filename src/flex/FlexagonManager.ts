@@ -9,7 +9,7 @@ namespace Flexagonator {
     readonly allFlexes: Flexes;
     flexesToSearch: Flexes;
     interpolateNewLeaves?: 'never' | 'justColor' | 'colorAndLabel' = undefined;
-    private angleInfo: FlexagonAngles = new FlexagonAngles(60, 60);
+    private angleInfo: FlexagonAngles = FlexagonAngles.makeDefault();
     private directions?: boolean[];
     private tracker: Tracker;
     private readonly history: History;
@@ -137,7 +137,7 @@ namespace Flexagonator {
     }
 
     setAngles(center: number, clock: number) {
-      this.angleInfo = new FlexagonAngles(center, clock);
+      this.angleInfo = FlexagonAngles.makeAngles(center, clock);
     }
     setIsosceles() {
       this.angleInfo = FlexagonAngles.makeIsosceles(this.flexagon);
