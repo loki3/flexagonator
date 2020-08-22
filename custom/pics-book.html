@@ -43,6 +43,13 @@
       var fm = Flexagonator.createFromScript(script);
       Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
     }
+
+    // draw a folded flexagon, showing possible flexes
+    function drawFlexagonComplex(canvasId, script) {
+      var fm = Flexagonator.createFromScript(script);
+      var regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
+      Flexagonator.drawScriptButtons(canvasId, fm.flexagon, fm.getAngleInfo(), true, regions);
+    }
   </script>
 </head>
 
@@ -73,6 +80,7 @@
     <li><a href="#part3">Part Three: Learning</a></li>
     <ul>
       <li><a href="#naming">naming</a></li>
+      <li><a href="#groups">groups</a></li>
     </ul>
     <li><a href="#part4">Part Four: Fun</a></li>
     <ul>
@@ -565,6 +573,21 @@
     drawFlexagonSimple("t-star-dodeca", 12, [30, 120]);
   </script>
   <hr />
+
+  <!-- groups-->
+  <h3 id="groups">groups</h3>
+
+  <canvas id="group-tetra-strip" width="1200" height="220"></canvas><br/>
+  <canvas id="group-tetra1" width="250" height="250"></canvas>
+  <canvas id="group-tetra2" width="250" height="250"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("group-tetra-strip", 6, "(P*)2", 90);
+    var script = [{ numPats: 6 }, { angles: [60, 60] }, { flexes: "(P*)2" }, { searchFlexes: "P" }];
+    // face only supports P at 3 hinges
+    drawFlexagonComplex("group-tetra1", script);
+    // face supports P at all 6 hinges
+    drawFlexagonComplex("group-tetra2", script.concat({ flexes: ">P<P" }));
+  </script>
 
   <!-- part 4 -->
 
