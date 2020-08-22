@@ -249,7 +249,7 @@ You can find the answer by starting from the initial state given above for the `
 When you look at that final result, you can see that it's exactly what you'd get if you had applied `Lh` instead.
 Thus `Lh = Ltb T'` and we know `Lh` is not prime relative to `T'` and `Ltb`.
 
-The following flexagonn has a generating sequence of `Lh+` and supports both `T'` and `Ltb`.
+The following flexagon has a generating sequence of `Lh+` and supports both `T'` and `Ltb`.
 
 [var name:historyLh value:'' /]
 [var name:doHistoryLh value:'' /]
