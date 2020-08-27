@@ -47,10 +47,10 @@ namespace Flexagonator {
 
       expect(flexes["P'"]).toBeDefined();
       expect(flexes["S'"]).toBeDefined();
+      expect(flexes["S3'"]).toBeDefined();
       expect(flexes["T1"]).toBeDefined();
       expect(flexes["T2"]).toBeDefined();
       expect(flexes["T3"]).toBeDefined();
-      expect(flexes["Un1'"]).toBeDefined();
 
       const Pin = [[1, 2], 3, [4, 5], 6, [7, 8], 9, [10, 11], 12];
       const Pout = [-1, [5, -3], -4, [8, -6], -7, [11, -9], -10, [2, -12]];
@@ -61,6 +61,11 @@ namespace Flexagonator {
       const Sout = [[1, [10, [2, -12]]], 3, 4, 5, 6, 7, [9, 11], -8];
       expect(areLTArraysEqual(flexes["S"].pattern, Sin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["S"].output, Sout)).toBeTruthy();
+
+      const S3in = [[2, -1], 3, 4, 5, 6, [[[9, -8], -10], 7], -11, -12];
+      const S3out = [[2, [-11, [-1, 12]]], 3, 4, 5, 6, [-8, 7], -9, -10];
+      expect(areLTArraysEqual(flexes["S3"].pattern, S3in)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["S3"].output, S3out)).toBeTruthy();
 
       const Fin = [[1, 2], 3, 4, 5, 6, 7, [[8, 9], [10, 11]], 12];
       const Fout = [9, [[-1, 3], [12, -2]], 4, 5, 6, 7, 10, [-8, -11]];
@@ -76,11 +81,6 @@ namespace Flexagonator {
       const Ltout = [12, [2, 4], -1, 3, 5, 6, 7, [10, [8, [11, -9]]]];
       expect(areLTArraysEqual(flexes["Ltf"].pattern, Ltin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Ltf"].output, Ltout)).toBeTruthy();
-
-      const Un1in = [[2, -1], 3, 4, 5, 6, [[[9, -8], -10], 7], -11, -12];
-      const Un1out = [-9, -10, [2, [-11, [-1, 12]]], 3, 4, 5, 6, [-8, 7]];
-      expect(areLTArraysEqual(flexes["Un1"].pattern, Un1in)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["Un1"].output, Un1out)).toBeTruthy();
 
       const Un2in = [1, [-5, [2, [4, -3]]], -6, -7, -8, -9, -10, [12, -11]];
       const Un2out = [3, [-5, 4], -6, -7, -8, -9, [[-12, 1], [-10, 11]], 2];
