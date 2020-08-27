@@ -33,7 +33,7 @@ namespace Flexagonator {
       if (patCount == 5)
         flexes["L3"] = createSlotTriplePocket();
       if (patCount >= 6)
-        flexes["Un2"] = createUnnamed2(patCount);
+        flexes["Mf"] = createMobiusFlip(patCount);
 
       flexes["Tf"] = createForcedTuck(patCount);
       for (let i = 0; i < patCount - 5; i++) {
@@ -124,7 +124,7 @@ namespace Flexagonator {
     flexes["Tk"] = makeFlex("ticket flex",
       [1, 2, 3, [4, 5], [[[6, 7], 8], 9], [10, 11]],
       [6, [-9, -7], [-5, -4], -3, -2, [[11, -8], [-1, 10]]], FlexRotation.None) as Flex;
-    flexes["Un2"] = makeFlex("unnamed 2",
+    flexes["Mf"] = makeFlex("mobius flip",
       [1, [-5, [2, [4, -3]]], -6, -7, -8, [10, -9]],
       [3, [-5, 4], -6, -7, [[-10, 1], [-8, 9]], 2], FlexRotation.None) as Flex;
 
@@ -489,7 +489,8 @@ namespace Flexagonator {
     return makeFlex("forced tuck", pattern, output, FlexRotation.None) as Flex;
   }
 
-  function createUnnamed2(patCount: number): Flex {
+  // you first open it up to make a mobius strip before completing a flip flex
+  function createMobiusFlip(patCount: number): Flex {
     // (1) (-5(2(4,-3))) (-6) ... (i) ... (^n-2) (n,^n-1)
     // (3) (-5,4) (-6) ... (i) ... ((^n,1)(^n-2,n-1)) (2)
     const pattern: LeafTree = [];
@@ -512,7 +513,7 @@ namespace Flexagonator {
     output.push([[-leaves, 1], [2 - leaves, leaves - 1]]);
     output.push(2);
 
-    return makeFlex("unnamed 2", pattern, output, FlexRotation.None) as Flex;
+    return makeFlex("mobius flip", pattern, output, FlexRotation.None) as Flex;
   }
 
 }
