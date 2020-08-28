@@ -101,8 +101,8 @@ namespace Flexagonator {
       [[1, 2], 3, 4, 5, [[6, 7], [8, 9]], 10],
       [7, [[-1, 3], [10, -2]], 4, 5, 8, [-6, -9]], FlexRotation.None) as Flex;
     flexes["Mf"] = makeFlex("mobius flip",
-      [1, [-5, [2, [4, -3]]], -6, -7, -8, [10, -9]],
-      [3, [-5, 4], -6, -7, [[-10, 1], [-8, 9]], 2], FlexRotation.None) as Flex;
+      [[2, -1], 3, 4, [[7, -8], [5, -6]], -9, -10],
+      [[2, [-9, [-1, 10]]], 3, 4, 5, [-7, 6], -8], FlexRotation.None) as Flex;
     flexes["St"] = makeFlex("silver tetra flex",
       [[1, [2, 3]], 4, 5, 6, [7, [8, 9]], 10],
       [2, [[-1, 4], -3], 5, 6, 8, [[-7, 10], -9]], FlexRotation.None) as Flex;
@@ -335,27 +335,27 @@ namespace Flexagonator {
 
   // you first open it up to make a mobius strip before completing a flip flex
   function createMobiusFlip(patCount: number): Flex {
-    // (1) (-5(2(4,-3))) (-6) ... (i) ... (^n-2) (n,^n-1)
-    // (3) (-5,4) (-6) ... (i) ... ((^n,1)(^n-2,n-1)) (2)
+    // (2,-1) ... (i) ... ((n-3,^n-2)(n-5,^n-4)) (^n-1) (^n)
+    // (2(^n-1(-1,n))) ... (i) ... (^n-3,n-4) (^n-2)
     const pattern: LeafTree = [];
     const output: LeafTree = [];
     const leaves = patCount + 4;
 
-    pattern.push(1);
-    pattern.push([-5, [2, [4, -3]]]);
-    for (let i = 6; i <= leaves - 2; i++) {
-      pattern.push(-i);
+    pattern.push([2, -1]);
+    for (let i = 3; i <= leaves - 6; i++) {
+      pattern.push(i);
     }
-    pattern.push([leaves, 1 - leaves]);
+    pattern.push([[leaves - 3, 2 - leaves], [leaves - 5, 4 - leaves]]);
+    pattern.push(1 - leaves);
+    pattern.push(-leaves);
 
     // post
-    output.push(3);
-    output.push([-5, 4]);
-    for (let i = 6; i <= leaves - 3; i++) {
-      output.push(-i);
+    output.push([2, [1 - leaves, [-1, leaves]]]);
+    for (let i = 3; i <= leaves - 5; i++) {
+      output.push(i);
     }
-    output.push([[-leaves, 1], [2 - leaves, leaves - 1]]);
-    output.push(2);
+    output.push([3 - leaves, leaves - 4]);
+    output.push(2 - leaves);
 
     return makeFlex("mobius flip", pattern, output, FlexRotation.None) as Flex;
   }
