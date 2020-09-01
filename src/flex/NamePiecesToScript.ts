@@ -98,7 +98,7 @@ namespace Flexagonator {
     // rings with a hole in the middle
     if (overallShape.endsWith('ring') && sides !== null) {
       // e.g. octagonal ring dodecaflexagon
-      if (sides >= 8 && sides === 2 * n / 3) {
+      if (sides >= 6 && sides === 2 * n / 3) {
         return computeRing1Script(n);
       } if (sides === 6 && n === 18) {
         // hexagonal ring octadecaflexagon is special because the pattern would suggest it should be dodecagonal
