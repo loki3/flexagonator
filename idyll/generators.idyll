@@ -210,10 +210,10 @@ Flexes to try: `^`, `>`, `<`, `P*`, `S*`, `F*`, `T*`, `T1*`, `V*`, `St*`, or `P+
 [var name:'runFullInit' value:false /]
 
 [Aside]
-[Button onClick:` fullPats=4; fullAngles=[60,60]; runFullInit=true; `]equilateral tetraflexagon[/Button] [br/]
+[Button onClick:` fullPats=4; fullAngles=[60,60]; runFullInit=true; `]regular tetraflexagon[/Button] [br/]
 [Button onClick:` fullPats=4; fullAngles=[90,45]; runFullInit=true; `]silver tetraflexagon[/Button] [br/]
 [Button onClick:` fullPats=5; fullAngles=undefined; runFullInit=true; `]pentaflexagon[/Button] [br/]
-[Button onClick:` fullPats=6; fullAngles=undefined; runFullInit=true; `]equilateral hexaflexagon[/Button] [br/]
+[Button onClick:` fullPats=6; fullAngles=undefined; runFullInit=true; `]regular hexaflexagon[/Button] [br/]
 [Button onClick:` fullPats=6; fullAngles=[60,30]; runFullInit=true; `]bronze hexaflexagon[/Button] [br/]
 [Button onClick:` fullPats=7; fullAngles=undefined; runFullInit=true; `]heptaflexagon[/Button] [br/]
 [Button onClick:` fullPats=8; fullAngles=undefined; runFullInit=true; `]isosceles octaflexagon[/Button] [br/]

@@ -40,7 +40,7 @@ Flexagons are interesting puzzles made from folding strips of paper.
 You can make them from a wide variety of polygons: various triangles, quadrilaterals, pentagons, and so on.
 Once assembled, you *flex* them, i.e. fold them in different ways, in order to find new faces and rearrange the polygons.
 
-The most common flexagons are made up of 6 equilateral triangles arranged in a hexagon; thus they're called *hexaflexagons*.
+The most common flexagons are made up of 6 regular triangles arranged in a hexagon; thus they're called *hexaflexagons*.
 And the most commonly described flex is the *pinch flex*, which can reveal previously hidden faces.
 But it's not obvious at first where to apply the pinch flex in order to find every face.
 
@@ -96,7 +96,7 @@ Here's the unfolded template for the 3-faced hexaflexagon.
 [Button onClick:` showFoldingHelp = !showFoldingHelp `]Show/hide folding instructions.[/Button]
 [Conditional if:` showFoldingHelp `]
   These instructions apply to all the triangle templates on this page.
-  [HowToFold result:"a hexagon consisting of 6 equilateral triangles"/]
+  [HowToFold result:"a hexagon consisting of 6 regular triangles"/]
 [/Conditional]
 
 
@@ -352,8 +352,8 @@ and 8-faced variation
 
 # Other triangles
 
-So far, all the flexagons we've looked at have 6 equilateral triangles per face,
-but there's no need to have exactly 6 per face, nor do we need to stick to equilateral triangles.
+So far, all the flexagons we've looked at have 6 regular triangles per face,
+but there's no need to have exactly 6 per face, nor do we need to stick to regular triangles.
 We can carry out the Tuckerman Traverse on a wide variety of triangle flexagons.
 However, this may mean that the flexagon doesn't always lie flat because the central angles may not add up to 360 degrees.
 The following video demonstrates what the pinch flex looks like on a silver octaflexagon.

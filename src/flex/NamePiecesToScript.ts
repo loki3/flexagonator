@@ -127,8 +127,8 @@ namespace Flexagonator {
       }
     }
 
-    // hexagonal equilateral triangle decaflexagon
-    if (sides === 6 && leafShape === 'equilateral triangle' && n === 10) {
+    // hexagonal regular decaflexagon
+    if (sides === 6 && leafShape === 'regular' && n === 10) {
       return { directions: repeat([true, true, false, true, true], 2) };
     }
     // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
@@ -206,7 +206,7 @@ namespace Flexagonator {
     // just leafShape by itself
     switch (leafShape) {
       case 'triangle':
-      case 'equilateral triangle':
+      case 'regular':
         return { angles: [60, 60] };
       case 'silver':
       case 'silver triangle':

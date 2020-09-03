@@ -317,7 +317,7 @@ Names must match the naming convention:
     * an adjective such as 'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal'
     * can sometimes be combined with `pat count` and/or `leaf shape` to set `angles` and possibly `directions`
 * `leaf shape`:
-    * one of 'triangle' | 'equilateral triangle' | 'isosceles' | 'right' | 'silver' | 'bronze'
+    * one of 'triangle' | 'regular' | 'isosceles' | 'right' | 'silver' | 'bronze'
     * defines the `angles` property, though the order of the three angles may vary based on the full flexagon name
     * can sometimes be combined with `pat count` to help pick the proper orientation of `angles`
 * `face count`

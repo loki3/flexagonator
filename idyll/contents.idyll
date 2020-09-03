@@ -27,7 +27,7 @@
   [div className:'subname'] Exploring the hidden sides of hexaflexagons [/div]
 [/a]
 
-* Introduces the *hexaflexagon*, with 6 equilateral triangles per face, and the *pinch flex*, a way of folding a flexagon to reveal previously hidden faces
+* Introduces the *hexaflexagon*, with 6 regular triangles per face, and the *pinch flex*, a way of folding a flexagon to reveal previously hidden faces
 * Let's you explore how to visit every face of a flexagon
 * Describes *flex notation*, which can be used to precisely describe a sequence of flexes
 * Introduces the *Tuckerman Traverse* as a technique for visiting every face of a flexagon using the pinch flex

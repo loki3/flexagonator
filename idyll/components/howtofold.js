@@ -6,7 +6,7 @@ const React = require('react');
  * props {
  *  hasBoth   true: big numbers are labels, smaller grey numbers are folding
  *            false: numbers are both labels & folding
- *  result    e.g. 'a hexagon consisting of 6 equilateral triangles'
+ *  result    e.g. 'a hexagon consisting of 6 regular triangles'
  * }
  */
 class HowToFold extends React.Component {

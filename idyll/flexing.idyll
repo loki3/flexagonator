@@ -70,7 +70,7 @@ Additionally, these names are often proceeded by a word that describes the shape
 [/Float]
 
 [Float position:'right']
-* equilateral: all sides equal
+* regular: all sides equal
 * silver: 45-45-90 triangle
 * bronze: 30-60-90 triangle
 * right: one angle is 90 degrees
@@ -86,7 +86,7 @@ not when using any of the myriad other possible flexes.
 
 # Pyramid shuffle
 
-Step through the images to see the pyramid shuffle on an equilateral hexaflexagon.
+Step through the images to see the pyramid shuffle on a regular hexaflexagon.
 The green circle on the first and last slides indicates where the *current vertex* starts and ends for the flex.
 
 [Aside]
@@ -101,7 +101,7 @@ The green circle on the first and last slides indicates where the *current verte
 [/Aside]
 
 [Slides width:320 height:240 pattern:'static/Sh/Sh*.jpg' start:1 end:17 /]
-// Video shows pyramid shuffle on an equilateral hexaflexagon and a pentaflexagon:
+// Video shows pyramid shuffle on a regular hexaflexagon and a pentaflexagon:
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:89, end:117, rel:0, modestbranding:1 }` /]
 
 [var name:'flexShuffle' value:'S+' /]
@@ -117,7 +117,7 @@ The green circle on the first and last slides indicates where the *current verte
 
 Here are some flexagons you can use to try the pyramid shuffle:
 [Button onClick:` patsShuffle=5; anglesShuffle=undefined; runInitShuffle=true; `]pentaflexagon[/Button],
-[Button onClick:` patsShuffle=6; anglesShuffle=undefined; runInitShuffle=true; `]equilateral hexaflexagon[/Button],
+[Button onClick:` patsShuffle=6; anglesShuffle=undefined; runInitShuffle=true; `]regular hexaflexagon[/Button],
 [Button onClick:` patsShuffle=6; anglesShuffle=[60,30]; runInitShuffle=true; `]bronze hexaflexagon #1[/Button],
 [Button onClick:` patsShuffle=6; anglesShuffle=[60,90]; runInitShuffle=true; `]bronze hexaflexagon #2[/Button],
 [Button onClick:` patsShuffle=7; anglesShuffle=undefined; runInitShuffle=true; `]heptaflexagon[/Button],
@@ -218,19 +218,19 @@ Here are some flexagons you can use to try the flip flex:
 
 # Tuck flex
 
-Step through the images to see a tuck flex on an equilateral hexaflexagon:
+Step through the images to see a tuck flex on a regular hexaflexagon:
 
 [Aside]
   The flex notation for the tuck flex is `T`.
   Or, to specify which additional flap needs to open, you can use `T1`, `T2`, etc.
 
   The *tuck flex* requires at least 6 leaves per face (i.e. a hexaflexagon).
-  It requires mild bending of the leaves on an equilateral hexaflexagon,
+  It requires mild bending of the leaves on a regular hexaflexagon,
   but no bending for most other flexagons.
 [/Aside]
 
 [Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]
-// Video shows a tuck flex on an equilateral hexaflexagon
+// Video shows a tuck flex on a regular hexaflexagon
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:65, end:77, rel:0, modestbranding:1 }` /]
 
 [var name:'flexTuck' value:'T+' /]
@@ -259,7 +259,7 @@ Step through the images to see a tuck flex on an equilateral hexaflexagon:
 [/Aside]
 
 Here are some flexagons you can use to try the tuck flex:
-[Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=undefined; runInitTuck=true; `]equilateral hexaflexagon[/Button],
+[Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=undefined; runInitTuck=true; `]regular hexaflexagon[/Button],
 [Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=[60,30]; runInitTuck=true; `]bronze hexaflexagon #1[/Button],
 [Button onClick:` flexTuck='T+'; patsTuck=6; anglesTuck=[60,90]; runInitTuck=true; `]bronze hexaflexagon #2[/Button],
 [Button onClick:` flexTuck='T1+'; patsTuck=7; anglesTuck=undefined; runInitTuck=true; `]heptaflexagon #1[/Button],
@@ -280,7 +280,7 @@ Here are some flexagons you can use to try the tuck flex:
 
 # V-Flex
 
-Step through the images to see the v-flex on an equilateral hexaflexagon:
+Step through the images to see the v-flex on a regular hexaflexagon:
 
 [Aside]
   The flex notation for the v-flex is `V`.
@@ -290,7 +290,7 @@ Step through the images to see the v-flex on an equilateral hexaflexagon:
 [/Aside]
 
 [Slides width:320 height:240 pattern:'static/V/V*.jpg' start:1 end:13 /]
-// Video shows the v-flex on an equilateral hexaflexagon
+// Video shows the v-flex on a regular hexaflexagon
 // [Youtube id:"F5cj3LL8pqE" width:500 height:300 options:`{ start:49, end:62, rel:0, modestbranding:1 }` /]
 
 [var name:'flexV' value:'V+' /]

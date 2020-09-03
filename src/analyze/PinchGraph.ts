@@ -46,7 +46,7 @@ namespace Flexagonator {
   }
 
   // stored in a skewed coordinate system that's easy to test
-  // e.g. (0,0),(1,0),(0,1) represents an equilateral triangle
+  // e.g. (0,0),(1,0),(0,1) represents a regular triangle
   export function createRawPinchGraph(flexes: string): Point[] | FlexError {
     const track = new TrackPinchGraph();
 

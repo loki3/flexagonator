@@ -17,7 +17,7 @@ namespace Flexagonator {
     readonly pats?: LeafTree[];
   }
 
-  // basic shapes, can also add modifiers such as 'equilateral' and 'ring'
+  // basic shapes, can also add modifiers such as 'regular' and 'ring'
   export type OverallShapeType =
     'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal' | 'heptagonal' | 'octagonal' | 'enneagonal' |
     'decagonal' | 'hendecagonal' | 'dodecagonal' |
@@ -25,7 +25,7 @@ namespace Flexagonator {
     'square' | 'rectanglular' | 'rhombic';
 
   // limited to various triangles because other shapes (like squares and pentagons) currently aren't supported
-  export type LeafShapeType = 'triangle' | 'equilateral triangle' | 'isosceles' | 'isosceles triangle'
+  export type LeafShapeType = 'triangle' | 'regular' | 'isosceles' | 'isosceles triangle'
     | 'right' | 'right triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle';
 
   // greek number prefixes (simplified) - see https://en.wikipedia.org/wiki/List_of_polygons#List_of_n-gons_by_Greek_numerical_prefixes
