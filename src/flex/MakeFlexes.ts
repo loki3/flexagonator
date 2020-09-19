@@ -4,6 +4,19 @@ namespace Flexagonator {
     [index: string]: Flex;
   }
 
+  export function combineFlexes(f1: Flexes, f2: Flexes): Flexes {
+    let flexes: Flexes = {};
+    const keys1 = Object.getOwnPropertyNames(f1);
+    for (let key of keys1) {
+      flexes[key] = f1[key];
+    }
+    const keys2 = Object.getOwnPropertyNames(f2);
+    for (let key of keys2) {
+      flexes[key] = f2[key];
+    }
+    return flexes;
+  }
+
   export function makeAllFlexes(patCount: number): Flexes {
     let flexes: Flexes = {};
     if (patCount === 6) {
