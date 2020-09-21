@@ -1,5 +1,4 @@
 namespace Flexagonator {
-  // matchPattern(pattern: LeafTree): Pat[] | PatternError;
 
   /**
    * match an AtomicPattern against an input pattern, extracting out the matches
@@ -9,31 +8,23 @@ namespace Flexagonator {
       return { atomicPatternError: "NotEnoughPats" };
     }
 
-    // find matches on left side & right side, then combine results
-    let leftMatches: Pat[] = [];
-    if (input.left !== null && pattern.left !== null) {
-      const matches = matchOneSide(input.left, input.otherLeft, pattern.left, pattern.otherLeft);
-      if (isAtomicPatternError(matches)) {
-        return matches;
-      }
-      leftMatches = matches;
+    const matches = findMatches(input.left, input.right, pattern.left, pattern.right);
+    if (isAtomicPatternError(matches)) {
+      return matches;
     }
-    let rightMatches: Pat[] = [];
-    if (input.right !== null && pattern.right !== null) {
-      const matches = matchOneSide(input.right, input.otherRight, pattern.right, pattern.otherRight);
-      if (isAtomicPatternError(matches)) {
-        return matches;
-      }
-      rightMatches = matches;
-    }
-    const matches = combineMatches([leftMatches, rightMatches]);
-    return { matches };
+    return { matches, otherLeft: 'a', otherRight: 'b' };
   }
 
   /** details about how an atomic pattern matched */
   export interface AtomicMatches {
     /** an array where the index is the pattern number from the input and the item is the matching pat structure */
     readonly matches: Pat[];
+    /** stuff to the left that's not relevant */
+    readonly otherLeft: Remainder;
+    readonly patsLeft?: ConnectedPats;
+    /** stuff to the right that's not relevant */
+    readonly otherRight: Remainder;
+    readonly patsRight?: ConnectedPats;
   }
 
   /** explanation of a problem detected by matchAtomicPattern */
@@ -55,8 +46,31 @@ namespace Flexagonator {
     return (result !== null) && (result as AtomicPatternError).atomicPatternError !== undefined;
   }
 
-  /** find matches from a list of pats & a remainder */
-  function matchOneSide(inPats: ConnectedPats, inOther: Remainder, patternPats: ConnectedPats, patternOther: Remainder): Pat[] | AtomicPatternError {
+  /** find matches on left side & right side, then combine results */
+  function findMatches(
+    inLeft: ConnectedPats | null, inRight: ConnectedPats | null, patternLeft: ConnectedPats | null, patternRight: ConnectedPats | null
+  ): Pat[] | AtomicPatternError {
+    let leftMatches: Pat[] = [];
+    if (inLeft !== null && patternLeft !== null) {
+      const matches = matchOneSide(inLeft, patternLeft);
+      if (isAtomicPatternError(matches)) {
+        return matches;
+      }
+      leftMatches = matches;
+    }
+    let rightMatches: Pat[] = [];
+    if (inRight !== null && patternRight !== null) {
+      const matches = matchOneSide(inRight, patternRight);
+      if (isAtomicPatternError(matches)) {
+        return matches;
+      }
+      rightMatches = matches;
+    }
+    return combineMatches([leftMatches, rightMatches]);
+  }
+
+  /** find matches from a list of pats */
+  function matchOneSide(inPats: ConnectedPats, patternPats: ConnectedPats): Pat[] | AtomicPatternError {
     const all = patternPats.map((p, i) => matchOnePat(inPats[i], p));
     // any errors?
     const errors = all.filter(e => isAtomicPatternError(e));

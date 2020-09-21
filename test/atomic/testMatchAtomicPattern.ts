@@ -26,6 +26,10 @@ namespace Flexagonator {
       expect(matches[2].getString()).toBe("-3");
       expect(matches[3].getString()).toBe("4");
       expect(matches[4].getString()).toBe("[6,-5]");
+      expect(result.otherLeft).toBe('a');
+      expect(result.patsLeft).toBeUndefined();
+      expect(result.otherRight).toBe('b');
+      expect(result.patsRight).toBeUndefined();
     });
 
     it("should complain if substructure doesn't match", () => {
