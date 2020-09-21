@@ -27,6 +27,9 @@ namespace Flexagonator {
   export type ConnectedPats = ReadonlyArray<ConnectedPat>;
 
 
+  export function getPatsCount(chunk: ConnectedPats | null | undefined): number {
+    return (chunk === null || chunk === undefined) ? 0 : chunk.length;
+  }
   export function getLeafCount(pats: ConnectedPats | null): number {
     if (pats === null) {
       return 0;
