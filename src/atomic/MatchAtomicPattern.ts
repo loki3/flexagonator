@@ -104,17 +104,45 @@ namespace Flexagonator {
     return combined;
   }
 
-  /** collect all the leftovers not matched by the patterns */
+  /** collect all the leftovers not matched by the patterns, flip & swap as necessary */
   function findLeftovers(input: AtomicPattern, pattern: AtomicPattern): AtomicMatches | AtomicPatternError {
     const [iol, ior] = [input.otherLeft, input.otherRight];
     const [pol, por] = [pattern.otherLeft, pattern.otherRight];
-    let otherLeft = pol === 'a' ? iol : pol === '-a' ? flip(iol) : pol === 'b' ? ior : pol === '-b' ? flip(ior) : 'a';
-    let otherRight = por === 'a' ? iol : por === '-a' ? flip(iol) : por === 'b' ? ior : por === '-b' ? flip(ior) : 'a';
-    return { matches: [], otherLeft, otherRight };
+    const ipl = getLeftoverPats(input.left, pattern.left);
+    const ipr = getLeftoverPats(input.right, pattern.right);
+    let otherLeft: Remainder = 'a', otherRight: Remainder = 'a';
+    let patsLeft: ConnectedPats | undefined = undefined, patsRight: ConnectedPats | undefined = undefined;
+    if (pol === 'a' || pol === '-a') {
+      // left & right match between input & pattern
+      otherLeft = pol === 'a' ? iol : flipRemainder(iol);
+      patsLeft = pol === 'a' ? ipl : flipConnectedPats(ipl);
+      otherRight = por === 'b' ? ior : flipRemainder(ior);
+      patsRight = por === 'b' ? ipr : flipConnectedPats(ipr);
+    } else {
+      // swap left & right
+      otherLeft = pol === 'b' ? ior : flipRemainder(ior);
+      patsLeft = pol === 'b' ? ipr : flipConnectedPats(ipr);
+      otherRight = por === 'a' ? iol : flipRemainder(iol);
+      patsRight = por === 'a' ? ipl : flipConnectedPats(ipl);
+    }
+    return { matches: [], otherLeft, patsLeft, otherRight, patsRight };
   }
 
-  function flip(r: Remainder): Remainder {
+  function getLeftoverPats(input: ConnectedPats | null, pattern: ConnectedPats | null): ConnectedPats | undefined {
+    if (input === null || pattern === null || input.length <= pattern.length) {
+      return undefined;
+    }
+    return input.slice(pattern.length);
+  }
+
+  function flipRemainder(r: Remainder): Remainder {
     return (r[0] === '-' ? r[1] : '-' + r) as Remainder;
+  }
+  function flipConnectedPats(cp?: ConnectedPats): ConnectedPats | undefined {
+    if (cp === undefined) {
+      return undefined;
+    }
+    return cp.map(p => { return { pat: p.pat.makeFlipped(), direction: p.direction } });
   }
 
 }

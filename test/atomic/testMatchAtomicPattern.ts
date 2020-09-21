@@ -47,7 +47,6 @@ namespace Flexagonator {
       expect(result.patsRight).toBeUndefined();
     });
 
-    /*
     it("should find remainder not matched by pats", () => {
       const pats = stringToAtomicPattern("a 1 > [2,-3] < 4 > / 5 < 6 > [-7,8] < b") as AtomicPattern;
       const pattern = stringToAtomicPattern("a 1 > / 2 < b") as AtomicPattern;
@@ -58,11 +57,59 @@ namespace Flexagonator {
       }
 
       expect(result.otherLeft).toBe('a');
-      expect(result.patsLeft ? result.patsLeft.length : 0).toBe(2);
+      if (!result.patsLeft) {
+        fail('should have gotten patsLeft');
+      } else {
+        expect(result.patsLeft.length).toBe(2);
+        // they go backwards because they flow from / outward
+        expect(result.patsLeft[0].pat.getString()).toBe('[2,-3]');
+        expect(result.patsLeft[0].direction).toBe('<');
+        expect(result.patsLeft[1].pat.getString()).toBe('1');
+        expect(result.patsLeft[1].direction).toBe('>');
+      }
       expect(result.otherRight).toBe('b');
-      expect(result.patsRight ? result.patsRight.length : 0).toBe(2);
+      if (!result.patsRight) {
+        fail('should have gotten patsRight');
+      } else {
+        expect(result.patsRight.length).toBe(2);
+        expect(result.patsRight[0].pat.getString()).toBe('6');
+        expect(result.patsRight[0].direction).toBe('>');
+        expect(result.patsRight[1].pat.getString()).toBe('[-7,8]');
+        expect(result.patsRight[1].direction).toBe('<');
+      }
     });
-    */
+
+    it("should find remainder not matched by pats & swap when needed", () => {
+      const pats = stringToAtomicPattern("a 1 > [2,-3] < 4 > / 5 < 6 > [-7,8] < b") as AtomicPattern;
+      const pattern = stringToAtomicPattern("-b 1 > / 2 < -a") as AtomicPattern;
+      const result = matchAtomicPattern(pats, pattern);
+      if (isAtomicPatternError(result)) {
+        fail("should have matched: " + JSON.stringify(result));
+        return;
+      }
+
+      expect(result.otherLeft).toBe('-b');
+      if (!result.patsLeft) {
+        fail('should have gotten patsLeft');
+      } else {
+        expect(result.patsLeft.length).toBe(2);
+        expect(result.patsLeft[0].pat.getString()).toBe('-6');
+        expect(result.patsLeft[0].direction).toBe('>');
+        expect(result.patsLeft[1].pat.getString()).toBe('[-8,7]');
+        expect(result.patsLeft[1].direction).toBe('<');
+      }
+      expect(result.otherRight).toBe('-a');
+      if (!result.patsRight) {
+        fail('should have gotten patsRight');
+      } else {
+        expect(result.patsRight.length).toBe(2);
+        // they go backwards because they flow from / outward
+        expect(result.patsRight[0].pat.getString()).toBe('[3,-2]');
+        expect(result.patsRight[0].direction).toBe('<');
+        expect(result.patsRight[1].pat.getString()).toBe('-1');
+        expect(result.patsRight[1].direction).toBe('>');
+      }
+    });
 
     it("should complain if substructure doesn't match", () => {
       const pats = stringToAtomicPattern("a 1 < / 4 > b") as AtomicPattern;
