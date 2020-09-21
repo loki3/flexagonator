@@ -32,7 +32,7 @@ namespace Flexagonator {
       expect(result.patsRight).toBeUndefined();
     });
 
-    it("should flip the ends", () => {
+    it("should flip the ends when simple", () => {
       const pats = stringToAtomicPattern("a / -b") as AtomicPattern;
       const pattern = stringToAtomicPattern("-b / -a") as AtomicPattern;
       const result = matchAtomicPattern(pats, pattern);
@@ -46,6 +46,23 @@ namespace Flexagonator {
       expect(result.otherRight).toBe('-a');
       expect(result.patsRight).toBeUndefined();
     });
+
+    /*
+    it("should find remainder not matched by pats", () => {
+      const pats = stringToAtomicPattern("a 1 > [2,-3] < 4 > / 5 < 6 > [-7,8] < b") as AtomicPattern;
+      const pattern = stringToAtomicPattern("a 1 > / 2 < b") as AtomicPattern;
+      const result = matchAtomicPattern(pats, pattern);
+      if (isAtomicPatternError(result)) {
+        fail("should have matched: " + JSON.stringify(result));
+        return;
+      }
+
+      expect(result.otherLeft).toBe('a');
+      expect(result.patsLeft ? result.patsLeft.length : 0).toBe(2);
+      expect(result.otherRight).toBe('b');
+      expect(result.patsRight ? result.patsRight.length : 0).toBe(2);
+    });
+    */
 
     it("should complain if substructure doesn't match", () => {
       const pats = stringToAtomicPattern("a 1 < / 4 > b") as AtomicPattern;
