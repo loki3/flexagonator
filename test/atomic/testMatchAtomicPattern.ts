@@ -32,6 +32,21 @@ namespace Flexagonator {
       expect(result.patsRight).toBeUndefined();
     });
 
+    it("should flip the ends", () => {
+      const pats = stringToAtomicPattern("a / -b") as AtomicPattern;
+      const pattern = stringToAtomicPattern("-b / -a") as AtomicPattern;
+      const result = matchAtomicPattern(pats, pattern);
+      if (isAtomicPatternError(result)) {
+        fail("should have matched: " + JSON.stringify(result));
+        return;
+      }
+
+      expect(result.otherLeft).toBe('b');
+      expect(result.patsLeft).toBeUndefined();
+      expect(result.otherRight).toBe('-a');
+      expect(result.patsRight).toBeUndefined();
+    });
+
     it("should complain if substructure doesn't match", () => {
       const pats = stringToAtomicPattern("a 1 < / 4 > b") as AtomicPattern;
       const pattern = stringToAtomicPattern("a 1 < / [-3,-4] > b") as AtomicPattern;

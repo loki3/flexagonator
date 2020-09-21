@@ -12,7 +12,11 @@ namespace Flexagonator {
     if (isAtomicPatternError(matches)) {
       return matches;
     }
-    return { matches, otherLeft: 'a', otherRight: 'b' };
+    const leftover = findLeftovers(input, pattern);
+    if (isAtomicPatternError(leftover)) {
+      return leftover;
+    }
+    return { ...leftover, matches };
   }
 
   /** details about how an atomic pattern matched */
@@ -98,6 +102,19 @@ namespace Flexagonator {
     const combined: Pat[] = [];
     all.map(pats => pats.map((p, i) => combined[i] = p));
     return combined;
+  }
+
+  /** collect all the leftovers not matched by the patterns */
+  function findLeftovers(input: AtomicPattern, pattern: AtomicPattern): AtomicMatches | AtomicPatternError {
+    const [iol, ior] = [input.otherLeft, input.otherRight];
+    const [pol, por] = [pattern.otherLeft, pattern.otherRight];
+    let otherLeft = pol === 'a' ? iol : pol === '-a' ? flip(iol) : pol === 'b' ? ior : pol === '-b' ? flip(ior) : 'a';
+    let otherRight = por === 'a' ? iol : por === '-a' ? flip(iol) : por === 'b' ? ior : por === '-b' ? flip(ior) : 'a';
+    return { matches: [], otherLeft, otherRight };
+  }
+
+  function flip(r: Remainder): Remainder {
+    return (r[0] === '-' ? r[1] : '-' + r) as Remainder;
   }
 
 }
