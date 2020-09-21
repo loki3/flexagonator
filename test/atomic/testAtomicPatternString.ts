@@ -6,7 +6,8 @@ namespace Flexagonator {
         otherLeft: 'a',
         left: null,
         right: null,
-        otherRight: '-b'
+        otherRight: '-b',
+        singleLeaf: true
       };
       const s = atomicPatternToString(pattern);
       expect(s).toBe('a / -b');
@@ -17,7 +18,8 @@ namespace Flexagonator {
         otherLeft: '-a',
         left: [{ pat: makePat([1, -2]) as Pat, direction: '>' }],
         right: [{ pat: makePat(-3) as Pat, direction: '<' }],
-        otherRight: 'b'
+        otherRight: 'b',
+        singleLeaf: false
       };
       const s = atomicPatternToString(pattern);
       expect(s).toBe('-a [1,-2] > / -3 < b');
@@ -28,7 +30,8 @@ namespace Flexagonator {
         otherLeft: 'a',
         left: [{ pat: makePat([1, -2]) as Pat, direction: '>' }, { pat: makePat(-3) as Pat, direction: '<' }],
         right: [{ pat: makePat(4) as Pat, direction: '<' }, { pat: makePat([5, [6, -7]]) as Pat, direction: '<' }],
-        otherRight: '-b'
+        otherRight: '-b',
+        singleLeaf: false
       };
       const s = atomicPatternToString(pattern);
       expect(s).toBe('a -3 < [1,-2] > / 4 < [5,[6,-7]] < -b');

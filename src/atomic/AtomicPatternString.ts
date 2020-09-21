@@ -31,7 +31,9 @@ namespace Flexagonator {
       return { atomicParseCode: right.atomicParseCode, input: s, context: right.input };
     }
 
-    return { otherLeft: left[0], left: left[1], right: right[1], otherRight: right[0] };
+    const ignoreDirection = (getLeafCount(left[1]) + getLeafCount(right[1])) <= 1;
+
+    return { otherLeft: left[0], left: left[1], right: right[1], otherRight: right[0], singleLeaf: ignoreDirection };
   }
 
   export interface AtomicParseError {

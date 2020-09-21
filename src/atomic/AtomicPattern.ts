@@ -12,6 +12,8 @@ namespace Flexagonator {
     readonly right: ConnectedPats | null;
     /** pats to the right of the relevant pats */
     readonly otherRight: Remainder;
+    /** if there's only a single leaf, ignore direction in connected pats */
+    readonly singleLeaf: boolean;
   }
 
   /** a label (a or b) and (un)flipped for the pats not relevant for an AtomicPattern */

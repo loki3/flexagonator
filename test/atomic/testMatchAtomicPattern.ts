@@ -32,6 +32,19 @@ namespace Flexagonator {
       expect(result.patsRight).toBeUndefined();
     });
 
+    it("should ignore direction when pattern only has a single leaf", () => {
+      const pats = stringToAtomicPattern("a [1,-2] > -3 < / [-4,[5,-6]] > b") as AtomicPattern;
+      const pattern = stringToAtomicPattern("a 1 / b") as AtomicPattern;
+      const result = matchAtomicPattern(pats, pattern);
+      if (isAtomicPatternError(result)) {
+        fail("should have matched: " + JSON.stringify(result));
+        return;
+      }
+
+      const matches = result.matches;
+      expect(matches[1].getString()).toBe("-3");
+    });
+
     it("should flip the ends when simple", () => {
       const pats = stringToAtomicPattern("a / -b") as AtomicPattern;
       const pattern = stringToAtomicPattern("-b / -a") as AtomicPattern;

@@ -8,7 +8,7 @@ namespace Flexagonator {
       return { atomicPatternError: "NotEnoughPats" };
     }
 
-    const matches = findMatches(input.left, input.right, pattern.left, pattern.right);
+    const matches = findMatches(input.left, input.right, pattern.left, pattern.right, pattern.singleLeaf);
     if (isAtomicPatternError(matches)) {
       return matches;
     }
@@ -52,11 +52,13 @@ namespace Flexagonator {
 
   /** find matches on left side & right side, then combine results */
   function findMatches(
-    inLeft: ConnectedPats | null, inRight: ConnectedPats | null, patternLeft: ConnectedPats | null, patternRight: ConnectedPats | null
+    inLeft: ConnectedPats | null, inRight: ConnectedPats | null,
+    patternLeft: ConnectedPats | null, patternRight: ConnectedPats | null,
+    ignoreDirection: boolean
   ): Pat[] | AtomicPatternError {
     let leftMatches: Pat[] = [];
     if (inLeft !== null && patternLeft !== null) {
-      const matches = matchOneSide(inLeft, patternLeft);
+      const matches = matchOneSide(inLeft, patternLeft, ignoreDirection);
       if (isAtomicPatternError(matches)) {
         return matches;
       }
@@ -64,7 +66,7 @@ namespace Flexagonator {
     }
     let rightMatches: Pat[] = [];
     if (inRight !== null && patternRight !== null) {
-      const matches = matchOneSide(inRight, patternRight);
+      const matches = matchOneSide(inRight, patternRight, ignoreDirection);
       if (isAtomicPatternError(matches)) {
         return matches;
       }
@@ -74,8 +76,8 @@ namespace Flexagonator {
   }
 
   /** find matches from a list of pats */
-  function matchOneSide(inPats: ConnectedPats, patternPats: ConnectedPats): Pat[] | AtomicPatternError {
-    const all = patternPats.map((p, i) => matchOnePat(inPats[i], p));
+  function matchOneSide(inPats: ConnectedPats, patternPats: ConnectedPats, ignoreDirection: boolean): Pat[] | AtomicPatternError {
+    const all = patternPats.map((p, i) => matchOnePat(inPats[i], p, ignoreDirection));
     // any errors?
     const errors = all.filter(e => isAtomicPatternError(e));
     if (errors.length > 0) {
@@ -87,8 +89,8 @@ namespace Flexagonator {
   }
 
   /** extract out the matches in a single pat */
-  function matchOnePat(input: ConnectedPat, pattern: ConnectedPat): Pat[] | AtomicPatternError {
-    if (input.direction !== pattern.direction) {
+  function matchOnePat(input: ConnectedPat, pattern: ConnectedPat, ignoreDirection: boolean): Pat[] | AtomicPatternError {
+    if (input.direction !== pattern.direction && !ignoreDirection) {
       return { atomicPatternError: "DirectionMismatch", expectedConnected: pattern, actualConnected: input };
     }
     const matches = input.pat.matchPattern(pattern.pat.getAsLeafTree());
