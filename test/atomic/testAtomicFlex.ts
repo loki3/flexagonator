@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   describe('AtomicFlex.apply', () => {
     it("should apply a simple flex", () => {
-      const flex = makeAtomicFlex({ shorthand: 'X', name: 'X', input: 'a 1 > / [-3,2] < b', output: 'a 1 > 2 < / 3 < b' }) as AtomicFlex;
+      const flex = makeAtomicFlex('X', 'a 1 > / [-3,2] < b', 'a 1 > 2 < / 3 < b') as AtomicFlex;
       const input = stringToAtomicPattern('a 1 > 2 > / [4,3] < 5 < b') as AtomicPattern;
       const result = flex.apply(input);
       if (isAtomicPatternError(result)) {
@@ -14,7 +14,7 @@ namespace Flexagonator {
     });
 
     it("should be able to turn over the flexagon", () => {
-      const flex = makeAtomicFlex({ shorthand: '^', name: '^', input: 'a / b', output: '-b / -a' }) as AtomicFlex;
+      const flex = makeAtomicFlex('^', 'a / b', '-b / -a') as AtomicFlex;
       const input = stringToAtomicPattern('a 1 > 2 < / [4,3] < 5 < b') as AtomicPattern;
       const result = flex.apply(input);
       if (isAtomicPatternError(result)) {
@@ -26,7 +26,7 @@ namespace Flexagonator {
     });
 
     it("should shift current hinge", () => {
-      const toRight = makeAtomicFlex({ shorthand: '>', name: '>', input: 'a / 1 b', output: 'a 1 / b' }) as AtomicFlex;
+      const toRight = makeAtomicFlex('>', 'a / 1 b', 'a 1 / b') as AtomicFlex;
       const input = stringToAtomicPattern('a 1 > 2 < / 3 > 4 < b') as AtomicPattern;
       const result = toRight.apply(input);
       if (isAtomicPatternError(result)) {

@@ -8,16 +8,16 @@ namespace Flexagonator {
     readonly output: string; // AtomicPattern
   }
 
-  export function makeAtomicFlex(def: AtomicFlexDef): AtomicFlex | AtomicParseError {
-    const input = stringToAtomicPattern(def.input);
+  export function makeAtomicFlex(name: string, inPattern: string, outPattern: string): AtomicFlex | AtomicParseError {
+    const input = stringToAtomicPattern(inPattern);
     if (isAtomicParseError(input)) {
       return input;
     }
-    const output = stringToAtomicPattern(def.output);
+    const output = stringToAtomicPattern(outPattern);
     if (isAtomicParseError(output)) {
       return output;
     }
-    return new AtomicFlex(def.name, input, output);
+    return new AtomicFlex(name, input, output);
   }
 
   /** info about how to apply a flex that uses AtomicPattern */
