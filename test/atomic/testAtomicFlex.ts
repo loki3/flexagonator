@@ -25,16 +25,28 @@ namespace Flexagonator {
       expect(asString).toBe('-b -5 < [-3,-4] < / -2 < -1 > -a');
     });
 
-    it("should shift current hinge", () => {
-      const toRight = makeAtomicFlex('>', 'a / 1 b', 'a 1 / b') as AtomicFlex;
+    it("should shift current hinge right", () => {
+      const flex = makeAtomicFlex('>', 'a / 1 b', 'a 1 / b') as AtomicFlex;
       const input = stringToAtomicPattern('a 1 > 2 < / 3 > 4 < b') as AtomicPattern;
-      const result = toRight.apply(input);
+      const result = flex.apply(input);
       if (isAtomicPatternError(result)) {
         fail('failed to apply flex: ' + JSON.stringify(result));
         return;
       }
       const asString = atomicPatternToString(result);
       expect(asString).toBe('a 1 > 2 < 3 > / 4 < b');
+    });
+
+    it("should shift current hinge left", () => {
+      const flex = makeAtomicFlex('<', 'a 1 / b', 'a / 1 b') as AtomicFlex;
+      const input = stringToAtomicPattern('-a [-1,2] > / 3 > -b') as AtomicPattern;
+      const result = flex.apply(input);
+      if (isAtomicPatternError(result)) {
+        fail('failed to apply flex: ' + JSON.stringify(result));
+        return;
+      }
+      const asString = atomicPatternToString(result);
+      expect(asString).toBe('-a / [-1,2] > 3 > -b');
     });
   });
 }

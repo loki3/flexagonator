@@ -86,6 +86,6 @@ namespace Flexagonator {
   }
 
   export function isFlexError(result: any): result is FlexError {
-    return (result as FlexError).reason !== undefined;
+    return result !== null && (result as FlexError).reason !== undefined;
   }
 }
