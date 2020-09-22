@@ -92,6 +92,33 @@ namespace Flexagonator {
       }
     });
 
+    it("should store remainders when no pats to match", () => {
+      const pats = stringToAtomicPattern("a 1 > / 2 < b") as AtomicPattern;
+      const pattern = stringToAtomicPattern("a / b") as AtomicPattern;
+      const result = matchAtomicPattern(pats, pattern);
+      if (isAtomicPatternError(result)) {
+        fail("should have matched: " + JSON.stringify(result));
+        return;
+      }
+
+      expect(result.otherLeft).toBe('a');
+      if (!result.patsLeft) {
+        fail('should have gotten patsLeft');
+      } else {
+        expect(result.patsLeft.length).toBe(1);
+        expect(result.patsLeft[0].pat.getString()).toBe('1');
+        expect(result.patsLeft[0].direction).toBe('>');
+      }
+      expect(result.otherRight).toBe('b');
+      if (!result.patsRight) {
+        fail('should have gotten patsRight');
+      } else {
+        expect(result.patsRight.length).toBe(1);
+        expect(result.patsRight[0].pat.getString()).toBe('2');
+        expect(result.patsRight[0].direction).toBe('<');
+      }
+    });
+
     it("should find remainder not matched by pats & swap when needed", () => {
       const pats = stringToAtomicPattern("a 1 > [2,-3] < 4 > / 5 < 6 > [-7,8] < b") as AtomicPattern;
       const pattern = stringToAtomicPattern("-b 1 > / 2 < -a") as AtomicPattern;

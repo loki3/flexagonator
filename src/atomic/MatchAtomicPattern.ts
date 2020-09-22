@@ -131,20 +131,13 @@ namespace Flexagonator {
   }
 
   function getLeftoverPats(input: ConnectedPats | null, pattern: ConnectedPats | null): ConnectedPats | undefined {
-    if (input === null || pattern === null || input.length <= pattern.length) {
+    if (pattern === null) {
+      return input === null ? undefined : input;
+    }
+    if (input === null || input.length <= pattern.length) {
       return undefined;
     }
     return input.slice(pattern.length);
-  }
-
-  function flipRemainder(r: Remainder): Remainder {
-    return (r[0] === '-' ? r[1] : '-' + r) as Remainder;
-  }
-  function flipConnectedPats(cp?: ConnectedPats): ConnectedPats | undefined {
-    if (cp === undefined) {
-      return undefined;
-    }
-    return cp.map(p => { return { pat: p.pat.makeFlipped(), direction: p.direction } });
   }
 
 }

@@ -38,4 +38,15 @@ namespace Flexagonator {
     }
     return pats.reduce((total, pat) => total + pat.pat.getLeafCount(), 0);
   }
+
+  export function flipRemainder(r: Remainder): Remainder {
+    return (r[0] === '-' ? r[1] : '-' + r) as Remainder;
+  }
+  export function flipConnectedPats(cp?: ConnectedPats): ConnectedPats | undefined {
+    if (cp === undefined) {
+      return undefined;
+    }
+    return cp.map(p => { return { pat: p.pat.makeFlipped(), direction: p.direction } });
+  }
+
 }
