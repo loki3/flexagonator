@@ -45,14 +45,16 @@ namespace Flexagonator {
       console.log(JSON.stringify(this.output));
       */
 
-      const otherLeft = this.getRemainder(this.pattern.otherLeft, matches.otherLeft, matches.otherRight);
-      const otherRight = this.getRemainder(this.pattern.otherRight, matches.otherLeft, matches.otherRight);
+      const otherLeft = this.getRemainder(this.output.otherLeft, matches.otherLeft, matches.otherRight);
+      const otherRight = this.getRemainder(this.output.otherRight, matches.otherLeft, matches.otherRight);
 
-      const left = this.makePats(this.output.left, matches.matches, matches.patsLeft);
+      const moreLeft = this.getLeftoverPats(this.output.otherLeft, matches.patsLeft, matches.patsRight);
+      const left = this.makePats(this.output.left, matches.matches, moreLeft);
       if (isFlexError(left)) {
         return { atomicPatternError: "PatMismatch" };
       }
-      const right = this.makePats(this.output.right, matches.matches, matches.patsRight);
+      const moreRight = this.getLeftoverPats(this.output.otherRight, matches.patsLeft, matches.patsRight);
+      const right = this.makePats(this.output.right, matches.matches, moreRight);
       if (isFlexError(right)) {
         return { atomicPatternError: "PatMismatch" };
       }
@@ -102,9 +104,18 @@ namespace Flexagonator {
       return { reason: FlexCode.BadFlexOutput };
     }
 
-    /** match reaminder pattern */
-    private getRemainder(pattern: Remainder, left: Remainder, right: Remainder): Remainder {
-      switch (pattern) {
+    private getLeftoverPats(output: Remainder, left?: ConnectedPats, right?: ConnectedPats): ConnectedPats | undefined {
+      switch (output) {
+        case 'a': return left;
+        case '-a': return left ? flipConnectedPats(left) : undefined;
+        case 'b': return right;
+        case '-b': return right ? flipConnectedPats(right) : undefined;
+      }
+    }
+
+    /** match reaminder output */
+    private getRemainder(output: Remainder, left: Remainder, right: Remainder): Remainder {
+      switch (output) {
         case 'a': return left;
         case '-a': return flipRemainder(left);
         case 'b': return right;
