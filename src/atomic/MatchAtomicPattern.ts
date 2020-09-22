@@ -8,15 +8,16 @@ namespace Flexagonator {
       return { atomicPatternError: "NotEnoughPats" };
     }
 
-    const matches = findMatches(input.left, input.right, pattern.left, pattern.right, pattern.singleLeaf);
-    if (isAtomicPatternError(matches)) {
-      return matches;
+    const result = findMatches(input.left, input.right, pattern.left, pattern.right, pattern.singleLeaf);
+    if (isAtomicPatternError(result)) {
+      return result;
     }
+    const [matches, specialDirection] = result;
     const leftover = findLeftovers(input, pattern);
     if (isAtomicPatternError(leftover)) {
       return leftover;
     }
-    return { ...leftover, matches };
+    return { ...leftover, specialDirection, matches };
   }
 
   /** details about how an atomic pattern matched */
@@ -29,6 +30,8 @@ namespace Flexagonator {
     /** stuff to the right that's not relevant */
     readonly otherRight: Remainder;
     readonly patsRight?: ConnectedPats;
+    /** used in the special case of a single leaf pattern that ignores direction, because it's needed when creating output */
+    readonly specialDirection?: PatDirection;
   }
 
   /** explanation of a problem detected by matchAtomicPattern */
@@ -54,25 +57,32 @@ namespace Flexagonator {
   function findMatches(
     inLeft: ConnectedPats | null, inRight: ConnectedPats | null,
     patternLeft: ConnectedPats | null, patternRight: ConnectedPats | null,
-    ignoreDirection: boolean
-  ): Pat[] | AtomicPatternError {
+    singleLeaf: boolean
+  ): [Pat[], PatDirection | undefined] | AtomicPatternError {
     let leftMatches: Pat[] = [];
+    let direction: PatDirection | undefined;
     if (inLeft !== null && patternLeft !== null) {
-      const matches = matchOneSide(inLeft, patternLeft, ignoreDirection);
+      const matches = matchOneSide(inLeft, patternLeft, singleLeaf);
       if (isAtomicPatternError(matches)) {
         return matches;
       }
       leftMatches = matches;
+      if (singleLeaf) {
+        direction = inLeft[0].direction;
+      }
     }
     let rightMatches: Pat[] = [];
     if (inRight !== null && patternRight !== null) {
-      const matches = matchOneSide(inRight, patternRight, ignoreDirection);
+      const matches = matchOneSide(inRight, patternRight, singleLeaf);
       if (isAtomicPatternError(matches)) {
         return matches;
       }
       rightMatches = matches;
+      if (singleLeaf) {
+        direction = inRight[0].direction;
+      }
     }
-    return combineMatches([leftMatches, rightMatches]);
+    return [combineMatches([leftMatches, rightMatches]), direction];
   }
 
   /** find matches from a list of pats */

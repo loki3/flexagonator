@@ -39,22 +39,16 @@ namespace Flexagonator {
         return matches;
       }
 
-      /*
-      console.log('');
-      console.log(JSON.stringify(matches));
-      console.log(JSON.stringify(this.output));
-      */
-
       const otherLeft = this.getRemainder(this.output.otherLeft, matches.otherLeft, matches.otherRight);
       const otherRight = this.getRemainder(this.output.otherRight, matches.otherLeft, matches.otherRight);
 
       const moreLeft = this.getLeftoverPats(this.output.otherLeft, matches.patsLeft, matches.patsRight);
-      const left = this.makePats(this.output.left, matches.matches, moreLeft);
+      const left = this.makePats(this.output.left, matches.matches, moreLeft, matches.specialDirection);
       if (isFlexError(left)) {
         return { atomicPatternError: "PatMismatch" };
       }
       const moreRight = this.getLeftoverPats(this.output.otherRight, matches.patsLeft, matches.patsRight);
-      const right = this.makePats(this.output.right, matches.matches, moreRight);
+      const right = this.makePats(this.output.right, matches.matches, moreRight, matches.specialDirection);
       if (isFlexError(right)) {
         return { atomicPatternError: "PatMismatch" };
       }
@@ -63,7 +57,7 @@ namespace Flexagonator {
     }
 
     /** make a series of ConnectedPats by filling in 'output' with what's in 'matches' + 'more' */
-    private makePats(output: ConnectedPats | null, matches: Pat[], more?: ConnectedPats): ConnectedPats | null | FlexError {
+    private makePats(output: ConnectedPats | null, matches: Pat[], more?: ConnectedPats, direction?: PatDirection): ConnectedPats | null | FlexError {
       if (output === null && more === undefined) {
         return null;
       }
@@ -74,7 +68,9 @@ namespace Flexagonator {
           if (isFlexError(newPat)) {
             return newPat;
           }
-          newPats.push({ pat: newPat, direction: stack.direction });
+          // copy across the pat's direction except in the special case where the pattern only had a single leaf,
+          // in which case we use the source pat's direction
+          newPats.push({ pat: newPat, direction: direction ? direction : stack.direction });
         }
       }
       if (more) {

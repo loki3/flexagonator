@@ -25,8 +25,6 @@ namespace Flexagonator {
       expect(asString).toBe('-b -5 < [-3,-4] < / -2 < -1 > -a');
     });
 
-    /*
-    currently fails because it loses track of the direction of the matched pat, special case for single pat/ignore direction
     it("should shift current hinge", () => {
       const toRight = makeAtomicFlex({ shorthand: '>', name: '>', input: 'a / 1 b', output: 'a 1 / b' }) as AtomicFlex;
       const input = stringToAtomicPattern('a 1 > 2 < / 3 > 4 < b') as AtomicPattern;
@@ -38,6 +36,5 @@ namespace Flexagonator {
       const asString = atomicPatternToString(result);
       expect(asString).toBe('a 1 > 2 < 3 > / 4 < b');
     });
-    */
   });
 }
