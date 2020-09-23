@@ -42,12 +42,12 @@ namespace Flexagonator {
       const otherLeft = this.getRemainder(this.output.otherLeft, matches.otherLeft, matches.otherRight);
       const otherRight = this.getRemainder(this.output.otherRight, matches.otherLeft, matches.otherRight);
 
-      const moreLeft = this.getLeftoverPats(this.output.otherLeft, matches.patsLeft, matches.patsRight);
+      const moreLeft = this.getLeftoverPats(this.pattern.otherLeft, this.output.otherLeft, matches.patsLeft, matches.patsRight);
       const left = this.makePats(this.output.left, matches.matches, moreLeft, matches.specialDirection);
       if (isFlexError(left)) {
         return { atomicPatternError: "PatMismatch" };
       }
-      const moreRight = this.getLeftoverPats(this.output.otherRight, matches.patsLeft, matches.patsRight);
+      const moreRight = this.getLeftoverPats(this.pattern.otherRight, this.output.otherRight, matches.patsLeft, matches.patsRight);
       const right = this.makePats(this.output.right, matches.matches, moreRight, matches.specialDirection);
       if (isFlexError(right)) {
         return { atomicPatternError: "PatMismatch" };
@@ -100,13 +100,31 @@ namespace Flexagonator {
       return { reason: FlexCode.BadFlexOutput };
     }
 
-    private getLeftoverPats(output: Remainder, left?: ConnectedPats, right?: ConnectedPats): ConnectedPats | undefined {
+    private getLeftoverPats(pattern: Remainder, output: Remainder, left?: ConnectedPats, right?: ConnectedPats): ConnectedPats | undefined {
       switch (output) {
-        case 'a': return left;
-        case '-a': return left ? flipConnectedPats(left) : undefined;
-        case 'b': return right;
-        case '-b': return right ? flipConnectedPats(right) : undefined;
+        case 'a': return left ? this.checkReverse(pattern, output, left) : undefined;
+        case '-a': return left ? this.checkFlipAndReverse(pattern, output, left) : undefined;
+        case 'b': return right ? this.checkReverse(pattern, output, right) : undefined;
+        case '-b': return right ? this.checkFlipAndReverse(pattern, output, right) : undefined;
       }
+    }
+
+    // flip over pats & possibly reverse the pat directions if needed
+    private checkFlipAndReverse(pattern: Remainder, output: Remainder, pats?: ConnectedPats): ConnectedPats | undefined {
+      const flipped = flipConnectedPats(pats);
+      if (flipped === undefined) {
+        return undefined;
+      }
+      return this.checkReverse(pattern, output, flipped);
+    }
+    // if one side is being turned over, we need to flip the pat directions
+    private checkReverse(pattern: Remainder, output: Remainder, pats: ConnectedPats): ConnectedPats | undefined {
+      if ((pattern === 'a' && output === '-a') || (pattern === '-a' && output === 'a')
+        || (pattern === 'b' && output === '-b') || (pattern === '-b' && output === 'b')) {
+        // if flipping but not swapping sides (e.g. a=-a), then we need to reverse all the directions
+        return pats.map(p => { return { pat: p.pat, direction: (p.direction === '<' ? '>' : '<') as PatDirection } });
+      }
+      return pats;
     }
 
     /** match reaminder output */
