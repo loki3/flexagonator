@@ -13,6 +13,12 @@ namespace Flexagonator {
         "a 1 < 2 > / [-4,3] > -5 > -b");
     });
 
+    it("should compose to create the pinch flex", () => {
+      testFormula("P", "Ur > ^ Ur' ^ > > Ul > ^ Ul' ^ > > Ur > ^ Ur' ^",
+        "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > b",
+        "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
+    });
+
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
     function testFormula(name: string, flexes: string, input: string, output: string, log?: boolean): void {
       const inputPattern = stringToAtomicPattern(input);
