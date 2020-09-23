@@ -19,6 +19,12 @@ namespace Flexagonator {
         "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
     });
 
+    it("should compose to create the inner pivot", () => {
+      testFormula("Iv", "> Ul > Ul <<<< Ur' Ul' >>",
+        "a 1 < 2 > / 3 > [4,[6,-5]] < b",
+        "a [[-2,1],3] < 4 > / 5 > 6 < b");
+    });
+
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
     function testFormula(name: string, flexes: string, input: string, output: string, log?: boolean): void {
       const inputPattern = stringToAtomicPattern(input);
