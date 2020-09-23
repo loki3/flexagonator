@@ -2,19 +2,19 @@ namespace Flexagonator {
 
   describe('makeAtomicFlexes', () => {
     it("should compose to create the exchange flex", () => {
-      testFormula("Ex", "Ur > ^ Ur' ^",
+      testFormula("Ex", "Ur >^ Ur' ^",
         "a 1 > / [-3,2] > b",
         "-a [2,-1] > / 3 > -b");
     });
 
     it("should compose to create the pocket flex", () => {
-      testFormula("K", "Ur > ^ Ur' > Ul ^",
+      testFormula("K", "Ur >^ Ur' > Ul ^",
         "a [-2,1] > -3 > / [5,-4] > b",
         "a 1 < 2 > / [-4,3] > -5 > -b");
     });
 
     it("should compose to create the pinch flex", () => {
-      testFormula("P", "Ur > ^ Ur' ^ > > Ul > ^ Ul' ^ > > Ur > ^ Ur' ^",
+      testFormula("P", "Ur >^ Ur' ^>> Ul >^ Ul' ^>> Ur >^ Ur' ^",
         "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > b",
         "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
     });
@@ -42,9 +42,9 @@ namespace Flexagonator {
         console.log('\n---- applying flexes:', flexes, '------');
         console.log('\t\t', atomicPatternToString(input));
       }
-      const list = flexes.split(' ');
+      const list = parseFlexSequence(flexes);
       for (let flex of list) {
-        const result = atomics[flex].apply(input);
+        const result = atomics[flex.fullName].apply(input);
         if (isAtomicPatternError(result)) {
           return result;
         }
