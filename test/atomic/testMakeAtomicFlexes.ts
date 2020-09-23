@@ -50,7 +50,7 @@ namespace Flexagonator {
         }
         input = result;
         if (log) {
-          console.log('\t', flex, '\t', atomicPatternToString(input));
+          console.log('\t', flex.fullName, '\t', atomicPatternToString(input));
         }
       }
       return input;
