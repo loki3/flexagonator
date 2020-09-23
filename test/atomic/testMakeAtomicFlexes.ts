@@ -1,20 +1,29 @@
 namespace Flexagonator {
 
   describe('makeAtomicFlexes', () => {
-    it("should compose to create the exchange flex", () => {
-      testFormula("Ex", "Ur >^ Ur' ^",
+    it("should compose to create the exchange flexes", () => {
+      testFormula("Xr", "Ur> ^Ur'^",
         "a 1 > / [-3,2] > b",
         "-a [2,-1] > / 3 > -b");
+      testFormula("Xl", "Ul> ^Ul'^",
+        "a 4 < / [5,-6] < b",
+        "-a [-4,5] < / 6 < -b");
     });
 
     it("should compose to create the pocket flex", () => {
       testFormula("K", "Ur >^ Ur' > Ul ^",
         "a [-2,1] > -3 > / [5,-4] > b",
         "a 1 < 2 > / [-4,3] > -5 > -b");
+      testFormula("K", "Xr^ > Ul^",
+        "a [-2,1] > -3 > / [5,-4] > b",
+        "a 1 < 2 > / [-4,3] > -5 > -b");
     });
 
     it("should compose to create the pinch flex", () => {
-      testFormula("P", "Ur >^ Ur' ^>> Ul >^ Ul' ^>> Ur >^ Ur' ^",
+      testFormula("P", "Ur> ^Ur'^ >> Ul> ^Ul'^ >> Ur> ^Ur'^",
+        "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > b",
+        "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
+      testFormula("P", "Xr >> Xl >> Xr",
         "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > b",
         "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
     });
@@ -42,7 +51,7 @@ namespace Flexagonator {
     }
 
     // apply a series of flexes to given input
-    const atomics = makeAtomicFlexes();
+    const atomics = makeAtomicFlexes(true);
     function applyFlexes(input: AtomicPattern, flexes: string, log?: boolean): AtomicPattern | AtomicPatternError {
       if (log) {
         console.log('\n---- applying flexes:', flexes, '------');
