@@ -1,6 +1,15 @@
 namespace Flexagonator {
 
   describe('makeAtomicFlexes', () => {
+    it("should compose to create > and Ul", () => {
+      testFormula(">", "<'",
+        "a / 1 < b",
+        "a 1 < / b");
+      testFormula("Ul", "~ Ur ~",
+        "a / [1,-2] < b",
+        "a / 1 > 2 < -b");
+    });
+
     it("should compose to create the exchange flexes", () => {
       testFormula("Xr", "Ur> ^Ur'^",
         "a 1 > / [-3,2] > b",

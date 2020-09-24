@@ -59,7 +59,7 @@ namespace Flexagonator {
       } else if (state.lookingForNumber && ('0' <= c && c <= '9')) {
         state.number += c;
       }
-      else if (c === '>' || c === '<' || c === '^' || ('A' <= c && c <= 'Z')) {
+      else if (c === '>' || c === '<' || c === '^' || c === '~' || ('A' <= c && c <= 'Z')) {
         // we're starting a new flex, so end the previous one
         state = this.endFlex(state);
         state.start = state.index;

@@ -28,13 +28,16 @@ namespace Flexagonator {
   function addBasicFlexes(flexes: AtomicFlexes): void {
     flexes["<"] = makeAtomicFlex("shift left", "a 1 / b", "a / 1 b") as AtomicFlex;
     flexes["^"] = makeAtomicFlex("turn over", "a / b", "-b / -a") as AtomicFlex;
+    flexes["~"] = makeAtomicFlex("change direction", "a / b", "-a / -b") as AtomicFlex;
     flexes["Ur"] = makeAtomicFlex("unfold right", "a / [-2,1] > b", "a / 1 < 2 > -b") as AtomicFlex;
-    flexes["Ul"] = makeAtomicFlex("unfold left", "a / [1,-2] < b", "a / 1 > 2 < -b") as AtomicFlex;
   }
 
   // create some larger pieces that can more easily be combined into "full" flexes
   function addSubflexes(flexes: AtomicFlexes): void {
+    // > = <'
     flexes[">"] = makeAtomicFlex("shift right", "a / 1 b", "a 1 / b") as AtomicFlex;
+    // Ul = ~Ur~
+    flexes["Ul"] = makeAtomicFlex("unfold left", "a / [1,-2] < b", "a / 1 > 2 < -b") as AtomicFlex;
 
     flexes["Xr"] = makeAtomicFlex("exchange right", "a 1 > / [-3,2] > b", "-a [2,-1] > / 3 > -b") as AtomicFlex;
     flexes["Xl"] = makeAtomicFlex("exchange left", "a 4 < / [5,-6] < b", "-a [-4,5] < / 6 < -b") as AtomicFlex;
