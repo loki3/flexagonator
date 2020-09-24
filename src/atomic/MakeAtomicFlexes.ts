@@ -35,9 +35,13 @@ namespace Flexagonator {
   // create some larger pieces that can more easily be combined into "full" flexes
   function addSubflexes(flexes: AtomicFlexes): void {
     flexes[">"] = makeAtomicFlex("shift right", "a / 1 b", "a 1 / b") as AtomicFlex;
+
     flexes["Xr"] = makeAtomicFlex("exchange right", "a 1 > / [-3,2] > b", "-a [2,-1] > / 3 > -b") as AtomicFlex;
     flexes["Xl"] = makeAtomicFlex("exchange left", "a 4 < / [5,-6] < b", "-a [-4,5] < / 6 < -b") as AtomicFlex;
     flexes["K"] = makeAtomicFlex("pocket", "a [-2,1] > -3 > / [5,-4] > b", "a 1 < 2 > / [-4,3] > -5 > -b") as AtomicFlex;
+
+    flexes["Hf"] = makeAtomicFlex("half: fold forward", "a [-2,1] > -3 > / [5,-4] > 6 > b", "a 1 < 2 > / [-4,3] > [-5,6] < b") as AtomicFlex;
+    flexes["Hb"] = makeAtomicFlex("half: fold back", "a 1 > [-3,2] > / -4 > [6,-5] > b", "a [1,-2] < [4,-3] > / 5 > 6 < b") as AtomicFlex;
   }
 
 }

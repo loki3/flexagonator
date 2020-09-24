@@ -34,6 +34,15 @@ namespace Flexagonator {
         "a [[-2,1],3] < 4 > / 5 > 6 < b");
     });
 
+    it("should compose to create the half flexes", () => {
+      testFormula("Hf", "K > Ul' <",
+        "a [-2,1] > -3 > / [5,-4] > 6 > b",
+        "a 1 < 2 > / [-4,3] > [-5,6] < b");
+      testFormula("Hb", "^Hf^",
+        "a 1 > [-3,2] > / -4 > [6,-5] > b",
+        "a [1,-2] < [4,-3] > / 5 > 6 < b");
+    });
+
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
     function testFormula(name: string, flexes: string, input: string, output: string, log?: boolean): void {
       const inputPattern = stringToAtomicPattern(input);
