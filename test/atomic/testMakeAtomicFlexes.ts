@@ -57,6 +57,13 @@ namespace Flexagonator {
       testFormula("Hl", "^Hr^",
         "a [-2,1] > -3 > / -4 > [6,-5] > b",
         "a 1 < [4,[2,-3]] > / 5 > 6 < b");
+
+      testFormula("Hsr", "> K < Ur << Ul' >> Ur'",
+        "a 1 > [[-3,4],2] > / 5 > [-7,6] > b",
+        "a [1,-2] < -3 > / [[5,-6],-4] > -7 < b");
+      testFormula("Hsl", "^Hsr^",
+        "a [-2, 1] > -3 > / [-6,[-4,5]] > -7 > b",
+        "a 1 < [4,[2,-3]] > / 5 > [6,-7] < b");
     });
 
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
