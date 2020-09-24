@@ -66,6 +66,12 @@ namespace Flexagonator {
         "a 1 < [4,[2,-3]] > / 5 > [6,-7] < b");
     });
 
+    it("should compose to create the half kite slot", () => {
+      testFormula("Hkl", "> Ul Ur <<<< Ul' < Ul' >>",
+        "a 1 > 2 > 3 < 4 > / 5 > [[-7,6],8] < b",
+        "a [1,[3,-2]] < 4 > / 5 > 6 < 7 > 8 > b");
+    });
+
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
     function testFormula(name: string, flexes: string, input: string, output: string, log?: boolean): void {
       const inputPattern = stringToAtomicPattern(input);
