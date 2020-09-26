@@ -26,7 +26,7 @@ namespace Flexagonator {
 
   // all flexes are made up of these basic flexes
   function addBasicFlexes(flexes: AtomicFlexes): void {
-    flexes["<"] = makeAtomicFlex("shift left", "a 1 / b", "a / 1 b") as AtomicFlex;
+    flexes[">"] = makeAtomicFlex("shift right", "a / 1 b", "a 1 / b") as AtomicFlex;
     flexes["^"] = makeAtomicFlex("turn over", "a / b", "-b / -a") as AtomicFlex;
     flexes["~"] = makeAtomicFlex("change direction", "a / b", "-a / -b") as AtomicFlex;
     flexes["Ur"] = makeAtomicFlex("unfold right", "a / [-2,1] > b", "a / 1 < 2 > -b") as AtomicFlex;
@@ -34,8 +34,8 @@ namespace Flexagonator {
 
   // create some larger pieces that can more easily be combined into "full" flexes
   function addSubflexes(flexes: AtomicFlexes): void {
-    // > = <'
-    flexes[">"] = makeAtomicFlex("shift right", "a / 1 b", "a 1 / b") as AtomicFlex;
+    // < = >'
+    flexes["<"] = makeAtomicFlex("shift left", "a 1 / b", "a / 1 b") as AtomicFlex;
     // Ul = ~Ur~
     flexes["Ul"] = makeAtomicFlex("unfold left", "a / [1,-2] < b", "a / 1 > 2 < -b") as AtomicFlex;
 
