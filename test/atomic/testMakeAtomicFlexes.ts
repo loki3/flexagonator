@@ -10,6 +10,23 @@ namespace Flexagonator {
         "a / 1 > 2 < -b");
     });
 
+    it("should support some alternate base flexes", () => {
+      // we can choose any two of ^~% in our base set of flexes
+      testFormula("%", "^~",
+        "a / b",
+        "b / a");
+      // Ur        = a / [-2,1] > b  ->  a / 1 < 2 > -b
+      // Ul = ~Ur~ = a / [1,-2] < b  ->  a / 1 > 2 < -b
+      // Ub = ^Ur^ = a [2,-1] > / b  ->  -a 1 > 2 < / b
+      // Ux = %Ur% = a [-2,1] < / b  ->  -a 2 < 1 > / b
+      testFormula("Ub", "^ Ur ^",
+        "a [2,-1] > / b",
+        "-a 1 > 2 < / b");
+      testFormula("Ux", "^~ Ur ~^", // Ux = %Ur%
+        "a [-2,1] < / b",
+        "-a 2 < 1 > / b");
+    });
+
     it("should compose to create the exchange flexes", () => {
       testFormula("Xr", "Ur> ^Ur'^",
         "a 1 > / [-3,2] > b",
