@@ -89,6 +89,24 @@ namespace Flexagonator {
         "a [1,[3,-2]] < 4 > / 5 > 6 < 7 > 8 > b");
     });
 
+    it("should compose pocket flexes", () => {
+      testFormula("(K^)2", "(K^)2",
+        "a [[-2,3],1] > 4 > / [[-6,7],5] > b",
+        "-a -1 > -2 > [[4,-5],-3] > / -6 > -7 < -b");
+      testFormula("(K^)3", "(K^)3",
+        "a [[[3,-2],-4],1] > -5 > / [[[-8,7],9],-6] > b",
+        "-b -9 > -8 > [[[-5,6],4],-7] > / 3 > 2 < 1 > a");
+
+      // L3 = (K^)3 (<)5 (K'^)3
+      testFormula("L3 part 1", "(K^)3 (<)5",
+        "a [[[3,-2],-4],1] > -5 > / [[[-8,7],9],-6] > [[[12,-11],-13],10] > 14 > b",
+        "-b / -14 > [-10,[13,[11,-12]]] > -9 > -8 > [[[-5,6],4],-7] > 3 > 2 < 1 > a");
+      // take the ending state above and move 2<1> to the beginning, flipping because -b
+      testFormula("L3 part 2", "(K'^)3",
+        "-b -2 > -1 < -14 > / [-10,[13,[11,-12]]] > -9 > -8 > [[[-5,6],4],-7] > 3 > a",
+        "-a -3 > [7,[-4,[-6,5]]] > [-11,[8,[10,-9]]] > / -12 > [-2,[-13,[1,-14]]] > -b");
+    });
+
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
     function testFormula(name: string, flexes: string, input: string, output: string, log?: boolean): void {
       const inputPattern = stringToAtomicPattern(input);
