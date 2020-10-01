@@ -52,6 +52,9 @@ namespace Flexagonator {
       testFormula("P", "Xr >> Xl >> Xr",
         "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > b",
         "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
+      testFormula("P", "K <<< ^K'^ >>>",
+        "a 1 > [-3,2] > -4 > [6,-5] > 7 > / [-9,8] > b",
+        "-a [2,-1] > 3 > [-5,4] > -6 > / [8,-7] > 9 > -b");
     });
 
     it("should compose to create the inner pivot", () => {
