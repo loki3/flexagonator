@@ -83,6 +83,15 @@ namespace Flexagonator {
         "a 1 < [4,[2,-3]] > / 5 > [6,-7] < b");
     });
 
+    it("should compose to create the half flexes specific to a hexaflexagon", () => {
+      testFormula("Hh", "Xr >>> Xl <<<~",
+        "a 7 > 8 > / [-2,1] > -3 > -4 > [6,-5] > b",
+        "-a -7 < [1,-8] > / 2 > 3 < [-5,4] > -6 > -b");
+      testFormula("Ht", "< Ur ^<<< Ur' <<^ Xl <<<~",
+        "a -7 > [1,-8] > / 2 > 3 > 4 > [-6,5] > b",
+        "-a 7 < 8 > / [-2,1] > -3 < [5,-4] > 6 > -b");
+    });
+
     it("should compose to create the half kite slot", () => {
       testFormula("Hkl", "> Ul Ur <<<< Ul' < Ul' >>",
         "a 1 > 2 > 3 < 4 > / 5 > [[-7,6],8] < b",
