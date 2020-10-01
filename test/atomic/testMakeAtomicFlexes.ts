@@ -45,7 +45,7 @@ namespace Flexagonator {
         "a 1 < 2 > / [-4,3] > -5 > -b");
     });
 
-    it("should compose to create the pinch flex", () => {
+    it("should compose to create the pinch flex on a hexaflexagon", () => {
       testFormula("P", "Ur> ^Ur'^ >> Ul> ^Ul'^ >> Ur> ^Ur'^",
         "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > b",
         "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > / 9 > -b");
@@ -55,6 +55,15 @@ namespace Flexagonator {
       testFormula("P", "K <<< ^K'^ >>>",
         "a 1 > [-3,2] > -4 > [6,-5] > 7 > / [-9,8] > b",
         "-a [2,-1] > 3 > [-5,4] > -6 > / [8,-7] > 9 > -b");
+    });
+
+    it("should compose to create pinch flex variations on a dodecaflexagon", () => {
+      testFormula("P", "Xr >> Xl >> Xr >> Xl >> Xr >> Xl ~",
+        "a 1 > / [-3,2] > -4 > [6,-5] > 7 > [-9,8] > -10 > [12,-11] > 13 > [-15,14] > -16 > [18,-17] > b",
+        "-a [2,-1] > 3 > [-5,4] > -6 > [8,-7] > 9 > [-11,10] > -12 > [14,-13] > 15 > [-17,16] > / -18 > -b");
+      testFormula("P444", "Xr >>>> Xl >>>> Xr <<<<<<<< Xr >>>> Xl >>>> Xr <<<<<<<<",
+        "a 1 > / [[2,3],4] > 5 > 6 > 7 > [[8,9],10] > 11 > 12 > 13 > [[14,15],16] > 17 > 18 > b",
+        "a [-2,[1,-4]] > / 3 > 5 > 6 > [-8,[7,-10]] > 9 > 11 > 12 > [-14,[13,-16]] > 15 > 17 > 18 > b");
     });
 
     it("should compose to create the inner pivot", () => {
