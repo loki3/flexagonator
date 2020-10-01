@@ -76,18 +76,22 @@ From those 4 definitions, we can derive several convenient building blocks in te
 ```
 # shift current hinge one pat to the left
 <  = >'
+   = a 1 / b  ->  a / 1 b
 
 # unfold a hinge to the left
 Ul = ~Ur~
-   =  a / [1,-2] < b ->  a / 1 > 2 < -b
+   =  a / [1,-2] < b  ->  a / 1 > 2 < -b
 
 # exchange a sub-pat between adjacent pats
 Xr = Ur> ^Ur'^
+   = a 1 > / [-3,2] > b  ->  -a [2,-1] > / 3 > -b
 Xl = Ul> ^Ul'^
+   = a 4 < / [5,-6] < b  ->  -a [-4,5] < / 6 < -b
 
 # pocket flex
 K  = Ur >^ Ur' > Ul ^
    = Xr^ > Ul^
+   = a [-2,1] > -3 > / [5,-4] > b  ->  a 1 < 2 > / [-4,3] > -5 > -b
 ```
 
 Here's how we can define various types of pinch flexes using these components:
