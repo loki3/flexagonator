@@ -10,31 +10,31 @@ namespace Flexagonator {
         singleLeaf: true
       };
       const s = atomicPatternToString(pattern);
-      expect(s).toBe('a / -b');
+      expect(s).toBe('a # -b');
     });
 
     it('should stringify an AtomicPattern with simple pats', () => {
       const pattern: AtomicPattern = {
         otherLeft: '-a',
-        left: [{ pat: makePat([1, -2]) as Pat, direction: '>' }],
-        right: [{ pat: makePat(-3) as Pat, direction: '<' }],
+        left: [{ pat: makePat([1, -2]) as Pat, direction: '\\' }],
+        right: [{ pat: makePat(-3) as Pat, direction: '/' }],
         otherRight: 'b',
         singleLeaf: false
       };
       const s = atomicPatternToString(pattern);
-      expect(s).toBe('-a [1,-2] > / -3 < b');
+      expect(s).toBe('-a [1,-2] \\ # -3 / b');
     });
 
     it('should stringify an AtomicPattern with multiple pats', () => {
       const pattern: AtomicPattern = {
         otherLeft: 'a',
-        left: [{ pat: makePat([1, -2]) as Pat, direction: '>' }, { pat: makePat(-3) as Pat, direction: '<' }],
-        right: [{ pat: makePat(4) as Pat, direction: '<' }, { pat: makePat([5, [6, -7]]) as Pat, direction: '<' }],
+        left: [{ pat: makePat([1, -2]) as Pat, direction: '\\' }, { pat: makePat(-3) as Pat, direction: '/' }],
+        right: [{ pat: makePat(4) as Pat, direction: '/' }, { pat: makePat([5, [6, -7]]) as Pat, direction: '/' }],
         otherRight: '-b',
         singleLeaf: false
       };
       const s = atomicPatternToString(pattern);
-      expect(s).toBe('a -3 < [1,-2] > / 4 < [5,[6,-7]] < -b');
+      expect(s).toBe('a -3 / [1,-2] \\ # 4 / [5,[6,-7]] / -b');
     });
   });
 
@@ -47,7 +47,7 @@ namespace Flexagonator {
       }
       expect(error1.atomicParseCode).toBe("NeedOneHinge");
 
-      const error2 = stringToAtomicPattern("a / c");
+      const error2 = stringToAtomicPattern("a # c");
       if (!isAtomicParseError(error2)) {
         fail("expected error");
         return;
@@ -57,7 +57,7 @@ namespace Flexagonator {
     });
 
     it('should parse just remainders', () => {
-      const pattern = stringToAtomicPattern("a / -b");
+      const pattern = stringToAtomicPattern("a # -b");
       if (isAtomicParseError(pattern)) {
         fail(JSON.stringify(pattern));
         return;
@@ -70,7 +70,7 @@ namespace Flexagonator {
     });
 
     it('should parse just remainders and a single pat', () => {
-      const pattern = stringToAtomicPattern("-a 1 / b");
+      const pattern = stringToAtomicPattern("-a 1 # b");
       if (isAtomicParseError(pattern)) {
         fail(JSON.stringify(pattern));
         return;
@@ -87,14 +87,14 @@ namespace Flexagonator {
     });
 
     it('should complain about bad pats input', () => {
-      const error1 = stringToAtomicPattern("a / [1, -2] > 3 b");
+      const error1 = stringToAtomicPattern("a # [1, -2] \\ 3 b");
       if (!isAtomicParseError(error1)) {
         fail("should have complained");
         return;
       }
       expect(error1.atomicParseCode).toBe("NeedMatchedPatsAndDirections");
 
-      const error2 = stringToAtomicPattern("a / [1, -2 > 3 < b");
+      const error2 = stringToAtomicPattern("a # [1, -2 \\ 3 / b");
       if (!isAtomicParseError(error2)) {
         fail("should have complained");
         return;
@@ -104,7 +104,7 @@ namespace Flexagonator {
     });
 
     it('should parse pats + direction', () => {
-      const pattern = stringToAtomicPattern("a / [1, -2] > 3 < b");
+      const pattern = stringToAtomicPattern("a # [1, -2] \\ 3 / b");
       if (isAtomicParseError(pattern)) {
         fail(JSON.stringify(pattern));
         return;
@@ -117,13 +117,13 @@ namespace Flexagonator {
         return;
       }
       expect(pattern.right[0].pat.getLeafCount()).toBe(2);
-      expect(pattern.right[0].direction).toBe('>');
+      expect(pattern.right[0].direction).toBe('\\');
       expect(pattern.right[1].pat.getLeafCount()).toBe(1);
-      expect(pattern.right[1].direction).toBe('<');
+      expect(pattern.right[1].direction).toBe('/');
     });
 
     it('should reverse the order of the left pats', () => {
-      const pattern = stringToAtomicPattern("a [1, -2] > 3 < / 4 > b");
+      const pattern = stringToAtomicPattern("a [1, -2] \\ 3 / # 4 \\ b");
       if (isAtomicParseError(pattern)) {
         fail(JSON.stringify(pattern));
         return;
@@ -136,9 +136,9 @@ namespace Flexagonator {
         return;
       }
       expect(pattern.left[0].pat.getLeafCount()).toBe(1);
-      expect(pattern.left[0].direction).toBe('<');
+      expect(pattern.left[0].direction).toBe('/');
       expect(pattern.left[1].pat.getLeafCount()).toBe(2);
-      expect(pattern.left[1].direction).toBe('>');
+      expect(pattern.left[1].direction).toBe('\\');
     });
   });
 }

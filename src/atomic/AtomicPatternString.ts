@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   /**
-   * turn an AtomicPattern into a string, e.g. "a [1,2] > / 3 < -b"
+   * turn an AtomicPattern into a string, e.g. "a [1,2] \ # 3 / -b"
    */
   export function atomicPatternToString(pattern: AtomicPattern): string {
     const reversed = reverseConnected(pattern.left);
@@ -9,14 +9,14 @@ namespace Flexagonator {
     const rightPats = pattern.right === null ? '' : pattern.right.map(p => p.pat.getString() + ' ' + p.direction).join(' ');
     const left = pattern.left === null ? pattern.otherLeft : pattern.otherLeft + ' ' + leftPats;
     const right = pattern.right === null ? pattern.otherRight : rightPats + ' ' + pattern.otherRight;
-    return [left, '/', right].join(' ');
+    return [left, '#', right].join(' ');
   }
 
   /**
-   * parse a string to create an AtomicPattern, e.g. "a [1,2] > / 3 < -b"
+   * parse a string to create an AtomicPattern, e.g. "a [1,2] \ # 3 / -b"
    */
   export function stringToAtomicPattern(s: string): AtomicPattern | AtomicParseError {
-    const pieces = s.split('/');
+    const pieces = s.split('#');
     if (pieces.length !== 2) {
       return { atomicParseCode: "NeedOneHinge", input: s };
     }
@@ -103,7 +103,7 @@ namespace Flexagonator {
       return null;
     }
     if (s === '1') {
-      return [{ pat: makePat(1) as Pat, direction: '<' }];
+      return [{ pat: makePat(1) as Pat, direction: '/' }];
     }
 
     const pieces = breakIntoPieces(s);
@@ -114,9 +114,9 @@ namespace Flexagonator {
     return piecesToPats(pieces);
   }
 
-  // "[1,-2] > 3 <" into ["[1,-2]", ">", "3", "<"]
+  // "[1,-2] \ 3 /" into ["[1,-2]", "\", "3", "/"]
   function breakIntoPieces(s: string): string[] | AtomicParseError {
-    const p = s.split(/([0-9-\[\]\,\s]+)(>|<)/g);
+    const p = s.split(/([0-9-\[\]\,\s]+)(\\|\/)/g);
     const p2 = p.filter(e => e != '').map(e => e.trim());
     if (p2.length % 2 === 1) {
       return { atomicParseCode: "NeedMatchedPatsAndDirections", input: s };

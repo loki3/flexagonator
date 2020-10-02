@@ -5,7 +5,7 @@
 "Atomic flexagon theory" describes at a low level how flexagons operate.
 It can be used to describe any flex, and explains how to fold a template, unfold a flexagon, and how a flexagon can shape shift.
 
-The fundamental axiom, `Ur = a / [-2,1] > b ->  a / 1 < 2 > -b`,
+The fundamental axiom, `Ur = a # [-2,1] \ b ->  a # 1 / 2 \ -b`,
 describes how to unfold a pair of pats or leaves along a single hinge.
 Combined with its folding inverse, `Ur'`, it explains how flexagons work.
 
@@ -22,27 +22,27 @@ with a few additional concepts.
 Here are the symbols used in defining a flex:
 
 ```
-/       current hinge
+#       current hinge
 a       all the remaining pats to the left
 b       all the remaining pats to the right
 -       turn over a leaf or pat
 [x,y]   two leafs or pats folded together, with x on top of y
-<       next pat is on left side of triangle; previous pat is at bottom
->       next pat is on right side of triangle; previous pat is at bottom
+/       next pat is on left side of triangle; previous pat at bottom
+\       next pat is on right side of triangle; previous pat at bottom
 =       flex definition
 x -> y  x is the initial state, y is the state after the flex
 '       inverse - if A = x -> y, then A' = y -> x
 ```
 
-For example, the definition `Ur = a / [-2,1] > b ->  a / 1 < 2 > -b` means the following:
+For example, the definition `Ur = a # [-2,1] \ b ->  a # 1 / 2 \ -b` means the following:
 
 * define a flex named `Ur`
-* the input pattern is `a / [-2,1] > b`
+* the input pattern is `a # [-2,1] \ b`
     * everything to the left of the current hinge is referred to as `a`
     * the first pat to the right of the current hinge has a pat called `-2` folded on top of a pat called `1`
     * `>` means the next pat is connected to the right side of the triangle, with the previous pat connected at the bottom
     * everything to the right of that pat is referred to as `b`
-* the output pattern is `a / 1 < 2 > -b`
+* the output pattern is `a # 1 / 2 \ -b`
     * `a` is unchanged
     * the `1` subpat becomes the first pat after the current hinge
     * `<` means the next pat is connected to the left side of the `1` subpat
@@ -56,14 +56,14 @@ using [flex notation](https://github.com/loki3/flexagonator/blob/master/docs/fle
 An extra note on how the changes to `a` and `b` should be interpreted based on where the are relative to the current hinge and whether they start with a minus (`-`)
 , which can be confirmed by experimenting with a physical flexagon:
 
-* `a/ -> a/` : keep everything in `a` the same
-    * e.g. `1 < [-3,2] >` stays the same
-* `a/ -> /a` : reverse pat order, reverse directions, preserve pats
-    * e.g. `1 < [-3,2] >` changes to `[-3,2] < 1 >`
-* `a/ -> -a/` : turn over pats, reverse directions, preserve pat order
-    * e.g. `1 < [-3,2] >` changes to `-1 > [-2,3] <`
-* `a/ -> /-a` : turn over pats, reverse pat order, preserve directions
-    * e.g. `1 < [-3,2] >` changes to `[-2,3] > -1 <`
+* `a # -> a #` : keep everything in `a` the same
+    * e.g. `1 / [-3,2] \` stays the same
+* `a # -> # a` : reverse pat order, reverse directions, preserve pats
+    * e.g. `1 / [-3,2] \` changes to `[-3,2] / 1 \`
+* `a # -> -a #` : turn over pats, reverse directions, preserve pat order
+    * e.g. `1 / [-3,2] \` changes to `-1 \ [-2,3] /`
+* `a # -> # -a` : turn over pats, reverse pat order, preserve directions
+    * e.g. `1 / [-3,2] \` changes to `[-2,3] \ -1 /`
 
 ## Definitions
 
@@ -77,10 +77,10 @@ All flexes can be defined as the composition of just 4 different operations:
 Using the notation given above, we can define these basic axioms:
 
 ```
->  =  a / 1 b        ->  a 1 / b
-^  =  a / b          -> -b / -a
-~  =  a / b          -> -a / -b
-Ur =  a / [-2,1] > b ->  a / 1 < 2 > -b
+>  =  a # 1 b        ->  a 1 # b
+^  =  a # b          -> -b # -a
+~  =  a # b          -> -a # -b
+Ur =  a # [-2,1] \ b ->  a # 1 / 2 \ -b
 ```
 
 From those 4 definitions, we can derive several convenient building blocks in terms of those initial flexes:
@@ -88,22 +88,22 @@ From those 4 definitions, we can derive several convenient building blocks in te
 ```
 # shift current hinge one pat to the left
 <  = >'
-   = a 1 / b  ->  a / 1 b
+   = a 1 # b  ->  a # 1 b
 
 # unfold a hinge to the left
 Ul = ~Ur~
-   =  a / [1,-2] < b  ->  a / 1 > 2 < -b
+   =  a # [1,-2] / b  ->  a # 1 \ 2 / -b
 
 # exchange a sub-pat between adjacent pats
 Xr = Ur> ^Ur'^
-   = a 1 > / [-3,2] > b  ->  -a [2,-1] > / 3 > -b
+   = a 1 \ # [-3,2] \ b  ->  -a [2,-1] \ # 3 \ -b
 Xl = Ul> ^Ul'^
-   = a 4 < / [5,-6] < b  ->  -a [-4,5] < / 6 < -b
+   = a 4 / # [5,-6] / b  ->  -a [-4,5] / # 6 / -b
 
 # pocket flex
 K  = Ur >^ Ur' > Ul ^
    = Xr^ > Ul^
-   = a [-2,1] > -3 > / [5,-4] > b  ->  a 1 < 2 > / [-4,3] > -5 > -b
+   = a [-2,1] \ -3 \ # [5,-4] \ b  ->  a 1 / 2 \ # [-4,3] \ -5 \ -b
 ```
 
 Here's how we can define various types of pinch flexes using these components:
