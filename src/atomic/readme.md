@@ -53,6 +53,18 @@ For example, the definition `Ur = a / [-2,1] > b ->  a / 1 < 2 > -b` means the f
 We can also define new flexes in terms of existing flexes
 using [flex notation](https://github.com/loki3/flexagonator/blob/master/docs/flex-notation.md).
 
+An extra note on how the changes to `a` and `b` should be interpreted based on where the are relative to the current hinge and whether they start with a minus (`-`)
+, which can be confirmed by experimenting with a physical flexagon:
+
+* `a/ -> a/` : keep everything in `a` the same
+    * e.g. `1 < [-3,2] >` stays the same
+* `a/ -> /a` : reverse pat order, reverse directions, preserve pats
+    * e.g. `1 < [-3,2] >` changes to `[-3,2] < 1 >`
+* `a/ -> -a/` : turn over pats, reverse directions, preserve pat order
+    * e.g. `1 < [-3,2] >` changes to `-1 > [-2,3] <`
+* `a/ -> /-a` : turn over pats, reverse pat order, preserve directions
+    * e.g. `1 < [-3,2] >` changes to `[-2,3] > -1 <`
+
 ## Definitions
 
 All flexes can be defined as the composition of just 4 different operations:
