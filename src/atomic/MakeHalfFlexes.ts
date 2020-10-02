@@ -2,8 +2,8 @@ namespace Flexagonator {
 
   /**
    * create local flexes that transform 4 pats
-   * from a position where all pats meet in the middle (>>>>)
-   * to a position where there's a "kite" sticking off (<>><).
+   * from a position where all pats meet in the middle (\\\\)
+   * to a position where there's a "kite" sticking off (/\\/).
    * NOTE: these really should include 'directions' in the flex definitions
    */
   export function makeHalfFlexes(patCount: number): Flexes {
