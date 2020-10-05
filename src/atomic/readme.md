@@ -40,7 +40,7 @@ For example, the definition `Ur = a # [-2,1] \ b ->  a # 1 / 2 \ -b` means the f
 * the input pattern is `a # [-2,1] \ b`
     * everything to the left of the current hinge is referred to as `a`
     * the first pat to the right of the current hinge has a pat called `-2` folded on top of a pat called `1`
-    * `/` means the next pat is connected to the right side of the triangle, with the previous pat connected at the bottom
+    * `\` means the next pat is connected to the right side of the triangle, with the previous pat connected at the bottom
     * everything to the right of that pat is referred to as `b`
 * the output pattern is `a # 1 / 2 \ -b`
     * `a` is unchanged
