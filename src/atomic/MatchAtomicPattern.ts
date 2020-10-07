@@ -34,24 +34,6 @@ namespace Flexagonator {
     readonly specialDirection?: PatDirection;
   }
 
-  /** explanation of a problem detected by matchAtomicPattern */
-  export interface AtomicPatternError {
-    readonly atomicPatternError: AtomicPatternCode;
-
-    readonly expectedConnected?: ConnectedPat;
-    readonly actualConnected?: ConnectedPat;
-
-    readonly expectedPats?: LeafTree;
-    readonly actualPats?: LeafTree;
-  }
-  export type AtomicPatternCode =
-    | "NotEnoughPats"
-    | "PatMismatch"
-    | "DirectionMismatch"
-    ;
-  export function isAtomicPatternError(result: any): result is AtomicPatternError {
-    return (result !== null) && (result as AtomicPatternError).atomicPatternError !== undefined;
-  }
 
   /** find matches on left side & right side, then combine results */
   function findMatches(

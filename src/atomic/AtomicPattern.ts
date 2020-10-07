@@ -29,6 +29,9 @@ namespace Flexagonator {
   }
   export type ConnectedPats = ReadonlyArray<ConnectedPat>;
 
+  export function connectedPatToString(pat: ConnectedPat): string {
+    return pat.pat.getString() + ' ' + pat.direction;
+  }
 
   export function getPatsCount(chunk: ConnectedPats | null | undefined): number {
     return (chunk === null || chunk === undefined) ? 0 : chunk.length;

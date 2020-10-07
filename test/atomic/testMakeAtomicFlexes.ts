@@ -168,9 +168,7 @@ namespace Flexagonator {
         const result = atomics[flex.fullName].apply(input);
         if (isAtomicPatternError(result)) {
           if (log) {
-            console.log('ERROR in flex', flex.fullName, ' -- ', JSON.stringify(result));
-            console.log('   current pats: ', atomicPatternToString(input));
-            console.log('  expected pats: ', atomicPatternToString(atomics[flex.fullName].pattern));
+            console.log('ERROR in flex', flex.fullName, ' -- ', atomicPatternErrorToString(result));
           }
           return result;
         }
