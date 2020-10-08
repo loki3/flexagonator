@@ -13,7 +13,7 @@ namespace Flexagonator {
     K: "Xr^ > Ul^",
 
     // pinch flex & variations
-    P: "Xr >> Xl >> Xr >>", // just for a hexaflexagon, "(Xr >> Xl >>)3 ~" is for a dodeca
+    P222: "Xr >> Xl >> Xr >>", // just for a hexaflexagon, "(Xr >> Xl >>)3 ~" is for a dodeca
     P3333h: "Xr >>> Xl >>> Xr >>> Xl >>> ~",
     P3333: "(Xr >>> Xl >>> Xr >>> Xl >>>)2",
     P444h: "Xr >>>> Xl >>>> Xr >>>>",
