@@ -104,31 +104,31 @@
     }
 
     function fillInDefinitions() {
-      var output = '<table class="definitionsTable"><tr><th>name</th><th>input</th><th>output</th></tr>';
-      output += makeDefinitionRow(">");
-      output += makeDefinitionRow("<");
-      output += makeDefinitionRow("^");
-      output += makeDefinitionRow("~");
-      output += makeDefinitionRow("Ur");
-      output += makeDefinitionRow("Ul");
-      output += makeDefinitionRow("Xr");
-      output += makeDefinitionRow("Xl");
-      output += makeDefinitionRow("K");
-      output += makeDefinitionRow("Hf");
-      output += makeDefinitionRow("Hb");
-      output += makeDefinitionRow("Hr");
-      output += makeDefinitionRow("Hl");
-      output += makeDefinitionRow("Hsr");
-      output += makeDefinitionRow("Hsl");
-      output += makeDefinitionRow("Hkl");
+      var basic = [">", "<", "^", "~", "Ur", "Ul",];
+      var blocks = ["Xr", "Xl", "K",];
+      var half = ["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl", "Hkl",];
+      var common = ["F", "St", "S", "T", "Mf", "S3", "Ltf", "Lk",];
+      var flexes = basic.concat(blocks).concat(half).concat(common);
+      makeDefinitionsTable(flexes, 'definitions');
+      makeDefinitionsTable(["Hh", "Ht", "Ttf", "V", "Lh", "Ltb", "Lbb", "Lbf",], 'hexaOnly');
+      makeDefinitionsTable(["L3", "Iv"], 'otherDefinitions');
+    }
+    function makeDefinitionsTable(flexes, tableid) {
+      var output = '<table class="definitionsTable"><tr> <th>name</th> <th>decomposition</th> <th>input</th> <th>output</th> </tr>';
+      for (var i = 0; i < flexes.length; i++) {
+        output += makeDefinitionRow(flexes[i]);
+      }
       output += '</table>';
-      setHtml('definitions', output);
+      setHtml(tableid, output);
     }
     function makeDefinitionRow(name) {
       var flex = atomics[name];
+      var decomposition = Flexagonator.AtomicDecomposition[name];
       var output = '<tr><td>' + name + '</td><td>'
-        + Flexagonator.atomicPatternToString(flex.pattern) + '</td><td>'
-        + Flexagonator.atomicPatternToString(flex.output) + '</td></tr>';
+        + (decomposition ? decomposition : '') + '</td><td>'
+        + (flex ? Flexagonator.atomicPatternToString(flex.pattern) : '') + '</td><td>'
+        + (flex ? Flexagonator.atomicPatternToString(flex.output) : '') + '</td></tr>';
+      console.log(output);
       return output;
     }
 
@@ -191,6 +191,10 @@
 
   <h2>atomic definitions</h2>
   <div id="definitions"></div>
+  <p>specific to hexaflexagons</p>
+  <div id="hexaOnly"></div>
+  <p>other specific flexes</p>
+  <div id="otherDefinitions"></div>
   <script type="text/javascript">
     fillInDefinitions();
   </script>
