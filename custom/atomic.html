@@ -104,22 +104,26 @@
     }
 
     function fillInDefinitions() {
-      var basic = [">", "<", "^", "~", "Ur", "Ul",];
-      var blocks = ["Xr", "Xl", "K",];
-      var half = ["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl", "Hkl",];
-      var common = ["F", "St", "S", "T", "Mf", "S3", "Ltf", "Lk",];
-      var flexes = basic.concat(blocks).concat(half).concat(common);
-      makeDefinitionsTable(flexes, 'definitions');
-      makeDefinitionsTable(["Hh", "Ht", "Ttf", "V", "Lh", "Ltb", "Lbb", "Lbf",], 'hexaOnly');
-      makeDefinitionsTable(["L3", "Iv"], 'otherDefinitions');
-    }
-    function makeDefinitionsTable(flexes, tableid) {
       var output = '<table class="definitionsTable"><tr> <th>name</th> <th>decomposition</th> <th>input</th> <th>output</th> </tr>';
-      for (var i = 0; i < flexes.length; i++) {
-        output += makeDefinitionRow(flexes[i]);
-      }
+      output += makeDefinitionRows([">", "<", "^", "~", "Ur", "Ul",]);
+      output += makeExplainerRow('useful building blocks');
+      output += makeDefinitionRows(["Xr", "Xl", "K",]);
+      output += makeExplainerRow('half flexes');
+      output += makeDefinitionRows(["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl", "Hkl",]);
+      output += makeExplainerRow('flexes composed from half flexes');
+      output += makeDefinitionRows(["F", "St", "S", "T", "Mf", "S3", "Ltf", "Lk",]);
+      output += makeExplainerRow('hexaflexagon only');
+      output += makeDefinitionRows(["Hh", "Ht", "Ttf", "V", "Lh", "Ltb", "Lbb", "Lbf",]);
+      output += makeExplainerRow('other flexes');
+      output += makeDefinitionRows(["L3", "Iv"]);
       output += '</table>';
-      setHtml(tableid, output);
+      setHtml('definitions', output);
+    }
+    function makeExplainerRow(explanation) {
+      return '<tr></td><td colspan=4>&nbsp;&nbsp;<b>' + explanation + '</b></td></tr>';
+    }
+    function makeDefinitionRows(flexes) {
+      return flexes.map(flex => makeDefinitionRow(flex)).join('');
     }
     function makeDefinitionRow(name) {
       var flex = atomics[name];
@@ -191,10 +195,6 @@
 
   <h2>atomic definitions</h2>
   <div id="definitions"></div>
-  <p>specific to hexaflexagons</p>
-  <div id="hexaOnly"></div>
-  <p>other specific flexes</p>
-  <div id="otherDefinitions"></div>
   <script type="text/javascript">
     fillInDefinitions();
   </script>
