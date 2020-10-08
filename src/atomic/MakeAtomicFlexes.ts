@@ -1,5 +1,6 @@
 namespace Flexagonator {
 
+  // dictionary of atomic flexes and their definitions in terms of before & after flexagon structure
   export interface AtomicFlexes {
     [index: string]: AtomicFlex;
   }
