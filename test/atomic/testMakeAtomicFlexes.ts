@@ -2,10 +2,10 @@ namespace Flexagonator {
 
   describe('makeAtomicFlexes', () => {
     it("should compose to create > and Ul", () => {
-      testFormula(">", "<'",
+      testFormula(">", "<'", // AtomicDecomposition.>
         "a # 1 / b",
         "a 1 / # b");
-      testFormula("Ul", "~ Ur ~",
+      testFormula("Ul", AtomicDecomposition.Ul,
         "a # [1,-2] / b",
         "a # 1 \\ 2 / -b");
     });
@@ -28,10 +28,10 @@ namespace Flexagonator {
     });
 
     it("should compose to create the exchange flexes", () => {
-      testFormula("Xr", "Ur> ^Ur'^",
+      testFormula("Xr", AtomicDecomposition.Xr,
         "a 1 \\ # [-3,2] \\ b",
         "-a [2,-1] \\ # 3 \\ -b");
-      testFormula("Xl", "Ul> ^Ul'^",
+      testFormula("Xl", AtomicDecomposition.Xl,
         "a 4 / # [5,-6] / b",
         "-a [-4,5] / # 6 / -b");
     });
@@ -40,7 +40,7 @@ namespace Flexagonator {
       testFormula("K", "Ur >^ Ur' > Ul ^",
         "a [-2,1] \\ -3 \\ # [5,-4] \\ b",
         "a 1 / 2 \\ # [-4,3] \\ -5 \\ -b");
-      testFormula("K", "Xr^ > Ul^",
+      testFormula("K", AtomicDecomposition.K,
         "a [-2,1] \\ -3 \\ # [5,-4] \\ b",
         "a 1 / 2 \\ # [-4,3] \\ -5 \\ -b");
     });
@@ -79,45 +79,45 @@ namespace Flexagonator {
     });
 
     it("should compose to create the inner pivot", () => {
-      testFormula("Iv", "> Ul > Ul <<<< Ur' Ul' >>",
+      testFormula("Iv", AtomicDecomposition.Iv,
         "a 1 / 2 \\ # 3 \\ [4,[6,-5]] / b",
         "a [[-2,1],3] / 4 \\ # 5 \\ 6 / b");
     });
 
     it("should compose to create the half flexes", () => {
-      testFormula("Hf", "K > Ul' <",
+      testFormula("Hf", AtomicDecomposition.Hf,
         "a [-2,1] \\ -3 \\ # [5,-4] \\ 6 \\ b",
         "a 1 / 2 \\ # [-4,3] \\ [-5,6] / b");
-      testFormula("Hb", "^Hf^",
+      testFormula("Hb", AtomicDecomposition.Hb,
         "a 1 \\ [-3,2] \\ # -4 \\ [6,-5] \\ b",
         "a [1,-2] / [4,-3] \\ # 5 \\ 6 / b");
 
-      testFormula("Hr", "<< Ur >>>> Xl << Ul' ~",
+      testFormula("Hr", AtomicDecomposition.Hr,
         "a [-2,1] \\ -3 \\ # -4 \\ [6,-5] \\ b",
         "a 1 / 2 \\ # [[-4,5],3] \\ 6 / b");
-      testFormula("Hl", "^Hr^",
+      testFormula("Hl", AtomicDecomposition.Hl,
         "a [-2,1] \\ -3 \\ # -4 \\ [6,-5] \\ b",
         "a 1 / [4,[2,-3]] \\ # 5 \\ 6 / b");
 
-      testFormula("Hsr", "> K < Ur << Ul' >> Ur'",
+      testFormula("Hsr", AtomicDecomposition.Hsr,
         "a 1 \\ [[-3,4],2] \\ # 5 \\ [-7,6] \\ b",
         "a [1,-2] / -3 \\ # [[5,-6],-4] \\ -7 / b");
-      testFormula("Hsl", "^Hsr^",
+      testFormula("Hsl", AtomicDecomposition.Hsl,
         "a [-2, 1] \\ -3 \\ # [-6,[-4,5]] \\ -7 \\ b",
         "a 1 / [4,[2,-3]] \\ # 5 \\ [6,-7] / b");
     });
 
     it("should compose to create the half flexes specific to a hexaflexagon", () => {
-      testFormula("Hh", "Xr >>> Xl <<<~",
+      testFormula("Hh", AtomicDecomposition.Hh,
         "a 7 \\ 8 \\ # [-2,1] \\ -3 \\ -4 \\ [6,-5] \\ b",
         "-a -7 / [1,-8] \\ # 2 \\ 3 / [-5,4] \\ -6 \\ -b");
-      testFormula("Ht", "< Ur ^<<< Ur' <<^ Xl <<<~",
+      testFormula("Ht", AtomicDecomposition.Ht,
         "a -7 \\ [1,-8] \\ # 2 \\ 3 \\ 4 \\ [-6,5] \\ b",
         "-a 7 / 8 \\ # [-2,1] \\ -3 / [5,-4] \\ 6 \\ -b");
     });
 
     it("should compose to create the half kite slot", () => {
-      testFormula("Hkl", "> Ul Ur <<<< Ul' < Ul' >>",
+      testFormula("Hkl", AtomicDecomposition.Hkl,
         "a 1 \\ 2 \\ 3 / 4 \\ # 5 \\ [[-7,6],8] / b",
         "a [1,[3,-2]] / 4 \\ # 5 \\ 6 / 7 \\ 8 \\ b");
     });
@@ -134,7 +134,7 @@ namespace Flexagonator {
       testFormula("L3 part 1", "(K^)3 (<)5",
         "a [[[3,-2],-4],1] \\ -5 \\ # [[[-8,7],9],-6] \\ [[[12,-11],-13],10] \\ 14 \\ b",
         "-b # -14 \\ [-10,[13,[11,-12]]] \\ -9 \\ -8 \\ [[[-5,6],4],-7] \\ 3 \\ 2 / 1 \\ a");
-      // take the ending state above and move 2<1> to the beginning, flipping because -b
+      // take the ending state above and move 2/1\ to the beginning, flipping because -b
       testFormula("L3 part 2", "(K'^)3",
         "-b -2 \\ -1 / -14 \\ # [-10,[13,[11,-12]]] \\ -9 \\ -8 \\ [[[-5,6],4],-7] \\ 3 \\ a",
         "-a -3 \\ [7,[-4,[-6,5]]] \\ [-11,[8,[10,-9]]] \\ # -12 \\ [-2,[-13,[1,-14]]] \\ -b");
