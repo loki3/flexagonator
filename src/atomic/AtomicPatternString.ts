@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   /**
-   * turn an AtomicPattern into a string, e.g. "a [1,2] \ # 3 / -b"
+   * turn an AtomicPattern into a string, e.g. "a [1,2] / # 3 \ -b"
    */
   export function atomicPatternToString(pattern: AtomicPattern): string {
     const reversed = reverseConnected(pattern.left);
@@ -13,7 +13,7 @@ namespace Flexagonator {
   }
 
   /**
-   * parse a string to create an AtomicPattern, e.g. "a [1,2] \ # 3 / -b"
+   * parse a string to create an AtomicPattern, e.g. "a [1,2] / # 3 \ -b"
    */
   export function stringToAtomicPattern(s: string): AtomicPattern | AtomicParseError {
     const pieces = s.split('#');
@@ -103,7 +103,7 @@ namespace Flexagonator {
       return null;
     }
     if (s === '1') {
-      return [{ pat: makePat(1) as Pat, direction: '/' }];
+      return [{ pat: makePat(1) as Pat, direction: '\\' }];
     }
 
     const pieces = breakIntoPieces(s);

@@ -18,13 +18,13 @@ namespace Flexagonator {
 
   /** a label (a or b) and (un)flipped for the pats not relevant for an AtomicPattern */
   export type Remainder = 'a' | '-a' | 'b' | '-b';
-  export type PatDirection = '/' | '\\';
+  export type PatDirection = '\\' | '/';
 
   /** a single pat + information about how it's connected to next pat in chain */
   export interface ConnectedPat {
     readonly pat: Pat;
-    // with triangle base on bottom, which side is next pat attached to?
-    // / means the one to the left, \ the one to the right
+    // with triangle base to the left, which side is next pat attached to?
+    // \ means the one to the upper left, / the one to the lower right
     readonly direction: PatDirection;
   }
   export type ConnectedPats = ReadonlyArray<ConnectedPat>;

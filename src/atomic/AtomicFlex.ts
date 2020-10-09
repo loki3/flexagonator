@@ -122,7 +122,7 @@ namespace Flexagonator {
       if ((pattern === 'a' && output === '-a') || (pattern === '-a' && output === 'a')
         || (pattern === 'b' && output === '-b') || (pattern === '-b' && output === 'b')) {
         // if flipping but not swapping sides (e.g. a=-a), then we need to reverse all the directions
-        return pats.map(p => { return { pat: p.pat, direction: (p.direction === '/' ? '\\' : '/') as PatDirection } });
+        return pats.map(p => { return { pat: p.pat, direction: (p.direction === '\\' ? '/' : '\\') as PatDirection } });
       }
       return pats;
     }
