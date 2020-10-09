@@ -16,6 +16,13 @@ namespace Flexagonator {
     readonly singleLeaf: boolean;
   }
 
+  export function getAtomicPatternDirections(pattern: AtomicPattern): PatDirection[] {
+    const left: PatDirection[] = pattern.left == null ? [] : pattern.left.map(cp => cp.direction);
+    const right: PatDirection[] = pattern.right == null ? [] : pattern.right.map(cp => cp.direction);
+    return left.concat(right);
+  }
+
+
   /** a label (a or b) and (un)flipped for the pats not relevant for an AtomicPattern */
   export type Remainder = 'a' | '-a' | 'b' | '-b';
   export type PatDirection = '\\' | '/';

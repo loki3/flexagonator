@@ -59,7 +59,11 @@
         return;
       }
 
-      var output = '<table class="resultsTable"><tr><th>flex</th><th>result</th></tr>';
+      var output = '<table class="resultsTable"><tr><th>flex</th><th>structure</th><th>directions</th></tr>';
+      output += '<tr><td></td>';
+      output += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
+      output += '<td>' + Flexagonator.getAtomicPatternDirections(input).join(''); + '</td>';
+      output += '</tr>';
       for (let flex of flexes) {
         output += '<tr><td>' + flex.fullName + '</td>';
         const result = atomics[flex.fullName].apply(input);
@@ -70,6 +74,7 @@
         }
         input = result;
         output += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
+        output += '<td>' + Flexagonator.getAtomicPatternDirections(input).join(''); + '</td>';
         output += '</tr>';
       }
       output += '</table>';
@@ -134,7 +139,6 @@
         + (decomposition ? decomposition : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.pattern) : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.output) : '') + '</td></tr>';
-      console.log(output);
       return output;
     }
 
