@@ -60,12 +60,17 @@
       }
 
       var output = '<table class="resultsTable"><tr><th>flex</th><th>structure</th><th>directions</th></tr>';
-      output += '<tr><td></td>';
-      output += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
-      output += '<td>' + Flexagonator.getAtomicPatternDirections(input).join(''); + '</td>';
-      output += '</tr>';
+      output += createRow(input);
       for (let flex of flexes) {
-        output += '<tr><td>' + flex.fullName + '</td>';
+        output += createRow(input, flex);
+      }
+      output += '</table>';
+      setHtml('intermediateResults', output);
+    }
+
+    function createRow(input, flex) {
+      var output = '<tr><td>' + (flex ? flex.fullName : '') + '</td>';
+      if (flex) {
         const result = atomics[flex.fullName].apply(input);
         if (Flexagonator.isAtomicPatternError(result)) {
           output += '<td>ERROR: ' + Flexagonator.atomicPatternErrorToString(result) + '</td></tr></table';
@@ -73,12 +78,11 @@
           return;
         }
         input = result;
-        output += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
-        output += '<td>' + Flexagonator.getAtomicPatternDirections(input).join(''); + '</td>';
-        output += '</tr>';
       }
-      output += '</table>';
-      setHtml('intermediateResults', output);
+      output += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
+      output += '<td>' + Flexagonator.getAtomicPatternDirections(input).join(''); + '</td>';
+      output += '</tr>';
+      return output;
     }
 
     // fetch & parse & return the current flex sequence,
