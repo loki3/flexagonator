@@ -59,30 +59,63 @@
         return;
       }
 
-      var output = '<table class="resultsTable"><tr><th>flex</th><th>structure</th><th>directions</th></tr>';
-      output += createRow(input);
-      for (let flex of flexes) {
-        output += createRow(input, flex);
-      }
-      output += '</table>';
-      setHtml('intermediateResults', output);
+      var html = '<table><tr><td>';
+      html += createResultsTable(flexes, input);
+      html += '</td><td>&nbsp;&nbsp;&nbsp;</td>';
+      html += '<td><canvas id="showStrip" width=200 height=200></canvas></td></tr></table>';
+      setHtml('intermediateResults', html);
     }
 
+    // create a table that shows the results of every flex in the sequence
+    function createResultsTable(flexes, input) {
+      var html = '<table class="resultsTable"><tr><th>flex</th><th>structure</th><th>directions</th><th></th></tr>';
+      var [result, str] = createRow(input);
+      html += str;
+      input = result;
+      if (result) {
+        for (let flex of flexes) {
+          var [result, str] = createRow(input, flex);
+          html += str;
+          if (!result) { break; }
+          input = result;
+        }
+      }
+      html += '</table>';
+      return html;
+    }
+
+    // create a table row of results, where 'input' is an AtomicPattern & 'flex' is optionally the flex to apply to it
+    // returns [result | null, html string]
     function createRow(input, flex) {
-      var output = '<tr><td>' + (flex ? flex.fullName : '') + '</td>';
+      var html = '<tr><td>' + (flex ? flex.fullName : '') + '</td>';
       if (flex) {
         const result = atomics[flex.fullName].apply(input);
         if (Flexagonator.isAtomicPatternError(result)) {
-          output += '<td>ERROR: ' + Flexagonator.atomicPatternErrorToString(result) + '</td></tr></table';
-          setHtml('intermediateResults', output);
-          return;
+          html += '<td>ERROR: ' + Flexagonator.atomicPatternErrorToString(result) + '</td><td></td><td></td></tr>';
+          return [null, html];
         }
         input = result;
       }
-      output += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
-      output += '<td>' + Flexagonator.getAtomicPatternDirections(input).join(''); + '</td>';
-      output += '</tr>';
-      return output;
+      var directions = Flexagonator.getAtomicPatternDirections(input);
+      var encoded = directions.map(d => d == '/' ? 1 : 0);
+      html += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
+      html += '<td>' + directions.join('') + '</td>';
+      html += '<td><button onclick="showStrip(\'' + JSON.stringify(encoded) + '\')">show</button></td>';
+      html += '</tr>';
+      return [input, html];
+    }
+
+    // show a strip that uses the given directions
+    function showStrip(directions) {
+      var array = JSON.parse(directions);
+      const objects = {
+        flexagon: Flexagonator.Flexagon.makeFromTree(array),
+        angleInfo: Flexagonator.FlexagonAngles.makeDefault([60, 60, 60]),
+        directions: array,
+        leafProps: new Flexagonator.PropertiesForLeaves(),
+      };
+      const options = { captions: [{ text: '*', which: 0 }], rotation: 150, content: 6 };
+      Flexagonator.drawUnfoldedObjects('showStrip', objects, options);
     }
 
     // fetch & parse & return the current flex sequence,
@@ -112,23 +145,24 @@
       return structure;
     }
 
+    // fill in a table of atomic flex definitions
     function fillInDefinitions() {
-      var output = '<table class="definitionsTable"><tr> <th>name</th> <th>decomposition</th> <th>input</th> <th>output</th> </tr>';
-      output += makeDefinitionRows([">", "<", "^", "~", "Ur", "Ul",]);
-      output += makeExplainerRow('useful building blocks');
-      output += makeDefinitionRows(["Xr", "Xl", "K",]);
-      output += makeExplainerRow('selected pinch flexes');
-      output += makeDefinitionRows(["P222h", "P3333h", "P3333", "P444h", "P444", "P66",]);
-      output += makeExplainerRow('half flexes');
-      output += makeDefinitionRows(["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl", "Hkl",]);
-      output += makeExplainerRow('flexes composed from half flexes');
-      output += makeDefinitionRows(["F", "St", "S", "T", "Mf", "S3", "Ltf", "Lk",]);
-      output += makeExplainerRow('hexaflexagon only');
-      output += makeDefinitionRows(["Hh", "Ht", "Ttf", "V", "Lh", "Ltb", "Lbb", "Lbf",]);
-      output += makeExplainerRow('other flexes');
-      output += makeDefinitionRows(["L3", "Iv"]);
-      output += '</table>';
-      setHtml('definitions', output);
+      var html = '<table class="definitionsTable"><tr> <th>name</th> <th>decomposition</th> <th>input</th> <th>output</th> </tr>';
+      html += makeDefinitionRows([">", "<", "^", "~", "Ur", "Ul",]);
+      html += makeExplainerRow('useful building blocks');
+      html += makeDefinitionRows(["Xr", "Xl", "K",]);
+      html += makeExplainerRow('selected pinch flexes');
+      html += makeDefinitionRows(["P222h", "P3333h", "P3333", "P444h", "P444", "P66",]);
+      html += makeExplainerRow('half flexes');
+      html += makeDefinitionRows(["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl", "Hkl",]);
+      html += makeExplainerRow('flexes composed from half flexes');
+      html += makeDefinitionRows(["F", "St", "S", "T", "Mf", "S3", "Ltf", "Lk",]);
+      html += makeExplainerRow('hexaflexagon only');
+      html += makeDefinitionRows(["Hh", "Ht", "Ttf", "V", "Lh", "Ltb", "Lbb", "Lbf",]);
+      html += makeExplainerRow('other flexes');
+      html += makeDefinitionRows(["L3", "Iv"]);
+      html += '</table>';
+      setHtml('definitions', html);
     }
     function makeExplainerRow(explanation) {
       return '<tr></td><td colspan=4>&nbsp;&nbsp;<b>' + explanation + '</b></td></tr>';
@@ -139,11 +173,11 @@
     function makeDefinitionRow(name) {
       var flex = atomics[name];
       var decomposition = Flexagonator.AtomicDecomposition[name];
-      var output = '<tr><td>' + name + '</td><td>'
+      var html = '<tr><td>' + name + '</td><td>'
         + (decomposition ? decomposition : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.pattern) : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.output) : '') + '</td></tr>';
-      return output;
+      return html;
     }
 
     // display 'text' in a div with given id
