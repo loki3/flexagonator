@@ -31,6 +31,11 @@ namespace Flexagonator {
     flexes["^"] = makeAtomicFlex("turn over", "a # b", "-b # -a") as AtomicFlex;
     flexes["~"] = makeAtomicFlex("change direction", "a # b", "-a # -b") as AtomicFlex;
     flexes["Ur"] = makeAtomicFlex("unfold right", "a # [-2,1] / b", "a # 1 \\ 2 / -b") as AtomicFlex;
+
+    // special flexes that only work if 'a' & 'b' are actually empty,
+    // in other words, the entire pat structure is defined by the pattern
+    flexes["Awl"] = makeAtomicWrap('l');
+    flexes["Awr"] = makeAtomicWrap('r');
   }
 
   // create some larger pieces that can more easily be combined into "full" flexes

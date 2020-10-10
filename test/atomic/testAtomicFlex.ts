@@ -72,5 +72,41 @@ namespace Flexagonator {
       const asString = atomicPatternToString(result);
       expect(asString).toBe('-a # [-1,2] / 3 / -b');
     });
+
+    it("should wrap left to right", () => {
+      const flex = makeAtomicWrap('l');
+      const input = stringToAtomicPattern('a 1 / 2 / # 3 \\ 4 \\ b') as AtomicPattern;
+      const result = flex.apply(input);
+      if (isAtomicPatternError(result)) {
+        fail('failed to apply flex: ' + JSON.stringify(result));
+        return;
+      }
+      const asString = atomicPatternToString(result);
+      expect(asString).toBe('a 2 / # 3 \\ 4 \\ 1 / b');
+    });
+
+    it("should wrap right to left", () => {
+      const flex = makeAtomicWrap('r');
+      const input = stringToAtomicPattern('a 1 / 2 / # 3 \\ 4 \\ b') as AtomicPattern;
+      const result = flex.apply(input);
+      if (isAtomicPatternError(result)) {
+        fail('failed to apply flex: ' + JSON.stringify(result));
+        return;
+      }
+      const asString = atomicPatternToString(result);
+      expect(asString).toBe('a 4 \\ 1 / 2 / # 3 \\ b');
+    });
+
+    it("should turn over pats during wrap if the ends are flipped", () => {
+      const flex = makeAtomicWrap('r');
+      const input = stringToAtomicPattern('a 1 / 2 / # 3 \\ [4,5] \\ -b') as AtomicPattern;
+      const result = flex.apply(input);
+      if (isAtomicPatternError(result)) {
+        fail('failed to apply flex: ' + JSON.stringify(result));
+        return;
+      }
+      const asString = atomicPatternToString(result);
+      expect(asString).toBe('a [-5,-4] / 1 / 2 / # 3 \\ -b');
+    });
   });
 }

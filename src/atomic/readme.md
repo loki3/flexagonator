@@ -177,7 +177,7 @@ Some other selected flexes:
 
 ```
 # on a pentaflexagon
-L3  = (K^)3 (<)5 (K'^)3
+L3  = (K^)3 (<)4 (K'^)3
 
 # "inner pivot" with pat directions \//\
 Iv  = > Ul > Ul <<<< Ur' Ul' >>

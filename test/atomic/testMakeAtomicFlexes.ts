@@ -130,13 +130,11 @@ namespace Flexagonator {
         "a [[[3,-2],-4],1] / -5 / # [[[-8,7],9],-6] / b",
         "-b -9 / -8 / [[[-5,6],4],-7] / # 3 / 2 \\ 1 / a");
 
-      // L3 = (K^)3 (<)5 (K'^)3
-      testFormula("L3 part 1", "(K^)3 (<)5",
+      // L3 = (K^)3 (<)4 (K'^)3
+      // (note that Awr is needed to handle wrapping around the ends, since 'a' & 'b' are empty,
+      //  but are still needed because they tell us when the strip is a mobius band)
+      testFormula("L3", "(K^)3 (<)4 (Awr)2 (K'^)3",
         "a [[[3,-2],-4],1] / -5 / # [[[-8,7],9],-6] / [[[12,-11],-13],10] / 14 / b",
-        "-b # -14 / [-10,[13,[11,-12]]] / -9 / -8 / [[[-5,6],4],-7] / 3 / 2 \\ 1 / a");
-      // take the ending state above and move 2/1\ to the beginning, flipping because -b
-      testFormula("L3 part 2", "(K'^)3",
-        "-b -2 / -1 \\ -14 / # [-10,[13,[11,-12]]] / -9 / -8 / [[[-5,6],4],-7] / 3 / a",
         "-a -3 / [7,[-4,[-6,5]]] / [-11,[8,[10,-9]]] / # -12 / [-2,[-13,[1,-14]]] / -b");
     });
 

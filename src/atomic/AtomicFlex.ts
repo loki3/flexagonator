@@ -12,12 +12,23 @@ namespace Flexagonator {
     return new AtomicFlex(name, input, output);
   }
 
+  /**
+   * assuming that the entire flexagon is described by input.left & input.right,
+   * move the first or last pat to the opposite end of the pattern
+   */
+  export function makeAtomicWrap(wrap: 'r' | 'l'): AtomicFlex {
+    const name = wrap === 'r' ? 'wrap right to left' : 'wrap left to right';
+    const empty: AtomicPattern = { otherLeft: 'a', left: null, right: null, otherRight: 'b', singleLeaf: false };
+    return new AtomicFlex(name, empty, empty, wrap);
+  }
+
   /** info about how to apply a flex that uses AtomicPattern */
   export class AtomicFlex {
     constructor(
       readonly name: string,
       readonly pattern: AtomicPattern,
-      readonly output: AtomicPattern) {
+      readonly output: AtomicPattern,
+      readonly specialWrap?: 'r' | 'l') {
     }
 
     createInverse(): AtomicFlex {
@@ -26,6 +37,10 @@ namespace Flexagonator {
 
     /** apply this flex to the given input */
     apply(input: AtomicPattern): AtomicPattern | AtomicPatternError {
+      if (this.specialWrap) {
+        return this.handleSpecialWrap(input);
+      }
+
       const matches = matchAtomicPattern(input, this.pattern);
       if (isAtomicPatternError(matches)) {
         return matches;
@@ -127,6 +142,40 @@ namespace Flexagonator {
         case 'b': return right;
         case '-b': return flipRemainder(right);
       }
+    }
+
+    /**
+     * assuming that the entire flexagon is described by input.left & input.right,
+     * move the first or last pat to the opposite end of the pattern
+     */
+    private handleSpecialWrap(input: AtomicPattern): AtomicPattern {
+      if (input.left === null && input.right === null) {
+        return input;
+      }
+      const turnOver = this.shouldTurnOver(input);
+      if (this.specialWrap === 'l') {
+        const item = input.left !== null ? input.left[input.left.length - 1] : (input.right as ConnectedPats)[0];
+        const toWrap = turnOver ? this.turnOver(item) : item;
+        const left = input.left !== null ? input.left.slice(0, input.left.length - 1) : null;
+        const right = input.right !== null ? input.right.concat(toWrap) : [toWrap];
+        return { ...input, left, right };
+      } else if (this.specialWrap === 'r') {
+        const item = input.right !== null ? input.right[input.right.length - 1] : (input.left as ConnectedPats)[0];
+        const toWrap = turnOver ? this.turnOver(item) : item;
+        const left = input.left !== null ? input.left.concat(toWrap) : [toWrap];
+        const right = input.right !== null ? input.right.slice(0, input.right.length - 1) : null;
+        return { ...input, left, right };
+      }
+      return input;
+    }
+
+    private shouldTurnOver(input: AtomicPattern): boolean {
+      const aFlipped = input.otherLeft.startsWith('-');
+      const bFlipped = input.otherRight.startsWith('-');
+      return (aFlipped && !bFlipped) || (!aFlipped && bFlipped);
+    }
+    private turnOver(pat: ConnectedPat): ConnectedPat {
+      return { pat: pat.pat.makeFlipped(), direction: pat.direction === '/' ? '\\' : '/' };
     }
   }
 
