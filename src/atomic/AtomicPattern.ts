@@ -6,7 +6,7 @@ namespace Flexagonator {
   export interface AtomicPattern {
     /** pats to the left of the relevant pats */
     readonly otherLeft: Remainder;
-    /** the important pat structure to the immediate left of a particular hinge */
+    /** the important pat structure to the immediate left of a particular hinge, going backwards from hinge */
     readonly left: ConnectedPats | null;
     /** the important pat structure to the immediate right of a particular hinge */
     readonly right: ConnectedPats | null;
@@ -17,7 +17,7 @@ namespace Flexagonator {
   }
 
   export function getAtomicPatternDirections(pattern: AtomicPattern): PatDirection[] {
-    const left: PatDirection[] = pattern.left == null ? [] : pattern.left.map(cp => cp.direction);
+    const left: PatDirection[] = pattern.left == null ? [] : pattern.left.map(cp => cp.direction).reverse();
     const right: PatDirection[] = pattern.right == null ? [] : pattern.right.map(cp => cp.direction);
     return left.concat(right);
   }
