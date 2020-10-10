@@ -1,13 +1,5 @@
 namespace Flexagonator {
 
-  /** definition of an "atomic flex", which transforms one atomic pattern into another */
-  export interface AtomicFlexDef {
-    readonly shorthand: string;
-    readonly name: string;
-    readonly input: string;  // AtomicPattern
-    readonly output: string; // AtomicPattern
-  }
-
   export function makeAtomicFlex(name: string, inPattern: string, outPattern: string): AtomicFlex | AtomicParseError {
     const input = stringToAtomicPattern(inPattern);
     if (isAtomicParseError(input)) {
