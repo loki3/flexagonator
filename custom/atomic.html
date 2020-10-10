@@ -174,6 +174,9 @@
       html += makeDefinitionRows(["L3"]);
       html += makeExplainerRow('start and end with \\//\\');
       html += makeDefinitionRows(["Iv"]);
+      html += makeExplainerRow('start and end with 	/\\/');
+      html += makeExplicitDefinitionRow(null, "Ur >> Ul' << Ul >> Ur' <<",
+        "a # [3,[-2,1]] / 4 \\ 5 / b", "a # -2 / -1 \\ [[-4,5],3] / b");
       html += '</table>';
       setHtml('definitions', html);
     }
@@ -190,6 +193,13 @@
         + (decomposition ? decomposition : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.pattern) : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.output) : '') + '</td></tr>';
+      return html;
+    }
+    function makeExplicitDefinitionRow(name, decomposition, input, output) {
+      var html = '<tr><td>' + (name ? name : '') + '</td><td>'
+        + (decomposition ? decomposition : '') + '</td><td>'
+        + (input ? input : '') + '</td><td>'
+        + (output ? output : '') + '</td></tr>';
       return html;
     }
 
