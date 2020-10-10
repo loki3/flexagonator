@@ -108,9 +108,10 @@
     // show a strip that uses the given directions
     function showStrip(directions) {
       var array = JSON.parse(directions);
+      var angles = getAngles();
       const objects = {
         flexagon: Flexagonator.Flexagon.makeFromTree(array),
-        angleInfo: Flexagonator.FlexagonAngles.makeDefault([60, 60, 60]),
+        angleInfo: Flexagonator.FlexagonAngles.makeAngles(angles[0], angles[1]),
         directions: array,
         leafProps: new Flexagonator.PropertiesForLeaves(),
       };
@@ -143,6 +144,16 @@
       }
       setHtml('errorInStructure', '');
       return structure;
+    }
+
+    // get angles, e.g. "[45, 90, 45]"
+    function getAngles() {
+      var anglesText = document.getElementById('enterAngles').value;
+      var angles = JSON.parse(anglesText);
+      if (!Array.isArray(angles) || angles.length < 2) {
+        return [60, 60, 60];
+      }
+      return angles;
     }
 
     // fill in a table of atomic flex definitions
@@ -233,6 +244,8 @@
   </table>
 
   <input onclick="applyFlexes();" type="button" value="apply flexes" />
+  &nbsp;&nbsp;&nbsp;&nbsp;  angles
+  <input id="enterAngles" size="20" spellcheck="false" value="[60, 60, 60]"/>
 
   <br/><br/>
   <div id="intermediateResults"></div>
