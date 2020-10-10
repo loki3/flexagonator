@@ -89,7 +89,8 @@
     function createRow(input, flex) {
       var html = '<tr><td>' + (flex ? flex.fullName : '') + '</td>';
       if (flex) {
-        const result = atomics[flex.fullName].apply(input);
+        const flexdef = atomics[flex.fullName];
+        const result = flexdef ? flexdef.apply(input) : { atomicPatternError: 'unknown flex ' + flex.fullName };
         if (Flexagonator.isAtomicPatternError(result)) {
           html += '<td>ERROR: ' + Flexagonator.atomicPatternErrorToString(result) + '</td><td></td><td></td></tr>';
           return [null, html];
