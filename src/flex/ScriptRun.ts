@@ -71,7 +71,8 @@ namespace Flexagonator {
     }
 
     if (item.directions !== undefined) {
-      fm.setDirections(item.directions);
+      const directions = Directions.make(item.directions);
+      fm.setDirections(directions);
     }
 
     if (item.flexes !== undefined) {

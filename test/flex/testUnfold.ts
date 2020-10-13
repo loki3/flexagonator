@@ -59,7 +59,7 @@ namespace Flexagonator {
     });
 
     it('passes thru custom directions between pats', () => {
-      const result = unfold([1, 2, 3, 4, 5], [false, true, false, true, false]);
+      const result = unfold([1, 2, 3, 4, 5], Directions.make([false, true, false, true, false]));
       if (isTreeError(result)) {
         fail();
         return;

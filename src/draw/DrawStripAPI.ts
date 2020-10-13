@@ -4,7 +4,7 @@ namespace Flexagonator {
   export interface DrawStripObjects {
     readonly flexagon: Flexagon;
     readonly angleInfo: FlexagonAngles;
-    readonly directions?: boolean[];
+    readonly directions?: boolean[] | string;
     readonly leafProps: PropertiesForLeaves;
   }
 
@@ -39,10 +39,11 @@ namespace Flexagonator {
 
   // draw an unfolded flexagon strip
   export function drawUnfolded(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options?: DrawStripOptions) {
+    const directions = fm.getDirections();
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
-      directions: fm.getDirections(),
+      directions: directions ? directions.asRaw() : undefined,
       leafProps: fm.leafProps,
     };
     return drawUnfoldedObjects(canvas, objects, options);
@@ -53,7 +54,8 @@ namespace Flexagonator {
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
 
-    const unfolded = unfold(objects.flexagon.getAsLeafTrees(), objects.directions);
+    const directions = objects.directions ? Directions.make(objects.directions) : undefined;
+    const unfolded = unfold(objects.flexagon.getAsLeafTrees(), directions);
     if (isTreeError(unfolded)) {
       console.log("error unfolding flexagon");
       console.log(unfolded);

@@ -10,7 +10,7 @@ namespace Flexagonator {
     flexesToSearch: Flexes;
     interpolateNewLeaves?: 'never' | 'justColor' | 'colorAndLabel' = undefined;
     private angleInfo: FlexagonAngles = FlexagonAngles.makeDefault();
-    private directions?: boolean[];
+    private directions?: Directions;
     private tracker: Tracker;
     private readonly history: History;
 
@@ -35,7 +35,7 @@ namespace Flexagonator {
       if (!other.angleInfo.isDefault) {
         fm.angleInfo = other.angleInfo;
       }
-      if (other.directions && other.directions.length === flexagon.getPatCount()) {
+      if (other.directions && other.directions.getCount() === flexagon.getPatCount()) {
         fm.directions = other.directions;
       }
       return fm;
@@ -160,10 +160,10 @@ namespace Flexagonator {
       return this.angleInfo;
     }
 
-    setDirections(directions?: boolean[]) {
+    setDirections(directions?: Directions) {
       this.directions = directions;
     }
-    getDirections(): boolean[] | undefined {
+    getDirections(): Directions | undefined {
       return this.directions;
     }
 

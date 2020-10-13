@@ -115,35 +115,35 @@ namespace Flexagonator {
 
       // hexagonal ring dodecaflexagon
       if (sides === 6 && n === 12) {
-        return { angles: [60, 60], directions: repeat([true, true, false, true], 3) };
+        return { angles: [60, 60], directions: Directions.make('//|/'.repeat(3)) };
       }
       // hexagonal ring tetradecaflexagon
       if (sides === 6 && n === 14) {
-        return { angles: [60, 60], directions: repeat([true, false, true, true, true, false, true], 2) };
+        return { angles: [60, 60], directions: Directions.make('/|///|/'.repeat(2)) };
       }
       // octagonal ring tetradecaflexagon
       if (sides === 8 && n === 14) {
-        return { angles: [72, 72], directions: repeat([false, true, true, false, true, true, false], 2) };
+        return { angles: [72, 72], directions: Directions.make('|//|//|'.repeat(2)) };
       }
     }
 
     // hexagonal regular decaflexagon
     if (sides === 6 && leafShape === 'regular' && n === 10) {
-      return { directions: repeat([true, true, false, true, true], 2) };
+      return { directions: Directions.make('//|//'.repeat(2)) };
     }
     // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
     if (sides === 6 && leafShape && leafShape.startsWith('silver')) {
       if (n === 12) {
-        const directions = repeat([false, true, true], 4);
+        const directions = Directions.make('|//'.repeat(4));
         return { angles: [45, 90], directions };
       } else if (n === 14) {
-        const directions = repeat([true, false, true, true, true, true, false], 2);
+        const directions = Directions.make('/|////|'.repeat(2));
         return { angles: [90, 45], directions };
       }
     }
     // rhombic hexadeca
     if (overallShape === 'rhombic' && n === 16) {
-      const directions = repeat([true, true, false, true, true, false, true, true], 2);
+      const directions = Directions.make('//|//|//'.repeat(2));
       return { angles: [30, 90], directions };
     }
 
@@ -162,7 +162,7 @@ namespace Flexagonator {
     // total = sides * a + n * b = sides * a + n * (180 - 2a)
     const a = (total - 180 * n) / (sides - 2 * n);
 
-    const directions = repeat([true, false, true], n / 3);
+    const directions = Directions.make('/|/'.repeat(n / 3));
     return { angles: [a, 180 - 2 * a], directions };
   }
 
@@ -170,7 +170,7 @@ namespace Flexagonator {
   function computeRing2Script(n: number): Description {
     const sides = n / 4;
     const a = 180 * (sides - 2) / (4 * sides);  // each corner of the outer polygon has 4 triangles in it
-    const directions = repeat([true, false, false, true], n / 4);
+    const directions = Directions.make('/||/'.repeat(n / 4));
     return { angles: [90 - a, a], directions };
   }
 
@@ -179,7 +179,7 @@ namespace Flexagonator {
     // if you drew a reguluar (n/4)-gon, each corner would contain 2 full triangles & 2 half triangles
     const sides = n / 4;
     const a = ((180 * (sides - 2)) / sides) / 3;
-    const directions = repeat([true, false, false, true], n / 4);
+    const directions = Directions.make('/||/'.repeat(n / 4));
     return { angles: [(180 - a) / 2, a], directions };
   }
 
@@ -390,7 +390,7 @@ namespace Flexagonator {
         script.push({ angles: this.description.angles });
       }
       if (this.description.directions) {
-        script.push({ directions: this.description.directions });
+        script.push({ directions: this.description.directions.asRaw() });
       }
       if (this.description.flexes) {
         script.push({ flexes: this.description.flexes });
@@ -424,7 +424,7 @@ namespace Flexagonator {
       // numPats, pats.length, & directions.length should all match
       const a = this.description.numPats;
       const b = this.description.pats ? this.description.pats.length : 0;
-      const c = this.description.directions ? this.description.directions.length : 0;
+      const c = this.description.directions ? this.description.directions.getCount() : 0;
       if (a !== 0 && b !== 0 && a !== b) {
         this.errors.push({ nameError: 'numPats, pats, and directions should represent the same count' });
       } else if (a !== 0 && c !== 0 && a !== c) {
@@ -440,7 +440,7 @@ namespace Flexagonator {
     readonly numPats?: number;
     readonly pats?: LeafTree[];
     readonly angles?: number[];
-    readonly directions?: boolean[];
+    readonly directions?: Directions;
     readonly flexes?: string;
 
     readonly error?: NamePiecesError;

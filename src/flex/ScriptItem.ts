@@ -10,8 +10,9 @@ namespace Flexagonator {
     readonly numPats?: number;
     // for first leaf: [center angle, clockwise angle]
     readonly angles?: number[];
-    // how each pat is connected to the previous pat, 0: left, 1: right (if edge at bottom)
-    readonly directions?: boolean[];
+    // how each pat is connected to the previous pat; if previous pat is to the left,
+    // false, \, or | means next is to upper right; true or / is to lower right
+    readonly directions?: boolean[] | string;
     // a series flexes
     readonly flexes?: string;
     // run a series of flexes in reverse, effectively undoing them

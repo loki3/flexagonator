@@ -192,7 +192,7 @@ as shown below.
 {
   flexagon,   // Flexagon
   angleInfo,  // FlexagonAngles
-  directions, // boolean[], optional
+  directions, // boolean[] | string, optional
   leafProps,  // PropertiesForLeaves
 }
 
