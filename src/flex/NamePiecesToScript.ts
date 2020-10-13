@@ -12,6 +12,12 @@ namespace Flexagonator {
       info.add(item);
     }
 
+    // patsPrefix, !leafShape, !overallShape -> angles
+    if (name.patsPrefix && !name.leafShape && !name.overallShape) {
+      const item = patsPrefixToAnglesScript(name.patsPrefix);
+      info.add(item);
+    }
+
     // leafShape -> angles
     if (name.leafShape) {
       const item = leafShapeToScript(name.leafShape, name.patsPrefix);
@@ -70,6 +76,16 @@ namespace Flexagonator {
       return { error: { nameError: 'unknown patsPrefix', propValue: patsPrefix } };
     }
     return { numPats: n };
+  }
+
+  // assuming pats meet in the middle, figure out the angles
+  function patsPrefixToAnglesScript(patsPrefix: GreekNumberType): Description {
+    const n = greekPrefixToNumber(patsPrefix);
+    if (n === null) {
+      return {};
+    }
+    const center = 360 / n;
+    return { angles: [center, (180 - center) / 2] };
   }
 
   // convert overallShape to ScriptItem by leveraging patsPrefix

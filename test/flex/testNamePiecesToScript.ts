@@ -5,7 +5,7 @@ namespace Flexagonator {
     it('should map patsPrefix to numPats', () => {
       const name: NamePieces = { patsPrefix: 'tetradeca' };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(1);
+      expect(script.length).toBe(2);
       expect(errors.length).toBe(0);
 
       const numPats = script[0].numPats;
@@ -20,7 +20,7 @@ namespace Flexagonator {
       const name = { patsPrefix: 'blah' };
       const [script, errors] = namePiecesToScript(name as NamePieces);
       expect(script.length).toBe(0);
-      expect(errors.length).toBe(1);
+      expect(errors.length).toBe(2);
 
       const error = errors[0];
       if (error === undefined) {
@@ -28,6 +28,23 @@ namespace Flexagonator {
       } else {
         expect(error.nameError).toBe('unknown patsPrefix');
         expect(error.propValue).toBe('blah');
+      }
+    });
+
+    it('should set angles assuming pats meet in middle when patsPrefix but no overallShape or leafShape', () => {
+      // pentaflexagon
+      const name: NamePieces = { patsPrefix: 'penta' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(2);
+      expect(errors.length).toBe(0);
+
+      expect(script[0].numPats).toBe(5);
+      const angles = script[1].angles;
+      if (angles === undefined) {
+        fail('script[1].angles should exist');
+      } else {
+        expect(angles[0]).toBe(72);
+        expect(angles[1]).toBe(54);
       }
     });
 
@@ -155,11 +172,11 @@ namespace Flexagonator {
     it('should map faceCount to flexes if numPats is even & pats meet in the middle', () => {
       const name: NamePieces = { faceCount: 'penta', patsPrefix: 'tetra' };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(2);
+      expect(script.length).toBe(3);
       expect(errors.length).toBe(0);
 
-      // script[0] is numPats
-      const flexes = script[1].flexes;
+      // script[0] is numPats, script[1] is angles
+      const flexes = script[2].flexes;
       if (flexes === undefined) {
         fail('script[1].flexes should exist');
       } else {
@@ -170,7 +187,7 @@ namespace Flexagonator {
     it("should map faceCount to pats if it's even & numPats is odd", () => {
       const name: NamePieces = { faceCount: 'tetra', patsPrefix: 'penta' };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(1);
+      expect(script.length).toBe(2);
       expect(errors.length).toBe(0);
 
       const pats = script[0].pats;
@@ -213,7 +230,7 @@ namespace Flexagonator {
     it('should complain if numPats and pats.length are different', () => {
       const name: NamePieces = { patsPrefix: 'tetra', pats: [0, 0, 0] };
       const [script, errors] = namePiecesToScript(name);
-      expect(script.length).toBe(1);
+      expect(script.length).toBe(2);
       expect(errors.length).toBe(1);
 
       const error = errors[0];
