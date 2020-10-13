@@ -7,7 +7,6 @@ namespace Flexagonator {
       if (p1.leafShape !== p2.leafShape) { return false; }
       if (p1.faceCount !== p2.faceCount) { return false; }
       if (p1.patsPrefix !== p2.patsPrefix) { return false; }
-      if (p1.leaves !== p2.leaves) { return false; }
       if (p1.generator !== p2.generator) { return false; }
       if (p1.pats !== p2.pats) { return false; }
       return true;

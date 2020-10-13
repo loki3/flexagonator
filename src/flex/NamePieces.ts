@@ -9,8 +9,6 @@ namespace Flexagonator {
     readonly faceCount?: GreekNumberType;
     // number of pats in the main position
     readonly patsPrefix?: GreekNumberType;
-    // total number of leaves
-    readonly leaves?: number;
     // flex generating sequence
     readonly generator?: string;
     // internal structure of all the pats
