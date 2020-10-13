@@ -64,7 +64,7 @@ namespace Flexagonator {
     }
 
     /** make a series of ConnectedPats by filling in 'output' with what's in 'matches' + 'more' */
-    private makePats(output: ConnectedPats | null, matches: Pat[], more?: ConnectedPats, direction?: PatDirection): ConnectedPats | null | FlexError {
+    private makePats(output: ConnectedPats | null, matches: Pat[], more?: ConnectedPats, direction?: Direction): ConnectedPats | null | FlexError {
       if (output === null && more === undefined) {
         return null;
       }
@@ -129,7 +129,7 @@ namespace Flexagonator {
       if ((pattern === 'a' && output === '-a') || (pattern === '-a' && output === 'a')
         || (pattern === 'b' && output === '-b') || (pattern === '-b' && output === 'b')) {
         // if flipping but not swapping sides (e.g. a=-a), then we need to reverse all the directions
-        return pats.map(p => { return { pat: p.pat, direction: (p.direction === '\\' ? '/' : '\\') as PatDirection } });
+        return pats.map(p => { return { pat: p.pat, direction: (p.direction === '\\' ? '/' : '\\') as Direction } });
       }
       return pats;
     }

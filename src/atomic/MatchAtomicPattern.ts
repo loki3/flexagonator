@@ -31,7 +31,7 @@ namespace Flexagonator {
     readonly otherRight: Remainder;
     readonly patsRight?: ConnectedPats;
     /** used in the special case of a single leaf pattern that ignores direction, because it's needed when creating output */
-    readonly specialDirection?: PatDirection;
+    readonly specialDirection?: Direction;
   }
 
 
@@ -40,9 +40,9 @@ namespace Flexagonator {
     inLeft: ConnectedPats | null, inRight: ConnectedPats | null,
     patternLeft: ConnectedPats | null, patternRight: ConnectedPats | null,
     singleLeaf: boolean
-  ): [Pat[], PatDirection | undefined] | AtomicPatternError {
+  ): [Pat[], Direction | undefined] | AtomicPatternError {
     let leftMatches: Pat[] = [];
-    let direction: PatDirection | undefined;
+    let direction: Direction | undefined;
     if (inLeft !== null && patternLeft !== null) {
       const matches = matchOneSide(inLeft, patternLeft, singleLeaf);
       if (isAtomicPatternError(matches)) {
