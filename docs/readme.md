@@ -10,6 +10,7 @@
 * [Flex notation](flex-notation.md): The notation used to describe a series of flexes on a flexagon.
 * [Scripting](script.md): How to run scripts for creating and flexing specific flexagons.
 * [Drawing APIs](draw-apis.md): APIs used for drawing folded or unfolded flexagons.
+* [Atomic theory](atomic-theory.md): Describes the low level details of how flexagons operate.
 
 
 ## Features
@@ -57,6 +58,8 @@
 * Flexes must start and end with the same arrangement of pats.
   For example, you currently can't describe the intermediate states reachable through various
   [pocket and slot flexes](http://loki3.com/flex/state-slot-5-hexa.html).
+  (Note: you can now use [atomic theory](./src/atomic/readme.md) to describe intermediate states,
+  though the API is still in flux.)
 * When drawing an unfolded flexagon, it doesn't detect when leaves overlap.
   However, you can manually break the strip up into multiple pieces with the [drawing API](draw-apis.md).
 
