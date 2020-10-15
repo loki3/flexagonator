@@ -58,7 +58,7 @@
 * Flexes must start and end with the same arrangement of pats.
   For example, you currently can't describe the intermediate states reachable through various
   [pocket and slot flexes](http://loki3.com/flex/state-slot-5-hexa.html).
-  (Note: you can now use [atomic theory](./src/atomic/readme.md) to describe intermediate states,
+  (Note: you can now use [atomic theory](../src/atomic/readme.md) to describe intermediate states,
   though the API is still in flux.)
 * When drawing an unfolded flexagon, it doesn't detect when leaves overlap.
   However, you can manually break the strip up into multiple pieces with the [drawing API](draw-apis.md).
