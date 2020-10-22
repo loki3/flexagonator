@@ -50,6 +50,7 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     var atomics = Flexagonator.makeAtomicFlexes(true);
+    var globalPattern;
 
     // pull out current flex sequence & flexagon structure, then apply the flexes
     function applyFlexes() {
@@ -58,6 +59,7 @@
       if (flexes === null || input === null) {
         return;
       }
+      globalPattern = input;
 
       var html = '<table><tr><td>';
       html += createResultsTable(flexes, input);
@@ -68,7 +70,8 @@
 
     // create a table that shows the results of every flex in the sequence
     function createResultsTable(flexes, input) {
-      var html = '<table class="resultsTable"><tr><th>flex</th><th>structure</th><th>directions</th><th></th></tr>';
+      var html = '<table class="resultsTable"><tr><th>flex</th><th>structure</th><th>directions</th>';
+      html += '<th>show <button onclick="showUnfolded()">unfolded</button></th></tr>';
       var [result, str] = createRow(input);
       html += str;
       input = result;
@@ -101,7 +104,7 @@
       var encoded = directions.map(d => d == '/' ? 1 : 0);
       html += '<td>' + Flexagonator.atomicPatternToString(input) + '</td>';
       html += '<td>' + directions.join('') + '</td>';
-      html += '<td><button onclick="showStrip(\'' + JSON.stringify(encoded) + '\')">show</button></td>';
+      html += '<td><button onclick="showStrip(\'' + JSON.stringify(encoded) + '\')">folded</button></td>';
       html += '</tr>';
       return [input, html];
     }
@@ -118,6 +121,13 @@
       };
       const options = { captions: [{ text: '*', which: 0 }], rotation: 150, content: 6 };
       Flexagonator.drawUnfoldedObjects('showStrip', objects, options);
+    }
+
+    // show the atomic pattern unfolded
+    function showUnfolded() {
+      var array = getAngles();
+      var angles = Flexagonator.FlexagonAngles.makeAngles(array[0], array[1]);
+      Flexagonator.drawAtomicPatternUnfolded('showStrip', globalPattern, angles);
     }
 
     // fetch & parse & return the current flex sequence,
