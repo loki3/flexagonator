@@ -6,9 +6,13 @@ namespace Flexagonator {
     "<": ">'",
     Ul: "~Ur~",
 
-    // exchange a leaf
-    Xr: "Ur> ^Ur'^",
-    Xl: "Ul> ^Ul'^",
+    // exchange a leaf between adjacent pats or across n pats
+    Xr: "Ur < Ul' >~",
+    Xl: "Ul < Ur' >~",
+    Xr3: "> Ur << Ul' >",
+    Xl3: "> Ul << Ur' >",
+    Xr4: "> Ur <<< Ul' >>",
+    Xl4: "> Ul <<< Ur' >>",
     // pocket
     K: "Xr^ > Ul^",
 
@@ -26,7 +30,7 @@ namespace Flexagonator {
     Hb: "^Hf^",
     Hr: "<< Ur >>>> Xl << Ul' ~",
     Hl: "^Hr^",
-    Hsr: "> K < Ur << Ul' >> Ur'",
+    Hsr: "> K << Xr3 > Ur'",
     Hsl: "^Hsr^",
     Hkl: "> Ul Ur <<<< Ul' < Ul' >>",
     // specific to hexaflexagon
@@ -56,7 +60,7 @@ namespace Flexagonator {
     L3: "(K^)3 (<)4 (K'^)3",
 
     // "inner pivot" with pat directions /\\/
-    Iv: "> Ul > Ul <<<< Ur' Ul' >>",
+    Iv: "Xl4 Xr4",
   }
 
 }

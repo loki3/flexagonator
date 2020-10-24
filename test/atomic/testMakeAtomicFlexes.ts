@@ -34,6 +34,20 @@ namespace Flexagonator {
       testFormula("Xl", AtomicDecomposition.Xl,
         "a 4 \\ # [5,-6] \\ b",
         "-a [-4,5] \\ # 6 \\ -b");
+
+      testFormula("Xr3", AtomicDecomposition.Xr3,
+        "a 1 / # 2 \\ [-4,3] / b",
+        "a [1,-2] \\ # -3 / -4 \\ b");
+      testFormula("Xl3", AtomicDecomposition.Xl3,
+        "a 1 \\ # 2 / [3,-4] \\ b",
+        "a [-2,1] / # -3 \\ -4 / b");
+
+      testFormula("Xr4", AtomicDecomposition.Xr4,
+        "a [-2,1] / -3 \\ # -4 \\ [6,-5] / b",
+        "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b");
+      testFormula("Xl4", AtomicDecomposition.Xl4,
+        "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b",
+        "a [-2,1] / -3 \\ # -4 \\ [6,-5] / b");
     });
 
     it("should compose to create the pocket flex", () => {
