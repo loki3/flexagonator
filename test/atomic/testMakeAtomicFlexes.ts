@@ -5,9 +5,7 @@ namespace Flexagonator {
       testFormula(">", "<'", // AtomicDecomposition.>
         "a # 1 \\ b",
         "a 1 \\ # b");
-      testFormula("Ul", AtomicDecomposition.Ul,
-        "a # [1,-2] \\ b",
-        "a # 1 / 2 \\ -b");
+      testDefinition("Ul", AtomicDecomposition.Ul);
     });
 
     it("should support some alternate base flexes", () => {
@@ -28,35 +26,17 @@ namespace Flexagonator {
     });
 
     it("should compose to create the exchange flexes", () => {
-      testFormula("Xr", AtomicDecomposition.Xr,
-        "a 1 / # [-3,2] / b",
-        "-a [2,-1] / # 3 / -b");
-      testFormula("Xl", AtomicDecomposition.Xl,
-        "a 4 \\ # [5,-6] \\ b",
-        "-a [-4,5] \\ # 6 \\ -b");
-
-      testFormula("Xr3", AtomicDecomposition.Xr3,
-        "a 1 / # 2 \\ [-4,3] / b",
-        "a [1,-2] \\ # -3 / -4 \\ b");
-      testFormula("Xl3", AtomicDecomposition.Xl3,
-        "a 1 \\ # 2 / [3,-4] \\ b",
-        "a [-2,1] / # -3 \\ -4 / b");
-
-      testFormula("Xr4", AtomicDecomposition.Xr4,
-        "a [-2,1] / -3 \\ # -4 \\ [6,-5] / b",
-        "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b");
-      testFormula("Xl4", AtomicDecomposition.Xl4,
-        "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b",
-        "a [-2,1] / -3 \\ # -4 \\ [6,-5] / b");
+      testDefinition("Xr", AtomicDecomposition.Xr);
+      testDefinition("Xl", AtomicDecomposition.Xl);
+      testDefinition("Xr3", AtomicDecomposition.Xr3);
+      testDefinition("Xl3", AtomicDecomposition.Xl3);
+      testDefinition("Xr4", AtomicDecomposition.Xr4);
+      testDefinition("Xl4", AtomicDecomposition.Xl4);
     });
 
     it("should compose to create the pocket flex", () => {
-      testFormula("K", "Ur >^ Ur' > Ul ^",
-        "a [-2,1] / -3 / # [5,-4] / b",
-        "a 1 \\ 2 / # [-4,3] / -5 / -b");
-      testFormula("K", AtomicDecomposition.K,
-        "a [-2,1] / -3 / # [5,-4] / b",
-        "a 1 \\ 2 / # [-4,3] / -5 / -b");
+      testDefinition("K", "Ur >^ Ur' > Ul ^");
+      testDefinition("K", AtomicDecomposition.K);
     });
 
     it("should compose to create the pinch flex on a hexaflexagon", () => {
@@ -93,32 +73,16 @@ namespace Flexagonator {
     });
 
     it("should compose to create the inner pivot", () => {
-      testFormula("Iv", AtomicDecomposition.Iv,
-        "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b",
-        "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b");
+      testDefinition("Iv", AtomicDecomposition.Iv);
     });
 
     it("should compose to create the half flexes", () => {
-      testFormula("Hf", AtomicDecomposition.Hf,
-        "a [-2,1] / -3 / # [5,-4] / 6 / b",
-        "a 1 \\ 2 / # [-4,3] / [-5,6] \\ b");
-      testFormula("Hb", AtomicDecomposition.Hb,
-        "a 1 / [-3,2] / # -4 / [6,-5] / b",
-        "a [1,-2] \\ [4,-3] / # 5 / 6 \\ b");
-
-      testFormula("Hr", AtomicDecomposition.Hr,
-        "a [-2,1] / -3 / # -4 / [6,-5] / b",
-        "a 1 \\ 2 / # [[-4,5],3] / 6 \\ b");
-      testFormula("Hl", AtomicDecomposition.Hl,
-        "a [-2,1] / -3 / # -4 / [6,-5] / b",
-        "a 1 \\ [4,[2,-3]] / # 5 / 6 \\ b");
-
-      testFormula("Hsr", AtomicDecomposition.Hsr,
-        "a 1 / [[-3,4],2] / # 5 / [-7,6] / b",
-        "a [1,-2] \\ -3 / # [[5,-6],-4] / -7 \\ b");
-      testFormula("Hsl", AtomicDecomposition.Hsl,
-        "a [-2, 1] / -3 / # [-6,[-4,5]] / -7 / b",
-        "a 1 \\ [4,[2,-3]] / # 5 / [6,-7] \\ b");
+      testDefinition("Hf", AtomicDecomposition.Hf);
+      testDefinition("Hb", AtomicDecomposition.Hb);
+      testDefinition("Hr", AtomicDecomposition.Hr);
+      testDefinition("Hl", AtomicDecomposition.Hl);
+      testDefinition("Hsr", AtomicDecomposition.Hsr);
+      testDefinition("Hsl", AtomicDecomposition.Hsl);
     });
 
     it("should compose to create the half flexes specific to a hexaflexagon", () => {
@@ -131,9 +95,7 @@ namespace Flexagonator {
     });
 
     it("should compose to create the half kite slot", () => {
-      testFormula("Hkl", AtomicDecomposition.Hkl,
-        "a 1 / 2 / 3 \\ 4 / # 5 / [[-7,6],8] \\ b",
-        "a [1,[3,-2]] \\ 4 / # 5 / 6 \\ 7 / 8 / b");
+      testDefinition("Hkl", AtomicDecomposition.Hkl);
     });
 
     it("should compose pocket flexes", () => {
@@ -152,6 +114,8 @@ namespace Flexagonator {
         "-a -3 / [7,[-4,[-6,5]]] / [-11,[8,[10,-9]]] / # -12 / [-2,[-13,[1,-14]]] / -b");
     });
 
+    const atomics = makeAtomicFlexes('all');
+
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'
     function testFormula(name: string, flexes: string, input: string, output: string, log?: boolean): void {
       const inputPattern = stringToAtomicPattern(input);
@@ -168,8 +132,20 @@ namespace Flexagonator {
       expect(asString).toBe(output, "flex: " + name);
     }
 
+    // for flex 'name', test that atomics[name] properly describes the sequence in 'flexes'
+    function testDefinition(name: string, flexes: string, log?: boolean): void {
+      const inputPattern = atomics[name].pattern;
+      const result = applyFlexes(inputPattern, flexes, log);
+      if (isAtomicPatternError(result)) {
+        fail('failed to apply flex ' + name + ' with error ' + JSON.stringify(result));
+        return;
+      }
+      const asString = atomicPatternToString(result);
+      const output = atomicPatternToString(atomics[name].output);
+      expect(asString).toBe(output, "flex: " + name);
+    }
+
     // apply a series of flexes to given input
-    const atomics = makeAtomicFlexes('all');
     function applyFlexes(input: AtomicPattern, flexes: string, log?: boolean): AtomicPattern | AtomicPatternError {
       if (log) {
         console.log('\n---- applying flexes:', flexes, '------');
