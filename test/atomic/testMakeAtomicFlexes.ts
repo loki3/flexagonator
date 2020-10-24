@@ -169,7 +169,7 @@ namespace Flexagonator {
     }
 
     // apply a series of flexes to given input
-    const atomics = makeAtomicFlexes(true);
+    const atomics = makeAtomicFlexes('all');
     function applyFlexes(input: AtomicPattern, flexes: string, log?: boolean): AtomicPattern | AtomicPatternError {
       if (log) {
         console.log('\n---- applying flexes:', flexes, '------');

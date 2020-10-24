@@ -59,6 +59,9 @@ namespace Flexagonator {
     // on a pentaflexagon
     L3: "(K^)3 (<)4 (K'^)3",
 
+    // start & end //
+    Tf: "Xr Xr",
+
     // "inner pivot" with pat directions /\\/
     Iv: "Xl4 Xr4",
   }
