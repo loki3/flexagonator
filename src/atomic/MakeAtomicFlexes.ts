@@ -80,6 +80,9 @@ namespace Flexagonator {
     flexes["Tf"] = makeAtomicFlex("forced tuck", "a 1 / # [[-3,4],2] / b", "a [3,[1,-2]] / # 4 / b") as AtomicFlex;
     flexes["Iv"] = makeAtomicFlex("inner pivot",
       "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b", "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b") as AtomicFlex;
+
+    flexes["S"] = makeAtomicFlex("pyramid shuffle",
+      "a [[[3,-2],-4],1] / -5 / # [7,-6] / b", "a [-2,1] / # -3 / [7,[-4,[-6,5]]] / b") as AtomicFlex;
   }
 
 }

@@ -40,10 +40,11 @@ namespace Flexagonator {
     // built from half flexes
     F: "Hf Hb'",
     St: "Hf Hsr'",
-    S: "< Hsr Hb' >",
-    T: "< Hr Hf' >",
     Mf: "< Hr Hb' >",
     S3: "< Hr Hl' >",
+    // these have simpler forms, but can be built from half flexes
+    Tfromh: "< Hr Hf' >",
+    Sfromh: "< Hsr Hb' >",
 
     Ltf: "Hf Hkl Hf' <",
     Lk: "Hf Hkl Hsl' <",
@@ -61,6 +62,9 @@ namespace Flexagonator {
 
     // start & end //
     Tf: "Xr Xr",
+
+    // start & end ///
+    S: "K Xr' Ul' < Xr",
 
     // "inner pivot" with pat directions /\\/
     Iv: "Xl4 Xr4",
