@@ -74,6 +74,9 @@ namespace Flexagonator {
 
   // create flexes that start and end with the same pat directions
   function addFullFlexes(flexes: AtomicFlexes): void {
+    flexes["P222h"] = makeAtomicFlex("pinch on hexa",
+      "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b", "-a [2,-1] / 3 / [-5,4] / -6 / [8,-7] / # 9 / -b") as AtomicFlex;
+
     flexes["Tf"] = makeAtomicFlex("forced tuck", "a 1 / # [[-3,4],2] / b", "a [3,[1,-2]] / # 4 / b") as AtomicFlex;
     flexes["Iv"] = makeAtomicFlex("inner pivot",
       "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b", "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b") as AtomicFlex;

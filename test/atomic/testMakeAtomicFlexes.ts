@@ -40,15 +40,10 @@ namespace Flexagonator {
     });
 
     it("should compose to create the pinch flex on a hexaflexagon", () => {
-      testFormula("P", "Ur> ^Ur'^ >> Ul> ^Ul'^ >> Ur> ^Ur'^",
-        "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b",
-        "-a [2,-1] / 3 / [-5,4] / -6 / [8,-7] / # 9 / -b");
-      testFormula("P", "Xr >> Xl >> Xr",
-        "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b",
-        "-a [2,-1] / 3 / [-5,4] / -6 / [8,-7] / # 9 / -b");
-      testFormula("P", "K <<< ^K'^ >>>",
-        "a 1 / [-3,2] / -4 / [6,-5] / 7 / # [-9,8] / b",
-        "-a [2,-1] / 3 / [-5,4] / -6 / # [8,-7] / 9 / -b");
+      testDefinition("P222h", "Ur> ^Ur'^ >> Ul> ^Ul'^ >> Ur> ^Ur'^");
+      testDefinition("P222h", ">>>> K <<< ^K'^ >>>>");
+      // remove trailing >> that are there to wrap flex back
+      testDefinition("P222h", AtomicDecomposition.P222h.substring(0, AtomicDecomposition.P222h.length - 2));
     });
 
     it("should compose to create pinch flex variations on a dodecaflexagon", () => {
