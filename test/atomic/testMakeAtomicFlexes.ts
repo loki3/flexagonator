@@ -111,7 +111,9 @@ namespace Flexagonator {
 
     it("should handle common flexes", () => {
       testDefinition("Tf", AtomicDecomposition.Tf);
+      testDefinition("Tfromh", AtomicDecomposition.Tfromh);
       testDefinition("S", AtomicDecomposition.S);
+      testDefinition("Sfromh", AtomicDecomposition.Sfromh);
 
       testDefinition("F", AtomicDecomposition.F);
       testDefinition("St", AtomicDecomposition.St);

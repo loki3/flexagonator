@@ -92,6 +92,11 @@ namespace Flexagonator {
       "a [[[3,-2],-4],1] / -5 / -6 / # [8,-7] / b", "a [-2,1] / -3 / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
     flexes["Mf"] = makeAtomicFlex("mobius flip",
       "a [[3,-4],[1,-2]] / -5 / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
+
+    flexes["Tfromh"] = makeAtomicFlex("tuck using half flexes",
+      "a [-2,1] / -3 / -4 / # [[6,-7],-5] / b", "a [-2,1] / -3 / [-6,[-4,5]] / # -7 / b") as AtomicFlex;
+    flexes["Sfromh"] = makeAtomicFlex("pyramid shuffle using half flexes",
+      "a 1 / [[[4,-3],-5],2] / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
   }
 
 }
