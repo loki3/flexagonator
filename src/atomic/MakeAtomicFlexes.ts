@@ -83,6 +83,15 @@ namespace Flexagonator {
 
     flexes["S"] = makeAtomicFlex("pyramid shuffle",
       "a [[[3,-2],-4],1] / -5 / # [7,-6] / b", "a [-2,1] / # -3 / [7,[-4,[-6,5]]] / b") as AtomicFlex;
+
+    flexes["F"] = makeAtomicFlex("flip",
+      "a [[3,-4],[1,-2]] / -5 / # [7,-6] / 8 / b", "a 1 / [-3,2] / # -4 / [[-7,8],[-5,6]] / b") as AtomicFlex;
+    flexes["St"] = makeAtomicFlex("silver tetra",
+      "a [3,[1,-2]] / 4 / # [7,[5,-6]] / 8 / b", "a 1 / [[-3,4],2] / # 5 / [[-7,8],6] / b") as AtomicFlex;
+    flexes["S3"] = makeAtomicFlex("pyramid shuffle 3",
+      "a [[[3,-2],-4],1] / -5 / -6 / # [8,-7] / b", "a [-2,1] / -3 / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
+    flexes["Mf"] = makeAtomicFlex("mobius flip",
+      "a [[3,-4],[1,-2]] / -5 / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
   }
 
 }

@@ -109,6 +109,16 @@ namespace Flexagonator {
         "-a -3 / [7,[-4,[-6,5]]] / [-11,[8,[10,-9]]] / # -12 / [-2,[-13,[1,-14]]] / -b");
     });
 
+    it("should handle common flexes", () => {
+      testDefinition("Tf", AtomicDecomposition.Tf);
+      testDefinition("S", AtomicDecomposition.S);
+
+      testDefinition("F", AtomicDecomposition.F);
+      testDefinition("St", AtomicDecomposition.St);
+      testDefinition("Mf", AtomicDecomposition.Mf);
+      testDefinition("S3", AtomicDecomposition.S3);
+    });
+
     const atomics = makeAtomicFlexes('all');
 
     // for flex 'name', test that 'flexes' applied to 'input' generates 'output'

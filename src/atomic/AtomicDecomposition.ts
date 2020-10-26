@@ -38,10 +38,10 @@ namespace Flexagonator {
     Ht: "< Ur ^<<< Ur' <<^ Xl <<<~",
 
     // built from half flexes
-    F: "Hf Hb'",
-    St: "Hf Hsr'",
-    Mf: "< Hr Hb' >",
-    S3: "< Hr Hl' >",
+    F: "Hf Hb'",        // K > Ul' <^> Ul < K' ^
+    St: "Hf Hsr'",      // K > Ul' < Ur << Ul >> Ur' > K' <
+    Mf: "< Hr Hb' >",   // Xr~<<< Ur>>Ur' ^ > Ul < K' ^>
+    S3: "< Hr Hl' >",   // Xr~<<< Ur>>Ur'< Ur>>Ur'<< Xl~>>
     // these have simpler forms, but can be built from half flexes
     Tfromh: "< Hr Hf' >",
     Sfromh: "< Hsr Hb' >",
