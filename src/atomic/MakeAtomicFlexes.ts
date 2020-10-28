@@ -77,13 +77,14 @@ namespace Flexagonator {
     flexes["P222h"] = makeAtomicFlex("pinch on hexa",
       "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b", "-a [2,-1] / 3 / [-5,4] / -6 / [8,-7] / # 9 / -b") as AtomicFlex;
 
+    // from // to //
     flexes["Tf"] = makeAtomicFlex("forced tuck", "a 1 / # [[-3,4],2] / b", "a [3,[1,-2]] / # 4 / b") as AtomicFlex;
-    flexes["Iv"] = makeAtomicFlex("inner pivot",
-      "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b", "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b") as AtomicFlex;
 
+    // from /// to ///
     flexes["S"] = makeAtomicFlex("pyramid shuffle",
       "a [[[3,-2],-4],1] / -5 / # [7,-6] / b", "a [-2,1] / # -3 / [7,[-4,[-6,5]]] / b") as AtomicFlex;
 
+    // from //// to ////
     flexes["F"] = makeAtomicFlex("flip",
       "a [[3,-4],[1,-2]] / -5 / # [7,-6] / 8 / b", "a 1 / [-3,2] / # -4 / [[-7,8],[-5,6]] / b") as AtomicFlex;
     flexes["St"] = makeAtomicFlex("silver tetra",
@@ -92,11 +93,18 @@ namespace Flexagonator {
       "a [[[3,-2],-4],1] / -5 / -6 / # [8,-7] / b", "a [-2,1] / -3 / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
     flexes["Mf"] = makeAtomicFlex("mobius flip",
       "a [[3,-4],[1,-2]] / -5 / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
-
     flexes["Tfromh"] = makeAtomicFlex("tuck using half flexes",
       "a [-2,1] / -3 / -4 / # [[6,-7],-5] / b", "a [-2,1] / -3 / [-6,[-4,5]] / # -7 / b") as AtomicFlex;
     flexes["Sfromh"] = makeAtomicFlex("pyramid shuffle using half flexes",
       "a 1 / [[[4,-3],-5],2] / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
+
+    // from /\\/ to /\\/
+    flexes["Iv"] = makeAtomicFlex("inner pivot",
+      "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b", "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b") as AtomicFlex;
+    flexes["Rfb"] = makeAtomicFlex("reverse Hf' Hb",
+      "a 1 \\ 2 / # [5,[3,-4]] / [6,[8,-7]] \\ b", "a [[-2,1],3] \\ [[-5,6],4] / # 7 / 8 \\ b") as AtomicFlex;
+    flexes["Rsrf"] = makeAtomicFlex("reverse Hsr' Hf",
+      "a [[-2,1],3] \\ 4 / # [[[7,-6],-8],5] / -9 \\ b", "a 1 \\ 2 / # [-6,[3,[5,-4]]] / [-7,[-9,8]] \\ b") as AtomicFlex;
   }
 
 }

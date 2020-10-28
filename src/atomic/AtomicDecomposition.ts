@@ -66,8 +66,10 @@ namespace Flexagonator {
     // start & end ///
     S: "K Xr' Ul' < Xr",
 
-    // "inner pivot" with pat directions /\\/
+    // start & end /\\/
     Iv: "Xl4 Xr4",
+    Rfb: "Hf' Hb",
+    Rsrf: "Hsr' Hf",
   }
 
 }

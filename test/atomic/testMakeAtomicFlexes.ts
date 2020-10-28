@@ -67,10 +67,6 @@ namespace Flexagonator {
         "a [3,[1,-2]] / # 4 / 5 / 6 / 7 / 8 / [11,[9,-10]] / 12 / 13 / 14 / 15 / 16 / b");
     });
 
-    it("should compose to create the inner pivot", () => {
-      testDefinition("Iv", AtomicDecomposition.Iv);
-    });
-
     it("should compose to create the half flexes", () => {
       testDefinition("Hf", AtomicDecomposition.Hf);
       testDefinition("Hb", AtomicDecomposition.Hb);
@@ -119,6 +115,12 @@ namespace Flexagonator {
       testDefinition("St", AtomicDecomposition.St);
       testDefinition("Mf", AtomicDecomposition.Mf);
       testDefinition("S3", AtomicDecomposition.S3);
+    });
+
+    it("should handle /\\\\/ flexes", () => {
+      testDefinition("Iv", AtomicDecomposition.Iv);
+      testDefinition("Rfb", AtomicDecomposition.Rfb);
+      testDefinition("Rsrf", AtomicDecomposition.Rsrf);
     });
 
     const atomics = makeAtomicFlexes('all');
