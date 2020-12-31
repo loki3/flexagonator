@@ -100,6 +100,7 @@
     var options = { rotation: 120, content: 6 };
     drawStripComplex("intro-tri", script, options);
   </script>
+  <br/>
   <img src="../idyll/static/pinch-flex.jpg" /><br/><br/>
 
   <canvas id="intro-hexa" width="1200" height="180"></canvas>
@@ -109,7 +110,9 @@
     drawStripComplex("intro-hexa", script, options);
   </script>
 
-  <img src="pics-book/square-book.jpg" /><br/><br/>
+  <br/>
+  <img src="pics-book/square-book.jpg" />
+  <br/><br/>
 
   <img src="../idyll/static/flexagon-variety.jpg" /><br/><br/>
 
@@ -122,7 +125,7 @@
   <!-- 3 faces-->
   <h3 id="3faces">3 faces</h3>
 
-  <h3>tri-hexaflexagon</h3>
+  <h4>tri-hexaflexagon</h4>
   <img src="../idyll/static/pinch-flex.jpg" /><br/><br/>
   <canvas id="tri-hexa" width="800" height="180"></canvas>
   <script type="text/javascript">
@@ -132,19 +135,19 @@
   <!-- 4, 5, & 6 faces-->
   <h3 id="456faces">4, 5, & 6 faces</h3>
 
-  <h3>tetra-hexaflexagon strip</h3>
+  <h4>tetra-hexaflexagon strip</h4>
   <canvas id="tetra-hexa" width="1200" height="220"></canvas>
   <script type="text/javascript">
     drawStripSimple("tetra-hexa", 6, "(P*)2", 90);
   </script>
 
-  <h3>penta-hexaflexagon strip</h3>
+  <h4>penta-hexaflexagon strip</h4>
   <canvas id="penta-hexa" width="1200" height="500"></canvas>
   <script type="text/javascript">
     drawStripSimple("penta-hexa", 6, "(P*)3", 60);
   </script>
 
-  <h3>hexa-hexaflexagon strip</h3>
+  <h4>hexa-hexaflexagon strip</h4>
   <canvas id="hexa-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
     drawStripSimple("hexa-hexa", 6, "P* P* P+ > P P*", 120);
@@ -153,7 +156,7 @@
   <!-- longer templates -->
   <h3 id="longer">longer templates</h3>
 
-  <h3>dodeca-hexaflexagon strip</h3>
+  <h4>dodeca-hexaflexagon strip</h4>
   <canvas id="dodeca-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
     var A = "P'*>(P*)2";
@@ -162,7 +165,7 @@
     drawStripSimple("dodeca-hexa", 6, sequence, 120, 0, 11);
   </script>
 
-  <h3>icositetra-hexaflexagon strip</h3>
+  <h4>icositetra-hexaflexagon strip</h4>
   <canvas id="icositetra-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
     var A = "P'*>(P*)2";
@@ -175,7 +178,7 @@
   <!-- triangle tetra & octa -->
   <h3 id="tetra-octa">triangle tetra & octa</h3>
 
-  <h3>regular tri-tetraflexagon strip</h3>
+  <h4>regular tri-tetraflexagon strip</h4>
   <canvas id="tri-tetra" width="1200" height="220"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexAndColor: { flexes: "P*" }, angles: [60, 60] }];
@@ -183,7 +186,7 @@
     drawStripComplex("tri-tetra", script, drawOptions);
   </script>
 
-  <h3>regular penta-tetraflexagon strip</h3>
+  <h4>regular penta-tetraflexagon strip</h4>
   <canvas id="penta-tetra" width="1200" height="500"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexAndColor: { flexes: "(P*)3" }, angles: [60, 60] }];
@@ -191,7 +194,7 @@
     drawStripComplex("penta-tetra", script, drawOptions);
   </script>
 
-  <h3>regular tri-octaflexagon strip</h3>
+  <h4>regular tri-octaflexagon strip</h4>
   <canvas id="tri-octa" width="1200" height="220"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 8, flexAndColor: { flexes: "P*" }, angles: [60, 60] }];
@@ -199,7 +202,7 @@
     drawStripComplex("tri-octa", script, drawOptions);
   </script>
 
-  <h3>regular penta-octaflexagon strip</h3>
+  <h4>regular penta-octaflexagon strip</h4>
   <canvas id="penta-octa" width="1200" height="500"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 8, flexAndColor: { flexes: "(P*)3" }, angles: [60, 60] }];
@@ -210,7 +213,7 @@
   <!-- pinch flex variations -->
   <h3 id="pinch-variations">pinch flex variations</h3>
 
-  <h3>P444</h3>
+  <h4>P444</h4>
   <canvas id="P444" width="1200" height="400"></canvas>
   <script type="text/javascript">
     drawStripSimple("P444", 12, "P444*");
@@ -226,11 +229,12 @@
     drawStripComplex("P444-half", script, { rotation: 60, content: 0 });
   </script>
 
-  <h3>P333</h3>
+  <h4>P333</h4>
   <canvas id="P333" width="1200" height="400"></canvas>
   <script type="text/javascript">
     drawStripSimple("P333", 9, "P333*");
   </script>
+  <br/>
 
   <img src="../idyll/static/P4-4-4/1.jpg" width="150"/>
   <img src="../idyll/static/P4-4-4/2.jpg" width="150"/>
@@ -248,11 +252,12 @@
   <img src="../idyll/static/P4-4-4/12.jpg" width="150"/>
   <img src="../idyll/static/P4-4-4/13.jpg" width="150"/>
 
-  <h3>P334</h3>
+  <h4>P334</h4>
   <canvas id="P334" width="1200" height="400"></canvas>
   <script type="text/javascript">
     drawStripSimple("P334", 10, "P334*");
   </script>
+  <br/>
 
   <img src="../idyll/static/P3-3-4/1.jpg" width="150"/>
   <img src="../idyll/static/P3-3-4/2.jpg" width="150"/>
@@ -276,7 +281,7 @@
 
   <h2 id="part2">Part Two: Flexes</h2>
 
-  <h2 id="book">book flex</h2>
+  <h3 id="book">book flex</h3>
 
   <img src="pics-book/square-book.jpg" /><br/><br/>
   <img src="pics-book/square-P.png" width=900 /><br/><br/>
@@ -293,7 +298,7 @@
   <img src="pics-book/pentagon-P5-2.png" width=800 /><br/><br/>
   <img src="pics-book/pentagon-PP.png" width=800 /><br/><br/>
 
-  <h2 id="box">box flex</h2>
+  <h3 id="box">box flex</h3>
 
   <img src="pics-book/square-box-top.jpg" /><br/><br/>
   <img src="pics-book/square-Bt.png" width=900 /><br/><br/>
@@ -304,7 +309,7 @@
   <img src="pics-book/pentagon-B1.png" width=800 /><br/><br/>
   <img src="pics-book/pentagon-B2.png" width=800 /><br/><br/>
 
-  <h2 id="tuck">tuck flex</h2>
+  <h3 id="tuck">tuck flex</h3>
 
   <img src="../idyll/static/T/T1.jpg" width="150"/>
   <img src="../idyll/static/T/T2.jpg" width="150"/>
@@ -329,7 +334,7 @@
     drawStripSequence("T-minimal", 6, "T*", 30);
   </script>
 
-  <h2 id="pyramid shuffle">pyramid shuffle</h2>
+  <h3 id="pyramid shuffle">pyramid shuffle</h3>
 
   <img src="../idyll/static/Sh/Sh1.jpg" width="150"/>
   <img src="../idyll/static/Sh/Sh2.jpg" width="150"/>
@@ -357,7 +362,7 @@
     drawStripSequence("S-minimal", 6, "S*", 60);
   </script>
 
-  <h2 id="flip">flip flex</h2>
+  <h3 id="flip">flip flex</h3>
 
   <img src="../idyll/static/F/F1.jpg" width="150"/>
   <img src="../idyll/static/F/F2.jpg" width="150"/>
@@ -384,7 +389,7 @@
     drawStripSequence("F-minimal", 8, "F*", 45, [45, 90]);
   </script>
 
-  <h2 id="vflex">v flex</h2>
+  <h3 id="vflex">v flex</h3>
 
   <img src="../idyll/static/V/V1.jpg" width="150"/>
   <img src="../idyll/static/V/V2.jpg" width="150"/>
@@ -407,7 +412,7 @@
     drawStripSequence("V-minimal", 6, "V*", 120);
   </script>
 
-  <h2 id="silver tetra">silver tetra flex</h2>
+  <h3 id="silver tetra">silver tetra flex</h3>
 
   <img src="../idyll/static/St/St1.jpg" width="150"/>
   <img src="../idyll/static/St/St2.jpg" width="150"/>
@@ -433,7 +438,7 @@
     drawStripSequence("St-minimal", 6, "St*", -30, [60, 90]);
   </script>
 
-  <h2 id="hexa-silver-dodeca">hexagonal silver dodeca</h2>
+  <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
 
   <canvas id="silverDodecaHexa1" width="1000" height="500"></canvas><br/><br/>
   <canvas id="silverDodecaHexa2" width="1200" height="200"></canvas><br/><br/>
@@ -534,6 +539,17 @@
     drawFlexagonSimple("dodeca1", 12);
     drawFlexagonSimple("dodeca2", 12, [30, 90]);
     drawFlexagonSimple("dodeca3", 12, [30, 120]);
+  </script>
+
+  <h4>hexa-hexaflexagon templates</h4>
+  <canvas id="hexa-hexa1" width="900" height="110"></canvas>
+  <br/>
+  <canvas id="hexa-hexa2" width="450" height="405"></canvas>
+  <canvas id="hexa-hexa3" width="450" height="405"></canvas>
+  <script type="text/javascript">
+    drawStripSimple("hexa-hexa1", 6, "P* P* P+ > P P*", 120);
+    drawStripSimple("hexa-hexa2", 6, "(P*^>)4", 0);
+    drawStripSimple("hexa-hexa3", 6, "(P*)4", -30);
   </script>
 
   <h4>other examples:</h4>
