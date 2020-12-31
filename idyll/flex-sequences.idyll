@@ -364,7 +364,7 @@ When we apply the facts from above, we can infer the following formulas:
 * `T ~= Lh' Ltb`
 
 [Aside]
-  We need to apply a few more identies when we have more than two flexes,
+  We need to apply a few more identities when we have more than two flexes,
   e.g. if `B' = V>>>`, then  `B = (>>>)' V' = <<<V'`.
 [/Aside]
 

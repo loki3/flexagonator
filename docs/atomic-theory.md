@@ -1,8 +1,8 @@
-# Atomic flexagon theory
+# Atomic flex theory
 
 ## Purpose
 
-"Atomic flexagon theory" describes at a low level how flexagons operate.
+"Atomic flex theory" describes at a low level how flexagons operate.
 It can be used to describe any flex, and explains how to fold a template, unfold a flexagon, and how a flexagon can shape shift.
 
 The fundamental axiom, `Ur = a # [-2,1] / b ->  a # 1 \ 2 / -b`,
