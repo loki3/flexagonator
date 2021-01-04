@@ -6,3 +6,4 @@ Messages from the now defunct *flexagon lovers* Yahoo newsgroup...
 * [2008](2008.md)
 * [2009](2009.md)
 * [2010](2010.md)
+* [2011](2011.md)
