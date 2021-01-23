@@ -154,12 +154,26 @@ namespace Flexagonator {
       }
       const turnOver = this.shouldTurnOver(input);
       if (this.specialWrap === 'l') {
+        // check if we need to move the current hinge from 'left' to 'right'
+        if (!input.left && input.right) {
+          // TODO: handle the 'turnOver' case
+          const left = input.right.slice(1).reverse();
+          const right = [input.right[0]];
+          return { ...input, left, right };
+        }
         const item = input.left !== null ? input.left[input.left.length - 1] : (input.right as ConnectedPats)[0];
         const toWrap = turnOver ? this.turnOver(item) : item;
         const left = input.left !== null ? input.left.slice(0, input.left.length - 1) : null;
         const right = input.right !== null ? input.right.concat(toWrap) : [toWrap];
         return { ...input, left, right };
       } else if (this.specialWrap === 'r') {
+        // check if we need to move the current hinge from 'right' to 'left'
+        if (input.left && !input.right) {
+          // TODO: handle the 'turnOver' case
+          const left = [input.left[0]];
+          const right = input.left.slice(1).reverse();
+          return { ...input, left, right };
+        }
         const item = input.right !== null ? input.right[input.right.length - 1] : (input.left as ConnectedPats)[0];
         const toWrap = turnOver ? this.turnOver(item) : item;
         const left = input.left !== null ? input.left.concat(toWrap) : [toWrap];

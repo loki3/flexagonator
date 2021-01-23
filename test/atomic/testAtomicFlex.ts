@@ -108,5 +108,17 @@ namespace Flexagonator {
       const asString = atomicPatternToString(result);
       expect(asString).toBe('a [-5,-4] / 1 / 2 / # 3 \\ -b');
     });
+
+    it("should wrap the current hinge", () => {
+      const flex = makeAtomicWrap('r');
+      const input = stringToAtomicPattern('a 1 / 2 / 3 \\ 4 \\ # b') as AtomicPattern;
+      const result = flex.apply(input);
+      if (isAtomicPatternError(result)) {
+        fail('failed to apply flex: ' + JSON.stringify(result));
+        return;
+      }
+      const asString = atomicPatternToString(result);
+      expect(asString).toBe('a 4 \\ # 1 / 2 / 3 \\ b');
+    });
   });
 }
