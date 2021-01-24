@@ -50,9 +50,12 @@ namespace Flexagonator {
   }
 
   export function drawUnfoldedObjects(canvas: string | HTMLCanvasElement, objects: DrawStripObjects, options?: DrawStripOptions) {
-    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
+    const isCanvas = (canvas as HTMLCanvasElement).getContext !== undefined;
+    const output: HTMLCanvasElement = isCanvas ? canvas as HTMLCanvasElement : document.getElementById(canvas as string) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    ctx.clearRect(0, 0, ctx.canvas.clientWidth, ctx.canvas.clientHeight);
+    // when the canvas is being emulated (e.g. jsPDF), client size may not be present
+    const [w, h] = ctx.canvas.clientWidth ? [ctx.canvas.clientWidth, ctx.canvas.clientHeight] : [output.width, output.height];
+    ctx.clearRect(0, 0, w, h);
 
     const directions = objects.directions ? Directions.make(objects.directions) : undefined;
     const unfolded = unfold(objects.flexagon.getAsLeafTrees(), directions);
@@ -69,7 +72,7 @@ namespace Flexagonator {
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
-    drawStrip(ctx, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
+    drawStrip(ctx, { x: w, y: h }, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
   }
 
 }

@@ -1,12 +1,12 @@
 namespace Flexagonator {
 
-  export function drawStrip(ctx: CanvasRenderingContext2D, leaflines: LeafLines,
+  export function drawStrip(ctx: CanvasRenderingContext2D,
+    box: Point, leaflines: LeafLines,
     content: StripContent, props: PropertiesForLeaves, scale?: number,
     rotation?: number, captions?: DrawStripCaption[]) {
 
     ctx.save();
 
-    const box = { x: ctx.canvas.clientWidth, y: ctx.canvas.clientHeight };
     if (rotation !== undefined) {
       leaflines = rotateLeafLines(leaflines, toRadians(rotation));
     } else {
@@ -41,14 +41,21 @@ namespace Flexagonator {
 
     // alternate gray & white dashes
     ctx.strokeStyle = "rgb(150, 150, 150)";
-    ctx.setLineDash([10, 5]);
+    if (ctx.setLineDash) {
+      // jsPDF doesn't support setLineDash, so we simply skip this call
+      ctx.setLineDash([10, 5]);
+    }
     drawLines(ctx, leaflines.folds, transform);
     ctx.strokeStyle = "white";
-    ctx.setLineDash([0, 10, 5, 0]);
+    if (ctx.setLineDash) {
+      ctx.setLineDash([0, 10, 5, 0]);
+    }
     drawLines(ctx, leaflines.folds, transform);
 
     ctx.strokeStyle = "black";
-    ctx.setLineDash([]);
+    if (ctx.setLineDash) {
+      ctx.setLineDash([]);
+    }
     drawLines(ctx, leaflines.cuts, transform);
 
     ctx.restore();

@@ -1,0 +1,82 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>WIP: PDF Flexagon Templates</title>
+  <script src="../build/out.js"></script>
+  <!--
+    jsPDF from https://github.com/MrRio/jsPDF
+    docs: http://raw.githack.com/MrRio/jsPDF/master/docs/jsPDF.html
+    NOTE: that library attempts to emulate HTMLCanvas, but has some key omissions:
+      canvas.clientWidth & clientHeight - use width & height instead
+      CanvasRenderingContext2D.setLineDash is missing
+  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.0/jspdf.umd.min.js"></script>
+
+  <script type="text/javascript">
+    var flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
+    var fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
+    var captions = [{ text: '*', which: 0 }, { text: '*', which: -1 }];
+
+    function updateUI() {
+      Flexagonator.drawUnfolded('unfolded1', fm, { content: 2, captions: captions });
+      Flexagonator.drawUnfolded('unfolded2', fm, { content: 3, captions: captions });
+      statusMessage('');
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
+      }
+    }
+
+    function makePdf() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.deletePage(0);
+      Flexagonator.drawUnfolded(doc.canvas, fm, { content: 2, captions: captions });
+      doc.addPage("a4", "p");
+      Flexagonator.drawUnfolded(doc.canvas, fm, { content: 3, captions: captions });
+      doc.save("a4.pdf");
+    }
+
+    function runScript() {
+      var scriptBox = document.getElementById('script');
+      if (scriptBox !== null) {
+        statusMessage("error parsing script");
+        var result = Flexagonator.runScriptString(fm, scriptBox.value);
+        if (Flexagonator.isError(result)) {
+          statusMessage(result);
+        } else {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <h1>WORK IN PROGRESS</h1>
+  <h1>PDF Flexagon Templates</h1>
+
+  <canvas id="unfolded1" width="400" height="300"></canvas>
+  <canvas id="unfolded2" width="400" height="300"></canvas>
+
+  <p>
+    <input onclick="runScript();" type="button" value="run script" />
+    <input onclick="makePdf();" type="button" value="make pdf" />
+    <br />
+  </p>
+  <div id="status"></div>
+  <textarea id="script" cols="100" rows="10" spellcheck="false"></textarea>
+
+  <script type="text/javascript">updateUI();</script>
+</body>
+
+</html>
