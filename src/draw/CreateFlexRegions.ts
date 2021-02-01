@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
-  // a list of flexes associated with a corner of a flexagon,
-  // you can tack on the prefix & postfix to preserve the current vertex
+  // a list of flexes associated with a hinge of a flexagon,
+  // you can tack on the prefix & postfix to preserve the current hinge
   export interface RegionForFlexes {
     readonly flexes: string[];  // e.g. [ 'P', 'S' ]
     readonly prefix: string;    // e.g. '>>'
@@ -11,7 +11,7 @@ namespace Flexagonator {
     readonly isOnTop: boolean;
   }
 
-  // for every corner of a flexagon, figure out which flexes can be performed,
+  // for every hinge of a flexagon, figure out which flexes can be performed,
   // if 'generate', then it allows every flex in generate-mode, e.g. 'P*'
   export function createFlexRegions(flexagon: Flexagon, allFlexes: Flexes,
     flexesToSearch: Flexes, flip: boolean, generate: boolean, polygon: Polygon
@@ -24,7 +24,7 @@ namespace Flexagonator {
     for (let i = 0; i < flexagon.getPatCount(); i++) {
       const flexes: string[] = generate
         ? genFlexes
-        : checkForFlexesAtVertex(flexagon, allFlexes, flexesToSearch, flip, i);
+        : checkForFlexesAtHinge(flexagon, allFlexes, flexesToSearch, flip, i);
 
       const x = corners[i * 2];
       const y = corners[i * 2 + 1];

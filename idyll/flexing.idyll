@@ -87,12 +87,12 @@ not when using any of the myriad other possible flexes.
 # Pyramid shuffle
 
 Step through the images to see the pyramid shuffle on a regular hexaflexagon.
-The green circle on the first and last slides indicates where the *current vertex* starts and ends for the flex.
+The green circle on the first and last slides indicates where the *current hinge* starts and ends for the flex.
 
 [Aside]
   The flex notation for the pyramid shuffle is `S`.
   Performing the flex in reverse is `S'`.
-  You can also undo the pyramid shuffle by turning it over, doing the pyramid shuffle one vertex to the right (clockwise),
+  You can also undo the pyramid shuffle by turning it over, doing the pyramid shuffle one hinge to the right (clockwise),
   then turning it back over again, summarized as `S' = ^>Sh<^`.
 
   The *pyramid shuffle* requires at least 5 leaves per face (i.e. a pentaflexagon or greater).
@@ -166,7 +166,7 @@ Here are some flexagons you can use to try the pyramid shuffle:
   Tape the edges of the first and last triangles together to complete the flexagon.
 
   **Flex:**
-  The Sh's on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current vertex*,
+  The Sh's on the first and last leaves correspond to the * in the flexagon simulator above, which represents the *current hinge*,
   This is where the flex should be performed from.
 [/Conditional]
 
@@ -255,7 +255,7 @@ Step through the images to see a tuck flex on a regular hexaflexagon:
   This is summarized as `T' ~= ^T^`, where `~=` means *the sequences are the same only if the structure of the flexagon allows it*.
 
   There are two bronze hexaflexagon variants because there are two distinct places you could potentially perform a tuck flex:
-  at a point or at the vertex in the middle of an edge.
+  at a point or at the hinge in the middle of a hexagon edge.
 [/Aside]
 
 Here are some flexagons you can use to try the tuck flex:

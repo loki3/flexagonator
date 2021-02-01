@@ -140,11 +140,11 @@ The following are general instructions for creating a real working flexagon from
 [a name:'Rotations'/]
 # *Rotations*
 
-*Rotations* simply change the *current vertex*, i.e. the vertex where the next flex starts.
+*Rotations* simply change the *current hinge*, i.e. the hinge where the next flex starts.
 
-* `<`: Shift the current vertex one step counterclockwise (to the left if the current vertex is at the top)
-* `>`: Shift the current vertex one step clockwise (to the right if the current vertex is at the top)
-* `^`: Turn over the flexagon, keep the same current vertex
+* `<`: Shift the current hinge one step counterclockwise (to the left if the current hinge is at the top)
+* `>`: Shift the current hinge one step clockwise (to the right if the current hinge is at the top)
+* `^`: Turn over the flexagon, keep the same current hinge
 
 
 # *Triangle flexes*
@@ -369,10 +369,10 @@ though it can be tricky to carry out if you haven't done it before.
 [a name:'P'/]
 [h2 className:"flex"]P: pinch flex[/h2]
 
-With the pinch flex, you "pinch" every other vertex all the way around the flexagon,
+With the pinch flex, you "pinch" every other hinge all the way around the flexagon,
 then open it back up from the center.
 There are variations on higher order flexagons (like the octaflexagon or decaflexagon)
-where you skip more than one vertex between pinches.
+where you skip more than one hinge between pinches.
 
 [Aside]
   [img src:'static/pinch-flex.jpg' /]
@@ -567,10 +567,10 @@ where you skip more than one vertex between pinches.
 [h2 className:"flex"]T: tuck flex[/h2]
 
 The tuck flex requires a little bit of extra freedom in the flexagon in order to open it up enough to perform the flex.
-On a hexaflexagon, this means the vertex directly opposite the current vertex needs to open.
+On a hexaflexagon, this means the hinge directly opposite the current hinge needs to open.
 On flexagons with more pats (heptaflexagon, octaflexagon, etc.), there are multiple vertices that could open to provide the needed freedom of movement.
 To distinguish between all the different places where the flexagon could have that additional freedom,
-a number is tacked on to `T` to indicate which vertex, e.g. `T1`, `T2`, etc.
+a number is tacked on to `T` to indicate which hinge, e.g. `T1`, `T2`, etc.
 
 [Aside]
   [Slides width:320 height:240 pattern:'static/T/T*.jpg' start:1 end:14 /]

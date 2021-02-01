@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  // describes a flex relative to the current vertex,
+  // describes a flex relative to the current hinge,
   // possibly rotating & turning over, and what state it leads to
   export class RelativeFlex {
     // 'where' represents > and ^ used before the given flex

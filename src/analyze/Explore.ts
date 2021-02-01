@@ -82,7 +82,7 @@ namespace Flexagonator {
       return true;
     }
 
-    // apply every flex at the current vertex,
+    // apply every flex at the current hinge,
     // every time we find a new state, track it
     private checkAllFlexes(flexagon: Flexagon, found: RelativeFlexes, rights: number, over: boolean) {
       for (const f in this.flexes) {

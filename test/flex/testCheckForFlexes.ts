@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   describe('checkForFlexes', () => {
-    it('should find all possible flexes at the current vertex', () => {
+    it('should find all possible flexes at the current hinge', () => {
       const flexagon = Flexagon.makeFromTree([[1, 2], 3, [4, 5], 6]) as Flexagon;
 
       const flexes: Flexes = {};

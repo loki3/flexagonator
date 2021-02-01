@@ -38,7 +38,7 @@ namespace Flexagonator {
         }
         flexagon = afterP;
       } else {
-        // couldn't pinch, so shift to next corner
+        // couldn't pinch, so shift to next hinge
         if (current.length > 0 && current[current.length - 1] != 'P') {
           break;  // no traverse is possible
         }

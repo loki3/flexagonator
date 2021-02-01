@@ -68,9 +68,9 @@ to learn their history and see what folding and flexing look like...
 We'll start with the simple 3-faced hexaflexagon (or *trihexaflexagon*).
 The hexagon below has numbers and colors on each triangle, which change as you perform a flex.
 `P` is the *flex notation* for a *pinch flex*.
-The clickable buttons below labeled with a `P` indicate the corners where you can perform a pinch flex.
-Since a pinch flex involves doing a mountain-valley fold alternating every other vertex,
-the exact same pinch flex can be achieved by picking corner 1, 3, or 5 (numbered around the hexagon).
+The clickable buttons below labeled with a `P` indicate the hinges where you can perform a pinch flex.
+Since a pinch flex involves doing a mountain-valley fold alternating every other hinge,
+the exact same pinch flex can be achieved by picking hinge 1, 3, or 5 (numbered around the hexagon).
 `^` is the flex notation for turning the flexagon over, which is also represented with a button in the figure below.
 
 Try clicking on the buttons and watch how the flexagon changes and how this is tracked in the diagram on the right.
@@ -119,7 +119,7 @@ Here's the unfolded template for the 3-faced hexaflexagon.
 
 Next is the 4-faced hexaflexagon (or tetrahexaflexagon).
 After your first pinch flex, you find yourself in the middle of the diagram to the right, with multiple paths you can take.
-What happens when you try pinch flexing at different corners?
+What happens when you try pinch flexing at different hinges?
 How can you visit every point in the diagram in the fewest number of flexes?
 Do you notice a pattern?
 
@@ -174,11 +174,11 @@ If not, perhaps a bit of experimentation can lead you to a simple pattern that w
   runScript:runScript5 script:script5 options:drawOptions overButton:true /]
 
 *Flex notation* is used to describe a series of flexes so that you can later reproduce the exact same sequence.
-Flexes are performed relative to the 'current vertex', which is indicated by a `*` in these flexagon simulations.
-Shifting the current vertex one vertex clockwise is represented by `>`, and shifting counterclockwise by `<`.
-Thus `P>P` says to do a pinch flex at one vertex, rotate so the vertex one step clockwise is the current vertex,
+Flexes are performed relative to the 'current hinge', which is indicated by a `*` in these flexagon simulations.
+Shifting the current hinge one hinge clockwise is represented by `>`, and shifting counterclockwise by `<`.
+Thus `P>P` says to do a pinch flex at one hinge, rotate so the hinge one step clockwise is the current hinge,
 then do another pinch flex.
-Recall from earlier that `^` indicates turning over the flexagon while keeping the same current vertex.
+Recall from earlier that `^` indicates turning over the flexagon while keeping the same current hinge.
 
 [Unfolded width:900 height:400 numPats:defaultPats generator:'P*P*P*' autoLabel:true /]
 
@@ -224,8 +224,8 @@ Once you've tried finding a pattern, click on
 to see if you've found the same pattern.
 
 [Conditional if:` showTuckerman `]
-  Starting with any corner, repeatedly do a pinch flex until the structure of the flexagon no longer permits it.
-  Switch to an adjacent corner and repeat the same process, doing a pinch flex until you can't any longer.
+  Starting with any hinge, repeatedly do a pinch flex until the structure of the flexagon no longer permits it.
+  Switch to an adjacent hinge and repeat the same process, doing a pinch flex until you can't any longer.
   This will eventually visit every part of the diagram associated with the flexagon, visiting every configuration in the process.
   Furthermore, it's the shortest traversal of every state (though it isn't unique).
 [/Conditional]

@@ -40,7 +40,7 @@
 [Button onClick:` showSimulatorHelp = !showSimulatorHelp `]What is this and how do I use it?[/Button]
 [Conditional if:` showSimulatorHelp `]
   **The polygons**: These represent a folded flexagon, both front (the larger one) and back (the smaller one).
-  The buttons allow you to apply a flex at a given corner.
+  The buttons allow you to apply a flex at a given hinge.
   The `^` on the smaller polygon is used to turn over the flexagon.
 
   **Apply Settings**: Once you have entered in your settings in the various text boxes, click `Apply Settings` to use them to create a new flexagon.
@@ -133,7 +133,7 @@ History: [Display value:theHistory /]
 [Button onClick:` showScriptHelp = !showScriptHelp `]What is this and how do I use it?[/Button]
 [Conditional if:` showScriptHelp `]
   **The polygons**: These represent a folded flexagon, both front (the larger one) and back (the smaller one).
-  The buttons allow you to apply a flex at a given corner.
+  The buttons allow you to apply a flex at a given hinge.
   The `^` on the smaller polygon is used to turn over the flexagon.
 
   **Undo, redo**: Use to undo or redo flexes.

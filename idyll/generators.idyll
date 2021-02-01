@@ -31,12 +31,12 @@ A *generating sequence* is a sequence of flexes used to create the internal stru
 
 # Flex notation
 
-Recall the *flex notation* that has been used to describe a series of flexes relative to the *current vertex*.
+Recall the *flex notation* that has been used to describe a series of flexes relative to the *current hinge*.
 Here's what we've defined so far:
 
-* `>` : shift the current vertex one vertex clockwise
-* `<` : shift the current vertex one vertex counterclockwise
-* `^` : turn the flexagon over, keeping the same current vertex
+* `>` : shift the current hinge one hinge clockwise
+* `<` : shift the current hinge one hinge counterclockwise
+* `^` : turn the flexagon over, keeping the same current hinge
 * `F` : perform a flip flex
 * `P` : perform a pinch flex
 * `S` : perform a pyramid shuffle
@@ -110,9 +110,9 @@ Let's say we've done a pinch flex, taking us from the green circle in the adjace
 
 We can now step in one of four directions, depending on what we do next:
 
-* If we do another pinch flex (`P`) at the same corner, it'll take us another step in the same direction, traveling along the adjacent triangle.
-* If we instead shift the current vertex one to the right before doing a pinch flex (`>P`), we'll step clockwise around the same triangle.
-* If we turn over the flexagon, shift one vertex to the right, and then do a pinch flex (`^>P`), our path will take a slight left turn onto the adjacent triangle.
+* If we do another pinch flex (`P`) at the same hinge, it'll take us another step in the same direction, traveling along the adjacent triangle.
+* If we instead shift the current hinge one to the right before doing a pinch flex (`>P`), we'll step clockwise around the same triangle.
+* If we turn over the flexagon, shift one hinge to the right, and then do a pinch flex (`^>P`), our path will take a slight left turn onto the adjacent triangle.
 * If we do the pinch flex in reverse (`P'`) or turn over the flexagon and do a pinch flex (`^P`), we return back to where we started
 
 The one other thing to know is that once you travel along a *single* edge of a triangle in the pinch flex state diagram,

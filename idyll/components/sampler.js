@@ -180,7 +180,7 @@ class Sampler extends React.Component {
 };
 
 // input: a number or a string that consists of a number followed by 'r' or 'R' for right triangles
-//    or 's' or 'S' for stars - an upper case letter rotates the flexagon by one vertex
+//    or 's' or 'S' for stars - an upper case letter rotates the flexagon by one hinge
 // output: [number, 'i' | 'r' | 'R' | 's' | 'S' | 'e']
 function valueToNumberAndType(value) {
   let numPats = 6;

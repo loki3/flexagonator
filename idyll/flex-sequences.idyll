@@ -87,7 +87,7 @@ You'll find that this takes you right back to the original state.
 [Unfolded width:1000 height:500 script:initS options:unfoldedOptions endText:'S+' /]
 
 Looking at the flex sequence that was recorded, you'll see the sequence `S>T'>^T<<^` repeated twice
-(well, the trailing `>` and `^` might look different, but that's just an artifact of how the simulator tracks the current vertex).
+(well, the trailing `>` and `^` might look different, but that's just an artifact of how the simulator tracks the current hinge).
 This can be written as `(S>T'>^T<<^) 2`.
 Whenever you can do a pyramid shuffle, you can run through this cycle of 6 flexes.
 

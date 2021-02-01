@@ -1,8 +1,8 @@
 namespace Flexagonator {
 
   // possibly flip the flexagon and rotate 'rightSteps',
-  // then check which flexes can be performed at the current vertex
-  export function checkForFlexesAtVertex(flexagon: Flexagon, allFlexes: Flexes, flexesToSearch: Flexes,
+  // then check which flexes can be performed at the current hinge
+  export function checkForFlexesAtHinge(flexagon: Flexagon, allFlexes: Flexes, flexesToSearch: Flexes,
     flip: boolean, rightSteps: number): string[] {
 
     let modified = flexagon;
@@ -15,7 +15,7 @@ namespace Flexagonator {
     return checkForFlexes(modified, flexesToSearch);
   }
 
-  // get the list of all flexes that can be performed at the current vertex
+  // get the list of all flexes that can be performed at the current hinge
   export function checkForFlexes(flexagon: Flexagon, flexes: Flexes): string[] {
     let results: string[] = [];
 

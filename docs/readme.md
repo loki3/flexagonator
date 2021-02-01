@@ -31,7 +31,7 @@
     * The current state of a flexagon.
     * The unfolded version of the flexagon
 * Understands how to apply flexes to a given flexagon
-    * Figures out which flexes are possible at which corners
+    * Figures out which flexes are possible at which hinges
     * Can search for all the states accessible from a starting state given a specified set of flexes
     * Can figure out the series of flexes needed to get from one state to another
 * [Scripting](script.md)
@@ -52,7 +52,7 @@
     (thus it's easy to add to the pat structure), there are multiple possibilities on higher-ordered flexagons.
     Currently there isn't a simple way to describe this requirement
     * The physical model may impose limitations based on the angles of the triangles,
-    e.g. the [flip flex](http://loki3.com/flex/flex/flip.html) may only be possible at every other corner,
+    e.g. the [flip flex](http://loki3.com/flex/flex/flip.html) may only be possible at every other hinge,
     even if the pat structure supports it.
     Currently there isn't a simple way to describe this requirement
 * Flexes must start and end with the same arrangement of pats.

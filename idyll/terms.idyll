@@ -92,12 +92,13 @@ Topics:
   *Flex notation* adds `'` to a flex symbol to indicate its inverse, e.g. `P'` for the inverse of the pinch flex `P`.
   [/dd]
 
-  [dt]current vertex[/dt]
+  [dt]current hinge[/dt]
   [dd]
-  The vertex that a flex is performed relative to.
+  The hinge that a flex is performed relative to.
   Especially useful in a sequence of flexes so you know where to apply the next flex.
   [br/][br/]
-  *Flex notation* uses `>`, `<`, and `^` to indicate how to change the *current vertex*.
+  *Flex notation* uses `>`, `<`, and `^` to indicate how to change the *current hinge*.
+  Sometimes *current vertex* or *current corner*.
   [/dd]
 
   [dt]flex definition[/dt]

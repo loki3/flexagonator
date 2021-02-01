@@ -18,7 +18,7 @@ namespace Flexagonator {
     readonly structureTopIds?: boolean; // show pat structure that includes ids <= numpats - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
     readonly showIds?: boolean;     // show leaf ids - default: true
-    readonly showCurrent?: boolean; // show an indicator next to the current vertex - default: true
+    readonly showCurrent?: boolean; // show an indicator next to the current hinge - default: true
     readonly showNumbers?: boolean; // show the face numbers - default: true
     readonly generate?: boolean;    // include every flex with * added - default: false
   }

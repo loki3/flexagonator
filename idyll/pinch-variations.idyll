@@ -30,12 +30,12 @@
 [/Aside]
 
 As shown in the [Flexagon Intro](pinch-flex.html),
-when you do the standard *pinch flex*, you alternate mountain and valley folds along every corner.
+when you do the standard *pinch flex*, you alternate mountain and valley folds along every hinge.
 
 What's interesting is that there's a whole class of flexes that are all similar to the pinch flex,
 except that you vary the pattern of where you do mountain and valley folds.
-So instead of having a mountain fold every other corner,
-you might do a mountain fold every three or four corners.
+So instead of having a mountain fold every other hinge,
+you might do a mountain fold every three or four hinges.
 
 The biggest difference is that after a single such flex, the flexagon generally doesn't lie
 flat and the triangles won't all meet in the center.
@@ -49,10 +49,10 @@ Let's see what this actually looks like.
 
 [Aside]
 This flex is represented as `P444` in flex notation.
-Each 4 indicates that from one mountain fold to the next, you skip to the fourth vertex from the previous.
+Each 4 indicates that from one mountain fold to the next, you skip to the fourth hinge from the previous.
 [/Aside]
 
-The first example is on an *isosceles dodecaflexagon*, doing a mountain fold once every four corners.
+The first example is on an *isosceles dodecaflexagon*, doing a mountain fold once every four hinges.
 
 [Slides width:320 height:240 pattern:'static/P4-4-4/*.jpg' start:1 end:13 /]
 
@@ -64,13 +64,13 @@ Here's a template you can use to create a working dodecaflexagon that supports t
 
 [Aside]
 This flex is represented as `P334` in flex notation.
-The 3's indicate that from one mountain fold to the next, you skip to the third vertex from the previous.
-The 4 indicates that one of those steps is to the fourth vertex.
+The 3's indicate that from one mountain fold to the next, you skip to the third hinge from the previous.
+The 4 indicates that one of those steps is to the fourth hinge.
 [/Aside]
 
 The next example is on an *isosceles decaflexagon*.
-Here you do a mountain fold, skip to the third vertex, do another mountain fold,
-then skip to the fourth vertex for the final mountain fold.
+Here you do a mountain fold, skip to the third hinge, do another mountain fold,
+then skip to the fourth hinge for the final mountain fold.
 
 [Slides width:320 height:240 pattern:'static/P3-3-4/*.jpg' start:1 end:13 /]
 
@@ -162,7 +162,7 @@ finishing by taping 'a' to 'a'.
 
 What if you tried other generating sequences using these pinch flex variations?
 
-The pinch flex variations described here all do a flex followed by a second flex at the same vertex
+The pinch flex variations described here all do a flex followed by a second flex at the same hinge
 because the intermediate position doesn't lie flat and the triangles don't all meet in the center.
 But what if you stopped in that intermediate state and tried flexing from there?
 What other interesting flexes can you find?

@@ -2,8 +2,8 @@
 
 *Flex Notation* is used to describe how to perform a series of flexes on a flexagon.
 
-It uses the concept of a "current corner" (or "current vertex") that a flex is relative to.
-You can switch the current corner using `>` (rotate one corner clockwise), `<` (rotate one corner counterclockwise),
+It uses the concept of a "current hinge" that a flex is relative to.
+You can switch the current hinge using `>` (rotate one hinge clockwise), `<` (rotate one hinge counterclockwise),
 or `^` (turn the flexagon over).
 
 Flex notation uses an abbreviated name for each flex, which should start with capital letter.
@@ -14,7 +14,7 @@ This makes it easy to find the beginning of a flex in a series of flexes.
 Some important notes about flexes:
 
 * Not all flexes are available on all flexagons, e.g. you can't perform a pinch flex on a pentaflexagon, which only has 5 leaves per side
-* Even on a flexagon that supports a given flex, you can't always perform that flex at the current corner.
+* Even on a flexagon that supports a given flex, you can't always perform that flex at the current hinge.
 The flexagon must have the proper structure.
 
 
@@ -52,12 +52,12 @@ i.e. a hexagonal flexagon where you can pinch flex to 5 different sides.
 
 Here are some of the flexes built in to Flexagonator:
 
-* `>`: rotate the current corner one clockwise
-* `<`: rotate the current corner one counterclockwise
-* `^`: turn the flexagon over, while keeping the same current corner
+* `>`: rotate the current hinge one clockwise
+* `<`: rotate the current hinge one counterclockwise
+* `^`: turn the flexagon over, while keeping the same current hinge
 * `P`: the pinch flex - see [Pinch Flex](http://loki3.com/flex/flex/pinch.html)
 * `P44`, `P333`, `P334`, `P55`, `P3333`, `P444`, `P66`: pinch flex variants where the numbers describe how many
-corners are skipping in between pinches, e.g. P334 means that you pinch one corner, skip 3 before the next pinch, and skip another 4 before the final pinch
+hinges are skipped in between pinches, e.g. P334 means that you pinch one hinge, skip 3 before the next pinch, and skip another 4 before the final pinch
 * `T`: the tuck flex - see [Tuck Flex](http://loki3.com/flex/flex/tuck.html)
 * `T1`, `T2`, etc.:  tuck flex variants - since the tuck flex requires an opening opposite where the flex is being
 performed, these variants describe which opposite hinge needs to exist
@@ -72,8 +72,8 @@ the states of a flexagon
 * `Tw`: the twist flex - best on an even-ordered star flexagon, and involves multiple simple pivot flexes
 * `Ltf`: the slot tuck top front - see [Slot Tuck](http://loki3.com/flex/flex/slot-tuck.html)
 * `Ltb`: the slot tuck top back - same as the slot tuck, but you open it from the opposite side
-* `Lbf`: the slot tuck bottom front - same as the slot tuck top front, but you tuck from the opposite corner
-* `Lbb`: the slot tuck bottom back - same as the slot tuck top back, but you tuck from the opposite corner
+* `Lbf`: the slot tuck bottom front - same as the slot tuck top front, but you tuck from the opposite hinge
+* `Lbb`: the slot tuck bottom back - same as the slot tuck top back, but you tuck from the opposite hinge
 * `Lh`: the slot half - start with a slot, fold the flexagon in half, then open it up
 * `Lk`: the slot pocket - start with a slot, then do a series of pocket flexes before opening it up
 * `L3`: the slot triple pocket - do 3 pocket flexes, a slot, then 3 pocket flexes

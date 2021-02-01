@@ -3,11 +3,11 @@ const React = require('react');
 
 /**
  * The `Flexagon` component displays a flexagon and buttons
- * for applying flexes at each corner
+ * for applying flexes at each hinge
  */
 
 /**
- * FlexButton: a button for applying a flex at a corner
+ * FlexButton: a button for applying a flex at a hinge
  * props {
  *  onClick(flexes) callback to issue when button is clicked
  *  flex            flex to perform, e.g. S
@@ -41,7 +41,7 @@ const OverButton = (props) => {
 }
 
 /**
- * FlexButtons: all the flexes that can be applied at a corner
+ * FlexButtons: all the flexes that can be applied at a hinge (or "corner")
  * props {
  *  onClick(flexes) callback to issue when button is clicked
  *  region          RegionForFlexes: { flexes, prefix, postfix, corner, isOnLeft, isOnTop }
@@ -70,7 +70,7 @@ const FlexButtons = (props) => {
 }
 
 /**
- * Flexagon: displays a flexagon and flex buttons at each corner
+ * Flexagon: displays a flexagon and flex buttons at each hinge
  * props {
  *  numPats       create a new flexagon with the given number of pats, typically in [4, 12]
  *  initialScript script to run when numPats is changed or 'runInitial' is set to true

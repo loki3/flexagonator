@@ -4,7 +4,7 @@ There are functions you can use to draw folded or unfolded flexagons.
 They both work with flexagons with any number of pats and leaves that consist of any type of triangle.
 
 The routines for drawing a folded flexagon can also figure out which flexes can
-be performed at each corner, with an option for hooking up UI to buttons describing the flexes.
+be performed at each hinge, with an option for hooking up UI to buttons describing the flexes.
 
 The routines for drawing unfolded flexagons take the internal of structure of
 the flexagon as described in [pat notation](pat-notation.md) and figure out how to turn it into an unfolded strip.
@@ -44,7 +44,7 @@ such as whether to draw the front or back, and whether to display useful statist
   structureTopIds:   // boolean: default false, show pat structure that includes ids <= numpats
   drawover: true,    // boolean: default false, draw over canvas or clear first
   showIds: true,     // boolean: default true, show leaf ids
-  showCurrent: true, // boolean: default true, show an indicator next to the current vertex
+  showCurrent: true, // boolean: default true, show an indicator next to the current hinge
   showNumbers: true; // boolean: default true, show the face numbers
   generate: true,    // boolean: default false, include every flex with * added, e.g. P*
 }
@@ -78,7 +78,7 @@ const objects = {
 Flexagonator.drawEntireFlexagonObjects('mycanvas', objects, { stats: true, flexes: true, structure: true });
 ```
 
-If you want to have buttons that can be used to perform flexes at the different flexagon corners,
+If you want to have buttons that can be used to perform flexes at the different flexagon hinges,
 you can leverage the `RegionForFlexes[]` collection that is returned from the draw routines.
 You can either use the information to draw your own buttons or call `drawScriptButtons` to both
 draw the flexes and get a detailed description of where they're drawn so the buttons are functional.
@@ -111,12 +111,12 @@ Optionally, you can get the button regions without drawing.
 var regions = getButtonRegions(fm, width, height, true/*front*/);
 
 // or if you want everything listed under fm.flexesToSearch to be marked with a *,
-// e.g. P* so that you can generate the structure needed for any flex at any vertex
+// e.g. P* so that you can generate the structure needed for any flex at any hinge
 var regions = getButtonRegions(fm, width, height, true/*front*/, true/*generate*/);
 ```
 
-`RegionForFlexes` describes all the flexes that are valid at a single corner of the flexagon.
-If you want to apply a flex, you would first need to change the current vertex by applying
+`RegionForFlexes` describes all the flexes that are valid at a single hinge of the flexagon.
+If you want to apply a flex, you would first need to change the current hinge by applying
 what's listed in `prefix`, e.g. `>>`.
 After the flex is applied, you could move back to that original flex by applying `postfix`, e.g `<<`.
 Here's what it contains:
@@ -124,10 +124,10 @@ Here's what it contains:
 ```javascript
 // RegionForFlexes
 {
-    flexes: string[];  // flexes valid at this corner e.g. [ 'P', 'S' ]
-    prefix: string;    // change the current vertex, e.g. '>>'
-    postfix: string;   // restore the current vertex, e.g. '<<'
-    corner: Point;     // where the associated corner was drawn, e.g. { x: 10, y: 50 }
+    flexes: string[];  // flexes valid at this hinge e.g. [ 'P', 'S' ]
+    prefix: string;    // change the current hinge, e.g. '>>'
+    postfix: string;   // restore the current hinge, e.g. '<<'
+    corner: Point;     // where the associated hinge corner was drawn, e.g. { x: 10, y: 50 }
     isOnLeft: boolean; // true if the point is on the left half of the flexagon
     isOnTop: boolean;  // true if the point is on the top half of the flexagon
 }

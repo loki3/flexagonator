@@ -137,7 +137,7 @@ namespace Flexagonator {
       return true;
     }
 
-    // apply every flex at the current vertex,
+    // apply every flex at the current hinge,
     // every time we find a new state, track it.
     // return false if we've found the target flexagon
     private checkAllFlexes(flexagon: Flexagon, level: Level, previousStep: number, rights: number, over: boolean): boolean {

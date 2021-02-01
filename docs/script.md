@@ -84,8 +84,7 @@ Since the second pat is a mirror image of the first, the second angle correspond
 
 ### the `directions` command
 
-By default, Flexagonator assumes that each pat is connected clockwise from the previous,
-relative to the vertex pointing at the center of the flexagon.
+By default, Flexagonator assumes that each pat is connected to the previous pat in a consistent direction.
 The end result is a flexagon where every pat meets in the center of the flexagon.
 To change this behavior, you can describe how each pat is connected to the previous pat using the `directions` command.
 If you think of the previous pat being connected to the current pat's bottom edge,
@@ -107,12 +106,12 @@ optionally creating new structure in the flexagon in order to allow the flex to 
 A flex is describing using the `shorthand` field from `addFlex` for representation
 and can optionally be separated by one or more space, e.g. `P > > S+ ^ T'`.
 
-A flex is performed relative to the *current corner* (or *current vertex*).
-You can change the current corner using the special flexes `>` and `<` or turn the flexagon over with `^`.
+A flex is performed relative to the *current hinge*.
+You can change the current hinge using the special flexes `>` and `<` or turn the flexagon over with `^`.
 
-* `>` step one corner clockwise
-* `<` step one corner counterclockwise
-* `^` turn the flexagon over, keeping the same current corner
+* `>` step one hinge clockwise
+* `<` step one hinge counterclockwise
+* `^` turn the flexagon over, keeping the same current hinge
 
 Which flexes can be performed depends on the current structure of the flexagon and the number of pats in the flexagon.
 Some of the sample UIs will display the flexes available for the current flexagon when the structure permits,
@@ -189,7 +188,7 @@ You can fetch the current list through `FlexagonManager.flexesToSearch`.
 
 While Flexagonator has a lot of built-in flexes, it doesn't contain all the possible flexes.
 Therefore, you can define your own flexes.
-You specify both a full name and an abbreviated name used in flex sequences.
+You specify both a full name and an abbreviated name for use in flex sequences.
 See [Flex Notation](flex-notation.md) for notes on naming conventions for the names of flexes
 (basically an upper case letter optionally followed by lower case letters or numbers).
 
@@ -197,7 +196,7 @@ After the names, you list the minimal pat structure before the flex is applied  
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
 Note that you should figure out the simplest pat structure needed to support your flex so that it can be applied from all appropriate configurations.
 
-One other note is that flexes are performed relative to a *current corner*, which is between the first and last pat in your `input` and `output` definitions.
+One other note is that flexes are performed relative to a *current hinge*, which is between the first and last pat in your `input` and `output` definitions.
 For `input`, this will typically be where you fold two leaves together when starting the flex.
 For `output`, a good rule of thumb is to make it so after you perform the flex,
 you can turn it over and, without `>` or `<`, perform the flex again to get back to the original state.
@@ -214,7 +213,7 @@ In other words, `A = ^A^`.
 }
 ```
 
-There is one more optional parameter for a flex defintion called `rotation`,
+There is one more optional parameter for a flex definition called `rotation`,
 which takes the values `0`, `1`, `2`, or `3` in JSON or one of the following values in JavaScript:
 
 * `FlexRotation.None`:          same center vertex, no mirroring (the default)
@@ -225,7 +224,7 @@ which takes the values `0`, `1`, `2`, or `3` in JSON or one of the following val
 This describes how the top leaf in the first pat rotates when the flex is performed.
 For many flexes (such as `T`, `S`, and `F`), rotation doesn't change, so you can rely on the default of `None`.
 But for other flexs (such as `P` and `V`), the leaves rotate so a different corner of the leaf triangle is pointing into the center.
-When you change the current corner with `>` or `<`, the leaves are mirrored, not rotated, so they use `FlexRotation.Mirror`.
+When you change the current hinge with `>` or `<`, the leaves are mirrored, not rotated, so they use `FlexRotation.Mirror`.
 
 
 ## Properties

@@ -303,7 +303,7 @@ Once you start going beyond that range, it gets harder to do the flex without da
 
 A good example of this is the flip flex.
 On some flexagons, like a hexaflexagon made of 30-60-90 triangles,
-it's an elegant flex at one vertex but practically impossible at the vertex right next to it.
+it's an elegant flex at one hinge but practically impossible at the hinge right next to it.
 If you create the following flexagon, you'll find that you can only do one of the two flip flexes that are theoretically possible.
 
 [Flexagon width:400 height:400 numPats:6 options:`{showIds:false, structure:true}`
