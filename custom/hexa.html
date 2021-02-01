@@ -19,8 +19,8 @@
       var flexes = fm.getFlexHistory().join('');
       Flexagonator.drawPinchGraph('traversal', { flexes: flexes, traverse: traverse, drawEnds: true });
 
-      const numSides = fm.flexagon.getLeafCount() / 3;
-      var message = "number of sides: " + numSides;
+      const numFaces = fm.flexagon.getLeafCount() / 3;
+      var message = "number of sides: " + numFaces;
       message += " ----- in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates()
       statusMessage(message);
     }

@@ -13,7 +13,7 @@ This makes it easy to find the beginning of a flex in a series of flexes.
 
 Some important notes about flexes:
 
-* Not all flexes are available on all flexagons, e.g. you can't perform a pinch flex on a pentaflexagon, which only has 5 leaves per side
+* Not all flexes are available on all flexagons, e.g. you can't perform a pinch flex on a pentaflexagon, which only has 5 leaves per face
 * Even on a flexagon that supports a given flex, you can't always perform that flex at the current hinge.
 The flexagon must have the proper structure.
 
@@ -45,7 +45,7 @@ You can declare that you want to repeat a given flex sequence by putting it in (
 A sequence of flexes used to create a new flexagon is called a *generating sequence*.
 It typically consists of flexes followed with `*` or `+`.
 For example, the generating sequence `P* P* P*` can be used to create a pentahexaflexagon,
-i.e. a hexagonal flexagon where you can pinch flex to 5 different sides.
+i.e. a hexagonal flexagon where you can pinch flex to 5 different faces.
 
 
 ## Flexes

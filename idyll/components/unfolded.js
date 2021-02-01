@@ -7,7 +7,7 @@ const React = require('react');
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
  *  angles      center angle and the angle clockwise from the center, e.g. [30, 60]
  *  generator   flex generating sequence for flexagon, e.g. 'S*>>T*^P*'
- *  autoLabel   automatically label the sides based on the generating sequence
+ *  autoLabel   automatically label the faces based on the generating sequence
  *  script      a flexagonator script to run to create the flexagon used for the unfolded strip
  *              used instead of numPats, angles, generator, & autoLabel
  *  endText     text to put at the start & end of the strip

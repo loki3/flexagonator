@@ -9,12 +9,12 @@ namespace Flexagonator {
   }
 
   export enum StripContent {
-    FoldingLabels,  // put everything on one side, use labels that indicate folding order
+    FoldingLabels,  // put everything on one face, use labels that indicate folding order
     FoldingAndIds,  // FoldingLabels plus ids
-    Front,          // only display what's on the front side, use leaf properties
-    Back,           // only display what's on the back side, use leaf properties
-    LeafLabels,     // put everything on one side, use labels from the leaf properties
-    LabelsAndFolding, // put everything on one side, use labels from the leaf properties plus folding order
+    Front,          // only display what's on the front face, use leaf properties
+    Back,           // only display what's on the back face, use leaf properties
+    LeafLabels,     // put everything on one face, use labels from the leaf properties
+    LabelsAndFolding, // put everything on one face, use labels from the leaf properties plus folding order
     Empty,          // don't label the leaves
   }
 

@@ -7,7 +7,7 @@ At their most complex, it can be more challenging than a Rubik's Cube(tm) to get
 
 Some of its features:
 
-* Supports a wide variety of triangle flexagons, from 4 triangles a side to 12 a side or more, made up of any shape of traingle
+* Supports a wide variety of triangle flexagons, from 4 triangles per face to 12 per face or more, made up of any shape of traingle
 * Displays the flexagon, the visible leaves, and information about the internal structure
 * Figures out which flexes are possible and allows you to interactively pick flexes to perform
 * Creates new flexagons using "flex generating sequences" for generating the structure necessary to perform the given flexes

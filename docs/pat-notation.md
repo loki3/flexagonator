@@ -11,7 +11,7 @@ A stack of folded leaves is called a `pat`, and the full flexagon consists of a 
 For example, a hexaflexagon consists of 6 connected pats.
 
 Every leaf in the flexagon is represented by a unique number.
-One side of the leaf is positive and the other side is the corresponding negative number.
+One face of the leaf is positive and the other face is the corresponding negative number.
 A pat consists of either a single leaf number or nested arrays of leaf numbers.
 Each array in a pat has exactly two elements, where each element is either a leaf number or an array.
 The full structure of a flexagon specified by `pats` consists of an array of pats, where the pats go clockwise.

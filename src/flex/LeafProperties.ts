@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  // properties of one side of a single leaf
+  // properties of one face of a single leaf
   export interface LeafFaceProperties {
     label?: string,
     color?: number
