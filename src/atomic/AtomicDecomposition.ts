@@ -24,6 +24,8 @@ namespace Flexagonator {
     P444h: "Xr >>>> Xl >>>> Xr >>>>",
     P444: "(Xr >>>> Xl >>>> Xr >>>>)2",
     P66: "(Xr (>)6 Xl (<)6)2",
+    // pinch flexes made from pocket flexes
+    P222hk: ">>>> K ^>>> K' ^",
 
     // "half" flexes
     Hf: "K > Ul' <",
