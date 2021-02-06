@@ -13,37 +13,37 @@ namespace Flexagonator {
    * @param colors optional array of colors to apply corresponding where in the traversal we are
    */
   export function labelAsTree(flexagon: Flexagon, colors?: number[]): PropertiesForLeaves {
-    const props = new PropertiesForLeaves();
-    labelOutside(props, flexagon, colors);
-    labelInsides(props, flexagon, colors);
-    return props;
+    const leafToLabel: number[] = [];  // leaf number -> label number
+    labelOutside(leafToLabel, flexagon);
+    labelInsides(leafToLabel, flexagon);
+    return createLeafProps(leafToLabel, colors);
   }
 
-  function labelOutside(props: PropertiesForLeaves, flexagon: Flexagon, colors?: number[]): void {
+  function labelOutside(leafToLabel: number[], flexagon: Flexagon): void {
     const top = flexagon.getTopIds();
-    top.forEach(id => apply(props, id, 1, colors));
+    top.forEach(id => leafToLabel[id] = 1);
     const bottom = flexagon.getBottomIds();
-    bottom.forEach(id => apply(props, id, 2, colors));
+    bottom.forEach(id => leafToLabel[id] = 2);
   }
 
-  function labelInsides(props: PropertiesForLeaves, flexagon: Flexagon, colors?: number[]): void {
+  function labelInsides(leafToLabel: number[], flexagon: Flexagon): void {
     const pats = flexagon.pats;
     if (pats.length % 2 === 0) {
-      pats.forEach((pat, i) => handlePatFromEven(props, pat, i, colors));
+      pats.forEach((pat, i) => handlePatFromEven(leafToLabel, pat, i));
     } else {
-      pats.forEach((pat, i) => handlePatFromOdd(props, pat, i, colors));
+      pats.forEach((pat, i) => handlePatFromOdd(leafToLabel, pat));
     }
   }
 
-  function handlePatFromEven(props: PropertiesForLeaves, pat: Pat, whichPat: number, colors?: number[]): void {
+  function handlePatFromEven(leafToLabel: number[], pat: Pat, whichPat: number): void {
     const unfold = pat.unfold();
     if (unfold === null) {
       return;
     }
     const n = (whichPat % 2 === 0) ? 1 : 2;
     let start = 2;
-    apply(props, unfold[0].getTop(), start + n, colors);
-    apply(props, unfold[1].getTop(), start + n, colors);
+    leafToLabel[unfold[0].getTop()] = start + n;
+    leafToLabel[unfold[1].getTop()] = start + n;
 
     let level: (Pat | null)[] = unfold;
     while (true) {
@@ -51,8 +51,8 @@ namespace Flexagonator {
       const next = level.map(p => p === null ? null : p.unfold());
       next.forEach((pair, i) => {
         if (pair !== null) {
-          apply(props, pair[0].getTop(), start + n + i * 2, colors);
-          apply(props, pair[1].getTop(), start + n + i * 2, colors);
+          leafToLabel[pair[0].getTop()] = start + n + i * 2;
+          leafToLabel[pair[1].getTop()] = start + n + i * 2;
         }
       });
       if (!next.some(e => e !== null)) {
@@ -62,14 +62,14 @@ namespace Flexagonator {
     }
   }
 
-  function handlePatFromOdd(props: PropertiesForLeaves, pat: Pat, whichPat: number, colors?: number[]): void {
+  function handlePatFromOdd(leafToLabel: number[], pat: Pat): void {
     const unfold = pat.unfold();
     if (unfold === null) {
       return;
     }
     let start = 2;
-    apply(props, unfold[0].getTop(), start + 1, colors);
-    apply(props, unfold[1].getTop(), start + 2, colors);
+    leafToLabel[unfold[0].getTop()] = start + 1;
+    leafToLabel[unfold[1].getTop()] = start + 2;
 
     let level: (Pat | null)[] = unfold;
     while (true) {
@@ -77,8 +77,8 @@ namespace Flexagonator {
       const next = level.map(p => p === null ? null : p.unfold());
       next.forEach((pair, i) => {
         if (pair !== null) {
-          apply(props, pair[0].getTop(), start + 1 + i * 2, colors);
-          apply(props, pair[1].getTop(), start + 2 + i * 2, colors);
+          leafToLabel[pair[0].getTop()] = start + 1 + i * 2;
+          leafToLabel[pair[1].getTop()] = start + 2 + i * 2;
         }
       });
       if (!next.some(e => e !== null)) {
@@ -88,12 +88,19 @@ namespace Flexagonator {
     }
   }
 
-  // set the leaf side identified by 'id' to lable 'n' & colors[n-1]
-  function apply(props: PropertiesForLeaves, id: number, n: number, colors?: number[]): void {
-    props.setLabelProp(id, n.toString());
-    if (colors && colors[n - 1]) {
-      props.setColorProp(id, colors[n - 1])
-    }
+  // assign labels & colors to all leaf faces
+  function createLeafProps(leafToLabel: number[], colors?: number[]): PropertiesForLeaves {
+    const props = new PropertiesForLeaves();
+    Object.keys(leafToLabel).forEach(a => {
+      const id = Number.parseInt(a);
+      const n = leafToLabel[id];
+      // set the leaf side identified by 'id' to label 'n' & colors[n-1]
+      props.setLabelProp(id, n.toString());
+      if (colors && colors[n - 1]) {
+        props.setColorProp(id, colors[n - 1])
+      }
+    });
+    return props;
   }
 
   function flatten(array: ([Pat, Pat] | null)[]): (Pat | null)[] {
