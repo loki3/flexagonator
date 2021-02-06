@@ -108,6 +108,11 @@ namespace Flexagonator {
       doUnsetFace(fm, item.unsetFace);
     }
 
+    if (item.labelAsTree !== undefined) {
+      const props = labelAsTree(fm.flexagon, item.labelAsTree);
+      fm.leafProps = props;
+    }
+
     if (item.addFlex !== undefined) {
       const f = item.addFlex;
       const fr = f.rotation == undefined ? FlexRotation.None : f.rotation;

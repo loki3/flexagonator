@@ -27,6 +27,8 @@ namespace Flexagonator {
     readonly setFace?: LeafProperties;
     // set properties for just the portion that's not already set (front and/or back)
     readonly unsetFace?: LeafProperties;
+    // label leaf faces based on deep they are in the tree, optionally assigning passed in colors
+    readonly labelAsTree?: number[];
     // add a new flex to what can be applied to the current flexagon
     readonly addFlex?: FlexDef;
     // a list of flexes to search

@@ -21,6 +21,7 @@ Script commands:
     * **leafProps:** describe the properties for every leaf
     * **setFace:** set properties for the entire face (front and/or back)
     * **unsetFace:** set properties for just the portion of the current face that's not already set (front and/or back)
+    * **labelAsTree:** set properties for all leaf faces by traversing the pats as a binary tree
 * History
     * **history:** manipulate the history that tracks which flexes have been performed
 * Flexagon name
@@ -265,6 +266,25 @@ Both use the same `front` and `back` settings as `leafProps`.
 // then set all the faces that weren't previously set
 { unsetFace: { front: { label: "3", color: 0xAA4439 }, back: { label: "4", color: 0x622870 } } },
 ]
+```
+
+### the `labelAsTree` command
+
+`labelAsTree` sets properties for all leaf faces by traversing the pats as a binary tree.
+This is roughly equivalent to the standard labeling for flexagons that are designed for the pinch flex.
+
+* The front and back are labeled 1 & 2. It uses color[0] & color[1] if present.
+* If there's an even number of pats, the odd pats are assigned odd numbers & colors
+    (from 3 on), while the even pats are assigned even numbers & colors (from 4 on).
+    Leaf sides that are folded together are assigned the same number.
+* If there's an odd number of pats, every pat uses the same numbering scheme.
+    Leaf sides that are folded together are assigned consecutive numbers.
+
+```javascript
+// only label using numbers
+{ labelAsTree: [] }
+// label using numbers and assign the corresponding colors when assigning the first 4 labels
+{ labelAsTree: [0x2E4172, 0x2B803E, 0xAA4439, 0x622870] }
 ```
 
 
