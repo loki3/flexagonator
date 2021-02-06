@@ -274,8 +274,8 @@ Both use the same `front` and `back` settings as `leafProps`.
 This is roughly equivalent to the standard labeling for flexagons that are designed for the pinch flex.
 
 * The front and back are labeled 1 & 2. It uses color[0] & color[1] if present.
-* If there's an even number of pats, the odd pats are assigned odd numbers & colors
-    (from 3 on), while the even pats are assigned even numbers & colors (from 4 on).
+* If there's an even number of pats, the odd pats and even pats are assigned
+    different sets of numbers & colors.
     Leaf sides that are folded together are assigned the same number.
 * If there's an odd number of pats, every pat uses the same numbering scheme.
     Leaf sides that are folded together are assigned consecutive numbers.
