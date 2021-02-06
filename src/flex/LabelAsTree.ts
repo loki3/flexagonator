@@ -6,9 +6,9 @@ namespace Flexagonator {
    * - The front and back are labeled 1 & 2, using color[0] & color[1] if present.
    * - If there's an even number of pats, the odd pats and even pats are assigned
    *   different sets of numbers & colors.
-   *   Leaf sides that are folded together are assigned the same number.
+   *   Leaf faces that are folded together are assigned the same number.
    * - If there's an odd number of pats, every pat uses the same numbering scheme.
-   *   Leaf sides that are folded together are assigned consecutive numbers.
+   *   Leaf faces that are folded together are assigned consecutive numbers.
    * @param flexagon the flexagon to label
    * @param colors optional array of colors to apply corresponding where in the traversal we are
    */
