@@ -109,6 +109,25 @@ namespace Flexagonator {
     });
   });
 
+  describe('unfold', () => {
+    it('should refuse to unfold a single leaf', () => {
+      const pat = makePat(2) as Pat;
+      const unfold = pat.unfold();
+      expect(unfold).toBeNull();
+    });
+
+    it('should unfold a pair of leaves', () => {
+      const pat = makePat([-2, 1]) as Pat;
+      const unfold = pat.unfold();
+      if (unfold === null) {
+        fail('unfolding failed');
+      } else {
+        expect(unfold[0].getAsLeafTree()).toBe(1);
+        expect(unfold[1].getAsLeafTree()).toBe(2);
+      }
+    });
+  });
+
   describe('hasPattern', () => {
     it('should detect when pattern is present in pat', () => {
       const pat = makePat([[-1, 2], [-3, [4, -5]]]);

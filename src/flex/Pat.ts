@@ -24,6 +24,7 @@ namespace Flexagonator {
     findId(id: number): WhereLeaf;
     findMinId(): number;  // min(abs(id))
     findMaxId(): number;  // max(abs(id))
+    unfold(): [Pat, Pat] | null;  // unfold so the inside is on top
 
     hasPattern(pattern: LeafTree): boolean;
     // returns an array where the index is the pattern number from the input
@@ -126,6 +127,10 @@ namespace Flexagonator {
 
     findMaxId(): number {
       return Math.abs(this.id);
+    }
+
+    unfold(): [Pat, Pat] | null {
+      return null;
     }
 
     hasPattern(pattern: LeafTree): boolean {
@@ -246,6 +251,10 @@ namespace Flexagonator {
       const a = this.left.findMaxId();
       const b = this.right.findMaxId();
       return Math.max(a, b);
+    }
+
+    unfold(): [Pat, Pat] | null {
+      return [this.right, this.left.makeFlipped()];
     }
 
     hasPattern(pattern: LeafTree): boolean {
