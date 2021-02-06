@@ -16,7 +16,10 @@ namespace Flexagonator {
     const leafToLabel: number[] = [];  // leaf number -> label number
     labelOutside(leafToLabel, flexagon);
     labelInsides(leafToLabel, flexagon);
-    return createLeafProps(leafToLabel, colors);
+    // note: we get rid of any gaps in the label numbers we created, which is generally nicer,
+    // but we could decide to skip this step if we want consistency across different flexagons.
+    const squished = squishNumbers(leafToLabel);
+    return createLeafProps(squished, colors);
   }
 
   function labelOutside(leafToLabel: number[], flexagon: Flexagon): void {
@@ -115,5 +118,54 @@ namespace Flexagonator {
       }
     });
     return results;
+  }
+
+  // get rid of gaps in the labels
+  function squishNumbers(leafToLabel: number[]): number[] {
+    const hasLabel: boolean[] = collectAllLabels(leafToLabel);
+    if (!hasGap(hasLabel)) {
+      return leafToLabel;
+    }
+    const oldToNew: number[] = mapOldLabelsToNewLabels(hasLabel);
+    return mapLeafNumbersToSquishedNumbers(leafToLabel, oldToNew);;
+  }
+
+  function collectAllLabels(leafToLabel: number[]): boolean[] {
+    const hasLabel: boolean[] = [];
+    Object.keys(leafToLabel).forEach(k => {
+      const id = Number.parseInt(k);
+      hasLabel[leafToLabel[id]] = true;
+    });
+    return hasLabel;
+  }
+
+  function hasGap(hasLabel: boolean[]): boolean {
+    // note that [0] is always empty, so we ignore it
+    for (let i = 1; i < hasLabel.length; i++) {
+      if (!hasLabel[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function mapOldLabelsToNewLabels(hasLabel: boolean[]): number[] {
+    const oldToNew: number[] = [];
+    let current = 1;
+    for (let i = 1; i < hasLabel.length; i++) {
+      if (hasLabel[i]) {
+        oldToNew[i] = current++;
+      }
+    }
+    return oldToNew;
+  }
+
+  function mapLeafNumbersToSquishedNumbers(leafToLabel: number[], oldToNew: number[]): number[] {
+    const newLeafToLabel: number[] = [];
+    Object.keys(leafToLabel).forEach(k => {
+      const id = Number.parseInt(k);
+      newLeafToLabel[id] = oldToNew[leafToLabel[id]];
+    });
+    return newLeafToLabel;
   }
 }

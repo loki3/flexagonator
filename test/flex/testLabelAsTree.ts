@@ -62,13 +62,13 @@ namespace Flexagonator {
       expect(props.getFaceLabel(4)).toBe("1");
       expect(props.getFaceLabel(3)).toBe("2");
       // unfold once
-      expect(props.getFaceLabel(2)).toBe("4");
-      expect(props.getFaceLabel(5)).toBe("4");
+      expect(props.getFaceLabel(2)).toBe("3");
+      expect(props.getFaceLabel(5)).toBe("3");
       // unfold twice
-      expect(props.getFaceLabel(-2)).toBe("6");
-      expect(props.getFaceLabel(-3)).toBe("6");
-      expect(props.getFaceLabel(-4)).toBe("8");
-      expect(props.getFaceLabel(-5)).toBe("8");
+      expect(props.getFaceLabel(-2)).toBe("4");
+      expect(props.getFaceLabel(-3)).toBe("4");
+      expect(props.getFaceLabel(-4)).toBe("5");
+      expect(props.getFaceLabel(-5)).toBe("5");
     });
 
     it('should work with a deeply nested pat', () => {
@@ -84,16 +84,16 @@ namespace Flexagonator {
       expect(props.getFaceLabel(6)).toBe("3");
       expect(props.getFaceLabel(3)).toBe("3");
       // unfold twice
-      expect(props.getFaceLabel(2)).toBe("5");
-      expect(props.getFaceLabel(-4)).toBe("5");
-      expect(props.getFaceLabel(-5)).toBe("7");
-      expect(props.getFaceLabel(-6)).toBe("7");
+      expect(props.getFaceLabel(2)).toBe("4");
+      expect(props.getFaceLabel(-4)).toBe("4");
+      expect(props.getFaceLabel(-5)).toBe("5");
+      expect(props.getFaceLabel(-6)).toBe("5");
       // unfold thrice
-      expect(props.getFaceLabel(-3)).toBe("11");
-      expect(props.getFaceLabel(1)).toBe("11");
+      expect(props.getFaceLabel(-3)).toBe("6");
+      expect(props.getFaceLabel(1)).toBe("6");
       // unfold 4x
-      expect(props.getFaceLabel(-1)).toBe("23");
-      expect(props.getFaceLabel(-2)).toBe("23");
+      expect(props.getFaceLabel(-1)).toBe("7");
+      expect(props.getFaceLabel(-2)).toBe("7");
     });
 
     it('should label all pats the same when there is an odd number of pats', () => {
