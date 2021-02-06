@@ -145,6 +145,11 @@
       updateUI();
     }
 
+    function labelAsTree() {
+      Flexagonator.runScriptItem(fm, { labelAsTree: [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999] });
+      updateUI();
+    }
+
     function resetFaces() {
       fm.leafProps.reset();
       updateUI();
@@ -259,7 +264,9 @@
       <option value="36-36-108">10: 36-36-108 (star)</option>
       <option value="30-60-90">12: 30-60-90 (right)</option>
       <option value="30-30-120">12: 30-30-120 (star)</option>
-    </select> &nbsp;&nbsp;&nbsp; set face:
+    </select>
+    <br/><br/>
+    &nbsp;&nbsp;&nbsp; set face:
     <select onchange="setFace(event.target.value, false)">
       <option value="" selected></option>
       <option value="1">1: blue</option>
@@ -282,6 +289,8 @@
       <option value="7">7: light grey</option>
       <option value="8">8: dark grey</option>
     </select> &nbsp;&nbsp;&nbsp;
+    <input onclick="labelAsTree();" type="button" value="apply tree labeling" />
+    &nbsp;&nbsp;
     <input onclick="resetFaces();" type="button" value="reset faces" />
   </p>
 
