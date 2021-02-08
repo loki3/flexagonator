@@ -32,10 +32,10 @@ namespace Flexagonator {
     // assume 'flexagon' only contains pats so we should borrow other info from 'other' if appropriate
     static makeFromPats(flexagon: Flexagon, other: FlexagonManager) {
       const fm = new FlexagonManager(flexagon);
-      if (!other.angleInfo.isDefault) {
+      if (other && !other.angleInfo.isDefault) {
         fm.angleInfo = other.angleInfo;
       }
-      if (other.directions && other.directions.getCount() === flexagon.getPatCount()) {
+      if (other && other.directions && other.directions.getCount() === flexagon.getPatCount()) {
         fm.directions = other.directions;
       }
       return fm;
