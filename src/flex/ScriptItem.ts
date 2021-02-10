@@ -33,6 +33,8 @@ namespace Flexagonator {
     readonly addFlex?: FlexDef;
     // a list of flexes to search
     readonly searchFlexes?: string;
+    // add the half-flexes to the list of flex definitions
+    readonly addHalfFlexes?: boolean;
   }
 
 }

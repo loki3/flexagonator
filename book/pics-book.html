@@ -75,6 +75,7 @@
       <li><a href="#flip">flip flex</a></li>
       <li><a href="#vflex">v flex</a></li>
       <li><a href="#silver tetra">silver tetra flex</a></li>
+      <li><a href="#half-flexes">half flexes</a></li>
       <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
     </ul>
     <li><a href="#part3">Part Three: Learning</a></li>
@@ -436,6 +437,18 @@
   <canvas id="St-minimal" width="900" height="450"></canvas>
   <script type="text/javascript">
     drawStripSequence("St-minimal", 6, "St*", -30, [60, 90]);
+  </script>
+
+  <h3 id="half-flexes">half flexes</h3>
+
+  <canvas id="silverHalfFlexes" width="1000" height="500"></canvas><br/><br/>
+  <script type="text/javascript">
+    var silverHalfFlexes = [
+      { "numPats": 8, "angles": [45, 45], "addHalfFlexes": true },
+      { "flexes": "> Hf* Hb'+Hl'+Hr'+Hsl'+Hsr'+ Hf' Hb* Hf'+Hl'+Hr'+Hsl'+Hsr'+ Hb' Hl* Hf'+Hb'+Hr'+Hsl'+Hsr'+ Hl' Hr* Hf'+Hb'+Hl'+Hsl'+Hsr'+ Hr' Hsl* Hf'+Hb'+Hl'+Hr'+Hsr'+ Hsl' Hsr* Hf'+Hb'+Hl'+Hr'+Hsl'+ Hsr' >>>>" }
+    ];
+    var fm = Flexagonator.createFromScript(silverHalfFlexes);
+    Flexagonator.drawUnfolded('silverHalfFlexes', fm, { rotation: 135, content: 0, captions: [{ text: "H's", which: 0 }, { text: "H's", which: -1 }] });
   </script>
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
