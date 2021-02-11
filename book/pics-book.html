@@ -97,7 +97,7 @@
 
   <canvas id="intro-tri" width="800" height="180"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 6, flexAndColor: { flexes: "P*" } }];
+    var script = [{ numPats: 6, flexes: "P*" }];
     var options = { rotation: 120, content: 6 };
     drawStripComplex("intro-tri", script, options);
   </script>
@@ -106,7 +106,7 @@
 
   <canvas id="intro-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 6, flexAndColor: { flexes: "P* P* P+ > P P*" } }];
+    var script = [{ numPats: 6, flexes: "P* P* P+ > P P*" }];
     var options = { rotation: 120, content: 6 };
     drawStripComplex("intro-hexa", script, options);
   </script>
@@ -182,7 +182,7 @@
   <h4>regular tri-tetraflexagon strip</h4>
   <canvas id="tri-tetra" width="1200" height="220"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 4, flexAndColor: { flexes: "P*" }, angles: [60, 60] }];
+    var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
     var drawOptions = { rotation: 120, content: 4 };
     drawStripComplex("tri-tetra", script, drawOptions);
   </script>
@@ -190,7 +190,7 @@
   <h4>regular penta-tetraflexagon strip</h4>
   <canvas id="penta-tetra" width="1200" height="500"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 4, flexAndColor: { flexes: "(P*)3" }, angles: [60, 60] }];
+    var script = [{ numPats: 4, flexes: "(P*)3 P'P'", angles: [60, 60], labelAsTree: [] }];
     var drawOptions = { rotation: 60, content: 4 };
     drawStripComplex("penta-tetra", script, drawOptions);
   </script>
@@ -198,7 +198,7 @@
   <h4>regular tri-octaflexagon strip</h4>
   <canvas id="tri-octa" width="1200" height="220"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 8, flexAndColor: { flexes: "P*" }, angles: [60, 60] }];
+    var script = [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
     var drawOptions = { rotation: 120, content: 4 };
     drawStripComplex("tri-octa", script, drawOptions);
   </script>
@@ -206,7 +206,7 @@
   <h4>regular penta-octaflexagon strip</h4>
   <canvas id="penta-octa" width="1200" height="500"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 8, flexAndColor: { flexes: "(P*)3" }, angles: [60, 60] }];
+    var script = [{ numPats: 8, flexes: "(P*)3", angles: [60, 60], labelAsTree: [] }];
     var drawOptions = { rotation: 60, content: 4 };
     drawStripComplex("penta-octa", script, drawOptions);
   </script>
