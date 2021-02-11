@@ -451,31 +451,46 @@
     var fm = Flexagonator.createFromScript(silverHalfFlexes);
     Flexagonator.drawUnfolded('silverHalfFlexes', fm, { rotation: 135, content: 0, captions: [{ text: "H's", which: 0 }, { text: "H's", which: -1 }] });
   </script>
+  <!-- plain pentagonal silver decaflexagon -->
+  <p>pentagonal silver decaflexagon</p>
+  <canvas id="psd-plain" width="600" height="350"></canvas>
+  <script type="text/javascript">
+    var script = [
+      { "name": "pentagonal silver decaflexagon" },
+      { "addHalfFlexes": true }
+    ];
+    var fm = Flexagonator.createFromScript(script);
+    Flexagonator.drawUnfolded('psd-plain', fm, { rotation: 45, content: 6 });
+  </script>
+  <!-- supports Hf' or Hb' followed by Hf or Hb -->
   <p>pentagonal silver decaflexagon: Hf'Hb, Hb'Hf</p>
   <canvas id="psd-HfHb1" width="500" height="500"></canvas>
   <canvas id="psd-HfHb2" width="500" height="500"></canvas><br/><br/>
   <script type="text/javascript">
     var script = [
-      { "numPats": 10, "angles": [45, 90, 45], "directions": "|//|//////", "addHalfFlexes": true },
-      { "flexes": ">> Hf'* Hb+ Hf Hb'* Hf+ Hb <<" }
+      { "name": "pentagonal silver decaflexagon" },
+      { "addHalfFlexes": true },
+      { "flexes": ">>>>> Hf'* Hb+ Hf Hb'* Hf+ Hb <<<<<" }
     ];
     var fm = Flexagonator.createFromScript(script);
-    var scale = 170;
+    var scale = 230;
     Flexagonator.drawUnfolded('psd-HfHb1', fm,
-      { start: 0, end: 12, rotation: 135, scale, content: 0, captions: [{ text: "a", which: 0 }, { text: "b", which: -1 }] });
+      { start: 0, end: 11, rotation: 135, scale, content: 0, captions: [{ text: "a", which: 0 }, { text: "b", which: -1 }] });
     Flexagonator.drawUnfolded('psd-HfHb2', fm,
-      { start: 13, end: 30, rotation: 135, scale, content: 0, captions: [{ text: "b", which: 0 }, { text: "a", which: -1 }] });
+      { start: 12, end: 30, rotation: 135, scale, content: 0, captions: [{ text: "b", which: 0 }, { text: "a", which: -1 }] });
   </script>
+  <!-- supports Hr' Hb -->
   <p>pentagonal silver decaflexagon: Hr'Hb</p>
   <canvas id="psd-HrHb" width="1000" height="500"></canvas>
   <script type="text/javascript">
     var script = [
-      { "numPats": 10, "angles": [45, 90, 45], "directions": "|//|//////", "addHalfFlexes": true },
-      { "flexes": ">> Hr'* Hb+ Hr <<" }
+      { "name": "pentagonal silver decaflexagon" },
+      { "addHalfFlexes": true },
+      { "flexes": ">>>>> Hr'* Hb+ Hr <<<<<" }
     ];
     var fm = Flexagonator.createFromScript(script);
     Flexagonator.drawUnfolded('psd-HrHb', fm,
-      { rotation: 0, content: 0, captions: [{ text: "Hr'", which: 0 }, { text: "Hb", which: -1 }] });
+      { rotation: -45, content: 0, captions: [{ text: "Hr'", which: 0 }, { text: "Hb", which: -1 }] });
   </script>
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>

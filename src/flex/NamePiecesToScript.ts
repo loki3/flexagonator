@@ -162,6 +162,11 @@ namespace Flexagonator {
       const directions = Directions.make('//|//|//'.repeat(2));
       return { angles: [30, 90], directions };
     }
+    // pentagonal silver decaflexagon
+    if (overallShape === 'pentagonal' && leafShape === 'silver' && n === 10) {
+      const directions = Directions.make('///|//|///');
+      return { angles: [45, 45], directions };
+    }
 
     // all pats meet in middle, leaves are right triangles
     if (sides !== null && sides >= 3 && sides === n / 2) {
