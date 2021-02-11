@@ -21,6 +21,11 @@
       var fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4, start: start, end: end });
     }
+    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, angles) {
+      var script = [{ numPats: numPats, flexes: flexes, angles, labelAsTree: [] }];
+      var fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: 4, start: start, end: end });
+    }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles) {
@@ -130,7 +135,7 @@
   <img src="../idyll/static/pinch-flex.jpg" /><br/><br/>
   <canvas id="tri-hexa" width="800" height="180"></canvas>
   <script type="text/javascript">
-    drawStripSimple("tri-hexa", 6, "P*", 120);
+    drawStripPinch("tri-hexa", 6, "P*", 120);
   </script>
 
   <!-- 4, 5, & 6 faces-->
@@ -139,19 +144,19 @@
   <h4>tetra-hexaflexagon strip</h4>
   <canvas id="tetra-hexa" width="1200" height="220"></canvas>
   <script type="text/javascript">
-    drawStripSimple("tetra-hexa", 6, "(P*)2", 90);
+    drawStripPinch("tetra-hexa", 6, "(P*)2", 90);
   </script>
 
   <h4>penta-hexaflexagon strip</h4>
   <canvas id="penta-hexa" width="1200" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSimple("penta-hexa", 6, "(P*)3", 60);
+    drawStripPinch("penta-hexa", 6, "(P*)3", 60);
   </script>
 
   <h4>hexa-hexaflexagon strip</h4>
   <canvas id="hexa-hexa" width="1200" height="180"></canvas>
   <script type="text/javascript">
-    drawStripSimple("hexa-hexa", 6, "P* P* P+ > P P*", 120);
+    drawStripPinch("hexa-hexa", 6, "P* P* P+ > P P*", 120);
   </script>
 
   <!-- longer templates -->
@@ -163,7 +168,7 @@
     var A = "P'*>(P*)2";
     var B = "P'*>(P*)4";
     var sequence = A + B + A + B + A;
-    drawStripSimple("dodeca-hexa", 6, sequence, 120, 0, 11);
+    drawStripPinch("dodeca-hexa", 6, sequence, 120, 0, 11);
   </script>
 
   <h4>icositetra-hexaflexagon strip</h4>
@@ -173,7 +178,7 @@
     var B = "P'*>(P*)4";
     var C = "P'*>(P*)6";
     var sequence = A + B + A + C + A + B + A + C + A + B + A;
-    drawStripSimple("icositetra-hexa", 6, sequence, 120, 0, 23);
+    drawStripPinch("icositetra-hexa", 6, sequence, 120, 0, 23);
   </script>
 
   <!-- triangle tetra & octa -->
@@ -217,7 +222,7 @@
   <h4>P444</h4>
   <canvas id="P444" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripSimple("P444", 12, "P444*");
+    drawStripPinch("P444", 12, "P444*");
   </script>
 
   <p>
@@ -233,7 +238,7 @@
   <h4>P333</h4>
   <canvas id="P333" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripSimple("P333", 9, "P333*");
+    drawStripSimple("P333", 9, "P333*>>");
   </script>
   <br/>
 
@@ -256,7 +261,7 @@
   <h4>P334</h4>
   <canvas id="P334" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripSimple("P334", 10, "P334*");
+    drawStripPinch("P334", 10, "P334*");
   </script>
   <br/>
 
@@ -602,9 +607,9 @@
   <canvas id="hexa-hexa2" width="450" height="405"></canvas>
   <canvas id="hexa-hexa3" width="450" height="405"></canvas>
   <script type="text/javascript">
-    drawStripSimple("hexa-hexa1", 6, "P* P* P+ > P P*", 120);
-    drawStripSimple("hexa-hexa2", 6, "(P*^>)4", 0);
-    drawStripSimple("hexa-hexa3", 6, "(P*)4", -30);
+    drawStripPinch("hexa-hexa1", 6, "P* P* P+ > P P*", 120);
+    drawStripPinch("hexa-hexa2", 6, "(P*^>)4", 0);
+    drawStripPinch("hexa-hexa3", 6, "(P*)4", -30);
   </script>
 
   <h4>other examples:</h4>
@@ -652,7 +657,7 @@
   <canvas id="group-tetra1" width="250" height="250"></canvas>
   <canvas id="group-tetra2" width="250" height="250"></canvas>
   <script type="text/javascript">
-    drawStripSimple("group-tetra-strip", 6, "(P*)2", 90);
+    drawStripPinch("group-tetra-strip", 6, "(P*)2", 90);
     var script = [{ numPats: 6 }, { angles: [60, 60] }, { flexes: "(P*)2" }, { searchFlexes: "P" }];
     // face only supports P at 3 hinges
     drawFlexagonComplex("group-tetra1", script);
@@ -681,8 +686,14 @@
   <canvas id="equi-tetra3" width="800" height="250"></canvas><br/>
   <canvas id="equi-tetra5" width="800" height="600"></canvas>
   <script type="text/javascript">
-    drawStripSimple("equi-tetra3", 4, "P*", 120, undefined, undefined, [60, 60]);
-    drawStripSimple("equi-tetra5", 4, "P*(^>P*)2", 60, undefined, undefined, [60, 60]);
+    var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
+    var drawOptions = { rotation: 120, content: 4 };
+    drawStripComplex("equi-tetra3", script, drawOptions);
+  </script>
+  <script type="text/javascript">
+    var script = [{ numPats: 4, flexes: "(P*)3 P'P'", angles: [60, 60], labelAsTree: [] }];
+    var drawOptions = { rotation: 60, content: 4 };
+    drawStripComplex("equi-tetra5", script, drawOptions);
   </script>
 
   <p>animal pentaflexagon</p>
