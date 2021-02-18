@@ -143,7 +143,7 @@ Hsr = > K < Ur << Ul' >> Ur'
 Hsl = ^Hsr^
 
 # kite-to-kite slot
-Hkl = > Ul Ur <<<< Ul' < Ul' >>
+Kkl = > Ul Ur <<<< Ul' < Ul' >>
 
 # specific to hexaflexagon
 Hh  = Xr >>> Xl <<<~
@@ -160,17 +160,17 @@ T   = < Hr Hf' >
 Mf  = < Hr Hb' >
 S3  = < Hr Hl' >
 
-Ltf = Hf Hkl Hf' <
-Lk  = Hf Hkl Hsl' <
+Ltf = Hf Kkl Hf' <
+Lk  = Hf Kkl Hsl' <
 
 # specific to hexaflexagon
 Ttf = Hh Hf'
 V   = Hb Hh'
 T   = Hh Ht'
-Lh  = Hf Hkl Hh'
-Ltb = Hf Hkl Ht'
-Lbb = Hf Hkl >>> Ht' <<
-Lbf = Hf Hkl >>> Hf' <<
+Lh  = Hf Kkl Hh'
+Ltb = Hf Kkl Ht'
+Lbb = Hf Kkl >>> Ht' <<
+Lbf = Hf Kkl >>> Hf' <<
 ```
 
 Some other selected flexes:
