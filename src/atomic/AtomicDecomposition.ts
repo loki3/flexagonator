@@ -34,7 +34,8 @@ namespace Flexagonator {
     Hl: "^Hr^",
     Hsr: "> K << Xr3 > Ur'",
     Hsl: "^Hsr^",
-    Kkl: "> Ul Ur <<<< Ul' < Ul' >>",
+    // kite-to-kite slot, combines well with half flexes
+    Lkk: "> Ul Ur <<<< Ul' < Ul' >>",
     // specific to hexaflexagon
     Hh: "Xr >>> Xl <<<~",
     Ht: "< Ur ^<<< Ur' <<^ Xl <<<~",
@@ -48,16 +49,16 @@ namespace Flexagonator {
     Tfromh: "< Hr Hf' >",
     Sfromh: "< Hsr Hb' >",
 
-    Ltf: "Hf Kkl Hf' <",
-    Lk: "Hf Kkl Hsl' <",
+    Ltf: "Hf Lkk Hf' <",
+    Lk: "Hf Lkk Hsl' <",
 
     // specific to hexaflexagon
     Ttf: "Hh Hf'",
     V: "Hb Hh'",
-    Lh: "Hf Kkl Hh'",
-    Ltb: "Hf Kkl Ht'",
-    Lbb: "Hf Kkl >>> Ht' <<",
-    Lbf: "Hf Kkl >>> Hf' <<",
+    Lh: "Hf Lkk Hh'",
+    Ltb: "Hf Lkk Ht'",
+    Lbb: "Hf Lkk >>> Ht' <<",
+    Lbf: "Hf Lkk >>> Hf' <<",
 
     // on a pentaflexagon
     L3: "(K^)3 (<)4 (K'^)3",

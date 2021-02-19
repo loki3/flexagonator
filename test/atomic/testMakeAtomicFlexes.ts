@@ -86,7 +86,7 @@ namespace Flexagonator {
     });
 
     it("should compose to create the half kite slot", () => {
-      testDefinition("Kkl", AtomicDecomposition.Kkl);
+      testDefinition("Lkk", AtomicDecomposition.Lkk);
     });
 
     it("should compose pocket flexes", () => {

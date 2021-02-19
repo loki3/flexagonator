@@ -68,7 +68,7 @@ namespace Flexagonator {
       "a 1 / [[-3,4],2] / # 5 / [-7,6] / b", "a [1,-2] \\ -3 / # [[5,-6],-4] / -7 \\ b") as AtomicFlex;
     flexes["Hsl"] = makeAtomicFlex("half: partial pyramid left",
       "a [-2, 1] / -3 / # [-6,[-4,5]] / -7 / b", "a 1 \\ [4,[2,-3]] / # 5 / [6,-7] \\ b") as AtomicFlex;
-    flexes["Kkl"] = makeAtomicFlex("kite-to-kite slot",
+    flexes["Lkk"] = makeAtomicFlex("kite-to-kite slot",
       "a 1 / 2 / 3 \\ 4 / # 5 / [[-7,6],8] \\ b", "a [1,[3,-2]] \\ 4 / # 5 / 6 \\ 7 / 8 / b") as AtomicFlex;
   }
 
