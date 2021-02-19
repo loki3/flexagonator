@@ -37,6 +37,9 @@ namespace Flexagonator {
     it("should compose to create the pocket flex", () => {
       testDefinition("K", "Ur >^ Ur' > Ul ^");
       testDefinition("K", AtomicDecomposition.K);
+
+      testDefinition("K3", AtomicDecomposition.K3);
+      testDefinition("K4", AtomicDecomposition.K4);
     });
 
     it("should compose to create the pinch flex on a hexaflexagon", () => {

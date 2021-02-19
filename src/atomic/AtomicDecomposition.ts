@@ -15,6 +15,8 @@ namespace Flexagonator {
     Xl4: "> Ul <<< Ur' >>",
     // pocket
     K: "Xr^ > Ul^",
+    K3: "Xr^ >> Ul^",
+    K4: "Xr^ >>> Ul^",
 
     // pinch flex & variations
     P222h: "Xr >> Xl >> Xr >>",

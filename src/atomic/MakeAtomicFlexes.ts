@@ -59,6 +59,8 @@ namespace Flexagonator {
     flexes["Xl4"] = makeAtomicFlex("exchange left across 4 pats",
       "a 1 \\ 2 / # 3 / [4,-5] \\ b", "a [-2,1] / -3 \\ # -4 \\ -5 / b") as AtomicFlex;
     flexes["K"] = makeAtomicFlex("pocket", "a [-2,1] / -3 / # [5,-4] / b", "a 1 \\ 2 / # [-4,3] / -5 / -b") as AtomicFlex;
+    flexes["K3"] = makeAtomicFlex("pocket3", "a [-2,1] / -3 / -4 / # [6,-5] / b", "a 1 \\ 2 / # 3 \\ [-5,4] / -6 / -b") as AtomicFlex;
+    flexes["K4"] = makeAtomicFlex("pocket4", "a [-2,1] / -3 / -4 / -5 / # [7,-6] / b", "a 1 \\ 2 / # 3 \\ 4 \\ [-6,5] / -7 / -b") as AtomicFlex;
 
     flexes["Hf"] = makeAtomicFlex("half: fold forward", "a [-2,1] / -3 / # [5,-4] / 6 / b", "a 1 \\ 2 / # [-4,3] / [-5,6] \\ b") as AtomicFlex;
     flexes["Hb"] = makeAtomicFlex("half: fold back", "a 1 / [-3,2] / # -4 / [6,-5] / b", "a [1,-2] \\ [4,-3] / # 5 / 6 \\ b") as AtomicFlex;
