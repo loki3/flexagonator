@@ -23,6 +23,7 @@ namespace Flexagonator {
     P222222h: "(Xr >> Xl >>)3 ~",
     P3333h: "Xr >>> Xl >>> Xr >>> Xl >>> ~",
     P3333: "(Xr >>> Xl >>> Xr >>> Xl >>>)2",
+    P333h: "Xr >>> Xl >>> Xr >>>",
     P444h: "Xr >>>> Xl >>>> Xr >>>>",
     P444: "(Xr >>>> Xl >>>> Xr >>>>)2",
     P66: "(Xr (>)6 Xl (<)6)2",
