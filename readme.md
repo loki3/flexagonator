@@ -18,6 +18,7 @@ Some of its features:
 
 ## Building and running
 
+* Prerequisites: [Visual Studio Code](https://code.visualstudio.com/Download) and [npm](https://www.npmjs.com/get-npm)
 * Clone the repository, e.g. `git clone https://github.com/loki3/flexagonator.git`
 * Install dependencies, e.g. `npm install`
 * Build the Typescript project, e.g. use Visual Studio Code and choose *Terminal > Run Build Task*
