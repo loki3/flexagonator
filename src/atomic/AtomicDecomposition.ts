@@ -15,7 +15,8 @@ namespace Flexagonator {
     Xl4: "> Ul <<< Ur' >>",
     // pocket
     K: "Xr^ > Ul^",
-    K3: "Xr^ >> Ul^",
+    K3a: "Xr^ >> Ul^",
+    K3b: "Xr^ >> Ul^",
     K4: "Xr^ >>> Ul^",
 
     // pinch flex & variations
@@ -29,6 +30,7 @@ namespace Flexagonator {
     P66: "(Xr (>)6 Xl (<)6)2",
     // pinch flexes made from pocket flexes
     P222hk: ">>>> K ^>>> K' ^",
+    P333hk: ">>>>>> K3a ^>>> K3b' ^",
 
     // "half" flexes
     Hf: "K > Ul' <",

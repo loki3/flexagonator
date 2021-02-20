@@ -38,7 +38,8 @@ namespace Flexagonator {
       testDefinition("K", "Ur >^ Ur' > Ul ^");
       testDefinition("K", AtomicDecomposition.K);
 
-      testDefinition("K3", AtomicDecomposition.K3);
+      testDefinition("K3a", AtomicDecomposition.K3a);
+      testDefinition("K3b", AtomicDecomposition.K3b);
       testDefinition("K4", AtomicDecomposition.K4);
     });
 
@@ -47,6 +48,16 @@ namespace Flexagonator {
       testDefinition("P222h", ">>>> K <<< ^K'^ >>>>");
       // remove trailing >> that are there to wrap flex back
       testDefinition("P222h", AtomicDecomposition.P222h.substring(0, AtomicDecomposition.P222h.length - 2));
+    });
+
+    it("should compose to create the pinch variations on an enneaflexagon", () => {
+      // remove trailing >>> that are there to wrap flex back
+      testFormula("P333h", AtomicDecomposition.P333h.substring(0, AtomicDecomposition.P333h.length - 3),
+        "a 1 / # [-3,2] / -4 / -5 / [7,-6] / 8 / 9 / [-11,10] / -12 / b",
+        "-a [2,-1] / 3 / 4 \\ [-6,5] / -7 / -8 \\ [10,-9] / # 11 / 12 \\ -b");
+      testFormula("P333h", AtomicDecomposition.P333hk,
+        "a 1 / # [-3,2] / -4 / -5 / [7,-6] / 8 / 9 / [-11,10] / -12 / b",
+        "-a [2,-1] / # 3 / 4 \\ [-6,5] / -7 / -8 \\ [10,-9] / 11 / 12 \\ -b");
     });
 
     it("should compose to create pinch flex variations on a dodecaflexagon", () => {
