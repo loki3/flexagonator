@@ -16,7 +16,7 @@
     var defaultNumPats = 8;
     var defaultAngles = [45, 90];
 
-    // draw a template that uses (pre* Lkk* post*) as its generating sequence
+    // draw a template that uses (pre* Lkk* post'*) as its generating sequence
     // if 'second', break the template into two pieces, using 'second' as the starting leaf
     function drawTemplate(canvasId, pre, post, second, onlyHexa) {
       const flexes = getGenerator(pre, post);
@@ -41,12 +41,35 @@
       const ctx = document.getElementById(canvasId).getContext("2d");
       ctx.font = "15px sans-serif";
       ctx.fillText(text, 5, 20);
+
+      decompose(pre, post, fm);
     }
 
     // e.g. Hf* Lkk* Hb'+ Lkk' Hf'
     function getGenerator(pre, post) {
       const plus = post.startsWith(">>>") ? post + "'+<<<" : post + "'+";
       return pre + "* Lkk* " + plus + " Lkk' " + pre + "'";
+    }
+
+    // ehck if (pre Lkk post') can be decomposed into other flexes or if it's prime
+    function decompose(pre, post, fm) {
+      const sequence = pre + " Lkk " + post + "'";
+      const newFlex = Flexagonator.makeFlexFromSequence(sequence, fm.allFlexes);
+      const primes = getPrimesPlus(fm.allFlexes);
+      const result = Flexagonator.findEqualFlexes(newFlex, primes);
+      console.log("> ", sequence, "   result: ", result);
+    }
+
+    // all primes, but not Tf, plus >^
+    function getPrimesPlus(allFlexes) {
+      const primes = Flexagonator.getPrimeFlexes(allFlexes);
+      const allNames = Object.getOwnPropertyNames(primes).filter(name => name !== 'Tf');
+      const plus = {};
+      allNames.forEach(name => plus[name] = primes[name]);
+      plus[">"] = allFlexes[">"];
+      plus["<"] = allFlexes["<"];
+      plus["^"] = allFlexes["^"];
+      return plus;
     }
   </script>
 </head>
