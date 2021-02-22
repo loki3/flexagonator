@@ -8,7 +8,7 @@ namespace Flexagonator {
     const flexNames = parseFlexSequence(sequence);
 
     const flexagon = makeEmptyFlexagon(flexes);
-    const fm = new FlexagonManager(flexagon);
+    const fm = new FlexagonManager(flexagon, undefined, flexes);
 
     const generator = makeGeneratingSequence(flexNames);
     const result = fm.applyFlexes(generator, false);

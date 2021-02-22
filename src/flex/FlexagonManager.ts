@@ -14,10 +14,10 @@ namespace Flexagonator {
     private tracker: Tracker;
     private readonly history: History;
 
-    constructor(flexagon: Flexagon, leafProps?: LeafProperties[]) {
+    constructor(flexagon: Flexagon, leafProps?: LeafProperties[], useFlexes?: Flexes) {
       this.flexagon = flexagon;
       this.leafProps = new PropertiesForLeaves(leafProps);
-      this.allFlexes = makeAllFlexes(flexagon.getPatCount());
+      this.allFlexes = useFlexes ? useFlexes : makeAllFlexes(flexagon.getPatCount());
       this.flexesToSearch = getPrimeFlexes(this.allFlexes);
       this.setIsosceles();
       this.tracker = Tracker.make(flexagon);
