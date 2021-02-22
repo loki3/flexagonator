@@ -84,7 +84,7 @@ namespace Flexagonator {
         flexes = step.flex.getSequence() + ' ' + flexes;
         stepN = step.previous;
       }
-      return flexes;
+      return flexes.trim();
     }
 
     // returns false once the search is done
