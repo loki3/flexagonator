@@ -15,6 +15,16 @@
   <script type="text/javascript">
     var defaultNumPats = 8;
     var defaultAngles = [45, 90];
+    function switchFlexagon(value) {
+      if (value === "6") {
+        defaultNumPats = 6;
+        defaultAngles = [60, 60];
+      } else {
+        defaultNumPats = 8;
+        defaultAngles = [45, 90];
+      }
+      drawAll();
+    }
 
     // draw a template that uses (pre* Lkk* post'*) as its generating sequence
     // if 'second', break the template into two pieces, using 'second' as the starting leaf
@@ -71,11 +81,81 @@
       plus["^"] = allFlexes["^"];
       return plus;
     }
+
+    function drawAll() {
+      drawTemplate("slot01", "Hf", "Hf", 8);
+      drawTemplate("slot02", "Hf", "Hb");
+      drawTemplate("slot03", "Hf", "Hr", 8);
+      drawTemplate("slot04", "Hf", "Hl", 8);
+      drawTemplate("slot05", "Hf", "Hsr", 8);
+      drawTemplate("slot06", "Hf", "Hsl", 8);
+      drawTemplate("slot07", "Hb", "Hf", 8);
+      drawTemplate("slot08", "Hb", "Hb", 8);
+      drawTemplate("slot09", "Hb", "Hr", 8);
+      drawTemplate("slot10", "Hb", "Hl", 8);
+      drawTemplate("slot11", "Hb", "Hsr", 8);
+      drawTemplate("slot12", "Hb", "Hsl", 8);
+      drawTemplate("slot13", "Hr", "Hf", 8);
+      drawTemplate("slot14", "Hr", "Hb", 8);
+      drawTemplate("slot15", "Hr", "Hr", 8);
+      drawTemplate("slot16", "Hr", "Hl", 8);
+      drawTemplate("slot17", "Hr", "Hsr", 8);
+      drawTemplate("slot18", "Hr", "Hsl", 8);
+      drawTemplate("slot19", "Hl", "Hf", 8);
+      drawTemplate("slot20", "Hl", "Hb", 8);
+      drawTemplate("slot21", "Hl", "Hr", 8);
+      drawTemplate("slot22", "Hl", "Hl", 8);
+      drawTemplate("slot23", "Hl", "Hsr", 8);
+      drawTemplate("slot24", "Hl", "Hsl", 8);
+      drawTemplate("slot25", "Hsr", "Hf", 8);
+      drawTemplate("slot26", "Hsr", "Hb", 8);
+      drawTemplate("slot27", "Hsr", "Hr", 8);
+      drawTemplate("slot28", "Hsr", "Hl", 8);
+      drawTemplate("slot29", "Hsr", "Hsr", 8);
+      drawTemplate("slot30", "Hsr", "Hsl", 8);
+      drawTemplate("slot31", "Hsl", "Hf", 8);
+      drawTemplate("slot32", "Hsl", "Hb", 8);
+      drawTemplate("slot33", "Hsl", "Hr", 8);
+      drawTemplate("slot34", "Hsl", "Hl", 8);
+      drawTemplate("slot35", "Hsl", "Hsr", 8);
+      drawTemplate("slot36", "Hsl", "Hsl", 8);
+      drawTemplate("slot37", "Hf", "Hh", 0, true);
+      drawTemplate("slot38", "Hf", "Ht", 0, true);
+      drawTemplate("slot39", "Hf", ">>>Ht", 0, true);
+      drawTemplate("slot40", "Hf", ">>>Hf", 0, true);
+      drawTemplate("slot41", "Hb", "Hh", 0, true);
+      drawTemplate("slot42", "Hb", "Ht", 8, true);
+      drawTemplate("slot43", "Hb", ">>>Ht", 0, true);
+      drawTemplate("slot44", "Hb", ">>>Hf", 0, true);
+      drawTemplate("slot45", "Hr", "Hh", 0, true);
+      drawTemplate("slot46", "Hr", "Ht", 0, true);
+      drawTemplate("slot47", "Hr", ">>>Ht", 0, true);
+      drawTemplate("slot48", "Hr", ">>>Hf", 0, true);
+      drawTemplate("slot49", "Hl", "Hh", 0, true);
+      drawTemplate("slot50", "Hl", "Ht", 0, true);
+      drawTemplate("slot51", "Hl", ">>>Ht", 0, true);
+      drawTemplate("slot52", "Hl", ">>>Hf", 0, true);
+      drawTemplate("slot53", "Hsr", "Hh", 8, true);
+      drawTemplate("slot54", "Hsr", "Ht", 0, true);
+      drawTemplate("slot55", "Hsr", ">>>Ht", 0, true);
+      drawTemplate("slot56", "Hsr", ">>>Hf", 0, true);
+      drawTemplate("slot57", "Hsl", "Hh", 0, true);
+      drawTemplate("slot58", "Hsl", "Ht", 0, true);
+      drawTemplate("slot59", "Hsl", ">>>Ht", 0, true);
+      drawTemplate("slot60", "Hsl", ">>>Hf", 0, true);
+    }
   </script>
 </head>
 
 <body>
   <h1>Slot flexes</h1>
+
+  <p>
+    <select onchange="switchFlexagon(event.target.value)">
+    <option value="6">regular hexaflexagon</option>
+    <option value="8" selected>silver octaflexagon</option>
+  </select>
+  </p>
 
   <canvas id="slot01" width="600" height="500"></canvas><canvas id="slot01b" width="600" height="500"></canvas><br/>
   <canvas id="slot02" width="800" height="500"></canvas><br/>
@@ -142,66 +222,7 @@
   <canvas id="slot60" width="800" height="500"></canvas><br/>
 
   <script type="text/javascript">
-    drawTemplate("slot01", "Hf", "Hf", 8);
-    drawTemplate("slot02", "Hf", "Hb");
-    drawTemplate("slot03", "Hf", "Hr", 8);
-    drawTemplate("slot04", "Hf", "Hl", 8);
-    drawTemplate("slot05", "Hf", "Hsr", 8);
-    drawTemplate("slot06", "Hf", "Hsl", 8);
-    drawTemplate("slot07", "Hb", "Hf", 8);
-    drawTemplate("slot08", "Hb", "Hb", 8);
-    drawTemplate("slot09", "Hb", "Hr", 8);
-    drawTemplate("slot10", "Hb", "Hl", 8);
-    drawTemplate("slot11", "Hb", "Hsr", 8);
-    drawTemplate("slot12", "Hb", "Hsl", 8);
-    drawTemplate("slot13", "Hr", "Hf", 8);
-    drawTemplate("slot14", "Hr", "Hb", 8);
-    drawTemplate("slot15", "Hr", "Hr", 8);
-    drawTemplate("slot16", "Hr", "Hl", 8);
-    drawTemplate("slot17", "Hr", "Hsr", 8);
-    drawTemplate("slot18", "Hr", "Hsl", 8);
-    drawTemplate("slot19", "Hl", "Hf", 8);
-    drawTemplate("slot20", "Hl", "Hb", 8);
-    drawTemplate("slot21", "Hl", "Hr", 8);
-    drawTemplate("slot22", "Hl", "Hl", 8);
-    drawTemplate("slot23", "Hl", "Hsr", 8);
-    drawTemplate("slot24", "Hl", "Hsl", 8);
-    drawTemplate("slot25", "Hsr", "Hf", 8);
-    drawTemplate("slot26", "Hsr", "Hb", 8);
-    drawTemplate("slot27", "Hsr", "Hr", 8);
-    drawTemplate("slot28", "Hsr", "Hl", 8);
-    drawTemplate("slot29", "Hsr", "Hsr", 8);
-    drawTemplate("slot30", "Hsr", "Hsl", 8);
-    drawTemplate("slot31", "Hsl", "Hf", 8);
-    drawTemplate("slot32", "Hsl", "Hb", 8);
-    drawTemplate("slot33", "Hsl", "Hr", 8);
-    drawTemplate("slot34", "Hsl", "Hl", 8);
-    drawTemplate("slot35", "Hsl", "Hsr", 8);
-    drawTemplate("slot36", "Hsl", "Hsl", 8);
-    drawTemplate("slot37", "Hf", "Hh", 0, true);
-    drawTemplate("slot38", "Hf", "Ht", 0, true);
-    drawTemplate("slot39", "Hf", ">>>Ht", 0, true);
-    drawTemplate("slot40", "Hf", ">>>Hf", 0, true);
-    drawTemplate("slot41", "Hb", "Hh", 0, true);
-    drawTemplate("slot42", "Hb", "Ht", 8, true);
-    drawTemplate("slot43", "Hb", ">>>Ht", 0, true);
-    drawTemplate("slot44", "Hb", ">>>Hf", 0, true);
-    drawTemplate("slot45", "Hr", "Hh", 0, true);
-    drawTemplate("slot46", "Hr", "Ht", 0, true);
-    drawTemplate("slot47", "Hr", ">>>Ht", 0, true);
-    drawTemplate("slot48", "Hr", ">>>Hf", 0, true);
-    drawTemplate("slot49", "Hl", "Hh", 0, true);
-    drawTemplate("slot50", "Hl", "Ht", 0, true);
-    drawTemplate("slot51", "Hl", ">>>Ht", 0, true);
-    drawTemplate("slot52", "Hl", ">>>Hf", 0, true);
-    drawTemplate("slot53", "Hsr", "Hh", 8, true);
-    drawTemplate("slot54", "Hsr", "Ht", 0, true);
-    drawTemplate("slot55", "Hsr", ">>>Ht", 0, true);
-    drawTemplate("slot56", "Hsr", ">>>Hf", 0, true);
-    drawTemplate("slot57", "Hsl", "Hh", 0, true);
-    drawTemplate("slot58", "Hsl", "Ht", 0, true);
-    drawTemplate("slot59", "Hsl", ">>>Ht", 0, true);
-    drawTemplate("slot60", "Hsl", ">>>Hf", 0, true);
+    drawAll();
   </script>
 </body>
 
