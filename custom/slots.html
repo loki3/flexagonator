@@ -19,6 +19,9 @@
       if (value === "6") {
         defaultNumPats = 6;
         defaultAngles = [60, 60];
+      } else if (value === "7") {
+        defaultNumPats = 7;
+        defaultAngles = [51.4286, 64.2857];
       } else {
         defaultNumPats = 8;
         defaultAngles = [45, 90];
@@ -88,6 +91,8 @@
       if (numPats === 6) {
         const a = s.replace(">>>>>", "<");
         return a.replace(">>>>", "<<");
+      } else if (numPats === 7) {
+        return s.replace(">>>>>>", "<");
       } else if (numPats === 8) {
         return s.replace(">>>>>>>", "<");
       }
@@ -165,6 +170,7 @@
   <p>
     <select onchange="switchFlexagon(event.target.value)">
     <option value="6">regular hexaflexagon</option>
+    <option value="7">regular heptaflexagon</option>
     <option value="8" selected>silver octaflexagon</option>
   </select>
   </p>
