@@ -47,12 +47,14 @@
         Flexagonator.drawUnfolded(canvasId, fm, { captions });
       }
 
-      const text = pre + " " + post + "' " + fm.flexagon.getLeafCount();
+      const text = pre + " Lkk " + post + "' ";
       const ctx = document.getElementById(canvasId).getContext("2d");
       ctx.font = "15px sans-serif";
-      ctx.fillText(text, 5, 20);
+      ctx.fillText(text, 2, 16);
 
-      decompose(pre, post, fm);
+      const isEqualTo = decompose(pre, post, fm);
+      ctx.fillText(isEqualTo, 2, 32);
+      ctx.fillText(fm.flexagon.getLeafCount(), 2, 48);
     }
 
     // e.g. Hf* Lkk* Hb'+ Lkk' Hf'
@@ -67,7 +69,7 @@
       const newFlex = Flexagonator.makeFlexFromSequence(sequence, fm.allFlexes);
       const primes = getPrimesPlus(fm.allFlexes);
       const result = Flexagonator.findEqualFlexes(newFlex, primes);
-      console.log("> ", sequence, "   result: ", result);
+      return simplify(result, fm.flexagon.getPatCount());
     }
 
     // all primes, but not Tf, plus >^
@@ -80,6 +82,16 @@
       plus["<"] = allFlexes["<"];
       plus["^"] = allFlexes["^"];
       return plus;
+    }
+
+    function simplify(s, numPats) {
+      if (numPats === 6) {
+        const a = s.replace(">>>>>", "<");
+        return a.replace(">>>>", "<<");
+      } else if (numPats === 8) {
+        return s.replace(">>>>>>>", "<");
+      }
+      return s;
     }
 
     function drawAll() {
