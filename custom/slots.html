@@ -30,25 +30,17 @@
     }
 
     // draw a template that uses (pre* Lkk* post'*) as its generating sequence
-    // if 'second', break the template into two pieces, using 'second' as the starting leaf
-    function drawTemplate(canvasId, pre, post, second, onlyHexa) {
-      const flexes = getGenerator(pre, post);
+    function drawTemplate(canvasId, pre, post, onlyHexa) {
       const numPats = onlyHexa ? 6 : defaultNumPats;
       const angles = onlyHexa ? [60, 60] : defaultAngles;
+      // shift a few hinges so the tape isn't in the middle of the flex
+      const flexes = getGenerator(pre, post) + (numPats === 8 ? ">>>>" : ">>>");
       const fm = Flexagonator.createFromScript([
         { numPats, angles, "addHalfFlexes": true },
         { flexes }
       ]);
-      if (second) {
-        const scale = 160;
-        const captions1 = [{ text: pre, which: 0 }, { text: "a", which: -1 }];
-        const captions2 = [{ text: "a", which: 0 }, { text: post + "'", which: -1 }];
-        Flexagonator.drawUnfolded(canvasId, fm, { captions: captions1, scale, end: second - 1 });
-        Flexagonator.drawUnfolded(canvasId + "b", fm, { captions: captions2, scale, start: second });
-      } else {
-        const captions = [{ text: pre, which: 0 }, { text: post + "'", which: -1 }];
-        Flexagonator.drawUnfolded(canvasId, fm, { captions });
-      }
+      const captions = [{ text: pre, which: 0 }, { text: post + "'", which: -1 }];
+      Flexagonator.drawUnfolded(canvasId, fm, { captions });
 
       const text = pre + " Lkk " + post + "' ";
       const ctx = document.getElementById(canvasId).getContext("2d");
@@ -100,66 +92,66 @@
     }
 
     function drawAll() {
-      drawTemplate("slot01", "Hf", "Hf", 7);
+      drawTemplate("slot01", "Hf", "Hf");
       drawTemplate("slot02", "Hf", "Hb");
-      drawTemplate("slot03", "Hf", "Hr", 8);
-      drawTemplate("slot04", "Hf", "Hl", 8);
-      drawTemplate("slot05", "Hf", "Hsr", 8);
-      drawTemplate("slot06", "Hf", "Hsl", 7);
-      drawTemplate("slot07", "Hb", "Hf", 8);
-      drawTemplate("slot08", "Hb", "Hb", 8);
-      drawTemplate("slot09", "Hb", "Hr", 8);
-      drawTemplate("slot10", "Hb", "Hl", 8);
-      drawTemplate("slot11", "Hb", "Hsr", 8);
-      drawTemplate("slot12", "Hb", "Hsl", 8);
-      drawTemplate("slot13", "Hr", "Hf", 8);
-      drawTemplate("slot14", "Hr", "Hb", 8);
-      drawTemplate("slot15", "Hr", "Hr", 8);
-      drawTemplate("slot16", "Hr", "Hl", 8);
-      drawTemplate("slot17", "Hr", "Hsr", 8);
-      drawTemplate("slot18", "Hr", "Hsl", 8);
-      drawTemplate("slot19", "Hl", "Hf", 8);
-      drawTemplate("slot20", "Hl", "Hb", 8);
-      drawTemplate("slot21", "Hl", "Hr", 8);
-      drawTemplate("slot22", "Hl", "Hl", 8);
-      drawTemplate("slot23", "Hl", "Hsr", 8);
-      drawTemplate("slot24", "Hl", "Hsl", 8);
-      drawTemplate("slot25", "Hsr", "Hf", 8);
-      drawTemplate("slot26", "Hsr", "Hb", 8);
-      drawTemplate("slot27", "Hsr", "Hr", 8);
-      drawTemplate("slot28", "Hsr", "Hl", 8);
-      drawTemplate("slot29", "Hsr", "Hsr", 8);
-      drawTemplate("slot30", "Hsr", "Hsl", 8);
-      drawTemplate("slot31", "Hsl", "Hf", 8);
-      drawTemplate("slot32", "Hsl", "Hb", 8);
-      drawTemplate("slot33", "Hsl", "Hr", 8);
-      drawTemplate("slot34", "Hsl", "Hl", 8);
-      drawTemplate("slot35", "Hsl", "Hsr", 8);
-      drawTemplate("slot36", "Hsl", "Hsl", 8);
-      drawTemplate("slot37", "Hf", "Hh", 0, true);
-      drawTemplate("slot38", "Hf", "Ht", 0, true);
-      drawTemplate("slot39", "Hf", ">>>Ht", 0, true);
-      drawTemplate("slot40", "Hf", ">>>Hf", 0, true);
-      drawTemplate("slot41", "Hb", "Hh", 0, true);
-      drawTemplate("slot42", "Hb", "Ht", 8, true);
-      drawTemplate("slot43", "Hb", ">>>Ht", 0, true);
-      drawTemplate("slot44", "Hb", ">>>Hf", 0, true);
-      drawTemplate("slot45", "Hr", "Hh", 0, true);
-      drawTemplate("slot46", "Hr", "Ht", 0, true);
-      drawTemplate("slot47", "Hr", ">>>Ht", 0, true);
-      drawTemplate("slot48", "Hr", ">>>Hf", 0, true);
-      drawTemplate("slot49", "Hl", "Hh", 0, true);
-      drawTemplate("slot50", "Hl", "Ht", 0, true);
-      drawTemplate("slot51", "Hl", ">>>Ht", 0, true);
-      drawTemplate("slot52", "Hl", ">>>Hf", 0, true);
-      drawTemplate("slot53", "Hsr", "Hh", 8, true);
-      drawTemplate("slot54", "Hsr", "Ht", 0, true);
-      drawTemplate("slot55", "Hsr", ">>>Ht", 0, true);
-      drawTemplate("slot56", "Hsr", ">>>Hf", 0, true);
-      drawTemplate("slot57", "Hsl", "Hh", 0, true);
-      drawTemplate("slot58", "Hsl", "Ht", 0, true);
-      drawTemplate("slot59", "Hsl", ">>>Ht", 0, true);
-      drawTemplate("slot60", "Hsl", ">>>Hf", 0, true);
+      drawTemplate("slot03", "Hf", "Hr");
+      drawTemplate("slot04", "Hf", "Hl");
+      drawTemplate("slot05", "Hf", "Hsr");
+      drawTemplate("slot06", "Hf", "Hsl");
+      drawTemplate("slot07", "Hb", "Hf");
+      drawTemplate("slot08", "Hb", "Hb");
+      drawTemplate("slot09", "Hb", "Hr");
+      drawTemplate("slot10", "Hb", "Hl");
+      drawTemplate("slot11", "Hb", "Hsr");
+      drawTemplate("slot12", "Hb", "Hsl");
+      drawTemplate("slot13", "Hr", "Hf");
+      drawTemplate("slot14", "Hr", "Hb");
+      drawTemplate("slot15", "Hr", "Hr");
+      drawTemplate("slot16", "Hr", "Hl");
+      drawTemplate("slot17", "Hr", "Hsr");
+      drawTemplate("slot18", "Hr", "Hsl");
+      drawTemplate("slot19", "Hl", "Hf");
+      drawTemplate("slot20", "Hl", "Hb");
+      drawTemplate("slot21", "Hl", "Hr");
+      drawTemplate("slot22", "Hl", "Hl");
+      drawTemplate("slot23", "Hl", "Hsr");
+      drawTemplate("slot24", "Hl", "Hsl");
+      drawTemplate("slot25", "Hsr", "Hf");
+      drawTemplate("slot26", "Hsr", "Hb");
+      drawTemplate("slot27", "Hsr", "Hr");
+      drawTemplate("slot28", "Hsr", "Hl");
+      drawTemplate("slot29", "Hsr", "Hsr");
+      drawTemplate("slot30", "Hsr", "Hsl");
+      drawTemplate("slot31", "Hsl", "Hf");
+      drawTemplate("slot32", "Hsl", "Hb");
+      drawTemplate("slot33", "Hsl", "Hr");
+      drawTemplate("slot34", "Hsl", "Hl");
+      drawTemplate("slot35", "Hsl", "Hsr");
+      drawTemplate("slot36", "Hsl", "Hsl");
+      drawTemplate("slot37", "Hf", "Hh", true);
+      drawTemplate("slot38", "Hf", "Ht", true);
+      drawTemplate("slot39", "Hf", ">>>Ht", true);
+      drawTemplate("slot40", "Hf", ">>>Hf", true);
+      drawTemplate("slot41", "Hb", "Hh", true);
+      drawTemplate("slot42", "Hb", "Ht", true);
+      drawTemplate("slot43", "Hb", ">>>Ht", true);
+      drawTemplate("slot44", "Hb", ">>>Hf", true);
+      drawTemplate("slot45", "Hr", "Hh", true);
+      drawTemplate("slot46", "Hr", "Ht", true);
+      drawTemplate("slot47", "Hr", ">>>Ht", true);
+      drawTemplate("slot48", "Hr", ">>>Hf", true);
+      drawTemplate("slot49", "Hl", "Hh", true);
+      drawTemplate("slot50", "Hl", "Ht", true);
+      drawTemplate("slot51", "Hl", ">>>Ht", true);
+      drawTemplate("slot52", "Hl", ">>>Hf", true);
+      drawTemplate("slot53", "Hsr", "Hh", true);
+      drawTemplate("slot54", "Hsr", "Ht", true);
+      drawTemplate("slot55", "Hsr", ">>>Ht", true);
+      drawTemplate("slot56", "Hsr", ">>>Hf", true);
+      drawTemplate("slot57", "Hsl", "Hh", true);
+      drawTemplate("slot58", "Hsl", "Ht", true);
+      drawTemplate("slot59", "Hsl", ">>>Ht", true);
+      drawTemplate("slot60", "Hsl", ">>>Hf", true);
     }
   </script>
 </head>
@@ -172,6 +164,7 @@
     They are generated by doing a half flex, the kite-to-kite slot (Lkk), followed by the inverse of a half flex.
     Each template lists the generating sequence, a decomposition in terms of prime flexes, and the number of leaves in
     the template.
+    Note that some may require severe bending on the hexa or heptaflexagons, but not on the silver octaflexagon.
   </p>
 
   <ul>
@@ -191,74 +184,74 @@
   </p>
 
   <a id="Hf"></a>
-  <canvas id="slot01" width="600" height="500"></canvas><canvas id="slot01b" width="600" height="500"></canvas><br/>
-  <canvas id="slot02" width="800" height="500"></canvas><br/>
-  <canvas id="slot03" width="600" height="500"></canvas><canvas id="slot03b" width="600" height="500"></canvas><br/>
-  <canvas id="slot04" width="600" height="500"></canvas><canvas id="slot04b" width="600" height="500"></canvas><br/>
-  <canvas id="slot05" width="600" height="500"></canvas><canvas id="slot05b" width="600" height="500"></canvas><br/>
-  <canvas id="slot06" width="600" height="500"></canvas><canvas id="slot06b" width="600" height="500"></canvas><br/>
+  <canvas id="slot01" width="900" height="500"></canvas><br/>
+  <canvas id="slot02" width="900" height="500"></canvas><br/>
+  <canvas id="slot03" width="900" height="500"></canvas><br/>
+  <canvas id="slot04" width="900" height="500"></canvas><br/>
+  <canvas id="slot05" width="900" height="500"></canvas><br/>
+  <canvas id="slot06" width="900" height="500"></canvas><br/>
   <a id="Hb"></a>
-  <canvas id="slot07" width="600" height="500"></canvas><canvas id="slot07b" width="600" height="500"></canvas><br/>
-  <canvas id="slot08" width="600" height="500"></canvas><canvas id="slot08b" width="600" height="500"></canvas><br/>
-  <canvas id="slot09" width="600" height="500"></canvas><canvas id="slot09b" width="600" height="500"></canvas><br/>
-  <canvas id="slot10" width="600" height="500"></canvas><canvas id="slot10b" width="600" height="500"></canvas><br/>
-  <canvas id="slot11" width="600" height="500"></canvas><canvas id="slot11b" width="600" height="500"></canvas><br/>
-  <canvas id="slot12" width="600" height="500"></canvas><canvas id="slot12b" width="600" height="500"></canvas><br/>
+  <canvas id="slot07" width="900" height="500"></canvas><br/>
+  <canvas id="slot08" width="900" height="500"></canvas><br/>
+  <canvas id="slot09" width="900" height="500"></canvas><br/>
+  <canvas id="slot10" width="900" height="500"></canvas><br/>
+  <canvas id="slot11" width="900" height="500"></canvas><br/>
+  <canvas id="slot12" width="900" height="500"></canvas><br/>
   <a id="Hr"></a>
-  <canvas id="slot13" width="600" height="500"></canvas><canvas id="slot13b" width="600" height="500"></canvas><br/>
-  <canvas id="slot14" width="600" height="500"></canvas><canvas id="slot14b" width="600" height="500"></canvas><br/>
-  <canvas id="slot15" width="600" height="500"></canvas><canvas id="slot15b" width="600" height="500"></canvas><br/>
-  <canvas id="slot16" width="600" height="500"></canvas><canvas id="slot16b" width="600" height="500"></canvas><br/>
-  <canvas id="slot17" width="600" height="500"></canvas><canvas id="slot17b" width="600" height="500"></canvas><br/>
-  <canvas id="slot18" width="600" height="500"></canvas><canvas id="slot18b" width="600" height="500"></canvas><br/>
+  <canvas id="slot13" width="900" height="500"></canvas><br/>
+  <canvas id="slot14" width="900" height="500"></canvas><br/>
+  <canvas id="slot15" width="900" height="500"></canvas><br/>
+  <canvas id="slot16" width="900" height="500"></canvas><br/>
+  <canvas id="slot17" width="900" height="500"></canvas><br/>
+  <canvas id="slot18" width="900" height="500"></canvas><br/>
   <a id="Hl"></a>
-  <canvas id="slot19" width="600" height="500"></canvas><canvas id="slot19b" width="600" height="500"></canvas><br/>
-  <canvas id="slot20" width="600" height="500"></canvas><canvas id="slot20b" width="600" height="500"></canvas><br/>
-  <canvas id="slot21" width="600" height="500"></canvas><canvas id="slot21b" width="600" height="500"></canvas><br/>
-  <canvas id="slot22" width="600" height="500"></canvas><canvas id="slot22b" width="600" height="500"></canvas><br/>
-  <canvas id="slot23" width="600" height="500"></canvas><canvas id="slot23b" width="600" height="500"></canvas><br/>
-  <canvas id="slot24" width="600" height="500"></canvas><canvas id="slot24b" width="600" height="500"></canvas><br/>
+  <canvas id="slot19" width="900" height="500"></canvas><br/>
+  <canvas id="slot20" width="900" height="500"></canvas><br/>
+  <canvas id="slot21" width="900" height="500"></canvas><br/>
+  <canvas id="slot22" width="900" height="500"></canvas><br/>
+  <canvas id="slot23" width="900" height="500"></canvas><br/>
+  <canvas id="slot24" width="900" height="500"></canvas><br/>
   <a id="Hsr"></a>
-  <canvas id="slot25" width="600" height="500"></canvas><canvas id="slot25b" width="600" height="500"></canvas><br/>
-  <canvas id="slot26" width="600" height="500"></canvas><canvas id="slot26b" width="600" height="500"></canvas><br/>
-  <canvas id="slot27" width="600" height="500"></canvas><canvas id="slot27b" width="600" height="500"></canvas><br/>
-  <canvas id="slot28" width="600" height="500"></canvas><canvas id="slot28b" width="600" height="500"></canvas><br/>
-  <canvas id="slot29" width="600" height="500"></canvas><canvas id="slot29b" width="600" height="500"></canvas><br/>
-  <canvas id="slot30" width="600" height="500"></canvas><canvas id="slot30b" width="600" height="500"></canvas><br/>
+  <canvas id="slot25" width="900" height="500"></canvas><br/>
+  <canvas id="slot26" width="900" height="500"></canvas><br/>
+  <canvas id="slot27" width="900" height="500"></canvas><br/>
+  <canvas id="slot28" width="900" height="500"></canvas><br/>
+  <canvas id="slot29" width="900" height="500"></canvas><br/>
+  <canvas id="slot30" width="900" height="500"></canvas><br/>
   <a id="Hsl"></a>
-  <canvas id="slot31" width="600" height="500"></canvas><canvas id="slot31b" width="600" height="500"></canvas><br/>
-  <canvas id="slot32" width="600" height="500"></canvas><canvas id="slot32b" width="600" height="500"></canvas><br/>
-  <canvas id="slot33" width="600" height="500"></canvas><canvas id="slot33b" width="600" height="500"></canvas><br/>
-  <canvas id="slot34" width="600" height="500"></canvas><canvas id="slot34b" width="600" height="500"></canvas><br/>
-  <canvas id="slot35" width="600" height="500"></canvas><canvas id="slot35b" width="600" height="500"></canvas><br/>
-  <canvas id="slot36" width="600" height="500"></canvas><canvas id="slot36b" width="600" height="500"></canvas><br/>
+  <canvas id="slot31" width="900" height="500"></canvas><br/>
+  <canvas id="slot32" width="900" height="500"></canvas><br/>
+  <canvas id="slot33" width="900" height="500"></canvas><br/>
+  <canvas id="slot34" width="900" height="500"></canvas><br/>
+  <canvas id="slot35" width="900" height="500"></canvas><br/>
+  <canvas id="slot36" width="900" height="500"></canvas><br/>
 
   <hr />
   <h2 id="hexa">hexaflexagon only</h2>
-  <canvas id="slot37" width="800" height="500"></canvas><br/>
-  <canvas id="slot38" width="800" height="500"></canvas><br/>
-  <canvas id="slot39" width="800" height="500"></canvas><br/>
-  <canvas id="slot40" width="800" height="500"></canvas><br/>
-  <canvas id="slot41" width="800" height="500"></canvas><br/>
-  <canvas id="slot42" width="600" height="500"></canvas><canvas id="slot42b" width="600" height="500"></canvas><br/>
-  <canvas id="slot43" width="800" height="500"></canvas><br/>
-  <canvas id="slot44" width="800" height="500"></canvas><br/>
-  <canvas id="slot45" width="800" height="500"></canvas><br/>
-  <canvas id="slot46" width="800" height="500"></canvas><br/>
-  <canvas id="slot47" width="800" height="500"></canvas><br/>
-  <canvas id="slot48" width="800" height="500"></canvas><br/>
-  <canvas id="slot49" width="800" height="500"></canvas><br/>
-  <canvas id="slot50" width="800" height="500"></canvas><br/>
-  <canvas id="slot51" width="800" height="500"></canvas><br/>
-  <canvas id="slot52" width="800" height="500"></canvas><br/>
-  <canvas id="slot53" width="600" height="500"></canvas><canvas id="slot53b" width="600" height="500"></canvas><br/>
-  <canvas id="slot54" width="800" height="500"></canvas><br/>
-  <canvas id="slot55" width="800" height="500"></canvas><br/>
-  <canvas id="slot56" width="800" height="500"></canvas><br/>
-  <canvas id="slot57" width="800" height="500"></canvas><br/>
-  <canvas id="slot58" width="800" height="500"></canvas><br/>
-  <canvas id="slot59" width="800" height="500"></canvas><br/>
-  <canvas id="slot60" width="800" height="500"></canvas><br/>
+  <canvas id="slot37" width="900" height="500"></canvas><br/>
+  <canvas id="slot38" width="900" height="500"></canvas><br/>
+  <canvas id="slot39" width="900" height="500"></canvas><br/>
+  <canvas id="slot40" width="900" height="500"></canvas><br/>
+  <canvas id="slot41" width="900" height="500"></canvas><br/>
+  <canvas id="slot42" width="900" height="500"></canvas><br/>
+  <canvas id="slot43" width="900" height="500"></canvas><br/>
+  <canvas id="slot44" width="900" height="500"></canvas><br/>
+  <canvas id="slot45" width="900" height="500"></canvas><br/>
+  <canvas id="slot46" width="900" height="500"></canvas><br/>
+  <canvas id="slot47" width="900" height="500"></canvas><br/>
+  <canvas id="slot48" width="900" height="500"></canvas><br/>
+  <canvas id="slot49" width="900" height="500"></canvas><br/>
+  <canvas id="slot50" width="900" height="500"></canvas><br/>
+  <canvas id="slot51" width="900" height="500"></canvas><br/>
+  <canvas id="slot52" width="900" height="500"></canvas><br/>
+  <canvas id="slot53" width="900" height="500"></canvas><br/>
+  <canvas id="slot54" width="900" height="500"></canvas><br/>
+  <canvas id="slot55" width="900" height="500"></canvas><br/>
+  <canvas id="slot56" width="900" height="500"></canvas><br/>
+  <canvas id="slot57" width="900" height="500"></canvas><br/>
+  <canvas id="slot58" width="900" height="500"></canvas><br/>
+  <canvas id="slot59" width="900" height="500"></canvas><br/>
+  <canvas id="slot60" width="900" height="500"></canvas><br/>
 
   <script type="text/javascript">
     drawAll();
