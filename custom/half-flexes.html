@@ -15,6 +15,8 @@
   <script type="text/javascript">
     var defaultNumPats = 8;
     var defaultAngles = [45, 90];
+    var whichSet = 'slots'; // 'standard' | 'slots' | 'hexaSlots'
+
     function switchFlexagon(value) {
       if (value === "6") {
         defaultNumPats = 6;
@@ -28,43 +30,92 @@
       }
       drawAll();
     }
+    function switchSets(value) {
+      whichSet = value;
+      drawAll();
+    }
+
+    function drawAll() {
+      const halves = ["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl"];
+      const hexaHalves = ["Hh", "Ht", ">>>Ht", ">>>Hf"];
+
+      let i = 1;
+      if (whichSet === 'standard') {
+        halves.forEach(a => {
+          halves.forEach(b => {
+            const canvas = "slot" + i.toString();
+            drawTemplate(canvas, a, b);
+            i++;
+          });
+        });
+      } else if (whichSet === 'slots') {
+        halves.forEach(a => {
+          halves.forEach(b => {
+            const canvas = "slot" + i.toString();
+            drawTemplate(canvas, a, b);
+            i++;
+          });
+        });
+      } else if (whichSet === 'hexaSlots') {
+        halves.forEach(a => {
+          hexaHalves.forEach(b => {
+            const canvas = "slot" + i.toString();
+            drawTemplate(canvas, a, b);
+            i++;
+          });
+        });
+        ["Hh", "Ht"].forEach(a => {
+          hexaHalves.forEach(b => {
+            const canvas = "slot" + i.toString();
+            drawTemplate(canvas, a, b);
+            i++;
+          });
+        });
+      }
+    }
 
     // draw a template that uses (pre* Lkk* post'*) as its generating sequence
-    function drawTemplate(canvasId, pre, post, onlyHexa) {
+    function drawTemplate(canvasId, pre, post) {
+      const onlyHexa = whichSet === 'hexaSlots';
+      const slot = whichSet !== 'standard';
       const numPats = onlyHexa ? 6 : defaultNumPats;
       const angles = onlyHexa ? [60, 60] : defaultAngles;
       // shift a few hinges so the tape isn't in the middle of the flex
-      const flexes = getGenerator(pre, post) + (numPats === 8 ? ">>>>" : ">>>");
+      const flexes = getGenerator(pre, post, slot) + (numPats === 8 ? ">>>>" : ">>>");
       const fm = Flexagonator.createFromScript([
         { numPats, angles, "addHalfFlexes": true },
         { flexes }
       ]);
-      const captions = [{ text: pre + " Lkk", which: 0 }, { text: post + "'", which: -1 }];
+      const captions = [{ text: pre + (slot ? " Lkk" : ""), which: 0 }, { text: post + "'", which: -1 }];
       Flexagonator.drawUnfolded(canvasId, fm, { captions });
 
-      const text = pre + " Lkk " + post + "' ";
+      const text = pre + (slot ? " Lkk " : " ") + post + "' ";
       const ctx = document.getElementById(canvasId).getContext("2d");
       ctx.font = "15px sans-serif";
       ctx.fillText(text, 2, 16);
 
-      const isEqualTo = decompose(pre, post, fm);
+      const isEqualTo = decompose(pre, post, fm, slot);
       ctx.fillText(isEqualTo, 2, 32);
       ctx.fillText(fm.flexagon.getLeafCount(), 2, 48);
     }
 
     // e.g. Hf* Lkk* Hb'+ Lkk' Hf'
-    function getGenerator(pre, post) {
+    function getGenerator(pre, post, slot) {
       const plus = post.startsWith(">>>") ? post + "'+<<<" : post + "'+";
-      return pre + "* Lkk* " + plus + " Lkk' " + pre + "'";
+      if (slot) {
+        return pre + "* Lkk* " + plus + " Lkk' " + pre + "'";
+      } else {
+        return pre + "* " + plus + pre + "'";
+      }
     }
 
     // ehck if (pre Lkk post') can be decomposed into other flexes or if it's prime
-    function decompose(pre, post, fm) {
-      const sequence = pre + " Lkk " + post + "'";
+    function decompose(pre, post, fm, slot) {
+      const sequence = pre + (slot ? " Lkk " : " ") + post + "'";
       const newFlex = Flexagonator.makeFlexFromSequence(sequence, fm.allFlexes);
       const primes = getPrimesPlus(fm.allFlexes);
       const result = Flexagonator.findEqualFlexes(newFlex, primes);
-      return simplify(result, fm.flexagon.getPatCount());
+      return result ? simplify(result, fm.flexagon.getPatCount()) : "prime";
     }
 
     // all primes, but not Tf, plus >^
@@ -89,27 +140,6 @@
         return s.replace(">>>>>>>", "<");
       }
       return s;
-    }
-
-    function drawAll() {
-      const halves = ["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl"];
-      const hexaHalves = ["Hh", "Ht", ">>>Ht", ">>>Hf"];
-
-      let i = 1;
-      halves.forEach(a => {
-        halves.forEach(b => {
-          const canvas = "slot" + i.toString();
-          drawTemplate(canvas, a, b);
-          i++;
-        });
-      });
-      halves.forEach(a => {
-        hexaHalves.forEach(b => {
-          const canvas = "slot" + i.toString();
-          drawTemplate(canvas, a, b, true);
-          i++;
-        });
-      });
     }
   </script>
 </head>
@@ -189,19 +219,26 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf'
   <h2>Templates</h2>
 
   <p>
+    pick flexes:&nbsp;
+    <select onchange="switchSets(event.target.value)">
+      <option value="standard">standard</option>
+      <option value="slots" selected>slot flexes</option>
+      <option value="hexaSlots">hexaflexagon-specific slot flexes</option>
+    </select>
+    &nbsp;&nbsp;
+
     pick flexagon:&nbsp;
     <select onchange="switchFlexagon(event.target.value)">
-    <option value="6">regular hexaflexagon</option>
-    <option value="7">regular heptaflexagon</option>
-    <option value="8" selected>silver octaflexagon</option>
-  </select>
+      <option value="6">regular hexaflexagon</option>
+      <option value="7">regular heptaflexagon</option>
+      <option value="8" selected>silver octaflexagon</option>
+    </select>
   </p>
 
   <ul>
     <li>sequence starts with <a href="#Hf">Hf</a>, <a href="#Hb">Hb</a>, <a href="#Hr">Hr</a>, <a href="#Hl">Hl</a>,
       <a href="#Hsr">Hsr</a>, <a href="#Hsl">Hsl</a>
     </li>
-    <li>templates for generating sequences that only work on a <a href="#hexa">hexaflexagon</a></li>
   </ul>
 
   <a id="Hf"></a>
@@ -246,33 +283,6 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf'
   <canvas id="slot34" width="900" height="500"></canvas><br/>
   <canvas id="slot35" width="900" height="500"></canvas><br/>
   <canvas id="slot36" width="900" height="500"></canvas><br/>
-
-  <hr />
-  <h2 id="hexa">hexaflexagon only</h2>
-  <canvas id="slot37" width="900" height="500"></canvas><br/>
-  <canvas id="slot38" width="900" height="500"></canvas><br/>
-  <canvas id="slot39" width="900" height="500"></canvas><br/>
-  <canvas id="slot40" width="900" height="500"></canvas><br/>
-  <canvas id="slot41" width="900" height="500"></canvas><br/>
-  <canvas id="slot42" width="900" height="500"></canvas><br/>
-  <canvas id="slot43" width="900" height="500"></canvas><br/>
-  <canvas id="slot44" width="900" height="500"></canvas><br/>
-  <canvas id="slot45" width="900" height="500"></canvas><br/>
-  <canvas id="slot46" width="900" height="500"></canvas><br/>
-  <canvas id="slot47" width="900" height="500"></canvas><br/>
-  <canvas id="slot48" width="900" height="500"></canvas><br/>
-  <canvas id="slot49" width="900" height="500"></canvas><br/>
-  <canvas id="slot50" width="900" height="500"></canvas><br/>
-  <canvas id="slot51" width="900" height="500"></canvas><br/>
-  <canvas id="slot52" width="900" height="500"></canvas><br/>
-  <canvas id="slot53" width="900" height="500"></canvas><br/>
-  <canvas id="slot54" width="900" height="500"></canvas><br/>
-  <canvas id="slot55" width="900" height="500"></canvas><br/>
-  <canvas id="slot56" width="900" height="500"></canvas><br/>
-  <canvas id="slot57" width="900" height="500"></canvas><br/>
-  <canvas id="slot58" width="900" height="500"></canvas><br/>
-  <canvas id="slot59" width="900" height="500"></canvas><br/>
-  <canvas id="slot60" width="900" height="500"></canvas><br/>
 
   <script type="text/javascript">
     drawAll();
