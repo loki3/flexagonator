@@ -44,7 +44,6 @@
         halves.forEach(a => {
           halves.forEach(b => {
             const canvas = "slot" + i.toString();
-            drawTemplate(canvas, a, b);
             drawTemplate(canvas, a, b, whichSet, false);
             i++;
           });
@@ -185,6 +184,12 @@ F              =  Hf Hb'        = ^Hb Hf'
 S              =  Hf Hsl'       = &lt;Hsr Hb' = ^Hb Hsr' = &lt;^Hsl Hf'
 S &gt;T'          =  Hf Hl'        = ^Hb Hr'
 &gt;S ^&gt;&gt;T'       =  Hsr Hl'       = ^Hsl Hr'
+
+# including hexaflexagon specific flexes
+T &gt;P     = Ttf =  Hh Hf'
+V              =  Hb Hh'
+T &lt;&lt;V          =  Hh Hr'
+T ^V           =  Hh Hsr'
   </pre>
 
   <p>Decomposition of slot flexes (Ha Lkk Hb') into flexes that are prime on a hexaflexagon.</p>
@@ -213,10 +218,8 @@ S Ltf          = Hf Lkk Hsl'    = &lt; Hsr Lkk Hb'
 S ^&gt;F &gt;&gt;T'     = Hf Lkk Hl'
 ^&gt;S F &gt;&gt;T'     = Hsl Lkk Hr'
 ^&gt;F            = Hf Lkk Hsr'    = Hsl Lkk Hb'
-</pre>
 
-  <p>This list is for slots specific to a hexaflexagon.</p>
-  <pre>
+# including hexaflexagon specific flexes
 Ltb            = Hf Lkk Ht'     = Hsl Lkk Hh'     = &lt; Hb Lkk &gt;&gt;&gt;Hf'
 Ltb T          = Hsl Lkk Ht'
 Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf'
