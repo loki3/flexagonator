@@ -92,66 +92,24 @@
     }
 
     function drawAll() {
-      drawTemplate("slot01", "Hf", "Hf");
-      drawTemplate("slot02", "Hf", "Hb");
-      drawTemplate("slot03", "Hf", "Hr");
-      drawTemplate("slot04", "Hf", "Hl");
-      drawTemplate("slot05", "Hf", "Hsr");
-      drawTemplate("slot06", "Hf", "Hsl");
-      drawTemplate("slot07", "Hb", "Hf");
-      drawTemplate("slot08", "Hb", "Hb");
-      drawTemplate("slot09", "Hb", "Hr");
-      drawTemplate("slot10", "Hb", "Hl");
-      drawTemplate("slot11", "Hb", "Hsr");
-      drawTemplate("slot12", "Hb", "Hsl");
-      drawTemplate("slot13", "Hr", "Hf");
-      drawTemplate("slot14", "Hr", "Hb");
-      drawTemplate("slot15", "Hr", "Hr");
-      drawTemplate("slot16", "Hr", "Hl");
-      drawTemplate("slot17", "Hr", "Hsr");
-      drawTemplate("slot18", "Hr", "Hsl");
-      drawTemplate("slot19", "Hl", "Hf");
-      drawTemplate("slot20", "Hl", "Hb");
-      drawTemplate("slot21", "Hl", "Hr");
-      drawTemplate("slot22", "Hl", "Hl");
-      drawTemplate("slot23", "Hl", "Hsr");
-      drawTemplate("slot24", "Hl", "Hsl");
-      drawTemplate("slot25", "Hsr", "Hf");
-      drawTemplate("slot26", "Hsr", "Hb");
-      drawTemplate("slot27", "Hsr", "Hr");
-      drawTemplate("slot28", "Hsr", "Hl");
-      drawTemplate("slot29", "Hsr", "Hsr");
-      drawTemplate("slot30", "Hsr", "Hsl");
-      drawTemplate("slot31", "Hsl", "Hf");
-      drawTemplate("slot32", "Hsl", "Hb");
-      drawTemplate("slot33", "Hsl", "Hr");
-      drawTemplate("slot34", "Hsl", "Hl");
-      drawTemplate("slot35", "Hsl", "Hsr");
-      drawTemplate("slot36", "Hsl", "Hsl");
-      drawTemplate("slot37", "Hf", "Hh", true);
-      drawTemplate("slot38", "Hf", "Ht", true);
-      drawTemplate("slot39", "Hf", ">>>Ht", true);
-      drawTemplate("slot40", "Hf", ">>>Hf", true);
-      drawTemplate("slot41", "Hb", "Hh", true);
-      drawTemplate("slot42", "Hb", "Ht", true);
-      drawTemplate("slot43", "Hb", ">>>Ht", true);
-      drawTemplate("slot44", "Hb", ">>>Hf", true);
-      drawTemplate("slot45", "Hr", "Hh", true);
-      drawTemplate("slot46", "Hr", "Ht", true);
-      drawTemplate("slot47", "Hr", ">>>Ht", true);
-      drawTemplate("slot48", "Hr", ">>>Hf", true);
-      drawTemplate("slot49", "Hl", "Hh", true);
-      drawTemplate("slot50", "Hl", "Ht", true);
-      drawTemplate("slot51", "Hl", ">>>Ht", true);
-      drawTemplate("slot52", "Hl", ">>>Hf", true);
-      drawTemplate("slot53", "Hsr", "Hh", true);
-      drawTemplate("slot54", "Hsr", "Ht", true);
-      drawTemplate("slot55", "Hsr", ">>>Ht", true);
-      drawTemplate("slot56", "Hsr", ">>>Hf", true);
-      drawTemplate("slot57", "Hsl", "Hh", true);
-      drawTemplate("slot58", "Hsl", "Ht", true);
-      drawTemplate("slot59", "Hsl", ">>>Ht", true);
-      drawTemplate("slot60", "Hsl", ">>>Hf", true);
+      const halves = ["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl"];
+      const hexaHalves = ["Hh", "Ht", ">>>Ht", ">>>Hf"];
+
+      let i = 1;
+      halves.forEach(a => {
+        halves.forEach(b => {
+          const canvas = "slot" + i.toString();
+          drawTemplate(canvas, a, b);
+          i++;
+        });
+      });
+      halves.forEach(a => {
+        hexaHalves.forEach(b => {
+          const canvas = "slot" + i.toString();
+          drawTemplate(canvas, a, b, true);
+          i++;
+        });
+      });
     }
   </script>
 </head>
@@ -247,16 +205,16 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf'
   </ul>
 
   <a id="Hf"></a>
-  <canvas id="slot01" width="900" height="500"></canvas><br/>
-  <canvas id="slot02" width="900" height="500"></canvas><br/>
-  <canvas id="slot03" width="900" height="500"></canvas><br/>
-  <canvas id="slot04" width="900" height="500"></canvas><br/>
-  <canvas id="slot05" width="900" height="500"></canvas><br/>
-  <canvas id="slot06" width="900" height="500"></canvas><br/>
+  <canvas id="slot1" width="900" height="500"></canvas><br/>
+  <canvas id="slot2" width="900" height="500"></canvas><br/>
+  <canvas id="slot3" width="900" height="500"></canvas><br/>
+  <canvas id="slot4" width="900" height="500"></canvas><br/>
+  <canvas id="slot5" width="900" height="500"></canvas><br/>
+  <canvas id="slot6" width="900" height="500"></canvas><br/>
   <a id="Hb"></a>
-  <canvas id="slot07" width="900" height="500"></canvas><br/>
-  <canvas id="slot08" width="900" height="500"></canvas><br/>
-  <canvas id="slot09" width="900" height="500"></canvas><br/>
+  <canvas id="slot7" width="900" height="500"></canvas><br/>
+  <canvas id="slot8" width="900" height="500"></canvas><br/>
+  <canvas id="slot9" width="900" height="500"></canvas><br/>
   <canvas id="slot10" width="900" height="500"></canvas><br/>
   <canvas id="slot11" width="900" height="500"></canvas><br/>
   <canvas id="slot12" width="900" height="500"></canvas><br/>
