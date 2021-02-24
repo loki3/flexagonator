@@ -45,6 +45,7 @@
           halves.forEach(b => {
             const canvas = "slot" + i.toString();
             drawTemplate(canvas, a, b);
+            drawTemplate(canvas, a, b, whichSet, false);
             i++;
           });
         });
@@ -52,31 +53,37 @@
         halves.forEach(a => {
           halves.forEach(b => {
             const canvas = "slot" + i.toString();
-            drawTemplate(canvas, a, b);
+            drawTemplate(canvas, a, b, whichSet, false);
             i++;
           });
         });
       } else if (whichSet === 'hexaSlots') {
+        // standard half followed by special half
         halves.forEach(a => {
           hexaHalves.forEach(b => {
             const canvas = "slot" + i.toString();
-            drawTemplate(canvas, a, b);
+            drawTemplate(canvas, a, b, whichSet, true);
             i++;
           });
         });
+        // Hh or Ht followed by special half
         ["Hh", "Ht"].forEach(a => {
           hexaHalves.forEach(b => {
             const canvas = "slot" + i.toString();
-            drawTemplate(canvas, a, b);
+            drawTemplate(canvas, a, b, whichSet, true);
             i++;
           });
         });
+        // fill in the last few with non-slots using special halves
+        drawTemplate("slot33", "Hh", "Hf", 'standard', true);
+        drawTemplate("slot34", "Hb", "Hh", 'standard', true);
+        drawTemplate("slot35", "Hh", "Hr", 'standard', true);
+        drawTemplate("slot36", "Hh", "Hsr", 'standard', true);
       }
     }
 
     // draw a template that uses (pre* Lkk* post'*) as its generating sequence
-    function drawTemplate(canvasId, pre, post) {
-      const onlyHexa = whichSet === 'hexaSlots';
+    function drawTemplate(canvasId, pre, post, whichSet, onlyHexa) {
       const slot = whichSet !== 'standard';
       const numPats = onlyHexa ? 6 : defaultNumPats;
       const angles = onlyHexa ? [60, 60] : defaultAngles;
