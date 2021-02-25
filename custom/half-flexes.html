@@ -15,7 +15,7 @@
   <script type="text/javascript">
     var defaultNumPats = 8;
     var defaultAngles = [45, 90];
-    var whichSet = 'slots'; // 'standard' | 'slots' | 'hexaSlots'
+    var whichSet = 'slots'; // 'standard' | 'slots' | 'hexaSlots' | 'kites'
 
     function switchFlexagon(value) {
       if (value === "6") {
@@ -78,6 +78,14 @@
         drawTemplate("slot34", "Hb", "Hh", 'standard', true);
         drawTemplate("slot35", "Hh", "Hr", 'standard', true);
         drawTemplate("slot36", "Hh", "Hsr", 'standard', true);
+      } else if (whichSet === 'kites') {
+        halves.forEach(a => {
+          halves.forEach(b => {
+            const canvas = "slot" + i.toString();
+            drawKiteTemplate(canvas, a, b);
+            i++;
+          });
+        });
       }
     }
 
@@ -89,7 +97,7 @@
       // shift a few hinges so the tape isn't in the middle of the flex
       const flexes = getGenerator(pre, post, slot) + (numPats === 8 ? ">>>>" : ">>>");
       const fm = Flexagonator.createFromScript([
-        { numPats, angles, "addHalfFlexes": true },
+        { numPats, angles, addHalfFlexes: true },
         { flexes }
       ]);
       const captions = [{ text: pre + (slot ? " Lkk" : ""), which: 0 }, { text: post + "'", which: -1 }];
@@ -103,6 +111,29 @@
       const isEqualTo = decompose(pre, post, fm, slot);
       ctx.fillText(isEqualTo, 2, 32);
       ctx.fillText(fm.flexagon.getLeafCount(), 2, 48);
+    }
+
+    // draw a template for a pentagonal silver decaflexagon that uses (pre'* post*) as its generating sequence
+    function drawKiteTemplate(canvasId, pre, post) {
+      // { name: "pentagonal silver decaflexagon" } puts us at the opposite from what we want so we need to shift hinges first
+      const flexes = ">>>>>" + pre + "'* " + post + "+ " + pre + "<<<<<";
+      const fm = Flexagonator.createFromScript([
+        { name: "pentagonal silver decaflexagon" },
+        { addHalfFlexes: true },
+        { flexes }
+      ]);
+      /*
+      const hasOverlap = (pre === 'Hsr' || pre === 'Hsl' || post === 'Hsr' || post === 'Hsl')
+        && !(pre === post || (pre === 'Hsr' && post === 'Hb') || (pre === 'Hsl' && post === 'Hf'));
+        */
+      const captions = [{ text: pre + "'", which: 0 }, { text: post, which: -1 }];
+      Flexagonator.drawUnfolded(canvasId, fm, { captions });
+
+      const text = pre + "' " + post;
+      const ctx = document.getElementById(canvasId).getContext("2d");
+      ctx.font = "15px sans-serif";
+      ctx.fillText(text, 2, 16);
+      ctx.fillText(fm.flexagon.getLeafCount(), 2, 32);
     }
 
     // e.g. Hf* Lkk* Hb'+ Lkk' Hf'
@@ -249,6 +280,7 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf'
       <option value="standard">standard</option>
       <option value="slots" selected>slot flexes</option>
       <option value="hexaSlots">hexaflexagon-specific slot flexes</option>
+      <option value="kites">inverse half followed by half</option>
     </select>
     &nbsp;&nbsp;
 
