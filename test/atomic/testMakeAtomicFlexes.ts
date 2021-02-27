@@ -157,7 +157,7 @@ namespace Flexagonator {
 
     // for flex 'name', test that atomics[name] properly describes the sequence in 'flexes'
     function testDefinition(name: string, flexes: string, log?: boolean): void {
-      const inputPattern = atomics[name].pattern;
+      const inputPattern = atomics[name].input;
       const result = applyFlexes(inputPattern, flexes, log);
       if (isAtomicPatternError(result)) {
         fail('failed to apply flex ' + name + ' with error ' + JSON.stringify(result));

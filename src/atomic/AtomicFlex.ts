@@ -26,13 +26,13 @@ namespace Flexagonator {
   export class AtomicFlex {
     constructor(
       readonly name: string,
-      readonly pattern: AtomicPattern,
+      readonly input: AtomicPattern,
       readonly output: AtomicPattern,
       readonly specialWrap?: 'r' | 'l') {
     }
 
     createInverse(): AtomicFlex {
-      return new AtomicFlex("inverse " + this.name, this.output, this.pattern);
+      return new AtomicFlex("inverse " + this.name, this.output, this.input);
     }
 
     /** apply this flex to the given input */
@@ -41,7 +41,7 @@ namespace Flexagonator {
         return this.handleSpecialWrap(input);
       }
 
-      const matches = matchAtomicPattern(input, this.pattern);
+      const matches = matchAtomicPattern(input, this.input);
       if (isAtomicPatternError(matches)) {
         return matches;
       }
@@ -49,12 +49,12 @@ namespace Flexagonator {
       const otherLeft = this.getRemainder(this.output.otherLeft, matches.otherLeft, matches.otherRight);
       const otherRight = this.getRemainder(this.output.otherRight, matches.otherLeft, matches.otherRight);
 
-      const moreLeft = this.getLeftoverPats(this.pattern.otherLeft, this.output.otherLeft, matches.patsLeft, matches.patsRight);
+      const moreLeft = this.getLeftoverPats(this.input.otherLeft, this.output.otherLeft, matches.patsLeft, matches.patsRight);
       const left = this.makePats(this.output.left, matches.matches, moreLeft, matches.specialDirection);
       if (isFlexError(left)) {
         return { atomicPatternError: "PatMismatch" };
       }
-      const moreRight = this.getLeftoverPats(this.pattern.otherRight, this.output.otherRight, matches.patsLeft, matches.patsRight);
+      const moreRight = this.getLeftoverPats(this.input.otherRight, this.output.otherRight, matches.patsLeft, matches.patsRight);
       const right = this.makePats(this.output.right, matches.matches, moreRight, matches.specialDirection);
       if (isFlexError(right)) {
         return { atomicPatternError: "PatMismatch" };
