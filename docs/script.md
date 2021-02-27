@@ -187,21 +187,18 @@ You can fetch the current list through `FlexagonManager.flexesToSearch`.
 
 ### the `addFlex` command
 
-While Flexagonator has a lot of built-in flexes, it doesn't contain all the possible flexes.
-Therefore, you can define your own flexes.
+While Flexagonator has a lot of built-in flexes, it doesn't contain all the possible flexes,
+instead allowing you to define your own flexes.
 You specify both a full name and an abbreviated name for use in flex sequences.
 See [Flex Notation](flex-notation.md) for notes on naming conventions for the names of flexes
 (basically an upper case letter optionally followed by lower case letters or numbers).
 
-After the names, you list the minimal pat structure before the flex is applied  with `input` and the resulting pat structure after the flex has been applied with `output`.
+To describe how the flex changes the flexagon, you can either use pat notation or a flex sequence.
+
+1. *Pat notation:* List the minimal pat structure before the flex is applied  with `input` and the resulting pat structure after the flex has been applied with `output`.
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
 Note that you should figure out the simplest pat structure needed to support your flex so that it can be applied from all appropriate configurations.
-
-One other note is that flexes are performed relative to a *current hinge*, which is between the first and last pat in your `input` and `output` definitions.
-For `input`, this will typically be where you fold two leaves together when starting the flex.
-For `output`, a good rule of thumb is to make it so after you perform the flex,
-you can turn it over and, without `>` or `<`, perform the flex again to get back to the original state.
-In other words, `A = ^A^`.
+2. *Flex sequence:* Provide the sequence of flexes that the new flex is equivalent to.
 
 ```javascript
 { // create the flip3 flex that works on a 9-triangle flexagon
@@ -212,9 +209,24 @@ In other words, `A = ^A^`.
     output: [9, 12, [[-1, 3], [13, -2]], 4, 5, 6, 7, 10, [-8, -11]]
   }
 }
+{ // create the mobius flip in terms of a flex sequence
+  addFlex: {
+    shorthand: "Mf",
+    name: "mobius flip",
+    sequence: "^>>T ^>>S"
+  }
+}
 ```
 
-There is one more optional parameter for a flex definition called `rotation`,
+There are a couple additional details to be aware of when defining flexes using pat notation...
+
+Flexes are performed relative to a *current hinge*, which is between the first and last pat in your `input` and `output` definitions.
+For `input`, this will typically be where you fold two leaves together when starting the flex.
+For `output`, a good rule of thumb is to make it so after you perform the flex,
+you can turn the flexagon over and, without `>` or `<`, perform the same flex again to get back to the original state.
+In other words, `A = ^A^`, though this isn't always possible.
+
+There is one more optional parameter when defining a flex using pat notation called `rotation`,
 which takes the values `0`, `1`, `2`, or `3` in JSON or one of the following values in JavaScript:
 
 * `FlexRotation.None`:          same center vertex, no mirroring (the default)

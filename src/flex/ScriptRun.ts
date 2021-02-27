@@ -115,8 +115,9 @@ namespace Flexagonator {
 
     if (item.addFlex !== undefined) {
       const f = item.addFlex;
-      const fr = f.rotation == undefined ? FlexRotation.None : f.rotation;
-      const newFlex = makeFlex(f.name, f.input, f.output, fr);
+      const newFlex = isFlexFromSequence(f)
+        ? makeFlexFromSequence(f.sequence, fm.allFlexes, f.name)
+        : makeFlex(f.name, f.input, f.output, f.rotation == undefined ? FlexRotation.None : f.rotation);
       if (isFlexError(newFlex)) {
         return newFlex;
       }

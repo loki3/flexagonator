@@ -30,11 +30,31 @@ namespace Flexagonator {
     // label leaf faces based on deep they are in the tree, optionally assigning passed in colors
     readonly labelAsTree?: number[];
     // add a new flex to what can be applied to the current flexagon
-    readonly addFlex?: FlexDef;
+    readonly addFlex?: FlexDef | FlexFromSequence;
     // a list of flexes to search
     readonly searchFlexes?: string;
     // add the half-flexes to the list of flex definitions
     readonly addHalfFlexes?: boolean;
+  }
+
+  // define a flex in terms of input & output pats
+  export interface FlexDef {
+    readonly shorthand: string;
+    readonly name: string,
+    readonly input: LeafTree[],
+    readonly output: LeafTree[],
+    readonly rotation?: FlexRotation
+  }
+
+  // define a flex in terms of a flex sequence
+  export interface FlexFromSequence {
+    readonly shorthand: string;
+    readonly name: string;
+    readonly sequence: string;
+  }
+
+  export function isFlexFromSequence(result: any): result is FlexFromSequence {
+    return (result as FlexFromSequence).sequence !== undefined;
   }
 
 }
