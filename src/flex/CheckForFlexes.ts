@@ -21,7 +21,7 @@ namespace Flexagonator {
 
     for (let key of Object.keys(flexes)) {
       const flex = flexes[key];
-      if (flexagon.hasPattern(flex.pattern)) {
+      if (flexagon.hasPattern(flex.input)) {
         results.push(key);
       }
     }

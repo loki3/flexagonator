@@ -20,14 +20,14 @@ namespace Flexagonator {
     Takes a pattern as input (length matches the pat count in the target flexagon)
       and an output pattern that references the labels from the input pattern,
       with negative numbers indicating that the matching pat should be flipped
-    e.g. pattern: [1, [2, 3], 4, [5, 6]]
-         output:  [[-5, 1], -2, [4, -3], -6]
+    e.g. input:  [1, [2, 3], 4, [5, 6]]
+         output: [[-5, 1], -2, [4, -3], -6]
   */
-  export function makeFlex(name: string, pattern: LeafTree[], output: LeafTree[], fr: FlexRotation): Flex | FlexError {
-    if (pattern.length !== output.length) {
+  export function makeFlex(name: string, input: LeafTree[], output: LeafTree[], fr: FlexRotation): Flex | FlexError {
+    if (input.length !== output.length) {
       return { reason: FlexCode.SizeMismatch };
     }
-    return new Flex(name, pattern, output, fr);
+    return new Flex(name, input, output, fr);
   }
 
   /*
@@ -36,18 +36,18 @@ namespace Flexagonator {
   export class Flex {
     constructor(
       readonly name: string,
-      readonly pattern: LeafTree[],
+      readonly input: LeafTree[],
       readonly output: LeafTree[],
       readonly rotation: FlexRotation) {
     }
 
     createInverse(): Flex {
-      return new Flex("inverse " + this.name, this.output, this.pattern, this.invertRotation(this.rotation));
+      return new Flex("inverse " + this.name, this.output, this.input, this.invertRotation(this.rotation));
     }
 
     // apply this flex to the given flexagon
     apply(flexagon: Flexagon): Flexagon | FlexError {
-      const matches = flexagon.matchPattern(this.pattern);
+      const matches = flexagon.matchPattern(this.input);
       if (isPatternError(matches)) {
         return { reason: FlexCode.BadFlexInput, patternError: matches };
       }
@@ -112,8 +112,8 @@ namespace Flexagonator {
       const newPats: Pat[] = [];
       const splits: Pat[] = [];
       let nextId = flexagon.getLeafCount() + 1;
-      for (let i in this.pattern) {
-        const newPat = flexagon.pats[i].createPattern(this.pattern[i], () => { return nextId++; }, splits);
+      for (let i in this.input) {
+        const newPat = flexagon.pats[i].createPattern(this.input[i], () => { return nextId++; }, splits);
         newPats.push(newPat);
       }
 

@@ -30,7 +30,7 @@ namespace Flexagonator {
   function makeEmptyFlexagon(flexes: Flexes): Flexagon {
     const allNames = Object.getOwnPropertyNames(flexes);
     const someFlex = flexes[allNames[0]];
-    const numPats = someFlex.pattern.length;
+    const numPats = someFlex.input.length;
     const pats = [];
     for (var i = 1; i <= numPats; i++) {
       pats.push(i);

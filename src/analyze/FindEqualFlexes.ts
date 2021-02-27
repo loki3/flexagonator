@@ -6,7 +6,7 @@ namespace Flexagonator {
    */
   export function findEqualFlexes(check: Flex, flexes: Flexes): string | false {
     flexes = removeFlex(flexes, check.name);
-    const input = Flexagon.makeFromTree(check.pattern) as Flexagon;
+    const input = Flexagon.makeFromTree(check.input) as Flexagon;
     const output = Flexagon.makeFromTree(check.output) as Flexagon;
 
     const explore = new Explore(input, flexes, flexes[">"], flexes["^"]);

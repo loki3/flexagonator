@@ -52,7 +52,7 @@ namespace Flexagonator {
 
     // check that flex = sequence, when applied
     function checkForEqual(flex: string, sequence: string, mainFlexes: Flexes, halfFlexes: Flexes): boolean {
-      const pre = Flexagon.makeFromTree(mainFlexes[flex].pattern) as Flexagon;
+      const pre = Flexagon.makeFromTree(mainFlexes[flex].input) as Flexagon;
       const fFlex = applyFlexes(mainFlexes, halfFlexes, flex, pre);
       const fSequence = applyFlexes(mainFlexes, halfFlexes, sequence, pre);
       return compare(fFlex, fSequence)
