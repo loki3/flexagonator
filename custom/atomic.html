@@ -67,6 +67,11 @@
       html += '<td><canvas id="showStrip" width=200 height=200></canvas></td></tr></table>';
       setHtml('intermediateResults', html);
     }
+    function onKey(key) {
+      if (key == 13) {
+        applyFlexes();
+      }
+    }
 
     // create a table that shows the results of every flex in the sequence
     function createResultsTable(flexes, input) {
@@ -280,7 +285,7 @@
       <td></td>
       <td><label>input structure</label></td>
       <td>
-        <input id="enterStructure" size="100" spellcheck="false" />
+        <input id="enterStructure" size="100" onkeypress="onKey(event.keyCode)" spellcheck="false" />
       </td>
     </tr>
     <tr>
@@ -294,7 +299,7 @@
       <td>&nbsp;&nbsp;&nbsp;</td>
       <td><label>flex sequence</label></td>
       <td>
-        <input id="enterFlexes" size="100" spellcheck="false" />
+        <input id="enterFlexes" size="100" onkeypress="onKey(event.keyCode)" spellcheck="false" />
       </td>
     </tr>
     <tr>
