@@ -242,7 +242,7 @@
       var decomposition = Flexagonator.AtomicDecomposition[name];
       var html = '<tr><td>' + name + '</td><td>'
         + (decomposition ? decomposition : '') + '</td><td>'
-        + (flex ? Flexagonator.atomicPatternToString(flex.pattern) : '') + '</td><td>'
+        + (flex ? Flexagonator.atomicPatternToString(flex.input) : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.output) : '') + '</td></tr>';
       return html;
     }
