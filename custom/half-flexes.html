@@ -40,6 +40,18 @@
       const hexaHalves = ["Hh", "Ht", ">>>Ht", ">>>Hf"];
 
       let i = 1;
+      ////
+      /*
+      halves.forEach(a => {
+        hexaHalves.forEach(b => {
+          const canvas = "slot" + i.toString();
+          drawTemplate(canvas, a, b, 'standard', true);
+          i++;
+        });
+      });
+      return;
+      */
+      ////
       if (whichSet === 'standard') {
         halves.forEach(a => {
           halves.forEach(b => {
@@ -111,6 +123,7 @@
       const isEqualTo = decompose(pre, post, fm, slot);
       ctx.fillText(isEqualTo, 2, 32);
       ctx.fillText(fm.flexagon.getLeafCount(), 2, 48);
+      console.log(fm.flexagon.getLeafCount(), isEqualTo, '   = ', text);
     }
 
     // draw a template for a pentagonal silver decaflexagon that uses (pre'* post*) as its generating sequence
@@ -207,7 +220,7 @@
 
   <p>Decomposition of HaHb' into flexes that are prime on a hexaflexagon.</p>
   <pre>
-F              =  Hf Hb'        = ^Hb Hf'
+F              =  Hf Hb'        = ^Hb Hf'^
 &gt;T             =  Hr Hf'        =  Hl Hsl'    = ^Hr Hsr'^ = ^Hl Hb'^
 &gt;T &lt;S          =  Hr Hsl'       = ^Hl Hsr'^
 &gt;T ^&gt;&gt;S        =  Hl Hf'        = ^Hr Hb'^
