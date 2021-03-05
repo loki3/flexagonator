@@ -99,7 +99,8 @@ namespace Flexagonator {
         "-a 7 \\ 8 / # [-2,1] / -3 \\ [5,-4] / 6 / -b");
     });
 
-    it("should compose to create the half kite slot", () => {
+    it("should compose to create the kite-to-kite flexes", () => {
+      testDefinition("Sp", AtomicDecomposition.Sp);
       testDefinition("Lkk", AtomicDecomposition.Lkk);
     });
 
