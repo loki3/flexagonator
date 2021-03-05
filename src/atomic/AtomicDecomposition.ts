@@ -37,8 +37,8 @@ namespace Flexagonator {
     Hb: "^Hf^",
     Hr: "<< Ur >>>> Xl << Ul' ~",
     Hl: "^Hr^",
-    Hsr: "> K << Xr3 > Ur'",
-    Hsl: "^Hsr^",
+    Hfs: "> K << Xr3 > Ur'",
+    Hbs: "^Hfs^",
     // partial shuffle (kite-to-kite), combines well with half flexes
     Sp: "> Ul << Ur > Ul' <<< Ul' >>",
     // kite-to-kite slot, combines well with half flexes
@@ -49,17 +49,17 @@ namespace Flexagonator {
 
     // built from half flexes
     F: "Hf Hb'",        // K > Ul' <^> Ul < K' ^
-    St: "Hf Hsr'",      // K > Ul' < Ur << Ul >> Ur' > K' <
+    St: "Hf Hfs'",      // K > Ul' < Ur << Ul >> Ur' > K' <
     Mf: "< Hr Hb' >",   // Xr~<<< Ur>>Ur' ^ > Ul < K' ^>
     S3: "< Hr Hl' >",   // Xr~<<< Ur>>Ur'< Ur>>Ur'<< Xl~>>
     // these have simpler forms, but can be built from half flexes
     Tfromh: "< Hr Hf' >",
-    Sfromh: "< Hsr Hb' >",
+    Sfromh: "< Hfs Hb' >",
     Sfromsp: "Hf Sp Hb' >",
-    Hsrfromsp: "> Hf Sp",
+    Hfsfromsp: "> Hf Sp",
 
     Ltf: "Hf Lkk Hf' <",
-    Lk: "Hf Lkk Hsl' <",
+    Lk: "Hf Lkk Hbs' <",
 
     // specific to hexaflexagon
     Ttf: "Hh Hf'",
@@ -81,7 +81,7 @@ namespace Flexagonator {
     // start & end /\\/
     Iv: "Xl4 Xr4",
     Rfb: "Hf' Hb",
-    Rsrf: "Hsr' Hf",
+    Rsrf: "Hfs' Hf",
   }
 
 }

@@ -16,15 +16,15 @@ namespace Flexagonator {
       const mainFlexes: Flexes = makeAllFlexes(6);
 
       expect(checkForEqual("F", "Hf Hb'", mainFlexes, halfFlexes)).toBeTruthy("F failed");
-      expect(checkForEqual("St", "Hf Hsr'", mainFlexes, halfFlexes)).toBeTruthy("St failed");
-      expect(checkForEqual("S", "< Hsr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S failed");
+      expect(checkForEqual("St", "Hf Hfs'", mainFlexes, halfFlexes)).toBeTruthy("St failed");
+      expect(checkForEqual("S", "< Hfs Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S failed");
       expect(checkForEqual("T", "< Hr Hf' >", mainFlexes, halfFlexes)).toBeTruthy("T failed");
       expect(checkForEqual("Mf", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Mf failed");
       expect(checkForEqual("S3", "< Hr Hl' >", mainFlexes, halfFlexes)).toBeTruthy("S3 failed");
 
       expect(checkForEqual("S", "Hf Sp Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S from Sp failed");
       expect(checkForEqual("Ltf", "Hf Lkk Hf' <", mainFlexes, halfFlexes)).toBeTruthy("Ltf failed");
-      expect(checkForEqual("Lk", "Hf Lkk Hsl' <", mainFlexes, halfFlexes)).toBeTruthy("Lk failed");
+      expect(checkForEqual("Lk", "Hf Lkk Hbs' <", mainFlexes, halfFlexes)).toBeTruthy("Lk failed");
 
       // uses hexa specific flexes: Hh, Ht
       expect(checkForEqual("Ttf", "Hh Hf'", mainFlexes, halfFlexes)).toBeTruthy("Ttf failed");
@@ -41,15 +41,15 @@ namespace Flexagonator {
       const mainFlexes: Flexes = makeAllFlexes(8);
 
       expect(checkForEqual("F", "Hf Hb'", mainFlexes, halfFlexes)).toBeTruthy("F failed");
-      expect(checkForEqual("St", "Hf Hsr'", mainFlexes, halfFlexes)).toBeTruthy("St failed");
-      expect(checkForEqual("S", "< Hsr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S failed");
+      expect(checkForEqual("St", "Hf Hfs'", mainFlexes, halfFlexes)).toBeTruthy("St failed");
+      expect(checkForEqual("S", "< Hfs Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S failed");
       expect(checkForEqual("T3", "< Hr Hf' >", mainFlexes, halfFlexes)).toBeTruthy("T3 failed");
       expect(checkForEqual("Mf", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Mf failed");
       expect(checkForEqual("S3", "< Hr Hl' >", mainFlexes, halfFlexes)).toBeTruthy("S3 failed");
 
       expect(checkForEqual("S", "Hf Sp Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S from Sp failed");
       expect(checkForEqual("Ltf", "Hf Lkk Hf' <", mainFlexes, halfFlexes)).toBeTruthy("Ltf failed");
-      expect(checkForEqual("Lk", "Hf Lkk Hsl' <", mainFlexes, halfFlexes)).toBeTruthy("Lk failed");
+      expect(checkForEqual("Lk", "Hf Lkk Hbs' <", mainFlexes, halfFlexes)).toBeTruthy("Lk failed");
     });
 
     // check that flex = sequence, when applied
@@ -60,7 +60,7 @@ namespace Flexagonator {
       return compare(fFlex, fSequence)
     }
 
-    // apply a sequence of flexes like "< Hsr Hb' >"
+    // apply a sequence of flexes like "< Hfs Hb' >"
     function applyFlexes(mainFlexes: Flexes, halfFlexes: Flexes, sequence: string, flexagon: Flexagon): Flexagon {
       const flexes = sequence.split(' ');
       for (const flex of flexes) {

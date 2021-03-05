@@ -139,8 +139,8 @@ Hf  = K > Ul' <
 Hb  = ^Hf^
 Hr  = << Ur >>>> Xl << Ul' ~
 Hl  = ^Hr^
-Hsr = > K < Ur << Ul' >> Ur'
-Hsl = ^Hsr^
+Hfs = > K < Ur << Ul' >> Ur'
+Hbs = ^Hfs^
 
 # kite-to-kite slot
 Lkk = > Ul Ur <<<< Ul' < Ul' >>
@@ -154,14 +154,14 @@ Composing half flexes into more complex flexes:
 
 ```
 F   = Hf Hb'
-St  = Hf Hsr'
-S   = < Hsr Hb' >
+St  = Hf Hfs'
+S   = < Hfs Hb' >
 T   = < Hr Hf' >
 Mf  = < Hr Hb' >
 S3  = < Hr Hl' >
 
 Ltf = Hf Lkk Hf' <
-Lk  = Hf Lkk Hsl' <
+Lk  = Hf Lkk Hbs' <
 
 # specific to hexaflexagon
 Ttf = Hh Hf'

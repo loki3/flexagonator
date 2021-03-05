@@ -446,12 +446,12 @@
 
   <h3 id="half-flexes">half flexes</h3>
 
-  <p>silver octaflexagon: Hf, Hb, Hr, Hl, Hsr, Hsl</p>
+  <p>silver octaflexagon: Hf, Hb, Hr, Hl, Hfs, Hbs</p>
   <canvas id="silverHalfFlexes" width="1000" height="500"></canvas><br/><br/>
   <script type="text/javascript">
     var silverHalfFlexes = [
       { "numPats": 8, "angles": [45, 45], "addHalfFlexes": true },
-      { "flexes": "> Hf* Hb'+Hl'+Hr'+Hsl'+Hsr'+ Hf' Hb* Hf'+Hl'+Hr'+Hsl'+Hsr'+ Hb' Hl* Hf'+Hb'+Hr'+Hsl'+Hsr'+ Hl' Hr* Hf'+Hb'+Hl'+Hsl'+Hsr'+ Hr' Hsl* Hf'+Hb'+Hl'+Hr'+Hsr'+ Hsl' Hsr* Hf'+Hb'+Hl'+Hr'+Hsl'+ Hsr' >>>>" }
+      { "flexes": "> Hf* Hb'+Hl'+Hr'+Hbs'+Hfs'+ Hf' Hb* Hf'+Hl'+Hr'+Hbs'+Hfs'+ Hb' Hl* Hf'+Hb'+Hr'+Hbs'+Hfs'+ Hl' Hr* Hf'+Hb'+Hl'+Hbs'+Hfs'+ Hr' Hbs* Hf'+Hb'+Hl'+Hr'+Hfs'+ Hbs' Hfs* Hf'+Hb'+Hl'+Hr'+Hbs'+ Hfs' >>>>" }
     ];
     var fm = Flexagonator.createFromScript(silverHalfFlexes);
     Flexagonator.drawUnfolded('silverHalfFlexes', fm, { rotation: 135, content: 0, captions: [{ text: "H's", which: 0 }, { text: "H's", which: -1 }] });
@@ -473,10 +473,10 @@
   <canvas id="psd-HfHb2" width="500" height="500"></canvas>
   <p>Hr'Hl</p>
   <canvas id="psd-HrHl" width="1000" height="350"></canvas>
-  <p>Hsr'Hf</p>
-  <canvas id="psd-HsrHf" width="1000" height="500"></canvas>
+  <p>Hfs'Hf</p>
+  <canvas id="psd-HfsHf" width="1000" height="500"></canvas>
   <script type="text/javascript">
-    // pairs that give non-overlapping templates: Hf'Hb, Hf'Hr, Hf'Hl, Hf'Hsl, Hr'Hf, Hr'Hb, Hr'Hl, Hsr'Hb
+    // pairs that give non-overlapping templates: Hf'Hb, Hf'Hr, Hf'Hl, Hf'Hbs, Hr'Hf, Hr'Hb, Hr'Hl, Hfs'Hb
     function makeScript(one, two) {
       // this is basically one' followed by two, with shifts to get the correct hinge
       var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
@@ -501,7 +501,7 @@
     }
     drawHfHb();
     draw("psd-HrHl", "Hr", "Hl", 0);
-    draw("psd-HsrHf", "Hsr", "Hb", 90);
+    draw("psd-HfsHf", "Hfs", "Hb", 90);
   </script>
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>

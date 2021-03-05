@@ -36,7 +36,7 @@
     }
 
     function drawAll() {
-      const halves = ["Hf", "Hb", "Hr", "Hl", "Hsr", "Hsl"];
+      const halves = ["Hf", "Hb", "Hr", "Hl", "Hfs", "Hbs"];
       const hexaHalves = ["Hh", "Ht", ">>>Ht", ">>>Hf"];
 
       let i = 1;
@@ -89,7 +89,7 @@
         drawTemplate("slot33", "Hh", "Hf", 'standard', true);
         drawTemplate("slot34", "Hb", "Hh", 'standard', true);
         drawTemplate("slot35", "Hh", "Hr", 'standard', true);
-        drawTemplate("slot36", "Hh", "Hsr", 'standard', true);
+        drawTemplate("slot36", "Hh", "Hfs", 'standard', true);
       } else if (whichSet === 'kites') {
         halves.forEach(a => {
           halves.forEach(b => {
@@ -136,8 +136,8 @@
         { flexes }
       ]);
       /*
-      const hasOverlap = (pre === 'Hsr' || pre === 'Hsl' || post === 'Hsr' || post === 'Hsl')
-        && !(pre === post || (pre === 'Hsr' && post === 'Hb') || (pre === 'Hsl' && post === 'Hf'));
+      const hasOverlap = (pre === 'Hfs' || pre === 'Hbs' || post === 'Hfs' || post === 'Hbs')
+        && !(pre === post || (pre === 'Hfs' && post === 'Hb') || (pre === 'Hbs' && post === 'Hf'));
         */
       const captions = [{ text: pre + "'", which: 0 }, { text: post, which: -1 }];
       Flexagonator.drawUnfolded(canvasId, fm, { captions });
@@ -200,7 +200,7 @@
   <p>
     This page provides a wide variety of templates for flexagons that support flexes composed of "half flexes".
     The half flexes that work on a wide variety of flexagons are the front <i>Hf</i>, back <i>Hb</i>, right
-    <i>Hr</i>, left <i>Hl</i>, shuffle right <i>Hsr</i>, and shuffle left <i>Hsl</i>.
+    <i>Hr</i>, left <i>Hl</i>, front shuffle <i>Hfs</i>, and back shuffle <i>Hbs</i>.
     The half flexes that are just defined for the hexaflexagon are the half half <i>Hh</i> and half tuck <i>Ht</i>.
     Definitions for all these half flexes can be found on the <a href="atomic.html">atomic flexes</a> page.
   </p>
@@ -221,68 +221,68 @@
   <p>Decomposition of HaHb' into flexes that are prime on a hexaflexagon.</p>
   <pre>
 F              =  Hf Hb'        = ^Hb Hf'^
-&gt;T             =  Hr Hf'        =  Hl Hsl'    = ^Hr Hsr'^ = ^Hl Hb'^
-&gt;T &lt;S          =  Hr Hsl'       = ^Hl Hsr'^
+&gt;T             =  Hr Hf'        =  Hl Hbs'    = ^Hr Hfs'^ = ^Hl Hb'^
+&gt;T &lt;S          =  Hr Hbs'       = ^Hl Hfs'^
 &gt;T ^&gt;&gt;S        =  Hl Hf'        = ^Hr Hb'^
 &lt;&lt;T ^&gt;&gt;F &gt;&gt;T'  =  Hr Hl'        = ^Hl Hr'^
-&gt;T'            =  Hf Hr'        = Hsl Hl'     = ^Hb Hl'^  = ^Hsr Hr'^
-&gt;T' ^&gt;&gt;T       =  Hf Hsr'       = Hsl Hb'     = ^Hb Hsl'^ = ^Hsr Hf'^
-&gt;T' ^&gt;&gt;T &lt;S    =  Hsl Hsr'      = ^Hsr Hsl'^
-S              =  Hf Hsl'       = &lt;Hsr Hb'&gt;   = ^Hb Hsr'^ = &lt;^Hsl Hf'^&gt;
+&gt;T'            =  Hf Hr'        = Hbs Hl'     = ^Hb Hl'^  = ^Hfs Hr'^
+&gt;T' ^&gt;&gt;T       =  Hf Hfs'       = Hbs Hb'     = ^Hb Hbs'^ = ^Hfs Hf'^
+&gt;T' ^&gt;&gt;T &lt;S    =  Hbs Hfs'      = ^Hfs Hbs'^
+S              =  Hf Hbs'       = &lt;Hfs Hb'&gt;   = ^Hb Hfs'^ = &lt;^Hbs Hf'^&gt;
 S &gt;T'          =  Hf Hl'        = ^Hb Hr'^
-&gt;S ^&gt;&gt;T'       =  Hsr Hl'       = ^Hsl Hr'^
+&gt;S ^&gt;&gt;T'       =  Hfs Hl'       = ^Hbs Hr'^
 
 # including hexaflexagon specific flexes
-P              = &lt;^Hf Ht'       = &lt;Hb &gt;&gt;&gt;Ht'  = ^Hb &gt;&gt;&gt;Hf'   ~= &lt;^Hsl Hh'
-&gt;P ^&gt;T         = ^Hsl Ht'       = Hsr &gt;&gt;&gt;Ht'
-P &gt;&gt;V          = Hf Hh'         = &lt;Hsr &gt;&gt;&gt;Hf'
-V              = Hb Hh'         = &lt;&lt;Hl &gt;&gt;&gt;Ht' = &lt;&lt;^Hr Ht'    = &lt;&lt;^Hl Hh'  ~= Hsr Ht'  ~= ^Hsl &gt;&gt;&gt;Ht'
+P              = &lt;^Hf Ht'       = &lt;Hb &gt;&gt;&gt;Ht'  = ^Hb &gt;&gt;&gt;Hf'   ~= &lt;^Hbs Hh'
+&gt;P ^&gt;T         = ^Hbs Ht'       = Hfs &gt;&gt;&gt;Ht'
+P &gt;&gt;V          = Hf Hh'         = &lt;Hfs &gt;&gt;&gt;Hf'
+V              = Hb Hh'         = &lt;&lt;Hl &gt;&gt;&gt;Ht' = &lt;&lt;^Hr Ht'    = &lt;&lt;^Hl Hh'  ~= Hfs Ht'  ~= ^Hbs &gt;&gt;&gt;Ht'
 V T            = Hb Ht'         = ^Hf &gt;&gt;&gt;Ht'
 &gt;&gt;V ^&gt;&gt;T       = ^Hl Ht'        = Hr &gt;&gt;&gt;Ht'
-V T'           = Hsr Hh'
+V T'           = Hfs Hh'
 ^&gt;&gt;V ^&gt;&gt;T'     = Hr Hh'
 &gt;&gt;V P          = Hl &gt;&gt;&gt;Hf'
-^V ^P          = Hsl &gt;&gt;&gt;Hf'
+^V ^P          = Hbs &gt;&gt;&gt;Hf'
 &gt;&gt;V &gt;V         = Hr &gt;&gt;&gt;Hf'
 ^V ^&gt;&gt;&gt;V       = Hf &gt;&gt;&gt;Hf'
 </pre>
 
   <p>Decomposition of slot flexes (Ha Lkk Hb') into flexes that are prime on a hexaflexagon.</p>
   <pre>
-Ltf            = Hf Lkk Hf'     = Hsl Lkk Hsl'    = &lt; Hb Lkk Hb' &gt;   = &lt; Hsr Lkk Hsr' &gt;
-&gt;Ltf ^&gt;T'      = Hb Lkk Hl'     = Hsr Lkk Hr'
-&gt;Ltf ^S        = Hb Lkk Hsr'    = &lt; Hsl Lkk Hf' &gt;
+Ltf            = Hf Lkk Hf'     = Hbs Lkk Hbs'    = &lt; Hb Lkk Hb' &gt;   = &lt; Hfs Lkk Hfs' &gt;
+&gt;Ltf ^&gt;T'      = Hb Lkk Hl'     = Hfs Lkk Hr'
+&gt;Ltf ^S        = Hb Lkk Hfs'    = &lt; Hbs Lkk Hf' &gt;
 &gt;Ltf ^S &gt;T'    = Hb Lkk Hr'
 &gt;Ltf ^F        = Hb Lkk Hf'
-&gt;Ltf &gt;F &gt;Ltf   = Hb Lkk Hsl'    = Hsr Lkk Hf'
+&gt;Ltf &gt;F &gt;Ltf   = Hb Lkk Hbs'    = Hfs Lkk Hf'
 ^&gt;&gt;T' ^&gt;&gt;T     = Hf Lkk Hb'
-&gt;T &lt;Ltf        = Hr Lkk Hf'     = Hl Lkk Hsl'
+&gt;T &lt;Ltf        = Hr Lkk Hf'     = Hl Lkk Hbs'
 &gt;T &lt;Ltf ^S     = Hl Lkk Hf'
-&gt;T &lt;S Ltf      = Hr Lkk Hsl'
-&gt;T ^&gt;&gt;S F      = Hl Lkk Hsr'
+&gt;T &lt;S Ltf      = Hr Lkk Hbs'
+&gt;T ^&gt;&gt;S F      = Hl Lkk Hfs'
 &gt;T ^&gt;&gt;S F &gt;&gt;T' = Hl Lkk Hr'
 &gt;T &lt;S ^&gt;F &gt;&gt;T' = Hr Lkk Hl'
-&gt;T ^&gt;&gt;F        = Hr Lkk Hsr'    = Hl Lkk Hb'
+&gt;T ^&gt;&gt;F        = Hr Lkk Hfs'    = Hl Lkk Hb'
 &gt;T ^&gt;&gt;F &gt;&gt;T'   = Hr Lkk Hr'     = Hl Lkk Hl'
 &gt;T ^&gt;&gt;F ^S     = Hr Lkk Hb'
-^&gt;F &gt;&gt;T'       = Hf Lkk Hr'     = Hsl Lkk Hl'
-S Ltf          = Hf Lkk Hsl'    = &lt; Hsr Lkk Hb' &gt;
-&gt;S Ltf ^&gt;T'    = Hsr Lkk Hl'
-&gt;S Ltf &gt;F &gt;Ltf = Hsr Lkk Hsl'
-^&gt;S F          = Hsl Lkk Hsr'
+^&gt;F &gt;&gt;T'       = Hf Lkk Hr'     = Hbs Lkk Hl'
+S Ltf          = Hf Lkk Hbs'    = &lt; Hfs Lkk Hb' &gt;
+&gt;S Ltf ^&gt;T'    = Hfs Lkk Hl'
+&gt;S Ltf &gt;F &gt;Ltf = Hfs Lkk Hbs'
+^&gt;S F          = Hbs Lkk Hfs'
 S ^&gt;F &gt;&gt;T'     = Hf Lkk Hl'
-^&gt;S F &gt;&gt;T'     = Hsl Lkk Hr'
-^&gt;F            = Hf Lkk Hsr'    = Hsl Lkk Hb'
+^&gt;S F &gt;&gt;T'     = Hbs Lkk Hr'
+^&gt;F            = Hf Lkk Hfs'    = Hbs Lkk Hb'
 
 # including hexaflexagon specific flexes
-Ltb            = Hf Lkk Ht'     = Hsl Lkk Hh'     = &lt; Hb Lkk &gt;&gt;&gt;Hf' &gt;
-Ltb T          = Hsl Lkk Ht'
-Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf' &gt;
+Ltb            = Hf Lkk Ht'     = Hbs Lkk Hh'     = &lt; Hb Lkk &gt;&gt;&gt;Hf' &gt;
+Ltb T          = Hbs Lkk Ht'
+Ltb T'         = Hf Lkk Hh'     = &lt; Hfs Lkk &gt;&gt;&gt;Hf' &gt;
 &lt;V             = Hf Lkk &gt;&gt;&gt;Hf'
 &lt;V ^P          = Hf Lkk &gt;&gt;&gt;Ht'
-&lt;V T           = Hsl Lkk &gt;&gt;&gt;Hf'
-&lt;V ^&gt;&gt;&gt;V       = Hsl Lkk &gt;&gt;&gt;Ht'
-&gt;Ltf V         = Hb Lkk Hh'     = Hsr Lkk Ht'
+&lt;V T           = Hbs Lkk &gt;&gt;&gt;Hf'
+&lt;V ^&gt;&gt;&gt;V       = Hbs Lkk &gt;&gt;&gt;Ht'
+&gt;Ltf V         = Hb Lkk Hh'     = Hfs Lkk Ht'
 &gt;Ltf &gt;P        = Hb Lkk &gt;&gt;&gt;Ht'
 &gt;T &lt;Ltb        = Hr Lkk Ht'     = Hl Lkk Hh'
 &gt;T &lt;Ltb T      = Hl Lkk Ht'
@@ -291,8 +291,8 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf' &gt;
 &gt;T &lt;&lt;V ^P      = Hr Lkk &gt;&gt;&gt;Ht'
 &gt;T &lt;&lt;V T       = Hl Lkk &gt;&gt;&gt;Hf'
 &gt;T &lt;&lt;V ^&gt;&gt;&gt;V   = Hl Lkk &gt;&gt;&gt;Ht'
-&gt;S Ltf V       = Hsr Lkk Hh'
-&gt;S Ltf &gt;P      = Hsr Lkk &gt;&gt;>Ht'
+&gt;S Ltf V       = Hfs Lkk Hh'
+&gt;S Ltf &gt;P      = Hfs Lkk &gt;&gt;>Ht'
 ^F ^Ltb        = Hb Lkk Ht'
 </pre>
 
@@ -318,7 +318,7 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf' &gt;
 
   <ul>
     <li>sequence starts with <a href="#Hf">Hf</a>, <a href="#Hb">Hb</a>, <a href="#Hr">Hr</a>, <a href="#Hl">Hl</a>,
-      <a href="#Hsr">Hsr</a>, <a href="#Hsl">Hsl</a>
+      <a href="#Hfs">Hfs</a>, <a href="#Hbs">Hbs</a>
     </li>
   </ul>
 
@@ -350,14 +350,14 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hsr Lkk &gt;&gt;&gt;Hf' &gt;
   <canvas id="slot22" width="900" height="500"></canvas><br/>
   <canvas id="slot23" width="900" height="500"></canvas><br/>
   <canvas id="slot24" width="900" height="500"></canvas><br/>
-  <a id="Hsr"></a>
+  <a id="Hfs"></a>
   <canvas id="slot25" width="900" height="500"></canvas><br/>
   <canvas id="slot26" width="900" height="500"></canvas><br/>
   <canvas id="slot27" width="900" height="500"></canvas><br/>
   <canvas id="slot28" width="900" height="500"></canvas><br/>
   <canvas id="slot29" width="900" height="500"></canvas><br/>
   <canvas id="slot30" width="900" height="500"></canvas><br/>
-  <a id="Hsl"></a>
+  <a id="Hbs"></a>
   <canvas id="slot31" width="900" height="500"></canvas><br/>
   <canvas id="slot32" width="900" height="500"></canvas><br/>
   <canvas id="slot33" width="900" height="500"></canvas><br/>

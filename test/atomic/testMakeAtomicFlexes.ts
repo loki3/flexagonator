@@ -86,8 +86,8 @@ namespace Flexagonator {
       testDefinition("Hb", AtomicDecomposition.Hb);
       testDefinition("Hr", AtomicDecomposition.Hr);
       testDefinition("Hl", AtomicDecomposition.Hl);
-      testDefinition("Hsr", AtomicDecomposition.Hsr);
-      testDefinition("Hsl", AtomicDecomposition.Hsl);
+      testDefinition("Hfs", AtomicDecomposition.Hfs);
+      testDefinition("Hbs", AtomicDecomposition.Hbs);
     });
 
     it("should compose to create the half flexes specific to a hexaflexagon", () => {
