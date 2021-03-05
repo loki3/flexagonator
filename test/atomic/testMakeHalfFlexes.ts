@@ -22,6 +22,7 @@ namespace Flexagonator {
       expect(checkForEqual("Mf", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Mf failed");
       expect(checkForEqual("S3", "< Hr Hl' >", mainFlexes, halfFlexes)).toBeTruthy("S3 failed");
 
+      expect(checkForEqual("S", "Hf Sp Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S from Sp failed");
       expect(checkForEqual("Ltf", "Hf Lkk Hf' <", mainFlexes, halfFlexes)).toBeTruthy("Ltf failed");
       expect(checkForEqual("Lk", "Hf Lkk Hsl' <", mainFlexes, halfFlexes)).toBeTruthy("Lk failed");
 
@@ -46,6 +47,7 @@ namespace Flexagonator {
       expect(checkForEqual("Mf", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Mf failed");
       expect(checkForEqual("S3", "< Hr Hl' >", mainFlexes, halfFlexes)).toBeTruthy("S3 failed");
 
+      expect(checkForEqual("S", "Hf Sp Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S from Sp failed");
       expect(checkForEqual("Ltf", "Hf Lkk Hf' <", mainFlexes, halfFlexes)).toBeTruthy("Ltf failed");
       expect(checkForEqual("Lk", "Hf Lkk Hsl' <", mainFlexes, halfFlexes)).toBeTruthy("Lk failed");
     });
@@ -62,7 +64,7 @@ namespace Flexagonator {
     function applyFlexes(mainFlexes: Flexes, halfFlexes: Flexes, sequence: string, flexagon: Flexagon): Flexagon {
       const flexes = sequence.split(' ');
       for (const flex of flexes) {
-        const which = (flex[0] === 'H') || (flex === 'Lkk') ? halfFlexes : mainFlexes;
+        const which = (flex[0] === 'H') || (flex === 'Sp') || (flex === 'Lkk') ? halfFlexes : mainFlexes;
         const result = which[flex].apply(flexagon);
         if (isFlexError(result)) {
           console.log('failed to apply ', flex, ' with error ', result);
