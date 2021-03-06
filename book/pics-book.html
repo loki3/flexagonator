@@ -86,6 +86,7 @@
     <li><a href="#part3">Part Three: Learning</a></li>
     <ul>
       <li><a href="#naming">naming</a></li>
+      <li><a href="#sequences">sequences</a></li>
       <li><a href="#groups">groups</a></li>
     </ul>
     <li><a href="#part4">Part Four: Fun</a></li>
@@ -655,6 +656,27 @@
     drawFlexagonSimple("t-star-dodeca", 12, [30, 120]);
   </script>
   <hr />
+
+  <!-- sequences -->
+  <h3 id="sequences">sequences</h3>
+
+  <p>(F&lt;)6</p>
+  <canvas id="sequences-flipleft1" width="1200" height="240"></canvas><br/>
+  <canvas id="sequences-flipleft2" width="1200" height="240"></canvas><br/>
+  <p>(S>T'>^T&lt;&lt;^)2</p>
+  <canvas id="sequences-s-cycle" width="1200" height="500"></canvas><br/>
+  <p>(Ltb>P>P>) 12</p>
+  <canvas id="sequences-hexa12" width="1200" height="170"></canvas><br/>
+
+  <script type="text/javascript">
+    var flipleft = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
+    drawStripComplex("sequences-flipleft1", flipleft,
+      { end: 11, content: 4, scale: 140, rotation: 67.5, captions: [{ text: "*", which: 0 }, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
+    drawStripComplex("sequences-flipleft2", flipleft,
+      { start: 12, content: 4, scale: 140, rotation: 180 + 67.5, captions: [{ text: "*", which: -1 }, { text: "a", which: 0 }] });
+    drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+" }], { rotation: 120, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
+    drawStripComplex("sequences-hexa12", [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }], {});
+  </script>
 
   <!-- groups-->
   <h3 id="groups">groups</h3>
