@@ -154,10 +154,14 @@
     drawStripPinch("penta-hexa", 6, "(P*)3", 60);
   </script>
 
-  <h4>hexa-hexaflexagon strip</h4>
-  <canvas id="hexa-hexa" width="1200" height="180"></canvas>
+  <h4>hexa-hexaflexagon strips</h4>
+  <canvas id="hexa-hexa1" width="1200" height="180"></canvas>
+  <canvas id="hexa-hexa2" width="700" height="700"></canvas>
+  <canvas id="hexa-hexa3" width="700" height="700"></canvas>
   <script type="text/javascript">
-    drawStripPinch("hexa-hexa", 6, "P* P* P+ > P P*", 120);
+    drawStripPinch("hexa-hexa1", 6, "P* P* P+ > P P*", 120);
+    drawStripPinch("hexa-hexa2", 6, "(P*^>)4", 0);
+    drawStripPinch("hexa-hexa3", 6, "(P*)4", 0);
   </script>
 
   <!-- longer templates -->
