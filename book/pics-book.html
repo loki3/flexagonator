@@ -679,7 +679,9 @@
     drawStripComplex("sequences-flipleft2", flipleft,
       { start: 12, content: 4, scale: 140, rotation: 180 + 67.5, captions: [{ text: "*", which: -1 }, { text: "a", which: 0 }] });
     drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+" }], { rotation: 120, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
-    drawStripComplex("sequences-hexa12", [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }], {});
+    drawStripComplex("sequences-hexa12",
+      [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
+      { content: 4, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] });
   </script>
 
   <!-- groups-->
