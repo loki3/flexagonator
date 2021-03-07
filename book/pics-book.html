@@ -688,14 +688,32 @@
   <!-- pat-notation -->
   <h3 id="pat-notation">pat notation</h3>
 
-  <canvas id="pats-sample" width="1200" height="600"></canvas><br/>
+  <p>example</p>
+  <canvas id="pats-example-unfolded" width="1000" height="600"></canvas><br/>
+  <canvas id="pats-example-folded" width="500" height="500"></canvas><br/>
+  <p>tri-hexa</p>
+  <canvas id="pats-trihexa-unfolded" width="1000" height="180"></canvas><br/>
+  <canvas id="pats-trihexa-folded1" width="500" height="500"></canvas>
+  <canvas id="pats-trihexa-folded2" width="500" height="500"></canvas>
   <script type="text/javascript">
-    var script = [
+    // example
+    var example = [
       { pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] },
       { labelAsTree: [] }
     ];
-    var options = { content: { showLeafProps: true, showIds: true }, rotation: 180 };
-    drawStripComplex("pats-sample", script, options);
+    var fm1 = Flexagonator.createFromScript(example);
+    Flexagonator.drawUnfolded("pats-example-unfolded", fm1, { content: { showLeafProps: true, showIds: true }, rotation: 180 });
+    Flexagonator.drawEntireFlexagon("pats-example-folded", fm1, {});
+    // tri-hexa
+    var trihexa = [
+      { pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9] },
+      { labelAsTree: [] }
+    ];
+    var fm2 = Flexagonator.createFromScript(trihexa);
+    Flexagonator.drawUnfolded("pats-trihexa-unfolded", fm2, { content: { showLeafProps: true, showIds: true }, rotation: 60 });
+    Flexagonator.drawEntireFlexagon("pats-trihexa-folded1", fm2, {});
+    var fm3 = Flexagonator.runScript(fm2, [{ flexes: "P" }]);
+    Flexagonator.drawEntireFlexagon("pats-trihexa-folded2", fm3, {});
   </script>
 
   <!-- groups-->
