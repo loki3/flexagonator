@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   export function drawStrip(ctx: CanvasRenderingContext2D,
     box: Point, leaflines: LeafLines,
-    content: StripContent, props: PropertiesForLeaves, scale?: number,
+    content: LeafContent, props: PropertiesForLeaves, scale?: number,
     rotation?: number, captions?: DrawStripCaption[]) {
 
     ctx.save();
@@ -14,23 +14,10 @@ namespace Flexagonator {
     }
 
     const extents: [Point, Point] = getExtents(leaflines);
-    const flip = (content === StripContent.Back);
+    const flip = (content.face === 'back');
     const transform = Transform.make(box, extents[0], extents[1], flip, scale, 1);
 
-    if (content === StripContent.FoldingLabels || content === StripContent.FoldingAndIds) {
-      drawFoldingLabels(ctx, leaflines.faces, transform);
-      if (content === StripContent.FoldingAndIds) {
-        drawIds(ctx, leaflines.faces, transform);
-      }
-    } else if (content === StripContent.Front) {
-      drawFaceProps(ctx, leaflines.faces, transform, props, true);
-    } else if (content === StripContent.Back) {
-      drawFaceProps(ctx, leaflines.faces, transform, props, false);
-    } else if (content === StripContent.LeafLabels) {
-      drawLeafLabels(ctx, leaflines.faces, transform, props, true);
-    } else if (content === StripContent.LabelsAndFolding) {
-      drawLeafLabels(ctx, leaflines.faces, transform, props, false);
-    }
+    drawLeafContents(ctx, leaflines, content, props, transform);
 
     if (captions) {
       ctx.fillStyle = "black";
@@ -61,6 +48,27 @@ namespace Flexagonator {
     ctx.restore();
   }
 
+  function drawLeafContents(ctx: CanvasRenderingContext2D, leaflines: LeafLines,
+    content: LeafContent, props: PropertiesForLeaves, transform: Transform
+  ): void {
+    if (content.face === 'front' || content.face === 'back') {
+      if (content.showLeafProps) {
+        drawFaceProps(ctx, leaflines.faces, transform, props, content.face === 'front');
+      }
+    } else {
+      // if both 'folding order' & 'leaf props', 'folding order' is drawn offset & lighter
+      if (content.showFoldingOrder && !content.showLeafProps) {
+        drawFoldingLabels(ctx, leaflines.faces, transform);
+      }
+      if (content.showLeafProps) {
+        drawLeafLabels(ctx, leaflines.faces, transform, props, !content.showFoldingOrder);
+      }
+    }
+
+    if (content.showIds && content.face !== 'back') {
+      drawIds(ctx, leaflines.faces, transform);
+    }
+  }
 
   // search for the rotation that optimizes the amount of 'box' that gets filled
   function findBestRotation(leaflines: LeafLines, box: Point): LeafLines {

@@ -154,24 +154,9 @@ The following shows the options that can be used when drawing an unfolded flexag
 By default, it draws the entire strip scaled and rotated to fill the canvas as much as possible.
 
 ```javascript
-enum StripContent {
-  FoldingLabels,  // put everything on one face, use labels that indicate folding order
-  FoldingAndIds,  // FoldingLabels plus ids
-  Front,          // only display what's on the front face, use leaf properties
-  Back,           // only display what's on the back face, use leaf properties
-  LeafLabels,     // put everything on one face, use labels from the leaf properties
-  LabelsAndFolding, // put everything on one face, use labels from the leaf properties plus folding order
-  Empty,          // don't label the leaves
-}
-
-{ // DrawStripCaption
-  text;   // text to display along one edge of the specified leaf
-  which;  // if >=0 it's an offset from the start of the strip, else it's an offset from the end
-}
-
 // DrawStripOptions
 {
-  content,  // [optional] StripContent: describes what to display in each leaf, defaults to FoldingLabels
+  content,  // [optional] LeafContent: describes what to display on each leaf, defaults to showFoldingOrder
   start;    // [optional] number: index of the first leaf to draw
   end;      // [optional] number: index of the last leaf to draw
   scale;    // [optional] number: scale factor (approximately the number of pixels on a leaf edge)
@@ -179,8 +164,25 @@ enum StripContent {
   captions; // [optional] DrawStripCaption[]: specify additional text to display on a given leaf
 }
 
+// LeafContent
+{
+  // [optional] default 'both'; draw both front and back labels, or just front, or just back
+  face: 'both' | 'front' | 'back';
+  // [optional] default false; draw labels that show folding order
+  showFoldingOrder;
+  // [optional] default false; draw labels and colors from leaf properties
+  showLeafProps;
+  // [optional] default false; draw leaf ids
+  showIds;
+}
+
+{ // DrawStripCaption
+  text;   // text to display along one edge of the specified leaf
+  which;  // if >=0 it's an offset from the start of the strip, else it's an offset from the end
+}
+
 // example passing DrawStripOptions to drawUnfolded
-drawUnfolded('mycanvas', fm, { content: Flexagonator.StripContent.Front, rotation: 60 });
+drawUnfolded('mycanvas', fm, { content: { face: 'front' }, rotation: 60 });
 ```
 
 Use `drawUnfolded` to draw the strip using the properties in `FlexagonManager` as shown above.
