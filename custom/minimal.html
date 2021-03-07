@@ -24,7 +24,7 @@
       }
       var fm = Flexagonator.createFromScript(script);
 
-      Flexagonator.drawUnfolded(canvasId, fm, { content: Flexagonator.StripContent.FoldingAndIds });
+      Flexagonator.drawUnfolded(canvasId, fm, { content: { showFoldingOrder: true, showIds: true } });
     }
 
     function showPatFlex(info, canvasId) {

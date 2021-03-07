@@ -23,7 +23,7 @@
     // draw a flexagon from its name
     function drawFlexagon(canvasId, name, rotation, showNumbers) {
       var fm = Flexagonator.createFromScript([{ name }]);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: showNumbers ? 0 : 6 });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: showNumbers ? { showFoldingOrder: true } : {} });
     }
   </script>
 </head>

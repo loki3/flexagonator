@@ -6,7 +6,7 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     var fm;
-    var stripContent = Flexagonator.StripContent.FoldingAndIds;
+    var stripContent = { showFoldingOrder: true, showIds: true };
     var scale;
     var start = [];
     var end = [];
@@ -80,9 +80,12 @@
   <h1>Multi-part strips</h1>
 
   <p>
-    Run a script to describe a flexagon, then specify a subset of the unfolded strip to display. Useful for strips that are too
-    long to fit on a page, or for strips that twist back on themselves. There are letters are the two ends of each sub-strip
-    that indicate how they should be connected to the other strips, e.g. 'a' connects to the end of the last strip, the 'b's
+    Run a script to describe a flexagon, then specify a subset of the unfolded strip to display. Useful for strips that
+    are too
+    long to fit on a page, or for strips that twist back on themselves. There are letters are the two ends of each
+    sub-strip
+    that indicate how they should be connected to the other strips, e.g. 'a' connects to the end of the last strip, the
+    'b's
     should be connected together, etc.
   </p>
 

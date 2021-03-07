@@ -19,8 +19,8 @@
     var captions = [{ text: '*', which: 0 }, { text: '*', which: -1 }];
 
     function updateUI() {
-      Flexagonator.drawUnfolded('unfolded1', fm, { content: 2, captions: captions });
-      Flexagonator.drawUnfolded('unfolded2', fm, { content: 3, captions: captions });
+      Flexagonator.drawUnfolded('unfolded1', fm, { content: { face: 'front', showLeafProps: true }, captions: captions });
+      Flexagonator.drawUnfolded('unfolded2', fm, { content: { face: 'back', showLeafProps: true }, captions: captions });
       statusMessage('');
     }
 
@@ -38,9 +38,9 @@
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
       doc.deletePage(0);
-      Flexagonator.drawUnfolded(doc.canvas, fm, { content: 2, captions: captions });
+      Flexagonator.drawUnfolded(doc.canvas, fm, { content: { face: 'front', showLeafProps: true }, captions: captions });
       doc.addPage("a4", "p");
-      Flexagonator.drawUnfolded(doc.canvas, fm, { content: 3, captions: captions });
+      Flexagonator.drawUnfolded(doc.canvas, fm, { content: { face: 'back', showLeafProps: true }, captions: captions });
       doc.save("a4.pdf");
     }
 
