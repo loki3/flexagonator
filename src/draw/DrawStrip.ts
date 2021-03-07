@@ -124,6 +124,7 @@ namespace Flexagonator {
 
   function drawIds(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform) {
     const len = getBaseLength(faces[0], transform);
+    ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = len / 10 + "px sans-serif";
