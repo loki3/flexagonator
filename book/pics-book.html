@@ -699,11 +699,12 @@
     // example
     var example = [
       { pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] },
-      { labelAsTree: [] }
+      { labelAsTree: [], searchFlexes: "P S T V" }
     ];
     var fm1 = Flexagonator.createFromScript(example);
     Flexagonator.drawUnfolded("pats-example-unfolded", fm1, { content: { showLeafProps: true, showIds: true }, rotation: 180 });
-    Flexagonator.drawEntireFlexagon("pats-example-folded", fm1, {});
+    var regions = Flexagonator.drawEntireFlexagon("pats-example-folded", fm1, { showCurrent: false });
+    Flexagonator.drawScriptButtons("pats-example-folded", fm1.flexagon, fm1.getAngleInfo(), true, regions);
     // tri-hexa
     var trihexa = [
       { pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9] },
