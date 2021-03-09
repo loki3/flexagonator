@@ -55,6 +55,11 @@
       var regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
       Flexagonator.drawScriptButtons(canvasId, fm.flexagon, fm.getAngleInfo(), true, regions);
     }
+
+    function drawFromName(canvasId, name, rotation) {
+      var fm = Flexagonator.createFromScript([{ name }]);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
+    }
   </script>
 </head>
 
@@ -88,6 +93,7 @@
       <li><a href="#naming">naming</a></li>
       <li><a href="#sequences">sequences</a></li>
       <li><a href="#pat-notation">pat notation</a></li>
+      <li><a href="#atomic-flex-theory">atomic flex theory</a></li>
       <li><a href="#groups">groups</a></li>
     </ul>
     <li><a href="#part4">Part Four: Fun</a></li>
@@ -715,6 +721,36 @@
     Flexagonator.drawEntireFlexagon("pats-trihexa-folded1", fm2, {});
     var fm3 = Flexagonator.runScript(fm2, [{ flexes: "P" }]);
     Flexagonator.drawEntireFlexagon("pats-trihexa-folded2", fm3, {});
+  </script>
+
+  <!-- atomic flex theory -->
+  <h3 id="atomic-flex-theory">atomic flex theory</h3>
+
+  <p>isoflexagons</p>
+  <canvas id="atomic-iso1" width="230" height="250"></canvas>&nbsp;&nbsp;&nbsp;&nbsp;
+  <canvas id="atomic-iso2" width="250" height="250"></canvas>
+  <canvas id="atomic-iso3" width="250" height="250"></canvas>
+  <canvas id="atomic-iso4" width="230" height="250"></canvas>
+  <canvas id="atomic-iso5" width="240" height="250"></canvas><br/>
+  <p>non-isoflexagons</p>
+  <canvas id="atomic-non-iso1" width="250" height="250"></canvas>&nbsp;&nbsp;&nbsp;
+  <canvas id="atomic-non-iso2" width="310" height="250"></canvas>&nbsp;&nbsp;
+  <canvas id="atomic-non-iso3" width="200" height="250"></canvas>&nbsp;&nbsp;
+  <canvas id="atomic-non-iso4" width="230" height="250"></canvas>&nbsp;&nbsp;
+  <canvas id="atomic-non-iso5" width="200" height="250"></canvas><br/>
+  <p>pentagonal silver decaflexagon</p>
+  <img src="images/pentagonal-silver-deca-directions.png"/>
+  <script>
+    drawFromName("atomic-iso1", "pentaflexagon", 18);
+    drawFromName("atomic-iso2", "hexaflexagon", 0);
+    drawFromName("atomic-iso3", "bronze hexaflexagon", 30);
+    drawFromName("atomic-iso4", "heptaflexagon", -12.5);
+    drawFromName("atomic-iso5", "right decaflexagon", -18);
+    drawFromName("atomic-non-iso1", "pentagonal silver decaflexagon", 45);
+    drawFromName("atomic-non-iso2", "hexagonal silver dodecaflexagon", 90);
+    drawFromName("atomic-non-iso3", "octagonal ring dodecaflexagon", 0);
+    drawFromName("atomic-non-iso4", "hexagonal ring dodecaflexagon", 0);
+    drawFromName("atomic-non-iso5", "octagonal ring tetradecaflexagon", 0);
   </script>
 
   <!-- groups-->
