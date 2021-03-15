@@ -18,7 +18,7 @@ namespace Flexagonator {
       [[1, -2], [4, -3]], /**/[5, 6]);  // 2 2 1 1
     flexes["Hf"] = createHalfFlex("half: fold forward", patCount - 4, 7,
       [[-2, 1], -3], /**/[[5, -4], 6],  // 2 1 2 1
-      [1, 2], [[-4, 3], /**/[-5, 6]]);  // 1 1 2 2
+      [1, 2], /**/[[-4, 3], [-5, 6]]);  // 1 1 2 2
     flexes["Hl"] = createHalfFlex("half: fold left back", patCount - 4, 7,
       [[-2, 1], -3], /**/[-4, [6, -5]], // 2 1 1 2
       [1, [4, [2, -3]]], /**/[5, 6]);   // 1 -3 1 1
