@@ -740,6 +740,9 @@
   <canvas id="atomic-non-iso5" width="200" height="250"></canvas><br/>
   <p>pentagonal silver decaflexagon</p>
   <img src="images/pentagonal-silver-deca-directions.png"/>
+  <p>pyramid shuffle with directions</p>
+  <canvas id="atomic-shuffle-directions" width="1000" height="650"></canvas><br/>
+  <img src="images/shuffle-directions.png"/>
   <script>
     drawFromName("atomic-iso1", "pentaflexagon", 18);
     drawFromName("atomic-iso2", "hexaflexagon", 0);
@@ -751,9 +754,10 @@
     drawFromName("atomic-non-iso3", "octagonal ring dodecaflexagon", 0);
     drawFromName("atomic-non-iso4", "hexagonal ring dodecaflexagon", 0);
     drawFromName("atomic-non-iso5", "octagonal ring tetradecaflexagon", 0);
+    const theScript = [{ pats: [[-2, 1], -3, -4, -5, [[[-8, 7], 9], -6], 10] }];
+    const theOptions = { rotation: 120, content: { showIds: true } };
+    drawStripComplex("atomic-shuffle-directions", theScript, theOptions);
   </script>
-  <p>pyramid shuffle with directions</p>
-  <img src="images/shuffle-directions.png"/>
 
   <!-- groups-->
   <h3 id="groups">groups</h3>
