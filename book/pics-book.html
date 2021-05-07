@@ -15,19 +15,15 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     // draw an unfolded strip on the given canvas
-    // canvasId: string, numPats: number, flexes: string, rotation: number
-    function drawStripSimple(canvasId, numPats, flexes, rotation, start, end, angles) {
-      var script = [{ numPats: numPats, flexAndColor: { flexes: flexes }, angles }];
-      var fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: { showLeafProps: true }, start: start, end: end });
-    }
-    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, angles) {
-      var script = [{ numPats: numPats, flexes: flexes, angles, labelAsTree: [] }];
+    // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
+    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end) {
+      var script = [{ numPats: numPats, flexes: flexes, labelAsTree: [] }];
       var fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: { showLeafProps: true }, start: start, end: end });
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
+    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number]
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles) {
       var script = [{ numPats: numPats, flexAndColor: { flexes: flexes }, angles: angles }];
       var fm = Flexagonator.createFromScript(script);
@@ -250,7 +246,7 @@
   <h4>P333</h4>
   <canvas id="P333" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripSimple("P333", 9, "P333*>>");
+    drawStripPinch("P333", 9, "P333*>>");
   </script>
   <br/>
 
