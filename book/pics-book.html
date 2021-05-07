@@ -14,12 +14,15 @@
 
   <script src="../build/out.js"></script>
   <script type="text/javascript">
+    // draw * on the edges that should be taped together
+    const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
+
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
     function drawStripPinch(canvasId, numPats, flexes, rotation, start, end) {
       var script = [{ numPats: numPats, flexes: flexes, labelAsTree: [] }];
       var fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation: rotation, content: { showLeafProps: true }, start: start, end: end });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
@@ -27,7 +30,7 @@
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles) {
       var script = [{ numPats: numPats, flexAndColor: { flexes: flexes }, angles: angles }];
       var fm = Flexagonator.createFromScript(script);
-      var options = { rotation: rotation, content: { showFoldingOrder: true }, captions: [{ text: flexes, which: 0 }] }
+      var options = { rotation: rotation, content: { showFoldingOrder: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
@@ -196,7 +199,7 @@
   <canvas id="tri-tetra" width="1200" height="220"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 120, content: { showLeafProps: true } };
+    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("tri-tetra", script, drawOptions);
   </script>
 
@@ -204,7 +207,7 @@
   <canvas id="penta-tetra" width="1200" height="500"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexes: "(P*)3 P'P'", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 60, content: { showLeafProps: true } };
+    var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("penta-tetra", script, drawOptions);
   </script>
 
@@ -212,7 +215,7 @@
   <canvas id="tri-octa" width="1200" height="220"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 120, content: { showLeafProps: true } };
+    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("tri-octa", script, drawOptions);
   </script>
 
@@ -220,7 +223,7 @@
   <canvas id="penta-octa" width="1200" height="500"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 8, flexes: "(P*)3", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 60, content: { showLeafProps: true } };
+    var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("penta-octa", script, drawOptions);
   </script>
 
@@ -240,7 +243,7 @@
   <canvas id="P444-half" width="1200" height="250"></canvas>
   <script type="text/javascript">
     var script = [{ "pats": [1, 2, 3, [0, 0], 5, 6, 7, [0, 0], 9, 10, 11, [0, 0]] }, { "angles": [30, 60, 90] }];
-    drawStripComplex("P444-half", script, { rotation: 60, content: { showFoldingOrder: true } });
+    drawStripComplex("P444-half", script, { rotation: 60, content: { showFoldingOrder: true }, captions: starCaptions });
   </script>
 
   <h4>P333</h4>
@@ -551,7 +554,7 @@
       };
       var script = [{ numPats: 12, angles, directions }, halfFlex, slideFlex, tuck12, { flexes }];
       var fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showFoldingOrder: true }, captions: [{ text, which: 0 }] });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showFoldingOrder: true }, captions: [{ text, which: 0 }, { text: "*", which: -1 }] });
     }
     drawStripFromFlexes('silverDodecaHexa1', 'H+', 45, 'H');
     drawStripFromFlexes('silverDodecaHexa2', 'H*H*', 90, 'HH');
@@ -562,7 +565,7 @@
 
     var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
     var fm = Flexagonator.createFromScript([{ pats, angles, directions }]);
-    Flexagonator.drawUnfolded('silverDodecaHexa7', fm, { rotation: 0, content: { showFoldingOrder: true }, captions: [{ text: 'double', which: 0 }] });
+    Flexagonator.drawUnfolded('silverDodecaHexa7', fm, { rotation: 0, content: { showFoldingOrder: true }, captions: [{ text: 'double', which: 0 }, { text: "*", which: -1 }] });
   </script>
 
   <hr />
@@ -704,7 +707,7 @@
       { labelAsTree: [], searchFlexes: "P S T V" }
     ];
     var fm1 = Flexagonator.createFromScript(example);
-    Flexagonator.drawUnfolded("pats-example-unfolded", fm1, { content: { showLeafProps: true, showIds: true }, rotation: 180 });
+    Flexagonator.drawUnfolded("pats-example-unfolded", fm1, { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions });
     var regions = Flexagonator.drawEntireFlexagon("pats-example-folded", fm1, { showCurrent: false });
     Flexagonator.drawScriptButtons("pats-example-folded", fm1.flexagon, fm1.getAngleInfo(), true, regions);
     // tri-hexa
@@ -713,7 +716,7 @@
       { labelAsTree: [] }
     ];
     var fm2 = Flexagonator.createFromScript(trihexa);
-    Flexagonator.drawUnfolded("pats-trihexa-unfolded", fm2, { content: { showLeafProps: true, showIds: true }, rotation: 60 });
+    Flexagonator.drawUnfolded("pats-trihexa-unfolded", fm2, { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions });
     Flexagonator.drawEntireFlexagon("pats-trihexa-folded1", fm2, {});
     var fm3 = Flexagonator.runScript(fm2, [{ flexes: "P" }]);
     Flexagonator.drawEntireFlexagon("pats-trihexa-folded2", fm3, {});
@@ -751,7 +754,7 @@
     drawFromName("atomic-non-iso4", "hexagonal ring dodecaflexagon", 0);
     drawFromName("atomic-non-iso5", "octagonal ring tetradecaflexagon", 0);
     const theScript = [{ pats: [[-2, 1], -3, -4, -5, [[[-8, 7], 9], -6], 10] }];
-    const theOptions = { rotation: 120, content: { showIds: true } };
+    const theOptions = { rotation: 120, content: { showIds: true }, captions: starCaptions };
     drawStripComplex("atomic-shuffle-directions", theScript, theOptions);
   </script>
 
@@ -792,12 +795,12 @@
   <canvas id="equi-tetra5" width="800" height="600"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 120, content: { showLeafProps: true } };
+    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("equi-tetra3", script, drawOptions);
   </script>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexes: "(P*)3 P'P'", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 60, content: { showLeafProps: true } };
+    var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("equi-tetra5", script, drawOptions);
   </script>
 
@@ -805,7 +808,7 @@
   <canvas id="animal-penta" width="800" height="700"></canvas>
   <script type="text/javascript">
     var script = [{ "pats": [0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0], 0] }, { "angles": [72, 54] }];
-    var options = { rotation: 72, content: { showFoldingOrder: true } };
+    var options = { rotation: 72, content: { showFoldingOrder: true }, captions: starCaptions };
     drawStripComplex("animal-penta", script, options);
   </script>
 
