@@ -5,7 +5,7 @@ namespace Flexagonator {
   // and applying any of a given set of flexes
   export class Explore {
     private readonly flexes: Flexes;          // flexes to explore with other than <>^
-    private readonly right: Flex;             // >
+    private readonly right?: Flex;            // >
     private readonly over?: Flex;             // ^
 
     private current: number;          // which state we're about to explore
@@ -14,7 +14,7 @@ namespace Flexagonator {
     private tracker: Tracker;
     private found: RelativeFlexes[] = [];
 
-    constructor(flexagon: Flexagon, flexes: Flexes, right: Flex, over?: Flex) {
+    constructor(flexagon: Flexagon, flexes: Flexes, right?: Flex, over?: Flex) {
       // initialize flexes
       this.right = right;
       this.over = over;
@@ -64,16 +64,20 @@ namespace Flexagonator {
 
       // rotate & flip over, applying all flexes at each step
       this.checkAllFlexes(flexagon, found, 0, false);
-      for (let i = 1; i < count; i++) {
-        flexagon = this.right.apply(flexagon) as Flexagon;
-        this.checkAllFlexes(flexagon, found, i, false);
+      if (this.right) {
+        for (let i = 1; i < count; i++) {
+          flexagon = this.right.apply(flexagon) as Flexagon;
+          this.checkAllFlexes(flexagon, found, i, false);
+        }
       }
       if (this.over) {
         flexagon = this.over.apply(this.flexagons[this.current]) as Flexagon;
         this.checkAllFlexes(flexagon, found, 0, true);
-        for (let i = 1; i < count; i++) {
-          flexagon = this.right.apply(flexagon) as Flexagon;
-          this.checkAllFlexes(flexagon, found, i, true);
+        if (this.right) {
+          for (let i = 1; i < count; i++) {
+            flexagon = this.right.apply(flexagon) as Flexagon;
+            this.checkAllFlexes(flexagon, found, i, true);
+          }
         }
       }
 

@@ -14,7 +14,7 @@ namespace Flexagonator {
   // there may be others of the same length
   export class FindShortest {
     private readonly flexes: Flexes;          // flexes to explore with other than <>^
-    private readonly right: Flex;             // >
+    private readonly right?: Flex;            // >
     private readonly over?: Flex;             // ^
 
     // array of levels of the breadth-first search
@@ -25,7 +25,7 @@ namespace Flexagonator {
     private readonly target: number;  // where the desired end state is in 'tracker'
     private found: boolean = false;
 
-    static make(start: LeafTree[], end: LeafTree[], flexes: Flexes, right: Flex, over?: Flex): FindShortest | TreeError {
+    static make(start: LeafTree[], end: LeafTree[], flexes: Flexes, right?: Flex, over?: Flex): FindShortest | TreeError {
       const startFlexagon = Flexagon.makeFromTree(start);
       if (isTreeError(startFlexagon)) {
         return startFlexagon;
@@ -39,7 +39,7 @@ namespace Flexagonator {
 
     // we're at 'start' and we want to find the shortest flex sequence from 'flexes'
     // that will take us to 'end'
-    constructor(start: Flexagon, end: Flexagon, flexes: Flexes, right: Flex, over?: Flex) {
+    constructor(start: Flexagon, end: Flexagon, flexes: Flexes, right?: Flex, over?: Flex) {
       // initialize flexes
       this.right = right;
       this.over = over;
@@ -118,19 +118,23 @@ namespace Flexagonator {
       // rotate & flip over, applying all flexes each time
       if (!this.checkAllFlexes(flexagon, level, previousStep, 0, false))
         return false;
-      for (let i = 1; i < count; i++) {
-        flexagon = this.right.apply(flexagon) as Flexagon;
-        if (!this.checkAllFlexes(flexagon, level, previousStep, i, false))
-          return false;
+      if (this.right) {
+        for (let i = 1; i < count; i++) {
+          flexagon = this.right.apply(flexagon) as Flexagon;
+          if (!this.checkAllFlexes(flexagon, level, previousStep, i, false))
+            return false;
+        }
       }
       if (this.over) {
         flexagon = this.over.apply(original) as Flexagon;
         if (!this.checkAllFlexes(flexagon, level, previousStep, 0, true))
           return false;
-        for (let i = 1; i < count; i++) {
-          flexagon = this.right.apply(flexagon) as Flexagon;
-          if (!this.checkAllFlexes(flexagon, level, previousStep, i, true))
-            return false;
+        if (this.right) {
+          for (let i = 1; i < count; i++) {
+            flexagon = this.right.apply(flexagon) as Flexagon;
+            if (!this.checkAllFlexes(flexagon, level, previousStep, i, true))
+              return false;
+          }
         }
       }
 

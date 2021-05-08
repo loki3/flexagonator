@@ -25,12 +25,13 @@
       return true;
     }
 
-    function startExplore(includeOver) {
+    function startExplore(includeRight, includeOver) {
       if (runScript()) {
         cancelled = false;
         clearStates();
+        var right = includeRight ? fm.allFlexes['>'] : undefined;
         var over = includeOver ? fm.allFlexes['^'] : undefined;
-        explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, fm.allFlexes['>'], over);
+        explorer = new Flexagonator.Explore(fm.flexagon, fm.flexesToSearch, right, over);
         explore(explorer);
       }
     }
@@ -148,7 +149,7 @@
       }
     }
 
-    function findShortest() {
+    function findShortest(includeRight, includeOver) {
       var searchStartStr = document.getElementById('searchStart').value;
       var searchEndStr = document.getElementById('searchEnd').value;
       var output = document.getElementById('flexSequence');
@@ -165,7 +166,9 @@
         return;
       }
 
-      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, fm.flexesToSearch, fm.allFlexes['>'], fm.allFlexes['^']);
+      var right = includeRight ? fm.allFlexes['>'] : undefined;
+      var over = includeOver ? fm.allFlexes['^'] : undefined;
+      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, fm.flexesToSearch, right, over);
       if (Flexagonator.isError(find)) {
         var str = Flexagonator.errorToString(find);
         output.innerHTML = str;
@@ -212,8 +215,9 @@
   </p>
 
   <p>
-    <input onclick="startExplore(true);" type="button" value="explore" />
-    <input onclick="startExplore(false);" type="button" value="explore (no ^)" /> -
+    <input onclick="startExplore(true, true);" type="button" value="explore" />
+    <input onclick="startExplore(true, false);" type="button" value="explore (no ^)" />
+    <input onclick="startExplore(false, true);" type="button" value="explore (no >)" /> -
     <input onclick="cancel();" type="button" value="cancel" />
   </p>
 
@@ -245,8 +249,11 @@
       </p>
 
       <p>
-        <input onclick="findShortest();" type="button" value="Find" /> the shortest flex sequence that will take you between
+        <input onclick="findShortest(true, true);" type="button" value="Find" /> the shortest flex sequence that will take you between
     two flexagons given by pat notation:
+        <br/>
+        <input onclick="findShortest(true, false);" type="button" value="Find (no ^)" />
+        <input onclick="findShortest(false, true);" type="button" value="Find (no >)" />
         <br/>
         <input id="searchStart" size="100" spellcheck="false" />
         <br/>
