@@ -90,6 +90,7 @@
     <li><a href="#part3">Part Three: Learning</a></li>
     <ul>
       <li><a href="#naming">naming</a></li>
+      <li><a href="#state-diagrams">state diagrams</a></li>
       <li><a href="#sequences">sequences</a></li>
       <li><a href="#pat-notation">pat notation</a></li>
       <li><a href="#atomic-flex-theory">atomic flex theory</a></li>
@@ -666,6 +667,17 @@
     drawFlexagonSimple("t-star-dodeca", 12, [30, 120]);
   </script>
   <hr />
+
+  <!-- state-diagrams -->
+  <h3 id="state-diagrams">state-diagrams</h3>
+  <p>11 leaf hexaflexagon</p>
+  <canvas id="diagram-hexa11" width="1000" height="350"></canvas><br/>
+
+  <script type="text/javascript">
+    drawStripComplex("diagram-hexa11",
+      [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }],
+      { content: { showIds: true }, rotation: 120, captions: starCaptions });
+  </script>
 
   <!-- sequences -->
   <h3 id="sequences">sequences</h3>
