@@ -712,6 +712,9 @@
   <canvas id="pats-trihexa-unfolded" width="1000" height="180"></canvas><br/>
   <canvas id="pats-trihexa-folded1" width="500" height="500"></canvas>
   <canvas id="pats-trihexa-folded2" width="500" height="500"></canvas>
+  <p>same visible leaves, different structure</p>
+  <canvas id="pats-visible-Tf" width="700" height="620"></canvas><br/>
+  <canvas id="pats-visible-T" width="1100" height="600"></canvas>
   <script type="text/javascript">
     // example
     var example = [
@@ -732,6 +735,13 @@
     Flexagonator.drawEntireFlexagon("pats-trihexa-folded1", fm2, {});
     var fm3 = Flexagonator.runScript(fm2, [{ flexes: "P" }]);
     Flexagonator.drawEntireFlexagon("pats-trihexa-folded2", fm3, {});
+    // visible
+    drawStripComplex("pats-visible-Tf",
+      [{ "pats": [[7, [[5, [[[-2, 3], 1], -4]], -6]], 8, 9, 10, 11, 12] }],
+      { rotation: 120, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions });
+    drawStripComplex("pats-visible-T",
+      [{ "pats": [[7, [[5, [[[-2, 3], 1], -4]], -6]], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
+      { rotation: 120, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions });
   </script>
 
   <!-- atomic flex theory -->
