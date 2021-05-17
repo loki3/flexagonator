@@ -670,13 +670,20 @@
 
   <!-- state-diagrams -->
   <h3 id="state-diagrams">state-diagrams</h3>
+
+  <p>(S&lt;)3</p>
+  <canvas id="diagram-s3" width="1000" height="750"></canvas><br/>
+
   <p>11 leaf hexaflexagon</p>
   <canvas id="diagram-hexa11" width="1000" height="350"></canvas><br/>
 
   <script type="text/javascript">
+    drawStripComplex("diagram-s3",
+      [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
+      { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions });
     drawStripComplex("diagram-hexa11",
-      [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }],
-      { content: { showIds: true }, rotation: 120, captions: starCaptions });
+      [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree: [] }],
+      { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions });
   </script>
 
   <!-- sequences -->
