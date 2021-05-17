@@ -10,7 +10,7 @@ Script commands:
     * **pats:** create a new flexagon with the given structure
     * **numPats:** create a new flexagon with the given number of pats, but only one leaf per pat
     * **angles:** set the angles for first leaf: [center angle, clockwise angle]
-    * **directions:** set how each pat is connected to the previous pat, 0: left, 1: right (if edge at bottom)
+    * **directions:** set how each pat is connected to the previous pat, \: top, /: bottom (if edge at left)
 * Flexes
     * **flexes:** perform a series of flexes
     * **reverseFlexes:** run a series of flexes in reverse, effectively undoing them
@@ -88,9 +88,23 @@ Since the second pat is a mirror image of the first, the second angle correspond
 By default, Flexagonator assumes that each pat is connected to the previous pat in a consistent direction.
 The end result is a flexagon where every pat meets in the center of the flexagon.
 To change this behavior, you can describe how each pat is connected to the previous pat using the `directions` command.
-If you think of the previous pat being connected to the current pat's bottom edge,
-then `false` or `0` indicates that the next pat is connected to the left edge
-and `true` or `1` indicates it's connected to the right edge.
+
+If you think of the previous pat being connected to the current pat's left edge,
+then `\` or '|' indicates that the next pat is connected to the top edge
+(which makes sense of you imagine the '\' as the top edge of the triangle;
+or you can use '|' if '\' is an escaping character)
+and `/` indicates it's connected to the bottom edge.
+There should be one character for every pat in the flexagon.
+A hexaflexagon is '//////'.
+
+```javascript
+{ directions: '//////' }
+```
+
+Alternately, you can specify the directions using an array instead of a string.
+If you think of the previous pat being connected to the current pat's left edge,
+then `false` or `0` indicates that the next pat is connected to the top edge
+and `true` or `1` indicates it's connected to the bottom edge.
 There should be one entry in the array for every pat in the flexagon.
 
 ```javascript
