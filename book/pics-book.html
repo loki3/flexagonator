@@ -25,6 +25,13 @@
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
     }
 
+    // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
+    function drawStripPinch2(canvasId, numPats, flexes, rotation, start, end) {
+      var script = [{ numPats: 6, flexAndColor: { flexes: flexes } }];
+      var fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
+    }
+
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number]
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles) {
@@ -160,23 +167,23 @@
   <h4>tetra-hexaflexagon strip</h4>
   <canvas id="tetra-hexa" width="1200" height="220"></canvas>
   <script type="text/javascript">
-    drawStripPinch("tetra-hexa", 6, "(P*)2", 90);
+    drawStripPinch("tetra-hexa", 6, "P*P+", 30);
   </script>
 
   <h4>penta-hexaflexagon strip</h4>
-  <canvas id="penta-hexa" width="1200" height="500"></canvas>
+  <canvas id="penta-hexa" width="960" height="500"></canvas>
   <script type="text/javascript">
-    drawStripPinch("penta-hexa", 6, "(P*)3", 60);
+    drawStripPinch2("penta-hexa", 6, "P* P+ >P>P P+ ^", 0);
   </script>
 
   <h4>hexa-hexaflexagon strips</h4>
-  <canvas id="hexa-hexa1" width="1200" height="180"></canvas>
-  <canvas id="hexa-hexa2" width="700" height="700"></canvas>
+  <canvas id="hexa-hexa1" width="1200" height="120"></canvas>
+  <canvas id="hexa-hexa2" width="700" height="610"></canvas>
   <canvas id="hexa-hexa3" width="700" height="700"></canvas>
   <script type="text/javascript">
-    drawStripPinch("hexa-hexa1", 6, "P* P* P+ > P P*", 120);
-    drawStripPinch("hexa-hexa2", 6, "(P*^>)4", 0);
-    drawStripPinch("hexa-hexa3", 6, "(P*)4", 0);
+    drawStripPinch2("hexa-hexa1", 6, "P* P+ >P>P P+ ^P P+ ^P^", 120);
+    drawStripPinch2("hexa-hexa2", 6, "P* P+ >P>P P+ PP+ ^P", 0);
+    drawStripPinch2("hexa-hexa3", 6, "P* P+ >P>P P+ >PPP+ ^PP", 0);
   </script>
 
   <!-- longer templates -->
