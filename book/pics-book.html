@@ -59,6 +59,14 @@
       var fm = Flexagonator.createFromScript([{ name }]);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
     }
+
+    // draw the Tuckerman diagram for a flexagon with the given generating sequence,
+    // optionally highlighting one flex sequence
+    function drawTuckerman(canvasId, generator, highlight) {
+      var fm = Flexagonator.createFromScript([{ flexes: generator }]);
+      var traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
+      Flexagonator.drawPinchGraph(canvasId, { traverse: traverse, flexes: highlight });
+    }
   </script>
 </head>
 
@@ -671,6 +679,12 @@
   <!-- state-diagrams -->
   <h3 id="state-diagrams">state-diagrams</h3>
 
+  <canvas id="diagram-tuckerman-4" width="139" height="200"></canvas>
+  <canvas id="diagram-tuckerman-5" width="200" height="200"></canvas>
+  <canvas id="diagram-tuckerman-6a" width="200" height="200"></canvas>
+  <canvas id="diagram-tuckerman-6b" width="200" height="200"></canvas>
+  <canvas id="diagram-tuckerman-6c" width="265" height="200"></canvas><br/>
+
   <p>(S&lt;)3</p>
   <canvas id="diagram-s3" width="1000" height="750"></canvas><br/>
 
@@ -678,6 +692,11 @@
   <canvas id="diagram-hexa11" width="1000" height="350"></canvas><br/>
 
   <script type="text/javascript">
+    drawTuckerman("diagram-tuckerman-4", "(P*)2");
+    drawTuckerman("diagram-tuckerman-5", "(P*)3");
+    drawTuckerman("diagram-tuckerman-6a", "P* P* P+ > P P*");
+    drawTuckerman("diagram-tuckerman-6b", "(P*^>)4");
+    drawTuckerman("diagram-tuckerman-6c", "(P*)4");
     drawStripComplex("diagram-s3",
       [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
       { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions });
