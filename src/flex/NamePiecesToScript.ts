@@ -143,6 +143,12 @@ namespace Flexagonator {
       }
     }
 
+    // triangular bronze octadecaflexagon
+    if (sides === 3 && leafShape && leafShape.startsWith('bronze') && n === 18) {
+      const directions = Directions.make('/|//|/'.repeat(3));
+      return { angles: [30, 60], directions };
+    }
+
     // hexagonal regular decaflexagon
     if (sides === 6 && leafShape === 'regular' && n === 10) {
       return { directions: Directions.make('//|//'.repeat(2)) };
