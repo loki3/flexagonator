@@ -1,0 +1,247 @@
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>book: naming</title>
+
+  <style>
+    body {
+      font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      font-weight: normal;
+      text-align: center;
+    }
+
+  </style>
+
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    // draw a flexagon from its name
+    function drawFlexagon(canvasId, name, rotation, showNumbers) {
+      var fm = Flexagonator.createFromScript([{ name }]);
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: showNumbers ? { showFoldingOrder: true } : {} });
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Flexagon Naming</h1>
+
+  <ul>
+    <li><a href="#overall-shape">overall shape</a></li>
+    <li><a href="#leaf-shape">leaf shape</a></li>
+    <li><a href="#pat-count">pat count</a></li>
+  </ul>
+
+  <!-- -->
+  <!-- overall shape -->
+  <hr />
+  <h2 id="overall-shape">overall shape</h2>
+
+  <table>
+    <tr>
+      <td>TRIANGULAR</td>
+    </tr>
+    <tr>
+      <td><b>triangular</b> <br/> bronze <br/> hexaflexagon</td>
+      <td><b>triangular</b> <br/> ring <br/> dodecaflexagon</td>
+      <td><b>triangular</b> <br/> bronze <br/> octadecaflexagon</td>
+      <td><b>triangular</b> <br/> trapezoid <br/> triflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-tri-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-tri-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-tri-octadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-tri-tri" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>QUADRILATERAL</td>
+    </tr>
+    <tr>
+      <td><b>square</b> <br/> silver <br/> tetraflexagon</td>
+      <td><b>square</b> <br/> silver <br/> octaflexagon</td>
+      <td><b>square</b> <br/> ring <br/> hexadecaflexagon</td>
+      <td><b>square</b> <br/> tetraflexagon</td>
+      <td><b>rhombic</b> <br/> bronze <br/> tetraflexagon</td>
+      <td><b>rhombic</b> <br/> bronze <br/> hexadecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-square-silver-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-square-octa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-square-hexadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-square-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-rhombic-tetra" width="170" height="100"></canvas></td>
+      <td><canvas id="overall-shape-rhombic-hexadeca" width="170" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>PENTAGONAL</td>
+    </tr>
+    <tr>
+      <td><b>pentagonal</b> <br/> isosceles <br/> pentaflexagon</td>
+      <td><b>pentagonal</b> <br/> right <br/> decaflexagon</td>
+      <td><b>pentagonal ring</b> <br/> right <br/> icosaflexagon</td>
+      <td><b>pentagonal ring</b> <br/> trapezoid <br/> pentaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-penta-penta" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-penta-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-penta-icosa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-penta-trap" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>HEXAGONAL</td>
+    </tr>
+    <tr>
+      <td><b>hexagonal</b> <br/> isosceles <br/> hexaflexagon</td>
+      <td><b>hexagonal</b> <br/> bronze <br/> dodecaflexagon</td>
+      <td><b>hexagonal ring</b> <br/> bronze <br/> icositetraflexagon</td>
+      <td><b>hexagonal ring</b> <br/> isosceles <br/> octadecaflexagon</td>
+      <td><b>hexagonal</b> <br/> kite <br/> hexaflexagon</td>
+      <td><b>hexagonal ring</b> <br/> trapezoid <br/> hexaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-hexa-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-icositetra" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-octadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-kite" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-trap" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td><b>hexagonal ring</b> <br/> isosceles<br/> enneaflexagon</td>
+      <td><b>hexagonal</b> <br/>regular <br/> decaflexagon</td>
+      <td><b>hexagonal ring</b> <br/> isosceles<br/> dodecaflexagon</td>
+      <td><b>hexagonal</b> <br/> silver <br/> dodecaflexagon</td>
+      <td><b>hexagonal ring</b> <br/> regular<br/> dodecaflexagon</td>
+      <td><b>hexagonal ring</b> <br/> regular<br/> tetradecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-hexa-ennea" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-ring-iso-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-silver-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-ring-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-hexa-tetradeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>OCTAGONAL</td>
+    </tr>
+    <tr>
+      <td><b>octagonal</b> <br/> isosceles <br/> octaflexagon</td>
+      <td><b>octagonal ring</b> <br/> isosceles <br/> dodecaflexagon</td>
+      <td><b>octagonal star</b> <br/> isosceles <br/> octaflexagon</td>
+      <td><b>octagonal ring</b> <br/> isosceles <br/> hexadecaflexagon</td>
+      <td><b>octagonal ring</b> <br/> isosceles <br/> tetradecaflexagon</td>
+      <td><b>octagonal ring</b> <br/> trapezoid <br/> octaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-octa-octa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-octa-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-octa-star-octa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-octa-hexadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-octa-tetradeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-octa-trap" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>DECAGONAL</td>
+    </tr>
+    <tr>
+      <td><b>decagonal</b> <br/> isosceles <br/> decaflexagon</td>
+      <td><b>decagonal ring</b> <br/> isosceles <br/> icosaflexagon</td>
+      <td><b>decagonal star</b> <br/> isosceles <br/> decaflexagon</td>
+      <td><b>decagonal ring</b> <br/> isosceles <br/> pentadecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-deca-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-deca-icosa" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-deca-star-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-deca-pentadeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>DODECAGONAL</td>
+    </tr>
+    <tr>
+      <td><b>dodecagonal</b> <br/> isosceles <br/> dodecaflexagon</td>
+      <td><b>dodecagonal star</b> <br/> isosceles <br/> dodecaflexagon</td>
+      <td><b>dodecagonal ring</b> <br/> isosceles <br/> icositetraflexagon</td>
+      <td><b>dodecagonal</b> <br/> rhombus <br/> hexaflexagon</td>
+      <td><b>dodecagonal</b> <br/> pentagon <br/> tetraflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="overall-shape-dodeca-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-dodeca-star-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-dodeca-icositetra" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-dodeca-rhombus" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-dodeca-tetra" width="100" height="100"></canvas></td>
+    </tr>
+  </table>
+
+  <script type="text/javascript">
+    // tri
+    drawFlexagon("overall-shape-tri-hexa", "bronze hexaflexagon", 30);
+    drawFlexagon("overall-shape-tri-dodeca", "triangular ring dodecaflexagon", -15);
+    drawFlexagon("overall-shape-tri-octadeca", "triangular bronze octadecaflexagon", 60);
+    //drawFlexagon("overall-shape-tri-tri", "triangular trapezoid triflexagon", 60);
+    // quad
+    drawFlexagon("overall-shape-square-silver-tetra", "silver tetraflexagon", 45);
+    drawFlexagon("overall-shape-square-octa", "silver octaflexagon", 0);
+    drawFlexagon("overall-shape-square-hexadeca", "square ring hexadecaflexagon", -22);
+    //drawFlexagon("overall-shape-square-tetra", "square tetraflexagon", 0);
+    drawFlexagon("overall-shape-rhombic-tetra", "rhombic bronze tetraflexagon", -30);
+    drawFlexagon("overall-shape-rhombic-hexadeca", "rhombic bronze hexadecaflexagon", 90);
+    // penta
+    drawFlexagon("overall-shape-penta-penta", "pentaflexagon", 18);
+    drawFlexagon("overall-shape-penta-deca", "pentagonal right decaflexagon", -18);
+    drawFlexagon("overall-shape-penta-icosa", "pentagonal ring right icosaflexagon", -26);
+    //drawFlexagon("overall-shape-penta-trap", "pentagonal ring trapezoid pentaflexagon", 0);
+    // hexa
+    drawFlexagon("overall-shape-hexa-hexa", "hexaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-dodeca", "bronze dodecaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-icositetra", "hexagonal ring icositetraflexagon", 0);
+    drawFlexagon("overall-shape-hexa-octadeca", "hexagonal ring octadecaflexagon", 0);
+    //drawFlexagon("overall-shape-hexa-kite", "hexagonal kite hexaflexagon", 0);
+    //drawFlexagon("overall-shape-hexa-trap", "hexagonal ring trapezoid hexaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-ennea", "hexagonal ring enneaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-deca", "hexagonal regular decaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-ring-iso-dodeca", "hexagonal ring isosceles dodecaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-silver-dodeca", "hexagonal silver dodecaflexagon", 45);
+    drawFlexagon("overall-shape-hexa-ring-dodeca", "hexagonal ring dodecaflexagon", 0);
+    drawFlexagon("overall-shape-hexa-tetradeca", "hexagonal ring tetradecaflexagon", 0);
+    // octa
+    drawFlexagon("overall-shape-octa-octa", "octaflexagon", 0);
+    drawFlexagon("overall-shape-octa-dodeca", "octagonal ring dodecaflexagon", 0);
+    drawFlexagon("overall-shape-octa-star-octa", "octagonal star octaflexagon", 0);
+    drawFlexagon("overall-shape-octa-hexadeca", "octagonal ring isosceles hexadecaflexagon", 0);
+    drawFlexagon("overall-shape-octa-tetradeca", "octagonal ring tetradecaflexagon", 0);
+    //drawFlexagon("overall-shape-octa-trap", "octagonal flexagon", 0);
+    // deca
+    drawFlexagon("overall-shape-deca-deca", "decaflexagon", 0);
+    drawFlexagon("overall-shape-deca-icosa", "decagonal ring isosceles icosaflexagon", 0);
+    drawFlexagon("overall-shape-deca-star-deca", "star decaflexagon", 0);
+    drawFlexagon("overall-shape-deca-pentadeca", "decagonal ring pentadecaflexagon", 0);
+    // dodeca
+    drawFlexagon("overall-shape-dodeca-dodeca", "dodecagonal dodecaflexagon", 0);
+    drawFlexagon("overall-shape-dodeca-star-dodeca", "star dodecaflexagon", 0);
+    drawFlexagon("overall-shape-dodeca-icositetra", "dodecagonal ring isosceles icositetraflexagon", 0);
+    //drawFlexagon("overall-shape-dodeca-rhombus", "dodecagonal rhombus hexaflexagon", 0);
+    //drawFlexagon("overall-shape-dodeca-tetra", "dodecagonal pentagon tetraflexagon", 0);
+  </script>
+
+  <!-- -->
+  <!-- leaf shape -->
+  <hr />
+  <h2 id="leaf-shape">leaf shape</h2>
+
+  <!-- -->
+  <!-- pat count -->
+  <hr />
+  <h2 id="pat-count">pat count</h2>
+
+</body>
+
+</html>
