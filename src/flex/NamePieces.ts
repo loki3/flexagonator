@@ -20,7 +20,7 @@ namespace Flexagonator {
     'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal' | 'heptagonal' | 'octagonal' | 'enneagonal' |
     'decagonal' | 'hendecagonal' | 'dodecagonal' |
     'star' | 'octagonal ring' | 'decagonal ring' |
-    'square' | 'rectanglular' | 'rhombic';
+    'square' | 'rectangular' | 'rhombic';
 
   // limited to various triangles because other shapes (like squares and pentagons) currently aren't supported
   export type LeafShapeType = 'triangle' | 'regular' | 'isosceles' | 'isosceles triangle'
