@@ -16,6 +16,12 @@
       text-align: center;
     }
 
+    td.label {
+      padding-bottom: 0px;
+      font-weight: bold;
+      text-align: left;
+    }
+
   </style>
 
   <script src="../build/out.js"></script>
@@ -45,7 +51,7 @@
 
   <table>
     <tr>
-      <td>TRIANGULAR</td>
+      <td class="label">triangular</td>
     </tr>
     <tr>
       <td><b>triangular</b> <br/> bronze <br/> hexaflexagon</td>
@@ -60,7 +66,7 @@
       <td><canvas id="overall-shape-tri-tri" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>QUADRILATERAL</td>
+      <td class="label">quadrilateral</td>
     </tr>
     <tr>
       <td><b>square</b> <br/> silver <br/> tetraflexagon</td>
@@ -75,11 +81,11 @@
       <td><canvas id="overall-shape-square-octa" width="100" height="100"></canvas></td>
       <td><canvas id="overall-shape-square-hexadeca" width="100" height="100"></canvas></td>
       <td><canvas id="overall-shape-square-tetra" width="100" height="100"></canvas></td>
-      <td><canvas id="overall-shape-rhombic-tetra" width="170" height="100"></canvas></td>
-      <td><canvas id="overall-shape-rhombic-hexadeca" width="170" height="100"></canvas></td>
+      <td><canvas id="overall-shape-rhombic-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="overall-shape-rhombic-hexadeca" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>PENTAGONAL</td>
+      <td class="label">pentagonal</td>
     </tr>
     <tr>
       <td><b>pentagonal</b> <br/> isosceles <br/> pentaflexagon</td>
@@ -94,7 +100,7 @@
       <td><canvas id="overall-shape-penta-trap" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>HEXAGONAL</td>
+      <td class="label">hexagonal</td>
     </tr>
     <tr>
       <td><b>hexagonal</b> <br/> isosceles <br/> hexaflexagon</td>
@@ -129,7 +135,7 @@
       <td><canvas id="overall-shape-hexa-tetradeca" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>OCTAGONAL</td>
+      <td class="label">octagonal</td>
     </tr>
     <tr>
       <td><b>octagonal</b> <br/> isosceles <br/> octaflexagon</td>
@@ -148,7 +154,7 @@
       <td><canvas id="overall-shape-octa-trap" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>DECAGONAL</td>
+      <td class="label">decagonal</td>
     </tr>
     <tr>
       <td><b>decagonal</b> <br/> isosceles <br/> decaflexagon</td>
@@ -163,7 +169,7 @@
       <td><canvas id="overall-shape-deca-pentadeca" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>DODECAGONAL</td>
+      <td class="label">dodecagonal</td>
     </tr>
     <tr>
       <td><b>dodecagonal</b> <br/> isosceles <br/> dodecaflexagon</td>
@@ -192,8 +198,8 @@
     drawFlexagon("overall-shape-square-octa", "silver octaflexagon", 0);
     drawFlexagon("overall-shape-square-hexadeca", "square ring hexadecaflexagon", -22);
     //drawFlexagon("overall-shape-square-tetra", "square tetraflexagon", 0);
-    drawFlexagon("overall-shape-rhombic-tetra", "rhombic bronze tetraflexagon", -30);
-    drawFlexagon("overall-shape-rhombic-hexadeca", "rhombic bronze hexadecaflexagon", 90);
+    drawFlexagon("overall-shape-rhombic-tetra", "rhombic bronze tetraflexagon", -45);
+    drawFlexagon("overall-shape-rhombic-hexadeca", "rhombic bronze hexadecaflexagon", 75);
     // penta
     drawFlexagon("overall-shape-penta-penta", "pentaflexagon", 18);
     drawFlexagon("overall-shape-penta-deca", "pentagonal right decaflexagon", -18);
@@ -244,7 +250,7 @@
 
   <table>
     <tr>
-      <td>TETRA</td>
+      <td class="label">tetra</td>
     </tr>
     <tr>
       <td>square <br/> silver <br/> <b>tetra</b>flexagon</td>
@@ -263,7 +269,7 @@
       <td><canvas id="pat-count-tetra-hexadeca" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>PENTA</td>
+      <td class="label">penta</td>
     </tr>
     <tr>
       <td>pentagonal <br/> isosceles <br/> <b>penta</b>flexagon</td>
@@ -274,7 +280,7 @@
       <td><canvas id="pat-count-penta-trap" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>HEXA</td>
+      <td class="label">hexa</td>
     </tr>
     <tr>
       <td>hexagonal <br/> regular <br/> <b>hexa</b>flexagon</td>
@@ -293,11 +299,11 @@
       <td><canvas id="pat-count-hexa-rhombus" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>HEPTA</td>
-      <td>OCTA</td>
-      <td></td>
-      <td></td>
-      <td>ENNEA</td>
+      <td class="label">hepta</td>
+      <td class="label">octa</td>
+      <td class="label"></td>
+      <td class="label"></td>
+      <td class="label">ennea</td>
     </tr>
     <tr>
       <td>heptagonal <br/> regular <br/> <b>hepta</b>flexagon</td>
@@ -316,7 +322,7 @@
       <td><canvas id="pat-count-ennea-ring" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>DECA</td>
+      <td class="label">deca</td>
     </tr>
     <tr>
       <td>decagonal <br/> regular <br/> <b>deca</b>flexagon</td>
@@ -331,7 +337,7 @@
       <td><canvas id="pat-count-deca-hexa" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td>DODECA</td>
+      <td class="label">dodeca</td>
     </tr>
     <tr>
       <td>dodecagonal <br/> isosceles <br/> <b>dodeca</b>flexagon</td>
