@@ -224,7 +224,7 @@
     drawFlexagon("overall-shape-octa-star-octa", "star octaflexagon", 45);
     drawFlexagon("overall-shape-octa-hexadeca", "octagonal ring isosceles hexadecaflexagon", 0);
     drawFlexagon("overall-shape-octa-tetradeca", "octagonal ring tetradecaflexagon", 0);
-    //drawFlexagon("overall-shape-octa-trap", "octagonal flexagon", 0);
+    //drawFlexagon("overall-shape-octa-trap", "octagonal ring trapezoid octaflexagon", 0);
     // deca
     drawFlexagon("overall-shape-deca-deca", "decaflexagon", 0);
     drawFlexagon("overall-shape-deca-icosa", "decagonal ring isosceles icosaflexagon", 0);
@@ -242,6 +242,217 @@
   <!-- leaf shape -->
   <hr />
   <h2 id="leaf-shape">leaf shape</h2>
+
+  <table>
+    <tr>
+      <td class="label">regular</td>
+    </tr>
+    <tr>
+      <td>hexagonal <br/> <b>regular</b> <br/> hexaflexagon</td>
+      <td>hexagonal <br/> <b>regular</b> <br/> decaflexagon</td>
+      <td>hexagonal ring <br/> <b>regular</b> <br/> dodecaflexagon</td>
+      <td>hexagonal ring <br/> <b>regular</b> <br/> tetradecaflexagon</td>
+      <td>hexagonal ring <br/> <b>regular</b> <br/> octadecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-hexa-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hexa-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hexa-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hexa-tetradeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hexa-octadeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">silver</td>
+    </tr>
+    <tr>
+      <td>square <br/> <b>silver</b> <br/> tetraflexagon</td>
+      <td>square <br/> <b>silver</b> <br/> octaflexagon</td>
+      <td>hexagonal <br/> <b>silver</b> <br/> dodecaflexagon</td>
+      <td>hexagonal <br/> <b>silver</b> <br/> tetradecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-silver-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-silver-octa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-silver-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-silver-tetradeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">bronze</td>
+    </tr>
+    <tr>
+      <td>rhombic <br/> <b>bronze</b> <br/> tetraflexagon</td>
+      <td>triangular <br/> <b>bronze</b> <br/> hexaflexagon</td>
+      <td>hexagonal <br/> <b>bronze</b> <br/> dodecaflexagon</td>
+      <td>rhombic <br/> <b>bronze</b> <br/> hexadecaflexagon</td>
+      <td>hexagonal ring <br/> <b>bronze</b> <br/> icositetraflexagon</td>
+      <td>triangular <br/> <b>bronze</b> <br/> octadecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-bronze-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-bronze-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-bronze-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-bronze-hexadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-bronze-icositetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-bronze-octadeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">right</td>
+    </tr>
+    <tr>
+      <td>pentagonal <br/> <b>right</b> <br/> decaflexagon</td>
+      <td>triangular ring <br/> <b>right</b> <br/> dodecaflexagon</td>
+      <td>square ring <br/> <b>right</b> <br/> hexadecaflexagon</td>
+      <td>pentagonal ring <br/> <b>right</b> <br/> icosaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-right-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-right-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-right-hexadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-right-icosa" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">isosceles</td>
+    </tr>
+    <tr>
+      <td>pentagonal <br/> <b>isosceles</b> <br/> pentaflexagon</td>
+      <td>heptagonal <br/> <b>isosceles</b> <br/> heptaflexagon</td>
+      <td>enneagonal <br/> <b>isosceles</b> <br/> enneaflexagon</td>
+      <td>decagonal <br/> <b>isosceles</b> <br/> decaflexagon</td>
+      <td>dodecagonal <br/> <b>isosceles</b> <br/> dodecaflexagon</td>
+      <td>star <br/> <b>isosceles</b> <br/> decaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-penta" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hepta" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-ennea" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-deca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-star-deca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>hexagonal ring <br/> <b>isosceles</b> <br/> enneaflexagon</td>
+      <td>octagonal ring <br/> <b>isosceles</b> <br/> dodecaflexagon</td>
+      <td>decagonal ring <br/> <b>isosceles</b> <br/> pentadecaflexagon</td>
+      <td>tetradecagonal ring <br/> <b>isosceles</b> <br/> icosihenaflexagon</td>
+      <td>hexadecagonal ring <br/> <b>isosceles</b> <br/> icositetraflexagon</td>
+      <td>star <br/> <b>isosceles</b> <br/> dodecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-iso-hexa-ennea" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-octa-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-deca-pentadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-tetradeca-icosihena" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-hexadeca-icositetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-star-dodeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>hexagonal ring <br/> <b>isosceles</b> <br/> dodecaflexagon</td>
+      <td>octagonal ring <br/> <b>isosceles</b> <br/> hexadecaflexagon</td>
+      <td>decagonal ring <br/> <b>isosceles</b> <br/> icosaflexagon</td>
+      <td>dodecagonal ring <br/> <b>isosceles</b> <br/> icositetraflexagon</td>
+      <td>octagonal ring <br/> <b>isosceles</b> <br/> tetradecaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-iso-hexa-dodeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-octa-hexadeca" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-deca-icosa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-dodeca-icositetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-iso-octa-tetradeca" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">quadrilateral</td>
+    </tr>
+    <tr>
+      <td><b>square</b> <br/> tetraflexagon</td>
+      <td>hexagonal <br/> <b>kite</b> <br/> hexaflexagon</td>
+      <td>dodecagonal <br/> <b>rhombus</b> <br/> hexaflexagon</td>
+      <td>square ring <br/> <b>trapezoid</b> <br/> tetraflexagon</td>
+      <td>pentagonal ring <br/> <b>trapezoid</b> <br/> pentaflexagon</td>
+      <td>hexagonal ring <br/> <b>trezoid</b> <br/> hexaflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-square-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-kite-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-rhombus-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-trap-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-trap-penta" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-trap-hexa" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">etc.</td>
+    </tr>
+    <tr>
+      <td><b>pentagon</b> <br/> tetraflexagon</td>
+      <td><b>pentagon</b> <br/> hexaflexagon</td>
+      <td><b>hexagon</b> <br/> tetraflexagon</td>
+      <td><b>heptagon</b> <br/> tetraflexagon</td>
+      <td><b>octagon</b> <br/> tetraflexagon</td>
+    </tr>
+    <tr>
+      <td><canvas id="leaf-shape-penta-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-penta-hexa" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hexa-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-hepta-tetra" width="100" height="100"></canvas></td>
+      <td><canvas id="leaf-shape-octa-tetra" width="100" height="100"></canvas></td>
+    </tr>
+  </table>
+
+  <script type="text/javascript">
+    // regular
+    drawFlexagon("leaf-shape-hexa-hexa", "hexaflexagon", 0);
+    drawFlexagon("leaf-shape-hexa-deca", "hexagonal regular decaflexagon", 0);
+    drawFlexagon("leaf-shape-hexa-dodeca", "hexagonal ring dodecaflexagon", 0);
+    drawFlexagon("leaf-shape-hexa-tetradeca", "hexagonal ring tetradecaflexagon", 0);
+    drawFlexagon("leaf-shape-hexa-octadeca", "hexagonal ring octadecaflexagon", 0);
+    // silver
+    drawFlexagon("leaf-shape-silver-tetra", "silver tetraflexagon", 45);
+    drawFlexagon("leaf-shape-silver-octa", "silver octaflexagon", 0);
+    drawFlexagon("leaf-shape-silver-dodeca", "hexagonal silver dodecaflexagon", 45);
+    drawFlexagon("leaf-shape-silver-tetradeca", "hexagonal silver tetradecaflexagon", 0);
+    // bronze
+    drawFlexagon("leaf-shape-bronze-tetra", "bronze tetraflexagon", -45);
+    drawFlexagon("leaf-shape-bronze-hexa", "bronze hexaflexagon", 30);
+    drawFlexagon("leaf-shape-bronze-dodeca", "bronze dodecaflexagon", 30);
+    drawFlexagon("leaf-shape-bronze-hexadeca", "rhombic bronze hexadecaflexagon", 75);
+    drawFlexagon("leaf-shape-bronze-icositetra", "hexagonal ring icositetraflexagon", 0);
+    drawFlexagon("leaf-shape-bronze-octadeca", "triangular bronze octadecaflexagon", 60);
+    // right
+    drawFlexagon("leaf-shape-right-deca", "right decaflexagon", -18);
+    drawFlexagon("leaf-shape-right-dodeca", "triangular ring dodecaflexagon", -15);
+    drawFlexagon("leaf-shape-right-hexadeca", "square ring hexadecaflexagon", -22);
+    drawFlexagon("leaf-shape-right-icosa", "pentagonal ring icosaflexagon", -27);
+    // isosceles
+    drawFlexagon("leaf-shape-penta", "pentaflexagon", 18);
+    drawFlexagon("leaf-shape-hepta", "heptaflexagon", -12);
+    drawFlexagon("leaf-shape-ennea", "enneaflexagon", 10);
+    drawFlexagon("leaf-shape-deca", "decaflexagon", 0);
+    drawFlexagon("leaf-shape-dodeca", "dodecaflexagon", 0);
+    drawFlexagon("leaf-shape-star-deca", "star decaflexagon", 18);
+    drawFlexagon("leaf-shape-star-dodeca", "star dodecaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-hexa-ennea", "hexagonal ring enneaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-octa-dodeca", "octagonal ring dodecaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-deca-pentadeca", "decagonal ring pentadecaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-tetradeca-icosihena", "tetradecagonal ring icosihenaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-hexadeca-icositetra", "hexadecagonal ring icositetraflexagon", 0);
+    drawFlexagon("leaf-shape-iso-hexa-dodeca", "hexagonal ring isosceles dodecaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-octa-hexadeca", "octagonal ring isosceles hexadecaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-deca-icosa", "decagonal ring isosceles icosaflexagon", 0);
+    drawFlexagon("leaf-shape-iso-dodeca-icositetra", "dodecagonal ring isosceles icositetraflexagon", 0);
+    drawFlexagon("leaf-shape-iso-octa-tetradeca", "octagonal ring isosceles tetradecaflexagon", 0);
+    // quadrilateral
+    //drawFlexagon("leaf-shape-square-tetra", "square tetraflexagon", 0);
+    //drawFlexagon("leaf-shape-kite-hexa", "hexagonal kite hexaflexagon", 0);
+    //drawFlexagon("leaf-shape-rhombus-hexa", "dodecagonal rhombus hexaflexagon", 0);
+    //drawFlexagon("leaf-shape-trap-tetra", "square ring trapezoid tetraflexagon", 0);
+    //drawFlexagon("leaf-shape-trap-penta", "pentagonal ring trapezoid pentaflexagon", 0);
+    //drawFlexagon("leaf-shape-trap-hexa", "hexagonal ring trezoid hexaflexagon", 0);
+    // etc
+    //drawFlexagon("leaf-shape-penta-tetra", "pentagon tetraflexagon", 0);
+    //drawFlexagon("leaf-shape-penta-hexa", "pentagon hexaflexagon", 0);
+    //drawFlexagon("leaf-shape-hexa-tetra", "hexagon tetraflexagon", 0);
+    //drawFlexagon("leaf-shape-hepta-tetra", "heptagon tetraflexagon", 0);
+    //drawFlexagon("leaf-shape-octa-tetra", "octagon tetraflexagon", 0);
+  </script>
 
   <!-- -->
   <!-- pat count -->
