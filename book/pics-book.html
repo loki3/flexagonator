@@ -592,48 +592,6 @@
 
   <h3 id="naming">naming</h3>
 
-  <h4>triangle flexagons</h4>
-  <canvas id="triangle-hexa" width="250" height="250"></canvas>
-  <canvas id="triangle-bronze-hexa" width="250" height="250"></canvas>
-  <canvas id="triangle-hepta" width="250" height="250"></canvas>
-  <canvas id="triangle-star-deca" width="250" height="250"></canvas>
-  <script type="text/javascript">
-    drawFlexagonSimple("triangle-hexa", 6);
-    drawFlexagonSimple("triangle-bronze-hexa", 6, [60, 90]);
-    drawFlexagonSimple("triangle-hepta", 7);
-    drawFlexagonSimple("triangle-star-deca", 10, [36, 108]);
-  </script>
-
-  <h4>bronze flexagons</h4>
-  <canvas id="bronze-tetra" width="250" height="250"></canvas>
-  <canvas id="bronze-hexa" width="250" height="250"></canvas>
-  <canvas id="bronze-dodeca" width="250" height="250"></canvas>
-  <script type="text/javascript">
-    drawFlexagonSimple("bronze-tetra", 4, [90, 30]);
-    drawFlexagonSimple("bronze-hexa", 6, [60, 90]);
-    drawFlexagonSimple("bronze-dodeca", 12, [30, 60]);
-  </script>
-
-  <h4>hexaflexagons</h4>
-  <canvas id="hexa1" width="250" height="250"></canvas>
-  <canvas id="hexa2" width="250" height="250"></canvas>
-  <canvas id="hexa3" width="250" height="250"></canvas>
-  <script type="text/javascript">
-    drawFlexagonSimple("hexa1", 6);
-    drawFlexagonSimple("hexa2", 6, [60, 90]);
-    drawFlexagonSimple("hexa3", 6, [60, 105]);
-  </script>
-
-  <h4>dodecaflexagons</h4>
-  <canvas id="dodeca1" width="250" height="250"></canvas>
-  <canvas id="dodeca2" width="250" height="250"></canvas>
-  <canvas id="dodeca3" width="250" height="250"></canvas>
-  <script type="text/javascript">
-    drawFlexagonSimple("dodeca1", 12);
-    drawFlexagonSimple("dodeca2", 12, [30, 90]);
-    drawFlexagonSimple("dodeca3", 12, [30, 120]);
-  </script>
-
   <h4>hexa-hexaflexagon templates</h4>
   <canvas id="name-hexa-hexa1" width="900" height="110"></canvas>
   <br/>
@@ -645,42 +603,6 @@
     drawStripPinch("name-hexa-hexa3", 6, "(P*)4", -30);
   </script>
 
-  <h4>other examples:</h4>
-  <table>
-    <tr>
-      <th>regular<br/>hexaflexagon</th>
-      <th>triangular bronze<br/>hexaflexagon<br/></th>
-      <th>heptaflexagon</th>
-    </tr>
-    <tr>
-      <td><canvas id="t-hexa" width="250" height="250"></canvas></td>
-      <td><canvas id="t-bronze-hexa" width="250" height="250"></canvas></td>
-      <td><canvas id="t-hepta" width="250" height="250"></canvas></td>
-    </tr>
-  </table>
-  <script type="text/javascript">
-    drawFlexagonSimple("t-hexa", 6);
-    drawFlexagonSimple("t-bronze-hexa", 6, [60, 90]);
-    drawFlexagonSimple("t-hepta", 7);
-  </script>
-
-  <table>
-    <tr>
-      <th>isosceles triangle<br/>dodecaflexagon</th>
-      <th>hexagonal bronze<br/>dodecaflexagon<br/></th>
-      <th>star isosceles triangle<br/>dodecaflexagon<br/></th>
-    </tr>
-    <tr>
-      <td><canvas id="t-iso-dodeca" width="250" height="250"></canvas></td>
-      <td><canvas id="t-bronze-dodeca" width="250" height="250"></canvas></td>
-      <td><canvas id="t-star-dodeca" width="250" height="250"></canvas></td>
-    </tr>
-  </table>
-  <script type="text/javascript">
-    drawFlexagonSimple("t-iso-dodeca", 12);
-    drawFlexagonSimple("t-bronze-dodeca", 12, [30, 90]);
-    drawFlexagonSimple("t-star-dodeca", 12, [30, 120]);
-  </script>
   <hr />
 
   <!-- state-diagrams -->
