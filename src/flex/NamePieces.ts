@@ -22,9 +22,13 @@ namespace Flexagonator {
     'star' | 'octagonal ring' | 'decagonal ring' |
     'square' | 'rectangular' | 'rhombic';
 
-  // limited to various triangles because other shapes (like squares and pentagons) currently aren't supported
+  // various triangles are supported, while other shapes have very limited support
   export type LeafShapeType = 'triangle' | 'regular' | 'isosceles' | 'isosceles triangle'
-    | 'right' | 'right triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle';
+    | 'right' | 'right triangle' | 'silver' | 'silver triangle' | 'bronze' | 'bronze triangle'
+    // limited support
+    | 'square' | 'rhombus' | 'kite' | 'trapezoid'
+    | 'pentagon' | 'hexagon' | 'heptagon' | 'octagon'
+    ;
 
   // greek number prefixes (simplified) - see https://en.wikipedia.org/wiki/List_of_polygons#List_of_n-gons_by_Greek_numerical_prefixes
   export type GreekNumberType =

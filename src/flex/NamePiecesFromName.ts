@@ -30,13 +30,19 @@ namespace Flexagonator {
       || (lastWord === 'triangle' && (secondToLastWord !== 'regular' && secondToLastWord !== 'silver' && secondToLastWord !== 'bronze' && secondToLastWord !== 'right' && secondToLastWord != 'isosceles'))) {
       // single word for leafShape
       const overallShape = words.length === 1 ? undefined : words.slice(0, words.length - 1).join(' ');
-      return [overallShape, lastWord]
+      return [overallShape, lastWord];
     }
     if (lastWord === 'triangle' && (secondToLastWord === 'regular' || secondToLastWord === 'silver' || secondToLastWord === 'bronze' || secondToLastWord === 'right' || secondToLastWord === 'isosceles')) {
       // two words for leafShape
       const overallShape = words.length === 2 ? undefined : words.slice(0, words.length - 2).join(' ');
       const leafShape = (secondToLastWord + ' ' + lastWord) as LeafShapeType;
       return [overallShape, leafShape];
+    }
+    if (lastWord === 'square' || lastWord === 'rhombus' || lastWord === 'kite' || lastWord === 'trapezoid'
+      || lastWord === 'pentagon' || lastWord === 'hexagon' || lastWord === 'heptagon' || lastWord === 'octagon') {
+      // single word for leafShape
+      const overallShape = words.length === 1 ? undefined : words.slice(0, words.length - 1).join(' ');
+      return [overallShape, lastWord];
     }
     // only overall shape
     return [words.join(' '), undefined];
