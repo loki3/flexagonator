@@ -192,26 +192,26 @@
     drawFlexagon("overall-shape-tri-hexa", "bronze hexaflexagon", 30);
     drawFlexagon("overall-shape-tri-dodeca", "triangular ring dodecaflexagon", -15);
     drawFlexagon("overall-shape-tri-octadeca", "triangular bronze octadecaflexagon", 60);
-    //drawFlexagon("overall-shape-tri-tri", "triangular trapezoid triflexagon", 60);
+    Flexagonator.drawByName("overall-shape-tri-tri", "triangular trapezoid triflexagon");
     // quad
     drawFlexagon("overall-shape-square-silver-tetra", "silver tetraflexagon", 45);
     drawFlexagon("overall-shape-square-octa", "silver octaflexagon", 0);
     drawFlexagon("overall-shape-square-hexadeca", "square ring hexadecaflexagon", -22);
-    //drawFlexagon("overall-shape-square-tetra", "square tetraflexagon", 0);
+    Flexagonator.drawByName("overall-shape-square-tetra", "square tetraflexagon");
     drawFlexagon("overall-shape-rhombic-tetra", "rhombic bronze tetraflexagon", -45);
     drawFlexagon("overall-shape-rhombic-hexadeca", "rhombic bronze hexadecaflexagon", 75);
     // penta
     drawFlexagon("overall-shape-penta-penta", "pentaflexagon", 18);
     drawFlexagon("overall-shape-penta-deca", "pentagonal right decaflexagon", -18);
     drawFlexagon("overall-shape-penta-icosa", "pentagonal ring right icosaflexagon", -26);
-    //drawFlexagon("overall-shape-penta-trap", "pentagonal ring trapezoid pentaflexagon", 0);
+    Flexagonator.drawByName("overall-shape-penta-trap", "pentagonal ring trapezoid pentaflexagon");
     // hexa
     drawFlexagon("overall-shape-hexa-hexa", "hexaflexagon", 0);
     drawFlexagon("overall-shape-hexa-dodeca", "bronze dodecaflexagon", 0);
     drawFlexagon("overall-shape-hexa-icositetra", "hexagonal ring icositetraflexagon", 0);
     drawFlexagon("overall-shape-hexa-octadeca", "hexagonal ring octadecaflexagon", 0);
-    //drawFlexagon("overall-shape-hexa-kite", "hexagonal kite hexaflexagon", 0);
-    //drawFlexagon("overall-shape-hexa-trap", "hexagonal ring trapezoid hexaflexagon", 0);
+    Flexagonator.drawByName("overall-shape-hexa-kite", "hexagonal kite hexaflexagon");
+    Flexagonator.drawByName("overall-shape-hexa-trap", "hexagonal ring trapezoid hexaflexagon");
     drawFlexagon("overall-shape-hexa-ennea", "hexagonal ring enneaflexagon", 0);
     drawFlexagon("overall-shape-hexa-deca", "hexagonal regular decaflexagon", 0);
     drawFlexagon("overall-shape-hexa-ring-iso-dodeca", "hexagonal ring isosceles dodecaflexagon", 0);
@@ -224,7 +224,7 @@
     drawFlexagon("overall-shape-octa-star-octa", "star octaflexagon", 45);
     drawFlexagon("overall-shape-octa-hexadeca", "octagonal ring isosceles hexadecaflexagon", 0);
     drawFlexagon("overall-shape-octa-tetradeca", "octagonal ring tetradecaflexagon", 0);
-    //drawFlexagon("overall-shape-octa-trap", "octagonal ring trapezoid octaflexagon", 0);
+    Flexagonator.drawByName("overall-shape-octa-trap", "octagonal ring trapezoid octaflexagon");
     // deca
     drawFlexagon("overall-shape-deca-deca", "decaflexagon", 0);
     drawFlexagon("overall-shape-deca-icosa", "decagonal ring isosceles icosaflexagon", 0);
@@ -234,8 +234,8 @@
     drawFlexagon("overall-shape-dodeca-dodeca", "dodecagonal dodecaflexagon", 0);
     drawFlexagon("overall-shape-dodeca-star-dodeca", "star dodecaflexagon", 0);
     drawFlexagon("overall-shape-dodeca-icositetra", "dodecagonal ring isosceles icositetraflexagon", 0);
-    //drawFlexagon("overall-shape-dodeca-rhombus", "dodecagonal rhombus hexaflexagon", 0);
-    //drawFlexagon("overall-shape-dodeca-tetra", "dodecagonal pentagon tetraflexagon", 0);
+    Flexagonator.drawByName("overall-shape-dodeca-rhombus", "dodecagonal rhombus hexaflexagon");
+    Flexagonator.drawByName("overall-shape-dodeca-tetra", "dodecagonal pentagon tetraflexagon");
   </script>
 
   <!-- -->
@@ -354,7 +354,7 @@
       <td>dodecagonal <br/> <b>rhombus</b> <br/> hexaflexagon</td>
       <td>square ring <br/> <b>trapezoid</b> <br/> tetraflexagon</td>
       <td>pentagonal ring <br/> <b>trapezoid</b> <br/> pentaflexagon</td>
-      <td>hexagonal ring <br/> <b>trezoid</b> <br/> hexaflexagon</td>
+      <td>hexagonal ring <br/> <b>trapezoid</b> <br/> hexaflexagon</td>
     </tr>
     <tr>
       <td><canvas id="leaf-shape-square-tetra" width="100" height="100"></canvas></td>
@@ -371,6 +371,7 @@
       <td><b>pentagon</b> <br/> tetraflexagon</td>
       <td><b>pentagon</b> <br/> hexaflexagon</td>
       <td><b>hexagon</b> <br/> tetraflexagon</td>
+      <td><b>hexagon</b> <br/> hexaflexagon</td>
       <td><b>heptagon</b> <br/> tetraflexagon</td>
       <td><b>octagon</b> <br/> tetraflexagon</td>
     </tr>
@@ -421,18 +422,18 @@
     drawFlexagon("leaf-shape-iso-octa-hexadeca", "octagonal ring isosceles hexadecaflexagon", 0);
     drawFlexagon("leaf-shape-iso-octa-tetradeca", "octagonal ring isosceles tetradecaflexagon", 0);
     // quadrilateral
-    //drawFlexagon("leaf-shape-square-tetra", "square tetraflexagon", 0);
-    //drawFlexagon("leaf-shape-kite-hexa", "hexagonal kite hexaflexagon", 0);
-    //drawFlexagon("leaf-shape-rhombus-hexa", "dodecagonal rhombus hexaflexagon", 0);
-    //drawFlexagon("leaf-shape-trap-tetra", "square ring trapezoid tetraflexagon", 0);
-    //drawFlexagon("leaf-shape-trap-penta", "pentagonal ring trapezoid pentaflexagon", 0);
-    //drawFlexagon("leaf-shape-trap-hexa", "hexagonal ring trezoid hexaflexagon", 0);
+    Flexagonator.drawByName("leaf-shape-square-tetra", "square tetraflexagon");
+    Flexagonator.drawByName("leaf-shape-kite-hexa", "hexagonal kite hexaflexagon");
+    Flexagonator.drawByName("leaf-shape-rhombus-hexa", "dodecagonal rhombus hexaflexagon");
+    Flexagonator.drawByName("leaf-shape-trap-tetra", "square ring trapezoid tetraflexagon");
+    Flexagonator.drawByName("leaf-shape-trap-penta", "pentagonal ring trapezoid pentaflexagon");
+    Flexagonator.drawByName("leaf-shape-trap-hexa", "hexagonal ring trapezoid hexaflexagon");
     // etc
-    //drawFlexagon("leaf-shape-penta-tetra", "pentagon tetraflexagon", 0);
-    //drawFlexagon("leaf-shape-penta-hexa", "pentagon hexaflexagon", 0);
-    //drawFlexagon("leaf-shape-hexa-tetra", "hexagon tetraflexagon", 0);
-    //drawFlexagon("leaf-shape-hepta-tetra", "heptagon tetraflexagon", 0);
-    //drawFlexagon("leaf-shape-octa-tetra", "octagon tetraflexagon", 0);
+    Flexagonator.drawByName("leaf-shape-penta-tetra", "pentagon tetraflexagon");
+    Flexagonator.drawByName("leaf-shape-penta-hexa", "pentagon hexaflexagon");
+    Flexagonator.drawByName("leaf-shape-hexa-tetra", "hexagon tetraflexagon");
+    Flexagonator.drawByName("leaf-shape-hepta-tetra", "heptagon tetraflexagon");
+    Flexagonator.drawByName("leaf-shape-octa-tetra", "octagon tetraflexagon");
   </script>
 
   <!-- -->
@@ -449,8 +450,8 @@
       <td>rhombic <br/> bronze <br/> <b>tetra</b>flexagon</td>
       <td>square <br/> <b>tetra</b>flexagon</td>
       <td>square ring <br/> trapezoid <br/> <b>tetra</b>flexagon</td>
-      <td>dodecagonal <br/> pentagon <br/> <b>tetra</b>flexagon</td>
-      <td>hexadecagonal <br/> hexagon <br/> <b>tetra</b>flexagon</td>
+      <td>pentagon <br/> <b>tetra</b>flexagon</td>
+      <td>hexagon <br/> <b>tetra</b>flexagon</td>
     </tr>
     <tr>
       <td><canvas id="pat-count-tetra-square-silver" width="100" height="100"></canvas></td>
@@ -553,20 +554,20 @@
     // tetra
     drawFlexagon("pat-count-tetra-square-silver", "square silver tetraflexagon", 45);
     drawFlexagon("pat-count-tetra-rhombic", "rhombic bronze tetraflexagon", -45);
-    //drawFlexagon("pat-count-tetra-square", "square tetraflexagon", 0);
-    //drawFlexagon("pat-count-tetra-square-ring", "square ring trapezoid tetraflexagon", 0);
-    //drawFlexagon("pat-count-tetra-dodeca", "dodecagonal pentagon tetraflexagon", 0);
-    //drawFlexagon("pat-count-tetra-hexadeca", "hexadecagonal hexagon tetraflexagon", 0);
+    Flexagonator.drawByName("pat-count-tetra-square", "square tetraflexagon");
+    Flexagonator.drawByName("pat-count-tetra-square-ring", "square ring trapezoid tetraflexagon");
+    Flexagonator.drawByName("pat-count-tetra-dodeca", "dodecagonal pentagon tetraflexagon");
+    Flexagonator.drawByName("pat-count-tetra-hexadeca", "hexadecagonal hexagon tetraflexagon");
     // penta
     drawFlexagon("pat-count-penta-penta", "pentagonal isosceles pentaflexagon", 18);
-    //drawFlexagon("pat-count-penta-trap", "pentagonal ring trapezoid pentaflexagon", 0);
+    Flexagonator.drawByName("pat-count-penta-trap", "pentagonal ring trapezoid pentaflexagon");
     // hexa
     drawFlexagon("pat-count-hexa-hexa", "hexaflexagon", 0);
     drawFlexagon("pat-count-hexa-bronze", "hexagonal bronze hexaflexagon", 30);
     drawFlexagon("pat-count-hexa-star", "star hexaflexagon", -30);
-    //drawFlexagon("pat-count-hexa-hexa-kite", "hexagonal kite hexaflexagon", 0);
-    //drawFlexagon("pat-count-hexa-hexa-trap", "hexagonal ring trapezoid hexaflexagon", 0);
-    //drawFlexagon("pat-count-hexa-hexa-rhombus", "dodecagonal rhombus hexaflexagon", 0);
+    Flexagonator.drawByName("pat-count-hexa-kite", "hexagonal kite hexaflexagon");
+    Flexagonator.drawByName("pat-count-hexa-trap", "hexagonal ring trapezoid hexaflexagon");
+    Flexagonator.drawByName("pat-count-hexa-rhombus", "dodecagonal rhombus hexaflexagon");
     // hepta
     drawFlexagon("pat-count-hepta", "heptaflexagon", -12);
     // octa
