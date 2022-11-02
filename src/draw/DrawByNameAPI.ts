@@ -178,9 +178,23 @@ namespace Flexagonator {
         fold: [{ r: 0, θ: -90 }, { r: 0.577, θ: -90 }]
       }
     ],
-    /*
-    pentagon hexaflexagon
-    hexagon hexaflexagon
-    */
+    [
+      { leafShape: 'pentagon', patsPrefix: 'hexa' },
+      { // 0.5 / (sqrt(3)/2) ~= 0.577
+        count: 6,
+        cut1: [{ r: 0.577, θ: -90 }, { r: 1, θ: -60 }, { r: 0.577, θ: -30 }],
+        cut2: [{ r: 0.25, θ: -90 }, { r: 0.25, θ: -30 }],
+        fold: [{ r: 0.25, θ: -90 }, { r: 0.577, θ: -90 }]
+      }
+    ],
+    [
+      { leafShape: 'hexagon', patsPrefix: 'hexa' },
+      {
+        count: 6,
+        cut1: [{ r: 0.768, θ: 0 }, { r: 1.01, θ: 19 }, { r: 1.01, θ: 41 }, { r: 0.768, θ: 60 }],
+        cut2: [{ r: 0.384, θ: 0 }, { r: 0.384, θ: 60 }],
+        fold: [{ r: 0.384, θ: 0 }, { r: 0.768, θ: 0 }]
+      }
+    ],
   ];
 }
