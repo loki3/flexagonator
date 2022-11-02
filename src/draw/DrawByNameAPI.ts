@@ -129,13 +129,38 @@ namespace Flexagonator {
         fold: [{ r: 0, θ: 0 }, { r: 1, θ: 0 }]
       }
     ],
-    /*
-    pentagon tetraflexagon
-    pentagon hexaflexagon
-    hexagon tetraflexagon
-    heptagon tetraflexagon
-    octagon tetraflexagon
-    */
+    [
+      { leafShape: 'pentagon', patsPrefix: 'tetra' },
+      {
+        count: 4,
+        cut1: [{ r: 0.6, θ: 0 }, { r: 1.07, θ: 22 }, { r: 1.07, θ: 68 }, { r: 0.6, θ: 90 }],
+        fold: [{ r: 0, θ: 0 }, { r: 0.6, θ: 0 }]
+      }
+    ],
+    [
+      { leafShape: 'hexagon', patsPrefix: 'tetra' },
+      {
+        count: 4,
+        cut1: [{ r: 0.6, θ: 0 }, { r: 1.07, θ: 22 }, { r: 1.4, θ: 45 }, { r: 1.07, θ: 68 }, { r: 0.6, θ: 90 }],
+        fold: [{ r: 0, θ: 0 }, { r: 0.6, θ: 0 }]
+      }
+    ],
+    [
+      { leafShape: 'heptagon', patsPrefix: 'tetra' },
+      {
+        count: 4,
+        cut1: [{ r: 0.6, θ: 0 }, { r: 1.02, θ: 15 }, { r: 1.202, θ: 35 }, { r: 1.202, θ: 55 }, { r: 1.02, θ: 75 }, { r: 0.6, θ: 90 }],
+        fold: [{ r: 0, θ: 0 }, { r: 0.6, θ: 0 }]
+      }
+    ],
+    [
+      { leafShape: 'octagon', patsPrefix: 'tetra' },
+      {
+        count: 4,
+        cut1: [{ r: 0.4, θ: 0 }, { r: 0.82, θ: 14 }, { r: 1.16, θ: 31 }, { r: 1.39, θ: 45 }, { r: 1.16, θ: 59 }, { r: 0.82, θ: 76 }, { r: 0.4, θ: 90 }],
+        fold: [{ r: 0, θ: 0 }, { r: 0.4, θ: 0 }]
+      }
+    ],
     // hexaflexagons
     [
       { overallShape: 'hexagonal', leafShape: 'kite', patsPrefix: 'hexa' },
