@@ -154,6 +154,15 @@ namespace Flexagonator {
       }
     ],
     [
+      { overallShape: 'ring', leafShape: 'octagon', patsPrefix: 'tetra' },
+      {
+        count: 4,
+        cut1: [{ r: 0.7, θ: 0 }, { r: 1.03, θ: 16 }, { r: 1.21, θ: 35 }, { r: 1.21, θ: 55 }, { r: 1.03, θ: 74 }, { r: 0.7, θ: 90 }],
+        cut2: [{ r: 0.29, θ: 0 }, { r: 0.29, θ: 90 }],
+        fold: [{ r: 0.29, θ: 0 }, { r: 0.7, θ: 0 }]
+      }
+    ],
+    [
       { leafShape: 'octagon', patsPrefix: 'tetra' },
       {
         count: 4,
