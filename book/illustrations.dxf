@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2459891.3392823958
+2459891.3980555441
   9
 $TDUUPDATE
  40
-2459891.6726157409
+2459891.7313888888
   9
 $TDINDWG
  40
-25.310381944444
+25.369143518519
   9
 $TDUSRTIMER
  40
-25.310381944444
+25.369143518519
   9
 $USRTIMER
  70
@@ -32131,7 +32131,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -32155,7 +32155,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32179,7 +32179,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32203,7 +32203,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -32213,7 +32213,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -32237,7 +32237,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32261,7 +32261,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32285,7 +32285,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -32295,7 +32295,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -32319,7 +32319,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32343,7 +32343,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32367,7 +32367,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -32377,7 +32377,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -32401,7 +32401,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32425,7 +32425,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32449,7 +32449,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -32459,7 +32459,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -32483,7 +32483,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32507,7 +32507,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32531,7 +32531,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -32541,7 +32541,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -32565,7 +32565,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32589,7 +32589,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -32613,7 +32613,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 LWPOLYLINE
   5
@@ -33059,7 +33059,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33083,7 +33083,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33107,7 +33107,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33131,7 +33131,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33141,7 +33141,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33165,7 +33165,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33189,7 +33189,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33213,7 +33213,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33223,7 +33223,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33247,7 +33247,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33271,7 +33271,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33295,7 +33295,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33305,7 +33305,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33329,7 +33329,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33353,7 +33353,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33377,7 +33377,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33387,7 +33387,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33411,7 +33411,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33435,7 +33435,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33459,7 +33459,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33469,7 +33469,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33493,7 +33493,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33517,7 +33517,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33541,7 +33541,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33551,7 +33551,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33575,7 +33575,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33599,7 +33599,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33623,7 +33623,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33633,7 +33633,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33657,7 +33657,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33681,7 +33681,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33705,7 +33705,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33715,7 +33715,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33739,7 +33739,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33763,7 +33763,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33787,7 +33787,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33797,7 +33797,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33821,7 +33821,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33845,7 +33845,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33869,7 +33869,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33879,7 +33879,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33903,7 +33903,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33927,7 +33927,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -33951,7 +33951,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -33961,7 +33961,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -33985,7 +33985,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34009,7 +34009,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34033,7 +34033,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34043,7 +34043,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34067,7 +34067,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34091,7 +34091,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34115,7 +34115,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34125,7 +34125,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34149,7 +34149,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34173,7 +34173,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34197,7 +34197,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34207,7 +34207,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34231,7 +34231,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34255,7 +34255,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34279,7 +34279,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34289,7 +34289,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34313,7 +34313,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34337,7 +34337,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34361,7 +34361,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34371,7 +34371,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34395,7 +34395,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34419,7 +34419,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34443,7 +34443,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34453,7 +34453,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34477,7 +34477,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34501,7 +34501,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34525,7 +34525,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34535,7 +34535,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34559,7 +34559,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34583,7 +34583,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34607,7 +34607,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -34617,7 +34617,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -34641,7 +34641,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34665,7 +34665,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -34689,7 +34689,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -35011,7 +35011,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -35035,7 +35035,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35059,7 +35059,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35083,7 +35083,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -35093,7 +35093,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -35117,7 +35117,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35141,7 +35141,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35165,7 +35165,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -35175,7 +35175,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -35199,7 +35199,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35223,7 +35223,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35247,7 +35247,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -35257,7 +35257,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -35281,7 +35281,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35305,7 +35305,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35329,7 +35329,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -35339,7 +35339,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -35363,7 +35363,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35387,7 +35387,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -35411,7 +35411,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -45815,7 +45815,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDb2dPolyline
  66
@@ -45841,7 +45841,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDbVertex
 100
@@ -45867,7 +45867,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDbVertex
 100
@@ -45893,7 +45893,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
   0
 POLYLINE
   5
@@ -45905,7 +45905,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDb2dPolyline
  66
@@ -45931,7 +45931,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDbVertex
 100
@@ -45957,7 +45957,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDbVertex
 100
@@ -45983,7 +45983,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
   0
 POLYLINE
   5
@@ -45995,7 +45995,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDb2dPolyline
  66
@@ -46021,7 +46021,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDbVertex
 100
@@ -46047,7 +46047,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
 100
 AcDbVertex
 100
@@ -46073,7 +46073,7 @@ AcDbEntity
   8
 fold-thick
  62
-    12
+   252
   0
 LWPOLYLINE
   5
