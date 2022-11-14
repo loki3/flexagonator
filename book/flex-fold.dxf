@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2459897.8134259144
+2459898.2848958219
   9
 $TDUUPDATE
  40
-2459898.146759259
+2459898.6182291666
   9
 $TDINDWG
  40
-1.105300925926
+1.126631944444
   9
 $TDUSRTIMER
  40
-1.105300925926
+1.126631944444
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-13C7F0
+13C801
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-5.434526
+5.434109
  22
--3.749506
+-3.699269
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-13.887146
+13.785875
  41
 1.782719
  42
@@ -1395,7 +1395,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-crease
+hinge
  70
      0
  62
@@ -2323,7 +2323,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -2347,7 +2347,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -2371,7 +2371,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -2395,7 +2395,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -2957,15 +2957,15 @@ AcDbPolyline
  43
 0.01
  10
-2.746447
+2.846447
  20
-1.053553
+1.353553
  42
 -0.410434
  10
-3.453553
+3.553553
  20
-1.053553
+1.353553
  42
 0.610292
   0
@@ -2987,21 +2987,21 @@ AcDbPolyline
  43
 0.01
  10
-3.4062
+3.5062
  20
-1.154834
+1.454834
  10
-3.4062
+3.5062
  20
-1.154834
+1.454834
  10
-3.453553
+3.553553
  20
-1.053553
+1.353553
  10
-3.344117
+3.444117
  20
-1.076439
+1.376439
   0
 LWPOLYLINE
   5
@@ -3021,21 +3021,21 @@ AcDbPolyline
  43
 0.01
  10
-3.1
+3.2
  20
-1.2
+1.5
  42
 -1.0
  10
-3.1
+3.2
  20
-1.0
+1.3
  42
 -1.0
  10
-3.1
+3.2
  20
-1.2
+1.5
  42
 0.414214
   0
@@ -3057,15 +3057,15 @@ AcDbPolyline
  43
 0.01
  10
-4.053553
+4.153553
  20
-1.253553
+1.553553
  42
 -0.410434
  10
-4.053553
+4.153553
  20
-0.546447
+0.846447
  42
 0.610292
   0
@@ -3087,21 +3087,21 @@ AcDbPolyline
  43
 0.01
  10
-4.154834
+4.254834
  20
-0.5938
+0.8938
  10
-4.154834
+4.254834
  20
-0.5938
+0.8938
  10
-4.053553
+4.153553
  20
-0.546447
+0.846447
  10
-4.076439
+4.176439
  20
-0.655883
+0.955883
   0
 LWPOLYLINE
   5
@@ -3121,21 +3121,21 @@ AcDbPolyline
  43
 0.01
  10
-4.2
+4.3
  20
-0.9
+1.2
  42
 -1.0
  10
-4.0
+4.1
  20
-0.9
+1.2
  42
 -1.0
  10
-4.2
+4.3
  20
-0.9
+1.2
  42
 0.414214
   0
@@ -3705,7 +3705,7 @@ E5
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -3729,7 +3729,7 @@ E6
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -3753,7 +3753,7 @@ E7
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -3777,7 +3777,7 @@ E8
 100
 AcDbEntity
   8
-crease
+hinge
   0
 TEXT
   5
@@ -3947,9 +3947,9 @@ AcDbEntity
 100
 AcDbText
  10
-2.7
+2.8
  20
-0.7
+1.0
  30
 0.0
  40
@@ -3973,9 +3973,9 @@ AcDbEntity
 100
 AcDbText
  10
-2.7
+2.8
  20
-0.5
+0.8
  30
 0.0
  40
@@ -3999,9 +3999,9 @@ AcDbEntity
 100
 AcDbText
  10
-4.3
+4.4
  20
-1.0
+1.3
  30
 0.0
  40
@@ -4025,9 +4025,9 @@ AcDbEntity
 100
 AcDbText
  10
-4.3
+4.4
  20
-0.8
+1.1
  30
 0.0
  40
@@ -5683,7 +5683,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -5707,7 +5707,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -5731,7 +5731,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -5755,7 +5755,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -5765,7 +5765,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -5789,7 +5789,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -5813,7 +5813,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -5837,7 +5837,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -6093,7 +6093,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -6117,7 +6117,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6141,7 +6141,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6165,7 +6165,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -6339,7 +6339,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -6363,7 +6363,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6387,7 +6387,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6411,7 +6411,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -6667,7 +6667,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -6691,7 +6691,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6715,7 +6715,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6739,7 +6739,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -6749,7 +6749,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -6773,7 +6773,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6797,7 +6797,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -6821,7 +6821,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -7077,7 +7077,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -7101,7 +7101,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -7125,7 +7125,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -7149,7 +7149,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -11987,48 +11987,6 @@ AcDbTrace
  33
 0.0
   0
-LWPOLYLINE
-  5
-13C418
-330
-1F
-100
-AcDbEntity
-  8
-cut
-100
-AcDbPolyline
- 90
-        6
- 70
-     1
- 43
-0.01
- 10
-4.019615
- 20
--4.6
- 10
-4.019615
- 20
--4.0
- 10
-3.5
- 20
--3.7
- 10
-2.980385
- 20
--4.0
- 10
-2.980385
- 20
--4.6
- 10
-3.5
- 20
--4.9
-  0
 POLYLINE
   5
 13C419
@@ -12037,7 +11995,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -12061,7 +12019,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -12085,7 +12043,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -12109,7 +12067,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 POLYLINE
   5
@@ -12119,7 +12077,7 @@ POLYLINE
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDb2dPolyline
  66
@@ -12143,7 +12101,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -12167,7 +12125,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -12191,7 +12149,7 @@ SEQEND
 100
 AcDbEntity
   8
-valley
+hinge
   0
 POLYLINE
   5
@@ -12201,7 +12159,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -12225,7 +12183,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -12249,15 +12207,15 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
 AcDb2dVertex
  10
-3.509808
+3.5
  20
--4.883013
+-4.9
  30
 0.0
  70
@@ -12273,7 +12231,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 POLYLINE
   5
@@ -12283,7 +12241,7 @@ POLYLINE
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDb2dPolyline
  66
@@ -12307,7 +12265,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -12331,7 +12289,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -12355,7 +12313,7 @@ SEQEND
 100
 AcDbEntity
   8
-valley
+hinge
   0
 POLYLINE
   5
@@ -12365,7 +12323,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -12389,7 +12347,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -12413,7 +12371,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -12437,7 +12395,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 POLYLINE
   5
@@ -12447,7 +12405,7 @@ POLYLINE
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDb2dPolyline
  66
@@ -12471,15 +12429,15 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
 AcDb2dVertex
  10
-3.490192
+3.5
  20
--3.716987
+-3.7
  30
 0.0
  70
@@ -12495,7 +12453,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -12519,7 +12477,7 @@ SEQEND
 100
 AcDbEntity
   8
-valley
+hinge
   0
 SOLID
   5
@@ -13597,7 +13555,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -13621,7 +13579,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13645,7 +13603,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13669,7 +13627,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -13679,7 +13637,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -13703,7 +13661,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13727,7 +13685,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13751,7 +13709,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -13761,7 +13719,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -13785,7 +13743,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13809,7 +13767,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13833,7 +13791,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -13843,7 +13801,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -13867,7 +13825,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13891,7 +13849,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13915,7 +13873,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -13925,7 +13883,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -13949,7 +13907,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13973,7 +13931,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -13997,7 +13955,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -14007,7 +13965,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -14031,7 +13989,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -14055,7 +14013,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -14079,7 +14037,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 SOLID
   5
@@ -16217,7 +16175,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbPolyline
  90
@@ -16809,7 +16767,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbPolyline
  90
@@ -20635,40 +20593,6 @@ AcDbTrace
  33
 0.0
   0
-LWPOLYLINE
-  5
-13C5F6
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbPolyline
- 90
-        4
- 70
-     1
- 43
-0.01
- 10
-10.6
- 20
--4.9
- 10
-11.2
- 20
--4.3
- 10
-10.6
- 20
--3.7
- 10
-10.0
- 20
--4.3
-  0
 POLYLINE
   5
 13C5F7
@@ -20677,7 +20601,7 @@ POLYLINE
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDb2dPolyline
  66
@@ -20701,7 +20625,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -20725,7 +20649,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -20749,7 +20673,7 @@ SEQEND
 100
 AcDbEntity
   8
-valley
+hinge
   0
 POLYLINE
   5
@@ -20759,7 +20683,7 @@ POLYLINE
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDb2dPolyline
  66
@@ -20783,7 +20707,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -20807,7 +20731,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -20831,7 +20755,7 @@ SEQEND
 100
 AcDbEntity
   8
-valley
+hinge
   0
 POLYLINE
   5
@@ -20923,7 +20847,7 @@ POLYLINE
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDb2dPolyline
  66
@@ -20947,7 +20871,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -20971,7 +20895,7 @@ VERTEX
 100
 AcDbEntity
   8
-valley
+hinge
 100
 AcDbVertex
 100
@@ -20995,7 +20919,7 @@ SEQEND
 100
 AcDbEntity
   8
-valley
+hinge
   0
 POLYLINE
   5
@@ -21005,7 +20929,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -21029,7 +20953,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21053,7 +20977,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21077,7 +21001,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 POLYLINE
   5
@@ -21087,7 +21011,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -21111,7 +21035,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21135,7 +21059,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21159,7 +21083,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 POLYLINE
   5
@@ -21169,7 +21093,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -21193,7 +21117,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21217,7 +21141,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21241,7 +21165,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 POLYLINE
   5
@@ -21251,7 +21175,7 @@ POLYLINE
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDb2dPolyline
  66
@@ -21275,7 +21199,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21299,7 +21223,7 @@ VERTEX
 100
 AcDbEntity
   8
-mountain
+hinge
 100
 AcDbVertex
 100
@@ -21323,7 +21247,7 @@ SEQEND
 100
 AcDbEntity
   8
-mountain
+hinge
   0
 TEXT
   5
@@ -21617,7 +21541,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -21641,7 +21565,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21665,7 +21589,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21689,7 +21613,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -21699,7 +21623,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -21723,7 +21647,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21747,7 +21671,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21771,7 +21695,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -21781,7 +21705,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -21805,7 +21729,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21829,7 +21753,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21853,7 +21777,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -21863,7 +21787,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -21887,7 +21811,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21911,7 +21835,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21935,7 +21859,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -21945,7 +21869,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -21969,7 +21893,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -21993,7 +21917,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -22017,7 +21941,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -22027,7 +21951,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -22051,7 +21975,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -22075,7 +21999,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -22099,7 +22023,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 LWPOLYLINE
   5
@@ -24317,7 +24241,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -24341,7 +24265,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -24365,7 +24289,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -24389,7 +24313,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -25355,7 +25279,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -25379,7 +25303,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25403,7 +25327,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25427,7 +25351,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -25437,7 +25361,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -25461,7 +25385,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25485,7 +25409,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25509,7 +25433,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -25519,7 +25443,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -25543,7 +25467,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25567,7 +25491,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25591,7 +25515,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -25601,7 +25525,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -25625,7 +25549,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25649,7 +25573,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25673,7 +25597,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -25683,7 +25607,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -25707,7 +25631,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25731,7 +25655,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25755,7 +25679,7 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
   0
 POLYLINE
   5
@@ -25765,7 +25689,7 @@ POLYLINE
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDb2dPolyline
  66
@@ -25789,7 +25713,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25813,7 +25737,7 @@ VERTEX
 100
 AcDbEntity
   8
-crease
+hinge
 100
 AcDbVertex
 100
@@ -25837,7 +25761,343 @@ SEQEND
 100
 AcDbEntity
   8
-crease
+hinge
+  0
+LWPOLYLINE
+  5
+13C7F0
+330
+1F
+100
+AcDbEntity
+  8
+cut
+100
+AcDbPolyline
+ 90
+        6
+ 70
+     1
+ 43
+0.01
+ 10
+4.019615
+ 20
+-4.6
+ 10
+4.019615
+ 20
+-4.0
+ 10
+3.5
+ 20
+-3.7
+ 10
+2.980385
+ 20
+-4.0
+ 10
+2.980385
+ 20
+-4.6
+ 10
+3.5
+ 20
+-4.9
+  0
+LWPOLYLINE
+  5
+13C7F1
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        4
+ 70
+     1
+ 43
+0.01
+ 10
+10.6
+ 20
+-4.9
+ 10
+11.2
+ 20
+-4.3
+ 10
+10.6
+ 20
+-3.7
+ 10
+10.0
+ 20
+-4.3
+  0
+TEXT
+  5
+13C7F2
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+3.9
+ 20
+0.3
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7F3
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+3.4
+ 20
+0.1
+ 30
+0.0
+ 40
+0.15
+  1
+current hinge
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7F4
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.45
+ 20
+-3.711
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7F5
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+3.45
+ 20
+-3.711
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7F6
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+6.05
+ 20
+-3.711
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7F7
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+10.55
+ 20
+-3.711
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7F9
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+5.534582
+ 20
+-7.671246
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7FD
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.45
+ 20
+-5.811
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7FE
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.45
+ 20
+-9.311
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13C7FF
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+6.45
+ 20
+-9.311
+ 30
+0.0
+ 40
+0.15
+  1
+*
+  7
+labels
+100
+AcDbText
   0
 ENDSEC
   0
