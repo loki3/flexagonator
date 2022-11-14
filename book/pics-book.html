@@ -74,6 +74,21 @@
       var traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
       Flexagonator.drawPinchGraph(canvasId, { traverse: traverse, flexes: highlight });
     }
+
+    // draw a series of flexagons in different states based on a sequence,
+    // expects several canvases (canvasId + "1", canvasId + "2", ...)
+    // generator is the generating sequence for creating the flexagon,
+    // sequence is an array of flexes to perform one at a time
+    function drawSequence(canvasId, numPats, generator, sequence) {
+      var colors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
+      var script = [{ numPats }, { flexes: generator }, { labelAsTree: colors }];
+      var fm = Flexagonator.createFromScript(script);
+      for (var i = 0; i < sequence.length; i++) {
+        const id = canvasId + (i + 1).toString();
+        fm.applyFlexes(sequence[i]);
+        Flexagonator.drawEntireFlexagon(id, fm, { showIds: false, showCurrent: false });
+      }
+    }
   </script>
 </head>
 
@@ -637,21 +652,54 @@
   <!-- sequences -->
   <h3 id="sequences">sequences</h3>
 
+  <p>(P>)3</p>
+  <canvas id="sequences-pinch1" width="200" height="200"></canvas>
+  <canvas id="sequences-pinch2" width="200" height="200"></canvas>
+  <canvas id="sequences-pinch3" width="200" height="200"></canvas>
+  <canvas id="sequences-pinch4" width="200" height="200"></canvas>
+  <br/>
+
   <p>(F&lt;)6</p>
   <canvas id="sequences-flipleft1" width="1200" height="240"></canvas><br/>
   <canvas id="sequences-flipleft2" width="1200" height="240"></canvas><br/>
+  <canvas id="sequences-flip1" width="200" height="200"></canvas>
+  <canvas id="sequences-flip2" width="200" height="200"></canvas>
+  <canvas id="sequences-flip3" width="200" height="200"></canvas>
+  <canvas id="sequences-flip4" width="200" height="200"></canvas>
+  <br/>
+  <canvas id="sequences-flip5" width="200" height="200"></canvas>
+  <canvas id="sequences-flip6" width="200" height="200"></canvas>
+  <canvas id="sequences-flip7" width="200" height="200"></canvas>
+  <br/>
+
   <p>(S>T'>^T&lt;&lt;^)2</p>
   <canvas id="sequences-s-cycle" width="1200" height="500"></canvas><br/>
+  <canvas id="sequences-s1" width="200" height="200"></canvas>
+  <canvas id="sequences-s2" width="200" height="200"></canvas>
+  <canvas id="sequences-s3" width="200" height="200"></canvas>
+  <canvas id="sequences-s4" width="200" height="200"></canvas>
+  <br/>
+  <canvas id="sequences-s5" width="200" height="200"></canvas>
+  <canvas id="sequences-s6" width="200" height="200"></canvas>
+  <canvas id="sequences-s7" width="200" height="200"></canvas>
+  <br/>
+
   <p>(Ltb>P>P>) 12</p>
   <canvas id="sequences-hexa12" width="1200" height="170"></canvas><br/>
 
   <script type="text/javascript">
+    drawSequence("sequences-pinch", 6, "P+", ["", "P>", "P>", "P>"]);
+
     var flipleft = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
     drawStripComplex("sequences-flipleft1", flipleft,
       { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [{ text: "*", which: 0 }, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
     drawStripComplex("sequences-flipleft2", flipleft,
       { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [{ text: "*", which: -1 }, { text: "a", which: 0 }] });
+    drawSequence("sequences-flip", 8, "(F*<)6", ["", "F<", "F<", "F<", "F<", "F<", "F<"]);
+
     drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+" }], { rotation: 120, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
+    drawSequence("sequences-s", 6, "S+", ["", "S", ">T'", ">^T", "<<^S", ">T'", ">^T"]);
+
     drawStripComplex("sequences-hexa12",
       [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
       { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] });
