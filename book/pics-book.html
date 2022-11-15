@@ -16,6 +16,8 @@
   <script type="text/javascript">
     // draw * on the edges that should be taped together
     const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
+    // common colors for faces
+    const labelAsTree = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
 
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
@@ -80,8 +82,7 @@
     // generator is the generating sequence for creating the flexagon,
     // sequence is an array of flexes to perform one at a time
     function drawSequence(canvasId, numPats, generator, sequence) {
-      var colors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
-      var script = [{ numPats }, { flexes: generator }, { labelAsTree: colors }];
+      var script = [{ numPats }, { flexes: generator }, { labelAsTree }];
       var fm = Flexagonator.createFromScript(script);
       for (var i = 0; i < sequence.length; i++) {
         const id = canvasId + (i + 1).toString();
