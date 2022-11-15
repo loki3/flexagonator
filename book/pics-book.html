@@ -35,11 +35,11 @@
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
-    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number]
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles) {
-      var script = [{ numPats: numPats, flexAndColor: { flexes: flexes }, angles: angles }];
+    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number], postFlexes: string
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes) {
+      var script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       var fm = Flexagonator.createFromScript(script);
-      var options = { rotation: rotation, content: { showFoldingOrder: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
+      var options = { rotation: rotation, content: { showLeafProps: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
@@ -380,7 +380,7 @@
   <br/><br/>
   <canvas id="T-minimal" width="900" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("T-minimal", 6, "T*", 30);
+    drawStripSequence("T-minimal", 6, "T*", 60, undefined, "^");
   </script>
 
   <h3 id="pyramid shuffle">pyramid shuffle</h3>
@@ -408,7 +408,7 @@
   <br/><br/>
   <canvas id="S-minimal" width="800" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("S-minimal", 6, "S*", 60);
+    drawStripSequence("S-minimal", 6, "S*", 30, undefined, "^");
   </script>
 
   <h3 id="flip">flip flex</h3>
@@ -435,7 +435,7 @@
   <br/><br/>
   <canvas id="F-minimal" width="900" height="600"></canvas>
   <script type="text/javascript">
-    drawStripSequence("F-minimal", 8, "F*", 45, [45, 90]);
+    drawStripSequence("F-minimal", 8, "F*", 90, [45, 90], "^");
   </script>
 
   <h3 id="vflex">v flex</h3>
@@ -458,7 +458,7 @@
   <br/><br/>
   <canvas id="V-minimal" width="900" height="450"></canvas>
   <script type="text/javascript">
-    drawStripSequence("V-minimal", 6, "V*", 120);
+    drawStripSequence("V-minimal", 6, "V*", 60);
   </script>
 
   <h3 id="silver tetra">silver tetra flex</h3>
@@ -486,8 +486,8 @@
   <br/><br/>
   <canvas id="St-octa" width="900" height="450"></canvas>
   <script type="text/javascript">
-    drawStripSequence("St-minimal", 6, "St*", -30, [60, 90]);
-    drawStripSequence("St-octa", 8, "St*", 135, [45, 90]);
+    drawStripSequence("St-minimal", 6, "St*", -30, [60, 90], "^");
+    drawStripSequence("St-octa", 8, "St*", 135, [45, 90], "^");
   </script>
 
   <h3 id="half-flexes">half flexes</h3>
