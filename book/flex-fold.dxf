@@ -25,7 +25,7 @@ $INSBASE
   9
 $EXTMIN
  10
--0.474705
+-0.671672
  20
 -17.907071
  30
@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2459898.8578240625
+2459899.4966319329
   9
 $TDUUPDATE
  40
-2459899.1911574076
+2459899.8299652776
   9
 $TDINDWG
  40
-1.699270833333
+2.338043981481
   9
 $TDUSRTIMER
  40
-1.699270833333
+2.338043981481
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-13CD96
+13CDC4
   9
 $SURFTAB1
  70
@@ -991,7 +991,7 @@ AcDbViewportTableRecord
  21
 1.0
  12
-5.470901
+5.423263
  22
 -7.400237
  13
@@ -1295,7 +1295,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-    11
+    12
   0
 LAYER
   5
@@ -1532,6 +1532,28 @@ face-5
      0
  62
     51
+  6
+Continuous
+370
+    -3
+390
+F
+  0
+LAYER
+  5
+13CDC3
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+z-pats
+ 70
+     0
+ 62
+   251
   6
 Continuous
 370
@@ -25697,7 +25719,7 @@ AcDbEntity
 100
 AcDbText
  10
-3.9
+3.3
  20
 0.3
  30
@@ -25705,7 +25727,7 @@ AcDbText
  40
 0.15
   1
-*
+#
   7
 labels
 100
@@ -25723,7 +25745,7 @@ AcDbEntity
 100
 AcDbText
  10
-3.4
+2.8
  20
 0.1
  30
@@ -25749,197 +25771,15 @@ AcDbEntity
 100
 AcDbText
  10
-0.45
+0.456663
  20
--3.711
+-3.673639
  30
 0.0
  40
-0.15
+0.1
   1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7F5
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-3.45
- 20
--3.711
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7F6
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-6.05
- 20
--3.711
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7F7
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-10.55
- 20
--3.711
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7F9
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-5.534582
- 20
--7.671246
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7FD
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-0.45
- 20
--5.811
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7FE
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-0.45
- 20
--9.311
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
-13C7FF
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-6.45
- 20
--9.311
- 30
-0.0
- 40
-0.15
-  1
-*
+#
   7
 labels
 100
@@ -26780,32 +26620,6 @@ AcDbPolyline
 0.786788
  20
 -11.590424
-  0
-TEXT
-  5
-13C83F
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-0.45
- 20
--11.311
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
   0
 LWPOLYLINE
   5
@@ -29085,32 +28899,6 @@ AcDbEntity
   8
 hinge
   0
-TEXT
-  5
-13C8B9
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-7.95
- 20
--11.311
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
 POLYLINE
   5
 13C8BB
@@ -30414,32 +30202,6 @@ SEQEND
 AcDbEntity
   8
 hinge
-  0
-TEXT
-  5
-13CA6E
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-0.45
- 20
--13.211
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
   0
 LWPOLYLINE
   5
@@ -34583,32 +34345,6 @@ hinge
   0
 TEXT
   5
-13CB1C
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-6.45
- 20
--13.211
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
-TEXT
-  5
 13CB1D
 330
 1F
@@ -35610,32 +35346,6 @@ SEQEND
 AcDbEntity
   8
 hinge
-  0
-TEXT
-  5
-13CB47
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-0.45
- 20
--15.211
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
   0
 LWPOLYLINE
   5
@@ -43195,32 +42905,6 @@ AcDbEntity
   8
 hinge
   0
-TEXT
-  5
-13CD7C
-330
-1F
-100
-AcDbEntity
-  8
-0
-100
-AcDbText
- 10
-3.45
- 20
--16.711
- 30
-0.0
- 40
-0.15
-  1
-*
-  7
-labels
-100
-AcDbText
-  0
 SOLID
   5
 13CD84
@@ -43622,6 +43306,890 @@ AcDbPolyline
 9.7
  20
 0.2
+  0
+TEXT
+  5
+13CD96
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+4.8
+ 20
+0.55
+ 30
+0.0
+ 40
+0.15
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CD97
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+4.6
+ 20
+0.1
+ 30
+0.0
+ 40
+0.15
+  1
+structure
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CD98
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+4.4
+ 20
+0.3
+ 30
+0.0
+ 40
+0.15
+  1
+required pat
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CD9F
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.456663
+ 20
+-5.773639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA0
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+3.456663
+ 20
+-3.673639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA1
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+6.056663
+ 20
+-3.673639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA3
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+10.556663
+ 20
+-3.673639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA4
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+5.572952
+ 20
+-7.607877
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA5
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.456663
+ 20
+-9.273639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA6
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+6.456663
+ 20
+-9.273639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA7
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.456663
+ 20
+-11.273639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA8
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+7.956663
+ 20
+-11.273639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDA9
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.456663
+ 20
+-13.173639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDAB
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+6.456663
+ 20
+-13.173639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDAC
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.456663
+ 20
+-15.173639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDAD
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+3.456663
+ 20
+-16.673639
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDAF
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.755793
+ 20
+-3.781135
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB0
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.769453
+ 20
+-4.873931
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB1
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+-0.296023
+ 20
+-4.354853
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB2
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+6.376862
+ 20
+-3.897245
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB3
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+6.376862
+ 20
+-4.771482
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB4
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+5.366026
+ 20
+-4.764652
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB5
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+5.386516
+ 20
+-3.897245
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB7
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.755793
+ 20
+-5.881135
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB8
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+-0.671672
+ 20
+-6.437995
+ 30
+0.0
+ 40
+0.1
+  1
+[[[- -] -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDB9
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.769453
+ 20
+-10.473931
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDBA
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+1.056312
+ 20
+-9.94852
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDBB
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+-0.022824
+ 20
+-9.415285
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDBD
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+-0.043314
+ 20
+-12.454624
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDBE
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.678273
+ 20
+-11.367188
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDBF
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.669029
+ 20
+-13.328908
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDC0
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+-0.569982
+ 20
+-13.611058
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] [- -]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDC1
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+0.628137
+ 20
+-15.283518
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- -]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+13CDC2
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+-0.402327
+ 20
+-15.635184
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- -]]
+  7
+labels
+100
+AcDbText
   0
 ENDSEC
   0
