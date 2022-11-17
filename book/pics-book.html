@@ -39,7 +39,7 @@
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes) {
       var script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       var fm = Flexagonator.createFromScript(script);
-      var options = { rotation: rotation, content: { showLeafProps: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
+      var options = { rotation, content: { showLeafProps: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
@@ -501,6 +501,23 @@
     ];
     var fm = Flexagonator.createFromScript(silverHalfFlexes);
     Flexagonator.drawUnfolded('silverHalfFlexes', fm, { rotation: 135, content: { showFoldingOrder: true }, captions: [{ text: "H's", which: 0 }, { text: "H's", which: -1 }] });
+  </script>
+  <!-- minimal half-flex templates on a silver octaflexagon -->
+  <canvas id="silver-half-Hf" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="silver-half-Hr" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="silver-half-Hfs" width="1000" height="500"></canvas><br/><br/>
+  <script type="text/javascript">
+    function drawTemplate(canvasId, flexes, rotation, label1, angles) {
+      const script = [{ numPats: 8, angles, addHalfFlexes: true }, { flexes, labelAsTree: [] }];
+      const fm = Flexagonator.createFromScript(script);
+      const text1 = label1 ? flexes : "*";
+      const text2 = label1 ? "*" : flexes;
+      const options = { rotation, content: { showLeafProps: true }, captions: [{ text: text1, which: 0 }, { text: text2, which: -1 }] };
+      Flexagonator.drawUnfolded(canvasId, fm, options);
+    }
+    drawTemplate("silver-half-Hf", "Hf+", 45, false, [45, 90]);   // Hb
+    drawTemplate("silver-half-Hr", "Hr+", -45, true, [45, 90]);   // Hl
+    drawTemplate("silver-half-Hfs", "Hfs+", -45, true, [45, 90]); // Hbs
   </script>
   <!-- plain pentagonal silver decaflexagon -->
   <p>pentagonal silver decaflexagon</p>
