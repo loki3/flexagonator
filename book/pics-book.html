@@ -433,9 +433,15 @@
   <img src="../idyll/static/F/F15.jpg" width="150"/>
   <img src="../idyll/static/F/F16.jpg" width="150"/>
   <br/><br/>
-  <canvas id="F-minimal" width="900" height="600"></canvas>
+  <canvas id="F-8-minimal" width="900" height="600"></canvas><br/><br/>
+  <canvas id="F-10-minimal" width="900" height="600"></canvas><br/><br/>
+  <canvas id="F-6-F3" width="900" height="600"></canvas><br/><br/>
+  <canvas id="F-7-cycle" width="1000" height="600"></canvas>
   <script type="text/javascript">
-    drawStripSequence("F-minimal", 8, "F*", 90, [45, 90], "^");
+    drawStripSequence("F-8-minimal", 8, "F*", 90, [45, 90], "^");
+    drawStripSequence("F-10-minimal", 10, "F*", 90, [36, 90], "^");
+    drawStripSequence("F-6-F3", 8, "(F+>>)3", 0, [60, 90]);
+    drawStripSequence("F-7-cycle", 7, "(F*<)5");
   </script>
 
   <h3 id="vflex">v flex</h3>
@@ -457,8 +463,10 @@
   <img src="../idyll/static/V/V13.jpg" width="150"/>
   <br/><br/>
   <canvas id="V-minimal" width="900" height="450"></canvas>
+  <canvas id="V-cycle" width="1000" height="140"></canvas>
   <script type="text/javascript">
     drawStripSequence("V-minimal", 6, "V*", 60);
+    drawStripSequence("V-cycle", 6, "(V*>)6", -60);
   </script>
 
   <h3 id="silver tetra">silver tetra flex</h3>
