@@ -22,58 +22,58 @@
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
     function drawStripPinch(canvasId, numPats, flexes, rotation, start, end) {
-      var script = [{ numPats: numPats, flexes: flexes, labelAsTree: [] }];
-      var fm = Flexagonator.createFromScript(script);
+      const script = [{ numPats: numPats, flexes: flexes, labelAsTree: [] }];
+      const fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
     function drawStripPinch2(canvasId, numPats, flexes, rotation, start, end) {
-      var script = [{ numPats: 6, flexAndColor: { flexes: flexes } }];
-      var fm = Flexagonator.createFromScript(script);
+      const script = [{ numPats: 6, flexAndColor: { flexes: flexes } }];
+      const fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number], postFlexes: string
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes) {
-      var script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
-      var fm = Flexagonator.createFromScript(script);
-      var options = { rotation, content: { showLeafProps: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
+      const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
+      const fm = Flexagonator.createFromScript(script);
+      const options = { rotation, content: { showLeafProps: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
     // draw an unfolded strip on the given canvas
     // pass in a full script & full options for drawUnfolded
     function drawStripComplex(canvasId, script, drawOptions) {
-      var fm = Flexagonator.createFromScript(script);
+      const fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
     }
 
     // draw a folded flexagon, just showing the outline of the leaves
     function drawFlexagonSimple(canvasId, numPats, angles) {
-      var script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
-      var fm = Flexagonator.createFromScript(script);
+      const script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
+      const fm = Flexagonator.createFromScript(script);
       Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
     }
 
     // draw a folded flexagon, showing possible flexes
     function drawFlexagonComplex(canvasId, script) {
-      var fm = Flexagonator.createFromScript(script);
-      var regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
+      const fm = Flexagonator.createFromScript(script);
+      const regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
       Flexagonator.drawScriptButtons(canvasId, fm.flexagon, fm.getAngleInfo(), true, regions);
     }
 
     function drawFromName(canvasId, name, rotation) {
-      var fm = Flexagonator.createFromScript([{ name }]);
+      const fm = Flexagonator.createFromScript([{ name }]);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
     }
 
     // draw the Tuckerman diagram for a flexagon with the given generating sequence,
     // optionally highlighting one flex sequence
     function drawTuckerman(canvasId, generator, highlight) {
-      var fm = Flexagonator.createFromScript([{ flexes: generator }]);
-      var traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
+      const fm = Flexagonator.createFromScript([{ flexes: generator }]);
+      const traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
       Flexagonator.drawPinchGraph(canvasId, { traverse: traverse, flexes: highlight });
     }
 
@@ -82,9 +82,9 @@
     // generator is the generating sequence for creating the flexagon,
     // sequence is an array of flexes to perform one at a time
     function drawSequence(canvasId, numPats, generator, sequence) {
-      var script = [{ numPats }, { flexes: generator }, { labelAsTree }];
-      var fm = Flexagonator.createFromScript(script);
-      for (var i = 0; i < sequence.length; i++) {
+      const script = [{ numPats }, { flexes: generator }, { labelAsTree }];
+      const fm = Flexagonator.createFromScript(script);
+      for (let i = 0; i < sequence.length; i++) {
         const id = canvasId + (i + 1).toString();
         fm.applyFlexes(sequence[i]);
         Flexagonator.drawEntireFlexagon(id, fm, { showIds: false, showCurrent: false });
