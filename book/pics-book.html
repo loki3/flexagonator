@@ -36,10 +36,12 @@
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number], postFlexes: string
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes) {
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex) {
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
-      const options = { rotation, content: { showLeafProps: true }, captions: [{ text: flexes, which: 0 }, { text: "*", which: -1 }] }
+      const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
+        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex }];
+      const options = { rotation, content: { showLeafProps: true }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
@@ -433,14 +435,14 @@
   <img src="../idyll/static/F/F15.jpg" width="150"/>
   <img src="../idyll/static/F/F16.jpg" width="150"/>
   <br/><br/>
-  <canvas id="F-8-minimal" width="900" height="600"></canvas><br/><br/>
-  <canvas id="F-10-minimal" width="900" height="600"></canvas><br/><br/>
-  <canvas id="F-6-F3" width="900" height="600"></canvas><br/><br/>
+  <canvas id="F-8-minimal" width="900" height="400"></canvas><br/><br/>
+  <canvas id="F-6-minimal" width="900" height="500"></canvas><br/><br/>
+  <canvas id="F-10-F5" width="1100" height="500"></canvas><br/><br/>
   <canvas id="F-7-cycle" width="1000" height="600"></canvas>
   <script type="text/javascript">
-    drawStripSequence("F-8-minimal", 8, "F*", 90, [45, 90], "^");
-    drawStripSequence("F-10-minimal", 10, "F*", 90, [36, 90], "^");
-    drawStripSequence("F-6-F3", 8, "(F+>>)3", 0, [60, 90]);
+    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2);
+    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2);
+    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2);
     drawStripSequence("F-7-cycle", 7, "(F*<)5");
   </script>
 
