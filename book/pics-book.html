@@ -408,9 +408,15 @@
   <img src="../idyll/static/Sh/Sh16.jpg" width="150"/>
   <img src="../idyll/static/Sh/Sh17.jpg" width="150"/>
   <br/><br/>
-  <canvas id="S-minimal" width="800" height="500"></canvas>
+  <canvas id="S-6-minimal" width="800" height="500"></canvas><br/><br/>
+  <canvas id="S-8-silver-minimal" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="S-5-minimal" width="800" height="500"></canvas><br/><br/>
+  <canvas id="S-6-S3" width="1000" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("S-minimal", 6, "S*", 30, undefined, "^");
+    drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2);
+    drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2);
+    drawStripSequence("S-5-minimal", 5, "S*", -72, undefined, ">>", -2);
+    drawStripSequence("S-6-S3", 6, "(S*<<)3", -60, undefined, undefined, 2);
   </script>
 
   <h3 id="flip">flip flex</h3>
