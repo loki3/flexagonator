@@ -35,7 +35,8 @@
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
-    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number], postFlexes: string
+    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
+    //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex) {
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
@@ -380,9 +381,13 @@
   <img src="../idyll/static/T/T13.jpg" width="150"/>
   <img src="../idyll/static/T/T14.jpg" width="150"/>
   <br/><br/>
-  <canvas id="T-minimal" width="900" height="500"></canvas>
+  <canvas id="T-6-bronze-minimal" width="750" height="500"></canvas><br/><br/>
+  <canvas id="T-6-minimal" width="900" height="400"></canvas><br/><br/>
+  <canvas id="T-8" width="500" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("T-minimal", 6, "T*", 60, undefined, "^");
+    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
+    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
+    drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 4);
   </script>
 
   <h3 id="pyramid shuffle">pyramid shuffle</h3>
