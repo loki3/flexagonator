@@ -511,33 +511,48 @@
       <td><canvas id="pat-count-hexa-rhombus" width="100" height="100"></canvas></td>
     </tr>
     <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="label">7: hepta</td>
+    </tr>
+    <tr>
       <td>pentagon <br/> <b>hexa</b>flexagon</td>
       <td>hexagon <br/> <b>hexa</b>flexagon</td>
+      <td></td>
+      <td></td>
+      <td>heptagonal <br/> isosceles <br/> <b>hepta</b>flexagon</td>
+      <td>heptagonal ring <br/> trapezoid <br/> <b>hepta</b>flexagon</td>
     </tr>
     <tr>
       <td><canvas id="pat-count-pentagon-hexa" width="100" height="100"></canvas></td>
       <td><canvas id="pat-count-hexagon-hexa" width="100" height="100"></canvas></td>
+      <td></td>
+      <td></td>
+      <td><canvas id="pat-count-hepta" width="100" height="100"></canvas></td>
+      <td><canvas id="pat-count-hepta-trap" width="100" height="100"></canvas></td>
     </tr>
     <tr>
-      <td class="label">7: hepta</td>
       <td class="label">8: octa</td>
-      <td class="label"></td>
-      <td class="label"></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td class="label">9: ennea</td>
     </tr>
     <tr>
-      <td>heptagonal <br/> regular <br/> <b>hepta</b>flexagon</td>
       <td>octagonal <br/> isosceles <br/> <b>octa</b>flexagon</td>
       <td>square <br/> silver <br/> <b>octa</b>flexagon</td>
       <td>octagonal star <br/> triangle <br/> <b>octa</b>flexagon</td>
+      <td>square ring <br/> square <br/> <b>octa</b>flexagon</td>
       <td>enneagonal <br/> isosceles <br/> <b>ennea</b>flexagon</td>
       <td>hexagonal ring <br/> isosceles <br/> <b>ennea</b>flexagon</td>
     </tr>
     <tr>
-      <td><canvas id="pat-count-hepta" width="100" height="100"></canvas></td>
       <td><canvas id="pat-count-octa-iso" width="100" height="100"></canvas></td>
       <td><canvas id="pat-count-octa-silver" width="100" height="100"></canvas></td>
       <td><canvas id="pat-count-octa-star" width="100" height="100"></canvas></td>
+      <td><canvas id="pat-count-octa-square" width="100" height="100"></canvas></td>
       <td><canvas id="pat-count-ennea" width="100" height="100"></canvas></td>
       <td><canvas id="pat-count-ennea-ring" width="100" height="100"></canvas></td>
     </tr>
@@ -601,10 +616,12 @@
     Flexagonator.drawByName("pat-count-hexagon-hexa", "hexagon hexaflexagon");
     // hepta
     drawFlexagon("pat-count-hepta", "heptaflexagon", -12);
+    Flexagonator.drawByName("pat-count-hepta-trap", "heptagonal ring trapezoid heptaflexagon");
     // octa
     drawFlexagon("pat-count-octa-iso", "octaflexagon", 0);
     drawFlexagon("pat-count-octa-silver", "silver octaflexagon", 0);
     drawFlexagon("pat-count-octa-star", "star octaflexagon", 45);
+    Flexagonator.drawByName("pat-count-octa-square", "square ring square octaflexagon");
     // ennea
     drawFlexagon("pat-count-ennea", "enneaflexagon", 10);
     drawFlexagon("pat-count-ennea-ring", "hexagonal ring enneaflexagon", 0);

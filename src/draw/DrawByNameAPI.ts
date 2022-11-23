@@ -15,11 +15,11 @@ namespace Flexagonator {
     }
 
     ctx.clearRect(0, 0, width, width);
+    drawLines(ctx, patPieces.count, center, r, patPieces.fold, 'dashed');
     drawLines(ctx, patPieces.count, center, r, patPieces.cut1, 'solid');
     if (patPieces.cut2) {
       drawLines(ctx, patPieces.count, center, r, patPieces.cut2, 'solid');
     }
-    drawLines(ctx, patPieces.count, center, r, patPieces.fold, 'dashed');
   }
 
   /** draw the lines described by polarPoints */
@@ -109,6 +109,15 @@ namespace Flexagonator {
         cut1: [{ r: 1, θ: 0 }, { r: 1, θ: 60 }],
         cut2: [{ r: 0.4, θ: 0 }, { r: 0.4, θ: 60 }],
         fold: [{ r: 0.4, θ: 0 }, { r: 1, θ: 0 }]
+      }
+    ],
+    [
+      { overallShape: 'heptagonal ring', leafShape: 'trapezoid', patsPrefix: 'hepta' },
+      {
+        count: 7,
+        cut1: [{ r: 1, θ: 38.6 }, { r: 1, θ: 90 }],
+        cut2: [{ r: 0.4, θ: 38.6 }, { r: 0.4, θ: 90 }],
+        fold: [{ r: 0.4, θ: 38.6 }, { r: 1, θ: 38.6 }]
       }
     ],
     [
@@ -203,6 +212,16 @@ namespace Flexagonator {
         cut1: [{ r: 0.768, θ: 0 }, { r: 1.01, θ: 19 }, { r: 1.01, θ: 41 }, { r: 0.768, θ: 60 }],
         cut2: [{ r: 0.384, θ: 0 }, { r: 0.384, θ: 60 }],
         fold: [{ r: 0.384, θ: 0 }, { r: 0.768, θ: 0 }]
+      }
+    ],
+    // octaflexagons
+    [
+      { overallShape: 'square ring', leafShape: 'square', patsPrefix: 'octa' },
+      { // this is a cheat, since it doesn't follow the assumption that all pats are the same
+        count: 4,
+        cut1: [{ r: 1.414, θ: 45 }, { r: 1.414, θ: 135 }],
+        cut2: [{ r: 0.33 * 1.414, θ: 45 }, { r: 0.33 * 1.414, θ: 135 }],
+        fold: [{ r: 1.05, θ: 72 }, { r: 0.47, θ: 45 }, { r: 0.47, θ: 135 }, { r: 1.05, θ: 108 }]
       }
     ],
   ];
