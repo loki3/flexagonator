@@ -541,6 +541,13 @@
     drawTemplate("silver-half-Hr", "Hr+", -45, true, [45, 90]);   // Hl
     drawTemplate("silver-half-Hfs", "Hfs+", -45, true, [45, 90]); // Hbs
   </script>
+  <!-- Mf and S3 -->
+  <canvas id="half-Mf" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="half-S3" width="1000" height="400"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawStripSequence("half-Mf", 8, "Mf*", 45, [45, 45], ">>", -2);
+    drawStripSequence("half-S3", 8, "S3*", 45, [45, 45], ">>", -2);
+  </script>
   <!-- plain pentagonal silver decaflexagon -->
   <p>pentagonal silver decaflexagon</p>
   <canvas id="psd-plain" width="600" height="350"></canvas>
