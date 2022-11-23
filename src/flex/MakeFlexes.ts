@@ -66,7 +66,7 @@ namespace Flexagonator {
   }
 
   // return just the flexes that can't be done using other flexes
-  export function getPrimeFlexes(all: Flexes): Flexes {
+  export function getPrimeFlexes(all: Flexes, patCount?: number): Flexes {
     const flexes: Flexes = {};
     const primes = ["P", "S", "T", "T'", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'", "T1", "T1'", "T2", "T2'", "T3", "T3'", "Tf"];
 
@@ -74,6 +74,10 @@ namespace Flexagonator {
       if (all[prime] !== undefined) {
         flexes[prime] = all[prime];
       }
+    }
+    // S3 is special in that it's not prime for n=6|7, but is for n>=8
+    if (patCount && patCount >= 8 && all['S3'] !== undefined) {
+      flexes['S3'] = all['S3'];
     }
 
     return flexes;
