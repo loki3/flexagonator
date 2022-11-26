@@ -37,7 +37,7 @@ namespace Flexagonator {
         flexes["F"] = createFlip(patCount);
       if (patCount >= 6)
         flexes["Mf"] = createMobiusFlip(patCount);
-      if (patCount >= 4)
+      if (patCount === 4 || patCount >= 6)
         flexes["St"] = createSilverTetra(patCount);
       if (patCount == 8 || patCount == 10 || patCount == 12)
         flexes["Tw"] = createTwist(patCount);
