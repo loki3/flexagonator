@@ -46,6 +46,16 @@
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
+    // use folding order rather than tree order for odd-ordered flexagon
+    function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text) {
+      const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes }, { flexes: postFlexes }];
+      const fm = Flexagonator.createFromScript(script);
+      const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
+        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex }];
+      const options = { rotation, content: { showFoldingOrder: true }, captions };
+      Flexagonator.drawUnfolded(canvasId, fm, options);
+    }
+
     // draw an unfolded strip on the given canvas
     // pass in a full script & full options for drawUnfolded
     function drawStripComplex(canvasId, script, drawOptions) {
@@ -421,14 +431,8 @@
   <script type="text/javascript">
     drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2);
     drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2);
+    drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*")
     drawStripSequence("S-6-S3", 6, "(S*<<)3", -60, undefined, undefined, 2);
-    { // use folding order rather than tree order for odd-ordered flexagon
-      const script = [{ numPats: 5, flexes: "S+", angles: [] }, { flexes: ">>" }];
-      const fm = Flexagonator.createFromScript(script);
-      const captions = [{ text: "*", which: -1 }, { text: "*", which: 0 }, { text: "S*", which: -2 }];
-      const options = { rotation: -72, content: { showFoldingOrder: true }, captions };
-      Flexagonator.drawUnfolded("S-5-minimal", fm, options);
-    }
   </script>
 
   <h3 id="flip">flip flex</h3>
@@ -461,13 +465,7 @@
     drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2);
     drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2);
     drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2);
-    { // use folding order rather than tree order for odd-ordered flexagon
-      const script = [{ numPats: 7, flexes: "(F*<)5", angles: [], reverseFlexes: "(F*<)5" }, { flexes: "^" }];
-      const fm = Flexagonator.createFromScript(script);
-      const captions = [{ text: "*", which: -1 }, { text: "*", which: 0 }, { text: "(F<)5", which: -3 }];
-      const options = { content: { showFoldingOrder: true }, captions };
-      Flexagonator.drawUnfolded("F-7-cycle", fm, options);
-    }
+    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5")
   </script>
 
   <h3 id="vflex">v flex</h3>
