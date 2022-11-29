@@ -47,12 +47,13 @@
     }
 
     // use folding order rather than tree order for odd-ordered flexagon
-    function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text) {
-      const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes }, { flexes: postFlexes }];
+    function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps) {
+      const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes, leafProps }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
         : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex }];
-      const options = { rotation, content: { showFoldingOrder: true }, captions };
+      const content = leafProps ? { showLeafProps: true } : { showFoldingOrder: true };
+      const options = { rotation, content, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
@@ -570,7 +571,11 @@
   <script type="text/javascript">
     drawStripSequence("slot-6-many", 6, "Lk+ Ltb+ Lbb+", 90, [60, 60], ">>>^", -6);
     drawStripSequence("slot-8", 8, "Lk+ Ltf+", 45, [], ">>^", 2);
-    drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3");
+
+    // custom labels for the L3 pentaflexagon to make the flex diagram simpler
+    const numbers = [[1, 5], [1, 8], [1, 2], [1, 5], [1, 2], [5, 4], [4, 3], [3, 2], [8, 7], [7, 6], [6, 2], [5, 4], [4, 3], [3, 2]];
+    const labels = numbers.map(pair => { return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } } });
+    drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3", labels);
   </script>
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
