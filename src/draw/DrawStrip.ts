@@ -22,7 +22,7 @@ namespace Flexagonator {
     if (captions) {
       ctx.fillStyle = "black";
       for (const caption of captions) {
-        drawLeafCaption(ctx, transform, leaflines, caption.which, caption.text);
+        drawLeafCaption(ctx, transform, leaflines, caption);
       }
     }
 
@@ -214,12 +214,13 @@ namespace Flexagonator {
   }
 
 
-  // draw an extra caption on the specified leaf,
-  // if (which<0), then it's an offset from the end of the string
-  function drawLeafCaption(ctx: CanvasRenderingContext2D, transform: Transform,
-    leaflines: LeafLines, which: number, text: string) {
-
-    const { face, line }: { face: LeafFace; line: Line; } = getFace(leaflines, which);
+  /** draw an extra caption on the specified leaf,
+   * if (caption.which<0), then it's an offset from the end of the string */
+  function drawLeafCaption(
+    ctx: CanvasRenderingContext2D, transform: Transform,
+    leaflines: LeafLines, caption: DrawStripCaption
+  ): void {
+    const [face, line] = getFace(leaflines, caption.which);
     const p: Point = computeBasePoint(face, line, transform);
     const len = getBaseLength(face, transform);
 
@@ -227,12 +228,12 @@ namespace Flexagonator {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = len / 9 + "px sans-serif";
-    ctx.fillText(text, p.x, p.y);
+    ctx.fillText(caption.text, p.x, p.y);
     ctx.restore();
   }
 
-  // figure out where to draw based on which face we want
-  function getFace(leaflines: LeafLines, which: number) {
+  /** figure out where to draw based on which face we want */
+  function getFace(leaflines: LeafLines, which: number): [LeafFace, Line] {
     var face: LeafFace;
     var line: Line;
     if (which == 0) {
@@ -251,7 +252,7 @@ namespace Flexagonator {
       face = leaflines.faces[leaflines.faces.length + which];
       line = { a: face.corners[0], b: face.corners[1] };
     }
-    return { face, line };
+    return [face, line];
   }
 
   function computeBasePoint(face: LeafFace, line: Line, transform: Transform): Point {

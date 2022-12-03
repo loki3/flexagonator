@@ -9,7 +9,7 @@ namespace Flexagonator {
     readonly b: Point
   }
 
-  // given a=(0,0), b(1,0), angle1=(c,a,b), angle2=(a,b,c), find c
+  /** given a=(0,0), b(1,0), angle1=(c,a,b), angle2=(a,b,c), find c */
   export function computeTrianglePoint(angle1: number, angle2: number): Point {
     const cota = Math.cos(angle1) / Math.sin(angle1);
     const cotb = Math.cos(angle2) / Math.sin(angle2);
@@ -20,7 +20,7 @@ namespace Flexagonator {
     return degrees * Math.PI / 180;
   }
 
-  // mirror p over the line (p1, p2)
+  /** mirror p over the line (p1, p2) */
   export function mirror(p1: Point, p2: Point, p: Point): Point {
     const dx = p2.x - p1.x;
     const dy = p2.y - p1.y;
@@ -36,7 +36,7 @@ namespace Flexagonator {
     return { x: x2, y: y2 };
   }
 
-  // get the incenter of a triangle
+  /** get the incenter of a triangle */
   export function getIncenter(p1: Point, p2: Point, p3: Point): Point {
     const a = lengthOf(p2, p3);
     const b = lengthOf(p1, p3);
