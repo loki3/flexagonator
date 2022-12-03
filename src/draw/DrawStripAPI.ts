@@ -34,7 +34,8 @@ namespace Flexagonator {
   // put an extra caption on the specified leaf
   export interface DrawStripCaption {
     readonly text: string;  // text to display
-    readonly which: number; // if >=0, offset from the start, else offset from the end
+    readonly which: number; // if >=0, leaf offset from the start, else offset from the end
+    readonly edge?: number; // [optional] which leaf edge to put label on
   }
 
   export interface DrawStripOptions {

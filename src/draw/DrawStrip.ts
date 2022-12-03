@@ -220,7 +220,7 @@ namespace Flexagonator {
     ctx: CanvasRenderingContext2D, transform: Transform,
     leaflines: LeafLines, caption: DrawStripCaption
   ): void {
-    const [face, line] = getFace(leaflines, caption.which);
+    const [face, line] = getFace(leaflines, caption.which, caption.edge);
     const p: Point = computeBasePoint(face, line, transform);
     const len = getBaseLength(face, transform);
 
@@ -233,9 +233,9 @@ namespace Flexagonator {
   }
 
   /** figure out where to draw based on which face we want */
-  function getFace(leaflines: LeafLines, which: number): [LeafFace, Line] {
-    var face: LeafFace;
-    var line: Line;
+  function getFace(leaflines: LeafLines, which: number, edge?: number): [LeafFace, Line] {
+    let face: LeafFace;
+    let line: Line;
     if (which == 0) {
       face = leaflines.faces[which];
       line = leaflines.folds[0];  // first fold
@@ -251,6 +251,10 @@ namespace Flexagonator {
     else {
       face = leaflines.faces[leaflines.faces.length + which];
       line = { a: face.corners[0], b: face.corners[1] };
+    }
+
+    if (edge !== undefined) {
+      line = { a: face.corners[edge], b: face.corners[(edge + 1) % 3] };
     }
     return [face, line];
   }

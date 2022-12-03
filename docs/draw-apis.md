@@ -179,6 +179,7 @@ By default, it draws the entire strip scaled and rotated to fill the canvas as m
 { // DrawStripCaption
   text;   // text to display along one edge of the specified leaf
   which;  // if >=0 it's an offset from the start of the strip, else it's an offset from the end
+  edge;   // [optional] which leaf edge to put label on
 }
 
 // example passing DrawStripOptions to drawUnfolded
