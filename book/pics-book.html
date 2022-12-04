@@ -37,21 +37,22 @@
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
     //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex) {
+    //   edge: [optional] which edge to draw flex on
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge) {
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
-        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex }];
+        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex, edge }];
       const options = { rotation, content: { showLeafProps: true }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
     // use folding order rather than tree order for odd-ordered flexagon
-    function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps) {
+    function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps, edge) {
       const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes, leafProps }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
-        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex }];
+        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex, edge }];
       const content = leafProps ? { showLeafProps: true } : { showFoldingOrder: true };
       const options = { rotation, content, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
@@ -430,10 +431,10 @@
   <canvas id="S-5-minimal" width="800" height="500"></canvas><br/><br/>
   <canvas id="S-6-S3" width="1000" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2);
-    drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2);
-    drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*")
-    drawStripSequence("S-6-S3", 6, "(S*<<)3", -60, undefined, undefined, 2);
+    drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
+    drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
+    drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*", undefined, 1);
+    drawStripSequence("S-6-S3", 6, "(S*<<)3", -60, undefined, undefined, 2, 2);
   </script>
 
   <h3 id="flip">flip flex</h3>
@@ -463,10 +464,10 @@
   <canvas id="F-10-F5" width="1100" height="500"></canvas><br/><br/>
   <canvas id="F-7-cycle" width="1000" height="600"></canvas>
   <script type="text/javascript">
-    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2);
-    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2);
-    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2);
-    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5")
+    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
+    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
+    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 1);
+    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", undefined, 1);
   </script>
 
   <h3 id="vflex">v flex</h3>
