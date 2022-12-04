@@ -581,6 +581,10 @@
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
 
+  <canvas id="hsd-plain" width="500" height="270"></canvas>
+  <script type="text/javascript">
+    drawFromName('hsd-plain', 'hexagonal silver dodecaflexagon', 90);
+  </script>
   <canvas id="silverDodecaHexa1" width="1000" height="500"></canvas><br/><br/>
   <canvas id="silverDodecaHexa2" width="1200" height="200"></canvas><br/><br/>
   <canvas id="silverDodecaHexa3" width="1000" height="400"></canvas><br/><br/>
@@ -635,12 +639,7 @@
   <p>pentagonal silver decaflexagon</p>
   <canvas id="psd-plain" width="600" height="350"></canvas>
   <script type="text/javascript">
-    var script = [
-      { "name": "pentagonal silver decaflexagon" },
-      { "addHalfFlexes": true }
-    ];
-    var fm = Flexagonator.createFromScript(script);
-    Flexagonator.drawUnfolded('psd-plain', fm, { rotation: 45, content: {} });
+    drawFromName('psd-plain', 'pentagonal silver decaflexagon', 45);
   </script>
   <!-- various full flexes -->
   <p>Hf'Hb</p>
