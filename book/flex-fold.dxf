@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2459925.3763425811
+2459925.3980902778
   9
 $TDUUPDATE
  40
-2459925.7096759258
+2459925.7314236113
   9
 $TDINDWG
  40
-27.410393518519
+27.43212962963
   9
 $TDUSRTIMER
  40
-27.410393518519
+27.43212962963
   9
 $USRTIMER
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-14.761651
+14.809485
  22
--8.087353
+-8.087206
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-32.205039
+32.148529
  41
 1.705368
  42
@@ -171999,7 +171999,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -172023,7 +172023,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -172047,7 +172047,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -172071,7 +172071,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -172163,7 +172163,7 @@ POLYLINE
 100
 AcDbEntity
   8
-edge
+hinge
 100
 AcDb2dPolyline
  66
@@ -172187,7 +172187,7 @@ VERTEX
 100
 AcDbEntity
   8
-edge
+hinge
 100
 AcDbVertex
 100
@@ -172211,7 +172211,7 @@ VERTEX
 100
 AcDbEntity
   8
-edge
+hinge
 100
 AcDbVertex
 100
@@ -172235,7 +172235,7 @@ SEQEND
 100
 AcDbEntity
   8
-edge
+hinge
   0
 POLYLINE
   5
