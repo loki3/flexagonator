@@ -38,8 +38,11 @@
   <h2>flip</h2>
   <canvas id="F-8-minimal1" width="1000" height="400"></canvas><br/><br/>
   <canvas id="F-8-minimal2" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="F-6-minimal1" width="900" height="520"></canvas><br/><br/>
+  <canvas id="F-6-minimal2" width="900" height="520"></canvas><br/><br/>
   <script type="text/javascript">
     drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
+    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
   </script>
 
   <h2>tuck</h2>
@@ -50,6 +53,45 @@
   <script type="text/javascript">
     drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
     drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
+  </script>
+
+  <h2>pyramid shuffle</h2>
+  <canvas id="S-6-minimal1" width="810" height="600"></canvas><br/><br/>
+  <canvas id="S-6-minimal2" width="810" height="600"></canvas><br/><br/>
+  <canvas id="S-8-silver-minimal1" width="1000" height="402"></canvas><br/><br/>
+  <canvas id="S-8-silver-minimal2" width="1000" height="402"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
+    drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
+  </script>
+
+  <h2>v-flex</h2>
+  <canvas id="V-minimal1" width="1000" height="435"></canvas>
+  <canvas id="V-minimal2" width="1000" height="435"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("V-minimal", 6, "V*", 60);
+  </script>
+
+  <h2>silver tetra</h2>
+  <canvas id="St-minimal1" width="800" height="400"></canvas>
+  <canvas id="St-minimal2" width="800" height="400"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("St-minimal", 4, "St*", 45, [45, 90], "^");
+  </script>
+
+  <h2>breaking down flexes</h2>
+  <canvas id="silverHalfFlexes1" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="silverHalfFlexes2" width="1000" height="500"></canvas><br/><br/>
+  <script type="text/javascript">
+    var silverHalfFlexes = [
+      { numPats: 8, "angles": [45, 45], "addHalfFlexes": true },
+      { flexes: "> Hf* Hb'+Hl'+Hr'+Hbs'+Hfs'+ Hf' Hb* Hf'+Hl'+Hr'+Hbs'+Hfs'+ Hb' Hl* Hf'+Hb'+Hr'+Hbs'+Hfs'+ Hl' Hr* Hf'+Hb'+Hl'+Hbs'+Hfs'+ Hr' Hbs* Hf'+Hb'+Hl'+Hr'+Hfs'+ Hbs' Hfs* Hf'+Hb'+Hl'+Hr'+Hbs'+ Hfs' >>>>" },
+      { labelAsTree }
+    ];
+    var fm = Flexagonator.createFromScript(silverHalfFlexes);
+    var captions = [{ text: "H's", which: 0 }, { text: "H's", which: -1 }];
+    Flexagonator.drawUnfolded('silverHalfFlexes1', fm, { rotation: 135, captions, content: { showLeafProps: true, face: 'front' } });
+    Flexagonator.drawUnfolded('silverHalfFlexes2', fm, { rotation: 135, captions, content: { showLeafProps: true, face: 'back' } });
   </script>
 
 </body>
