@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>color templates</title>
+
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    // draw * on the edges that should be taped together
+    const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
+    // common colors for faces
+    const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f];
+
+    // draw an unfolded strip, front & back, for a generating sequence that's not just pinch flexes
+    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
+    //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
+    //   edge: [optional] which edge to draw flex on
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge) {
+      const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
+      const fm = Flexagonator.createFromScript(script);
+      const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
+        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex, edge }];
+
+      const options1 = { rotation, content: { showLeafProps: true, face: 'front' }, captions };
+      const options2 = { rotation, content: { showLeafProps: true, face: 'back' }, captions };
+      Flexagonator.drawUnfolded(canvasId + "1", fm, options1);
+      Flexagonator.drawUnfolded(canvasId + "2", fm, options2);
+    }
+  </script>
+
+</head>
+
+<body>
+
+  <h1>Color Templates</h1>
+
+  <h2>flip</h2>
+  <canvas id="F-8-minimal1" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="F-8-minimal2" width="1000" height="400"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
+  </script>
+
+  <h2>tuck</h2>
+  <canvas id="T-6-bronze-minimal1" width="800" height="555"></canvas><br/><br/>
+  <canvas id="T-6-bronze-minimal2" width="800" height="555"></canvas><br/><br/>
+  <canvas id="T-6-minimal1" width="920" height="400"></canvas><br/><br/>
+  <canvas id="T-6-minimal2" width="920" height="400"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
+    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
+  </script>
+
+</body>
+
+</html>
