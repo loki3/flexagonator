@@ -39,6 +39,8 @@
     <li><a href="#part1">Part One: Pinch Flex and Variations</a></li>
     <ul>
       <li><a href="#tri-hexa">tri-hexaflexagon</a></li>
+      <li><a href="#tetra-octa">tetra & octa</a></li>
+      <li><a href="#pinch-variations">pinch variations</a></li>
     </ul>
     <li><a href="#part2">Part Two: Flexes</a></li>
     <ul>
@@ -60,6 +62,23 @@
   <canvas id="tri-hexa2" width="1000" height="174"></canvas><br/>
   <script type="text/javascript">
     drawStripSequence("tri-hexa", 6, "P*", 60);
+  </script>
+
+  <h2 id="tetra-octa">tetra & octa</h2>
+  <canvas id="tri-tetra1" width="1000" height="250"></canvas>
+  <canvas id="tri-tetra2" width="1000" height="250"></canvas>
+  <canvas id="tri-octa1" width="1000" height="195"></canvas>
+  <canvas id="tri-octa2" width="1000" height="195"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("tri-tetra", 4, "P*", 60, [60, 60]);
+    drawStripSequence("tri-octa", 8, "P*P*", 90, [60, 60]);
+  </script>
+
+  <h2 id="pinch-variations">pinch variations</h2>
+  <canvas id="P444-1" width="1090" height="600"></canvas>
+  <canvas id="P444-2" width="1090" height="600"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("P444-", 12, "P444*", -30);
   </script>
 
   <!-- part 2 -->
