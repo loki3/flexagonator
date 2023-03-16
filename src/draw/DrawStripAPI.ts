@@ -18,6 +18,8 @@ namespace Flexagonator {
     readonly showLeafProps?: boolean;
     /** draw leaf ids; default false */
     readonly showIds?: boolean;
+    /** if filling colors, this is the fractional amount to inset the solid (1,0], default 0 */
+    readonly inset?: number;
   }
 
   // deprecated: use LeafContent instead

@@ -53,7 +53,7 @@ namespace Flexagonator {
   ): void {
     if (content.face === 'front' || content.face === 'back') {
       if (content.showLeafProps) {
-        drawFaceProps(ctx, leaflines.faces, transform, props, content.face === 'front');
+        drawFaceProps(ctx, leaflines.faces, transform, props, content.face === 'front', content.inset);
       }
     } else {
       // if both 'folding order' & 'leaf props', 'folding order' is drawn offset & lighter
@@ -140,19 +140,24 @@ namespace Flexagonator {
     }
   }
 
-  function drawFaceProps(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform, props: PropertiesForLeaves, front: boolean) {
+  function drawFaceProps(
+    ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform,
+    props: PropertiesForLeaves, front: boolean, inset?: number
+  ) {
     const len = getBaseLength(faces[0], transform);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
     for (const face of faces) {
+      const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const id = front ? face.leaf.id : -face.leaf.id;
       const color = props.getColorAsRGBString(id);
       if (color !== undefined) {
         ctx.fillStyle = color;
-        const p1 = transform.apply(face.corners[0]);
-        const p2 = transform.apply(face.corners[1]);
-        const p3 = transform.apply(face.corners[2]);
+        const corners = insetCorners(face.corners, incenter, inset);
+        const p1 = transform.apply(corners[0]);
+        const p2 = transform.apply(corners[1]);
+        const p3 = transform.apply(corners[2]);
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
@@ -162,12 +167,24 @@ namespace Flexagonator {
       }
 
       const label = props.getFaceLabel(id) || (front ? face.leaf.top.toString() : face.leaf.bottom.toString());
-      const incenter = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const p = transform.apply(incenter);
       ctx.font = len / 5 + "px sans-serif";
       ctx.fillStyle = "black";
       ctx.fillText(label, p.x, p.y);
     }
+  }
+
+  function insetCorners(corners: Point[], incenter: Point, inset?: number): Point[] {
+    if (inset === undefined) {
+      return corners;
+    }
+    const insetFraction = inset < 0 ? 0 : inset > 1 ? 1 : inset;
+    const w1 = 1 - insetFraction;
+    const w2 = insetFraction;
+    const a: Point = { x: (w1 * corners[0].x + w2 * incenter.x), y: (w1 * corners[0].y + w2 * incenter.y) };
+    const b: Point = { x: (w1 * corners[1].x + w2 * incenter.x), y: (w1 * corners[1].y + w2 * incenter.y) };
+    const c: Point = { x: (w1 * corners[2].x + w2 * incenter.x), y: (w1 * corners[2].y + w2 * incenter.y) };
+    return [a, b, c];
   }
 
   function drawLeafLabels(ctx: CanvasRenderingContext2D, faces: LeafFace[], transform: Transform, props: PropertiesForLeaves, useId: boolean) {

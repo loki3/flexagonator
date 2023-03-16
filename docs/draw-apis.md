@@ -174,6 +174,8 @@ By default, it draws the entire strip scaled and rotated to fill the canvas as m
   showLeafProps;
   // [optional] default false; draw leaf ids
   showIds;
+  // [optional] default 0; if filling colors, this is the fractional amount to inset the fill, from 0 to 1
+  inset;
 }
 
 { // DrawStripCaption

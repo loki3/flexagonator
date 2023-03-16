@@ -11,6 +11,8 @@
     const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
     // common colors for faces
     const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f];
+    // fraction to inset fills by
+    const inset = 0.15;
 
     // draw an unfolded strip, front & back, for a generating sequence that's not just pinch flexes
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
@@ -22,8 +24,8 @@
       const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
         : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex, edge }];
 
-      const options1 = { rotation, content: { showLeafProps: true, face: 'front' }, captions };
-      const options2 = { rotation, content: { showLeafProps: true, face: 'back' }, captions };
+      const options1 = { rotation, content: { showLeafProps: true, inset, face: 'front' }, captions };
+      const options2 = { rotation, content: { showLeafProps: true, inset, face: 'back' }, captions };
       Flexagonator.drawUnfolded(canvasId + "1", fm, options1);
       Flexagonator.drawUnfolded(canvasId + "2", fm, options2);
     }
@@ -139,8 +141,8 @@
     ];
     var fm = Flexagonator.createFromScript(silverHalfFlexes);
     var captions = [{ text: "H's", which: 0 }, { text: "H's", which: -1 }];
-    Flexagonator.drawUnfolded('silverHalfFlexes1', fm, { rotation: 135, captions, content: { showLeafProps: true, face: 'front' } });
-    Flexagonator.drawUnfolded('silverHalfFlexes2', fm, { rotation: 135, captions, content: { showLeafProps: true, face: 'back' } });
+    Flexagonator.drawUnfolded('silverHalfFlexes1', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'front' } });
+    Flexagonator.drawUnfolded('silverHalfFlexes2', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'back' } });
   </script>
 
   <h2 id="slots">slot flexes</h2>
