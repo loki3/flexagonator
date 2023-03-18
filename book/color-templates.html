@@ -10,7 +10,7 @@
     // draw * on the edges that should be taped together
     const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
     // common colors for faces
-    const labelAsTree = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xDDDDDD];
+    const leafColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xDDDDDD];
     // fraction to inset fills by
     const inset = 0.15;
 
@@ -18,8 +18,11 @@
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
     //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
     //   edge: [optional] which edge to draw flex on
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge) {
+    //   leafProps: [optional] explicit labels & colors rather than auto-numbering
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge, leafProps) {
+      const labelAsTree = leafProps === undefined ? leafColors : undefined; // auto-number if no explicit leaf props
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
+      if (leafProps) script.push({ leafProps });  // tack on leaf props if present
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
         : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex, edge }];
@@ -69,11 +72,22 @@
   <h2 id="tetra-octa">tetra & octa</h2>
   <canvas id="tri-tetra1" width="1000" height="250"></canvas>
   <canvas id="tri-tetra2" width="1000" height="250"></canvas>
+  <canvas id="penta-tetra1" width="1000" height="651"></canvas>
+  <canvas id="penta-tetra2" width="1000" height="651"></canvas>
   <canvas id="tri-octa1" width="1000" height="135"></canvas>
   <canvas id="tri-octa2" width="1000" height="135"></canvas>
+  <canvas id="penta-octa1" width="1000" height="373"></canvas>
+  <canvas id="penta-octa2" width="1000" height="373"></canvas>
   <script type="text/javascript">
+    const numbering = [[3, 2], [4, 5], [3, 2], [4, 5], [1, 5], [1, 5], [3, 4], [3, 4], [2, 1], [2, 1]];
+    const pentaTetraProps = numbering.map(pair => {
+      return { front: { label: pair[0].toString(), color: leafColors[pair[0] - 1] }, back: { label: pair[1].toString(), color: leafColors[pair[1] - 1] } };
+    });
+
     drawStripSequence("tri-tetra", 4, "P*", 60, [60, 60]);
+    drawStripSequence("penta-tetra", 4, "(P*)3", 60, [60, 60], "(P)3", undefined, undefined, pentaTetraProps);
     drawStripSequence("tri-octa", 8, "P*", 60, [60, 60]);
+    drawStripSequence("penta-octa", 8, "(P*)3", -60, [60, 60]);
   </script>
 
   <h2 id="pinch-variations">pinch variations</h2>
@@ -137,7 +151,7 @@
     var silverHalfFlexes = [
       { numPats: 8, "angles": [45, 45], "addHalfFlexes": true },
       { flexes: "> Hf* Hb'+Hl'+Hr'+Hbs'+Hfs'+ Hf' Hb* Hf'+Hl'+Hr'+Hbs'+Hfs'+ Hb' Hl* Hf'+Hb'+Hr'+Hbs'+Hfs'+ Hl' Hr* Hf'+Hb'+Hl'+Hbs'+Hfs'+ Hr' Hbs* Hf'+Hb'+Hl'+Hr'+Hfs'+ Hbs' Hfs* Hf'+Hb'+Hl'+Hr'+Hbs'+ Hfs' >>>>" },
-      { labelAsTree }
+      { labelAsTree: leafColors }
     ];
     var fm = Flexagonator.createFromScript(silverHalfFlexes);
     var captions = [{ text: "H's", which: 0 }, { text: "H's", which: -1 }];
@@ -157,7 +171,7 @@
   <canvas id="test-print1" width="1000" height="1000"></canvas><br/>
   <canvas id="test-print2" width="1000" height="1000"></canvas><br/>
   <script type="text/javascript">
-    const colors = labelAsTree;
+    const colors = leafColors;
     const leafProps = [
       { front: { color: colors[0] } }, { front: { color: colors[1] } },
       { front: { color: colors[0] } }, { front: { color: colors[2] } },
