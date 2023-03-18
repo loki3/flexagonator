@@ -10,7 +10,7 @@
     // draw * on the edges that should be taped together
     const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
     // common colors for faces
-    const labelAsTree = [0x2339C7, 0x39C723, 0xF00F3B, 0xA729D6, 0xF8FF17];
+    const labelAsTree = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xDDDDDD];
     // fraction to inset fills by
     const inset = 0.15;
 
@@ -150,6 +150,38 @@
   <canvas id="slot-6-many2" width="1000" height="578"></canvas><br/><br/>
   <script type="text/javascript">
     drawStripSequence("slot-6-many", 6, "Lk+ Ltb+ Lbb+", 90, [60, 60], ">>>^", -6);
+  </script>
+
+  <!-- test print -->
+  <h1>test print</h1>
+  <canvas id="test-print1" width="1000" height="1000"></canvas><br/>
+  <canvas id="test-print2" width="1000" height="1000"></canvas><br/>
+  <script type="text/javascript">
+    const colors = labelAsTree;
+    const leafProps = [
+      { front: { color: colors[0] } }, { front: { color: colors[1] } },
+      { front: { color: colors[0] } }, { front: { color: colors[2] } },
+      { front: { color: colors[0] } }, { front: { color: colors[3] } },
+      { front: { color: colors[0] } }, { front: { color: colors[4] } },
+      { front: { color: colors[0] } }, { front: { color: colors[5] } },
+      { front: { color: colors[1] } }, { front: { color: colors[2] } },
+      { front: { color: colors[1] } }, { front: { color: colors[3] } },
+      { front: { color: colors[1] } }, { front: { color: colors[4] } },
+      { front: { color: colors[1] } }, { front: { color: colors[5] } },
+      { front: { color: colors[2] } }, { front: { color: colors[3] } },
+      { front: { color: colors[2] } }, { front: { color: colors[4] } },
+      { front: { color: colors[2] } }, { front: { color: colors[5] } },
+      { front: { color: colors[3] } }, { front: { color: colors[4] } },
+      { front: { color: colors[3] } }, { front: { color: colors[5] } },
+      { front: { color: colors[4] } },
+    ];
+    var tryColors = [
+      { numPats: leafProps.length, angles: [60, 60], directions: '/|/|////|/|/|/||||/|/|////|/|' },
+      { leafProps },
+    ];
+    var fm = Flexagonator.createFromScript(tryColors);
+    Flexagonator.drawUnfolded('test-print1', fm, { rotation: 0, content: { showLeafProps: true, face: 'front' } });
+    Flexagonator.drawUnfolded('test-print2', fm, { rotation: 0, content: { showLeafProps: true, face: 'front', inset } });
   </script>
 
 </body>
