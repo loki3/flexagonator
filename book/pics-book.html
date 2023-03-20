@@ -38,10 +38,13 @@
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
-    function drawStripPinch2(canvasId, numPats, flexes, rotation, start, end) {
-      const script = [{ numPats: 6, flexAndColor: { flexes: flexes } }];
+    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText) {
+      const script = [{ numPats, angles: [60, 60], flexAndColor: { flexes: flexes } }];
       const fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
+      const text = flexText ?? flexes;
+      const captions = whereFlex === undefined ? [{ text, which: 0 }, { text: "*", which: -1 }]
+        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex }];
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions });
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
@@ -243,7 +246,7 @@
   <h4>penta-hexaflexagon strip</h4>
   <canvas id="penta-hexa" width="960" height="500"></canvas>
   <script type="text/javascript">
-    drawStripPinch2("penta-hexa", 6, "P* P+ >P>P P+ ^", 0);
+    drawStripPinch2("penta-hexa", 6, "P* P+ >P>P P+ ^", 0, 1, "(P)3");
   </script>
 
   <h4>hexa-hexaflexagon strips</h4>
@@ -251,9 +254,9 @@
   <canvas id="hexa-hexa2" width="700" height="610"></canvas>
   <canvas id="hexa-hexa3" width="700" height="700"></canvas>
   <script type="text/javascript">
-    drawStripPinch2("hexa-hexa1", 6, "P* P+ >P>P P+ ^P P+ ^P^", 120);
-    drawStripPinch2("hexa-hexa2", 6, "P* P+ >P>P P+ PP+ ^P", 0);
-    drawStripPinch2("hexa-hexa3", 6, "P* P+ >P>P P+ >PPP+ ^PP", 0);
+    drawStripPinch2("hexa-hexa1", 6, "P* P+ >P>P P+ ^P P+ ^P^", 120, 1, "6a");
+    drawStripPinch2("hexa-hexa2", 6, "P* P+ >P>P P+ PP+ ^P", 0, 1, "6b");
+    drawStripPinch2("hexa-hexa3", 6, "P* P+ >P>P P+ >PPP+ ^PP", 0, -2, "6c");
   </script>
 
   <!-- longer templates -->
