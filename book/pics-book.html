@@ -97,6 +97,23 @@
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
     }
 
+    // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
+    function drawPenta(canvasId, numPats, rotation) {
+      const pentaPats = [0, [0, [0, [0, 0]]]];
+      const pentaNums = [[2, 1], [2, 3], [3, 4], [4, 5], [5, 1]];
+      const pats = Array(numPats / 2).fill(pentaPats).flatMap(p => p);
+      const numbers = Array(numPats / 2).fill(pentaNums).flatMap(p => p);
+      const leafProps = numbers.map(pair => {
+        return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } };
+      });
+
+      const script = [{ pats, angles: [60, 60], leafProps }];
+      const fm = Flexagonator.createFromScript(script);
+      const captions = [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: "(P)3", which: 2 }];
+      const options = { rotation, content: { showLeafProps: true }, captions };
+      Flexagonator.drawUnfolded(canvasId, fm, options);
+    }
+
     // draw the Tuckerman diagram for a flexagon with the given generating sequence,
     // optionally highlighting one flex sequence
     function drawTuckerman(canvasId, generator, highlight) {
@@ -244,9 +261,9 @@
   </script>
 
   <h4>penta-hexaflexagon strip</h4>
-  <canvas id="penta-hexa" width="960" height="500"></canvas>
+  <canvas id="penta-hexa" width="1000" height="475"></canvas>
   <script type="text/javascript">
-    drawStripPinch2("penta-hexa", 6, "P* P+ >P>P P+ ^", 0, 1, "(P)3");
+    drawPenta("penta-hexa", 6, 60);
   </script>
 
   <h4>hexa-hexaflexagon strips</h4>
@@ -295,13 +312,7 @@
   <h4>regular penta-tetraflexagon strip</h4>
   <canvas id="penta-tetra" width="1200" height="500"></canvas>
   <script type="text/javascript">
-    const numbering = [[3, 2], [4, 5], [3, 2], [4, 5], [1, 5], [1, 5], [3, 4], [3, 4], [2, 1], [2, 1]];
-    const leafProps = numbering.map(pair => {
-      return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } };
-    });
-    var script = [{ numPats: 4, flexes: "(P*)3", angles: [60, 60], leafProps }];
-    var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions: starCaptions };
-    drawStripComplex("penta-tetra", script, drawOptions);
+    drawPenta("penta-tetra", 4, 60);
   </script>
 
   <h4>regular tri-octaflexagon strip</h4>
@@ -313,11 +324,9 @@
   </script>
 
   <h4>regular penta-octaflexagon strip</h4>
-  <canvas id="penta-octa" width="1200" height="500"></canvas>
+  <canvas id="penta-octa" width="1200" height="448"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 8, flexes: "(P*)3", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions: starCaptions };
-    drawStripComplex("penta-octa", script, drawOptions);
+    drawPenta("penta-octa", 8, 60);
   </script>
 
   <!-- pinch flex variations -->
