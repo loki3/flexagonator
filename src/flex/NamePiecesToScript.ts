@@ -163,6 +163,11 @@ namespace Flexagonator {
         return { angles: [90, 45], directions };
       }
     }
+    // rhombic dodeca
+    if (overallShape === 'rhombic' && n === 12) {
+      const directions = Directions.make('//||//'.repeat(2));
+      return { angles: [60, 90], directions };
+    }
     // rhombic hexadeca
     if (overallShape === 'rhombic' && n === 16) {
       const directions = Directions.make('//|//|//'.repeat(2));
