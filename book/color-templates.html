@@ -36,12 +36,8 @@
     // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
     function drawPenta(canvasId, numPats, rotation) {
       const pentaPats = [0, [0, [0, [0, 0]]]];
-      const pentaNums = [[2, 1], [2, 3], [3, 4], [4, 5], [5, 1]];
       const pats = Array(numPats / 2).fill(pentaPats).flatMap(p => p);
-      const numbers = Array(numPats / 2).fill(pentaNums).flatMap(p => p);
-      const leafProps = numbers.map(pair => {
-        return { front: { label: pair[0].toString(), color: leafColors[pair[0] - 1] }, back: { label: pair[1].toString(), color: leafColors[pair[1] - 1] } };
-      });
+      const leafProps = pairsToProps([[2, 1], [2, 3], [3, 4], [4, 5], [5, 1]], numPats / 2);
 
       const script = [{ pats, angles: [60, 60], leafProps }];
       const fm = Flexagonator.createFromScript(script);
@@ -51,6 +47,15 @@
       const options2 = { rotation, content: { showLeafProps: true, inset, face: 'back' }, captions };
       Flexagonator.drawUnfolded(canvasId + "1", fm, options1);
       Flexagonator.drawUnfolded(canvasId + "2", fm, options2);
+    }
+
+    // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
+    function pairsToProps(numbering, repeats) {
+      const numbers = Array(repeats).fill(numbering).flatMap(p => p);
+      const leafProps = numbers.map(pair => {
+        return { front: { label: pair[0].toString(), color: leafColors[pair[0] - 1] }, back: { label: pair[1].toString(), color: leafColors[pair[1] - 1] } };
+      });
+      return leafProps;
     }
   </script>
 
