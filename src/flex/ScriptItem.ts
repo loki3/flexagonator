@@ -21,6 +21,8 @@ namespace Flexagonator {
     readonly flexAndColor?: FlexAndColorOptions;
     // manipulate the flex history: "clear", "undo", "redo", "reset"
     readonly history?: string;
+    // renumber the leaves so that the ids occur in the same order as the unfolded template
+    readonly normalizeIds?: boolean;
     // array of properties for every leaf
     readonly leafProps?: LeafProperties[];
     // set properties for the entire face (front and/or back)

@@ -96,6 +96,10 @@ namespace Flexagonator {
       }
     }
 
+    if (item.normalizeIds !== undefined) {
+      fm.flexagon = fm.flexagon.normalizeIds();
+    }
+
     if (item.leafProps !== undefined) {
       fm.leafProps = new PropertiesForLeaves(item.leafProps);
     }

@@ -19,6 +19,7 @@ Script commands:
     * **addFlex:** define a new flex
 * Properties
     * **leafProps:** describe the properties for every leaf
+    * **normalizeIds:** change the leaf ids so they match the order the leaves occur in the unfolded template
     * **setFace:** set properties for the entire face (front and/or back)
     * **unsetFace:** set properties for just the portion of the current face that's not already set (front and/or back)
     * **labelAsTree:** set properties for all leaf faces by traversing the pats as a binary tree
@@ -276,6 +277,17 @@ An array element can be `null` if you want to use the default for both the front
   { front:{}, back:{ label:"2", color:2850878 } }
 ]}
 ```
+
+### the `normalizeIds` command
+
+Every leaf has an id, which the `leafProps` command uses when assigning properties to leaves.
+When leaves are created from a flex generating sequence, new ids are created as the leaves are created.
+While this is useful for keeping some stability to existing ids,
+it can also make it hard to predict the ids, which makes it hard to use the `leafProps` command.
+
+Use the `{normalizeIds:true}` command to change the leaf ids
+so they match the order the leaves occur in the unfolded template.
+Then it's simpler to use `leafProps` to assign properties to leaves.
 
 ### the `setFace` & `unsetFace` commands
 

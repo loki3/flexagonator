@@ -94,5 +94,14 @@ namespace Flexagonator {
       }
       return match;
     }
+
+    /**
+     * create a new flexagon where the leaves are renumbered
+     * such that the ids are in the order they occur in the unfolded strip
+     */
+    normalizeIds(): Flexagon {
+      const normalized = normalizeIds(this.pats);
+      return new Flexagon(normalized, this.whichVertex, this.isFirstMirrored);
+    }
   }
 }

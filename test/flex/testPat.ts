@@ -47,6 +47,17 @@ namespace Flexagonator {
     });
   });
 
+  describe('remap', () => {
+    it('remaps ids', () => {
+      const original = [1, [[-2, 3], -4]];
+      const expected = [3, [[-4, -1], 2]];
+      const map = { 1: 3, 2: 4, 3: -1, 4: -2 };
+      const pat = makePat(original) as Pat;
+      const result = pat.remap(map).getAsLeafTree();
+      expect(areEqual(result, expected)).toBeTruthy();
+    });
+  });
+
   describe('getTop', () => {
     it('should return the label for the top leaf', () => {
       const original = [[-1, 2], [-3, [4, -5]]];

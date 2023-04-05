@@ -14,6 +14,7 @@ namespace Flexagonator {
     getLeafCount(): number;
     makeCopy(): Pat;
     makeFlipped(): Pat;
+    remap(map: Record<number, number>): Pat; // turn id into map[id]
     getAsLeafTree(): LeafTree;
     getTop(): number;
     getBottom(): number;
@@ -83,6 +84,11 @@ namespace Flexagonator {
 
     makeFlipped(): Pat {
       return new PatLeaf(-this.id);
+    }
+
+    remap(map: Record<number, number>): Pat {
+      const newid = this.id > 0 ? map[this.id] : -map[-this.id];
+      return new PatLeaf(newid);
     }
 
     getAsLeafTree(): LeafTree {
@@ -198,6 +204,10 @@ namespace Flexagonator {
 
     makeFlipped(): Pat {
       return new PatPair(this.right.makeFlipped(), this.left.makeFlipped());
+    }
+
+    remap(map: Record<number, number>): Pat {
+      return new PatPair(this.left.remap(map), this.right.remap(map));
     }
 
     getAsLeafTree(): LeafTree {
