@@ -587,37 +587,6 @@
     drawStripSequence("V-cycle", 6, "(V*>)6", -60);
   </script>
 
-  <h3 id="silver tetra">silver tetra flex</h3>
-
-  <div class="photos">
-    <img src="../idyll/static/St/St1.jpg" width="150"/>
-    <img src="../idyll/static/St/St2.jpg" width="150"/>
-    <img src="../idyll/static/St/St3.jpg" width="150"/>
-    <img src="../idyll/static/St/St4.jpg" width="150"/>
-    <br/>
-    <img src="../idyll/static/St/St5.jpg" width="150"/>
-    <img src="../idyll/static/St/St6.jpg" width="150"/>
-    <img src="../idyll/static/St/St7.jpg" width="150"/>
-    <img src="../idyll/static/St/St8.jpg" width="150"/>
-    <br/>
-    <img src="../idyll/static/St/St9.jpg" width="150"/>
-    <img src="../idyll/static/St/St10.jpg" width="150"/>
-    <img src="../idyll/static/St/St11.jpg" width="150"/>
-    <img src="../idyll/static/St/St12.jpg" width="150"/>
-    <br/>
-    <img src="../idyll/static/St/St13.jpg" width="150"/>
-    <img src="../idyll/static/St/St14.jpg" width="150"/>
-    <img src="../idyll/static/St/St15.jpg" width="150"/>
-  </div>
-  <br/><br/>
-  <canvas id="St-minimal" width="800" height="600"></canvas>
-  <br/><br/>
-  <canvas id="St-octa" width="700" height="700"></canvas>
-  <script type="text/javascript">
-    drawStripSequence("St-minimal", 4, "St*", 0, [45, 90], ">");
-    drawStripSequence("St-octa", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
-  </script>
-
   <h3 id="half-flexes">half flexes</h3>
 
   <p>silver octaflexagon: Hf, Hb, Hr, Hl, Hfs, Hbs</p>
@@ -648,10 +617,12 @@
     drawTemplate("silver-half-Hr", "Hr+", -45, true, [45, 90]);   // Hl
     drawTemplate("silver-half-Hfs", "Hfs+", -45, true, [45, 90]); // Hbs
   </script>
-  <!-- Mf and S3 -->
+  <!-- St, Mf, and S3 -->
+  <canvas id="half-St" width="700" height="700"></canvas>
   <canvas id="half-Mf" width="1000" height="400"></canvas><br/><br/>
   <canvas id="half-S3" width="1000" height="400"></canvas><br/><br/>
   <script type="text/javascript">
+    drawStripSequence("half-St", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
     drawStripSequence("half-Mf", 8, "Mf*", 45, [45, 45], ">>", -2);
     drawStripSequence("half-S3", 8, "S3*", 45, [45, 45], ">>", -2);
   </script>
