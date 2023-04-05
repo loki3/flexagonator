@@ -79,7 +79,8 @@
 
     // use folding order rather than tree order for odd-ordered flexagon
     function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps, edge) {
-      const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes, leafProps }, { flexes: postFlexes }];
+      const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes }, { flexes: postFlexes }];
+      if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
         : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex, edge }];
@@ -151,6 +152,15 @@
         fm.applyFlexes(sequence[i]);
         Flexagonator.drawEntireFlexagon(id, fm, { showIds: false, showCurrent: false });
       }
+    }
+
+    // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
+    function pairsToProps(numbering, repeats) {
+      const numbers = Array(repeats).fill(numbering).flatMap(p => p);
+      const leafProps = numbers.map(pair => {
+        return { front: { label: pair[0].toString(), color: labelAsTree[pair[0] - 1] }, back: { label: pair[1].toString(), color: labelAsTree[pair[1] - 1] } };
+      });
+      return leafProps;
     }
   </script>
 </head>
@@ -545,7 +555,9 @@
     drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
     drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
     drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 1);
-    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", undefined, 1);
+    const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
+    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
+    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
   </script>
 
   <h3 id="vflex">v flex</h3>
@@ -656,9 +668,8 @@
     drawStripSequence("slot-8", 8, "Lk+ Ltf+", 45, [], ">>^", 2);
 
     // custom labels for the L3 pentaflexagon to make the flex diagram simpler
-    const numbers = [[1, 5], [1, 8], [1, 2], [1, 5], [1, 2], [5, 4], [4, 3], [3, 2], [8, 7], [7, 6], [6, 2], [5, 4], [4, 3], [3, 2]];
-    const labels = numbers.map(pair => { return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } } });
-    drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3", labels);
+    const leafProps = pairsToProps([[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]);
+    drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3", leafProps);
   </script>
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
