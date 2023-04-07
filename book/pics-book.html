@@ -192,7 +192,6 @@
     </ul>
     <li><a href="#part3">Part Three: Learning</a></li>
     <ul>
-      <li><a href="#naming">naming</a></li>
       <li><a href="#state-diagrams">state diagrams</a></li>
       <li><a href="#sequences">sequences</a></li>
       <li><a href="#pat-notation">pat notation</a></li>
@@ -210,39 +209,6 @@
   <!-- intro -->
 
   <h2 id="intro">Introduction</h2>
-
-  <canvas id="intro-tri" width="800" height="180"></canvas>
-  <script type="text/javascript">
-    var script = [{ numPats: 6, flexes: "P*" }];
-    var options = { rotation: 120, content: {} };
-    drawStripComplex("intro-tri", script, options);
-  </script>
-  <br/>
-
-  <div class="photos">
-    <img src="photos/pinch/pinch (1).jpg" width="150"/>
-    <img src="photos/pinch/pinch (3).jpg" width="150"/>
-    <img src="photos/pinch/pinch (4).jpg" width="150"/>
-    <img src="photos/pinch/pinch (5).jpg" width="150"/>
-    <img src="photos/pinch/pinch (6).jpg" width="150"/>
-    <br/>
-    <img src="photos/pinch/pinch (7).jpg" width="150"/>
-    <img src="photos/pinch/pinch (8).jpg" width="150"/>
-    <img src="photos/pinch/pinch (9).jpg" width="150"/>
-    <img src="photos/pinch/pinch (10).jpg" width="150"/>
-    <img src="photos/pinch/pinch (11).jpg" width="150"/>
-  </div>
-
-  <canvas id="intro-hexa" width="1200" height="180"></canvas>
-  <script type="text/javascript">
-    var script = [{ numPats: 6, flexes: "P* P* P+ > P P*" }];
-    var options = { rotation: 120, content: {} };
-    drawStripComplex("intro-hexa", script, options);
-  </script>
-
-  <br/>
-  <img src="images/square-book.jpg" />
-  <br/><br/>
 
   <img src="../idyll/static/flexagon-variety.jpg" /><br/><br/>
 
@@ -749,21 +715,6 @@
   <!-- part 3 -->
 
   <h2 id="part3">Part 3: Learning</h2>
-
-  <h3 id="naming">naming</h3>
-
-  <h4>hexa-hexaflexagon templates</h4>
-  <canvas id="name-hexa-hexa1" width="900" height="110"></canvas>
-  <br/>
-  <canvas id="name-hexa-hexa2" width="450" height="405"></canvas>
-  <canvas id="name-hexa-hexa3" width="450" height="405"></canvas>
-  <script type="text/javascript">
-    drawStripPinch("name-hexa-hexa1", 6, "P* P* P+ > P P*", 120);
-    drawStripPinch("name-hexa-hexa2", 6, "(P*^>)4", 0);
-    drawStripPinch("name-hexa-hexa3", 6, "(P*)4", -30);
-  </script>
-
-  <hr />
 
   <!-- state-diagrams -->
   <h3 id="state-diagrams">state-diagrams</h3>
