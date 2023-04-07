@@ -42,7 +42,9 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     // draw * on the edges that should be taped together
-    const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
+    const firstStar = { text: "*", which: 0, scale: 2 };
+    const lastStar = { text: "*", which: -1, scale: 2 };
+    const starCaptions = [firstStar, lastStar];
     // common colors for faces
     const labelAsTree = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
 
@@ -59,8 +61,7 @@
       const script = [{ numPats, angles: [60, 60], flexAndColor: { flexes: flexes } }];
       const fm = Flexagonator.createFromScript(script);
       const text = flexText ?? flexes;
-      const captions = whereFlex === undefined ? [{ text, which: 0 }, { text: "*", which: -1 }]
-        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex }];
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions });
     }
 
@@ -71,8 +72,7 @@
     function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge) {
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
-      const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
-        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex, edge }];
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text: flexes, which: whereFlex, edge });
       const options = { rotation, content: { showLeafProps: true }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
@@ -82,8 +82,7 @@
       const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes }, { flexes: postFlexes }];
       if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
       const fm = Flexagonator.createFromScript(script);
-      const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
-        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text, which: whereFlex, edge }];
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
       const content = leafProps ? { showLeafProps: true } : { showFoldingOrder: true };
       const options = { rotation, content, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
@@ -127,7 +126,7 @@
 
       const script = [{ pats, angles: [60, 60], leafProps }];
       const fm = Flexagonator.createFromScript(script);
-      const captions = [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: "(P)3", which: 2 }];
+      const captions = starCaptions.concat({ text: "(P)3", which: 2 });
       const options = { rotation, content: { showLeafProps: true }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
@@ -608,9 +607,12 @@
     function drawTemplate(canvasId, flexes, rotation, label1, angles) {
       const script = [{ numPats: 8, angles, addHalfFlexes: true }, { flexes, labelAsTree: [] }];
       const fm = Flexagonator.createFromScript(script);
-      const text1 = label1 ? flexes : "*";
-      const text2 = label1 ? "*" : flexes;
-      const options = { rotation, content: { showLeafProps: true }, captions: [{ text: text1, which: 0 }, { text: text2, which: -1 }] };
+      const text1 = label1 ? flexes : "*"; const scale1 = label1 ? 1 : 2;
+      const text2 = label1 ? "*" : flexes; const scale2 = label1 ? 2 : 1;
+      const options = {
+        rotation, content: { showLeafProps: true },
+        captions: [{ text: text1, which: 0, scale: scale1 }, { text: text2, which: -1, scale: scale2 }]
+      };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
     drawTemplate("silver-half-Hf", "Hf+", 45, false, [45, 90]);   // Hb
@@ -686,7 +688,7 @@
       };
       var script = [{ numPats: 12, angles, directions }, halfFlex, slideFlex, tuck12, { flexes }];
       var fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showFoldingOrder: true }, captions: [{ text, which: 0 }, { text: "*", which: -1 }] });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showFoldingOrder: true }, captions: [{ text, which: 0 }, lastStar] });
     }
     drawStripFromFlexes('silverDodecaHexa1', 'H+', 45, 'H');
     drawStripFromFlexes('silverDodecaHexa2', 'H*H*', 90, 'HH');
@@ -697,7 +699,7 @@
 
     var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
     var fm = Flexagonator.createFromScript([{ pats, angles, directions }]);
-    Flexagonator.drawUnfolded('silverDodecaHexa7', fm, { rotation: 0, content: { showFoldingOrder: true }, captions: [{ text: 'double', which: 0 }, { text: "*", which: -1 }] });
+    Flexagonator.drawUnfolded('silverDodecaHexa7', fm, { rotation: 0, content: { showFoldingOrder: true }, captions: [{ text: 'double', which: 0 }, lastStar] });
   </script>
   <!-- plain pentagonal silver decaflexagon -->
   <p>pentagonal silver decaflexagon</p>
@@ -835,9 +837,9 @@
 
     var flipleft = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
     drawStripComplex("sequences-flipleft1", flipleft,
-      { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [{ text: "*", which: 0 }, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
+      { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
     drawStripComplex("sequences-flipleft2", flipleft,
-      { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [{ text: "*", which: -1 }, { text: "a", which: 0 }] });
+      { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] });
     drawSequence("sequences-flip", 8, "(F*<)6", ["", "F<", "F<", "F<", "F<", "F<", "F<"]);
 
     drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+" }], { rotation: 120, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
@@ -953,9 +955,9 @@
   <script type="text/javascript">
     var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2" } }];
     drawStripComplex("right-tetra4a", script,
-      { rotation: -45, content: { showFoldingOrder: true }, start: 0, end: 7, captions: [{ text: "*", which: 0 }, { text: "a", which: -1 }] });
+      { rotation: -45, content: { showFoldingOrder: true }, start: 0, end: 7, captions: [firstStar, { text: "a", which: -1 }] });
     drawStripComplex("right-tetra4b", script,
-      { rotation: -45, content: { showFoldingOrder: true }, start: 8, end: 9, captions: [{ text: "a", which: 0 }, { text: "*", which: -1 }] });
+      { rotation: -45, content: { showFoldingOrder: true }, start: 8, end: 9, captions: [{ text: "a", which: 0 }, lastStar] });
   </script>
 
   <p>regular tetraflexagons</p>
