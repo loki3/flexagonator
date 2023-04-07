@@ -50,10 +50,11 @@
 
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
-    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end) {
+    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge) {
       const script = [{ numPats: numPats, flexes: flexes, labelAsTree: [] }];
       const fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: starCaptions, start, end });
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions, start, end });
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
@@ -126,7 +127,7 @@
 
       const script = [{ pats, angles: [60, 60], leafProps }];
       const fm = Flexagonator.createFromScript(script);
-      const captions = starCaptions.concat({ text: "(P)3", which: 2 });
+      const captions = starCaptions.concat({ text: "5", which: 2, edge: 2 });
       const options = { rotation, content: { showLeafProps: true }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
@@ -237,7 +238,7 @@
   </div>
   <canvas id="tri-hexa" width="800" height="180"></canvas>
   <script type="text/javascript">
-    drawStripPinch("tri-hexa", 6, "P*", 120);
+    drawStripPinch("tri-hexa", 6, "P*", 120, undefined, undefined, 0, "3", 2);
   </script>
 
   <!-- 4, 5, & 6 faces-->
@@ -246,7 +247,7 @@
   <h4>tetra-hexaflexagon strip</h4>
   <canvas id="tetra-hexa" width="1200" height="220"></canvas>
   <script type="text/javascript">
-    drawStripPinch("tetra-hexa", 6, "P*P+", 30);
+    drawStripPinch("tetra-hexa", 6, "P*P+", 30, undefined, undefined, 3, "4", 1);
   </script>
 
   <h4>penta-hexaflexagon strip</h4>
@@ -274,17 +275,17 @@
     var A = "P'*>(P*)2";
     var B = "P'*>(P*)4";
     var sequence = A + B + A + B + A;
-    drawStripPinch("dodeca-hexa", 6, sequence, 120, 0, 11);
+    drawStripPinch("dodeca-hexa", 6, sequence, 120, 0, 11, 0, "12", 2);
   </script>
 
   <h4>icositetra-hexaflexagon strip</h4>
-  <canvas id="icositetra-hexa" width="1200" height="180"></canvas>
+  <canvas id="icositetra-hexa" width="1200" height="100"></canvas>
   <script type="text/javascript">
     var A = "P'*>(P*)2";
     var B = "P'*>(P*)4";
     var C = "P'*>(P*)6";
     var sequence = A + B + A + C + A + B + A + C + A + B + A;
-    drawStripPinch("icositetra-hexa", 6, sequence, 120, 0, 23);
+    drawStripPinch("icositetra-hexa", 6, sequence, 120, 0, 23, 0, "24", 2);
   </script>
 
   <!-- triangle tetra & octa -->
@@ -294,7 +295,8 @@
   <canvas id="tri-tetra" width="1200" height="220"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions: starCaptions };
+    var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 });
+    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions };
     drawStripComplex("tri-tetra", script, drawOptions);
   </script>
 
@@ -308,7 +310,8 @@
   <canvas id="tri-octa" width="1200" height="220"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions: starCaptions };
+    var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 });
+    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions };
     drawStripComplex("tri-octa", script, drawOptions);
   </script>
 
@@ -324,7 +327,7 @@
   <h4>P444</h4>
   <canvas id="P444" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripPinch("P444", 12, "P444*");
+    drawStripPinch("P444", 12, "P444*", undefined, undefined, undefined, 0, "P444", 2);
   </script>
 
   <p>
@@ -334,13 +337,14 @@
   <canvas id="P444-half" width="1200" height="250"></canvas>
   <script type="text/javascript">
     var script = [{ "pats": [1, 2, 3, [0, 0], 5, 6, 7, [0, 0], 9, 10, 11, [0, 0]] }, { "angles": [30, 60, 90] }];
-    drawStripComplex("P444-half", script, { rotation: 60, content: { showFoldingOrder: true }, captions: starCaptions });
+    var captions = starCaptions.concat({ text: "P444h", which: 1, edge: 2 });
+    drawStripComplex("P444-half", script, { rotation: 60, content: { showFoldingOrder: true }, captions });
   </script>
 
   <h4>P333</h4>
   <canvas id="P333" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripPinch("P333", 9, "P333*>>");
+    drawStripPinch("P333", 9, "P333*>>", undefined, undefined, undefined, -2, "P333", 0);
   </script>
   <br/>
 
@@ -365,7 +369,7 @@
   <h4>P334</h4>
   <canvas id="P334" width="1200" height="400"></canvas>
   <script type="text/javascript">
-    drawStripPinch("P334", 10, "P334*");
+    drawStripPinch("P334", 10, "P334*", undefined, undefined, undefined, 0, "P334", 2);
   </script>
   <br/>
 
@@ -390,9 +394,10 @@
   <h4>P223</h4>
   <canvas id="P223" width="1200" height="360"></canvas>
   <script type="text/javascript">
+    var captions = starCaptions.concat({ text: "P223", which: 3, edge: 1 });
     drawStripComplex("P223",
       [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] }],
-      { rotation: 25.714, captions: starCaptions });
+      { rotation: 25.714, captions });
   </script>
 
   <hr />
@@ -548,8 +553,8 @@
   <canvas id="V-minimal" width="900" height="450"></canvas>
   <canvas id="V-cycle" width="1000" height="140"></canvas>
   <script type="text/javascript">
-    drawStripSequence("V-minimal", 6, "V*", 60);
-    drawStripSequence("V-cycle", 6, "(V*>)6", -60);
+    drawStripSequence("V-minimal", 6, "V*", 60, undefined, undefined, 0, 2);
+    drawStripSequence("V-cycle", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
   </script>
 
   <h3 id="half-flexes">half flexes</h3>
