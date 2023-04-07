@@ -58,12 +58,12 @@
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
-    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText) {
+    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle) {
       const script = [{ numPats, angles: [60, 60], flexAndColor: { flexes: flexes } }];
       const fm = Flexagonator.createFromScript(script);
       const text = flexText ?? flexes;
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions });
     }
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
@@ -262,8 +262,8 @@
   <canvas id="hexa-hexa3" width="700" height="700"></canvas>
   <script type="text/javascript">
     drawStripPinch2("hexa-hexa1", 6, "P* P+ >P>P P+ ^P P+ ^P^", 120, 1, "6a");
-    drawStripPinch2("hexa-hexa2", 6, "P* P+ >P>P P+ PP+ ^P", 0, 1, "6b");
-    drawStripPinch2("hexa-hexa3", 6, "P* P+ >P>P P+ >PPP+ ^PP", 0, -2, "6c");
+    drawStripPinch2("hexa-hexa2", 6, "P* P+ >P>P P+ PP+ ^P", 0, 1, "6b", "solid");
+    drawStripPinch2("hexa-hexa3", 6, "P* P+ >P>P P+ >PPP+ ^PP", 0, -2, "6c", "solid");
   </script>
 
   <!-- longer templates -->
