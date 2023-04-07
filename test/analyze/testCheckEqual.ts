@@ -56,14 +56,24 @@ namespace Flexagonator {
       // PPP ≈ (S<<)3
       expect(checkEqual(hexagon, "P* ^> P* ^> P* <", "(S*<<)3", all6)).toBe('exact');
 
-      // T ≈ <P^SP^>
+      // I ≈ SP<T>P'
+      expect(checkEqual(hexagon, "", "S*P*<T*>P'", all6)).toBe('bFirst');
       expect(checkEqual(hexagon, "T*", "<P*^S*P^>", all6)).toBe('bFirst');
-      // V ≈ >>>PT'>>>
+      expect(checkEqual(hexagon, "S*", "P*<^T*<P^", all6)).toBe('bFirst');
+
+      // I ≈ V>>>TP'>>>
+      expect(checkEqual(hexagon, "", "V* >>> T*P'* >>>", all6)).toBe('bFirst');
       expect(checkEqual(hexagon, "V*", ">>> P*T'* >>>", all6)).toBe('bFirst');
+      expect(checkEqual(hexagon, "P*", ">>> V* >>> T*", all6)).toBe('bFirst');
+      expect(checkEqual(hexagon, "T*", ">>> V'* >>> P*", all6)).toBe('bFirst');
+
+      // I ≈ F^SSt^
+      expect(checkEqual(hexagon, "St*", "F*^S*^", all6)).toBe('bFirst');
+      expect(checkEqual(hexagon, "F*", "St*>S*<", all6)).toBe('bFirst');
+      expect(checkEqual(hexagon, "S*", "F*St'*", all6)).toBe('bFirst');
+
       // F ≈ <^T<<T^S<
       expect(checkEqual(hexagon, "F*", "<^ T* << T* ^ S* <", all6)).toBe('bFirst');
-      // S ≈ FSt'
-      expect(checkEqual(hexagon, "S*", "F*St'*", all6)).toBe('bFirst');
       // St = >T'<<^T^>
       expect(checkEqual(hexagon, "St*", "> T'* <<^ T* ^>", all6)).toBe('exact');
     });
