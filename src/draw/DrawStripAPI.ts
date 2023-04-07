@@ -38,6 +38,7 @@ namespace Flexagonator {
     readonly text: string;  // text to display
     readonly which: number; // if >=0, leaf offset from the start, else offset from the end
     readonly edge?: number; // [optional] which leaf edge to put label on
+    readonly scale?: number; // [optional] how much to scale text by; default 1
   }
 
   export interface DrawStripOptions {

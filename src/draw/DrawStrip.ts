@@ -239,7 +239,7 @@ namespace Flexagonator {
   ): void {
     const [face, line] = getFace(leaflines, caption.which, caption.edge);
     const p: Point = computeBasePoint(face, line, transform);
-    const len = getBaseLength(face, transform);
+    const len = getBaseLength(face, transform) * (caption.scale !== undefined ? caption.scale : 1);
 
     ctx.save();
     ctx.textAlign = "center";
