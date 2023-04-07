@@ -32,6 +32,23 @@ namespace Flexagonator {
     });
   });
 
+  describe('areLTArraysEqual', () => {
+    it('should recognize equal leaf tree arrays', () => {
+      const trees = [1, 2, [3, 4]];
+      expect(areLTArraysEqual(trees, trees)).toBeTruthy();
+    });
+    it('should recognize unequal leaf tree arrays', () => {
+      // unequal numbers
+      const tree1 = [1, 2, [3, 4]];
+      const tree2 = [1, 2, [-4, -3]];
+      expect(areLTArraysEqual(tree1, tree2)).toBeFalsy();
+
+      // unequal pats
+      const tree3 = [1, 2, [3, [4, 5]]];
+      expect(areLTArraysEqual(tree1, tree3)).toBeFalsy();
+    });
+  });
+
   describe('parseLeafTrees', () => {
     it('should read valid leaf trees', () => {
       const tree = [1, [[-2, 3], 4]];

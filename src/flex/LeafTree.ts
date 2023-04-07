@@ -38,6 +38,7 @@ namespace Flexagonator {
     return false;
   }
 
+  /** compare arrays of leaftrees, i.e. flexagons */
   export function areLTArraysEqual(a: LeafTree[], b: LeafTree[]): boolean {
     if (a.length !== b.length) {
       return false;
