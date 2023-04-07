@@ -176,6 +176,8 @@ By default, it draws the entire strip scaled and rotated to fill the canvas as m
   showIds;
   // [optional] default 0; if filling colors, this is the fractional amount to inset the fill, from 0 to 1
   inset;
+  // [optional] default 'dashed'; the style to use for drawing the first and last edges
+  endStyle;
 }
 
 { // DrawStripCaption

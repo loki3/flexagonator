@@ -44,6 +44,10 @@ namespace Flexagonator {
       ctx.setLineDash([]);
     }
     drawLines(ctx, leaflines.cuts, transform);
+    if (content.endStyle === 'solid') {
+      const ends = [leaflines.folds[0], leaflines.folds[leaflines.folds.length - 1]];
+      drawLines(ctx, ends, transform);
+    }
 
     ctx.restore();
   }

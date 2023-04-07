@@ -20,6 +20,8 @@ namespace Flexagonator {
     readonly showIds?: boolean;
     /** if filling colors, this is the fractional amount to inset the solid (1,0], default 0 */
     readonly inset?: number;
+    /** the style to use for drawing the first and last edges, default 'dashed' */
+    readonly endStyle?: 'dashed' | 'solid';
   }
 
   // deprecated: use LeafContent instead
