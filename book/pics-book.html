@@ -58,8 +58,9 @@
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
-    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle) {
-      const script = [{ numPats, angles: [60, 60], flexAndColor: { flexes: flexes } }];
+    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle, angles) {
+      angles = angles ? angles : [60, 60];
+      const script = [{ numPats, angles, flexAndColor: { flexes: flexes } }];
       const fm = Flexagonator.createFromScript(script);
       const text = flexText ?? flexes;
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
@@ -177,6 +178,7 @@
       <li><a href="#456faces">4, 5, 6 faces</a></li>
       <li><a href="#longer">longer templates</a></li>
       <li><a href="#tetra-octa">triangle tetra & octaflexagons</a></li>
+      <li><a href="#different">different triangles</a></li>
       <li><a href="#pinch-variations">pinch variations</a></li>
       <li><a href="#book">book flex</a></li>
       <li><a href="#box">box flex</a></li>
@@ -360,6 +362,16 @@
     <span class="n"><p>5</p><img src="photos/tetra-octa/penta-octa (6).jpg" width="150"/></span>
     <span class="n"><p>6</p><img src="photos/tetra-octa/penta-octa (7).jpg" width="150"/></span>
   </div>
+
+  <!-- different triangles -->
+  <h3 id="different">different triangles</h3>
+
+  <canvas id="diff-bronze-tri-hexa" width="1000" height="500"></canvas>
+  <canvas id="diff-bronze-hexa-hexa" width="1200" height="322"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3);
+    drawStripPinch2("diff-bronze-hexa-hexa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [90, 30]);
+  </script>
 
   <!-- pinch flex variations -->
   <h3 id="pinch-variations">pinch flex variations</h3>
