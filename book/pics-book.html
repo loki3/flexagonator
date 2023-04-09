@@ -50,11 +50,12 @@
 
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
-    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge) {
-      const script = [{ numPats: numPats, flexes: flexes, labelAsTree: [] }];
+    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge, angles, endStyle) {
+      angles = angles ? angles : undefined;
+      const script = [{ numPats, angles, flexes, labelAsTree: [] }];
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions, start, end });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions, start, end });
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
@@ -71,11 +72,12 @@
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
     //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
     //   edge: [optional] which edge to draw flex on
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge) {
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge, text, endStyle) {
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
-      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text: flexes, which: whereFlex, edge });
-      const options = { rotation, content: { showLeafProps: true }, captions };
+      text = text ? text : flexes;
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
+      const options = { rotation, content: { showLeafProps: true, endStyle }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
@@ -366,11 +368,15 @@
   <!-- different triangles -->
   <h3 id="different">different triangles</h3>
 
-  <canvas id="diff-bronze-tri-hexa" width="1000" height="500"></canvas>
-  <canvas id="diff-bronze-hexa-hexa" width="1200" height="322"></canvas>
+  <canvas id="diff-bronze-tri-hexa" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="diff-bronze-hexa-hexa" width="1200" height="322"></canvas><br/><br/>
+  <canvas id="diff-silver-tetra-octa" width="750" height="750"></canvas><br/><br/>
+  <canvas id="diff-silver-tetra-tetra" width="1000" height="500"></canvas>
   <script type="text/javascript">
     drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3);
     drawStripPinch2("diff-bronze-hexa-hexa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [90, 30]);
+    drawStripPinch("diff-silver-tetra-octa", 8, "P*P+", 45, undefined, undefined, 3, "4", 1, [45, 90], "solid");
+    drawStripSequence("diff-silver-tetra-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
   </script>
 
   <!-- pinch flex variations -->
