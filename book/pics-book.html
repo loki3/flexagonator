@@ -893,7 +893,8 @@
       { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] });
     drawSequence("sequences-flip", 8, "(F*<)6", ["", "F<", "F<", "F<", "F<", "F<", "F<"], 1.1, -22.5);
 
-    drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+" }], { rotation: 120, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
+    drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+", labelAsTree: true }],
+      { rotation: 120, content: { showLeafProps: true }, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
     drawSequence("sequences-s", 6, "S+", ["", "S>", "T'>^", "T<<^", "S>", "T'>^", "T<<^"], 1.1, -30);
 
     drawStripComplex("sequences-hexa12",
