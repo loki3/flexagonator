@@ -88,4 +88,40 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["Mf"].output, Mfout)).toBeTruthy();
     });
   });
+
+  /*
+  // enable this test to normalize all the flex definitions
+  // so leaves are numbered in the order they occur in the template
+  describe('makeFlexes - normalize', () => {
+    function normalizeFlex(flex: string, flexes: Flexes, flexagon: Flexagon) {
+      const fm = new FlexagonManager(flexagon, undefined, flexes);
+
+      fm.applyFlex(flex + '+');
+      const pre = fm.flexagon.normalizeIds();
+      fm.flexagon = pre;
+
+      fm.applyFlex(flex);
+      const post = fm.flexagon;
+
+      console.log(`${flex}\n${JSON.stringify(pre.getAsLeafTrees())}\n${JSON.stringify(post.getAsLeafTrees())}\n`);
+    }
+
+    function normalizeAllFlexes(numPats: number) {
+      const pats = [];
+      for (var i = 1; i <= numPats; i++) {
+        pats.push(i);
+      }
+      const flexagon = Flexagon.makeFromTree(pats) as Flexagon;
+
+      const flexes: Flexes = makeAllFlexes(numPats);
+      for (let flex of Object.keys(flexes)) {
+        normalizeFlex(flex, flexes, flexagon);
+      }
+    }
+
+    it('can normalize flex definitions', () => {
+      normalizeAllFlexes(6);
+    });
+  });
+  */
 }
