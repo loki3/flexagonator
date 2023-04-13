@@ -148,13 +148,15 @@
     // expects several canvases (canvasId + "1", canvasId + "2", ...)
     // generator is the generating sequence for creating the flexagon,
     // sequence is an array of flexes to perform one at a time
-    function drawSequence(canvasId, numPats, generator, sequence) {
+    // [optional] amount to scale
+    // [optional] amount to rotate
+    function drawSequence(canvasId, numPats, generator, sequence, scale, rotate, showCurrent) {
       const script = [{ numPats }, { flexes: generator }, { labelAsTree }];
       const fm = Flexagonator.createFromScript(script);
       for (let i = 0; i < sequence.length; i++) {
         const id = canvasId + (i + 1).toString();
         fm.applyFlexes(sequence[i]);
-        Flexagonator.drawEntireFlexagon(id, fm, { showIds: false, showCurrent: false });
+        Flexagonator.drawEntireFlexagon(id, fm, { showIds: false, scale, rotate, showCurrent: false });
       }
     }
 
@@ -617,37 +619,37 @@
     drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
   </script>
   <h4>(V>)6 cycle</h4>
-  <canvas id="sequences-v6-1" width="200" height="200"></canvas>
-  <canvas id="sequences-v6-2" width="200" height="200"></canvas>
-  <canvas id="sequences-v6-3" width="200" height="200"></canvas>
-  <canvas id="sequences-v6-4" width="200" height="200"></canvas>
+  <canvas id="sequences-v6-1" width="180" height="200"></canvas>
+  <canvas id="sequences-v6-2" width="180" height="200"></canvas>
+  <canvas id="sequences-v6-3" width="180" height="200"></canvas>
+  <canvas id="sequences-v6-4" width="180" height="200"></canvas>
   <br/>
-  <canvas id="sequences-v6-5" width="200" height="200"></canvas>
-  <canvas id="sequences-v6-6" width="200" height="200"></canvas>
-  <canvas id="sequences-v6-7" width="200" height="200"></canvas>
+  <canvas id="sequences-v6-5" width="180" height="200"></canvas>
+  <canvas id="sequences-v6-6" width="180" height="200"></canvas>
+  <canvas id="sequences-v6-7" width="180" height="200"></canvas>
   <h4>(V&lt;)15 cycle</h4>
-  <canvas id="sequences-v15-1" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-2" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-3" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-4" width="200" height="200"></canvas>
+  <canvas id="sequences-v15-1" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-2" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-3" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-4" width="180" height="200"></canvas>
   <br/>
-  <canvas id="sequences-v15-5" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-6" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-7" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-8" width="200" height="200"></canvas>
+  <canvas id="sequences-v15-5" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-6" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-7" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-8" width="180" height="200"></canvas>
   <br/>
-  <canvas id="sequences-v15-9" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-10" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-11" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-12" width="200" height="200"></canvas>
+  <canvas id="sequences-v15-9" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-10" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-11" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-12" width="180" height="200"></canvas>
   <br/>
-  <canvas id="sequences-v15-13" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-14" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-15" width="200" height="200"></canvas>
-  <canvas id="sequences-v15-16" width="200" height="200"></canvas>
+  <canvas id="sequences-v15-13" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-14" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-15" width="180" height="200"></canvas>
+  <canvas id="sequences-v15-16" width="180" height="200"></canvas>
   <script type="text/javascript">
-    drawSequence("sequences-v6-", 6, "(V*>)6", ["", "V>", "V>", "V>", "V>", "V>", "V>"]);
-    drawSequence("sequences-v15-", 6, "(V*<)15", ["", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<"]);
+    drawSequence("sequences-v6-", 6, "(V*>)6", ["", "V>", "V>", "V>", "V>", "V>", "V>"], 1.1, -30);
+    drawSequence("sequences-v15-", 6, "(V*<)15", ["", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<"], 1.1, -30);
   </script>
 
   <h3 id="half-flexes">half flexes</h3>
