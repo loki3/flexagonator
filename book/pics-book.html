@@ -609,10 +609,12 @@
   </div>
   <br/><br/>
   <canvas id="V-minimal" width="900" height="450"></canvas>
-  <canvas id="V-cycle" width="1000" height="140"></canvas>
+  <canvas id="V-cycle6" width="1000" height="140"></canvas>
+  <canvas id="V-cycle15" width="1000" height="110"></canvas>
   <script type="text/javascript">
     drawStripSequence("V-minimal", 6, "V*", 60, undefined, undefined, 0, 2);
-    drawStripSequence("V-cycle", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
+    drawStripSequence("V-cycle6", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
+    drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
   </script>
 
   <h3 id="half-flexes">half flexes</h3>
