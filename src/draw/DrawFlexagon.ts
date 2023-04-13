@@ -11,7 +11,7 @@ namespace Flexagonator {
     showCurrent?: boolean, showNumbers?: boolean) {
 
     const markerText = polygon.radius / 6;
-    const largeText = polygon.radius / 8;
+    const largeText = polygon.radius / (flexagon.getPatCount() >= 10 ? 6 : 5);
     const smallText = polygon.radius / 14;
     const ids = front ? flexagon.getTopIds() : flexagon.getBottomIds().reverse();
 
