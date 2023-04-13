@@ -67,6 +67,11 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["S3"].input, S3in)).toBeTruthy();
       expect(areLTArraysEqual(flexes["S3"].output, S3out)).toBeTruthy();
 
+      const Vin = [1, [-3, 2], 4, [-6, 5], [8, -7], 9, 10, [-12, 11]];
+      const Vout = [[2, -1], 3, [5, -4], 6, 7, [-9, 8], [11, -10], 12];
+      expect(areLTArraysEqual(flexes["V"].input, Vin)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["V"].output, Vout)).toBeTruthy();
+
       const Fin = [[1, 2], 3, 4, 5, 6, 7, [[8, 9], [10, 11]], 12];
       const Fout = [9, [[-1, 3], [12, -2]], 4, 5, 6, 7, 10, [-8, -11]];
       expect(areLTArraysEqual(flexes["F"].input, Fin)).toBeTruthy();

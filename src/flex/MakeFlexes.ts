@@ -31,6 +31,8 @@ namespace Flexagonator {
         flexes["S"] = createPyramidShuffle(patCount);
       if (patCount >= 6)
         flexes["S3"] = createPyramidShuffle3(patCount);
+      if (patCount >= 6 && patCount % 2 === 0)
+        flexes["V"] = createV(patCount);
       if (patCount >= 6)
         flexes["F"] = createFlip(patCount);
       if (patCount >= 6)
@@ -108,7 +110,7 @@ namespace Flexagonator {
       [[-2, [9, [1, -10]]], -3, -4, [6, -5], 7, 8], FlexRotation.None) as Flex;
     flexes["V"] = makeFlex("v flex",
       [1, [-3, 2], [5, -4], 6, 7, [-9, 8]],
-      [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.ClockMirror) as Flex;
+      [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.CounterMirror) as Flex;
     flexes["F"] = makeFlex("flip flex",
       [[-2, 1], -3, -4, -5, [[-8, 9], [-6, 7]], 10],
       [9, [[2, -3], [10, -1]], -4, -5, -6, [8, -7]], FlexRotation.None) as Flex;
@@ -291,6 +293,36 @@ namespace Flexagonator {
     output.push(2 - leaves);
 
     return makeFlex("pyramid shuffle 3", input, output, FlexRotation.None) as Flex;
+  }
+
+  function createV(patCount: number): Flex {
+    // (1) (^3,2) ... (i) (^i+2,i+1) ... (n-4,^n-5) (n-3)  (n-2) (^n,n-1)
+    // (2,^1) (3) ... (i+1,^i) (i+2) ... (n-5) (^n-3,n-4)  (n-1,^n-2) (n)
+    const input: LeafTree = [];
+    const output: LeafTree = [];
+    const leaves = patCount * 3 / 2;
+
+    // like pinch flex
+    for (let i = 1; i < leaves - 6; i += 3) {
+      input.push(i);
+      input.push([-(i + 2), i + 1]);
+      output.push([i + 1, -i]);
+      output.push(i + 2);
+    }
+
+    // v-flex treats these pats differently
+    input.push([leaves - 4, -(leaves - 5)]);
+    input.push(leaves - 3);
+    output.push(leaves - 5);
+    output.push([-(leaves - 3), leaves - 4]);
+
+    // like pinch flex
+    input.push(leaves - 2);
+    input.push([-leaves, leaves - 1]);
+    output.push([leaves - 1, -(leaves - 2)]);
+    output.push(leaves);
+
+    return makeFlex("v flex", input, output, FlexRotation.CounterMirror) as Flex;
   }
 
   function createFlip(patCount: number): Flex {
