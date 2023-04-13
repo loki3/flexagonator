@@ -870,14 +870,14 @@
 
   <p>(S>T'>^T&lt;&lt;^)2</p>
   <canvas id="sequences-s-cycle" width="1200" height="500"></canvas><br/>
-  <canvas id="sequences-s1" width="200" height="200"></canvas>
-  <canvas id="sequences-s2" width="200" height="200"></canvas>
-  <canvas id="sequences-s3" width="200" height="200"></canvas>
-  <canvas id="sequences-s4" width="200" height="200"></canvas>
+  <canvas id="sequences-s1" width="180" height="200"></canvas>
+  <canvas id="sequences-s2" width="180" height="200"></canvas>
+  <canvas id="sequences-s3" width="180" height="200"></canvas>
+  <canvas id="sequences-s4" width="180" height="200"></canvas>
   <br/>
-  <canvas id="sequences-s5" width="200" height="200"></canvas>
-  <canvas id="sequences-s6" width="200" height="200"></canvas>
-  <canvas id="sequences-s7" width="200" height="200"></canvas>
+  <canvas id="sequences-s5" width="180" height="200"></canvas>
+  <canvas id="sequences-s6" width="180" height="200"></canvas>
+  <canvas id="sequences-s7" width="180" height="200"></canvas>
   <br/>
 
   <p>(Ltb>P>P>) 12</p>
@@ -891,10 +891,10 @@
       { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
     drawStripComplex("sequences-flipleft2", flipleft,
       { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] });
-    drawSequence("sequences-flip", 8, "(F*<)6", ["", "F<", "F<", "F<", "F<", "F<", "F<"], 1.1);
+    drawSequence("sequences-flip", 8, "(F*<)6", ["", "F<", "F<", "F<", "F<", "F<", "F<"], 1.1, -22.5);
 
     drawStripComplex("sequences-s-cycle", [{ numPats: 6 }, { flexes: "S+" }], { rotation: 120, captions: [{ text: "S", which: 0 }, { text: "S", which: -1 }] });
-    drawSequence("sequences-s", 6, "S+", ["", "S", ">T'", ">^T", "<<^S", ">T'", ">^T<<^"], 1.1);
+    drawSequence("sequences-s", 6, "S+", ["", "S>", "T'>^", "T<<^", "S>", "T'>^", "T<<^"], 1.1, -30);
 
     drawStripComplex("sequences-hexa12",
       [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
