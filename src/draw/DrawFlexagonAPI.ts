@@ -21,14 +21,16 @@ namespace Flexagonator {
     readonly showCurrent?: boolean; // show an indicator next to the current hinge - default: true
     readonly showNumbers?: boolean; // show the face numbers - default: true
     readonly generate?: boolean;    // include every flex with * added - default: false
+    readonly scale?: number;        // scale factor - default: 1
+    readonly rotate?: number;       // amount to rotate flexagon (degrees) - default: 0
   }
 
   // draw a flexagon in its current state, with optional colors, flexes, etc.
   export function drawEntireFlexagon(
     canvas: string | HTMLCanvasElement,
     fm: FlexagonManager,
-    options?: DrawFlexagonOptions): RegionForFlexes[] {
-
+    options?: DrawFlexagonOptions
+  ): RegionForFlexes[] {
     const objects = {
       flexagon: fm.flexagon,
       angleInfo: fm.getAngleInfo(),
@@ -42,8 +44,8 @@ namespace Flexagonator {
   function drawEntireFlexagonObjects(
     canvas: string | HTMLCanvasElement,
     objects: DrawFlexagonObjects,
-    options?: DrawFlexagonOptions): RegionForFlexes[] {
-
+    options?: DrawFlexagonOptions
+  ): RegionForFlexes[] {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
@@ -56,7 +58,7 @@ namespace Flexagonator {
     }
 
     const showFront = (options.back === undefined || !options.back);
-    const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront);
+    const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront, options.scale, options.rotate);
 
     const showStructure = getStructureType(options);
     const showIds = (options.showIds === undefined || options.showIds);
@@ -88,8 +90,8 @@ namespace Flexagonator {
     flexagon: Flexagon,
     angleInfo: FlexagonAngles,
     showFront: boolean,
-    regions: RegionForFlexes[]): ScriptButtons {
-
+    regions: RegionForFlexes[]
+  ): ScriptButtons {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
@@ -129,14 +131,17 @@ namespace Flexagonator {
     height: number,
     flexagon: Flexagon,
     angleInfo: FlexagonAngles,
-    showFront: boolean): Polygon {
-
+    showFront: boolean,
+    scale?: number,
+    rotate?: number,
+  ): Polygon {
     const xCenter = width / 2;
     const yCenter = height / 2;
-    const radius = height * 0.42;
+    const possible = height * 0.42 * (scale === undefined ? 1 : scale);
+    const radius = Math.min(possible, Math.max(width / 2, height / 2)); // cap scaled size so it fits in box
 
     const angles = angleInfo.getAngles(flexagon);
-    return new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront);
+    return new Polygon(flexagon.getPatCount(), xCenter, yCenter, radius, angles, showFront, rotate);
   }
 
   function createBackPolygon(width: number, height: number, flexagon: Flexagon, angleInfo: FlexagonAngles): Polygon {

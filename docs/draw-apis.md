@@ -47,6 +47,8 @@ such as whether to draw the front or back, and whether to display useful statist
   showCurrent: true, // boolean: default true, show an indicator next to the current hinge
   showNumbers: true; // boolean: default true, show the face numbers
   generate: true,    // boolean: default false, include every flex with * added, e.g. P*
+  scale: 1,          // number: default 1, scale factor
+  rotate: 0,         // number: default 0, amount to rotate flexagon (degrees)
 }
 
 // example using DrawFlexagonOptions with drawEntireFlexagon
