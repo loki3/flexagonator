@@ -208,6 +208,7 @@
     </ul>
     <li><a href="#part4">Part Four: Fun</a></li>
     <ul>
+      <li><a href="#decorating">decorating</a></li>
       <li><a href="#popups">popups</a></li>
     </ul>
   </ul>
@@ -999,6 +1000,20 @@
 
   <h2 id="part4">Part 4: Fun</h2>
 
+  <!-- decorating -->
+  <h3 id="decorating">decorating</h3>
+
+  <image src="images/peirce-quincuncial.png" />
+  <canvas id="decorate-tri-octa" width="1000" height="225"></canvas>
+  <canvas id="decorate-tri-deca" width="1000" height="244"></canvas>
+  <canvas id="decorate-tri-dodeca" width="1000" height="250"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("decorate-tri-octa", 8, "P+", 180 + 45, [45, 45], undefined, -3, 2, "map");
+    drawStripSequence("decorate-tri-deca", 10, "P+", 180 + 36, [36, 36], undefined, -6, 2, "map");
+    drawStripSequence("decorate-tri-dodeca", 12, "P+", 180 + 30, [30, 30], undefined, -3, 2, "map");
+  </script>
+
+  <!-- popups -->
   <h3 id="popups">popups</h3>
 
   <p>right triangle tetraflexagon</p>
