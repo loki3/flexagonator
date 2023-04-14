@@ -253,9 +253,9 @@
   <h3 id="456faces">4, 5, & 6 faces</h3>
 
   <h4>tetra-hexaflexagon strip</h4>
-  <canvas id="tetra-hexa" width="1200" height="220"></canvas>
+  <canvas id="tetra-hexa" width="800" height="233"></canvas>
   <script type="text/javascript">
-    drawStripPinch("tetra-hexa", 6, "P*P+", 30, undefined, undefined, 3, "4", 1);
+    drawStripPinch("tetra-hexa", 6, "P*P+", 210, undefined, undefined, -1, "4", 1);
   </script>
 
   <h4>penta-hexaflexagon strip</h4>
@@ -372,11 +372,17 @@
   <h3 id="different">different triangles</h3>
 
   <canvas id="diff-bronze-tri-hexa" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="diff-bronze-tri-tetra1" width="1038" height="452"></canvas><br/><br/>
+  <canvas id="diff-bronze-tri-tetra2" width="600" height="521"></canvas><br/><br/>
+  <canvas id="diff-bronze-tri-tetra3" width="900" height="521"></canvas><br/><br/>
   <canvas id="diff-bronze-hexa-hexa" width="1200" height="322"></canvas><br/><br/>
   <canvas id="diff-silver-tetra-octa" width="750" height="750"></canvas><br/><br/>
   <canvas id="diff-silver-tetra-tetra" width="1000" height="500"></canvas>
   <script type="text/javascript">
     drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3);
+    drawStripPinch("diff-bronze-tri-tetra1", 6, "P*P+", 150, undefined, undefined, -1, "4a", 0, [30, 60]);
+    drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [90, 30], "solid");
+    drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [60, 90]);
     drawStripPinch2("diff-bronze-hexa-hexa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [90, 30]);
     drawStripPinch("diff-silver-tetra-octa", 8, "P*P+", 45, undefined, undefined, 3, "4", 1, [45, 90], "solid");
     drawStripSequence("diff-silver-tetra-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
