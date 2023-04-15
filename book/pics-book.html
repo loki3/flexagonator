@@ -72,11 +72,13 @@
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
     //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
     //   edge: [optional] which edge to draw flex on
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge, text, endStyle) {
+    //   captions: [optional] use given captions instead of defaults
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge, text, endStyle, customCaptions) {
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
       text = text ? text : flexes;
-      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
+      const captions = customCaptions !== undefined ? customCaptions
+        : whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
       const options = { rotation, content: { showLeafProps: true, endStyle }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
@@ -372,6 +374,8 @@
   <h3 id="different">different triangles</h3>
 
   <canvas id="diff-bronze-tri-hexa" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="diff-regular-tri-hexa-abc" width="1000" height="176"></canvas><br/><br/>
+  <canvas id="diff-bronze-tri-hexa-abc" width="1000" height="500"></canvas><br/><br/>
   <canvas id="diff-bronze-tri-tetra1" width="1038" height="452"></canvas><br/><br/>
   <canvas id="diff-bronze-tri-tetra2" width="600" height="521"></canvas><br/><br/>
   <canvas id="diff-bronze-tri-tetra3" width="900" height="521"></canvas><br/><br/>
@@ -379,7 +383,21 @@
   <canvas id="diff-silver-tetra-octa" width="750" height="750"></canvas><br/><br/>
   <canvas id="diff-silver-tetra-tetra" width="1000" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3);
+    const triCaptions = [
+      { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
+      { text: "a", which: 1, edge: 0 }, { text: "b", which: 1, edge: 1 }, { text: "c", which: 1, edge: 2 },
+      { text: "c", which: 2, edge: 0 }, { text: "b", which: 2, edge: 1 }, { text: "a", which: 2, edge: 2 },
+      { text: "b", which: 3, edge: 0 }, { text: "c", which: 3, edge: 1 }, { text: "a", which: 3, edge: 2 },
+      { text: "a", which: 4, edge: 0 }, { text: "c", which: 4, edge: 1 }, { text: "b", which: 4, edge: 2 },
+      { text: "c", which: 5, edge: 0 }, { text: "a", which: 5, edge: 1 }, { text: "b", which: 5, edge: 2 },
+      { text: "b", which: 6, edge: 0 }, { text: "a", which: 6, edge: 1 }, { text: "c", which: 6, edge: 2 },
+      { text: "a", which: 7, edge: 0 }, { text: "b", which: 7, edge: 1 }, { text: "c", which: 7, edge: 2 },
+      { text: "c", which: 8, edge: 0 }, { text: "b", which: 8, edge: 1 }, { text: "a", which: 8, edge: 2 },
+    ];
+
+    drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3, 0, "3");
+    drawStripSequence("diff-regular-tri-hexa-abc", 6, "P+", 120, [60, 60], ">", undefined, undefined, undefined, undefined, triCaptions);
+    drawStripSequence("diff-bronze-tri-hexa-abc", 6, "P+", 90, [60, 90], ">", undefined, undefined, undefined, undefined, triCaptions);
     drawStripPinch("diff-bronze-tri-tetra1", 6, "P*P+", 150, undefined, undefined, -1, "4a", 0, [30, 60]);
     drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [90, 30], "solid");
     drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [60, 90]);
