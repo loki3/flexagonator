@@ -637,13 +637,15 @@
     <img src="../idyll/static/V/V13.jpg" width="150"/>
   </div>
   <br/><br/>
-  <canvas id="V-minimal" width="900" height="450"></canvas>
+  <canvas id="V-minimal-hexa" width="900" height="450"></canvas>
   <canvas id="V-cycle6" width="1000" height="140"></canvas>
   <canvas id="V-cycle15" width="1000" height="110"></canvas>
+  <canvas id="V-minimal-octa" width="1000" height="252"></canvas>
   <script type="text/javascript">
-    drawStripSequence("V-minimal", 6, "V*", 60, undefined, undefined, 0, 2);
+    drawStripSequence("V-minimal-hexa", 6, "V*", 60, undefined, undefined, 0, 2);
     drawStripSequence("V-cycle6", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
     drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
+    drawStripSequence("V-minimal-octa", 8, "V*", -45, [45, 45], undefined, -1, 0);
   </script>
   <h4>(V>)6 cycle</h4>
   <canvas id="sequences-v6-1" width="180" height="200"></canvas>
