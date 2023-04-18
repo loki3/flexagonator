@@ -382,8 +382,9 @@
   <canvas id="diff-bronze-tri-tetra2" width="600" height="521"></canvas><br/><br/>
   <canvas id="diff-bronze-tri-tetra3" width="900" height="521"></canvas><br/><br/>
   <canvas id="diff-bronze-hexa-hexa" width="1200" height="322"></canvas><br/><br/>
-  <canvas id="diff-silver-tetra-octa" width="750" height="750"></canvas><br/><br/>
-  <canvas id="diff-silver-tetra-tetra" width="1000" height="500"></canvas>
+  <canvas id="diff-silver-tetra-octa1" width="750" height="750"></canvas><br/><br/>
+  <canvas id="diff-silver-tetra-octa2" width="1100" height="140"></canvas><br/><br/>
+  <canvas id="diff-silver-hexa-tetra" width="1000" height="500"></canvas>
   <script type="text/javascript">
     const triCaptions = [
       { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
@@ -404,8 +405,9 @@
     drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [90, 30], "solid");
     drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [60, 90]);
     drawStripPinch2("diff-bronze-hexa-hexa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [90, 30]);
-    drawStripPinch("diff-silver-tetra-octa", 8, "P*P+", 45, undefined, undefined, 3, "4", 1, [45, 90], "solid");
-    drawStripSequence("diff-silver-tetra-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
+    drawStripPinch("diff-silver-tetra-octa1", 8, "P*P+", 45, undefined, undefined, 3, "4a", 1, [45, 90], "solid");
+    drawStripPinch("diff-silver-tetra-octa2", 8, "P*P+", 225, undefined, undefined, -1, "4b", 1, [45, 45]);
+    drawStripSequence("diff-silver-hexa-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
   </script>
 
   <!-- pinch flex variations -->
