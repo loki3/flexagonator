@@ -27,7 +27,7 @@ namespace Flexagonator {
   }
 
   const defaultDotProps: FlexDotProps = {
-    P: "color=black",
+    P: "color=grey",
     V: "color=green",
     S: "color=red",
     T: "color=blue",
@@ -38,7 +38,9 @@ namespace Flexagonator {
     T5: "color=blue",
     T6: "color=blue",
     T7: "color=blue",
-    Lt: "color=orange",
+    Tf: "color=blue",
+    Ltf: "color=orange",
+    Ltb: "color=brown",
     F: "color=magenta",
   }
 
