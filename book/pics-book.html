@@ -165,12 +165,7 @@
     // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
     // [optional] array of colors, otherwise uses default set of colors
     function pairsToProps(numbering, repeats, colors) {
-      colors = colors === undefined ? labelAsTree : colors;
-      const numbers = Array(repeats).fill(numbering).flatMap(p => p);
-      const leafProps = numbers.map(pair => {
-        return { front: { label: pair[0].toString(), color: colors[pair[0] - 1] }, back: { label: pair[1].toString(), color: colors[pair[1] - 1] } };
-      });
-      return leafProps;
+      return Flexagonator.convertLeafProps(numbering, repeats, colors ?? labelAsTree);
     }
   </script>
 </head>
