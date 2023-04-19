@@ -287,7 +287,7 @@ namespace Flexagonator {
     }
     // >6 is ambiguous
     return {
-      flexes: 'P*'.repeat(n - 2),
+      flexes: 'P*^>'.repeat(n - 2),
       error: { nameError: 'warning: there are multiple possibilities for face count', propValue: n.toString() }
     };
   }
