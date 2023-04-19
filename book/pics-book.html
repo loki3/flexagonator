@@ -278,22 +278,31 @@
   </script>
 
   <h4>dodeca-hexaflexagon strip</h4>
-  <canvas id="dodeca-hexa" width="1200" height="180"></canvas>
+  <canvas id="dodeca-hexa" width="1200" height="163"></canvas>
+  <h4>icositetra-hexaflexagon strip</h4>
+  <canvas id="icositetra-hexa" width="1200" height="86"></canvas>
   <script type="text/javascript">
+    function drawPartial(canvasId, flexes, end, which, edge, text, labels) {
+      var script = [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
+      var fm = Flexagonator.createFromScript(script);
+      var captions = starCaptions.concat({ text, which, edge });
+      var options = { rotation: 120, content: { showLeafProps: true }, captions, start: 0, end };
+      Flexagonator.drawUnfolded(canvasId, fm, options);
+    }
+
     var A = "P'*>(P*)2";
     var B = "P'*>(P*)4";
     var sequence = A + B + A + B + A;
-    drawStripPinch("dodeca-hexa", 6, sequence, 120, 0, 11, 0, "12", 2);
-  </script>
+    drawPartial("dodeca-hexa", sequence, 11, 1, 1, "12",
+      [[4, 7], [1, 7], [2, 8], [4, 8], [5, 9], [3, 9], [1, 10], [5, 10], [6, 11], [2, 11], [3, 12], [6, 12]]);
 
-  <h4>icositetra-hexaflexagon strip</h4>
-  <canvas id="icositetra-hexa" width="1200" height="100"></canvas>
-  <script type="text/javascript">
     var A = "P'*>(P*)2";
     var B = "P'*>(P*)4";
     var C = "P'*>(P*)6";
     var sequence = A + B + A + C + A + B + A + C + A + B + A;
-    drawStripPinch("icositetra-hexa", 6, sequence, 120, 0, 23, 0, "24", 2);
+    drawPartial("icositetra-hexa", sequence, 23, 2, 2, "24",
+      [[7, 13], [4, 13], [1, 14], [7, 14], [8, 15], [2, 15], [4, 16], [8, 16], [9, 17], [5, 17], [3, 18], [9, 18],
+      [10, 19], [1, 19], [5, 20], [10, 20], [11, 21], [6, 21], [2, 22], [11, 22], [12, 23], [3, 23], [6, 24], [12, 24]]);
   </script>
 
   <!-- triangle tetra & octa -->
