@@ -23,6 +23,8 @@ namespace Flexagonator {
     readonly history?: string;
     // renumber the leaves so that the ids occur in the same order as the unfolded template
     readonly normalizeIds?: boolean;
+    // assign labels & optional colors to every leaf (also calls normalizeIds)
+    readonly setLabels?: LabelInfo;
     // array of properties for every leaf
     readonly leafProps?: LeafProperties[];
     // set properties for the entire face (front and/or back)
@@ -37,6 +39,16 @@ namespace Flexagonator {
     readonly searchFlexes?: string;
     // add the half-flexes to the list of flex definitions
     readonly addHalfFlexes?: boolean;
+  }
+
+  // info about how to label every leaf, optionally coloring them
+  export interface LabelInfo {
+    // [[front,back], [front,back], ...]
+    readonly labels: (string | number)[][];
+    // number of times to repeat labels
+    readonly repeat?: number;
+    // [color1, color2, ...]
+    readonly colors?: number[];
   }
 
   // define a flex in terms of input & output pats

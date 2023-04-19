@@ -12,6 +12,29 @@ namespace Flexagonator {
     readonly back: LeafFaceProperties
   }
 
+  /**
+   * convert an array of labels (e.g., [[1,2],[3,4],[5,6]]) to LeafProperties,
+   * optionally adding in colors (e.g., [0xff0000,0x0000ff]) indexed to numeric labels
+   */
+  export function convertLeafProps(labels: (string | number)[][], repeat?: number, colors?: number[]): LeafProperties[] {
+    let numbers: (string | number)[][] = labels;
+    if (repeat) {
+      for (let i = 1; i < repeat; i++) {
+        numbers = numbers.concat(labels);
+      }
+    }
+    const leafProps = numbers.map(pair => {
+      if (colors && typeof pair[0] === 'number' && typeof pair[1] === 'number') {
+        const front = pair[0] as number;
+        const back = pair[1] as number;
+        return { front: { label: front.toString(), color: colors[front - 1] }, back: { label: back.toString(), color: colors[back - 1] } };
+      } else {
+        return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } };
+      }
+    });
+    return leafProps;
+  }
+
   export class PropertiesForLeaves {
     private props: LeafProperties[];
 

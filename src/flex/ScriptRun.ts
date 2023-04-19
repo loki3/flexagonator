@@ -100,6 +100,13 @@ namespace Flexagonator {
       fm.flexagon = fm.flexagon.normalizeIds();
     }
 
+    if (item.setLabels !== undefined) {
+      fm.flexagon = fm.flexagon.normalizeIds();
+      const newProps = convertLeafProps(item.setLabels.labels, item.setLabels.repeat, item.setLabels.colors);
+      const leafProps = new PropertiesForLeaves(newProps);
+      fm.leafProps = leafProps;
+    }
+
     if (item.leafProps !== undefined) {
       fm.leafProps = new PropertiesForLeaves(item.leafProps);
     }

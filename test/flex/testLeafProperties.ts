@@ -1,5 +1,27 @@
 namespace Flexagonator {
 
+  describe('convertLeafProps', () => {
+    it('handles just numbers', () => {
+      const result = convertLeafProps([[1, 2], [3, 4], [5, 6]]);
+      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}},{"front":{"label":"5"},"back":{"label":"6"}}]');
+    });
+
+    it('handles just strings', () => {
+      const result = convertLeafProps([['1', '2'], ['3', '4'], ['5', '6']]);
+      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}},{"front":{"label":"5"},"back":{"label":"6"}}]');
+    });
+
+    it('handles repeats', () => {
+      const result = convertLeafProps([[1, 2], [3, 4]], 2);
+      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}},{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}}]');
+    });
+
+    it('looks up colors', () => {
+      const result = convertLeafProps([[1, 2], [2, 1]], undefined, [12, 34]);
+      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1","color":12},"back":{"label":"2","color":34}},{"front":{"label":"2","color":34},"back":{"label":"1","color":12}}]');
+    });
+  });
+
   describe('getColorProp1', () => {
     it('should fetch existing prop', () => {
       const prop = {

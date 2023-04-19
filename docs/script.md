@@ -18,7 +18,8 @@ Script commands:
     * **searchFlexes:** a list of flexes to search, e.g. displayed from the UI
     * **addFlex:** define a new flex
 * Properties
-    * **leafProps:** describe the properties for every leaf
+    * **setLabels:** set the labels and optional colors for every leaf
+    * **leafProps:** an alternate way to specify labels and colors
     * **normalizeIds:** change the leaf ids so they match the order the leaves occur in the unfolded template
     * **setFace:** set properties for the entire face (front and/or back)
     * **unsetFace:** set properties for just the portion of the current face that's not already set (front and/or back)
@@ -257,9 +258,27 @@ When you change the current hinge with `>` or `<`, the leaves are mirrored, not 
 
 ## Properties
 
-### the `leafProps` command
+### the `setLabels` command
 
 Every individual leaf can have a custom label and color, both on the front and back.
+Use `setLabels` to set all the labels at once, optionally specifying colors associated with numeric labels.
+Note that this also calls the `normalizeIds` command described below.
+
+* The `labels` property is an array where each element describes one leaf.
+  Each element contains the front and back labels, which can be a string or number.
+* The `repeat` property is optional, used to repeat `labels` the given number of times.
+* If the labels are numbers, the `colors` property lists the color to use for that label.
+  For example, a label of 2 would use the second color in the `colors` array.
+
+```javascript
+// specify the front & back of 6 pats and repeat 3 times
+{ setLabels: { labels: [[1,2],[1,3],[2,3],[2,1],[3,1],[3,2]], repeat: 3 }}
+// specify colors to be used along with the labels
+{ setLabels: { labels: [[1,2],[1,3],[2,3]], colors:[0xff0000, 0x00ff00, 0x0000ff] }}
+```
+
+### the `leafProps` command
+
 `leafProps` takes an array of properties, where the position in the array corresponds to the leaf id.
 `front` and `back` can either be empty (which means use the default) or can contain `label` and/or `color`.
 An array element can be `null` if you want to use the default for both the front and back of the leaf.
@@ -288,6 +307,7 @@ it can also make it hard to predict the ids, which makes it hard to use the `lea
 Use the `{normalizeIds:true}` command to change the leaf ids
 so they match the order the leaves occur in the unfolded template.
 Then it's simpler to use `leafProps` to assign properties to leaves.
+Note that the `setLabels` automatically normalizes the ids for this reason.
 
 ### the `setFace` & `unsetFace` commands
 
