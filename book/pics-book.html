@@ -187,16 +187,19 @@
     </ul>
     <li><a href="#part2">Part Two: Flexes</a></li>
     <ul>
+      <li><a href="#flip">flip flex</a></li>
       <li><a href="#tuck">tuck flex</a></li>
       <li><a href="#pyramid shuffle">pyramid shuffle</a></li>
-      <li><a href="#flip">flip flex</a></li>
       <li><a href="#vflex">v flex</a></li>
       <li><a href="#silver tetra">silver tetra flex</a></li>
       <li><a href="#half-flexes">half flexes</a></li>
       <li><a href="#slot-flexes">slot flexes</a></li>
+    </ul>
+    <li><a href="#part3">Part Three: Exploring</a></li>
+    <ul>
       <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
     </ul>
-    <li><a href="#part3">Part Three: Learning</a></li>
+    <li><a href="#part4">Part Four: Learning</a></li>
     <ul>
       <li><a href="#state-diagrams">state diagrams</a></li>
       <li><a href="#sequences">sequences</a></li>
@@ -204,7 +207,7 @@
       <li><a href="#atomic-flex-theory">atomic flex theory</a></li>
       <li><a href="#groups">groups</a></li>
     </ul>
-    <li><a href="#part4">Part Four: Fun</a></li>
+    <li><a href="#part5">Part Five: Fun</a></li>
     <ul>
       <li><a href="#decorating">decorating</a></li>
       <li><a href="#popups">popups</a></li>
@@ -523,6 +526,35 @@
 
   <h2 id="part2">Part Two: Flexes</h2>
 
+  <h3 id="flip">flip flex</h3>
+
+  <div class="photos">
+    <span class="n"><img src="photos/flip/flip (1).jpg" width="150"/></span>
+    <span class="n"><p>1</p><img src="photos/flip/flip (2).jpg" width="150"/></span>
+    <span class="n"><img src="photos/flip/flip (3).jpg" width="150"/></span>
+    <span class="n"><p>2</p><img src="photos/flip/flip (4).jpg" width="150"/></span>
+    <span class="n"><img src="photos/flip/flip (5).jpg" width="150"/></span>
+    <br/>
+    <span class="n"><p>3</p><img src="photos/flip/flip (6).jpg" width="150"/></span>
+    <span class="n"><img src="photos/flip/flip (7).jpg" width="150"/></span>
+    <span class="n"><p>4</p><img src="photos/flip/flip (8).jpg" width="150"/></span>
+    <span class="n"><p>5</p><img src="photos/flip/flip (9).jpg" width="150"/></span>
+    <span class="n"><p>6</p><img src="photos/flip/flip (10).jpg" width="150"/></span>
+  </div>
+  <br/><br/>
+  <canvas id="F-8-minimal" width="900" height="400"></canvas><br/><br/>
+  <canvas id="F-6-minimal" width="900" height="500"></canvas><br/><br/>
+  <canvas id="F-10-F5" width="1100" height="500"></canvas><br/><br/>
+  <canvas id="F-7-cycle" width="1000" height="600"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
+    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
+    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 1);
+    const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
+    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
+    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
+  </script>
+
   <h3 id="tuck">tuck flex</h3>
 
   <div class="photos">
@@ -551,7 +583,7 @@
   <script type="text/javascript">
     drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
     drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
-    drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 4);
+    drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 3, undefined, undefined, "solid");
   </script>
 
   <h3 id="pyramid shuffle">pyramid shuffle</h3>
@@ -582,41 +614,10 @@
   <canvas id="S-6-minimal" width="800" height="500"></canvas><br/><br/>
   <canvas id="S-8-silver-minimal" width="1000" height="400"></canvas><br/><br/>
   <canvas id="S-5-minimal" width="800" height="500"></canvas><br/><br/>
-  <canvas id="S-6-S3" width="1000" height="500"></canvas>
   <script type="text/javascript">
     drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
     drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
     drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*", undefined, 1);
-    drawStripSequence("S-6-S3", 6, "(S*<<)3", -60, undefined, undefined, 2, 2);
-  </script>
-
-  <h3 id="flip">flip flex</h3>
-
-  <div class="photos">
-    <span class="n"><img src="photos/flip/flip (1).jpg" width="150"/></span>
-    <span class="n"><p>1</p><img src="photos/flip/flip (2).jpg" width="150"/></span>
-    <span class="n"><img src="photos/flip/flip (3).jpg" width="150"/></span>
-    <span class="n"><p>2</p><img src="photos/flip/flip (4).jpg" width="150"/></span>
-    <span class="n"><img src="photos/flip/flip (5).jpg" width="150"/></span>
-    <br/>
-    <span class="n"><p>3</p><img src="photos/flip/flip (6).jpg" width="150"/></span>
-    <span class="n"><img src="photos/flip/flip (7).jpg" width="150"/></span>
-    <span class="n"><p>4</p><img src="photos/flip/flip (8).jpg" width="150"/></span>
-    <span class="n"><p>5</p><img src="photos/flip/flip (9).jpg" width="150"/></span>
-    <span class="n"><p>6</p><img src="photos/flip/flip (10).jpg" width="150"/></span>
-  </div>
-  <br/><br/>
-  <canvas id="F-8-minimal" width="900" height="400"></canvas><br/><br/>
-  <canvas id="F-6-minimal" width="900" height="500"></canvas><br/><br/>
-  <canvas id="F-10-F5" width="1100" height="500"></canvas><br/><br/>
-  <canvas id="F-7-cycle" width="1000" height="600"></canvas>
-  <script type="text/javascript">
-    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
-    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
-    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 1);
-    const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
-    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
-    drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
   </script>
 
   <h3 id="vflex">v flex</h3>
@@ -742,6 +743,10 @@
     drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3", leafProps);
   </script>
 
+  <!-- part 3 -->
+
+  <h2 id="part3">Part 3: Exploring</h2>
+
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
 
   <canvas id="hsd-plain" width="500" height="270"></canvas>
@@ -843,9 +848,9 @@
 
   <hr />
 
-  <!-- part 3 -->
+  <!-- part 4 -->
 
-  <h2 id="part3">Part 3: Learning</h2>
+  <h2 id="part4">Part 4: Learning</h2>
 
   <!-- state-diagrams -->
   <h3 id="state-diagrams">state-diagrams</h3>
@@ -1026,9 +1031,9 @@
     drawFlexagonComplex("group-tetra2", script.concat({ flexes: ">P<P" }));
   </script>
 
-  <!-- part 4 -->
+  <!-- part 5 -->
 
-  <h2 id="part4">Part 4: Fun</h2>
+  <h2 id="part5">Part 5: Fun</h2>
 
   <!-- decorating -->
   <h3 id="decorating">decorating</h3>
