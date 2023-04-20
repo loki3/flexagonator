@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460052.6416087849
+2460055.6657754513
   9
 $TDUUPDATE
  40
-2460052.9749421296
+2460055.9991087965
   9
 $TDINDWG
  40
-42.480844907407
+45.505
   9
 $TDUSRTIMER
  40
-42.480844907407
+45.505
   9
 $USRTIMER
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-14.916736
+14.962328
  22
--8.197878
+-8.055984
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-31.601591
+31.314203
  41
 1.782719
  42
@@ -1671,7 +1671,7 @@ z-labels
  70
      0
  62
-    94
+   -94
   6
 Continuous
 370
@@ -25929,7 +25929,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -25953,7 +25953,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -25977,7 +25977,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -26001,7 +26001,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -43387,7 +43387,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -43411,7 +43411,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -43435,7 +43435,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -43459,7 +43459,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -46421,7 +46421,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -46445,7 +46445,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -46469,7 +46469,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -46493,7 +46493,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -55459,7 +55459,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -55483,7 +55483,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -55507,7 +55507,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -55531,7 +55531,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -63191,7 +63191,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -63215,7 +63215,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -63239,7 +63239,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -63263,7 +63263,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -91771,7 +91771,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -91795,7 +91795,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -91819,7 +91819,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -91843,7 +91843,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
@@ -99635,7 +99635,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDb2dPolyline
  66
@@ -99659,7 +99659,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -99683,7 +99683,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+edge
 100
 AcDbVertex
 100
@@ -99707,7 +99707,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+edge
   0
 POLYLINE
   5
