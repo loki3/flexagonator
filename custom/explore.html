@@ -97,6 +97,18 @@
       }
     }
 
+    function showLabels(flexagons) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        var str = "";
+        for (var i = 0; i < flexagons.length; i++) {
+          var labels = Flexagonator.getLabels(flexagons[i], fm.leafProps);
+          str += i.toString() + ": " + JSON.stringify(labels) + '\n';
+        }
+        box.value = str;
+      }
+    }
+
     function showFlexes(found) {
       var box = document.getElementById('states');
       if (box !== null) {
@@ -221,52 +233,53 @@
     <input onclick="cancel();" type="button" value="cancel" />
   </p>
 
-    <p>
-      <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
-    </p>
-
-    <div id="status"></div>
-
-    <p>
-      <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
-      <input onclick="showVisible(explorer.getFlexagons());" type="button" value="show visible" />
-      <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
-      <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
-      <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
-      <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />
-      <input onclick="showDotFlexes(explorer.getFoundFlexes(), false);" type="button" value="DOT: directed flexes" />
+  <p>
+    <textarea id="script" cols="100" rows="7" spellcheck="false"></textarea>
   </p>
 
-      <p>
-        <textarea id="states" cols="100" rows="30" spellcheck="false" readonly="true"></textarea>
-      </p>
+  <div id="status"></div>
 
-      <p>
-        Find which state(s) has a given set of visible leaves [ [top1, top2...], [bottom1, bottom2...] ]
-        <br/>
-        <input onkeypress="findStates(event.keyCode, event.target.value)" id="visibleInput" size="100" spellcheck="false" />
-        <div id="visibleOutput">-</div>
-      </p>
+  <p>
+    <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
+    <input onclick="showVisible(explorer.getFlexagons());" type="button" value="show visible" />
+    <input onclick="showLabels(explorer.getFlexagons());" type="button" value="show labels" />
+    <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
+    <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
+    <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
+    <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />
+    <input onclick="showDotFlexes(explorer.getFoundFlexes(), false);" type="button" value="DOT: directed flexes" />
+  </p>
 
-      <p>
-        <input onclick="findShortest(true, true);" type="button" value="Find" /> the shortest flex sequence that will take you between
+  <p>
+    <textarea id="states" cols="100" rows="30" spellcheck="false" readonly="true"></textarea>
+  </p>
+
+  <p>
+    Find which state(s) has a given set of visible leaves [ [top1, top2...], [bottom1, bottom2...] ]
+    <br/>
+    <input onkeypress="findStates(event.keyCode, event.target.value)" id="visibleInput" size="100" spellcheck="false" />
+  <div id="visibleOutput">-</div>
+  </p>
+
+  <p>
+    <input onclick="findShortest(true, true);" type="button" value="Find" /> the shortest flex sequence that will take you between
     two flexagons given by pat notation:
-        <br/>
-        <input onclick="findShortest(true, false);" type="button" value="Find (no ^)" />
-        <input onclick="findShortest(false, true);" type="button" value="Find (no >)" />
-        <br/>
-        <input id="searchStart" size="100" spellcheck="false" />
-        <br/>
-        <input id="searchEnd" size="100" spellcheck="false" />
-        <div id="flexSequence">-</div>
-      </p>
+    <br/>
+    <input onclick="findShortest(true, false);" type="button" value="Find (no ^)" />
+    <input onclick="findShortest(false, true);" type="button" value="Find (no >)" />
+    <br/>
+    <input id="searchStart" size="100" spellcheck="false" />
+    <br/>
+    <input id="searchEnd" size="100" spellcheck="false" />
+  <div id="flexSequence">-</div>
+  </p>
 
-      <p>
-        <input onclick="findDisconnected();" type="button" value="Find" />
+  <p>
+    <input onclick="findDisconnected();" type="button" value="Find" />
         how many disconnected graphs there are when only using the
-        <input id="useFlex" size="5" spellcheck="false" value="P" /> flex
-        <div id="disconnected">-</div>
-      </p>
+    <input id="useFlex" size="5" spellcheck="false" value="P" /> flex
+  <div id="disconnected">-</div>
+  </p>
 </body>
 
 </html>
