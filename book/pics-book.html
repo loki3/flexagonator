@@ -420,6 +420,15 @@
   <!-- pinch flex variations -->
   <h3 id="pinch-variations">pinch flex variations</h3>
 
+  <h4>P333</h4>
+  <canvas id="P333" width="1200" height="400"></canvas>
+  <script type="text/javascript">
+    var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }];
+    var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
+    drawStripComplex("P333", script, { rotation: 4, content: { showLeafProps: true }, captions });
+  </script>
+  <br/>
+
   <h4>P444</h4>
   <canvas id="P444" width="1200" height="400"></canvas>
   <script type="text/javascript">
@@ -436,13 +445,6 @@
     var captions = starCaptions.concat({ text: "P444h", which: 1, edge: 2 });
     drawStripComplex("P444-half", script, { rotation: 60, content: { showFoldingOrder: true }, captions });
   </script>
-
-  <h4>P333</h4>
-  <canvas id="P333" width="1200" height="400"></canvas>
-  <script type="text/javascript">
-    drawStripPinch("P333", 9, "P333*>>", undefined, undefined, undefined, -2, "P333", 0);
-  </script>
-  <br/>
 
   <div class="photos">
     <img src="../idyll/static/P4-4-4/1.jpg" width="150"/>

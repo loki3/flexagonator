@@ -7,8 +7,8 @@
 
   <script src="../build/out.js"></script>
   <script type="text/javascript">
-    // draw * on the edges that should be taped together
-    const starCaptions = [{ text: "*", which: 0 }, { text: "*", which: -1 }];
+    // draw ⚹ on the edges that should be taped together
+    const starCaptions = [{ text: "⚹", which: 0 }, { text: "⚹", which: -1 }];
     // common colors for faces
     const leafColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xDDDDDD];
     // fraction to inset fills by
@@ -23,10 +23,12 @@
       const labelAsTree = leafProps === undefined ? leafColors : undefined; // auto-number if no explicit leaf props
       const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
-      const fm = Flexagonator.createFromScript(script);
-      const captions = whereFlex === undefined ? [{ text: flexes, which: 0 }, { text: "*", which: -1 }]
-        : [{ text: "*", which: 0 }, { text: "*", which: -1 }, { text: flexes, which: whereFlex, edge }];
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text: flexes, which: whereFlex, edge });
+      drawFrontBack(canvasId, script, rotation, captions);
+    }
 
+    function drawFrontBack(canvasId, script, rotation, captions) {
+      const fm = Flexagonator.createFromScript(script);
       const options1 = { rotation, content: { showLeafProps: true, inset, face: 'front' }, captions };
       const options2 = { rotation, content: { showLeafProps: true, inset, face: 'back' }, captions };
       Flexagonator.drawUnfolded(canvasId + "1", fm, options1);
@@ -123,9 +125,14 @@
   </script>
 
   <h2 id="pinch-variations">pinch variations</h2>
+  <canvas id="P333-1" width="1090" height="600"></canvas>
+  <canvas id="P333-2" width="1090" height="600"></canvas>
   <canvas id="P444-1" width="1090" height="600"></canvas>
   <canvas id="P444-2" width="1090" height="600"></canvas>
   <script type="text/javascript">
+    var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: leafColors } }];
+    var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
+    drawFrontBack("P333-", script, 25.5, captions);
     drawStripSequence("P444-", 12, "P444*", -30);
   </script>
 
