@@ -126,9 +126,11 @@
 
   <h2 id="pinch-variations">pinch variations</h2>
   <canvas id="P333-1" width="1090" height="600"></canvas>
-  <canvas id="P333-2" width="1090" height="600"></canvas>
+  <canvas id="P333-2" width="1090" height="600"></canvas><br/>
   <canvas id="P444h-1" width="1200" height="233"></canvas>
-  <canvas id="P444h-2" width="1200" height="233"></canvas>
+  <canvas id="P444h-2" width="1200" height="233"></canvas><br/>
+  <canvas id="P223-1" width="1200" height="360"></canvas>
+  <canvas id="P223-2" width="1200" height="360"></canvas><br/>
   <script type="text/javascript">
     var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: leafColors } }];
     var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
@@ -140,6 +142,13 @@
     { angles: [30, 60] }];
     var captions = starCaptions.concat({ text: "P444h", which: 0, edge: 2 });
     drawFrontBack("P444h-", script, 120, captions);
+  </script>
+  <script type="text/javascript">
+    var script = [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
+    { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]], colors: leafColors } },
+    ];
+    var captions = starCaptions.concat({ text: "P223", which: 3, edge: 1 });
+    drawFrontBack("P223-", script, 25.714, captions);
   </script>
 
   <!-- part 2 -->
