@@ -127,13 +127,19 @@
   <h2 id="pinch-variations">pinch variations</h2>
   <canvas id="P333-1" width="1090" height="600"></canvas>
   <canvas id="P333-2" width="1090" height="600"></canvas>
-  <canvas id="P444-1" width="1090" height="600"></canvas>
-  <canvas id="P444-2" width="1090" height="600"></canvas>
+  <canvas id="P444h-1" width="1200" height="233"></canvas>
+  <canvas id="P444h-2" width="1200" height="233"></canvas>
   <script type="text/javascript">
     var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: leafColors } }];
     var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
     drawFrontBack("P333-", script, 25.5, captions);
-    drawStripSequence("P444-", 12, "P444*", -30);
+  </script>
+  <script type="text/javascript">
+    var script = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
+    { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]], colors: leafColors } },
+    { angles: [30, 60] }];
+    var captions = starCaptions.concat({ text: "P444h", which: 0, edge: 2 });
+    drawFrontBack("P444h-", script, 120, captions);
   </script>
 
   <!-- part 2 -->

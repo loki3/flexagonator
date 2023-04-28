@@ -442,11 +442,13 @@
     you can do a P444h (half of a P444) on this one & it'll still be flat,
     though the leaves no longer meet in the middle
   </p>
-  <canvas id="P444-half" width="1200" height="250"></canvas>
+  <canvas id="P444-half" width="1200" height="233"></canvas>
   <script type="text/javascript">
-    var script = [{ "pats": [1, 2, 3, [0, 0], 5, 6, 7, [0, 0], 9, 10, 11, [0, 0]] }, { "angles": [30, 60, 90] }];
-    var captions = starCaptions.concat({ text: "P444h", which: 1, edge: 2 });
-    drawStripComplex("P444-half", script, { rotation: 60, content: { showFoldingOrder: true }, captions });
+    var script = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
+    { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
+    { angles: [30, 60] }];
+    var captions = starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 });
+    drawStripComplex("P444-half", script, { rotation: 120, content: { showLeafProps: true }, captions });
   </script>
 
   <div class="photos">
