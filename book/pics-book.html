@@ -441,12 +441,21 @@
   </script>
   <br/>
 
-  <h4>P334</h4>
-  <canvas id="P334" width="1200" height="392"></canvas>
+  <h4>P3333, P444, P66</h4>
+  <canvas id="P444a" width="300" height="300"></canvas>
+  <canvas id="P444b" width="300" height="300"></canvas>
+  <canvas id="P444c" width="300" height="300"></canvas>
+  <canvas id="P444d" width="300" height="300"></canvas>
   <script type="text/javascript">
-    var script = [{ numPats: 10, flexAndColor: { flexes: "^P334'*>^", colors: labelAsTree } }];
-    var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P334", which: 0, edge: 0 });
-    drawStripComplex("P334", script, { rotation: 0, content: { showLeafProps: true }, captions });
+    function showPiece(canvas, labelA, labelB) {
+      var script = [{ numPats: 12, flexAndColor: { flexes: "^(T1'+>)12", colors: labelAsTree } }];
+      var captions = [{ text: labelA, which: 0, edge: 1 }, { text: labelB, which: -1, edge: 2 }];
+      drawStripComplex(canvas, script, { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' }, captions });
+    }
+    showPiece("P444a", "d", "a");
+    showPiece("P444b", "a", "b");
+    showPiece("P444c", "b", "c");
+    showPiece("P444d", "c", "d");
   </script>
   <br/>
 
