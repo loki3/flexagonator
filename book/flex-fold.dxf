@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460055.6657754513
+2460067.6726851738
   9
 $TDUUPDATE
  40
-2460055.9991087965
+2460068.0060185185
   9
 $TDINDWG
  40
-45.505
+51.778981481481
   9
 $TDUSRTIMER
  40
-45.505
+51.778981481481
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-6A86647
+6A86651
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-14.962328
+14.916736
  22
--8.055984
+-8.197878
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-31.314203
+31.601591
  41
 1.782719
  42
@@ -1671,7 +1671,7 @@ z-labels
  70
      0
  62
-   -94
+    94
   6
 Continuous
 370
@@ -245208,6 +245208,266 @@ AcDbPolyline
 -16.061643
  42
 -0.414214
+  0
+TEXT
+  5
+6A86647
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-7.8
+ 20
+-12.4
+ 30
+0.0
+ 40
+0.15
+  1
+1)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86648
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-6.5
+ 20
+-12.4
+ 30
+0.0
+ 40
+0.15
+  1
+2)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86649
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-5.6
+ 20
+-12.4
+ 30
+0.0
+ 40
+0.15
+  1
+3)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A8664A
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-4.0
+ 20
+-12.4
+ 30
+0.0
+ 40
+0.15
+  1
+4)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A8664B
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-3.2
+ 20
+-12.4
+ 30
+0.0
+ 40
+0.15
+  1
+5)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A8664C
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-8.650774
+ 20
+-11.588473
+ 30
+0.0
+ 40
+0.13
+  1
+A
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A8664D
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-7.44708
+ 20
+-11.59177
+ 30
+0.0
+ 40
+0.13
+  1
+B
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A8664E
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-4.770951
+ 20
+-12.016688
+ 30
+0.0
+ 40
+0.13
+  1
+C
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A8664F
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-4.12437
+ 20
+-12.014283
+ 30
+0.0
+ 40
+0.13
+  1
+D
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86650
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+-2.859685
+ 20
+-11.795097
+ 30
+0.0
+ 40
+0.13
+  1
+E
+  7
+labels
+100
+AcDbText
   0
 ENDSEC
   0
