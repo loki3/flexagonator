@@ -73,9 +73,6 @@ namespace Flexagonator {
     const isCanvas = (canvas as HTMLCanvasElement).getContext !== undefined;
     const output: HTMLCanvasElement = isCanvas ? canvas as HTMLCanvasElement : document.getElementById(canvas as string) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    // when the canvas is being emulated (e.g. jsPDF), client size may not be present
-    const [w, h] = ctx.canvas.clientWidth ? [ctx.canvas.clientWidth, ctx.canvas.clientHeight] : [output.width, output.height];
-    ctx.clearRect(0, 0, w, h);
 
     const directions = objects.directions ? Directions.make(objects.directions) : undefined;
     const unfolded = unfold(objects.flexagon.getAsLeafTrees(), directions);
@@ -92,7 +89,11 @@ namespace Flexagonator {
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
-    drawStrip(ctx, { x: w, y: h }, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
+
+    const paint = new PaintCanvas(ctx);
+    paint.start();
+    drawStrip(paint, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
+    paint.end();
   }
 
   // use showFoldingOrder if nothing specified
