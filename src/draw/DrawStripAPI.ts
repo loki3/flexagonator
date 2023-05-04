@@ -69,10 +69,11 @@ namespace Flexagonator {
     return drawUnfoldedObjects(canvas, objects, options);
   }
 
-  export function drawUnfoldedObjects(canvas: string | HTMLCanvasElement, objects: DrawStripObjects, options?: DrawStripOptions) {
-    const isCanvas = (canvas as HTMLCanvasElement).getContext !== undefined;
-    const output: HTMLCanvasElement = isCanvas ? canvas as HTMLCanvasElement : document.getElementById(canvas as string) as HTMLCanvasElement;
-    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
+  export function drawUnfoldedObjects(target: string | HTMLCanvasElement, objects: DrawStripObjects, options?: DrawStripOptions) {
+    const paint = newPaint(target);
+    if (paint === null) {
+      return;
+    }
 
     const directions = objects.directions ? Directions.make(objects.directions) : undefined;
     const unfolded = unfold(objects.flexagon.getAsLeafTrees(), directions);
@@ -90,7 +91,6 @@ namespace Flexagonator {
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
 
-    const paint = new PaintCanvas(ctx);
     paint.start();
     drawStrip(paint, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
     paint.end();
