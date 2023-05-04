@@ -48,45 +48,73 @@ namespace Flexagonator {
       this.textAnchor = align === "left" ? "start" : align === "right" ? "end" : "middle";
     }
 
-    // <path style="" d="M x,y x,y" />
+    // <path d="M x,y x,y" />
     drawLines(points: Point[], dashed?: "dashed" | undefined): void {
-      const dasharray = dashed === "dashed" ? ";stroke-dasharray:10,5" : "";
-      const style = `fill:none;stroke:${this.lineColor};stroke-width:${this.lineWidth}${dasharray}`;
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
       const pstr = points.map(p => `${p.x.toString()},${p.y.toString()}`);
       const d = `M ${pstr.join(' ')}`;
-
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("style", style);
       path.setAttribute("d", d);
+
+      path.setAttribute("stroke", this.lineColor);
+      path.setAttribute("stroke-width", this.lineWidth.toString());
+      path.setAttribute("fill", "none");
+      if (dashed === "dashed") {
+        path.setAttribute("stroke-dasharray", "10,5");
+      }
+
       this.svg.appendChild(path);
     }
+    // <polygon points="x,y x,y" />
     drawPolygon(points: Point[], fill?: "fill" | undefined): void {
-      const style = fill === 'fill'
-        ? `fill:${this.fillColor}`
-        : `fill:none;stroke:${this.lineColor};stroke-width:${this.lineWidth}`;
+      const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+
       const pstr = points.map(p => `${p.x.toString()},${p.y.toString()}`);
-      const d = `M ${pstr.join(' ')}`;
+      const p = `${pstr.join(' ')}`;
+      polygon.setAttribute("points", p);
 
-      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-      line.setAttribute("style", style);
-      line.setAttribute("d", d);
-      this.svg.appendChild(line);
+      if (fill === "fill") {
+        polygon.setAttribute("fill", this.fillColor.toString());
+      } else {
+        polygon.setAttribute("stroke", this.lineColor);
+        polygon.setAttribute("stroke-width", this.lineWidth.toString());
+        polygon.setAttribute("fill", "none");
+      }
+
+      this.svg.appendChild(polygon);
     }
+    // <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" />
     drawCircle(center: Point, radius: number): void {
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+      circle.setAttribute("cx", center.x.toString());
+      circle.setAttribute("cy", center.y.toString());
+      circle.setAttribute("r", radius.toString());
+
+      circle.setAttribute("stroke", this.lineColor);
+      circle.setAttribute("stroke-width", this.lineWidth.toString());
+      circle.setAttribute("fill", "none");
+
+      this.svg.appendChild(circle);
     }
 
-    // <text style="" x="" y="">text</text>
+    // <text x="" y="">text</text>
     drawText(str: string, x: number, y: number): void {
       if (str[0] === ' ') {
         // workaround for leading space being dropped in xml
         x += this.textSize * 0.3;
       }
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-      const style = `font-size:${this.textSize}px;fill:${this.textColor};font-family:sans-serif;text-anchor:${this.textAnchor}`;
-      text.setAttribute("style", style);
+
       text.setAttribute("x", x.toString());
       text.setAttribute("y", y.toString());
       text.textContent = str;
+
+      text.setAttribute("font-size", this.textSize.toString());
+      text.setAttribute("font-family", "sans-serif");
+      text.setAttribute("text-anchor", this.textAnchor.toString());
+      text.setAttribute("fill", this.textColor);
+
       this.svg.appendChild(text);
     }
   }
