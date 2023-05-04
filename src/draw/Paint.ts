@@ -31,4 +31,15 @@ namespace Flexagonator {
     drawText(text: string, x: number, y: number): void;
   }
 
+
+  export function colorAsHtmlString(color: string | number): string {
+    if (typeof color === "string") {
+      return color;
+    }
+    return "rgb("
+      + ((color & 0xff0000) >> 16).toString() + ","
+      + ((color & 0xff00) >> 8).toString() + ","
+      + (color & 0xff).toString() + ")";
+  }
+
 }

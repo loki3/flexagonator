@@ -20,13 +20,13 @@ namespace Flexagonator {
     }
 
     setLineColor(color: string | number): void {
-      this.ctx.strokeStyle = this.colorAsString(color);
+      this.ctx.strokeStyle = colorAsHtmlString(color);
     }
     setFillColor(color: string | number): void {
-      this.ctx.fillStyle = this.colorAsString(color);
+      this.ctx.fillStyle = colorAsHtmlString(color);
     }
     setTextColor(color: string | number): void {
-      this.ctx.fillStyle = this.colorAsString(color);
+      this.ctx.fillStyle = colorAsHtmlString(color);
     }
     setTextSize(pixels: number): void {
       this.ctx.font = pixels.toString() + "px sans-serif";
@@ -81,16 +81,6 @@ namespace Flexagonator {
 
     drawText(text: string, x: number, y: number): void {
       this.ctx.fillText(text, x, y);
-    }
-
-    private colorAsString(color: string | number): string {
-      if (typeof color === "string") {
-        return color;
-      }
-      return "rgb("
-        + ((color & 0xff0000) >> 16).toString() + ","
-        + ((color & 0xff00) >> 8).toString() + ","
-        + (color & 0xff).toString() + ")";
     }
   }
 
