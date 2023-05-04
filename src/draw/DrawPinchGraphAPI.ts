@@ -13,10 +13,11 @@ namespace Flexagonator {
 
   // draw the graph described by a given series of flexes in {P, P', ^, <, >},
   // and/or drawing the corresponding Tuckerman traverse
-  export function drawPinchGraph(canvas: string | HTMLCanvasElement, options: DrawPinchOptions) {
-    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
-    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    const paint = new PaintCanvas(ctx);
+  export function drawPinchGraph(target: string | HTMLCanvasElement, options: DrawPinchOptions) {
+    const paint = newPaint(target);
+    if (paint === null) {
+      return;
+    }
     const [w, h] = paint.getSize();
     const box = { x: w, y: h };
     paint.start();

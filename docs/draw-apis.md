@@ -11,6 +11,14 @@ the flexagon as described in [pat notation](pat-notation.md) and figure out how 
 
 There's also a function for drawing the graph of states accessible by just using the pinch flex.
 
+The draw routines can accept the name of an HTML element that's either a canvas
+or something to attach an SVG under, such as a `<div>`.
+
+```html
+<canvas id="canvas-name" width="800" height="500"></canvas>
+<div id="target-name" width="800" height="500"></div>
+```
+
 
 ## Drawing a folded flexagon
 
@@ -21,13 +29,13 @@ They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawFlexagonObjects`.
 
 ```javascript
-// canvas:   canvas to draw in (string | HTMLCanvasElement)
+// target:   element to draw in (string | HTMLCanvasElement)
 // fm:       an instance of FlexagonManager
 // objects:  an instance of DrawFlexagonObjects
 // options:  an instance of DrawFlexagonOptions
 // RETURNS:  ScriptButtons if options.flexes is true
-function drawEntireFlexagon(canvas, fm, options) {}
-function drawEntireFlexagonObjects(canvas, objects, options) {}
+function drawEntireFlexagon(target, fm, options) {}
+function drawEntireFlexagonObjects(target, objects, options) {}
 ```
 
 Everything in `DrawFlexagonOptions` is optional.
@@ -52,7 +60,7 @@ such as whether to draw the front or back, and whether to display useful statist
 }
 
 // example using DrawFlexagonOptions with drawEntireFlexagon
-Flexagonator.drawEntireFlexagon('mycanvas', fm, { stats: true, structure: true });
+Flexagonator.drawEntireFlexagon('my-target', fm, { stats: true, structure: true });
 ```
 
 Use `drawEntireFlexagon` to draw the flexagon using the properties in `FlexagonManager` as shown above.
@@ -77,7 +85,7 @@ const objects = {
   allFlexes: fm.allFlexes,
   flexesToSearch: fm.flexesToSearch,
 };
-Flexagonator.drawEntireFlexagonObjects('mycanvas', objects, { stats: true, flexes: true, structure: true });
+Flexagonator.drawEntireFlexagonObjects('my-target', objects, { stats: true, flexes: true, structure: true });
 ```
 
 If you want to have buttons that can be used to perform flexes at the different flexagon hinges,
@@ -88,7 +96,7 @@ The following shows how you can hook up mouse events using these "script buttons
 
 ```javascript
 // example using returned ScriptButtons
-var regions = Flexagonator.drawEntireFlexagon('mycanvas', fm, {});
+var regions = Flexagonator.drawEntireFlexagon('my-target', fm, {});
 // drawScriptButtons takes a canvas id, flexagon, angle info, boolean for front/back, and RegionForFlexes[]
 var buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
 var interface = document.getElementById('interface');
@@ -144,16 +152,16 @@ They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawStripObjects`.
 
 ```javascript
-// canvas:   canvas to draw in (string | HTMLCanvasElement)
+// target:   element to draw in (string | HTMLCanvasElement)
 // fm:       an instance of FlexagonManager
 // objects:  an instance of DrawStripObjects
 // options:  an instance of DrawStripOptions
-function drawUnfolded(canvas, fm, options) {}
-function drawUnfoldedObjects(canvas, objects, options) {}
+function drawUnfolded(target, fm, options) {}
+function drawUnfoldedObjects(target, objects, options) {}
 ```
 
 The following shows the options that can be used when drawing an unfolded flexagon.
-By default, it draws the entire strip scaled and rotated to fill the canvas as much as possible.
+By default, it draws the entire strip scaled and rotated to fill the drawing region as much as possible.
 
 ```javascript
 // DrawStripOptions
@@ -190,7 +198,7 @@ By default, it draws the entire strip scaled and rotated to fill the canvas as m
 }
 
 // example passing DrawStripOptions to drawUnfolded
-drawUnfolded('mycanvas', fm, { content: { face: 'front' }, rotation: 60 });
+drawUnfolded('my-target', fm, { content: { face: 'front' }, rotation: 60 });
 ```
 
 Use `drawUnfolded` to draw the strip using the properties in `FlexagonManager` as shown above.
@@ -212,13 +220,13 @@ const objects = {
   angleInfo: fm.getAngleInfo(),
   leafProps: fm.leafProps,
 };
-drawUnfoldedObjects('mycanvas', objects, {});
+drawUnfoldedObjects('my-target', objects, {});
 ```
 
 The following shows how you could add a `*` to the first and last edges to indicate that they should be taped together:
 
 ```javascript
-drawUnfolded('mycanvas', fm, { captions: [ { text: '*', which: 0 }, { text: '*', which: -1 } ] });
+drawUnfolded('my-target', fm, { captions: [ { text: '*', which: 0 }, { text: '*', which: -1 } ] });
 ```
 
 
@@ -228,7 +236,7 @@ You can have it draw a graph representing all the states accessible just through
 This includes any of the following: P, P', ^, <, or >.
 
 ```javascript
-drawPinchGraph('mycanvas', { flexes: "PPP^>PP" });
+drawPinchGraph('my-target', { flexes: "PPP^>PP" });
 ```
 
 The classic example is the Tuckerman Traverse, which is the quickest way to visit every state accessible by just using the pinch flex.
@@ -236,12 +244,12 @@ The following shows how to have it figure out the Tuckerman traverse for a given
 
 ```javascript
 var traverse = findTuckermanTraverse(fm.flexagon);
-drawPinchGraph('mycanvas', { traverse: traverse });
+drawPinchGraph('my-target', { traverse: traverse });
 ```
 
 You can also have it overlay a flex sequence (e.g. `P>P^P<P`) on top of the Tuckerman traverse.
 The `drawEnds` option is useful if you want it to highlight the start and end of the flex squence.
 
 ```javascript
-drawPinchGraph('mycanvas', { traverse: traverse, flexes: "PPP^>PP", drawEnds: true });
+drawPinchGraph('my-target', { traverse: traverse, flexes: "PPP^>PP", drawEnds: true });
 ```

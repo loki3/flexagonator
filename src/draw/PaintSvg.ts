@@ -27,7 +27,7 @@ namespace Flexagonator {
     getSize(): [number, number] {
       const width = this.container.getAttribute("width");
       const height = this.container.getAttribute("height");
-      return [width === null ? 100 : Number.parseInt(width), height === null ? 100 : Number.parseInt(height)];
+      return [width === null ? 400 : Number.parseInt(width), height === null ? 400 : Number.parseInt(height)];
     }
 
     setLineColor(color: string | number): void {

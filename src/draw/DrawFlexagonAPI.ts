@@ -42,13 +42,14 @@ namespace Flexagonator {
   }
 
   function drawEntireFlexagonObjects(
-    canvas: string | HTMLCanvasElement,
+    target: string | HTMLCanvasElement,
     objects: DrawFlexagonObjects,
     options?: DrawFlexagonOptions
   ): RegionForFlexes[] {
-    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
-    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    const paint = new PaintCanvas(ctx);
+    const paint = newPaint(target);
+    if (paint === null) {
+      return [];
+    }
     const [width, height] = paint.getSize();
 
     if (!options) {

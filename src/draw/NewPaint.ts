@@ -2,21 +2,19 @@ namespace Flexagonator {
 
   /** return the appropriate Paint implementation, either canvas or svg */
   export function newPaint(target: string | HTMLCanvasElement): Paint | null {
-    const isCanvas = (target as HTMLCanvasElement).getContext !== undefined;
-    if (isCanvas) {
-      return new PaintCanvas((target as HTMLCanvasElement).getContext("2d") as CanvasRenderingContext2D);
-    }
-
-    const element = document.getElementById(target as string);
+    // we either have an element name or the element itself
+    const element: HTMLElement | null = (typeof target === 'string')
+      ? document.getElementById(target as string)
+      : target;
     if (element === null) {
       return null;
     }
 
-    if (element.getAttribute("type") === "image/svg+xml") {
-      return new PaintSvg(element);
+    // figure out the appropriate paint
+    if ((element as HTMLCanvasElement).getContext !== undefined) {
+      return new PaintCanvas((element as HTMLCanvasElement).getContext("2d") as CanvasRenderingContext2D);
     }
-
-    return new PaintCanvas((element as HTMLCanvasElement).getContext("2d") as CanvasRenderingContext2D);
+    return new PaintSvg(element);
   }
 
 }

@@ -1,10 +1,11 @@
 namespace Flexagonator {
 
   /** limited support for drawing non-triangular flexagons by name, e.g. 'hexagonal kite hexaflexagon' */
-  export function drawByName(canvas: string | HTMLCanvasElement, name: string) {
-    const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
-    const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    const paint = new PaintCanvas(ctx);
+  export function drawByName(target: string | HTMLCanvasElement, name: string) {
+    const paint = newPaint(target);
+    if (paint === null) {
+      return;
+    }
     const [width, height] = paint.getSize();
     const center: Point = { x: width / 2, y: height / 2 };
     const r = Math.min(width, height);
