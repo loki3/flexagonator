@@ -6,7 +6,7 @@ namespace Flexagonator {
     TopIds,  // only show structure when id <= numpats
   }
 
-  export function drawFlexagon(ctx: CanvasRenderingContext2D, flexagon: Flexagon, polygon: Polygon,
+  export function drawFlexagon(paint: Paint, flexagon: Flexagon, polygon: Polygon,
     props: PropertiesForLeaves, front: boolean, patstructure: StructureType, showids: boolean,
     showCurrent?: boolean, showNumbers?: boolean) {
 
@@ -16,99 +16,93 @@ namespace Flexagonator {
     const ids = front ? flexagon.getTopIds() : flexagon.getBottomIds().reverse();
 
     if (props !== undefined) {
-      drawFaceProps(ctx, polygon, props, ids);
+      drawFaceProps(paint, polygon, props, ids);
     }
 
-    ctx.strokeStyle = "rgb(90, 150, 210)";
+    paint.setLineColor(0x5a96d2);
     const corners = polygon.getCorners();
-    drawPolygon(ctx, corners);
-    drawSpokes(ctx, corners, polygon.xCenter, polygon.yCenter);
+    drawPolygon(paint, corners);
+    drawSpokes(paint, corners, polygon.xCenter, polygon.yCenter);
     if (showCurrent === undefined || showCurrent) {
-      drawText(ctx, markerText, corners[0], corners[1], "*");
+      drawText(paint, markerText, corners[0], corners[1], "*");
     }
 
     if (showNumbers === undefined || showNumbers) {
-      drawFaceText(ctx, largeText, polygon.getFaceCenters(0.6), ids, props);
+      drawFaceText(paint, largeText, polygon.getFaceCenters(0.6), ids, props);
     }
     if (showids && props !== undefined) {
-      drawFaceText(ctx, smallText, polygon.getFaceCenters(0.3), ids);
+      drawFaceText(paint, smallText, polygon.getFaceCenters(0.3), ids);
     }
     if (patstructure !== StructureType.None) {
-      drawPatStructures(ctx, smallText, polygon.getFaceCenters(1.05), flexagon, patstructure);
+      drawPatStructures(paint, smallText, polygon.getFaceCenters(1.05), flexagon, patstructure);
     }
   }
 
-  function drawFaceProps(ctx: CanvasRenderingContext2D, polygon: Polygon, props: PropertiesForLeaves, ids: number[]) {
+  function drawFaceProps(paint: Paint, polygon: Polygon, props: PropertiesForLeaves, ids: number[]) {
     const triangles = polygon.getLeafTriangles();
     for (const i in triangles) {
       const leafId = ids[i];
       const color = props.getColorAsRGBString(leafId);
       if (color !== undefined) {
-        const triangle = triangles[i];
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(triangle.x1, triangle.y1);
-        ctx.lineTo(triangle.x2, triangle.y2);
-        ctx.lineTo(triangle.x3, triangle.y3);
-        ctx.closePath();
-        ctx.fill();
+        const t = triangles[i];
+        paint.setFillColor(color);
+        paint.drawPolygon([{ x: t.x1, y: t.y1 }, { x: t.x2, y: t.y2 }, { x: t.x3, y: t.y3 }], "fill");
       }
     }
   }
 
-  function drawPolygon(ctx: CanvasRenderingContext2D, corners: number[]) {
-    ctx.beginPath();
-    ctx.moveTo(corners[0], corners[1]);
-    for (let i = 2; i < corners.length; i += 2) {
-      ctx.lineTo(corners[i], corners[i + 1]);
-    }
-    ctx.closePath();
-    ctx.stroke();
-  }
-
-  function drawSpokes(ctx: CanvasRenderingContext2D, corners: number[], xCenter: number, yCenter: number) {
-    ctx.beginPath();
+  function drawPolygon(paint: Paint, corners: number[]) {
+    const points: Point[] = [];
     for (let i = 0; i < corners.length; i += 2) {
-      ctx.moveTo(xCenter, yCenter);
-      ctx.lineTo(corners[i], corners[i + 1]);
-      ctx.closePath();
-      ctx.stroke();
+      points.push({ x: corners[i], y: corners[i + 1] });
+    }
+    paint.drawPolygon(points);
+  }
+
+  function drawSpokes(paint: Paint, corners: number[], xCenter: number, yCenter: number) {
+    for (let i = 0; i < corners.length; i += 2) {
+      paint.drawLines([{ x: xCenter, y: yCenter }, { x: corners[i], y: corners[i + 1] }]);
+      if (i === 0) {
+        paint.drawLines([{ x: corners[0], y: corners[1] }, { x: corners[corners.length - 2], y: corners[corners.length - 1] }]);
+      } else {
+        paint.drawLines([{ x: corners[i - 2], y: corners[i - 1] }, { x: corners[i], y: corners[i + 1] }]);
+      }
     }
   }
 
-  function setTextProps(ctx: CanvasRenderingContext2D, fontsize: number) {
-    ctx.fillStyle = "rgb(0, 0, 0)";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.font = fontsize.toString() + "px sans-serif";
+  function setTextProps(paint: Paint, fontsize: number) {
+    paint.setTextColor("black");
+    paint.setTextHorizontal("center");
+    paint.setTextVertical("middle");
+    paint.setTextSize(fontsize);
   }
 
-  function drawPatStructures(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], flexagon: Flexagon, patstructure: StructureType) {
+  function drawPatStructures(paint: Paint, fontsize: number, centers: number[], flexagon: Flexagon, patstructure: StructureType) {
     if (patstructure === StructureType.None) {
       return;
     }
-    setTextProps(ctx, fontsize);
+    setTextProps(paint, fontsize);
     for (let i = 0; i < flexagon.getPatCount(); i++) {
       const pat = flexagon.pats[i];
       const structure: string = patstructure === StructureType.All
         ? pat.getStructure()
         : pat.getStructureLTEId(flexagon.getPatCount());
-      ctx.fillText(structure, centers[i * 2], centers[i * 2 + 1]);
+      paint.drawText(structure, centers[i * 2], centers[i * 2 + 1]);
     }
   }
 
-  function drawFaceText(ctx: CanvasRenderingContext2D, fontsize: number, centers: number[], ids: number[], props?: PropertiesForLeaves) {
-    setTextProps(ctx, fontsize);
+  function drawFaceText(paint: Paint, fontsize: number, centers: number[], ids: number[], props?: PropertiesForLeaves) {
+    setTextProps(paint, fontsize);
     for (let i = 0; i < ids.length; i++) {
       const id = ids[i];
       const label = props === undefined ? id.toString() : props.getFaceLabel(id) || id.toString();
-      ctx.fillText(label, centers[i * 2], centers[i * 2 + 1]);
+      paint.drawText(label, centers[i * 2], centers[i * 2 + 1]);
     }
   }
 
-  function drawText(ctx: CanvasRenderingContext2D, fontsize: number, x: number, y: number, text: string) {
-    setTextProps(ctx, fontsize);
-    ctx.fillText(text, x, y);
+  function drawText(paint: Paint, fontsize: number, x: number, y: number, text: string) {
+    setTextProps(paint, fontsize);
+    paint.drawText(text, x, y);
   }
 
 }

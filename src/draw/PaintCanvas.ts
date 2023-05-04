@@ -4,9 +4,11 @@ namespace Flexagonator {
   export class PaintCanvas implements Paint {
     constructor(private readonly ctx: CanvasRenderingContext2D) { }
 
-    start(): void {
-      const [width, height] = this.getSize();
-      this.ctx.clearRect(0, 0, width, height);
+    start(dontClear?: "dontClear"): void {
+      if (dontClear !== "dontClear") {
+        const [width, height] = this.getSize();
+        this.ctx.clearRect(0, 0, width, height);
+      }
       this.ctx.save();
     }
     end(): void {

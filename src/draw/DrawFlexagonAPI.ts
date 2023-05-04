@@ -48,13 +48,16 @@ namespace Flexagonator {
   ): RegionForFlexes[] {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
+    const paint = new PaintCanvas(ctx);
+    const [width, height] = paint.getSize();
 
     if (!options) {
       options = {}
     }
     if (options.drawover === undefined || !options.drawover) {
-      ctx.clearRect(0, 0, width, height);
+      paint.start();
+    } else {
+      paint.start("dontClear");
     }
 
     const showFront = (options.back === undefined || !options.back);
@@ -64,14 +67,15 @@ namespace Flexagonator {
     const showIds = (options.showIds === undefined || options.showIds);
     const showCurrent = (options.showCurrent === undefined || options.showCurrent);
     const showNumbers = (options.showNumbers === undefined || options.showNumbers);
-    drawFlexagon(ctx, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers);
+    drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers);
     if (options.both) {
       const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
-      drawFlexagon(ctx, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);
+      drawFlexagon(paint, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);
     }
     if (options.stats !== undefined && options.stats) {
-      drawStatsText(ctx, objects.flexagon, objects.angleInfo);
+      drawStatsText(paint, objects.flexagon, objects.angleInfo);
     }
+    paint.end();
 
     const generate = (options.generate !== undefined && options.generate);
     return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, generate, polygon);
@@ -108,21 +112,21 @@ namespace Flexagonator {
     return createFlexRegions(fm.flexagon, fm.allFlexes, fm.flexesToSearch, !front, generate, polygon);
   }
 
-  function drawStatsText(ctx: CanvasRenderingContext2D, flexagon: Flexagon, angleInfo: FlexagonAngles) {
-    ctx.fillStyle = "rgb(0, 0, 0)";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "bottom";
-    ctx.font = "14px sans-serif";
+  function drawStatsText(paint: Paint, flexagon: Flexagon, angleInfo: FlexagonAngles) {
+    paint.setTextColor("black");
+    paint.setTextHorizontal("left");
+    paint.setTextVertical("bottom");
+    paint.setTextSize(14);
 
     const leafCount = flexagon.getLeafCount();
     const leafText = leafCount.toString() + " leaves";
-    ctx.fillText(leafText, 0, 20);
+    paint.drawText(leafText, 0, 20);
 
     const center = angleInfo.getCenterAngleSum(flexagon);
     if (center === CenterAngle.GreaterThan360) {
-      ctx.fillText(">360, doesn't lie flat", 0, 40);
+      paint.drawText(">360, doesn't lie flat", 0, 40);
     } else if (center === CenterAngle.LessThan360) {
-      ctx.fillText("<360, doesn't open fully", 0, 40);
+      paint.drawText("<360, doesn't open fully", 0, 40);
     }
   }
 

@@ -2,7 +2,7 @@ namespace Flexagonator {
 
   /** general interface for drawing the details needed for a flexagon */
   export interface Paint {
-    start(): void;
+    start(dontClear?: "dontClear"): void;
     end(): void;
 
     /** get [width, height] of paint area */
