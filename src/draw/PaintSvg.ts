@@ -8,6 +8,7 @@ namespace Flexagonator {
     private fillColor: string = "black";
     private textColor: string = "black";
     private textSize: number = 10;
+    private textBaseline: "bottom" | "middle" = "bottom";
     private textAnchor: "start" | "middle" | "end" = "start";
 
     constructor(private readonly container: HTMLElement) {
@@ -43,6 +44,7 @@ namespace Flexagonator {
       this.textSize = pixels;
     }
     setTextVertical(align: "bottom" | "middle"): void {
+      this.textBaseline = align;
     }
     setTextHorizontal(align: "left" | "center" | "right"): void {
       this.textAnchor = align === "left" ? "start" : align === "right" ? "end" : "middle";
@@ -112,8 +114,11 @@ namespace Flexagonator {
 
       text.setAttribute("font-size", this.textSize.toString());
       text.setAttribute("font-family", "sans-serif");
-      text.setAttribute("text-anchor", this.textAnchor.toString());
       text.setAttribute("fill", this.textColor);
+      text.setAttribute("text-anchor", this.textAnchor.toString());
+      if (this.textBaseline === "middle") {
+        text.setAttribute("dominant-baseline", "middle");
+      }
 
       this.svg.appendChild(text);
     }
