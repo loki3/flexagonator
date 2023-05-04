@@ -4,7 +4,8 @@ namespace Flexagonator {
   export function drawByName(canvas: string | HTMLCanvasElement, name: string) {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
-    const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
+    const paint = new PaintCanvas(ctx);
+    const [width, height] = paint.getSize();
     const center: Point = { x: width / 2, y: height / 2 };
     const r = Math.min(width, height);
 
@@ -14,17 +15,18 @@ namespace Flexagonator {
       return;
     }
 
-    ctx.clearRect(0, 0, width, width);
-    drawLines(ctx, patPieces.count, center, r, patPieces.fold, 'dashed');
-    drawLines(ctx, patPieces.count, center, r, patPieces.cut1, 'solid');
+    paint.start();
+    drawLines(paint, patPieces.count, center, r, patPieces.fold, 'dashed');
+    drawLines(paint, patPieces.count, center, r, patPieces.cut1, 'solid');
     if (patPieces.cut2) {
-      drawLines(ctx, patPieces.count, center, r, patPieces.cut2, 'solid');
+      drawLines(paint, patPieces.count, center, r, patPieces.cut2, 'solid');
     }
+    paint.end();
   }
 
   /** draw the lines described by polarPoints */
   function drawLines(
-    ctx: CanvasRenderingContext2D,
+    paint: Paint,
     count: number,
     center: Point,
     width: number,
@@ -33,24 +35,12 @@ namespace Flexagonator {
   ) {
     const points = spin(count, center, width, polarPoints);
 
-    ctx.save();
-    if (how === 'solid') {
-      ctx.strokeStyle = "black";
-      ctx.setLineDash([]);
-    } else if (how === 'dashed') {
-      ctx.strokeStyle = "rgb(150, 150, 150)";
-      ctx.setLineDash([10, 5]);
-    }
-
-    for (const set of points) {
-      ctx.beginPath();
-      ctx.moveTo(set[0].x, 2 * center.y - set[0].y);
-      for (const point of set) {
-        ctx.lineTo(point.x, 2 * center.y - point.y);
-      }
-      ctx.stroke();
-    }
-    ctx.restore();
+    paint.setLineColor(how === 'solid' ? "black" : 0x969696);
+    const dashed = how === 'dashed' ? how : undefined;
+    points.forEach(set => {
+      const lines = set.map(p => { return { x: p.x, y: 2 * center.y - p.y } });
+      paint.drawLines(lines, dashed);
+    });
   }
 
   /** cut lines and fold lines for a single pat, which gets rotated around a center point */
