@@ -1045,11 +1045,9 @@
   <!-- groups-->
   <h3 id="groups">groups</h3>
 
-  <canvas id="group-tetra-strip" width="1200" height="220"></canvas><br/>
   <canvas id="group-tetra1" width="250" height="250"></canvas>
   <canvas id="group-tetra2" width="250" height="250"></canvas>
   <script type="text/javascript">
-    drawStripPinch("group-tetra-strip", 6, "(P*)2", 90);
     var script = [{ numPats: 6 }, { angles: [60, 60] }, { flexes: "(P*)2" }, { searchFlexes: "P" }];
     // face only supports P at 3 hinges
     drawFlexagonComplex("group-tetra1", script);

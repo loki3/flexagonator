@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460066.6550231366
+2460074.3607638772
   9
 $TDUUPDATE
  40
-2460066.9883564813
+2460074.6940972223
   9
 $TDINDWG
  40
-40.597349537037
+40.604305555556
   9
 $TDUSRTIMER
  40
-40.597349537037
+40.604305555556
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-41930F0C61
+41930F0C6D
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-79.193064
+79.192204
  22
--9.882983
+-9.88123
  13
 0.0
  23
@@ -17513,7 +17513,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -17537,7 +17537,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -17561,7 +17561,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -17585,7 +17585,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -17595,7 +17595,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -17619,7 +17619,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -17643,7 +17643,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -17667,7 +17667,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 POLYLINE
   5
@@ -17677,7 +17677,7 @@ POLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDb2dPolyline
  66
@@ -17701,7 +17701,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -17725,7 +17725,7 @@ VERTEX
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbVertex
 100
@@ -17749,7 +17749,7 @@ SEQEND
 100
 AcDbEntity
   8
-fold-thick
+fold
   0
 LWPOLYLINE
   5
@@ -17801,7 +17801,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -17827,7 +17827,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -17887,7 +17887,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -17913,7 +17913,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -17939,7 +17939,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -17965,7 +17965,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -17991,7 +17991,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18105,7 +18105,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18131,7 +18131,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18157,7 +18157,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18183,7 +18183,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18209,7 +18209,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18235,7 +18235,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18261,7 +18261,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18287,7 +18287,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18313,7 +18313,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18339,7 +18339,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18365,7 +18365,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18391,7 +18391,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18417,7 +18417,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18443,7 +18443,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18469,7 +18469,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18495,7 +18495,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18521,7 +18521,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18547,7 +18547,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18573,7 +18573,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18599,7 +18599,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18625,7 +18625,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18651,7 +18651,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18677,7 +18677,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18703,7 +18703,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18729,7 +18729,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -18755,7 +18755,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19013,7 +19013,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19039,7 +19039,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19065,7 +19065,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19079,7 +19079,7 @@ AcDbPolyline
  20
 -2.036674
  10
-87.796173
+87.296173
  20
 -2.036674
   0
@@ -19091,7 +19091,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19107,7 +19107,7 @@ AcDbPolyline
  10
 87.296173
  20
--2.536674
+-2.036674
   0
 LWPOLYLINE
   5
@@ -19117,7 +19117,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19127,11 +19127,11 @@ AcDbPolyline
  43
 0.03
  10
-88.207774
+88.707774
  20
 -2.527239
  10
-88.207774
+88.707774
  20
 -3.027239
   0
@@ -19143,7 +19143,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19153,11 +19153,11 @@ AcDbPolyline
  43
 0.03
  10
-88.207774
+88.707774
  20
 -2.527239
  10
-88.707774
+89.207774
  20
 -3.027239
   0
@@ -19169,7 +19169,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19179,11 +19179,11 @@ AcDbPolyline
  43
 0.03
  10
-88.707774
+89.207774
  20
 -3.027239
  10
-88.707774
+89.207774
  20
 -2.527239
   0
@@ -19195,7 +19195,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19205,11 +19205,11 @@ AcDbPolyline
  43
 0.03
  10
-88.707774
+89.207774
  20
 -3.027239
  10
-89.207774
+89.707774
  20
 -2.527239
   0
@@ -19221,33 +19221,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
-100
-AcDbPolyline
- 90
-        2
- 70
-     0
- 43
-0.03
- 10
-89.207774
- 20
--2.527239
- 10
-89.207774
- 20
--3.027239
-  0
-LWPOLYLINE
-  5
-57AEBBB
-330
-1F
-100
-AcDbEntity
-  8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19259,9 +19233,35 @@ AcDbPolyline
  10
 89.707774
  20
+-2.527239
+ 10
+89.707774
+ 20
+-3.027239
+  0
+LWPOLYLINE
+  5
+57AEBBB
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+90.207774
+ 20
 -3.027239
  10
-89.207774
+89.707774
  20
 -3.027239
   0
@@ -19273,7 +19273,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19283,11 +19283,11 @@ AcDbPolyline
  43
 0.03
  10
-88.207774
+88.707774
  20
 -3.027239
  10
-87.707774
+88.207774
  20
 -3.027239
   0
@@ -19299,7 +19299,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19309,11 +19309,11 @@ AcDbPolyline
  43
 0.03
  10
-88.207774
+88.707774
  20
 -3.527239
  10
-88.207774
+88.707774
  20
 -3.027239
   0
@@ -19325,7 +19325,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19335,11 +19335,11 @@ AcDbPolyline
  43
 0.03
  10
-88.207774
+88.707774
  20
 -3.527239
  10
-88.707774
+89.207774
  20
 -3.027239
   0
@@ -19351,7 +19351,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19361,11 +19361,11 @@ AcDbPolyline
  43
 0.03
  10
-88.707774
+89.207774
  20
 -3.027239
  10
-88.707774
+89.207774
  20
 -3.527239
   0
@@ -19377,7 +19377,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19387,11 +19387,11 @@ AcDbPolyline
  43
 0.03
  10
-88.707774
+89.207774
  20
 -3.027239
  10
-89.207774
+89.707774
  20
 -3.527239
   0
@@ -19403,7 +19403,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-fold-thick
+fold
 100
 AcDbPolyline
  90
@@ -19413,47 +19413,13 @@ AcDbPolyline
  43
 0.03
  10
-89.207774
+89.707774
  20
 -3.527239
  10
-89.207774
+89.707774
  20
 -3.027239
-  0
-LWPOLYLINE
-  5
-57AEBC2
-330
-1F
-100
-AcDbEntity
-  8
-cut-thick
-100
-AcDbPolyline
- 90
-        4
- 70
-     1
- 43
-0.05
- 10
-86.796173
- 20
--1.536674
- 10
-86.796173
- 20
--2.536674
- 10
-87.796173
- 20
--2.536674
- 10
-87.796173
- 20
--1.536674
   0
 LWPOLYLINE
   5
@@ -19473,27 +19439,27 @@ AcDbPolyline
  43
 0.05
  10
-87.707774
+88.207774
  20
 -3.027239
  10
-88.207774
- 20
--2.527239
- 10
-89.207774
+88.707774
  20
 -2.527239
  10
 89.707774
  20
+-2.527239
+ 10
+90.207774
+ 20
 -3.027239
  10
-89.207774
+89.707774
  20
 -3.527239
  10
-88.207774
+88.707774
  20
 -3.527239
   0
@@ -19515,11 +19481,11 @@ AcDbPolyline
  43
 0.05
  10
-88.207774
+88.707774
  20
 -3.027239
  10
-89.207774
+89.707774
  20
 -3.027239
   0
@@ -19539,7 +19505,7 @@ AcDbPolyline
  70
      0
  10
-88.118695
+88.618695
  20
 -1.831709
  40
@@ -19547,7 +19513,7 @@ AcDbPolyline
  41
 0.05
  10
-88.70404
+89.20404
  20
 -1.831675
  40
@@ -19555,7 +19521,7 @@ AcDbPolyline
  41
 0.05
  10
-88.70404
+89.20404
  20
 -2.131675
  40
@@ -19563,7 +19529,7 @@ AcDbPolyline
  41
 0.05
  10
-88.70404
+89.20404
  20
 -2.131675
  40
@@ -19571,7 +19537,7 @@ AcDbPolyline
  41
 0.0
  10
-88.70404
+89.20404
  20
 -2.331675
  40
@@ -74656,6 +74622,256 @@ AcDbText
 Arial
 100
 AcDbText
+  0
+LWPOLYLINE
+  5
+41930F0C63
+330
+1F
+100
+AcDbEntity
+  8
+cut-thick
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.05
+ 10
+87.296173
+ 20
+-2.036674
+ 10
+87.796173
+ 20
+-2.036674
+  0
+LWPOLYLINE
+  5
+41930F0C64
+330
+1F
+100
+AcDbEntity
+  8
+cut-thick
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.05
+ 10
+87.296173
+ 20
+-2.036674
+ 10
+87.296173
+ 20
+-2.536674
+  0
+LWPOLYLINE
+  5
+41930F0C65
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+87.296173
+ 20
+-2.536674
+ 10
+87.296173
+ 20
+-3.036674
+  0
+LWPOLYLINE
+  5
+41930F0C66
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+87.796173
+ 20
+-2.036674
+ 10
+88.296173
+ 20
+-2.036674
+  0
+LWPOLYLINE
+  5
+41930F0C67
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+86.796173
+ 20
+-2.536674
+ 10
+87.296173
+ 20
+-2.536674
+  0
+LWPOLYLINE
+  5
+41930F0C68
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+87.296173
+ 20
+-2.536674
+ 10
+87.796173
+ 20
+-2.536674
+  0
+LWPOLYLINE
+  5
+41930F0C69
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+87.796173
+ 20
+-1.536674
+ 10
+87.796173
+ 20
+-2.036674
+  0
+LWPOLYLINE
+  5
+41930F0C6A
+330
+1F
+100
+AcDbEntity
+  8
+fold
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.03
+ 10
+87.796173
+ 20
+-2.036674
+ 10
+87.796173
+ 20
+-2.536674
+  0
+LWPOLYLINE
+  5
+41930F0C6C
+330
+1F
+100
+AcDbEntity
+  8
+cut-thick
+100
+AcDbPolyline
+ 90
+        6
+ 70
+     1
+ 43
+0.05
+ 10
+88.296173
+ 20
+-2.036674
+ 10
+87.796173
+ 20
+-1.536674
+ 10
+86.796173
+ 20
+-1.536674
+ 10
+86.796173
+ 20
+-2.536674
+ 10
+87.296173
+ 20
+-3.036674
+ 10
+87.796173
+ 20
+-2.536674
   0
 ENDSEC
   0
