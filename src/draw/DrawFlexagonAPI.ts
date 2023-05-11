@@ -62,7 +62,8 @@ namespace Flexagonator {
     }
 
     const showFront = (options.back === undefined || !options.back);
-    const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront, options.scale, options.rotate);
+    const rotate = options.rotate === undefined ? options.rotate : (showFront ? options.rotate : -options.rotate);
+    const polygon = createPolygon(width, height, objects.flexagon, objects.angleInfo, showFront, options.scale, rotate);
 
     const showStructure = getStructureType(options);
     const showIds = (options.showIds === undefined || options.showIds);
