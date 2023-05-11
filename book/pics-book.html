@@ -1192,7 +1192,7 @@
   <script type="text/javascript">
     var script = [{ numPats: 6 }, { flexes: "P+V+T+S+F+St+S3+Fm+Ltb+Lbf+Lbb+Lh+Ltf+Lk+" }, { labelAsTree }];
     var fm = Flexagonator.createFromScript(script);
-    var options1 = { showIds: false, scale: 1.1, rotate: -30, showCurrent: false };
+    var options1 = { showIds: false, scale: 1.1, rotate: -30, showCurrent: false, showCenterMarker: true };
     var options2 = { ...options1, back: true };
     function drawSequence(canvasId, flex, scale, rotate, showCurrent) {
       fm.applyFlexes(flex);

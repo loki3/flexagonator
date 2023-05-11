@@ -20,6 +20,7 @@ namespace Flexagonator {
     readonly showIds?: boolean;     // show leaf ids - default: true
     readonly showCurrent?: boolean; // show an indicator next to the current hinge - default: true
     readonly showNumbers?: boolean; // show the face numbers - default: true
+    readonly showCenterMarker?: boolean; // show a marker on every leaf for where original center corner now is - default: false
     readonly generate?: boolean;    // include every flex with * added - default: false
     readonly scale?: number;        // scale factor - default: 1
     readonly rotate?: number;       // amount to rotate flexagon (degrees) - default: 0
@@ -69,7 +70,8 @@ namespace Flexagonator {
     const showIds = (options.showIds === undefined || options.showIds);
     const showCurrent = (options.showCurrent === undefined || options.showCurrent);
     const showNumbers = (options.showNumbers === undefined || options.showNumbers);
-    drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers);
+    const showCenterMarker = options.showCenterMarker === undefined ? false : options.showCenterMarker;
+    drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker);
     if (options.both) {
       const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
       drawFlexagon(paint, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);

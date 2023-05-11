@@ -54,6 +54,7 @@ such as whether to draw the front or back, and whether to display useful statist
   showIds: true,     // boolean: default true, show leaf ids
   showCurrent: true, // boolean: default true, show an indicator next to the current hinge
   showNumbers: true; // boolean: default true, show the face numbers
+  showCenterMarker:  // boolean: default false, show a marker on every leaf for where original center corner now is
   generate: true,    // boolean: default false, include every flex with * added, e.g. P*
   scale: 1,          // number: default 1, scale factor
   rotate: 0,         // number: default 0, amount to rotate flexagon (degrees)

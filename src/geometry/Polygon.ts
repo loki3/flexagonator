@@ -59,6 +59,29 @@ namespace Flexagonator {
       return triangles;
     }
 
+    /** get points in the leaf corners next to where the original center corner now is,
+     * (0: center, 1: counterclockwise, 2: clockwise) */
+    getCenterMarkers(whichVertex: number): number[] {
+      if (whichVertex === 0) {
+        return this.getFaceCenters(0.2);
+      }
+      // get points in the clockwise corners & counterclockwise corners
+      const one = this.computePoints(this.radius * 0.82, -0.4);
+      const two = this.computePoints(this.radius * 0.82, 0.4);
+      // alternate between the two sets of corners, since each pat is a mirror of the last
+      const result: number[] = [];
+      for (let i = 0; i < one.length / 2; i++) {
+        if ((whichVertex === 1 && i % 2 === 0) || (whichVertex === 2 && i % 2 === 1)) {
+          result.push(one[i * 2]);
+          result.push(one[i * 2 + 1]);
+        } else {
+          result.push(two[i * 2]);
+          result.push(two[i * 2 + 1]);
+        }
+      }
+      return result;
+    }
+
     private computePoints(radius: number, angleFactor: number): number[] {
       const corners: number[] = [];
       if (this.numSides < 3)
