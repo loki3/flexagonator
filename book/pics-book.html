@@ -212,6 +212,10 @@
       <li><a href="#decorating">decorating</a></li>
       <li><a href="#popups">popups</a></li>
     </ul>
+    <li><a href="#appendix">Appendix</a></li>
+    <ul>
+      <li><a href="#compendium">compendium</a></li>
+    </ul>
   </ul>
 
   <hr />
@@ -1124,6 +1128,97 @@
     var script = [{ "pats": [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { "angles": [72, 54] }];
     var options = { rotation: 36 + 90, content: { showFoldingOrder: true }, captions: starCaptions };
     drawStripComplex("animal-penta", script, options);
+  </script>
+
+  <!-- appendix -->
+
+  <h2 id="appendix">Appendix</h2>
+
+  <!-- compendium -->
+  <h3 id="compendium">compendium</h3>
+
+  <canvas id="compendium-base1" width="160" height="200"></canvas>
+  <canvas id="compendium-base2" width="160" height="200"></canvas>
+  <br/>
+  <p>global</p>
+  P
+  <canvas id="compendium-p1" width="160" height="200"></canvas>
+  <canvas id="compendium-p2" width="160" height="200"></canvas>
+  V
+  <canvas id="compendium-v1" width="160" height="200"></canvas>
+  <canvas id="compendium-v2" width="160" height="200"></canvas>
+  Lh
+  <canvas id="compendium-lh1" width="160" height="200"></canvas>
+  <canvas id="compendium-lh2" width="160" height="200"></canvas>
+  <br/>
+  Ltb
+  <canvas id="compendium-ltb1" width="160" height="200"></canvas>
+  <canvas id="compendium-ltb2" width="160" height="200"></canvas>
+  Lbf
+  <canvas id="compendium-lbf1" width="160" height="200"></canvas>
+  <canvas id="compendium-lbf2" width="160" height="200"></canvas>
+  Lbb
+  <canvas id="compendium-lbb1" width="160" height="200"></canvas>
+  <canvas id="compendium-lbb2" width="160" height="200"></canvas>
+
+  <p>local</p>
+  T
+  <canvas id="compendium-t1" width="160" height="200"></canvas>
+  <canvas id="compendium-t2" width="160" height="200"></canvas>
+  S
+  <canvas id="compendium-s1" width="160" height="200"></canvas>
+  <canvas id="compendium-s2" width="160" height="200"></canvas>
+  F
+  <canvas id="compendium-f1" width="160" height="200"></canvas>
+  <canvas id="compendium-f2" width="160" height="200"></canvas>
+  <br/>
+  St
+  <canvas id="compendium-st1" width="160" height="200"></canvas>
+  <canvas id="compendium-st2" width="160" height="200"></canvas>
+  S3
+  <canvas id="compendium-s31" width="160" height="200"></canvas>
+  <canvas id="compendium-s32" width="160" height="200"></canvas>
+  Fm
+  <canvas id="compendium-fm1" width="160" height="200"></canvas>
+  <canvas id="compendium-fm2" width="160" height="200"></canvas>
+  <br/>
+  Ltf
+  <canvas id="compendium-ltf1" width="160" height="200"></canvas>
+  <canvas id="compendium-ltf2" width="160" height="200"></canvas>
+  Lk
+  <canvas id="compendium-lk1" width="160" height="200"></canvas>
+  <canvas id="compendium-lk2" width="160" height="200"></canvas>
+
+  <script type="text/javascript">
+    var script = [{ numPats: 6 }, { flexes: "P+V+T+S+F+St+S3+Fm+Ltb+Lbf+Lbb+Lh+Ltf+Lk+" }, { labelAsTree }];
+    var fm = Flexagonator.createFromScript(script);
+    var options1 = { showIds: false, scale: 1.1, rotate: -30, showCurrent: false };
+    var options2 = { ...options1, back: true };
+    function drawSequence(canvasId, flex, scale, rotate, showCurrent) {
+      fm.applyFlexes(flex);
+      Flexagonator.drawEntireFlexagon(canvasId + "1", fm, options1);
+      Flexagonator.drawEntireFlexagon(canvasId + "2", fm, options2);
+      fm.undo();
+    }
+
+    Flexagonator.drawEntireFlexagon("compendium-base1", fm, options1);
+    Flexagonator.drawEntireFlexagon("compendium-base2", fm, options2);
+
+    drawSequence("compendium-p", "P");
+    drawSequence("compendium-v", "V");
+    drawSequence("compendium-lh", "Lh");
+    drawSequence("compendium-ltb", "Ltb");
+    drawSequence("compendium-lbf", "Lbf");
+    drawSequence("compendium-lbb", "Lbb");
+
+    drawSequence("compendium-t", "T");
+    drawSequence("compendium-s", "S");
+    drawSequence("compendium-f", "F");
+    drawSequence("compendium-st", "St");
+    drawSequence("compendium-s3", "S3");
+    drawSequence("compendium-fm", "Fm");
+    drawSequence("compendium-ltf", "Ltf");
+    drawSequence("compendium-lk", "Lk");
   </script>
 
 </body>
