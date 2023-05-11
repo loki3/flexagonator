@@ -157,7 +157,7 @@ F   = Hf Hb'
 St  = Hf Hfs'
 S   = < Hfs Hb' >
 T   = < Hr Hf' >
-Mf  = < Hr Hb' >
+Fm  = < Hr Hb' >
 S3  = < Hr Hl' >
 
 Ltf = Hf Lkk Hf' <

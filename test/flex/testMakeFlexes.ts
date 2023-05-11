@@ -87,10 +87,10 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["Ltf"].input, Ltin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Ltf"].output, Ltout)).toBeTruthy();
 
-      const Mfin = [[2, -1], 3, 4, 5, 6, [[9, -10], [7, -8]], -11, -12];
-      const Mfout = [[2, [-11, [-1, 12]]], 3, 4, 5, 6, 7, [-9, 8], -10];
-      expect(areLTArraysEqual(flexes["Mf"].input, Mfin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["Mf"].output, Mfout)).toBeTruthy();
+      const Fmin = [[2, -1], 3, 4, 5, 6, [[9, -10], [7, -8]], -11, -12];
+      const Fmout = [[2, [-11, [-1, 12]]], 3, 4, 5, 6, 7, [-9, 8], -10];
+      expect(areLTArraysEqual(flexes["Fm"].input, Fmin)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["Fm"].output, Fmout)).toBeTruthy();
     });
   });
 

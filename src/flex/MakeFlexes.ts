@@ -36,7 +36,7 @@ namespace Flexagonator {
       if (patCount >= 6)
         flexes["F"] = createFlip(patCount);
       if (patCount >= 6)
-        flexes["Mf"] = createMobiusFlip(patCount);
+        flexes["Fm"] = createMobiusFlip(patCount);
       if (patCount === 4 || patCount >= 6)
         flexes["St"] = createSilverTetra(patCount);
       if (patCount == 8 || patCount == 10 || patCount == 12)
@@ -114,7 +114,7 @@ namespace Flexagonator {
     flexes["F"] = makeFlex("flip flex",
       [[-2, 1], -3, -4, -5, [[-8, 9], [-6, 7]], 10],
       [9, [[2, -3], [10, -1]], -4, -5, -6, [8, -7]], FlexRotation.None) as Flex;
-    flexes["Mf"] = makeFlex("mobius flip",
+    flexes["Fm"] = makeFlex("mobius flip",
       [[-2, 1], -3, -4, [[-7, 8], [-5, 6]], 9, 10],
       [[-2, [9, [1, -10]]], -3, -4, -5, [7, -6], 8], FlexRotation.None) as Flex;
     flexes["St"] = makeFlex("silver tetra flex",

@@ -19,7 +19,7 @@ namespace Flexagonator {
       expect(checkForEqual("St", "Hf Hfs'", mainFlexes, halfFlexes)).toBeTruthy("St failed");
       expect(checkForEqual("S", "< Hfs Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S failed");
       expect(checkForEqual("T", "< Hr Hf' >", mainFlexes, halfFlexes)).toBeTruthy("T failed");
-      expect(checkForEqual("Mf", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Mf failed");
+      expect(checkForEqual("Fm", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Fm failed");
       expect(checkForEqual("S3", "< Hr Hl' >", mainFlexes, halfFlexes)).toBeTruthy("S3 failed");
 
       expect(checkForEqual("S", "Hf Sp Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S from Sp failed");
@@ -44,7 +44,7 @@ namespace Flexagonator {
       expect(checkForEqual("St", "Hf Hfs'", mainFlexes, halfFlexes)).toBeTruthy("St failed");
       expect(checkForEqual("S", "< Hfs Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S failed");
       expect(checkForEqual("T3", "< Hr Hf' >", mainFlexes, halfFlexes)).toBeTruthy("T3 failed");
-      expect(checkForEqual("Mf", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Mf failed");
+      expect(checkForEqual("Fm", "< Hr Hb' >", mainFlexes, halfFlexes)).toBeTruthy("Fm failed");
       expect(checkForEqual("S3", "< Hr Hl' >", mainFlexes, halfFlexes)).toBeTruthy("S3 failed");
 
       expect(checkForEqual("S", "Hf Sp Hb' >", mainFlexes, halfFlexes)).toBeTruthy("S from Sp failed");

@@ -50,7 +50,7 @@ namespace Flexagonator {
     // built from half flexes
     F: "Hf Hb'",        // K > Ul' <^> Ul < K' ^
     St: "Hf Hfs'",      // K > Ul' < Ur << Ul >> Ur' > K' <
-    Mf: "< Hr Hb' >",   // Xr~<<< Ur>>Ur' ^ > Ul < K' ^>
+    Fm: "< Hr Hb' >",   // Xr~<<< Ur>>Ur' ^ > Ul < K' ^>
     S3: "< Hr Hl' >",   // Xr~<<< Ur>>Ur'< Ur>>Ur'<< Xl~>>
     // these have simpler forms, but can be built from half flexes
     Tfromh: "< Hr Hf' >",

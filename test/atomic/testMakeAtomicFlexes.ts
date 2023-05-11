@@ -128,7 +128,7 @@ namespace Flexagonator {
 
       testDefinition("F", AtomicDecomposition.F);
       testDefinition("St", AtomicDecomposition.St);
-      testDefinition("Mf", AtomicDecomposition.Mf);
+      testDefinition("Fm", AtomicDecomposition.Fm);
       testDefinition("S3", AtomicDecomposition.S3);
     });
 

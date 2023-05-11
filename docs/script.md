@@ -227,7 +227,7 @@ Note that you should figure out the simplest pat structure needed to support you
 }
 { // create the mobius flip in terms of a flex sequence
   addFlex: {
-    shorthand: "Mf",
+    shorthand: "Fm",
     name: "mobius flip",
     sequence: "^>>T ^>>S"
   }
