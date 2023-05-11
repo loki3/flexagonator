@@ -1071,6 +1071,9 @@
   <span id="decorate-octa" width="200" height="200"></span>
   <span id="decorate-star-deca" width="200" height="200"></span>
   <span id="decorate-star-dodeca" width="200" height="200"></span>
+  <p>(T+>>)5 pentagonal right decaflexagon</p>
+  <span id="decorate-tuck-deca1" width="500" height="500"></span>
+  <span id="decorate-tuck-deca2" width="365" height="500"></span>
   <script type="text/javascript">
     drawStripSequence("decorate-tri-octa", 8, "P+", 180 + 45, [45, 45], undefined, -3, 2, "map");
     drawStripSequence("decorate-tri-deca", 10, "P+", 180 + 36, [36, 36], undefined, -6, 2, "map");
@@ -1080,6 +1083,11 @@
     drawFromName("decorate-octa", "silver octaflexagon", 0);
     drawFromName("decorate-star-deca", "star decaflexagon", 18);
     drawFromName("decorate-star-dodeca", "star dodecaflexagon", 0);
+
+    var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles: [36, 54], labelAsTree: [] }];
+    var drawOptions = { rotation: 0, content: { showLeafProps: true } };
+    drawStripComplex("decorate-tuck-deca1", script, { ...drawOptions, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
+    drawStripComplex("decorate-tuck-deca2", script, { ...drawOptions, start: 10, captions: [{ text: "a", which: 0 }, lastStar] });
   </script>
 
   <!-- popups -->
