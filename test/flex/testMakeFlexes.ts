@@ -68,7 +68,7 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["S3"].output, S3out)).toBeTruthy();
 
       const Vin = [1, [-3, 2], 4, [-6, 5], [8, -7], 9, 10, [-12, 11]];
-      const Vout = [[2, -1], 3, [5, -4], 6, 7, [-9, 8], [11, -10], 12];
+      const Vout = [[5, -4], 6, 7, [-9, 8], [11, -10], 12, [2, -1], 3];
       expect(areLTArraysEqual(flexes["V"].input, Vin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["V"].output, Vout)).toBeTruthy();
 
@@ -91,6 +91,35 @@ namespace Flexagonator {
       const Fmout = [[2, [-11, [-1, 12]]], 3, 4, 5, 6, 7, [-9, 8], -10];
       expect(areLTArraysEqual(flexes["Fm"].input, Fmin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Fm"].output, Fmout)).toBeTruthy();
+    });
+  });
+
+  describe('v-flex', () => {
+    function checkV(numPats: number) {
+      const flexes = makeAllFlexes(numPats);
+      const vflex = flexes["V"];
+      const flexagon = Flexagon.makeFromTree(vflex.input) as Flexagon;
+
+      const afterV = vflex.apply(flexagon) as Flexagon;
+      const actual = (flexes["^"].apply(afterV) as Flexagon).getAsLeafTrees();
+      const expected = vflex.input;
+      // just check that the pattern of leaves-per-pat matches all around the flexagon
+      const check = expected.every((p, i) => {
+        const other = actual[i];
+        const count1 = typeof p === 'number' ? 1 : p.length;
+        const count2 = typeof other === 'number' ? 1 : other.length;
+        return count1 === count2;
+      });
+      if (!check) {
+        console.log('v-flex failed for numPats=', numPats, '\nexpected', vflex.input, '\nactual', actual);
+        fail('failed');
+      }
+    }
+
+    it("should end up with V' = ^V^", () => {
+      checkV(6);
+      checkV(8);
+      checkV(10);
     });
   });
 

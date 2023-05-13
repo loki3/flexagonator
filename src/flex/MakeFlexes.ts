@@ -299,7 +299,7 @@ namespace Flexagonator {
     // (1) (^3,2) ... (i) (^i+2,i+1) ... (n-4,^n-5) (n-3)  (n-2) (^n,n-1)
     // (2,^1) (3) ... (i+1,^i) (i+2) ... (n-5) (^n-3,n-4)  (n-1,^n-2) (n)
     const input: LeafTree = [];
-    const output: LeafTree = [];
+    let output: LeafTree = [];
     const leaves = patCount * 3 / 2;
 
     // like pinch flex
@@ -321,6 +321,14 @@ namespace Flexagonator {
     input.push([-leaves, leaves - 1]);
     output.push([leaves - 1, -(leaves - 2)]);
     output.push(leaves);
+
+    // shift output so that V' = ^V^
+    if (patCount > 6) {
+      const shift = patCount - 6;
+      const one = output.slice(shift);
+      const two = output.slice(0, shift);
+      output = one.concat(two);
+    }
 
     return makeFlex("v flex", input, output, FlexRotation.ClockMirror) as Flex;
   }
