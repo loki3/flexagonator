@@ -110,7 +110,7 @@ namespace Flexagonator {
       [[-2, [9, [1, -10]]], -3, -4, [6, -5], 7, 8], FlexRotation.None) as Flex;
     flexes["V"] = makeFlex("v flex",
       [1, [-3, 2], [5, -4], 6, 7, [-9, 8]],
-      [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.CounterMirror) as Flex;
+      [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.ClockMirror) as Flex;
     flexes["F"] = makeFlex("flip flex",
       [[-2, 1], -3, -4, -5, [[-8, 9], [-6, 7]], 10],
       [9, [[2, -3], [10, -1]], -4, -5, -6, [8, -7]], FlexRotation.None) as Flex;
@@ -322,7 +322,7 @@ namespace Flexagonator {
     output.push([leaves - 1, -(leaves - 2)]);
     output.push(leaves);
 
-    return makeFlex("v flex", input, output, FlexRotation.CounterMirror) as Flex;
+    return makeFlex("v flex", input, output, FlexRotation.ClockMirror) as Flex;
   }
 
   function createFlip(patCount: number): Flex {
