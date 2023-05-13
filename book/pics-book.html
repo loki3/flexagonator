@@ -162,6 +162,24 @@
       }
     }
 
+    // draw front/back of the before/after states of a flex using the given # of pats & optional angles,
+    // requires 4 drawing areas that are canvasId + "-before/after-1/2"
+    function drawBeforeAfter(canvasId, flex, numPats, angles) {
+      const script = numPats % 2 === 0 ? [{ numPats, flexes: flex + "+", angles, labelAsTree }]
+        : [{ numPats, flexAndColor: { flexes: flex + "+", colors: labelAsTree }, angles }];
+      const fm = Flexagonator.createFromScript(script);
+      const rotate = numPats === 6 ? -30 : 0;
+      const options = { showIds: false, scale: 1.1, rotate, showCurrent: true, showCenterMarker: true };
+      const options1 = { ...options, structure: true };
+      const options2 = { ...options, back: true };
+
+      Flexagonator.drawEntireFlexagon(canvasId + "-before-1", fm, options1);
+      Flexagonator.drawEntireFlexagon(canvasId + "-before-2", fm, options2);
+      fm.applyFlexes(flex);
+      Flexagonator.drawEntireFlexagon(canvasId + "-after-1", fm, options1);
+      Flexagonator.drawEntireFlexagon(canvasId + "-after-2", fm, options2);
+    }
+
     // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
     // [optional] array of colors, otherwise uses default set of colors
     function pairsToProps(numbering, repeats, colors) {
@@ -591,6 +609,15 @@
     [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
     drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
   </script>
+  <br/>
+  <span id="F-minimal-before-1" width="180" height="200"></span>
+  <span id="F-minimal-before-2" width="180" height="200"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="F-minimal-after-1" width="180" height="200"></span>
+  <span id="F-minimal-after-2" width="180" height="200"></span>
+  <script type="text/javascript">
+    drawBeforeAfter("F-minimal", "F", 6, [60, 90]);
+  </script>
 
   <h3 id="tuck">tuck flex</h3>
 
@@ -614,6 +641,15 @@
     drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
     drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
     drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 3, undefined, undefined, "solid");
+  </script>
+  <br/><br/>
+  <span id="T-minimal-before-1" width="160" height="180"></span>
+  <span id="T-minimal-before-2" width="160" height="180"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="T-minimal-after-1" width="160" height="180"></span>
+  <span id="T-minimal-after-2" width="160" height="180"></span>
+  <script type="text/javascript">
+    drawBeforeAfter("T-minimal", "T", 6);
   </script>
 
   <h3 id="pyramid shuffle">pyramid shuffle</h3>
@@ -648,6 +684,15 @@
     drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
     drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
     drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*", undefined, 1);
+  </script>
+  <br/><br/>
+  <span id="S-minimal-before-1" width="190" height="180"></span>
+  <span id="S-minimal-before-2" width="160" height="180"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="S-minimal-after-1" width="180" height="180"></span>
+  <span id="S-minimal-after-2" width="160" height="180"></span>
+  <script type="text/javascript">
+    drawBeforeAfter("S-minimal", "S", 5);
   </script>
 
   <h3 id="vflex">v flex</h3>
@@ -712,6 +757,15 @@
   <script type="text/javascript">
     drawSequence("sequences-v6-", 6, "(V*>)6", ["", "V>", "V>", "V>", "V>", "V>", "V>"], 1.1, -30);
     drawSequence("sequences-v15-", 6, "(V*<)15", ["", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<", "V<"], 1.1, -30);
+  </script>
+  <br/>before/after<br/>
+  <span id="V-minimal-before-1" width="160" height="180"></span>
+  <span id="V-minimal-before-2" width="160" height="180"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="V-minimal-after-1" width="160" height="180"></span>
+  <span id="V-minimal-after-2" width="160" height="180"></span>
+  <script type="text/javascript">
+    drawBeforeAfter("V-minimal", "V", 6);
   </script>
 
   <h3 id="half-flexes">half flexes</h3>
@@ -1194,7 +1248,7 @@
     var fm = Flexagonator.createFromScript(script);
     var options1 = { showIds: false, scale: 1.1, rotate: -30, showCurrent: false, showCenterMarker: true };
     var options2 = { ...options1, back: true };
-    function drawSequence(canvasId, flex, scale, rotate, showCurrent) {
+    function drawSequence(canvasId, flex) {
       fm.applyFlexes(flex);
       Flexagonator.drawEntireFlexagon(canvasId + "1", fm, options1);
       Flexagonator.drawEntireFlexagon(canvasId + "2", fm, options2);
