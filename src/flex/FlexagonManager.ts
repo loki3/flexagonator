@@ -113,6 +113,12 @@ namespace Flexagonator {
       return true;
     }
 
+    normalizeIds() {
+      this.flexagon = this.flexagon.normalizeIds();
+      // changing the ids impacts tracking & history, so reset
+      this.clearHistory();
+    }
+
     setFaceLabel(label: string, front: boolean) {
       const ids = front ? this.flexagon.getTopIds() : this.flexagon.getBottomIds();
       for (const id of ids) {

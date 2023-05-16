@@ -97,7 +97,7 @@ namespace Flexagonator {
     }
 
     if (item.normalizeIds !== undefined) {
-      fm.flexagon = fm.flexagon.normalizeIds();
+      fm.normalizeIds();
     }
 
     if (item.setLabels !== undefined) {
