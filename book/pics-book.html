@@ -164,11 +164,11 @@
 
     // draw front/back of the before/after states of a flex using the given # of pats & optional angles,
     // requires 4 drawing areas that are canvasId + "-before/after-1/2"
-    function drawBeforeAfter(canvasId, flex, numPats, angles) {
-      const script = numPats % 2 === 0 ? [{ numPats, flexes: flex + "+", angles, labelAsTree }]
-        : [{ numPats, flexAndColor: { flexes: flex + "+", colors: labelAsTree }, angles }];
+    function drawBeforeAfter(canvasId, flex, numPats, angles2) {
+      const script = numPats % 2 === 0 ? [{ numPats, flexes: flex + "+", angles2, labelAsTree }]
+        : [{ numPats, flexAndColor: { flexes: flex + "+", colors: labelAsTree }, angles2 }];
       const fm = Flexagonator.createFromScript(script);
-      const rotate = numPats === 6 ? -30 : 0;
+      const rotate = numPats === 6 ? -30 : numPats === 8 ? -22.5 : 0;
       const options = { showIds: false, scale: 1.1, rotate, showCurrent: true, showCenterMarker: true };
       const options1 = { ...options, structure: true };
       const options2 = { ...options, back: true };
@@ -766,6 +766,15 @@
   <span id="V-minimal-after-2" width="160" height="180"></span>
   <script type="text/javascript">
     drawBeforeAfter("V-minimal", "V", 6);
+  </script>
+  <br/>before/after<br/>
+  <span id="V-8-before-1" width="167" height="180"></span>
+  <span id="V-8-before-2" width="167" height="180"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="V-8-after-1" width="180" height="180"></span>
+  <span id="V-8-after-2" width="180" height="180"></span>
+  <script type="text/javascript">
+    drawBeforeAfter("V-8", "V", 8, [45, 90]);
   </script>
 
   <h3 id="half-flexes">half flexes</h3>
