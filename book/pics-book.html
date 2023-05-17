@@ -1129,27 +1129,27 @@
   <!-- decorating -->
   <h3 id="decorating">decorating</h3>
 
-  <image src="images/peirce-quincuncial.png" />
+  <span id="decorate-hexa" width="200" height="200"></span>
+  <span id="decorate-octa" width="200" height="200"></span>&nbsp;&nbsp;&nbsp;
+  <span id="decorate-star-deca" width="200" height="200"></span>&nbsp;&nbsp;&nbsp;
+  <span id="decorate-star-dodeca" width="200" height="200"></span>
+  <br/><br/>
   <canvas id="decorate-tri-octa" width="1000" height="225"></canvas>
   <canvas id="decorate-tri-deca" width="1000" height="244"></canvas>
   <canvas id="decorate-tri-dodeca" width="1000" height="250"></canvas>
-  <br/><br/>
-  <span id="decorate-hexa" width="200" height="200"></span>
-  <span id="decorate-octa" width="200" height="200"></span>
-  <span id="decorate-star-deca" width="200" height="200"></span>
-  <span id="decorate-star-dodeca" width="200" height="200"></span>
+  <image src="images/peirce-quincuncial.png" />
   <p>(T+>>)5 pentagonal right decaflexagon</p>
   <span id="decorate-tuck-deca1" width="500" height="500"></span>
   <span id="decorate-tuck-deca2" width="365" height="500"></span>
   <script type="text/javascript">
-    drawStripSequence("decorate-tri-octa", 8, "P+", 180 + 45, [45, 45], undefined, -3, 2, "map");
-    drawStripSequence("decorate-tri-deca", 10, "P+", 180 + 36, [36, 36], undefined, -6, 2, "map");
-    drawStripSequence("decorate-tri-dodeca", 12, "P+", 180 + 30, [30, 30], undefined, -3, 2, "map");
-
     drawFromName("decorate-hexa", "hexaflexagon", 30);
     drawFromName("decorate-octa", "silver octaflexagon", 0);
     drawFromName("decorate-star-deca", "star decaflexagon", 18);
     drawFromName("decorate-star-dodeca", "star dodecaflexagon", 0);
+
+    drawStripSequence("decorate-tri-octa", 8, "P+", 180 + 45, [45, 45], undefined, -3, 2, "pivot");
+    drawStripSequence("decorate-tri-deca", 10, "P+", 180 + 36, [36, 36], undefined, -6, 2, "pivot");
+    drawStripSequence("decorate-tri-dodeca", 12, "P+", 180 + 30, [30, 30], undefined, -3, 2, "pivot");
 
     var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles: [36, 54], labelAsTree: [] }];
     var drawOptions = { rotation: 0, content: { showLeafProps: true } };
