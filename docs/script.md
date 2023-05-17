@@ -9,7 +9,7 @@ Script commands:
 * Defining flexagon structure
     * **pats:** create a new flexagon with the given structure
     * **numPats:** create a new flexagon with the given number of pats, but only one leaf per pat
-    * **angles:** set the angles for first leaf: [center angle, clockwise angle]
+    * **angles:** set the angles for first leaf: [center angle, counterclockwise angle]
     * **directions:** set how each pat is connected to the previous pat, \: top, /: bottom (if edge at left)
 * Flexes
     * **flexes:** perform a series of flexes
@@ -75,10 +75,10 @@ This is often followed by the `flexes` command to create more complex structure 
 
 By default, Flexagonator chooses isosceles triangles where the center angle is 360 / the number of pats.
 To override this, use the `angles` command.
-It takes an array of two numbers: the center angle and the angle immediately clockwise.
+It takes an array of two numbers: the center angle and the angle immediately counterclockwise.
 You can specify the third angle, but it's ignored.
 Note that this describes the triangle corresponding to the first leaf on the first pat.
-Since the second pat is a mirror image of the first, the second angle corresponds to the angle immediately counterclockwise from the center.
+Since the second pat is a mirror image of the first, the second angle corresponds to the angle immediately clockwise from the center.
 
 ```javascript
 // the leaf angle in the middle of the flexagon is 30

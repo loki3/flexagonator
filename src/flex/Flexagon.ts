@@ -4,17 +4,10 @@ namespace Flexagonator {
     Manages the pats in a flexagon
   */
   export class Flexagon {
-    // whichVertex: 1st face is numbered 0,1,2 clockwise - 0 starts out pointing to the center
-    // isFirstMirrored: indicates that the first pat rotates counterclockwise instead
-    constructor(readonly pats: Pat[], readonly whichVertex: number, readonly isFirstMirrored: boolean) {
-    }
+    readonly angleTracker: AngleTracker;
 
-    static makeFromPats(pats: Pat[], whichVertex: number, isFirstMirrored: boolean): Flexagon {
-      return new Flexagon(pats, whichVertex, isFirstMirrored);
-    }
-
-    static makeFromTree(trees: LeafTree[]): Flexagon | TreeError {
-      return Flexagon.makeFromTreePlus(trees, 0, false/*isFirstMirrored*/);
+    constructor(readonly pats: Pat[], angleTracker?: AngleTracker) {
+      this.angleTracker = angleTracker === undefined ? AngleTracker.makeDefault() : angleTracker;
     }
 
     static makeFromTreeCheckZeros(trees: LeafTree[]): Flexagon | TreeError {
@@ -26,10 +19,10 @@ namespace Flexagonator {
       // find the largest id and replace all 0's in pats with an incremented counter
       let next = flexagon.pats.map(pat => pat.findMaxId()).reduce((prev, current) => Math.max(prev, current), 0) + 1;
       const result = flexagon.pats.map(pat => pat.replaceZeros(() => { return next++; }));
-      return this.makeFromPats(result, 0, false/*isFirstMirrored*/);
+      return new Flexagon(result);
     }
 
-    static makeFromTreePlus(trees: LeafTree[], whichVertex: number, isFirstMirrored: boolean): Flexagon | TreeError {
+    static makeFromTree(trees: LeafTree[], angleTracker?: AngleTracker): Flexagon | TreeError {
       if (trees.length < 2) {
         return { reason: TreeCode.TooFewPats, context: trees };
       }
@@ -38,7 +31,7 @@ namespace Flexagonator {
       if (error && isTreeError(error)) {
         return error;
       }
-      return new Flexagon(pats as Pat[], whichVertex, isFirstMirrored);
+      return new Flexagon(pats as Pat[], angleTracker);
     }
 
     getPatCount(): number {
@@ -101,7 +94,30 @@ namespace Flexagonator {
      */
     normalizeIds(): Flexagon {
       const normalized = normalizeIds(this.pats);
-      return new Flexagon(normalized, this.whichVertex, this.isFirstMirrored);
+      return new Flexagon(normalized, this.angleTracker);
     }
+  }
+
+  /**
+   * tracks how the FlexagonAngles associated with a Flexagon should be used.
+   * whichAngle: which of the 3 angles is currently in the center of the flexagon (012)
+   * isMirrored: if !isMirrored, angles are 012, else 021
+   * oldAngle: for backward compat with the old API, same as 'whichAngle' except it's often wrong
+   */
+  export class AngleTracker {
+    static make(whichCorner: number, isMirrored: boolean, oldCorner?: number) {
+      return new AngleTracker(whichCorner, isMirrored, oldCorner !== undefined ? oldCorner : whichCorner);
+    }
+    static makeDefault() {
+      return new AngleTracker(0, false, 0);
+    }
+
+    private constructor(
+      readonly whichCorner: number, readonly isMirrored: boolean,
+      readonly oldCorner: number
+    ) {
+    }
+
+    getWhichCorner() { return this.oldCorner; }
   }
 }

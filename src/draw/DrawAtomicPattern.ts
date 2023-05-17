@@ -8,7 +8,7 @@ namespace Flexagonator {
     options?: DrawStripOptions
   ): void {
     const pats = getAtomicPatternPats(pattern);
-    const flexagon = Flexagon.makeFromPats(pats, 0, false);
+    const flexagon = new Flexagon(pats);
 
     const patternDirections = getAtomicPatternDirections(pattern);
     const directions = patternDirections.map(d => d === '/');

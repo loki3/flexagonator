@@ -53,10 +53,18 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      const newVertex: number = this.getNewVertex(flexagon.whichVertex, flexagon.isFirstMirrored);
-      const isFirstMirrored: boolean = (this.rotation == FlexRotation.None) ? flexagon.isFirstMirrored : !flexagon.isFirstMirrored;
+      const angleTracker = this.newAngleTracker(flexagon);
+      return new Flexagon(newPats, angleTracker);
+    }
 
-      return Flexagon.makeFromPats(newPats, newVertex, isFirstMirrored);
+    private newAngleTracker(flexagon: Flexagon): AngleTracker {
+      const tracker = flexagon.angleTracker;
+
+      const newWhich: number = this.getNewCorner(tracker.whichCorner, tracker.isMirrored);
+      const oldWhich: number = this.getOldCorner(tracker.oldCorner, tracker.isMirrored);
+      const mirrored: boolean = (this.rotation == FlexRotation.None) ? tracker.isMirrored : !tracker.isMirrored;
+
+      return AngleTracker.make(newWhich, mirrored, oldWhich);
     }
 
     private invertRotation(fr: FlexRotation): FlexRotation {
@@ -87,15 +95,25 @@ namespace Flexagonator {
       return { reason: FlexCode.BadFlexOutput };
     }
 
-    private getNewVertex(whichVertex: number, isFirstMirrored: boolean): number {
+    private getNewCorner(whichCorner: number, isFirstMirrored: boolean): number {
       if (this.rotation === FlexRotation.None || this.rotation === FlexRotation.Mirror) {
-        return whichVertex;
+        return whichCorner;
+      }
+      if ((this.rotation === FlexRotation.ClockMirror && isFirstMirrored) ||
+        (this.rotation === FlexRotation.CounterMirror && !isFirstMirrored)) {
+        return (whichCorner + 1) % 3;
+      }
+      return (whichCorner + 2) % 3;
+    }
+    private getOldCorner(whichCorner: number, isFirstMirrored: boolean): number {
+      if (this.rotation === FlexRotation.None || this.rotation === FlexRotation.Mirror) {
+        return whichCorner;
       }
       if ((this.rotation === FlexRotation.ClockMirror && !isFirstMirrored) ||
         (this.rotation === FlexRotation.CounterMirror && isFirstMirrored)) {
-        return (whichVertex + 1) % 3;
+        return (whichCorner + 1) % 3;
       }
-      return (whichVertex + 2) % 3;
+      return (whichCorner + 2) % 3;
     }
 
     // generate the structure necessary to perform this flex, and keep track of new subpats
@@ -109,7 +127,7 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      return [Flexagon.makeFromPats(newPats, flexagon.whichVertex, flexagon.isFirstMirrored), splits];
+      return [new Flexagon(newPats, flexagon.angleTracker), splits];
     }
   }
 

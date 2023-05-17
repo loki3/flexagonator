@@ -10,17 +10,17 @@ namespace Flexagonator {
   // when given a flexagon
   export class FlexagonAngles {
     // angleCenter: angle in the center of the flexagon
-    // angleClock:  angle clockwise from the center
+    // angleCounter:  angle counterclockwise from the center
     // isDefault: is this a default set of angles or was it explicitly set?
-    private constructor(private readonly angleCenter: number, private readonly angleClock: number, readonly isDefault: boolean) {
+    private constructor(private readonly angleCenter: number, private readonly angleCounter: number, readonly isDefault: boolean) {
     }
 
     static makeDefault(): FlexagonAngles {
       return new FlexagonAngles(60, 60, true);
     }
 
-    static makeAngles(angleCenter: number, angleClock: number): FlexagonAngles {
-      return new FlexagonAngles(angleCenter, angleClock, false);
+    static makeAngles(angleCenter: number, angleCounter: number): FlexagonAngles {
+      return new FlexagonAngles(angleCenter, angleCounter, false);
     }
 
     static makeIsosceles(flexagon: Flexagon): FlexagonAngles {
@@ -31,9 +31,9 @@ namespace Flexagonator {
 
     // [center angle, clockwise, clockwise]
     getAngles(flexagon: Flexagon): number[] {
-      const angles: number[] = [this.angleCenter, this.angleClock, 180 - this.angleCenter - this.angleClock];
-      const v = flexagon.whichVertex;
-      if (flexagon.isFirstMirrored) {
+      const angles: number[] = [this.angleCenter, this.angleCounter, 180 - this.angleCenter - this.angleCounter];
+      const v = flexagon.angleTracker.getWhichCorner();
+      if (flexagon.angleTracker.isMirrored) {
         return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
       }
       return [angles[v], angles[(v + 1) % 3], angles[(v + 2) % 3]];
