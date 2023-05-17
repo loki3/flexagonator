@@ -6,33 +6,39 @@ namespace Flexagonator {
     LessThan360 = -1
   }
 
-  // object that understand which angles to use for leaves
-  // when given a flexagon
+  /** object that understand which angles to use for leaves
+    when given a flexagon */
   export class FlexagonAngles {
-    // angleCenter: angle in the center of the flexagon
-    // angleCounter:  angle counterclockwise from the center
-    // isDefault: is this a default set of angles or was it explicitly set?
-    private constructor(private readonly angleCenter: number, private readonly angleCounter: number, readonly isDefault: boolean) {
+    /**
+      angleCenter: angle in the center of the flexagon
+      angleCounter:  angle counterclockwise from the center
+      isDefault: is this a default set of angles or was it explicitly set?
+      useCorrect: if false, use the deprecated way of tracking angles
+    */
+    private constructor(
+      private readonly angleCenter: number, private readonly angleCounter: number,
+      readonly isDefault: boolean, private readonly useCorrect: boolean) {
     }
 
     static makeDefault(): FlexagonAngles {
-      return new FlexagonAngles(60, 60, true);
+      return new FlexagonAngles(60, 60, true, true/*useCorrect*/);
     }
 
-    static makeAngles(angleCenter: number, angleCounter: number): FlexagonAngles {
-      return new FlexagonAngles(angleCenter, angleCounter, false);
+    /** center angle, angle in counterclockwise direction, useCorrect:false for deprecated behavior */
+    static makeAngles(angleCenter: number, angleCounter: number, useCorrect: boolean): FlexagonAngles {
+      return new FlexagonAngles(angleCenter, angleCounter, false, useCorrect);
     }
 
-    static makeIsosceles(flexagon: Flexagon): FlexagonAngles {
+    static makeIsosceles(flexagon: Flexagon, useCorrect: boolean): FlexagonAngles {
       const center = 360 / flexagon.getPatCount();
       const clock = (180 - center) / 2;
-      return new FlexagonAngles(center, clock, false);
+      return new FlexagonAngles(center, clock, false, useCorrect);
     }
 
     // [center angle, clockwise, clockwise]
     getAngles(flexagon: Flexagon): number[] {
       const angles: number[] = [this.angleCenter, this.angleCounter, 180 - this.angleCenter - this.angleCounter];
-      const v = flexagon.angleTracker.oldCorner;
+      const v = this.useCorrect ? flexagon.angleTracker.whichCorner : flexagon.angleTracker.oldCorner;
       if (flexagon.angleTracker.isMirrored) {
         return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
       }

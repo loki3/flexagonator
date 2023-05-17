@@ -8,7 +8,9 @@ namespace Flexagonator {
     readonly pats?: LeafTree[];
     // specify the number of pats for a new flexagon
     readonly numPats?: number;
-    // for first leaf: [center angle, clockwise angle]
+    // for first leaf: [center angle, counterclockwise angle]
+    readonly angles2?: number[];
+    // DEPRECATED (use angles2): for first leaf: [center angle, counterclockwise angle]
     readonly angles?: number[];
     // how each pat is connected to the previous pat; if previous pat is to the left,
     // false, \, or | means next is to upper right; true or / is to lower right

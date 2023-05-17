@@ -9,7 +9,7 @@ Script commands:
 * Defining flexagon structure
     * **pats:** create a new flexagon with the given structure
     * **numPats:** create a new flexagon with the given number of pats, but only one leaf per pat
-    * **angles:** set the angles for first leaf: [center angle, counterclockwise angle]
+    * **angles2:** set the angles for first leaf: [center angle, counterclockwise angle]
     * **directions:** set how each pat is connected to the previous pat, \: top, /: bottom (if edge at left)
 * Flexes
     * **flexes:** perform a series of flexes
@@ -71,10 +71,10 @@ This is often followed by the `flexes` command to create more complex structure 
 { numPats: 5 }
 ```
 
-### the `angles` command
+### the `angles2` command
 
 By default, Flexagonator chooses isosceles triangles where the center angle is 360 / the number of pats.
-To override this, use the `angles` command.
+To override this, use the `angles2` command.
 It takes an array of two numbers: the center angle and the angle immediately counterclockwise.
 You can specify the third angle, but it's ignored.
 Note that this describes the triangle corresponding to the first leaf on the first pat.
@@ -82,8 +82,11 @@ Since the second pat is a mirror image of the first, the second angle correspond
 
 ```javascript
 // the leaf angle in the middle of the flexagon is 30
-{ angles: [30, 60] }
+{ angles2: [30, 60] }
 ```
+
+Note: there is also an `angles` option for backward compatibility with old scripts,
+but the angles aren't updated properly during some flexes.
 
 ### the `directions` command
 
@@ -379,24 +382,24 @@ For example, `silver tetra-octaflexagon` is translated into the following:
 ```javascript
 [
   { "numPats": 8 },
-  { "angles": [45,45] },  // same as [45,45,90]
+  { "angles2": [45,45] },  // same as [45,45,90]
   { "flexes": "P*P*" }
 ]
 ```
 
 Note that without additional clarification, many names are ambiguous, in which case one option will be chosen.
-In the above example, it could have instead chosen `"angles": [45,90]`, which would have generated a different template.
+In the above example, it could have instead chosen `"angles2": [45,90]`, which would have generated a different template.
 
 Names must match the naming convention:
 `[overall shape] [leaf shape] [face count]-[pat count prefix]flexagon`, with the following meanings:
 
 * `overall shape`
     * an adjective such as 'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal'
-    * can sometimes be combined with `pat count` and/or `leaf shape` to set `angles` and possibly `directions`
+    * can sometimes be combined with `pat count` and/or `leaf shape` to set `angles2` and possibly `directions`
 * `leaf shape`:
     * one of 'triangle' | 'regular' | 'isosceles' | 'right' | 'silver' | 'bronze'
-    * defines the `angles` property, though the order of the three angles may vary based on the full flexagon name
-    * can sometimes be combined with `pat count` to help pick the proper orientation of `angles`
+    * defines the `angles2` property, though the order of the three angles may vary based on the full flexagon name
+    * can sometimes be combined with `pat count` to help pick the proper orientation of `angles2`
 * `face count`
     * a Greek prefix such as 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' | 'deca' | 'dodeca'
     * creates the structure necessary to theoretically have `face count` faces, if possible

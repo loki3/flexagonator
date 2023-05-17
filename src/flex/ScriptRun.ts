@@ -62,11 +62,20 @@ namespace Flexagonator {
       fm = FlexagonManager.make(result);
     }
 
+    // version that's maintained properly during flexing
+    if (item.angles2 !== undefined) {
+      if (item.angles2[0] && item.angles2[1]) {
+        fm.setAngles(item.angles2[0], item.angles2[1], true);
+      } else {
+        fm.setIsosceles(true);
+      }
+    }
+    // deprecated version for old scripts that rely on the incorrect behavior
     if (item.angles !== undefined) {
       if (item.angles[0] && item.angles[1]) {
-        fm.setAngles(item.angles[0], item.angles[1]);
+        fm.setAngles(item.angles[0], item.angles[1], false);
       } else {
-        fm.setIsosceles();
+        fm.setIsosceles(false);
       }
     }
 

@@ -19,7 +19,7 @@ namespace Flexagonator {
       this.leafProps = new PropertiesForLeaves(leafProps);
       this.allFlexes = useFlexes ? useFlexes : makeAllFlexes(flexagon.getPatCount());
       this.flexesToSearch = getPrimeFlexes(this.allFlexes, flexagon.getPatCount());
-      this.setIsosceles();
+      this.setIsosceles(false);
       this.tracker = Tracker.make(flexagon);
       this.history = new History(flexagon, this.tracker.getCopy());
     }
@@ -155,11 +155,11 @@ namespace Flexagonator {
       return anyset;
     }
 
-    setAngles(center: number, clock: number) {
-      this.angleInfo = FlexagonAngles.makeAngles(center, clock);
+    setAngles(center: number, clock: number, useCorrect: boolean) {
+      this.angleInfo = FlexagonAngles.makeAngles(center, clock, useCorrect);
     }
-    setIsosceles() {
-      this.angleInfo = FlexagonAngles.makeIsosceles(this.flexagon);
+    setIsosceles(useCorrect: boolean) {
+      this.angleInfo = FlexagonAngles.makeIsosceles(this.flexagon, useCorrect);
     }
 
     getAngleInfo(): FlexagonAngles {
