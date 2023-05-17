@@ -117,7 +117,5 @@ namespace Flexagonator {
       readonly oldCorner: number
     ) {
     }
-
-    getWhichCorner() { return this.oldCorner; }
   }
 }

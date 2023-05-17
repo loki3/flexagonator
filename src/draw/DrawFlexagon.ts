@@ -37,7 +37,7 @@ namespace Flexagonator {
       drawPatStructures(paint, smallText, polygon.getFaceCenters(1.05), flexagon, patstructure);
     }
     if (showCenterMarker) {
-      drawCenterMarker(paint, markerText, polygon, flexagon.angleTracker.getWhichCorner());
+      drawCenterMarker(paint, markerText, polygon, flexagon.angleTracker.oldCorner);
     }
   }
 

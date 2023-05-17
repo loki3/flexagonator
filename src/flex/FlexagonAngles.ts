@@ -32,7 +32,7 @@ namespace Flexagonator {
     // [center angle, clockwise, clockwise]
     getAngles(flexagon: Flexagon): number[] {
       const angles: number[] = [this.angleCenter, this.angleCounter, 180 - this.angleCenter - this.angleCounter];
-      const v = flexagon.angleTracker.getWhichCorner();
+      const v = flexagon.angleTracker.oldCorner;
       if (flexagon.angleTracker.isMirrored) {
         return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
       }
