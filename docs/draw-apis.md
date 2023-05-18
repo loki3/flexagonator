@@ -224,10 +224,10 @@ const objects = {
 drawUnfoldedObjects('my-target', objects, {});
 ```
 
-The following shows how you could add a `*` to the first and last edges to indicate that they should be taped together:
+The following shows how you could add a `⚹` to the first and last edges to indicate that they should be taped together:
 
 ```javascript
-drawUnfolded('my-target', fm, { captions: [ { text: '*', which: 0 }, { text: '*', which: -1 } ] });
+drawUnfolded('my-target', fm, { captions: [ { text: '⚹', which: 0 }, { text: '⚹', which: -1 } ] });
 ```
 
 

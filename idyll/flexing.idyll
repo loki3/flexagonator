@@ -16,7 +16,7 @@
   authorLink:"http://loki3.com/flex" /]
 
 [var name:'flexagonOptions' value:`{structure:true, showIds:false, both:true}`/]
-[var name:'unfoldedOptions' value:`{content:0, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
+[var name:'unfoldedOptions' value:`{content:0, captions: [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }]}`/]
 
 [Preload images:`['static/F/F2.jpg', 'static/F/F3.jpg', 'static/F/F4.jpg', 'static/F/F5.jpg', 'static/F/F6.jpg',
   'static/F/F7.jpg', 'static/F/F8.jpg', 'static/F/F9.jpg', 'static/F/F10.jpg', 'static/F/F11.jpg',

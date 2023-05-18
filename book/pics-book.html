@@ -798,8 +798,8 @@
     function drawTemplate(canvasId, flexes, rotation, label1, angles) {
       const script = [{ numPats: 8, angles, addHalfFlexes: true }, { flexes, labelAsTree: [] }];
       const fm = Flexagonator.createFromScript(script);
-      const text1 = label1 ? flexes : "*"; const scale1 = label1 ? 1 : 2;
-      const text2 = label1 ? "*" : flexes; const scale2 = label1 ? 2 : 1;
+      const text1 = label1 ? flexes : "⚹"; const scale1 = label1 ? 1 : 2;
+      const text2 = label1 ? "⚹" : flexes; const scale2 = label1 ? 2 : 1;
       const options = {
         rotation, content: { showLeafProps: true },
         captions: [{ text: text1, which: 0, scale: scale1 }, { text: text2, which: -1, scale: scale2 }]

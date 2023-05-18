@@ -194,7 +194,7 @@ History: [Display value:fromHistory /]
 [/Conditional]
 
 [var name:'unfoldedContent' value:1 /]
-[derived name:'unfoldedOptions' value:`{content:unfoldedContent, captions: [{ text: '*', which: 0 }, { text: '*', which: -1 }]}`/]
+[derived name:'unfoldedOptions' value:`{content:unfoldedContent, captions: [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }]}`/]
 [var name:'doUnfoldedScript' value:'[{"numPats":6},{"flexes":"P*P*P*"}]' /]
 [var name:'displayUnfoldedScript' value:'[
   {"numPats":6},
