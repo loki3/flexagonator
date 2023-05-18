@@ -60,7 +60,7 @@ class Sampler extends React.Component {
 
     const initial = [
       { numPats },
-      { angles },
+      { angles2: angles },
       { flexAndColor: { flexes: flexes, colors: colors } },
       { reverseFlexes: flexes },
       { searchFlexes },

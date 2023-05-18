@@ -145,9 +145,9 @@
           break;
       }
       if (angles === null) {
-        fm.setIsosceles();
+        fm.setIsosceles(true);
       } else {
-        fm.setAngles(angles[0], angles[1]);
+        fm.setAngles(angles[0], angles[1], true);
       }
       updateUI();
     }

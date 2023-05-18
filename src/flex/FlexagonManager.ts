@@ -156,10 +156,10 @@ namespace Flexagonator {
     }
 
     setAngles(center: number, clock: number, useCorrect: boolean) {
-      this.angleInfo = FlexagonAngles.makeAngles(center, clock, useCorrect);
+      this.angleInfo = FlexagonAngles.makeAngles(center, clock, useCorrect !== undefined ? useCorrect : true);
     }
     setIsosceles(useCorrect: boolean) {
-      this.angleInfo = FlexagonAngles.makeIsosceles(this.flexagon, useCorrect);
+      this.angleInfo = FlexagonAngles.makeIsosceles(this.flexagon, useCorrect !== undefined ? useCorrect : true);
     }
 
     getAngleInfo(): FlexagonAngles {

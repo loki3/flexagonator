@@ -5,7 +5,7 @@ const React = require('react');
  * Unfolded: displays an unfolded flexagon
  * props {
  *  numPats     number of pats in the flexagon, typically in the range [4, 12]
- *  angles      center angle and the angle clockwise from the center, e.g. [30, 60]
+ *  angles      center angle and the angle counterclockwise from the center, e.g. [30, 60]
  *  generator   flex generating sequence for flexagon, e.g. 'S*>>T*^P*'
  *  autoLabel   automatically label the faces based on the generating sequence
  *  script      a flexagonator script to run to create the flexagon used for the unfolded strip
@@ -55,9 +55,9 @@ class Unfolded extends React.Component {
       fm = Flexagonator.FlexagonManager.make(flexagon);
 
       if (angles && angles[0] && angles[1]) {
-        fm.setAngles(angles[0], angles[1]);
+        fm.setAngles(angles[0], angles[1], true);
       } else {
-        fm.setIsosceles();
+        fm.setIsosceles(true);
       }
 
       if (autoLabel) {
