@@ -808,6 +808,48 @@
     drawStripSequence("half-Fm", 8, "Fm*", 45, [45, 45], ">>", -2);
     drawStripSequence("half-S3", 8, "S3*", 45, [45, 45], ">>", -2);
   </script>
+  <!-- plain pentagonal silver decaflexagon -->
+  <p>pentagonal silver decaflexagon</p>
+  <canvas id="psd-plain" width="600" height="350"></canvas>
+  <script type="text/javascript">
+    drawFromName('psd-plain', 'pentagonal silver decaflexagon', 45);
+  </script>
+  <!-- various full flexes -->
+  <p>Hf'Hb</p>
+  <canvas id="psd-HfHb1" width="500" height="500"></canvas>
+  <canvas id="psd-HfHb2" width="500" height="500"></canvas>
+  <p>Hr'Hl</p>
+  <canvas id="psd-HrHl" width="1000" height="350"></canvas>
+  <p>Hfs'Hf</p>
+  <canvas id="psd-HfsHf" width="1000" height="500"></canvas>
+  <script type="text/javascript">
+    // pairs that give non-overlapping templates: Hf'Hb, Hf'Hr, Hf'Hl, Hf'Hbs, Hr'Hf, Hr'Hb, Hr'Hl, Hfs'Hb
+    function makeScript(one, two) {
+      // this is basically one' followed by two, with shifts to get the correct hinge
+      var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
+      var script = [
+        { "name": "pentagonal silver decaflexagon" },
+        { "addHalfFlexes": true },
+        { "flexes": flexes }
+      ];
+      return Flexagonator.createFromScript(script);
+    }
+    function draw(canvas, one, two, rotation) {
+      var fm = makeScript(one, two);
+      Flexagonator.drawUnfolded(canvas, fm,
+        { rotation, content: { showFoldingOrder: true }, captions: [{ text: one + "'", which: 0 }, { text: two, which: -1 }] });
+    }
+    function drawHfHb() {
+      var fm = makeScript("Hf", "Hb");
+      Flexagonator.drawUnfolded("psd-HfHb1", fm,
+        { rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 0, end: 10, captions: [{ text: "Hf'", which: 0 }, { text: "a", which: -1 }] });
+      Flexagonator.drawUnfolded("psd-HfHb2", fm,
+        { rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 11, end: 14, captions: [{ text: "a", which: 0 }, { text: "Hb", which: -1 }] });
+    }
+    drawHfHb();
+    draw("psd-HrHl", "Hr", "Hl", 0);
+    draw("psd-HfsHf", "Hfs", "Hb", 90);
+  </script>
 
   <h3 id="slot-flexes">slot flexes</h3>
 
@@ -884,48 +926,6 @@
     var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
     var fm = Flexagonator.createFromScript([{ pats, angles, directions }]);
     Flexagonator.drawUnfolded('silverDodecaHexa7', fm, { rotation: 0, content: { showFoldingOrder: true }, captions: [{ text: 'double', which: 0 }, lastStar] });
-  </script>
-  <!-- plain pentagonal silver decaflexagon -->
-  <p>pentagonal silver decaflexagon</p>
-  <canvas id="psd-plain" width="600" height="350"></canvas>
-  <script type="text/javascript">
-    drawFromName('psd-plain', 'pentagonal silver decaflexagon', 45);
-  </script>
-  <!-- various full flexes -->
-  <p>Hf'Hb</p>
-  <canvas id="psd-HfHb1" width="500" height="500"></canvas>
-  <canvas id="psd-HfHb2" width="500" height="500"></canvas>
-  <p>Hr'Hl</p>
-  <canvas id="psd-HrHl" width="1000" height="350"></canvas>
-  <p>Hfs'Hf</p>
-  <canvas id="psd-HfsHf" width="1000" height="500"></canvas>
-  <script type="text/javascript">
-    // pairs that give non-overlapping templates: Hf'Hb, Hf'Hr, Hf'Hl, Hf'Hbs, Hr'Hf, Hr'Hb, Hr'Hl, Hfs'Hb
-    function makeScript(one, two) {
-      // this is basically one' followed by two, with shifts to get the correct hinge
-      var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
-      var script = [
-        { "name": "pentagonal silver decaflexagon" },
-        { "addHalfFlexes": true },
-        { "flexes": flexes }
-      ];
-      return Flexagonator.createFromScript(script);
-    }
-    function draw(canvas, one, two, rotation) {
-      var fm = makeScript(one, two);
-      Flexagonator.drawUnfolded(canvas, fm,
-        { rotation, content: { showFoldingOrder: true }, captions: [{ text: one + "'", which: 0 }, { text: two, which: -1 }] });
-    }
-    function drawHfHb() {
-      var fm = makeScript("Hf", "Hb");
-      Flexagonator.drawUnfolded("psd-HfHb1", fm,
-        { rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 0, end: 10, captions: [{ text: "Hf'", which: 0 }, { text: "a", which: -1 }] });
-      Flexagonator.drawUnfolded("psd-HfHb2", fm,
-        { rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 11, end: 14, captions: [{ text: "a", which: 0 }, { text: "Hb", which: -1 }] });
-    }
-    drawHfHb();
-    draw("psd-HrHl", "Hr", "Hl", 0);
-    draw("psd-HfsHf", "Hfs", "Hb", 90);
   </script>
 
   <hr />
