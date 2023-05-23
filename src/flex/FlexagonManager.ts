@@ -10,7 +10,6 @@ namespace Flexagonator {
     flexesToSearch: Flexes;
     interpolateNewLeaves?: 'never' | 'justColor' | 'colorAndLabel' = undefined;
     private angleInfo: FlexagonAngles = FlexagonAngles.makeDefault();
-    private directions?: Directions;
     private tracker: Tracker;
     private readonly history: History;
 
@@ -31,12 +30,12 @@ namespace Flexagonator {
 
     // assume 'flexagon' only contains pats so we should borrow other info from 'other' if appropriate
     static makeFromPats(flexagon: Flexagon, other: FlexagonManager) {
+      if (other && other.flexagon.directions && other.flexagon.directions.getCount() === flexagon.getPatCount()) {
+        flexagon = flexagon.changeDirections(other.flexagon.directions);
+      }
       const fm = new FlexagonManager(flexagon);
       if (other && !other.angleInfo.isDefault) {
         fm.angleInfo = other.angleInfo;
-      }
-      if (other && other.directions && other.directions.getCount() === flexagon.getPatCount()) {
-        fm.directions = other.directions;
       }
       return fm;
     }
@@ -167,10 +166,10 @@ namespace Flexagonator {
     }
 
     setDirections(directions?: Directions) {
-      this.directions = directions;
+      this.flexagon = this.flexagon.changeDirections(directions);
     }
     getDirections(): Directions | undefined {
-      return this.directions;
+      return this.flexagon.directions;
     }
 
     getFlexHistory(): string[] {

@@ -102,6 +102,19 @@ namespace Flexagonator {
     });
   });
 
+  describe('Flex.apply/directions', () => {
+    it('modifies directions if specified', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3], undefined, Directions.make('/||')) as Flexagon;
+
+      const flex = new Flex("test", [1, 2, 3], [2, 3, 1], FlexRotation.None,
+        [2, 3, 1]);  // the new order for the list of directions
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
+      const newDirs = result.directions as Directions;
+      expect(newDirs.asString(true)).toBe('||/'); // rotated by one
+    });
+  });
+
   describe('Flex.createPattern', () => {
     it('should derive a flexagon capable of performing the given flex', () => {
       const flexagon = Flexagon.makeFromTree([1, [2, -3], -4, [-5, 6]]) as Flexagon;

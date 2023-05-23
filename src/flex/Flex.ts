@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  // describes how a flex rotates & mirrors leaves
+  /** describes how a flex rotates & mirrors leaves */
   export enum FlexRotation {
     None,          // same center vertex, no mirroring
     ClockMirror,   // new center = 1 step clockwise, flexagon is mirrored
@@ -15,11 +15,13 @@ namespace Flexagonator {
     e.g. input:  [1, [2, 3], 4, [5, 6]]
          output: [[-5, 1], -2, [4, -3], -6]
   */
-  export function makeFlex(name: string, input: LeafTree[], output: LeafTree[], fr: FlexRotation): Flex | FlexError {
+  export function makeFlex(name: string, input: LeafTree[], output: LeafTree[], fr: FlexRotation, orderOfDirs?: number[]): Flex | FlexError {
     if (input.length !== output.length) {
       return { reason: FlexCode.SizeMismatch };
+    } else if (orderOfDirs !== undefined && input.length !== orderOfDirs.length) {
+      return { reason: FlexCode.SizeMismatch };
     }
-    return new Flex(name, input, output, fr);
+    return new Flex(name, input, output, fr, orderOfDirs);
   }
 
   /*
@@ -30,7 +32,10 @@ namespace Flexagonator {
       readonly name: string,
       readonly input: LeafTree[],
       readonly output: LeafTree[],
-      readonly rotation: FlexRotation) {
+      readonly rotation: FlexRotation,
+      /** new order for directions, 1-based */
+      readonly orderOfDirs?: number[],
+    ) {
     }
 
     createInverse(): Flex {
@@ -53,8 +58,10 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
+      // to do: if directions have changed, angles also need to change
       const angleTracker = this.newAngleTracker(flexagon);
-      return new Flexagon(newPats, angleTracker);
+      const directions = this.newDirections(flexagon.directions);
+      return new Flexagon(newPats, angleTracker, directions);
     }
 
     private newAngleTracker(flexagon: Flexagon): AngleTracker {
@@ -65,6 +72,19 @@ namespace Flexagonator {
       const mirrored: boolean = (this.rotation == FlexRotation.None) ? tracker.isMirrored : !tracker.isMirrored;
 
       return AngleTracker.make(newWhich, mirrored, oldWhich);
+    }
+
+    private newDirections(directions?: Directions): Directions | undefined {
+      if (directions === undefined) {
+        return undefined; // flexagon didn't specify directions, so no directions
+      } else if (this.orderOfDirs === undefined) {
+        return directions;  // flex didn't specify directions, so don't modify
+      }
+
+      // e.g., [2,3,1] means that the 2nd direction should now be first, followed by the 3rd & 1st
+      const oldRaw = directions.asRaw();
+      const newRaw = this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1]);
+      return Directions.make(newRaw);
     }
 
     private invertRotation(fr: FlexRotation): FlexRotation {
@@ -127,7 +147,7 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      return [new Flexagon(newPats, flexagon.angleTracker), splits];
+      return [new Flexagon(newPats, flexagon.angleTracker, flexagon.directions), splits];
     }
   }
 

@@ -6,7 +6,7 @@ namespace Flexagonator {
   export class Flexagon {
     readonly angleTracker: AngleTracker;
 
-    constructor(readonly pats: Pat[], angleTracker?: AngleTracker) {
+    constructor(readonly pats: Pat[], angleTracker?: AngleTracker, readonly directions?: Directions) {
       this.angleTracker = angleTracker === undefined ? AngleTracker.makeDefault() : angleTracker;
     }
 
@@ -22,7 +22,7 @@ namespace Flexagonator {
       return new Flexagon(result);
     }
 
-    static makeFromTree(trees: LeafTree[], angleTracker?: AngleTracker): Flexagon | TreeError {
+    static makeFromTree(trees: LeafTree[], angleTracker?: AngleTracker, directions?: Directions): Flexagon | TreeError {
       if (trees.length < 2) {
         return { reason: TreeCode.TooFewPats, context: trees };
       }
@@ -31,7 +31,7 @@ namespace Flexagonator {
       if (error && isTreeError(error)) {
         return error;
       }
-      return new Flexagon(pats as Pat[], angleTracker);
+      return new Flexagon(pats as Pat[], angleTracker, directions);
     }
 
     getPatCount(): number {
@@ -94,7 +94,11 @@ namespace Flexagonator {
      */
     normalizeIds(): Flexagon {
       const normalized = normalizeIds(this.pats);
-      return new Flexagon(normalized, this.angleTracker);
+      return new Flexagon(normalized, this.angleTracker, this.directions);
+    }
+
+    changeDirections(directions?: Directions): Flexagon {
+      return new Flexagon(this.pats, this.angleTracker, directions);
     }
   }
 

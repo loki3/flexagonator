@@ -59,7 +59,9 @@ namespace Flexagonator {
     readonly name: string,
     readonly input: LeafTree[],
     readonly output: LeafTree[],
-    readonly rotation?: FlexRotation
+    readonly rotation?: FlexRotation,
+    /** the new order for the directions between pats, 1-based */
+    readonly orderOfDirs?: number[],
   }
 
   // define a flex in terms of a flex sequence
