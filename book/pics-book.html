@@ -50,18 +50,18 @@
 
     // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
-    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge, angles, endStyle) {
-      angles = angles ? angles : undefined;
-      const script = [{ numPats, angles, flexes, labelAsTree: [] }];
+    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge, angles2, endStyle) {
+      angles2 = angles2 ? angles2 : undefined;
+      const script = [{ numPats, angles2, flexes, labelAsTree: [] }];
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions, start, end });
     }
 
     // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
-    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle, angles) {
-      angles = angles ? angles : [60, 60];
-      const script = [{ numPats, angles, flexAndColor: { flexes: flexes } }];
+    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle, angles2) {
+      angles2 = angles2 ? angles2 : [60, 60];
+      const script = [{ numPats, angles2, flexAndColor: { flexes: flexes } }];
       const fm = Flexagonator.createFromScript(script);
       const text = flexText ?? flexes;
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
@@ -85,7 +85,7 @@
 
     // use folding order rather than tree order for odd-ordered flexagon
     function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps, edge) {
-      const script = [{ numPats, flexes, angles: [], reverseFlexes: flexes }, { flexes: postFlexes }];
+      const script = [{ numPats, flexes, angles2: [], reverseFlexes: flexes }, { flexes: postFlexes }];
       if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
       const fm = Flexagonator.createFromScript(script);
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
@@ -130,7 +130,7 @@
         return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } };
       });
 
-      const script = [{ pats, angles: [60, 60], leafProps }];
+      const script = [{ pats, angles2: [60, 60], leafProps }];
       const fm = Flexagonator.createFromScript(script);
       let captions = starCaptions.concat({ text: "5", which: 2, edge: 2 });
       if (extraCaptions) captions = captions.concat(extraCaptions);
@@ -432,14 +432,14 @@
     drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3, 0, "3");
     drawStripSequence("diff-regular-tri-hexa-abc", 6, "P+", 120, [60, 60], ">", undefined, undefined, undefined, undefined, triCaptions);
     drawStripSequence("diff-bronze-tri-hexa-abc", 6, "P+", 90, [60, 90], ">", undefined, undefined, undefined, undefined, triCaptions);
-    drawStripPinch("diff-bronze-tri-tetra1", 6, "P*P+", 150, undefined, undefined, -1, "4a", 0, [30, 60]);
-    drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [90, 30], "solid");
-    drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [60, 90]);
-    drawStripPinch2("diff-bronze-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [90, 30]);
+    drawStripPinch("diff-bronze-tri-tetra1", 6, "P*P+", 150, undefined, undefined, -1, "4a", 0, [60, 90]);
+    drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [30, 60], "solid");
+    drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [90, 30]);
+    drawStripPinch2("diff-bronze-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [30, 60]);
     drawStripSequence("diff-silver-tri-hexa", 6, "P+", 135, [45, 45], ">", -3, 0, "3");
-    drawStripPinch("diff-silver-tetra-octa1", 8, "P*P+", 45, undefined, undefined, 3, "4a", 1, [45, 90], "solid");
-    drawStripPinch("diff-silver-tetra-octa2", 8, "P*P+", 225, undefined, undefined, -1, "4b", 1, [45, 45]);
-    drawStripPinch2("diff-silver-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 135, 1, "6a", undefined, [45, 90]);
+    drawStripPinch("diff-silver-tetra-octa1", 8, "P*P+", 45, undefined, undefined, 3, "4a", 1, [90, 45], "solid");
+    drawStripPinch("diff-silver-tetra-octa2", 8, "P*P+", 225, undefined, undefined, -1, "4b", 1, [45, 90]);
+    drawStripPinch2("diff-silver-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 135, 1, "6a", undefined, [90, 45]);
     drawStripSequence("diff-silver-hexa-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
 
     var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
