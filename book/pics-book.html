@@ -880,9 +880,17 @@
   </script>
   <span id="silverOcta-Tw" width="1000" height="250"></span><br/><br/>
   <span id="silverOcta-6" width="1100" height="132"></span><br/><br/>
+  <span id="silverOcta-6a" width="892" height="200"></span><br/><br/>
+  <span id="silverOcta-6b" width="892" height="200"></span><br/><br/>
   <script type="text/javascript">
     drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 90], ">", -1, 1, "Tw");
     drawStripSequence("silverOcta-6", 8, "P* >PP* >P*P+^P P+", -90, [45, 45], "", -1, 1, "6");
+
+    var hexa = [{ numPats: 8 }, { flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45] }, { labelAsTree: true }];
+    drawStripComplex("silverOcta-6a", hexa,
+      { start: 2, end: 13, content: { showLeafProps: true }, rotation: 45, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
+    drawStripComplex("silverOcta-6b", hexa,
+      { start: 2, end: 13, content: { showLeafProps: true }, rotation: 45, captions: [lastStar, { text: "a", which: 0 }] });
   </script>
 
   <h3 id="hexa-bronze-dodeca">hexagonal bronze dodeca</h3>
