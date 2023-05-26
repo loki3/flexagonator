@@ -898,12 +898,17 @@
   </script>
   <span id="bronzeDodeca-6a" width="1100" height="300"></span><br/><br/>
   <span id="bronzeDodeca-6b" width="1100" height="300"></span><br/><br/>
+  <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
   <script type="text/javascript">
     var hexa = [{ numPats: 12 }, { flexes: "P* >PP* >P*P+^P P+", angles2: [60, 30] }, { labelAsTree: true }, { flexes: "^" }];
     drawStripComplex("bronzeDodeca-6a", hexa,
       { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
     drawStripComplex("bronzeDodeca-6b", hexa,
       { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
+
+    var morph = [{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }];
+    drawStripComplex("bronzeDodeca-morph", morph,
+      { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] });
   </script>
 
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
