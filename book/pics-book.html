@@ -109,9 +109,10 @@
     }
 
     // draw a folded flexagon, showing possible flexes
-    function drawFlexagonComplex(canvasId, script) {
+    function drawFlexagonComplex(canvasId, script, options) {
       const fm = Flexagonator.createFromScript(script);
-      const regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
+      const defaultOptions = { showIds: false, showCurrent: false };
+      const regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { ...defaultOptions, ...options });
       Flexagonator.drawScriptButtons(canvasId, fm.flexagon, fm.getAngleInfo(), true, regions);
     }
 
@@ -881,14 +882,24 @@
   <span id="silverOcta-Tw" width="1000" height="250"></span><br/><br/>
   <span id="silverOcta-6a" width="1100" height="222"></span><br/><br/>
   <span id="silverOcta-6b" width="1100" height="222"></span><br/><br/>
+  <canvas id="silverOcta-state12-1" width="380" height="250"></canvas>
+  <canvas id="silverOcta-state12-2" width="300" height="250"></canvas><br/><br/>
+  <canvas id="silverOcta-state13-1" width="260" height="250"></canvas>
+  <canvas id="silverOcta-state13-2" width="260" height="250"></canvas><br/><br/>
   <script type="text/javascript">
     drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 90], ">", -1, 1, "Tw");
 
-    var hexa = [{ numPats: 8 }, { flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45] }, { labelAsTree: true }, { flexes: "^" }];
+    var searchFlexes = "P T2 S F V Tw St";
+    var hexa = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree }, { flexes: "^", searchFlexes }];
     drawStripComplex("silverOcta-6a", hexa,
       { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
     drawStripComplex("silverOcta-6b", hexa,
       { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
+
+    drawFlexagonComplex("silverOcta-state12-1", hexa, { rotate: 45 / 2, back: true });
+    drawFlexagonComplex("silverOcta-state12-2", hexa.concat({ searchFlexes: "P T2 S F V Tw" }), { rotate: 45 / 2 });
+    drawFlexagonComplex("silverOcta-state13-1", hexa.concat({ flexes: "^P^" }), { rotate: 45 / 2 });
+    drawFlexagonComplex("silverOcta-state13-2", hexa.concat({ flexes: "^P^" }), { rotate: 45 / 2, back: true });
   </script>
 
   <h3 id="hexa-bronze-dodeca">hexagonal bronze dodeca</h3>
@@ -1138,9 +1149,9 @@
   <script type="text/javascript">
     var script = [{ numPats: 6 }, { angles: [60, 60] }, { flexes: "(P*)2" }, { searchFlexes: "P" }];
     // face only supports P at 3 hinges
-    drawFlexagonComplex("group-tetra1", script);
+    drawFlexagonComplex("group-tetra1", script, { showNumbers: false });
     // face supports P at all 6 hinges
-    drawFlexagonComplex("group-tetra2", script.concat({ flexes: ">P<P" }));
+    drawFlexagonComplex("group-tetra2", script.concat({ flexes: ">P<P" }), { showNumbers: false });
   </script>
 
   <!-- part 5 -->
