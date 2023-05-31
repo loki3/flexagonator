@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460095.5594560187
+2460095.7823610995
   9
 $TDUUPDATE
  40
-2460095.8927893518
+2460096.1156944446
   9
 $TDINDWG
  40
-52.80625
+53.029131944444
   9
 $TDUSRTIMER
  40
-52.80625
+53.029131944444
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-41A05FF27B
+41A05FF27C
   9
 $SURFTAB1
  70
@@ -1471,7 +1471,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-    27
+    28
   0
 LAYER
   5
@@ -2055,7 +2055,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-r-none
+r-no
  70
      0
  62
@@ -2066,6 +2066,28 @@ Continuous
     -3
 390
 41A05FE53B
+  0
+LAYER
+  5
+41A05FF27B
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+r-yes
+ 70
+     0
+ 62
+   250
+  6
+Continuous
+370
+    -3
+390
+F
   0
 ENDTAB
   0
@@ -79219,7 +79241,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79249,7 +79271,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79275,7 +79297,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r1
+r-yes
 100
 AcDbPolyline
  90
@@ -79301,7 +79323,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79331,7 +79353,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r1
+r-yes
 100
 AcDbPolyline
  90
@@ -79357,7 +79379,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79383,7 +79405,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79413,7 +79435,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79439,7 +79461,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r1
+r-yes
 100
 AcDbPolyline
  90
@@ -79465,7 +79487,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79495,7 +79517,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r1
+r-yes
 100
 AcDbPolyline
  90
@@ -79521,7 +79543,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -79573,7 +79595,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79625,7 +79647,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79651,7 +79673,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79677,7 +79699,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79703,7 +79725,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79729,7 +79751,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79755,7 +79777,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -79781,7 +79803,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80383,7 +80405,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80413,7 +80435,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r2
+r-yes
 100
 AcDbPolyline
  90
@@ -80439,7 +80461,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80465,7 +80487,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80495,7 +80517,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80521,7 +80543,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r2
+r-yes
 100
 AcDbPolyline
  90
@@ -80547,7 +80569,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80577,7 +80599,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r2
+r-yes
 100
 AcDbPolyline
  90
@@ -80603,7 +80625,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80629,7 +80651,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80659,7 +80681,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -80685,7 +80707,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r2
+r-yes
 100
 AcDbPolyline
  90
@@ -80711,7 +80733,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80737,7 +80759,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80763,7 +80785,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80789,7 +80811,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80815,7 +80837,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80841,7 +80863,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80893,7 +80915,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -80945,7 +80967,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -81599,7 +81621,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r3
+r-yes
 100
 AcDbPolyline
  90
@@ -81629,7 +81651,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81655,7 +81677,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81681,7 +81703,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r3
+r-yes
 100
 AcDbPolyline
  90
@@ -81711,7 +81733,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81737,7 +81759,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81763,7 +81785,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r3
+r-yes
 100
 AcDbPolyline
  90
@@ -81793,7 +81815,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81819,7 +81841,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81845,7 +81867,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r3
+r-yes
 100
 AcDbPolyline
  90
@@ -81875,7 +81897,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81901,7 +81923,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -81927,7 +81949,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -81953,7 +81975,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -81979,7 +82001,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -82005,7 +82027,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -82031,7 +82053,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -82057,7 +82079,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -82083,7 +82105,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -82109,7 +82131,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -82763,7 +82785,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -82793,7 +82815,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -82819,7 +82841,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r4
+r-yes
 100
 AcDbPolyline
  90
@@ -82845,7 +82867,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -82875,7 +82897,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r4
+r-yes
 100
 AcDbPolyline
  90
@@ -82901,7 +82923,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -82927,7 +82949,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -82957,7 +82979,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -82983,7 +83005,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r4
+r-yes
 100
 AcDbPolyline
  90
@@ -83009,7 +83031,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -83039,7 +83061,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r4
+r-yes
 100
 AcDbPolyline
  90
@@ -83065,7 +83087,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -83091,7 +83113,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83117,7 +83139,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83143,7 +83165,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83169,7 +83191,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83195,7 +83217,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83247,7 +83269,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83299,7 +83321,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83325,7 +83347,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -83927,7 +83949,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -83957,7 +83979,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r5
+r-yes
 100
 AcDbPolyline
  90
@@ -83983,7 +84005,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84009,7 +84031,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84039,7 +84061,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84065,7 +84087,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r5
+r-yes
 100
 AcDbPolyline
  90
@@ -84091,7 +84113,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84121,7 +84143,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r5
+r-yes
 100
 AcDbPolyline
  90
@@ -84147,7 +84169,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84173,7 +84195,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84203,7 +84225,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -84229,7 +84251,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r5
+r-yes
 100
 AcDbPolyline
  90
@@ -84255,7 +84277,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84307,7 +84329,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84359,7 +84381,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84385,7 +84407,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84411,7 +84433,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84463,7 +84485,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84515,7 +84537,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -84541,7 +84563,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85143,7 +85165,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r6
+r-yes
 100
 AcDbPolyline
  90
@@ -85173,7 +85195,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85199,7 +85221,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85225,7 +85247,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r6
+r-yes
 100
 AcDbPolyline
  90
@@ -85255,7 +85277,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85281,7 +85303,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85307,7 +85329,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r6
+r-yes
 100
 AcDbPolyline
  90
@@ -85337,7 +85359,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85363,7 +85385,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85389,7 +85411,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r6
+r-yes
 100
 AcDbPolyline
  90
@@ -85419,7 +85441,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85445,7 +85467,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-yes
 100
 AcDbPolyline
  90
@@ -85575,7 +85597,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85601,7 +85623,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85627,7 +85649,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85653,7 +85675,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85679,7 +85701,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85705,7 +85727,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85731,7 +85753,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
@@ -85757,7 +85779,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-r-none
+r-no
 100
 AcDbPolyline
  90
