@@ -929,18 +929,18 @@
   <script type="text/javascript">
     drawFromName('hsd-plain', 'hexagonal silver dodecaflexagon', 90);
   </script>
-  <canvas id="silverDodecaHexa-Ht" width="1200" height="136"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa-Tu" width="1200" height="136"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-Ds" width="600" height="400"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-double" width="1200" height="400"></canvas><br/><br/>
   <script type="text/javascript">
-    var angles = [45, 90];
+    var angles2 = [45, 90];
     var directions = [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1];
     function drawStripFromFlexes(canvasId, flexes, rotation, text) {
-      var halfFlex = {
+      var turnFlex = {
         "addFlex": {
-          "name": "half-twist flex",
-          "shorthand": "Ht",
+          "name": "turn flex",
+          "shorthand": "Tu",
           "input": [1, 2, [-4, 3], -5, -6, -7, -8, -9, [11, -10], 12, 13, 14],
           "output": [-13, [1, -14], 2, 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12]
         }
@@ -961,18 +961,18 @@
           "output": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [2, [14, -1]]]
         }
       };
-      var script = [{ numPats: 12, angles, directions }, halfFlex, slideFlex, tuck12, { flexes }];
+      var script = [{ numPats: 12, angles2, directions }, turnFlex, slideFlex, tuck12, { flexes, labelAsTree, normalizeIds: true }];
       var fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showFoldingOrder: true }, captions: [{ text, which: 0 }, lastStar] });
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions: [{ text, which: 0 }, lastStar] });
     }
-    drawStripFromFlexes('silverDodecaHexa-Ht', 'Ht*Ht*', 90, 'HtHt');
+    drawStripFromFlexes('silverDodecaHexa-Tu', 'Tu*Tu*', 90, 'TuTu');
     drawStripFromFlexes('silverDodecaHexa-Ds', 'Ds+', 0, 'Ds');
     // <T12+> for tuck in middle of long edge, >>T12+<< for tuck at point
     drawStripFromFlexes('silverDodecaHexa-T', '<T12+>>>T12+>>>T12+>>>T12+>>>>', 90, "T12's");
 
     var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-    var fm = Flexagonator.createFromScript([{ pats, angles, directions }]);
-    Flexagonator.drawUnfolded('silverDodecaHexa-double', fm, { rotation: 0, content: { showFoldingOrder: true }, captions: [{ text: 'double', which: 0 }, lastStar] });
+    var fm = Flexagonator.createFromScript([{ pats, angles2, directions, labelAsTree }]);
+    Flexagonator.drawUnfolded('silverDodecaHexa-double', fm, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: 'double', which: 0 }, lastStar] });
   </script>
 
   <hr />
