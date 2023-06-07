@@ -95,9 +95,9 @@ The end result is a flexagon where every pat meets in the center of the flexagon
 To change this behavior, you can describe how each pat is connected to the previous pat using the `directions` command.
 
 If you think of the previous pat being connected to the current pat's left edge,
-then `\` or '|' indicates that the next pat is connected to the top edge
+then `\` or `|` indicates that the next pat is connected to the top edge
 (which makes sense of you imagine the `\` as the top edge of the triangle;
-or you can use '|' if `\` is an escaping character)
+or you can use `|` if `\` is an escaping character)
 and `/` indicates it's connected to the bottom edge.
 There should be one character for every pat in the flexagon.
 A hexaflexagon is '//////'.
