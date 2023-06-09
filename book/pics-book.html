@@ -817,10 +817,25 @@
   <canvas id="half-St" width="700" height="700"></canvas>
   <canvas id="half-Fm" width="1000" height="400"></canvas><br/><br/>
   <canvas id="half-S3" width="1000" height="400"></canvas><br/><br/>
+  St<br/>
+  <span id="half-St-before-1" width="190" height="200"></span><span id="half-St-before-2" width="190" height="200"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="half-St-after-1" width="190" height="200"></span><span id="half-St-after-2" width="190" height="200"></span>
+  <br/>Fm<br/>
+  <span id="half-Fm-before-1" width="190" height="200"></span><span id="half-Fm-before-2" width="190" height="200"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="half-Fm-after-1" width="190" height="200"></span><span id="half-Fm-after-2" width="190" height="200"></span>
+  <br/>S3<br/>
+  <span id="half-S3-before-1" width="190" height="200"></span><span id="half-S3-before-2" width="190" height="200"></span>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span id="half-S3-after-1" width="190" height="200"></span><span id="half-S3-after-2" width="190" height="200"></span>
   <script type="text/javascript">
     drawStripSequence("half-St", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
     drawStripSequence("half-Fm", 8, "Fm*", 45, [45, 45], ">>", -2);
     drawStripSequence("half-S3", 8, "S3*", 45, [45, 45], ">>", -2);
+    drawBeforeAfter("half-St", "St", 8, [45, 90]);
+    drawBeforeAfter("half-Fm", "Fm", 8, [45, 45]);
+    drawBeforeAfter("half-S3", "S3", 8, [45, 45]);
   </script>
   <!-- plain pentagonal silver decaflexagon -->
   <p>pentagonal silver decaflexagon</p>
