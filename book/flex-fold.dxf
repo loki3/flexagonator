@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460098.6267823959
+2460115.7403240623
   9
 $TDUUPDATE
  40
-2460098.9601157405
+2460116.0736574074
   9
 $TDINDWG
  40
-67.829861111111
+68.009085648148
   9
 $TDUSRTIMER
  40
-67.829861111111
+68.009085648148
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-6A86EC5
+6A86EFD
   9
 $SURFTAB1
  70
@@ -115881,7 +115881,7 @@ SOLID
 100
 AcDbEntity
   8
-face-6
+face-1
 100
 AcDbTrace
  10
@@ -115953,7 +115953,7 @@ SOLID
 100
 AcDbEntity
   8
-face-5
+face-6
 100
 AcDbTrace
  10
@@ -115989,7 +115989,7 @@ SOLID
 100
 AcDbEntity
   8
-face-1
+face-5
 100
 AcDbTrace
  10
@@ -120339,7 +120339,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-2
 100
 AcDbTrace
  10
@@ -120411,7 +120411,7 @@ SOLID
 100
 AcDbEntity
   8
-face-2
+face-3
 100
 AcDbTrace
  10
@@ -122313,7 +122313,7 @@ SOLID
 100
 AcDbEntity
   8
-face-1
+face-4
 100
 AcDbTrace
  10
@@ -122385,7 +122385,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-1
 100
 AcDbTrace
  10
@@ -283452,6 +283452,1212 @@ AcDbPolyline
 46.0
  20
 -4.4
+  0
+TEXT
+  5
+6A86EC5
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+20.769029
+ 20
+-3.828908
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EC6
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+20.569029
+ 20
+-4.128908
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EC7
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+19.969029
+ 20
+-5.828908
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EC9
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+20.80035
+ 20
+-7.832586
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ECA
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+22.20035
+ 20
+-9.832586
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ECB
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+21.740286
+ 20
+-10.125595
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ECC
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+20.240286
+ 20
+-6.125595
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ECD
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+2.955793
+ 20
+-3.781135
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ECE
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+4.055793
+ 20
+-4.381135
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ECF
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+3.0
+ 20
+-4.9
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED1
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+5.7
+ 20
+-8.0
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED3
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+6.755793
+ 20
+-7.381135
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- [- -]]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED4
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+6.777176
+ 20
+-9.415285
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED5
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+5.977176
+ 20
+-10.415285
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED6
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+5.7
+ 20
+-9.9
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED8
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+7.456686
+ 20
+-12.454624
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86ED9
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+7.278273
+ 20
+-11.467188
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- -]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EDA
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+8.430018
+ 20
+-13.611058
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] [- -]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EDB
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+7.669029
+ 20
+-13.328908
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EDC
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+2.9
+ 20
+-16.8
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EDD
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+4.028137
+ 20
+-17.183518
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EDE
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+7.6
+ 20
+-18.8
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EDF
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+8.5
+ 20
+-19.1
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- [- -]]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EE0
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+4.3
+ 20
+-22.6
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EE1
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+5.4
+ 20
+-22.6
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- [- -]]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EE2
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+33.728328
+ 20
+-6.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EE3
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+32.928328
+ 20
+-7.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EE4
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+32.528328
+ 20
+-6.537995
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+SOLID
+  5
+6A86EE8
+330
+1F
+100
+AcDbEntity
+  8
+0
+ 62
+   254
+100
+AcDbTrace
+ 10
+35.9
+ 20
+-8.4
+ 30
+0.0
+ 11
+35.9
+ 21
+-8.6
+ 31
+0.0
+ 12
+35.2
+ 22
+-8.4
+ 32
+0.0
+ 13
+35.2
+ 23
+-8.6
+ 33
+0.0
+  0
+TEXT
+  5
+6A86EEA
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+35.228328
+ 20
+-8.537995
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- [- -]]]
+  7
+labels
+100
+AcDbText
+  0
+SOLID
+  5
+6A86EEB
+330
+1F
+100
+AcDbEntity
+  8
+0
+ 62
+   254
+100
+AcDbTrace
+ 10
+34.9
+ 20
+-7.9
+ 30
+0.0
+ 11
+34.9
+ 21
+-8.1
+ 31
+0.0
+ 12
+34.2
+ 22
+-7.9
+ 32
+0.0
+ 13
+34.2
+ 23
+-8.1
+ 33
+0.0
+  0
+TEXT
+  5
+6A86EEC
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.228328
+ 20
+-8.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- [- -]]]
+  7
+labels
+100
+AcDbText
+  0
+SOLID
+  5
+6A86EED
+330
+1F
+100
+AcDbEntity
+  8
+0
+ 62
+   254
+100
+AcDbTrace
+ 10
+34.9
+ 20
+-9.9
+ 30
+0.0
+ 11
+34.9
+ 21
+-10.1
+ 31
+0.0
+ 12
+34.2
+ 22
+-9.9
+ 32
+0.0
+ 13
+34.2
+ 23
+-10.1
+ 33
+0.0
+  0
+TEXT
+  5
+6A86EEE
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.228328
+ 20
+-10.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- [- [- -]]]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EEF
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+35.6
+ 20
+-10.5
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF0
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.028328
+ 20
+-12.537995
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF1
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.428328
+ 20
+-13.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF2
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.428328
+ 20
+-12.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF4
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.428328
+ 20
+-14.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF5
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+35.328328
+ 20
+-14.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF7
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.428328
+ 20
+-15.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF8
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+35.328328
+ 20
+-15.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EF9
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+35.528328
+ 20
+-16.537995
+ 30
+0.0
+ 40
+0.1
+  1
+[- -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EFB
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.228328
+ 20
+-17.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+6A86EFC
+330
+1F
+100
+AcDbEntity
+  8
+z-pats
+100
+AcDbText
+ 10
+34.228328
+ 20
+-16.037995
+ 30
+0.0
+ 40
+0.1
+  1
+[[- -] -]
+  7
+labels
+100
+AcDbText
   0
 ENDSEC
   0
