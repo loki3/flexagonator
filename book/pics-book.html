@@ -220,6 +220,7 @@
       <li><a href="#square-silver-octa">square silver octa</a></li>
       <li><a href="#hexa-bronze-dodeca">hexagonal bronze dodeca</a></li>
       <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
+      <li><a href="#bracelets">bracelets</a></li>
     </ul>
     <li><a href="#part4">Part Four: Learning</a></li>
     <ul>
@@ -1006,6 +1007,18 @@
   </script>
 
   <hr />
+
+  <h3 id="bracelets">bracelets</h3>
+
+  <canvas id="bracelet-silver-cycle" width="1000" height="128"></canvas>
+  <script type="text/javascript">
+    var script = [
+      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addHalfFlexes: true },
+      { flexes: "Hf'* Hb+ Hf <<<<", labelAsTree }
+    ];
+    var captions = [firstStar, lastStar, { text: "Hf' Hb", which: -1, edge: 2 }];
+    drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
+  </script>
 
   <!-- part 4 -->
 
