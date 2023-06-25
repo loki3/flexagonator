@@ -194,9 +194,9 @@
 
   <ul>
     <li><a href="#intro">Introduction</a></li>
-    <li><a href="#part1">Part One: Pinch Flex and Variations</a></li>
+    <li><a href="#part1">Part One: Symmetric Flexes</a></li>
     <ul>
-      <li><a href="#3faces">3 faces</a></li>
+      <li><a href="#pinch">pinch flex</a></li>
       <li><a href="#more-faces">more faces</a></li>
       <li><a href="#tetra-octa">triangle tetra & octaflexagons</a></li>
       <li><a href="#different">different triangles</a></li>
@@ -204,31 +204,30 @@
       <li><a href="#book">book flex</a></li>
       <li><a href="#box">box flex</a></li>
     </ul>
-    <li><a href="#part2">Part Two: Flexes</a></li>
+    <li><a href="#part2">Part Two: Asymmetric Flexes</a></li>
     <ul>
       <li><a href="#flex-diagrams">flex diagrams</a></li>
       <li><a href="#flip">flip flex</a></li>
       <li><a href="#tuck">tuck flex</a></li>
       <li><a href="#pyramid shuffle">pyramid shuffle</a></li>
       <li><a href="#vflex">v flex</a></li>
-      <li><a href="#silver tetra">silver tetra flex</a></li>
-      <li><a href="#half-flexes">half flexes</a></li>
+      <li><a href="#breakdown">breaking down flexes</a></li>
       <li><a href="#slot-flexes">slot flexes</a></li>
     </ul>
-    <li><a href="#part3">Part Three: Exploring</a></li>
-    <ul>
-      <li><a href="#square-silver-octa">square silver octa</a></li>
-      <li><a href="#hexa-bronze-dodeca">hexagonal bronze dodeca</a></li>
-      <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
-      <li><a href="#bracelets">bracelets</a></li>
-    </ul>
-    <li><a href="#part4">Part Four: Learning</a></li>
+    <li><a href="#part3">Part Three: Learning</a></li>
     <ul>
       <li><a href="#state-diagrams">state diagrams</a></li>
       <li><a href="#sequences">sequences</a></li>
       <li><a href="#pat-notation">pat notation</a></li>
       <li><a href="#atomic-flex-theory">atomic flex theory</a></li>
       <li><a href="#groups">groups</a></li>
+    </ul>
+    <li><a href="#part4">Part Four: Exploring</a></li>
+    <ul>
+      <li><a href="#square-silver-octa">square silver octa</a></li>
+      <li><a href="#hexa-bronze-dodeca">hexagonal bronze dodeca</a></li>
+      <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
+      <li><a href="#bracelets">bracelets</a></li>
     </ul>
     <li><a href="#part5">Part Five: Fun</a></li>
     <ul>
@@ -254,10 +253,10 @@
 
   <hr />
 
-  <h2 id="part1">Part One: Pinch Flex and Variations</h2>
+  <h2 id="part1">Part One: Symmetric Flexes</h2>
 
-  <!-- 3 faces-->
-  <h3 id="3faces">3 faces</h3>
+  <!-- pinch flex-->
+  <h3 id="pinch">pinch flex</h3>
 
   <h4>tri-hexaflexagon</h4>
   <div class="photos">
@@ -574,7 +573,7 @@
 
   <!-- Part 2-->
 
-  <h2 id="part2">Part Two: Flexes</h2>
+  <h2 id="part2">Part Two: Asymmetric Flexes</h2>
 
   <h3 id="flex-diagrams">flex diagrams</h3>
 
@@ -783,7 +782,7 @@
     drawBeforeAfter("V-8", "V", 8, [45, 90]);
   </script>
 
-  <h3 id="half-flexes">half flexes</h3>
+  <h3 id="breakdown">breaking down flexes</h3>
 
   <p>silver octaflexagon: Hf, Hb, Hr, Hl, Hfs, Hbs</p>
   <canvas id="silverHalfFlexes" width="1000" height="500"></canvas><br/><br/>
@@ -902,127 +901,7 @@
 
   <!-- part 3 -->
 
-  <h2 id="part3">Part 3: Exploring</h2>
-
-  <h3 id="square-silver-octa">square silver octa</h3>
-  <span id="sso-plain" width="272" height="270"></span><br/><br/>
-  <script type="text/javascript">
-    drawFromName('sso-plain', 'square silver octaflexagon', 90);
-  </script>
-  <span id="silverOcta-Tw" width="1000" height="250"></span><br/><br/>
-  <span id="silverOcta-6a" width="1100" height="222"></span><br/><br/>
-  <span id="silverOcta-6b" width="1100" height="222"></span><br/><br/>
-  <canvas id="silverOcta-state12-1" width="380" height="250"></canvas>
-  <canvas id="silverOcta-state12-2" width="300" height="250"></canvas><br/><br/>
-  <canvas id="silverOcta-state13-1" width="260" height="250"></canvas>
-  <canvas id="silverOcta-state13-2" width="260" height="250"></canvas><br/><br/>
-  <script type="text/javascript">
-    drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 90], ">", -1, 1, "Tw");
-
-    var searchFlexes = "P T2 S F V Tw St";
-    var hexa = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree }, { flexes: "^", searchFlexes }];
-    drawStripComplex("silverOcta-6a", hexa,
-      { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
-    drawStripComplex("silverOcta-6b", hexa,
-      { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
-
-    drawFlexagonComplex("silverOcta-state12-1", hexa, { rotate: 45 / 2, back: true });
-    drawFlexagonComplex("silverOcta-state12-2", hexa.concat({ searchFlexes: "P T2 V Tw" }), { rotate: 45 / 2 });
-    drawFlexagonComplex("silverOcta-state13-1", hexa.concat({ flexes: "^P^" }), { rotate: 45 / 2 });
-    drawFlexagonComplex("silverOcta-state13-2", hexa.concat({ flexes: "^P^" }), { rotate: 45 / 2, back: true });
-  </script>
-
-  <h3 id="hexa-bronze-dodeca">hexagonal bronze dodeca</h3>
-  <span id="hbd-plain" width="310" height="270"></span>
-  <script type="text/javascript">
-    drawFromName('hbd-plain', 'hexagonal bronze dodecaflexagon', 90);
-  </script>
-  <span id="bronzeDodeca-6a" width="1100" height="300"></span><br/><br/>
-  <span id="bronzeDodeca-6b" width="1100" height="300"></span><br/><br/>
-  <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
-  <script type="text/javascript">
-    var hexa = [{ numPats: 12 }, { flexes: "P* >PP* >P*P+^P P+", angles2: [60, 30] }, { labelAsTree: true }, { flexes: "^" }];
-    drawStripComplex("bronzeDodeca-6a", hexa,
-      { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
-    drawStripComplex("bronzeDodeca-6b", hexa,
-      { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
-
-    var morph = [{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }];
-    drawStripComplex("bronzeDodeca-morph", morph,
-      { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] });
-  </script>
-
-  <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
-
-  <canvas id="hsd-plain" width="500" height="270"></canvas>
-  <script type="text/javascript">
-    drawFromName('hsd-plain', 'hexagonal silver dodecaflexagon', 90);
-  </script>
-  <canvas id="silverDodecaHexa-Tu" width="1200" height="136"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-Ds" width="600" height="400"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-double" width="1200" height="400"></canvas><br/><br/>
-  <script type="text/javascript">
-    var angles2 = [45, 90];
-    var directions = [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1];
-    function drawStripFromFlexes(canvasId, flexes, rotation, text, which, edge) {
-      var turnFlex = {
-        "addFlex": {
-          "name": "turn flex",
-          "shorthand": "Tu",
-          "input": [1, 2, [-4, 3], -5, -6, -7, -8, -9, [11, -10], 12, 13, 14],
-          "output": [-13, [1, -14], 2, 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12]
-        }
-      };
-      var slideFlex = {
-        "addFlex": {
-          "name": "double slide",
-          "shorthand": "Ds",
-          "input": [1, [-3, 2], -4, -5, [7, -6], 8, 9, [-11, 10], -12, -13, [15, -14], 16],
-          "output": [-14, -15, [1, -16], 2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [-13, 12]]
-        }
-      };
-      var tuck12 = {
-        "addFlex": {
-          "name": "tuck 12",
-          "shorthand": "T12",
-          "input": [[[-2, 3], 1], 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-          "output": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [2, [14, -1]]]
-        }
-      };
-      var script = [{ numPats: 12, angles2, directions }, turnFlex, slideFlex, tuck12, { flexes, labelAsTree, normalizeIds: true }];
-      var fm = Flexagonator.createFromScript(script);
-      var captions = [firstStar, lastStar, { text, which, edge }];
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions });
-    }
-    drawStripFromFlexes('silverDodecaHexa-Tu', 'Tu*Tu*', 90, 'TuTu', 0, 1);
-    drawStripFromFlexes('silverDodecaHexa-Ds', 'Ds+', 0, 'Ds', -1, 0);
-    // <T12+> for tuck in middle of long edge, >>T12+<< for tuck at point
-    drawStripFromFlexes('silverDodecaHexa-T', '<T12+>>>T12+>>>T12+>>>T12+>>>>', 90, "T12's", 1, 1);
-
-    var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-    var fm = Flexagonator.createFromScript([{ pats, angles2, directions, labelAsTree }]);
-    var captions = [firstStar, lastStar, { text: "double", which: -1, edge: 0 }]
-    Flexagonator.drawUnfolded('silverDodecaHexa-double', fm, { rotation: 0, content: { showLeafProps: true }, captions });
-  </script>
-
-  <hr />
-
-  <h3 id="bracelets">bracelets</h3>
-
-  <canvas id="bracelet-silver-cycle" width="1000" height="128"></canvas>
-  <script type="text/javascript">
-    var script = [
-      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addHalfFlexes: true },
-      { flexes: "Hf'* Hb+ Hf <<<<", labelAsTree }
-    ];
-    var captions = [firstStar, lastStar, { text: "Hf' Hb", which: -1, edge: 2 }];
-    drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
-  </script>
-
-  <!-- part 4 -->
-
-  <h2 id="part4">Part 4: Learning</h2>
+  <h2 id="part3">Part 3: Learning</h2>
 
   <!-- state-diagrams -->
   <h3 id="state-diagrams">state-diagrams</h3>
@@ -1196,6 +1075,126 @@
     drawFlexagonComplex("group-tetra1", script, { showNumbers: false });
     // face supports P at all 6 hinges
     drawFlexagonComplex("group-tetra2", script.concat({ flexes: ">P<P" }), { showNumbers: false });
+  </script>
+
+  <!-- part 4 -->
+
+  <h2 id="part4">Part 4: Exploring</h2>
+
+  <h3 id="square-silver-octa">square silver octa</h3>
+  <span id="sso-plain" width="272" height="270"></span><br/><br/>
+  <script type="text/javascript">
+    drawFromName('sso-plain', 'square silver octaflexagon', 90);
+  </script>
+  <span id="silverOcta-Tw" width="1000" height="250"></span><br/><br/>
+  <span id="silverOcta-6a" width="1100" height="222"></span><br/><br/>
+  <span id="silverOcta-6b" width="1100" height="222"></span><br/><br/>
+  <canvas id="silverOcta-state12-1" width="380" height="250"></canvas>
+  <canvas id="silverOcta-state12-2" width="300" height="250"></canvas><br/><br/>
+  <canvas id="silverOcta-state13-1" width="260" height="250"></canvas>
+  <canvas id="silverOcta-state13-2" width="260" height="250"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 90], ">", -1, 1, "Tw");
+
+    var searchFlexes = "P T2 S F V Tw St";
+    var hexa = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree }, { flexes: "^", searchFlexes }];
+    drawStripComplex("silverOcta-6a", hexa,
+      { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
+    drawStripComplex("silverOcta-6b", hexa,
+      { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
+
+    drawFlexagonComplex("silverOcta-state12-1", hexa, { rotate: 45 / 2, back: true });
+    drawFlexagonComplex("silverOcta-state12-2", hexa.concat({ searchFlexes: "P T2 V Tw" }), { rotate: 45 / 2 });
+    drawFlexagonComplex("silverOcta-state13-1", hexa.concat({ flexes: "^P^" }), { rotate: 45 / 2 });
+    drawFlexagonComplex("silverOcta-state13-2", hexa.concat({ flexes: "^P^" }), { rotate: 45 / 2, back: true });
+  </script>
+
+  <h3 id="hexa-bronze-dodeca">hexagonal bronze dodeca</h3>
+  <span id="hbd-plain" width="310" height="270"></span>
+  <script type="text/javascript">
+    drawFromName('hbd-plain', 'hexagonal bronze dodecaflexagon', 90);
+  </script>
+  <span id="bronzeDodeca-6a" width="1100" height="300"></span><br/><br/>
+  <span id="bronzeDodeca-6b" width="1100" height="300"></span><br/><br/>
+  <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
+  <script type="text/javascript">
+    var hexa = [{ numPats: 12 }, { flexes: "P* >PP* >P*P+^P P+", angles2: [60, 30] }, { labelAsTree: true }, { flexes: "^" }];
+    drawStripComplex("bronzeDodeca-6a", hexa,
+      { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
+    drawStripComplex("bronzeDodeca-6b", hexa,
+      { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
+
+    var morph = [{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }];
+    drawStripComplex("bronzeDodeca-morph", morph,
+      { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] });
+  </script>
+
+  <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
+
+  <canvas id="hsd-plain" width="500" height="270"></canvas>
+  <script type="text/javascript">
+    drawFromName('hsd-plain', 'hexagonal silver dodecaflexagon', 90);
+  </script>
+  <canvas id="silverDodecaHexa-Tu" width="1200" height="136"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa-Ds" width="600" height="400"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa-double" width="1200" height="400"></canvas><br/><br/>
+  <script type="text/javascript">
+    var angles2 = [45, 90];
+    var directions = [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1];
+    function drawStripFromFlexes(canvasId, flexes, rotation, text, which, edge) {
+      var turnFlex = {
+        "addFlex": {
+          "name": "turn flex",
+          "shorthand": "Tu",
+          "input": [1, 2, [-4, 3], -5, -6, -7, -8, -9, [11, -10], 12, 13, 14],
+          "output": [-13, [1, -14], 2, 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12]
+        }
+      };
+      var slideFlex = {
+        "addFlex": {
+          "name": "double slide",
+          "shorthand": "Ds",
+          "input": [1, [-3, 2], -4, -5, [7, -6], 8, 9, [-11, 10], -12, -13, [15, -14], 16],
+          "output": [-14, -15, [1, -16], 2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [-13, 12]]
+        }
+      };
+      var tuck12 = {
+        "addFlex": {
+          "name": "tuck 12",
+          "shorthand": "T12",
+          "input": [[[-2, 3], 1], 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+          "output": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [2, [14, -1]]]
+        }
+      };
+      var script = [{ numPats: 12, angles2, directions }, turnFlex, slideFlex, tuck12, { flexes, labelAsTree, normalizeIds: true }];
+      var fm = Flexagonator.createFromScript(script);
+      var captions = [firstStar, lastStar, { text, which, edge }];
+      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions });
+    }
+    drawStripFromFlexes('silverDodecaHexa-Tu', 'Tu*Tu*', 90, 'TuTu', 0, 1);
+    drawStripFromFlexes('silverDodecaHexa-Ds', 'Ds+', 0, 'Ds', -1, 0);
+    // <T12+> for tuck in middle of long edge, >>T12+<< for tuck at point
+    drawStripFromFlexes('silverDodecaHexa-T', '<T12+>>>T12+>>>T12+>>>T12+>>>>', 90, "T12's", 1, 1);
+
+    var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
+    var fm = Flexagonator.createFromScript([{ pats, angles2, directions, labelAsTree }]);
+    var captions = [firstStar, lastStar, { text: "double", which: -1, edge: 0 }]
+    Flexagonator.drawUnfolded('silverDodecaHexa-double', fm, { rotation: 0, content: { showLeafProps: true }, captions });
+  </script>
+
+  <hr />
+
+  <h3 id="bracelets">bracelets</h3>
+
+  <canvas id="bracelet-silver-cycle" width="1000" height="128"></canvas>
+  <script type="text/javascript">
+    var script = [
+      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addHalfFlexes: true },
+      { flexes: "Hf'* Hb+ Hf <<<<", labelAsTree }
+    ];
+    var captions = [firstStar, lastStar, { text: "Hf' Hb", which: -1, edge: 2 }];
+    drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
   </script>
 
   <!-- part 5 -->
