@@ -49,63 +49,10 @@
     const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
 
     // draw an unfolded strip on the given canvas
-    // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
-    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge, angles2, endStyle) {
-      angles2 = angles2 ? angles2 : undefined;
-      const script = [{ numPats, angles2, flexes, labelAsTree: [] }];
-      const fm = Flexagonator.createFromScript(script);
-      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions, start, end });
-    }
-
-    // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
-    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle, angles2) {
-      angles2 = angles2 ? angles2 : [60, 60];
-      const script = [{ numPats, angles2, flexAndColor: { flexes: flexes } }];
-      const fm = Flexagonator.createFromScript(script);
-      const text = flexText ?? flexes;
-      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions });
-    }
-
-    // draw an unfolded strip for a generating sequence that's not just pinch flexes
-    // canvasId: string, numPats: number, flexes: string, rotation: number, angles2: [number],
-    //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
-    //   edge: [optional] which edge to draw flex on
-    //   captions: [optional] use given captions instead of defaults
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles2, postFlexes, whereFlex, edge, text, endStyle, customCaptions) {
-      const script = [{ numPats, flexes, angles2, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
-      const fm = Flexagonator.createFromScript(script);
-      text = text ? text : flexes;
-      const captions = customCaptions !== undefined ? customCaptions
-        : whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
-      const options = { rotation, content: { showLeafProps: true, endStyle }, captions };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
-    }
-
-    // use folding order rather than tree order for odd-ordered flexagon
-    function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps, edge) {
-      const script = [{ numPats, flexes, angles2: [], reverseFlexes: flexes }, { flexes: postFlexes }];
-      if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
-      const fm = Flexagonator.createFromScript(script);
-      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
-      const content = leafProps ? { showLeafProps: true } : { showFoldingOrder: true };
-      const options = { rotation, content, captions };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
-    }
-
-    // draw an unfolded strip on the given canvas
     // pass in a full script & full options for drawUnfolded
     function drawStripComplex(canvasId, script, drawOptions) {
       const fm = Flexagonator.createFromScript(script);
       Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
-    }
-
-    // draw a folded flexagon, just showing the outline of the leaves
-    function drawFlexagonSimple(canvasId, numPats, angles) {
-      const script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
-      const fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
     }
 
     // draw a folded flexagon, showing possible flexes
@@ -119,24 +66,6 @@
     function drawFromName(canvasId, name, rotation) {
       const fm = Flexagonator.createFromScript([{ name }]);
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
-    }
-
-    // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
-    function drawPenta(canvasId, numPats, rotation, extraCaptions) {
-      const pentaPats = [0, [0, [0, [0, 0]]]];
-      const pentaNums = [[2, 1], [2, 3], [3, 4], [4, 5], [5, 1]];
-      const pats = Array(numPats / 2).fill(pentaPats).flatMap(p => p);
-      const numbers = Array(numPats / 2).fill(pentaNums).flatMap(p => p);
-      const leafProps = numbers.map(pair => {
-        return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } };
-      });
-
-      const script = [{ pats, angles2: [60, 60], leafProps }];
-      const fm = Flexagonator.createFromScript(script);
-      let captions = starCaptions.concat({ text: "5", which: 2, edge: 2 });
-      if (extraCaptions) captions = captions.concat(extraCaptions);
-      const options = { rotation, content: { showLeafProps: true }, captions };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
     }
 
     // draw the Tuckerman diagram for a flexagon with the given generating sequence,
@@ -179,12 +108,6 @@
       fm.applyFlexes(flex);
       Flexagonator.drawEntireFlexagon(canvasId + "-after-1", fm, options1);
       Flexagonator.drawEntireFlexagon(canvasId + "-after-2", fm, options2);
-    }
-
-    // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
-    // [optional] array of colors, otherwise uses default set of colors
-    function pairsToProps(numbering, repeats, colors) {
-      return Flexagonator.convertLeafProps(numbering, repeats, colors ?? labelAsTree);
     }
   </script>
 </head>

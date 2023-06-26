@@ -5,40 +5,6 @@
 <head>
   <title>book templates</title>
 
-  <style>
-    th {
-      font-family: Arial;
-      text-align: center;
-    }
-
-    /* styles for spacing collections of photos */
-    div.photos {
-      line-height: 2;
-      letter-spacing: 1px;
-    }
-
-    .photos img {
-      border: 1px solid gray;
-    }
-
-    /* styles for adding numbers to photos */
-    span.n {
-      position: relative;
-      display: inline-block;
-    }
-
-    .n p {
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(8%, -44%);
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 1px;
-      text-align: center;
-    }
-
-  </style>
-
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     // draw * on the edges that should be taped together
@@ -101,26 +67,6 @@
       Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
     }
 
-    // draw a folded flexagon, just showing the outline of the leaves
-    function drawFlexagonSimple(canvasId, numPats, angles) {
-      const script = angles ? [{ numPats: numPats, angles: angles }] : [{ numPats: numPats }];
-      const fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawEntireFlexagon(canvasId, fm, { showIds: false, showCurrent: false, showNumbers: false });
-    }
-
-    // draw a folded flexagon, showing possible flexes
-    function drawFlexagonComplex(canvasId, script, options) {
-      const fm = Flexagonator.createFromScript(script);
-      const defaultOptions = { showIds: false, showCurrent: false };
-      const regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { ...defaultOptions, ...options });
-      Flexagonator.drawScriptButtons(canvasId, fm.flexagon, fm.getAngleInfo(), true, regions);
-    }
-
-    function drawFromName(canvasId, name, rotation) {
-      const fm = Flexagonator.createFromScript([{ name }]);
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
-    }
-
     // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
     function drawPenta(canvasId, numPats, rotation, extraCaptions) {
       const pentaPats = [0, [0, [0, [0, 0]]]];
@@ -137,48 +83,6 @@
       if (extraCaptions) captions = captions.concat(extraCaptions);
       const options = { rotation, content: { showLeafProps: true }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
-    }
-
-    // draw the Tuckerman diagram for a flexagon with the given generating sequence,
-    // optionally highlighting one flex sequence
-    function drawTuckerman(canvasId, generator, highlight) {
-      const fm = Flexagonator.createFromScript([{ flexes: generator }]);
-      const traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
-      Flexagonator.drawPinchGraph(canvasId, { traverse: traverse, flexes: highlight });
-    }
-
-    // draw a series of flexagons in different states based on a sequence,
-    // expects several canvases (canvasId + "1", canvasId + "2", ...)
-    // generator is the generating sequence for creating the flexagon,
-    // sequence is an array of flexes to perform one at a time
-    // [optional] amount to scale
-    // [optional] amount to rotate
-    function drawSequence(canvasId, numPats, generator, sequence, scale, rotate, showCurrent) {
-      const script = [{ numPats }, { flexes: generator }, { labelAsTree }];
-      const fm = Flexagonator.createFromScript(script);
-      for (let i = 0; i < sequence.length; i++) {
-        const id = canvasId + (i + 1).toString();
-        fm.applyFlexes(sequence[i]);
-        Flexagonator.drawEntireFlexagon(id, fm, { showIds: false, scale, rotate, showCurrent: false });
-      }
-    }
-
-    // draw front/back of the before/after states of a flex using the given # of pats & optional angles,
-    // requires 4 drawing areas that are canvasId + "-before/after-1/2"
-    function drawBeforeAfter(canvasId, flex, numPats, angles2) {
-      const script = numPats % 2 === 0 ? [{ numPats, flexes: flex + "+", angles2, labelAsTree }]
-        : [{ numPats, flexAndColor: { flexes: flex + "+", colors: labelAsTree }, angles2 }];
-      const fm = Flexagonator.createFromScript(script);
-      const rotate = numPats === 6 ? -30 : numPats === 8 ? -22.5 : 0;
-      const options = { showIds: false, scale: 1.1, rotate, showCurrent: true, showCenterMarker: true };
-      const options1 = { ...options, structure: true };
-      const options2 = { ...options, back: true };
-
-      Flexagonator.drawEntireFlexagon(canvasId + "-before-1", fm, options1);
-      Flexagonator.drawEntireFlexagon(canvasId + "-before-2", fm, options2);
-      fm.applyFlexes(flex);
-      Flexagonator.drawEntireFlexagon(canvasId + "-after-1", fm, options1);
-      Flexagonator.drawEntireFlexagon(canvasId + "-after-2", fm, options2);
     }
 
     // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
