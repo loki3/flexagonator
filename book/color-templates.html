@@ -8,7 +8,9 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     // draw ⚹ on the edges that should be taped together
-    const starCaptions = [{ text: "⚹", which: 0 }, { text: "⚹", which: -1 }];
+    const firstStar = { text: "⚹", which: 0, scale: 1.8 };
+    const lastStar = { text: "⚹", which: -1, scale: 1.8 };
+    const starCaptions = [firstStar, lastStar];
     // common colors for faces
     const leafColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xDDDDDD];
     // fraction to inset fills by
@@ -28,11 +30,13 @@
     }
 
     function drawFrontBack(canvasId, script, rotation, captions) {
+      drawFrontBackOptions(canvasId, script, { rotation, captions }, { rotation, captions });
+    }
+
+    function drawFrontBackOptions(canvasId, script, options1, options2) {
       const fm = Flexagonator.createFromScript(script);
-      const options1 = { rotation, content: { showLeafProps: true, inset, face: 'front' }, captions };
-      const options2 = { rotation, content: { showLeafProps: true, inset, face: 'back' }, captions };
-      Flexagonator.drawUnfolded(canvasId + "1", fm, options1);
-      Flexagonator.drawUnfolded(canvasId + "2", fm, options2);
+      Flexagonator.drawUnfolded(canvasId + "1", fm, { ...options1, content: { showLeafProps: true, inset, face: 'front' } });
+      Flexagonator.drawUnfolded(canvasId + "2", fm, { ...options2, content: { showLeafProps: true, inset, face: 'back' } });
     }
 
     // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
@@ -85,8 +89,9 @@
       <li><a href="#breaking-down">breaking down flexes</a></li>
       <li><a href="#slots">slot flexes</a></li>
     </ul>
-    <li><a href="#part3">Part Three: Flexagons</a></li>
+    <li><a href="#part4">Part Four: Flexagons</a></li>
     <ul>
+      <li><a href="#square-silver-octa">square silver octa</a></li>
       <li><a href="#pentagonal-deca">pentagonal deca</a></li>
     </ul>
   </ul>
@@ -228,8 +233,21 @@
     drawStripSequence("slot-6-many", 6, "Lk+ Ltb+ Lbb+", 90, [60, 60], ">>>^", -6);
   </script>
 
-  <!-- part 3 -->
-  <h1 id="part3">part 3</h1>
+  <!-- part 4 -->
+  <h1 id="part4">part 4</h1>
+
+  <h3 id="square-silver-octa">square silver octa</h3>
+  <span id="silverOcta6a-1" width="1100" height="222"></span><br/><br/>
+  <span id="silverOcta6a-2" width="1100" height="222"></span><br/><br/>
+  <span id="silverOcta6b-1" width="1100" height="222"></span><br/><br/>
+  <span id="silverOcta6b-2" width="1100" height="222"></span><br/><br/>
+  <script type="text/javascript">
+    var script = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree: leafColors }, { flexes: "^" }];
+    const options1 = { rotation: 90, start: 4, end: 15, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] };
+    const options2 = { rotation: 90, start: 4, end: 15, captions: [lastStar, { text: "a", which: 0 }] };
+    drawFrontBackOptions("silverOcta6a-", script, options1, options1);
+    drawFrontBackOptions("silverOcta6b-", script, options2, options2);
+  </script>
 
   <h2 id="pentagonal-deca">pentagonal deca</h2>
   <canvas id="pentagonal-deca1" width="800" height="1000"></canvas><br/><br/>
