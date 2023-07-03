@@ -294,12 +294,14 @@
       <td><canvas id="shape-bronze-tetra" width="100" height="100"></canvas></td>
       <td>bronze <br/> hexaflexagon</td>
       <td><canvas id="shape-bronze-hexa" width="100" height="100"></canvas></td>
+      <td>kite bronze <br/> octaflexagon</td>
+      <td><canvas id="shape-bronze-kite" width="100" height="100"></canvas></td>
       <td>bronze <br/> dodecaflexagon</td>
       <td><canvas id="shape-bronze-dodeca" width="100" height="100"></canvas></td>
-      <td>rhombic bronze <br/> dodecaflexagon</td>
-      <td><canvas id="shape-rhombic-12" width="150" height="100"></canvas></td>
     </tr>
     <tr>
+      <td>rhombic bronze <br/> dodecaflexagon</td>
+      <td><canvas id="shape-rhombic-12" width="150" height="100"></canvas></td>
       <td>rhombic bronze <br/> hexadecaflexagon</td>
       <td><canvas id="shape-rhombic-16" width="150" height="100"></canvas></td>
       <td>hexagonal ring <br/> icositetraflexagon</td>
@@ -312,6 +314,7 @@
   <script type="text/javascript">
     drawFlexagon("shape-bronze-tetra", "bronze tetraflexagon", 30);
     drawFlexagon("shape-bronze-hexa", "bronze hexaflexagon", 30);
+    drawFlexagon("shape-bronze-kite", "kite bronze octaflexagon", 180);
     drawFlexagon("shape-bronze-dodeca", "bronze dodecaflexagon", 30);
     drawFlexagon("shape-rhombic-12", "rhombic bronze dodecaflexagon", 30);
     drawFlexagon("shape-rhombic-16", "rhombic hexadecaflexagon", 90);
@@ -604,12 +607,20 @@
       <td>octaflexagon</td>
       <td>silver<br/>octaflexagon</td>
       <td>star<br/>octaflexagon</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>kite bronze<br/>octaflexagon</td>
     </tr>
     <tr>
       <td></td>
       <td><canvas id="pats-octa1" width="100" height="100"></canvas></td>
       <td><canvas id="pats-octa2" width="100" height="100"></canvas></td>
       <td><canvas id="pats-octa3" width="100" height="100"></canvas></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><canvas id="pats-octa-kite" width="100" height="100"></canvas></td>
     </tr>
     <tr>
       <td>9</td>
@@ -807,6 +818,7 @@
     drawFlexagon("pats-octa1", "octaflexagon", 0);
     drawFlexagon("pats-octa2", "silver octaflexagon", 0);
     drawFlexagon("pats-octa3", "star octaflexagon", 45);
+    drawFlexagon("pats-octa-kite", "kite bronze octaflexagon", 180);
 
     drawFlexagon("pats-ennea", "enneaflexagon", 10);
     drawFlexagon("pats-ring6-9", "hexagonal ring enneaflexagon", -15);
@@ -870,6 +882,7 @@
       <td>4</td>
       <td>tetraflexagon</td>
       <td>silver<br/>octaflexagon</td>
+      <td>kite bronze<br/>octaflexagon</td>
       <td>rhombic bronze <br/> dodecaflexagon</td>
       <td>rhombic bronze <br/> hexadecaflexagon</td>
       <td>square ring <br/> hexadecaflexagon</td>
@@ -878,6 +891,7 @@
       <td></td>
       <td><canvas id="byshape-tetra1" width="100" height="100"></canvas></td>
       <td><canvas id="byshape-octa2" width="100" height="100"></canvas></td>
+      <td><canvas id="byshape-octa-kite" width="100" height="100"></canvas></td>
       <td><canvas id="byshape-misc-4-bronze-12" width="150" height="100"></canvas></td>
       <td><canvas id="byshape-misc-4-bronze-16" width="150" height="100"></canvas></td>
       <td><canvas id="byshape-ring4-16" width="100" height="100"></canvas></td>
@@ -1014,6 +1028,7 @@
     // quad
     drawFlexagon("byshape-tetra1", "silver tetraflexagon", 45);
     drawFlexagon("byshape-octa2", "silver octaflexagon", 0);
+    drawFlexagon("byshape-octa-kite", "kite bronze octaflexagon", 180);
     drawFlexagon("byshape-misc-4-bronze-12", "rhombic bronze dodecaflexagon", 30);
     drawFlexagon("byshape-misc-4-bronze-16", "rhombic bronze hexadecaflexagon", 90);
     drawFlexagon("byshape-ring4-16", "square ring hexadecaflexagon", -22);

@@ -173,6 +173,11 @@ namespace Flexagonator {
       const directions = Directions.make('//|//|//'.repeat(2));
       return { angles: [30, 90], directions };
     }
+    // kite bronze octaflexagon
+    if (overallShape === 'kite' && leafShape === 'bronze' && n === 8) {
+      const directions = Directions.make('/|////|/');
+      return { angles: [90, 30], directions };
+    }
     // pentagonal silver decaflexagon
     if (overallShape === 'pentagonal' && leafShape === 'silver' && n === 10) {
       const directions = Directions.make('///|//|///');
