@@ -680,15 +680,42 @@
   <h3 id="bracelets">bracelets</h3>
 
   <canvas id="bracelet-silver-cycle" width="1200" height="145"></canvas><br/><br/>
+  <canvas id="bracelet-silver-transfer" width="1200" height="1000"></canvas><br/><br/>
   <canvas id="bracelet-silver-WFW" width="1200" height="398"></canvas><br/><br/>
   <canvas id="bracelet-silver-WSW" width="1200" height="556"></canvas>
   <script type="text/javascript">
+    // Hf'Hb
     var script = [
       { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addHalfFlexes: true },
       { flexes: "Hf'* Hb+ Hf <<<<", labelAsTree }
     ];
     var captions = [firstStar, lastStar, { text: "Hf' Hb", which: -1, edge: 2 }];
     drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
+
+    // transfer sequence
+    var transferScript = [
+      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/" },
+      {
+        addFlex: {
+          name: "transfer 2",
+          shorthand: "Tr2",
+          input: [[1, [3, -2]], 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+          output: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [[-1, 14], 2]]
+        }
+      },
+      {
+        addFlex: {
+          name: "transfer 4",
+          shorthand: "Tr4",
+          input: [1, [2, [4, -3]], 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+          output: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, [[-14, 13], 1], 2]
+        }
+      },
+      { flexes: "(Tr4*<<Tr2*<<)4 (>>Tr2'>>Tr4')4" },
+      { labelAsTree: [] }
+    ];
+    var transferCaptions = [firstStar, lastStar, { text: "(Tr4<<Tr2<<)4", which: 2, edge: 1 }];
+    drawStripComplex("bracelet-silver-transfer", transferScript, { rotation: 135, content: { showLeafProps: true }, captions: transferCaptions });
 
     // make a bracelet template that wraps a flex such as F or S
     function makeWithWrap(canvasId, flexes, rotation, extraCaptions) {
