@@ -87,7 +87,7 @@ namespace Flexagonator {
 
     // from /// to ///
     flexes["S"] = makeAtomicFlex("pyramid shuffle",
-      "a [[[3,-2],-4],1] / -5 / # [7,-6] / b", "a [-2,1] / # -3 / [7,[-4,[-6,5]]] / b") as AtomicFlex;
+      "a [[[3,-2],-4],1] / -5 / # [7,-6] / b", "a [-2,1] / -3 / # [7,[-4,[-6,5]]] / b") as AtomicFlex;
 
     // from //// to ////
     flexes["F"] = makeAtomicFlex("flip",

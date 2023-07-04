@@ -76,7 +76,7 @@ namespace Flexagonator {
     Tf: "Xr Xr",
 
     // start & end ///
-    S: "K Xr' Ul' < Xr",
+    S: "K Xr' Ul' < Xr >",
 
     // start & end /\\/
     Iv: "Xl4 Xr4",
