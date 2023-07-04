@@ -679,7 +679,9 @@
 
   <h3 id="bracelets">bracelets</h3>
 
-  <canvas id="bracelet-silver-cycle" width="1000" height="128"></canvas>
+  <canvas id="bracelet-silver-cycle" width="1200" height="145"></canvas><br/><br/>
+  <canvas id="bracelet-silver-WFW" width="1200" height="398"></canvas><br/><br/>
+  <canvas id="bracelet-silver-WSW" width="1200" height="556"></canvas>
   <script type="text/javascript">
     var script = [
       { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addHalfFlexes: true },
@@ -687,6 +689,26 @@
     ];
     var captions = [firstStar, lastStar, { text: "Hf' Hb", which: -1, edge: 2 }];
     drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
+
+    // make a bracelet template that wraps a flex such as F or S
+    function makeWithWrap(canvasId, flexes, rotation, extraCaptions) {
+      var script = [
+        { numPats: 12, angles2: [90, 45], directions: "|//||//||//|" },
+        {
+          addFlex: {
+            name: "wrapper",
+            shorthand: "W",
+            input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, [12, -13]],
+            output: [[1, 13], 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+          }
+        },
+        { flexes, labelAsTree }
+      ];
+      var captions = [...extraCaptions, firstStar, lastStar];
+      drawStripComplex(canvasId, script, { rotation, content: { showLeafProps: true }, captions });
+    }
+    makeWithWrap("bracelet-silver-WFW", "W*>F*<W'*  W>F'<W'  >>>>", 18, [{ text: "F", which: 9, edge: 0 }]);
+    makeWithWrap("bracelet-silver-WSW", "W*>S*<W'*  W>S'<W'  <<<<", 104, [{ text: "S", which: 5, edge: 1 }]);
   </script>
 
   <hr />
