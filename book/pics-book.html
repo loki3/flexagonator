@@ -659,8 +659,10 @@
   <canvas id="silverOcta-state13-1" width="260" height="250"></canvas>
   <canvas id="silverOcta-state13-2" width="260" height="250"></canvas><br/><br/>
   <script type="text/javascript">
-    var searchFlexes = "P T2 S F V Tw St";
-    var hexa = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree }, { flexes: "^", searchFlexes }];
+    var hexa = [{
+      numPats: 8, angles2: [45, 45], searchFlexes: "P T2 S F V Tw St",
+      flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors: labelAsTree }
+    }];
 
     drawFlexagonComplex("silverOcta-state12-1", hexa, { rotate: 45 / 2, back: true });
     drawFlexagonComplex("silverOcta-state12-2", hexa.concat({ searchFlexes: "P T2 V Tw" }), { rotate: 45 / 2 });

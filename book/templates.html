@@ -604,7 +604,7 @@
   <script type="text/javascript">
     drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 90], ">", -1, 1, "Tw");
 
-    var hexa = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree }, { flexes: "^" }];
+    var hexa = [{ numPats: 8, angles2: [45, 45], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
     drawStripComplex("silverOcta-6a", hexa,
       { start: 4, end: 15, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
     drawStripComplex("silverOcta-6b", hexa,
