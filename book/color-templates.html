@@ -242,9 +242,9 @@
   <span id="silverOcta6b-1" width="1100" height="222"></span><br/><br/>
   <span id="silverOcta6b-2" width="1100" height="222"></span><br/><br/>
   <script type="text/javascript">
-    var script = [{ numPats: 8, flexes: "P* >PP* >P*P+^P P+", angles2: [45, 45], labelAsTree: leafColors }, { flexes: "^" }];
-    const options1 = { rotation: 90, start: 4, end: 15, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] };
-    const options2 = { rotation: 90, start: 4, end: 15, captions: [lastStar, { text: "a", which: 0 }] };
+    var script = [{ numPats: 8, angles2: [45, 45], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors: leafColors } }];
+    const options1 = { rotation: 90, start: 2, end: 13, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] };
+    const options2 = { rotation: 90, start: 2, end: 13, captions: [lastStar, { text: "a", which: 0 }] };
     drawFrontBackOptions("silverOcta6a-", script, options1, options1);
     drawFrontBackOptions("silverOcta6b-", script, options2, options2);
   </script>
