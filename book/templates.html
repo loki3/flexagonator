@@ -681,6 +681,7 @@
 
   <canvas id="bracelet-silver-Tr2" width="1200" height="404"></canvas><br/><br/>
   <canvas id="bracelet-silver-Tr4" width="1200" height="175"></canvas><br/><br/>
+  <canvas id="bracelet-silver-tetra" width="1200" height="403"></canvas><br/><br/>
   <br/>
   <canvas id="bracelet-silver-cycle" width="1200" height="153"></canvas><br/><br/>
   <canvas id="bracelet-silver-transfer" width="1200" height="800"></canvas><br/><br/>
@@ -711,6 +712,9 @@
       { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Tr2", which: 2, edge: 0 }] });
     drawStripComplex("bracelet-silver-Tr4", [...base, { flexes: "Tr4+", labelAsTree }],
       { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Tr4", which: -1, edge: 2 }] });
+    var tetra = [0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]]];
+    drawStripComplex("bracelet-silver-tetra", [{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetra, labelAsTree }],
+      { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "tetra", which: 2, edge: 0 }] });
 
     // Hf'Hb
     var script = [...base, { flexes: "Hf'* Hb+ Hf <<<<", labelAsTree }];
