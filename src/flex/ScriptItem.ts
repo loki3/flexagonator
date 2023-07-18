@@ -39,7 +39,9 @@ namespace Flexagonator {
     readonly addFlex?: FlexDef | FlexFromSequence;
     // a list of flexes to search
     readonly searchFlexes?: string;
-    // add the half-flexes to the list of flex definitions
+    // add the morph-flexes to the list of flex definitions
+    readonly addMorphFlexes?: boolean;
+    // (deprecated) same as addMorphFlexes
     readonly addHalfFlexes?: boolean;
   }
 

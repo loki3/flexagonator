@@ -32,42 +32,42 @@ namespace Flexagonator {
     P222hk: ">>>> K ^>>> K' ^",
     P333hk: ">>>>>> K3a ^>>> K3b' ^",
 
-    // "half" flexes
-    Hf: "K > Ul' <",
-    Hb: "^Hf^",
-    Hr: "<< Ur >>>> Xl << Ul' ~",
-    Hl: "^Hr^",
-    Hfs: "> K << Xr3 > Ur'",
-    Hbs: "^Hfs^",
-    // partial shuffle (kite-to-kite), combines well with half flexes
+    // "morph-kite" flexes
+    Mkf: "K > Ul' <",
+    Mkb: "^Mkf^",
+    Mkr: "<< Ur >>>> Xl << Ul' ~",
+    Mkl: "^Mkr^",
+    Mkfs: "> K << Xr3 > Ur'",
+    Mkbs: "^Mkfs^",
+    // partial shuffle (kite-to-kite), combines well with morph-kite flexes
     Sp: "> Ul << Ur > Ul' <<< Ul' >>",
-    // kite-to-kite slot, combines well with half flexes
+    // kite-to-kite slot, combines well with morph-kite flexes
     Lkk: "> Ul Ur <<<< Ul' < Ul' >>",
     // specific to hexaflexagon
-    Hh: "Xr >>> Xl <<<~",
-    Ht: "< Ur ^<<< Ur' <<^ Xl <<<~",
+    Mkh: "Xr >>> Xl <<<~",
+    Mkt: "< Ur ^<<< Ur' <<^ Xl <<<~",
 
-    // built from half flexes
-    F: "Hf Hb'",        // K > Ul' <^> Ul < K' ^
-    St: "Hf Hfs'",      // K > Ul' < Ur << Ul >> Ur' > K' <
-    Fm: "< Hr Hb' >",   // Xr~<<< Ur>>Ur' ^ > Ul < K' ^>
-    S3: "< Hr Hl' >",   // Xr~<<< Ur>>Ur'< Ur>>Ur'<< Xl~>>
-    // these have simpler forms, but can be built from half flexes
-    Tfromh: "< Hr Hf' >",
-    Sfromh: "< Hfs Hb' >",
-    Sfromsp: "Hf Sp Hb' >",
-    Hfsfromsp: "> Hf Sp",
+    // built from morph-kite flexes
+    F: "Mkf Mkb'",        // K > Ul' <^> Ul < K' ^
+    St: "Mkf Mkfs'",      // K > Ul' < Ur << Ul >> Ur' > K' <
+    Fm: "< Mkr Mkb' >",   // Xr~<<< Ur>>Ur' ^ > Ul < K' ^>
+    S3: "< Mkr Mkl' >",   // Xr~<<< Ur>>Ur'< Ur>>Ur'<< Xl~>>
+    // these have simpler forms, but can be built from morph-kite flexes
+    Tfromm: "< Mkr Mkf' >",
+    Sfromm: "< Mkfs Mkb' >",
+    Sfromsp: "Mkf Sp Mkb' >",
+    Mkfsfromsp: "> Mkf Sp",
 
-    Ltf: "Hf Lkk Hf' <",
-    Lk: "Hf Lkk Hbs' <",
+    Ltf: "Mkf Lkk Mkf' <",
+    Lk: "Mkf Lkk Mkbs' <",
 
     // specific to hexaflexagon
-    Ttf: "Hh Hf'",
-    V: "Hb Hh'",
-    Lh: "Hf Lkk Hh'",
-    Ltb: "Hf Lkk Ht'",
-    Lbb: "Hf Lkk >>> Ht' <<",
-    Lbf: "Hf Lkk >>> Hf' <<",
+    Ttf: "Mkh Mkf'",
+    V: "Mkb Mkh'",
+    Lh: "Mkf Lkk Mkh'",
+    Ltb: "Mkf Lkk Mkt'",
+    Lbb: "Mkf Lkk >>> Mkt' <<",
+    Lbf: "Mkf Lkk >>> Mkf' <<",
 
     // on a pentaflexagon
     L3: "(K^)3 (<)4 (K'^)3",
@@ -80,8 +80,8 @@ namespace Flexagonator {
 
     // start & end /\\/
     Iv: "Xl4 Xr4",
-    Rfb: "Hf' Hb",
-    Rsrf: "Hfs' Hf",
+    Rfb: "Mkf' Mkb",
+    Rsrf: "Mkfs' Mkf",
   }
 
 }

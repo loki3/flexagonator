@@ -212,18 +212,18 @@
   </script>
 
   <h2 id="breaking-down">breaking down flexes</h2>
-  <canvas id="silverHalfFlexes1" width="1000" height="500"></canvas><br/><br/>
-  <canvas id="silverHalfFlexes2" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="silverMorphFlexes1" width="1000" height="500"></canvas><br/><br/>
+  <canvas id="silverMorphFlexes2" width="1000" height="500"></canvas><br/><br/>
   <script type="text/javascript">
-    var silverHalfFlexes = [
-      { numPats: 8, "angles": [45, 45], "addHalfFlexes": true },
-      { flexes: "> Hf* Hb'+Hl'+Hr'+Hbs'+Hfs'+ Hf' Hb* Hf'+Hl'+Hr'+Hbs'+Hfs'+ Hb' Hl* Hf'+Hb'+Hr'+Hbs'+Hfs'+ Hl' Hr* Hf'+Hb'+Hl'+Hbs'+Hfs'+ Hr' Hbs* Hf'+Hb'+Hl'+Hr'+Hfs'+ Hbs' Hfs* Hf'+Hb'+Hl'+Hr'+Hbs'+ Hfs' >>>>" },
+    var silverMorphFlexes = [
+      { numPats: 8, "angles": [45, 45], addMorphFlexes: true },
+      { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
       { labelAsTree: leafColors }
     ];
-    var fm = Flexagonator.createFromScript(silverHalfFlexes);
-    var captions = [{ text: "H's", which: 0 }, { text: "H's", which: -1 }];
-    Flexagonator.drawUnfolded('silverHalfFlexes1', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'front' } });
-    Flexagonator.drawUnfolded('silverHalfFlexes2', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'back' } });
+    var fm = Flexagonator.createFromScript(silverMorphFlexes);
+    var captions = [{ text: "Mk", which: 0 }, { text: "Mk", which: -1 }];
+    Flexagonator.drawUnfolded('silverMorphFlexes1', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'front' } });
+    Flexagonator.drawUnfolded('silverMorphFlexes2', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'back' } });
   </script>
 
   <h2 id="slots">slot flexes</h2>

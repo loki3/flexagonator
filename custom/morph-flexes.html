@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>combining half flexes</title>
+  <title>combining morph flexes</title>
 
   <style>
     body {
@@ -36,14 +36,14 @@
     }
 
     function drawAll() {
-      const halves = ["Hf", "Hb", "Hr", "Hl", "Hfs", "Hbs"];
-      const hexaHalves = ["Hh", "Ht", ">>>Ht", ">>>Hf"];
+      const morphs = ["Mkf", "Mkb", "Mkr", "Mkl", "Mkfs", "Mkbs"];
+      const hexaMorphs = ["Mkh", "Mkt", ">>>Mkt", ">>>Mkf"];
 
       let i = 1;
       ////
       /*
-      halves.forEach(a => {
-        hexaHalves.forEach(b => {
+      morphs.forEach(a => {
+        hexaMorphs.forEach(b => {
           const canvas = "slot" + i.toString();
           drawTemplate(canvas, a, b, 'standard', true);
           i++;
@@ -53,46 +53,46 @@
       */
       ////
       if (whichSet === 'standard') {
-        halves.forEach(a => {
-          halves.forEach(b => {
+        morphs.forEach(a => {
+          morphs.forEach(b => {
             const canvas = "slot" + i.toString();
             drawTemplate(canvas, a, b, whichSet, false);
             i++;
           });
         });
       } else if (whichSet === 'slots') {
-        halves.forEach(a => {
-          halves.forEach(b => {
+        morphs.forEach(a => {
+          morphs.forEach(b => {
             const canvas = "slot" + i.toString();
             drawTemplate(canvas, a, b, whichSet, false);
             i++;
           });
         });
       } else if (whichSet === 'hexaSlots') {
-        // standard half followed by special half
-        halves.forEach(a => {
-          hexaHalves.forEach(b => {
+        // standard morph followed by special morph
+        morphs.forEach(a => {
+          hexaMorphs.forEach(b => {
             const canvas = "slot" + i.toString();
             drawTemplate(canvas, a, b, whichSet, true);
             i++;
           });
         });
-        // Hh or Ht followed by special half
-        ["Hh", "Ht"].forEach(a => {
-          hexaHalves.forEach(b => {
+        // Mkh or Mkt followed by special morph
+        ["Mkh", "Mkt"].forEach(a => {
+          hexaMorphs.forEach(b => {
             const canvas = "slot" + i.toString();
             drawTemplate(canvas, a, b, whichSet, true);
             i++;
           });
         });
-        // fill in the last few with non-slots using special halves
-        drawTemplate("slot33", "Hh", "Hf", 'standard', true);
-        drawTemplate("slot34", "Hb", "Hh", 'standard', true);
-        drawTemplate("slot35", "Hh", "Hr", 'standard', true);
-        drawTemplate("slot36", "Hh", "Hfs", 'standard', true);
+        // fill in the last few with non-slots using special morphs
+        drawTemplate("slot33", "Mkh", "Mkf", 'standard', true);
+        drawTemplate("slot34", "Mkb", "Mkh", 'standard', true);
+        drawTemplate("slot35", "Mkh", "Mkr", 'standard', true);
+        drawTemplate("slot36", "Mkh", "Mkfs", 'standard', true);
       } else if (whichSet === 'kites') {
-        halves.forEach(a => {
-          halves.forEach(b => {
+        morphs.forEach(a => {
+          morphs.forEach(b => {
             const canvas = "slot" + i.toString();
             drawKiteTemplate(canvas, a, b);
             i++;
@@ -109,7 +109,7 @@
       // shift a few hinges so the tape isn't in the middle of the flex
       const flexes = getGenerator(pre, post, slot) + (numPats === 8 ? ">>>>" : ">>>");
       const fm = Flexagonator.createFromScript([
-        { numPats, angles, addHalfFlexes: true },
+        { numPats, angles, addMorphFlexes: true },
         { flexes }
       ]);
       const captions = [{ text: pre + (slot ? " Lkk" : ""), which: 0 }, { text: post + "'", which: -1 }];
@@ -132,12 +132,12 @@
       const flexes = ">>>>>" + pre + "'* " + post + "+ " + pre + "<<<<<";
       const fm = Flexagonator.createFromScript([
         { name: "pentagonal silver decaflexagon" },
-        { addHalfFlexes: true },
+        { addMorphFlexes: true },
         { flexes }
       ]);
       /*
-      const hasOverlap = (pre === 'Hfs' || pre === 'Hbs' || post === 'Hfs' || post === 'Hbs')
-        && !(pre === post || (pre === 'Hfs' && post === 'Hb') || (pre === 'Hbs' && post === 'Hf'));
+      const hasOverlap = (pre === 'Mkfs' || pre === 'Mkbs' || post === 'Mkfs' || post === 'Mkbs')
+        && !(pre === post || (pre === 'Mkfs' && post === 'Mkb') || (pre === 'Mkbs' && post === 'Mkf'));
         */
       const captions = [{ text: pre + "'", which: 0 }, { text: post, which: -1 }];
       Flexagonator.drawUnfolded(canvasId, fm, { captions });
@@ -149,7 +149,7 @@
       ctx.fillText(fm.flexagon.getLeafCount(), 2, 32);
     }
 
-    // e.g. Hf* Lkk* Hb'+ Lkk' Hf'
+    // e.g. Mkf* Lkk* Mkb'+ Lkk' Mkf'
     function getGenerator(pre, post, slot) {
       const plus = post.startsWith(">>>") ? post + "'+<<<" : post + "'+";
       if (slot) {
@@ -195,105 +195,105 @@
 </head>
 
 <body>
-  <h1>Combining half flexes</h1>
+  <h1>Combining morph flexes</h1>
 
   <p>
-    This page provides a wide variety of templates for flexagons that support flexes composed of "half flexes".
-    The half flexes that work on a wide variety of flexagons are the front <i>Hf</i>, back <i>Hb</i>, right
-    <i>Hr</i>, left <i>Hl</i>, front shuffle <i>Hfs</i>, and back shuffle <i>Hbs</i>.
-    The half flexes that are just defined for the hexaflexagon are the half half <i>Hh</i> and half tuck <i>Ht</i>.
-    Definitions for all these half flexes can be found on the <a href="atomic.html">atomic flexes</a> page.
+    This page provides a wide variety of templates for flexagons that support flexes composed of "morph-kite flexes".
+    The morph flexes that work on a wide variety of flexagons are the front <i>Mkf</i>, back <i>Mkb</i>, right
+    <i>Mkr</i>, left <i>Mkl</i>, front shuffle <i>Mkfs</i>, and back shuffle <i>Mkbs</i>.
+    The morph flexes that are just defined for the hexaflexagon are the morph-kite-half <i>Mkh</i> and morph-kite-tuck <i>Mkt</i>.
+    Definitions for all these morph flexes can be found on the <a href="atomic.html">atomic flexes</a> page.
   </p>
 
   <p>It includes the following options:</p>
   <ul>
-    <li><b>standard:</b> Templates for isoflexagons that support HaHb'. Each template lists the generating sequence, a
+    <li><b>standard:</b> Templates for isoflexagons that support Mk1Mk2'. Each template lists the generating sequence, a
       decomposition in terms of prime flexes, and the number of leaves in the template.</li>
-    <li><b>slot flexes:</b> Templates for isoflexagons that support HaLkkHb'. Each template lists the generating
+    <li><b>slot flexes:</b> Templates for isoflexagons that support Mk1LkkMk2'. Each template lists the generating
       sequence, a decomposition in terms of prime flexes, and the number of leaves in the template.</li>
-    <li><b>hexaflexagon-specific slot flexes:</b> Same as <i>slot flexes</i>, but includes hexaflexagon-specific half
+    <li><b>hexaflexagon-specific slot flexes:</b> Same as <i>slot flexes</i>, but includes hexaflexagon-specific morph
       flexes.</li>
-    <li><b>inverse half followed by half:</b> Templates for the <i>pentagonal silver decaflexagon</i> that support half
-      flexes in the opposite order, i.e., Ha'Hb rather than HaHb'. Each template lists the generating sequence and the
+    <li><b>inverse morph followed by morph:</b> Templates for the <i>pentagonal silver decaflexagon</i> that support morph
+      flexes in the opposite order, i.e., Mk1'Mk2 rather than Mk1Mk2'. Each template lists the generating sequence and the
       number of leaves in the template.</li>
   </ul>
 
-  <p>Decomposition of HaHb' into flexes that are prime on a hexaflexagon.</p>
+  <p>Decomposition of Mk1Mk2' into flexes that are prime on a hexaflexagon.</p>
   <pre>
-F              =  Hf Hb'        = ^Hb Hf'^
-&gt;T             =  Hr Hf'        =  Hl Hbs'    = ^Hr Hfs'^ = ^Hl Hb'^
-&gt;T &lt;S          =  Hr Hbs'       = ^Hl Hfs'^
-&gt;T ^&gt;&gt;S        =  Hl Hf'        = ^Hr Hb'^
-&lt;&lt;T ^&gt;&gt;F &gt;&gt;T'  =  Hr Hl'        = ^Hl Hr'^
-&gt;T'            =  Hf Hr'        = Hbs Hl'     = ^Hb Hl'^  = ^Hfs Hr'^
-&gt;T' ^&gt;&gt;T       =  Hf Hfs'       = Hbs Hb'     = ^Hb Hbs'^ = ^Hfs Hf'^
-&gt;T' ^&gt;&gt;T &lt;S    =  Hbs Hfs'      = ^Hfs Hbs'^
-S              =  Hf Hbs'       = &lt;Hfs Hb'&gt;   = ^Hb Hfs'^ = &lt;^Hbs Hf'^&gt;
-S &gt;T'          =  Hf Hl'        = ^Hb Hr'^
-&gt;S ^&gt;&gt;T'       =  Hfs Hl'       = ^Hbs Hr'^
+F              =  Mkf Mkb'        = ^Mkb Mkf'^
+&gt;T             =  Mkr Mkf'        =  Mkl Mkbs'    = ^Mkr Mkfs'^ = ^Mkl Mkb'^
+&gt;T &lt;S          =  Mkr Mkbs'       = ^Mkl Mkfs'^
+&gt;T ^&gt;&gt;S        =  Mkl Mkf'        = ^Mkr Mkb'^
+&lt;&lt;T ^&gt;&gt;F &gt;&gt;T'  =  Mkr Mkl'        = ^Mkl Mkr'^
+&gt;T'            =  Mkf Mkr'        = Mkbs Mkl'     = ^Mkb Mkl'^  = ^Mkfs Mkr'^
+&gt;T' ^&gt;&gt;T       =  Mkf Mkfs'       = Mkbs Mkb'     = ^Mkb Mkbs'^ = ^Mkfs Mkf'^
+&gt;T' ^&gt;&gt;T &lt;S    =  Mkbs Mkfs'      = ^Mkfs Mkbs'^
+S              =  Mkf Mkbs'       = &lt;Mkfs Mkb'&gt;   = ^Mkb Mkfs'^ = &lt;^Mkbs Mkf'^&gt;
+S &gt;T'          =  Mkf Mkl'        = ^Mkb Mkr'^
+&gt;S ^&gt;&gt;T'       =  Mkfs Mkl'       = ^Mkbs Mkr'^
 
 # including hexaflexagon specific flexes
-P              = &lt;^Hf Ht'       = &lt;Hb &gt;&gt;&gt;Ht'  = ^Hb &gt;&gt;&gt;Hf'   ~= &lt;^Hbs Hh'
-&gt;P ^&gt;T         = ^Hbs Ht'       = Hfs &gt;&gt;&gt;Ht'
-P &gt;&gt;V          = Hf Hh'         = &lt;Hfs &gt;&gt;&gt;Hf'
-V              = Hb Hh'         = &lt;&lt;Hl &gt;&gt;&gt;Ht' = &lt;&lt;^Hr Ht'    = &lt;&lt;^Hl Hh'  ~= Hfs Ht'  ~= ^Hbs &gt;&gt;&gt;Ht'
-V T            = Hb Ht'         = ^Hf &gt;&gt;&gt;Ht'
-&gt;&gt;V ^&gt;&gt;T       = ^Hl Ht'        = Hr &gt;&gt;&gt;Ht'
-V T'           = Hfs Hh'
-^&gt;&gt;V ^&gt;&gt;T'     = Hr Hh'
-&gt;&gt;V P          = Hl &gt;&gt;&gt;Hf'
-^V ^P          = Hbs &gt;&gt;&gt;Hf'
-&gt;&gt;V &gt;V         = Hr &gt;&gt;&gt;Hf'
-^V ^&gt;&gt;&gt;V       = Hf &gt;&gt;&gt;Hf'
+P              = &lt;^Mkf Mkt'       = &lt;Mkb &gt;&gt;&gt;Mkt'  = ^Mkb &gt;&gt;&gt;Mkf'   ~= &lt;^Mkbs Mkh'
+&gt;P ^&gt;T         = ^Mkbs Mkt'       = Mkfs &gt;&gt;&gt;Mkt'
+P &gt;&gt;V          = Mkf Mkh'         = &lt;Mkfs &gt;&gt;&gt;Mkf'
+V              = Mkb Mkh'         = &lt;&lt;Mkl &gt;&gt;&gt;Mkt' = &lt;&lt;^Mkr Mkt'    = &lt;&lt;^Mkl Mkh'  ~= Mkfs Mkt'  ~= ^Mkbs &gt;&gt;&gt;Mkt'
+V T            = Mkb Mkt'         = ^Mkf &gt;&gt;&gt;Mkt'
+&gt;&gt;V ^&gt;&gt;T       = ^Mkl Mkt'        = Mkr &gt;&gt;&gt;Mkt'
+V T'           = Mkfs Mkh'
+^&gt;&gt;V ^&gt;&gt;T'     = Mkr Mkh'
+&gt;&gt;V P          = Mkl &gt;&gt;&gt;Mkf'
+^V ^P          = Mkbs &gt;&gt;&gt;Mkf'
+&gt;&gt;V &gt;V         = Mkr &gt;&gt;&gt;Mkf'
+^V ^&gt;&gt;&gt;V       = Mkf &gt;&gt;&gt;Mkf'
 </pre>
 
-  <p>Decomposition of slot flexes (Ha Lkk Hb') into flexes that are prime on a hexaflexagon.</p>
+  <p>Decomposition of slot flexes (Mk1 Lkk Mk2') into flexes that are prime on a hexaflexagon.</p>
   <pre>
-Ltf            = Hf Lkk Hf'     = Hbs Lkk Hbs'    = &lt; Hb Lkk Hb' &gt;   = &lt; Hfs Lkk Hfs' &gt;
-&gt;Ltf ^&gt;T'      = Hb Lkk Hl'     = Hfs Lkk Hr'
-&gt;Ltf ^S        = Hb Lkk Hfs'    = &lt; Hbs Lkk Hf' &gt;
-&gt;Ltf ^S &gt;T'    = Hb Lkk Hr'
-&gt;Ltf ^F        = Hb Lkk Hf'
-&gt;Ltf &gt;F &gt;Ltf   = Hb Lkk Hbs'    = Hfs Lkk Hf'
-^&gt;&gt;T' ^&gt;&gt;T     = Hf Lkk Hb'
-&gt;T &lt;Ltf        = Hr Lkk Hf'     = Hl Lkk Hbs'
-&gt;T &lt;Ltf ^S     = Hl Lkk Hf'
-&gt;T &lt;S Ltf      = Hr Lkk Hbs'
-&gt;T ^&gt;&gt;S F      = Hl Lkk Hfs'
-&gt;T ^&gt;&gt;S F &gt;&gt;T' = Hl Lkk Hr'
-&gt;T &lt;S ^&gt;F &gt;&gt;T' = Hr Lkk Hl'
-&gt;T ^&gt;&gt;F        = Hr Lkk Hfs'    = Hl Lkk Hb'
-&gt;T ^&gt;&gt;F &gt;&gt;T'   = Hr Lkk Hr'     = Hl Lkk Hl'
-&gt;T ^&gt;&gt;F ^S     = Hr Lkk Hb'
-^&gt;F &gt;&gt;T'       = Hf Lkk Hr'     = Hbs Lkk Hl'
-S Ltf          = Hf Lkk Hbs'    = &lt; Hfs Lkk Hb' &gt;
-&gt;S Ltf ^&gt;T'    = Hfs Lkk Hl'
-&gt;S Ltf &gt;F &gt;Ltf = Hfs Lkk Hbs'
-^&gt;S F          = Hbs Lkk Hfs'
-S ^&gt;F &gt;&gt;T'     = Hf Lkk Hl'
-^&gt;S F &gt;&gt;T'     = Hbs Lkk Hr'
-^&gt;F            = Hf Lkk Hfs'    = Hbs Lkk Hb'
+Ltf            = Mkf Lkk Mkf'     = Mkbs Lkk Mkbs'    = &lt; Mkb Lkk Mkb' &gt;   = &lt; Mkfs Lkk Mkfs' &gt;
+&gt;Ltf ^&gt;T'      = Mkb Lkk Mkl'     = Mkfs Lkk Mkr'
+&gt;Ltf ^S        = Mkb Lkk Mkfs'    = &lt; Mkbs Lkk Mkf' &gt;
+&gt;Ltf ^S &gt;T'    = Mkb Lkk Mkr'
+&gt;Ltf ^F        = Mkb Lkk Mkf'
+&gt;Ltf &gt;F &gt;Ltf   = Mkb Lkk Mkbs'    = Mkfs Lkk Mkf'
+^&gt;&gt;T' ^&gt;&gt;T     = Mkf Lkk Mkb'
+&gt;T &lt;Ltf        = Mkr Lkk Mkf'     = Mkl Lkk Mkbs'
+&gt;T &lt;Ltf ^S     = Mkl Lkk Mkf'
+&gt;T &lt;S Ltf      = Mkr Lkk Mkbs'
+&gt;T ^&gt;&gt;S F      = Mkl Lkk Mkfs'
+&gt;T ^&gt;&gt;S F &gt;&gt;T' = Mkl Lkk Mkr'
+&gt;T &lt;S ^&gt;F &gt;&gt;T' = Mkr Lkk Mkl'
+&gt;T ^&gt;&gt;F        = Mkr Lkk Mkfs'    = Mkl Lkk Mkb'
+&gt;T ^&gt;&gt;F &gt;&gt;T'   = Mkr Lkk Mkr'     = Mkl Lkk Mkl'
+&gt;T ^&gt;&gt;F ^S     = Mkr Lkk Mkb'
+^&gt;F &gt;&gt;T'       = Mkf Lkk Mkr'     = Mkbs Lkk Mkl'
+S Ltf          = Mkf Lkk Mkbs'    = &lt; Mkfs Lkk Mkb' &gt;
+&gt;S Ltf ^&gt;T'    = Mkfs Lkk Mkl'
+&gt;S Ltf &gt;F &gt;Ltf = Mkfs Lkk Mkbs'
+^&gt;S F          = Mkbs Lkk Mkfs'
+S ^&gt;F &gt;&gt;T'     = Mkf Lkk Mkl'
+^&gt;S F &gt;&gt;T'     = Mkbs Lkk Mkr'
+^&gt;F            = Mkf Lkk Mkfs'    = Mkbs Lkk Mkb'
 
 # including hexaflexagon specific flexes
-Ltb            = Hf Lkk Ht'     = Hbs Lkk Hh'     = &lt; Hb Lkk &gt;&gt;&gt;Hf' &gt;
-Ltb T          = Hbs Lkk Ht'
-Ltb T'         = Hf Lkk Hh'     = &lt; Hfs Lkk &gt;&gt;&gt;Hf' &gt;
-&lt;V             = Hf Lkk &gt;&gt;&gt;Hf'
-&lt;V ^P          = Hf Lkk &gt;&gt;&gt;Ht'
-&lt;V T           = Hbs Lkk &gt;&gt;&gt;Hf'
-&lt;V ^&gt;&gt;&gt;V       = Hbs Lkk &gt;&gt;&gt;Ht'
-&gt;Ltf V         = Hb Lkk Hh'     = Hfs Lkk Ht'
-&gt;Ltf &gt;P        = Hb Lkk &gt;&gt;&gt;Ht'
-&gt;T &lt;Ltb        = Hr Lkk Ht'     = Hl Lkk Hh'
-&gt;T &lt;Ltb T      = Hl Lkk Ht'
-&gt;T &lt;Ltb T'     = Hr Lkk Hh'
-&gt;T &lt;&lt;V         = Hr Lkk &gt;&gt;&gt;Hf'
-&gt;T &lt;&lt;V ^P      = Hr Lkk &gt;&gt;&gt;Ht'
-&gt;T &lt;&lt;V T       = Hl Lkk &gt;&gt;&gt;Hf'
-&gt;T &lt;&lt;V ^&gt;&gt;&gt;V   = Hl Lkk &gt;&gt;&gt;Ht'
-&gt;S Ltf V       = Hfs Lkk Hh'
-&gt;S Ltf &gt;P      = Hfs Lkk &gt;&gt;>Ht'
-^F ^Ltb        = Hb Lkk Ht'
+Ltb            = Mkf Lkk Mkt'     = Mkbs Lkk Mkh'     = &lt; Mkb Lkk &gt;&gt;&gt;Mkf' &gt;
+Ltb T          = Mkbs Lkk Mkt'
+Ltb T'         = Mkf Lkk Mkh'     = &lt; Mkfs Lkk &gt;&gt;&gt;Mkf' &gt;
+&lt;V             = Mkf Lkk &gt;&gt;&gt;Mkf'
+&lt;V ^P          = Mkf Lkk &gt;&gt;&gt;Mkt'
+&lt;V T           = Mkbs Lkk &gt;&gt;&gt;Mkf'
+&lt;V ^&gt;&gt;&gt;V       = Mkbs Lkk &gt;&gt;&gt;Mkt'
+&gt;Ltf V         = Mkb Lkk Mkh'     = Mkfs Lkk Mkt'
+&gt;Ltf &gt;P        = Mkb Lkk &gt;&gt;&gt;Mkt'
+&gt;T &lt;Ltb        = Mkr Lkk Mkt'     = Mkl Lkk Mkh'
+&gt;T &lt;Ltb T      = Mkl Lkk Mkt'
+&gt;T &lt;Ltb T'     = Mkr Lkk Mkh'
+&gt;T &lt;&lt;V         = Mkr Lkk &gt;&gt;&gt;Mkf'
+&gt;T &lt;&lt;V ^P      = Mkr Lkk &gt;&gt;&gt;Mkt'
+&gt;T &lt;&lt;V T       = Mkl Lkk &gt;&gt;&gt;Mkf'
+&gt;T &lt;&lt;V ^&gt;&gt;&gt;V   = Mkl Lkk &gt;&gt;&gt;Mkt'
+&gt;S Ltf V       = Mkfs Lkk Mkh'
+&gt;S Ltf &gt;P      = Mkfs Lkk &gt;&gt;>Mkt'
+^F ^Ltb        = Mkb Lkk Mkt'
 </pre>
 
   <h2>Templates</h2>
@@ -304,7 +304,7 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hfs Lkk &gt;&gt;&gt;Hf' &gt;
       <option value="standard">standard</option>
       <option value="slots" selected>slot flexes</option>
       <option value="hexaSlots">hexaflexagon-specific slot flexes</option>
-      <option value="kites">inverse half followed by half</option>
+      <option value="kites">inverse morph followed by morph</option>
     </select>
     &nbsp;&nbsp;
 
@@ -317,47 +317,48 @@ Ltb T'         = Hf Lkk Hh'     = &lt; Hfs Lkk &gt;&gt;&gt;Hf' &gt;
   </p>
 
   <ul>
-    <li>sequence starts with <a href="#Hf">Hf</a>, <a href="#Hb">Hb</a>, <a href="#Hr">Hr</a>, <a href="#Hl">Hl</a>,
-      <a href="#Hfs">Hfs</a>, <a href="#Hbs">Hbs</a>
+    <li>sequence starts with <a href="#Mkf">Mkf</a>, <a href="#Mkb">Mkb</a>, <a href="#Mkr">Mkr</a>,
+      <a href="#Mkl">Mkl</a>,
+      <a href="#Mkfs">Mkfs</a>, <a href="#Mkbs">Mkbs</a>
     </li>
   </ul>
 
-  <a id="Hf"></a>
+  <a id="Mkf"></a>
   <canvas id="slot1" width="900" height="500"></canvas><br/>
   <canvas id="slot2" width="900" height="500"></canvas><br/>
   <canvas id="slot3" width="900" height="500"></canvas><br/>
   <canvas id="slot4" width="900" height="500"></canvas><br/>
   <canvas id="slot5" width="900" height="500"></canvas><br/>
   <canvas id="slot6" width="900" height="500"></canvas><br/>
-  <a id="Hb"></a>
+  <a id="Mkb"></a>
   <canvas id="slot7" width="900" height="500"></canvas><br/>
   <canvas id="slot8" width="900" height="500"></canvas><br/>
   <canvas id="slot9" width="900" height="500"></canvas><br/>
   <canvas id="slot10" width="900" height="500"></canvas><br/>
   <canvas id="slot11" width="900" height="500"></canvas><br/>
   <canvas id="slot12" width="900" height="500"></canvas><br/>
-  <a id="Hr"></a>
+  <a id="Mkr"></a>
   <canvas id="slot13" width="900" height="500"></canvas><br/>
   <canvas id="slot14" width="900" height="500"></canvas><br/>
   <canvas id="slot15" width="900" height="500"></canvas><br/>
   <canvas id="slot16" width="900" height="500"></canvas><br/>
   <canvas id="slot17" width="900" height="500"></canvas><br/>
   <canvas id="slot18" width="900" height="500"></canvas><br/>
-  <a id="Hl"></a>
+  <a id="Mkl"></a>
   <canvas id="slot19" width="900" height="500"></canvas><br/>
   <canvas id="slot20" width="900" height="500"></canvas><br/>
   <canvas id="slot21" width="900" height="500"></canvas><br/>
   <canvas id="slot22" width="900" height="500"></canvas><br/>
   <canvas id="slot23" width="900" height="500"></canvas><br/>
   <canvas id="slot24" width="900" height="500"></canvas><br/>
-  <a id="Hfs"></a>
+  <a id="Mkfs"></a>
   <canvas id="slot25" width="900" height="500"></canvas><br/>
   <canvas id="slot26" width="900" height="500"></canvas><br/>
   <canvas id="slot27" width="900" height="500"></canvas><br/>
   <canvas id="slot28" width="900" height="500"></canvas><br/>
   <canvas id="slot29" width="900" height="500"></canvas><br/>
   <canvas id="slot30" width="900" height="500"></canvas><br/>
-  <a id="Hbs"></a>
+  <a id="Mkbs"></a>
   <canvas id="slot31" width="900" height="500"></canvas><br/>
   <canvas id="slot32" width="900" height="500"></canvas><br/>
   <canvas id="slot33" width="900" height="500"></canvas><br/>

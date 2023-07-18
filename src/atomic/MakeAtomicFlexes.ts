@@ -63,13 +63,13 @@ namespace Flexagonator {
     flexes["K3b"] = makeAtomicFlex("pocket3", "a [-2,1] / -3 \\ -4 / # [6,-5] / b", "a 1 \\ 2 / # 3 / [-5,4] / -6 / -b") as AtomicFlex;
     flexes["K4"] = makeAtomicFlex("pocket4", "a [-2,1] / -3 / -4 / -5 / # [7,-6] / b", "a 1 \\ 2 / # 3 \\ 4 \\ [-6,5] / -7 / -b") as AtomicFlex;
 
-    flexes["Hf"] = makeAtomicFlex("half: fold forward", "a [-2,1] / -3 / # [5,-4] / 6 / b", "a 1 \\ 2 / # [-4,3] / [-5,6] \\ b") as AtomicFlex;
-    flexes["Hb"] = makeAtomicFlex("half: fold back", "a 1 / [-3,2] / # -4 / [6,-5] / b", "a [1,-2] \\ [4,-3] / # 5 / 6 \\ b") as AtomicFlex;
-    flexes["Hr"] = makeAtomicFlex("half: fold right", "a [-2,1] / -3 / # -4 / [6,-5] / b", "a 1 \\ 2 / # [[-4,5],3] / 6 \\ b") as AtomicFlex;
-    flexes["Hl"] = makeAtomicFlex("half: fold left", "a [-2,1] / -3 / # -4 / [6,-5] / b", "a 1 \\ [4,[2,-3]] / # 5 / 6 \\ b") as AtomicFlex;
-    flexes["Hfs"] = makeAtomicFlex("half: front shuffle",
+    flexes["Mkf"] = makeAtomicFlex("morph-kite: fold forward", "a [-2,1] / -3 / # [5,-4] / 6 / b", "a 1 \\ 2 / # [-4,3] / [-5,6] \\ b") as AtomicFlex;
+    flexes["Mkb"] = makeAtomicFlex("morph-kite: fold back", "a 1 / [-3,2] / # -4 / [6,-5] / b", "a [1,-2] \\ [4,-3] / # 5 / 6 \\ b") as AtomicFlex;
+    flexes["Mkr"] = makeAtomicFlex("morph-kite: fold right", "a [-2,1] / -3 / # -4 / [6,-5] / b", "a 1 \\ 2 / # [[-4,5],3] / 6 \\ b") as AtomicFlex;
+    flexes["Mkl"] = makeAtomicFlex("morph-kite: fold left", "a [-2,1] / -3 / # -4 / [6,-5] / b", "a 1 \\ [4,[2,-3]] / # 5 / 6 \\ b") as AtomicFlex;
+    flexes["Mkfs"] = makeAtomicFlex("morph-kite: front shuffle",
       "a 1 / [[-3,4],2] / # 5 / [-7,6] / b", "a [1,-2] \\ -3 / # [[5,-6],-4] / -7 \\ b") as AtomicFlex;
-    flexes["Hbs"] = makeAtomicFlex("half: back shuffle",
+    flexes["Mkbs"] = makeAtomicFlex("morph-kite: back shuffle",
       "a [-2, 1] / -3 / # [-6,[-4,5]] / -7 / b", "a 1 \\ [4,[2,-3]] / # 5 / [6,-7] \\ b") as AtomicFlex;
     flexes["Sp"] = makeAtomicFlex("partial shuffle",
       "a 1 / 2 \\ [-4,3] / # -5 / [-6,7] \\ b", "a [1,-2] \\ -3 / # [5,-4] / 6 \\ 7 / b") as AtomicFlex;
@@ -98,17 +98,17 @@ namespace Flexagonator {
       "a [[[3,-2],-4],1] / -5 / -6 / # [8,-7] / b", "a [-2,1] / -3 / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
     flexes["Fm"] = makeAtomicFlex("mobius flip",
       "a [[3,-4],[1,-2]] / -5 / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
-    flexes["Tfromh"] = makeAtomicFlex("tuck using half flexes",
+    flexes["Tfromm"] = makeAtomicFlex("tuck using morph flexes",
       "a [-2,1] / -3 / -4 / # [[6,-7],-5] / b", "a [-2,1] / -3 / [-6,[-4,5]] / # -7 / b") as AtomicFlex;
-    flexes["Sfromh"] = makeAtomicFlex("pyramid shuffle using half flexes",
+    flexes["Sfromm"] = makeAtomicFlex("pyramid shuffle using morph flexes",
       "a 1 / [[[4,-3],-5],2] / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
 
     // from /\\/ to /\\/
     flexes["Iv"] = makeAtomicFlex("inner pivot",
       "a 1 \\ 2 / # 3 / [4,[6,-5]] \\ b", "a [[-2,1],3] \\ 4 / # 5 / 6 \\ b") as AtomicFlex;
-    flexes["Rfb"] = makeAtomicFlex("reverse Hf' Hb",
+    flexes["Rfb"] = makeAtomicFlex("reverse Mkf' Mkb",
       "a 1 \\ 2 / # [5,[3,-4]] / [6,[8,-7]] \\ b", "a [[-2,1],3] \\ [[-5,6],4] / # 7 / 8 \\ b") as AtomicFlex;
-    flexes["Rsrf"] = makeAtomicFlex("reverse Hfs' Hf",
+    flexes["Rsrf"] = makeAtomicFlex("reverse Mkfs' Mkf",
       "a [[-2,1],3] \\ 4 / # [[[7,-6],-8],5] / -9 \\ b", "a 1 \\ 2 / # [-6,[3,[5,-4]]] / [-7,[-9,8]] \\ b") as AtomicFlex;
   }
 

@@ -415,24 +415,24 @@
 
   <h3 id="breakdown">breaking down flexes</h3>
 
-  <p>silver octaflexagon: Hf, Hb, Hr, Hl, Hfs, Hbs</p>
-  <canvas id="silverHalfFlexes" width="1000" height="500"></canvas><br/><br/>
+  <p>silver octaflexagon: Mkf, Mkb, Mkr, Mkl, Mkfs, Mkbs</p>
+  <canvas id="silverMorphFlexes" width="1000" height="500"></canvas><br/><br/>
   <script type="text/javascript">
-    var silverHalfFlexes = [
-      { numPats: 8, "angles": [45, 45], "addHalfFlexes": true },
-      { flexes: "> Hf* Hb'+Hl'+Hr'+Hbs'+Hfs'+ Hf' Hb* Hf'+Hl'+Hr'+Hbs'+Hfs'+ Hb' Hl* Hf'+Hb'+Hr'+Hbs'+Hfs'+ Hl' Hr* Hf'+Hb'+Hl'+Hbs'+Hfs'+ Hr' Hbs* Hf'+Hb'+Hl'+Hr'+Hfs'+ Hbs' Hfs* Hf'+Hb'+Hl'+Hr'+Hbs'+ Hfs' >>>>" },
+    var silverMorphFlexes = [
+      { numPats: 8, "angles": [45, 45], "addMorphFlexes": true },
+      { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
       { labelAsTree: [] }
     ];
-    var fm = Flexagonator.createFromScript(silverHalfFlexes);
-    Flexagonator.drawUnfolded('silverHalfFlexes', fm, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "H's", which: 1, edge: 1 }] });
+    var fm = Flexagonator.createFromScript(silverMorphFlexes);
+    Flexagonator.drawUnfolded('silverMorphFlexes', fm, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] });
   </script>
-  <!-- minimal half-flex templates on a silver octaflexagon -->
-  <canvas id="silver-half-Hf" width="500" height="500"></canvas><br/><br/>
-  <canvas id="silver-half-Hr" width="500" height="500"></canvas><br/><br/>
-  <canvas id="silver-half-Hfs" width="500" height="500"></canvas><br/><br/>
+  <!-- minimal morph-flex templates on a silver octaflexagon -->
+  <canvas id="silver-morph-Mkf" width="500" height="500"></canvas><br/><br/>
+  <canvas id="silver-morph-Mkr" width="500" height="500"></canvas><br/><br/>
+  <canvas id="silver-morph-Mkfs" width="500" height="500"></canvas><br/><br/>
   <script type="text/javascript">
     function drawTemplate(canvasId, flexes, rotation) {
-      const script = [{ numPats: 8, angles2: [45, 90], addHalfFlexes: true }, { flexes, labelAsTree: [] }];
+      const script = [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
       const fm = Flexagonator.createFromScript(script);
       const options = {
         rotation, content: { showLeafProps: true },
@@ -440,37 +440,37 @@
       };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
-    drawTemplate("silver-half-Hf", "Hf+", 225);   // Hb
-    drawTemplate("silver-half-Hr", "Hr+", -45);   // Hl
-    drawTemplate("silver-half-Hfs", "Hfs+", -45); // Hbs
+    drawTemplate("silver-morph-Mkf", "Mkf+", 225);   // Mkb
+    drawTemplate("silver-morph-Mkr", "Mkr+", -45);   // Mkl
+    drawTemplate("silver-morph-Mkfs", "Mkfs+", -45); // Mkbs
   </script>
   <!-- St, Fm, and S3 -->
-  <canvas id="half-St" width="700" height="700"></canvas>
-  <canvas id="half-Fm" width="1000" height="400"></canvas><br/><br/>
-  <canvas id="half-S3" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="morph-St" width="700" height="700"></canvas>
+  <canvas id="morph-Fm" width="1000" height="400"></canvas><br/><br/>
+  <canvas id="morph-S3" width="1000" height="400"></canvas><br/><br/>
   <script type="text/javascript">
-    drawStripSequence("half-St", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
-    drawStripSequence("half-Fm", 8, "Fm*", 45, [45, 45], ">>", -2);
-    drawStripSequence("half-S3", 8, "S3*", 45, [45, 45], ">>", -2);
+    drawStripSequence("morph-St", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
+    drawStripSequence("morph-Fm", 8, "Fm*", 45, [45, 45], ">>", -2);
+    drawStripSequence("morph-S3", 8, "S3*", 45, [45, 45], ">>", -2);
   </script>
   <!-- plain pentagonal silver decaflexagon -->
   <p>pentagonal silver decaflexagon</p>
   <!-- various full flexes -->
-  <p>Hf'Hb</p>
-  <canvas id="psd-HfHb1" width="500" height="500"></canvas>
-  <canvas id="psd-HfHb2" width="500" height="500"></canvas>
-  <p>Hr'Hl</p>
-  <canvas id="psd-HrHl" width="1000" height="350"></canvas>
-  <p>Hfs'Hf</p>
-  <canvas id="psd-HfsHf" width="1000" height="500"></canvas>
+  <p>Mkf'Mkb</p>
+  <canvas id="psd-MkfMkb1" width="500" height="500"></canvas>
+  <canvas id="psd-MkfMkb2" width="500" height="500"></canvas>
+  <p>Mkr'Mkl</p>
+  <canvas id="psd-MkrMkl" width="1000" height="350"></canvas>
+  <p>Mkfs'Mkb</p>
+  <canvas id="psd-MkfsMkb" width="1000" height="500"></canvas>
   <script type="text/javascript">
-    // pairs that give non-overlapping templates: Hf'Hb, Hf'Hr, Hf'Hl, Hf'Hbs, Hr'Hf, Hr'Hb, Hr'Hl, Hfs'Hb
+    // pairs that give non-overlapping templates: Mkf'Mkb, Mkf'Mkr, Mkf'Mkl, Mkf'Mkbs, Mkr'Mkf, Mkr'Mkb, Mkr'Mkl, Mkfs'Mkb
     function makeScript(one, two) {
       // this is basically one' followed by two, with shifts to get the correct hinge
       var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
       var script = [
         { "name": "pentagonal silver decaflexagon" },
-        { "addHalfFlexes": true },
+        { "addMorphFlexes": true },
         { "flexes": flexes }
       ];
       return Flexagonator.createFromScript(script);
@@ -480,19 +480,19 @@
       Flexagonator.drawUnfolded(canvas, fm,
         { rotation, content: { showFoldingOrder: true }, captions: [firstStar, lastStar, { text: one + "'" + two, which, edge }] });
     }
-    function drawHfHb() {
-      var fm = makeScript("Hf", "Hb");
-      Flexagonator.drawUnfolded("psd-HfHb1", fm,
+    function drawMkfMkb() {
+      var fm = makeScript("Mkf", "Mkb");
+      Flexagonator.drawUnfolded("psd-MkfMkb1", fm,
         {
           rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 0, end: 10,
-          captions: [firstStar, { text: "a", which: -1 }, { text: "Hf' Hb", which: 1 }]
+          captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf' Mkb", which: 1 }]
         });
-      Flexagonator.drawUnfolded("psd-HfHb2", fm,
+      Flexagonator.drawUnfolded("psd-MkfMkb2", fm,
         { rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 11, end: 14, captions: [{ text: "a", which: 0 }, lastStar] });
     }
-    drawHfHb();
-    draw("psd-HrHl", "Hr", "Hl", 0, 1);
-    draw("psd-HfsHf", "Hfs", "Hb", 90, 2, 1);
+    drawMkfMkb();
+    draw("psd-MkrMkl", "Mkr", "Mkl", 0, 1);
+    draw("psd-MkfsMkb", "Mkfs", "Mkb", 90, 2, 1);
   </script>
 
   <h3 id="slot-flexes">slot flexes</h3>
@@ -691,7 +691,7 @@
   <canvas id="bracelet-silver-WSW" width="1200" height="556"></canvas>
   <script type="text/javascript">
     const base = [
-      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addHalfFlexes: true },
+      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addMorphFlexes: true },
       {
         addFlex: {
           name: "transfer 2",
@@ -718,9 +718,9 @@
     drawStripComplex("bracelet-silver-tetra", [{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetra, labelAsTree }],
       { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "tetra", which: 2, edge: 0 }] });
 
-    // Hf'Hb
-    var script = [...base, { flexes: "Hf'* Hb+ Hf <<<<", labelAsTree }];
-    var captions = [firstStar, lastStar, { text: "Hf' Hb", which: -6, edge: 1 }, { text: "#", which: -6, edge: 0 }, { text: "#", which: 7, edge: 2 }];
+    // Mkf'Mkb
+    var script = [...base, { flexes: "Mkf'* Mkb+ Mkf <<<<", labelAsTree }];
+    var captions = [firstStar, lastStar, { text: "Mkf' Mkb", which: -6, edge: 1 }, { text: "#", which: -6, edge: 0 }, { text: "#", which: 7, edge: 2 }];
     drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
 
     // transfer sequence

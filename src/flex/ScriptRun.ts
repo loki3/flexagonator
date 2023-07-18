@@ -146,10 +146,10 @@ namespace Flexagonator {
       fm.allFlexes[f.shorthand + "'"] = newFlex.createInverse();
     }
 
-    if (item.addHalfFlexes) {
-      const halves = makeHalfFlexes(fm.flexagon.getPatCount());
-      const keys = Object.getOwnPropertyNames(halves);
-      keys.forEach(key => fm.allFlexes[key] = halves[key]);
+    if (item.addMorphFlexes || item.addHalfFlexes) {
+      const morphs = makeMorphFlexes(fm.flexagon.getPatCount());
+      const keys = Object.getOwnPropertyNames(morphs);
+      keys.forEach(key => fm.allFlexes[key] = morphs[key]);
     }
 
     // manipulate the flex history: "clear", "undo", "redo", "reset"

@@ -81,20 +81,20 @@ namespace Flexagonator {
         "a [3,[1,-2]] / # 4 / 5 / 6 / 7 / 8 / [11,[9,-10]] / 12 / 13 / 14 / 15 / 16 / b");
     });
 
-    it("should compose to create the half flexes", () => {
-      testDefinition("Hf", AtomicDecomposition.Hf);
-      testDefinition("Hb", AtomicDecomposition.Hb);
-      testDefinition("Hr", AtomicDecomposition.Hr);
-      testDefinition("Hl", AtomicDecomposition.Hl);
-      testDefinition("Hfs", AtomicDecomposition.Hfs);
-      testDefinition("Hbs", AtomicDecomposition.Hbs);
+    it("should compose to create the morph flexes", () => {
+      testDefinition("Mkf", AtomicDecomposition.Mkf);
+      testDefinition("Mkb", AtomicDecomposition.Mkb);
+      testDefinition("Mkr", AtomicDecomposition.Mkr);
+      testDefinition("Mkl", AtomicDecomposition.Mkl);
+      testDefinition("Mkfs", AtomicDecomposition.Mkfs);
+      testDefinition("Mkbs", AtomicDecomposition.Mkbs);
     });
 
-    it("should compose to create the half flexes specific to a hexaflexagon", () => {
-      testFormula("Hh", AtomicDecomposition.Hh,
+    it("should compose to create the morph flexes specific to a hexaflexagon", () => {
+      testFormula("Mkh", AtomicDecomposition.Mkh,
         "a 7 / 8 / # [-2,1] / -3 / -4 / [6,-5] / b",
         "-a -7 \\ [1,-8] / # 2 / 3 \\ [-5,4] / -6 / -b");
-      testFormula("Ht", AtomicDecomposition.Ht,
+      testFormula("Mkt", AtomicDecomposition.Mkt,
         "a -7 / [1,-8] / # 2 / 3 / 4 / [-6,5] / b",
         "-a 7 \\ 8 / # [-2,1] / -3 \\ [5,-4] / 6 / -b");
     });
@@ -122,9 +122,9 @@ namespace Flexagonator {
 
     it("should handle common flexes", () => {
       testDefinition("Tf", AtomicDecomposition.Tf);
-      testDefinition("Tfromh", AtomicDecomposition.Tfromh);
+      testDefinition("Tfromm", AtomicDecomposition.Tfromm);
       testDefinition("S", AtomicDecomposition.S);
-      testDefinition("Sfromh", AtomicDecomposition.Sfromh);
+      testDefinition("Sfromm", AtomicDecomposition.Sfromm);
 
       testDefinition("F", AtomicDecomposition.F);
       testDefinition("St", AtomicDecomposition.St);

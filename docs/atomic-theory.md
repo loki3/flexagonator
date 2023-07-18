@@ -124,53 +124,53 @@ P444   = (Xr >>>> Xl >>>> Xr >>>>)2
 P66    = (Xr (>)6 Xl (<)6)2
 ```
 
-Many other flexes can be assembled from a small set of "half flexes".
+Many other flexes can be assembled from a small set of "morph flexes".
 On a flexagon where all pats meet in the middle,
-they take you to a position that looks like a kite on one edge.
-Doing the inverse of a different half flex takes you back to a state where all pats meet in the middle again,
+they take you to an arrangement that looks like a kite on one edge.
+Doing the inverse of a different morph flex takes you back to a state where all pats meet in the middle again,
 except that some leaves have been rearranged.
 
-Here are the definitions of various half flexes:
+Here are the definitions of various morph flexes:
 
 ```
-# flexes from main to kite, inverse from kite to main
+# flexes that morph from main to kite, inverse from kite to main
 # current hinge in middle
-Hf  = K > Ul' <
-Hb  = ^Hf^
-Hr  = << Ur >>>> Xl << Ul' ~
-Hl  = ^Hr^
-Hfs = > K < Ur << Ul' >> Ur'
-Hbs = ^Hfs^
+Mkf  = K > Ul' <
+Mkb  = ^Mkf^
+Mkr  = << Ur >>>> Xl << Ul' ~
+Mkl  = ^Mkr^
+Mkfs = > K < Ur << Ul' >> Ur'
+Mkbs = ^Mkfs^
 
 # kite-to-kite slot
 Lkk = > Ul Ur <<<< Ul' < Ul' >>
 
 # specific to hexaflexagon
-Hh  = Xr >>> Xl <<<~
-Ht  = < Ur ^<<< Ur' <<^ Xl <<<~
+Mkh  = Xr >>> Xl <<<~
+Mkt  = < Ur ^<<< Ur' <<^ Xl <<<~
 ```
 
-Composing half flexes into more complex flexes:
+Composing morph flexes into more complex flexes:
 
 ```
-F   = Hf Hb'
-St  = Hf Hfs'
-S   = < Hfs Hb' >
-T   = < Hr Hf' >
-Fm  = < Hr Hb' >
-S3  = < Hr Hl' >
+F   = Mkf Mkb'
+St  = Mkf Mkfs'
+S   = < Mkfs Mkb' >
+T   = < Mkr Mkf' >
+Fm  = < Mkr Mkb' >
+S3  = < Mkr Mkl' >
 
-Ltf = Hf Lkk Hf' <
-Lk  = Hf Lkk Hbs' <
+Ltf = Mkf Lkk Mkf' <
+Lk  = Mkf Lkk Mkbs' <
 
 # specific to hexaflexagon
-Ttf = Hh Hf'
-V   = Hb Hh'
-T   = Hh Ht'
-Lh  = Hf Lkk Hh'
-Ltb = Hf Lkk Ht'
-Lbb = Hf Lkk >>> Ht' <<
-Lbf = Hf Lkk >>> Hf' <<
+Ttf = Mkh Mkf'
+V   = Mkb Mkh'
+T   = Mkh Mkt'
+Lh  = Mkf Lkk Mkh'
+Ltb = Mkf Lkk Mkt'
+Lbb = Mkf Lkk >>> Mkt' <<
+Lbf = Mkf Lkk >>> Mkf' <<
 ```
 
 Some other selected flexes:
