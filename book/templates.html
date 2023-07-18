@@ -256,6 +256,7 @@
   <canvas id="diff-silver-penta-tetra-a" width="500" height="250"></canvas>
   <canvas id="diff-silver-penta-tetra-b" width="500" height="250"></canvas><br/><br/>
   <canvas id="diff-silver-hexa-tetra" width="800" height="400"></canvas>
+  <canvas id="diff-other-tri-hexa" width="1000" height="372"></canvas><br/><br/>
   <script type="text/javascript">
     const triCaptions = [
       { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
@@ -281,6 +282,7 @@
     drawStripPinch("diff-silver-tetra-octa2", 8, "P*P+", 225, undefined, undefined, -1, "4b", 1, [45, 90]);
     drawStripPinch2("diff-silver-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 135, 1, "6a", undefined, [90, 45]);
     drawStripSequence("diff-silver-hexa-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
+    drawStripSequence("diff-other-tri-hexa", 6, "P+", 140, [65, 40], ">", -3, 0, "3");
 
     var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
     drawStripComplex("diff-silver-penta-tetra-a", script,
