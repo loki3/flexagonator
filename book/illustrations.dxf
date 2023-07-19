@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460137.6301041553
+2460144.6902430439
   9
 $TDUUPDATE
  40
-2460137.9634374999
+2460145.0235763891
   9
 $TDINDWG
  40
-78.923206018519
+83.307638888889
   9
 $TDUSRTIMER
  40
-78.923206018519
+83.307638888889
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-14BF9CA0555
+14BF9CA0557
   9
 $SURFTAB1
  70
@@ -7469,7 +7469,7 @@ AcDbText
  40
 0.072327
   1
-B+>B+
+B>B
   7
 Arial
 100
@@ -13231,7 +13231,7 @@ AcDbText
  40
 0.04
   1
-(BtBt'BbBb'^ >)x2
+(BtBt'BbBb'^ >)2
   7
 Arial
 100
@@ -28699,7 +28699,7 @@ AcDbText
  40
 0.04
   1
-(B+Bt+Bb+>)2
+B, Bt, Bb
   7
 Arial
 100
@@ -42761,7 +42761,7 @@ AcDbText
  40
 0.06
   1
-B>B
+(B>)4
  50
 315.0
   7
@@ -44399,7 +44399,7 @@ AcDbText
  40
 0.06
   1
-(B^ >)x2
+(B^ >)2
   7
 Arial
 100
@@ -45669,7 +45669,7 @@ AcDbText
  40
 0.06
   1
-(B^ >)x3
+(B^ >)3
   7
 Arial
 100
@@ -46661,7 +46661,7 @@ AcDbText
  40
 0.06
   1
-(B^ >)x4
+(B^ >)4
   7
 Arial
 100
@@ -96684,6 +96684,32 @@ AcDbPolyline
 85.465
  20
 -23.781199
+  0
+TEXT
+  5
+14BF9CA0556
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+61.5
+ 20
+-4.0
+ 30
+0.0
+ 40
+0.1
+  1
+(B+Bt+Bb+>)2
+  7
+Arial
+100
+AcDbText
   0
 ENDSEC
   0
