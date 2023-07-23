@@ -48,8 +48,8 @@ namespace Flexagonator {
     // Ul = ~Ur~
     flexes["Ul"] = makeAtomicFlex("unfold left", "a # [1,-2] \\ b", "a # 1 / 2 \\ -b") as AtomicFlex;
 
-    flexes["Xr"] = makeAtomicFlex("exchange right", "a 1 / # [-3,2] / b", "-a [2,-1] / # 3 / -b") as AtomicFlex;
-    flexes["Xl"] = makeAtomicFlex("exchange left", "a 1 \\ # [2,-3] \\ b", "-a [-1,2] \\ # 3 \\ -b") as AtomicFlex;
+    flexes["Xr"] = makeAtomicFlex("exchange right", "a 1 / # [-3,2] / b", "a [1,-2] \\ # -3 \\ b") as AtomicFlex;
+    flexes["Xl"] = makeAtomicFlex("exchange left", "a 1 \\ # [2,-3] \\ b", "a [-2,1] / # -3 / b") as AtomicFlex;
     flexes["Xr3"] = makeAtomicFlex("exchange right across 3 pats",
       "a 1 / # 2 \\ [-4,3] / b", "a [1,-2] \\ # -3 / -4 \\ b") as AtomicFlex;
     flexes["Xl3"] = makeAtomicFlex("exchange left across 3 pats",
@@ -80,7 +80,7 @@ namespace Flexagonator {
   // create flexes that start and end with the same pat directions
   function addFullFlexes(flexes: AtomicFlexes): void {
     flexes["P222h"] = makeAtomicFlex("pinch on hexa",
-      "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b", "-a [2,-1] / 3 / [-5,4] / -6 / [8,-7] / # 9 / -b") as AtomicFlex;
+      "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b", "-a [2,-1] / # 3 / [-5,4] / -6 / [8,-7] / 9 / -b") as AtomicFlex;
 
     // from // to //
     flexes["Tf"] = makeAtomicFlex("forced tuck", "a 1 / # [[-3,4],2] / b", "a [3,[1,-2]] / # 4 / b") as AtomicFlex;
