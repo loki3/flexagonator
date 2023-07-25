@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <meta charset="UTF-8">
 <head>
   <title>atomic flexes</title>
@@ -249,8 +250,10 @@
     function makeDefinitionRow(name) {
       var flex = atomics[name];
       var decomposition = Flexagonator.AtomicDecomposition[name];
+      // Awl (atomic wrap left) is just bookkeeping, don't display it
+      var cleaned = decomposition ? decomposition.replaceAll('Awl', '') : '';
       var html = '<tr><td>' + name + '</td><td>'
-        + (decomposition ? decomposition : '') + '</td><td>'
+        + cleaned + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.input) : '') + '</td><td>'
         + (flex ? Flexagonator.atomicPatternToString(flex.output) : '') + '</td></tr>';
       return html;

@@ -62,7 +62,7 @@ namespace Flexagonator {
     Lk: "Mkf Lkk Mkbs' <",
 
     // specific to hexaflexagon
-    V: "< (Xr>>)2 Xl' (Awl)5 >>> Awl~",
+    V: "< (Xr>>)2 Xl' AwlAwlAwlAwlAwl >>> Awl~",
     Ttf: "Mkh Mkf'",
     Lh: "Mkf Lkk Mkh'",
     Ltb: "Mkf Lkk Mkt'",
