@@ -62,8 +62,8 @@ namespace Flexagonator {
     Lk: "Mkf Lkk Mkbs' <",
 
     // specific to hexaflexagon
+    V: "< (Xr>>)2 Xl' (Awl)5 >>> Awl~",
     Ttf: "Mkh Mkf'",
-    V: "Mkb Mkh'",
     Lh: "Mkf Lkk Mkh'",
     Ltb: "Mkf Lkk Mkt'",
     Lbb: "Mkf Lkk >>> Mkt' <<",
@@ -77,6 +77,9 @@ namespace Flexagonator {
 
     // start & end ///
     S: "K Xl' Ur' < Xl >",
+
+    // start & end /////
+    F3: ">Xl'<< Ul'<< Ur>>> Ul'<< Ur< Ul>Ur'>",
 
     // start & end /\\/
     Iv: "Xl4 Xr4",

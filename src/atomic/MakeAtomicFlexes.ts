@@ -81,6 +81,8 @@ namespace Flexagonator {
   function addFullFlexes(flexes: AtomicFlexes): void {
     flexes["P222h"] = makeAtomicFlex("pinch on hexa",
       "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b", "-a [2,-1] / # 3 / [-5,4] / -6 / [8,-7] / 9 / -b") as AtomicFlex;
+    flexes["V"] = makeAtomicFlex("v-flex on hexa",
+      "a 7 / [-9,8] / # 1 / [-3,2] / [5,-4] / 6 / b", "-a [8,-7] / 9 / # [2,-1] / 3 / 4 / [-6,5] / -b") as AtomicFlex;
 
     // from // to //
     flexes["Tf"] = makeAtomicFlex("forced tuck", "a 1 / # [[-3,4],2] / b", "a [3,[1,-2]] / # 4 / b") as AtomicFlex;
@@ -102,6 +104,10 @@ namespace Flexagonator {
       "a [-2,1] / -3 / -4 / # [[6,-7],-5] / b", "a [-2,1] / -3 / [-6,[-4,5]] / # -7 / b") as AtomicFlex;
     flexes["Sfromm"] = makeAtomicFlex("pyramid shuffle using morph flexes",
       "a 1 / [[[4,-3],-5],2] / -6 / # [8,-7] / b", "a 1 / [-3,2] / -4 / # [8,[-5,[-7,6]]] / b") as AtomicFlex;
+
+    // from ///// to /////
+    flexes["F3"] = makeAtomicFlex("flip3",
+      "a [[3,-4],[1,-2]] / -5 / -6 / # [8,-7] / 9 / b", "a 1 / [-3,2] / # -4 / -5 / [[-8,9],[-6,7]] / b") as AtomicFlex;
 
     // from /\\/ to /\\/
     flexes["Iv"] = makeAtomicFlex("inner pivot",

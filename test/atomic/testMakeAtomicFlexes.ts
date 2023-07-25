@@ -79,6 +79,15 @@ namespace Flexagonator {
         "a [3,[1,-2]] / # 4 / 5 / 6 / 7 / 8 / [11,[9,-10]] / 12 / 13 / 14 / 15 / 16 / b");
     });
 
+    it("should compose to create the v-flex", () => {
+      // hexaflexagon
+      testDefinition("V", AtomicDecomposition.V);
+      // octaflexagon
+      testFormula("V", "< (Xr>>)3 Xl' (Awl)7 >>> Awl~",
+        "a 10 / [-12,11] / # 1 / [-3,2] / 4 / [-6,5] / [8,-7] / 9 / b",
+        "-a [11,-10] / 12 / # [2,-1] / 3 / [5,-4] / 6 / 7 / [-9,8] / -b");
+    });
+
     it("should compose to create the morph flexes", () => {
       testDefinition("Mkf", AtomicDecomposition.Mkf);
       testDefinition("Mkb", AtomicDecomposition.Mkb);
@@ -128,6 +137,8 @@ namespace Flexagonator {
       testDefinition("St", AtomicDecomposition.St);
       testDefinition("Fm", AtomicDecomposition.Fm);
       testDefinition("S3", AtomicDecomposition.S3);
+
+      testDefinition("F3", AtomicDecomposition.F3);
     });
 
     it("should handle /\\\\/ flexes", () => {
