@@ -43,6 +43,7 @@
     <li><a href="#overall-shape">overall shape</a></li>
     <li><a href="#leaf-shape">leaf shape</a></li>
     <li><a href="#pat-count">pat count</a></li>
+    <li><a href="#directions">directions</a></li>
   </ul>
 
   <!-- -->
@@ -670,6 +671,178 @@
     drawFlexagon("pat-count-20", "decagonal ring isosceles icosaflexagon", 0);
     drawFlexagon("pat-count-24", "hexagonal ring bronze icositetraflexagon", 0);
   </script>
+
+  <!-- -->
+  <!-- directions -->
+  <hr />
+  <h2 id="directions">directions</h2>
+
+  <table>
+    <tr>
+      <td class="label">/ * n</td>
+    </tr>
+    <tr>
+      <td>silver <br/> tetraflexagon <br/> ////</td>
+      <td>isosceles <br/> pentaflexagon <br/> /////</td>
+      <td>regular <br/> hexaflexagon <br/> //////</td>
+      <td>bronze <br/> hexaflexagon <br/> //////</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-s4" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-i5" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-r6" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-b6" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>isosceles <br/> heptaflexagon <br/> ///////</td>
+      <td>isosceles <br/> octaflexagon <br/> ////////</td>
+      <td>silver <br/> octaflexagon <br/> ////////</td>
+      <td>isosceles <br/> enneaflexagon <br/> /////////</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-i7" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-i8" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-s8" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-i9" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td>isosceles <br/> decaflexagon <br/> //////////</td>
+      <td>right <br/> decaflexagon <br/> //////////</td>
+      <td>star <br/> decaflexagon <br/> //////////</td>
+      <td>isosceles <br/> dodecaflexagon <br/> ////////////</td>
+      <td>bronze <br/> dodecaflexagon <br/> ////////////</td>
+      <td>star <br/> dodecaflexagon <br/> ////////////</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-i10" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-r10" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-s10" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-i12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-b12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-s12" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">//\ * n rings</td>
+    </tr>
+    <tr>
+      <td>hexagonal ring <br/> enneaflexagon <br/> //\//\//\</td>
+      <td>octagonal ring <br/> dodecaflexagon <br/> //\//\//\//\</td>
+      <td>decagonal ring <br/> pentadecaflexagon <br/> //\//\//\//\//\</td>
+      <td>hexagonal ring <br/> octadecaflexagon <br/> //\//\//\//\//\//\</td>
+      <td>tetradecagonal ring <br/> icosihenaflexagon <br/> //\//\//\//\//\//\//\</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-hr9" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-or12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-dr15" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-hr18" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-tr21" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">//\\ * n rings</td>
+    </tr>
+    <tr>
+      <td>triangular ring <br/> dodecaflexagon <br/> //\\//\\//\\</td>
+      <td>hexagonal ring <br/> isosceles <br/> dodecaflexagon <br/> //\\//\\//\\</td>
+      <td>square ring <br/> hexadecaflexagon <br/> //\\//\\//\\//\\</td>
+      <td>octagonal ring <br/> isosceles <br/> hexadecaflexagon <br/> //\\//\\//\\//\\</td>
+      <td>pentagonal ring <br/> icosaflexagon <br/> //\\//\\//\\//\\//\\</td>
+      <td>decagonal ring <br/> isosceles <br/> icosaflexagon <br/> //\\//\\//\\//\\//\\</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-tr12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-hi12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-sr16" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-or16" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-pr20" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-dr20" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">//, \//\</td>
+      <td></td>
+      <td></td>
+      <td class="label">///</td>
+      <td class="label">///, \//\</td>
+    </tr>
+    <tr>
+      <td>hexagonal silver <br/> dodecaflexagon <br/> //\//\//\//\</td>
+      <td>octagonal ring <br/> tetradecaflexagon <br/> //\\//\//\\//\</td>
+      <td>triangular bronze <br/> octadecaflexagon <br/> /\//\//\//\//\//\/</td>
+      <td>hexagonal ring <br/> dodecaflexagon <br/> ///\///\///\</td>
+      <td>hexagonal ring <br/> tetradecaflexagon <br/> ///\//\///\//\</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-hs12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-or14" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-tb18" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-hr12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-hr14" width="100" height="100"></canvas></td>
+    </tr>
+    <tr>
+      <td class="label">////</td>
+      <td></td>
+      <td></td>
+      <td class="label">////, \//\</td>
+    </tr>
+    <tr>
+      <td>hexagonal regular <br/> decaflexagon <br/> ////\////\</td>
+      <td>rhombic bronze <br/> dodecaflexagon <br/> //\\////\\//</td>
+      <td>hexagonal silver <br/> tetradecaflexagon <br/> ////\/\////\/\</td>
+      <td>kite bronze <br/> octaflexagon <br/> ////\//\</td>
+      <td>rhombic bronze <br/> hexadecaflexagon <br/> ////\//\////\//\</td>
+    </tr>
+    <tr>
+      <td><canvas id="dir-hr10" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-rb12" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-hs14" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-kb8" width="100" height="100"></canvas></td>
+      <td><canvas id="dir-rb16" width="100" height="100"></canvas></td>
+    </tr>
+    <script type="text/javascript">
+      // isoflexagons
+      drawFlexagon("dir-s4", "square silver tetraflexagon", 45);
+      drawFlexagon("dir-i5", "pentaflexagon", 18);
+      drawFlexagon("dir-r6", "hexaflexagon", 0);
+      drawFlexagon("dir-b6", "bronze hexaflexagon", 30);
+      drawFlexagon("dir-i7", "heptaflexagon", -12);
+      drawFlexagon("dir-i8", "octaflexagon", 0);
+      drawFlexagon("dir-s8", "silver octaflexagon", 0);
+      drawFlexagon("dir-i9", "enneaflexagon", 10);
+      drawFlexagon("dir-i10", "decaflexagon", 0);
+      drawFlexagon("dir-r10", "pentagonal right decaflexagon", -18);
+      drawFlexagon("dir-i12", "dodecaflexagon", 0);
+      drawFlexagon("dir-b12", "bronze dodecaflexagon", 0);
+      drawFlexagon("dir-s10", "star decaflexagon", 18);
+      drawFlexagon("dir-s12", "star dodecaflexagon", 0);
+      // //\ rings
+      drawFlexagon("dir-hr9", "hexagonal ring enneaflexagon", 0);
+      drawFlexagon("dir-hs12", "hexagonal silver dodecaflexagon", 45);
+      drawFlexagon("dir-or12", "octagonal ring dodecaflexagon", 0);
+      drawFlexagon("dir-dr15", "decagonal ring pentadecaflexagon", 0);
+      drawFlexagon("dir-hr18", "hexagonal ring octadecaflexagon", 0);
+      drawFlexagon("dir-tr21", "tetradecagonal ring icosihenaflexagon", -5);
+      // //\\ rings
+      drawFlexagon("dir-tr12", "triangular ring dodecaflexagon", -15);
+      drawFlexagon("dir-hi12", "hexagonal ring isosceles dodecaflexagon", 0);
+      drawFlexagon("dir-sr16", "square ring hexadecaflexagon", -22);
+      drawFlexagon("dir-or16", "octagonal ring isosceles hexadecaflexagon", 0);
+      drawFlexagon("dir-pr20", "pentagonal ring right icosaflexagon", -26);
+      drawFlexagon("dir-dr20", "decagonal ring isosceles icosaflexagon", 0);
+      // misc1
+      drawFlexagon("dir-hs12", "hexagonal silver dodecaflexagon", 45);
+      drawFlexagon("dir-or14", "octagonal ring tetradecaflexagon", 0);
+      drawFlexagon("dir-tb18", "triangular bronze octadecaflexagon", 60);
+      drawFlexagon("dir-hr12", "hexagonal ring dodecaflexagon", 0);
+      drawFlexagon("dir-hr14", "hexagonal ring tetradecaflexagon", 0);
+      // misc2
+      drawFlexagon("dir-hr10", "hexagonal regular decaflexagon", 0);
+      drawFlexagon("dir-rb12", "rhombic bronze dodecaflexagon", 15);
+      drawFlexagon("dir-hs14", "hexagonal silver tetradecaflexagon", 0);
+      drawFlexagon("dir-kb8", "kite bronze octaflexagon", 180);
+      drawFlexagon("dir-rb16", "rhombic bronze hexadecaflexagon", 75);
+    </script>
+  </table>
+
 </body>
 
 </html>
