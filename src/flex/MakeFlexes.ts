@@ -42,7 +42,7 @@ namespace Flexagonator {
       if (patCount == 8 || patCount == 10 || patCount == 12)
         flexes["Tw"] = createTwist(patCount);
       if (patCount >= 5)
-        flexes["Ltf"] = createSlotTuck(patCount);
+        flexes["Ltf"] = createLtf(patCount);
       if (patCount >= 5)
         flexes["Lk"] = createSlotPocket(patCount);
       if (patCount == 5)
@@ -86,13 +86,13 @@ namespace Flexagonator {
   function makeHexaFlexes(): Flexes {
     const flexes: Flexes = {};
 
-    flexes[">"] = makeFlex("shift right", [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 1], FlexRotation.Mirror) as Flex;
-    flexes["<"] = makeFlex("shift left", [1, 2, 3, 4, 5, 6], [6, 1, 2, 3, 4, 5], FlexRotation.Mirror) as Flex;
+    flexes[">"] = makeFlex("shift right", [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 1], FlexRotation.ACB) as Flex;
+    flexes["<"] = makeFlex("shift left", [1, 2, 3, 4, 5, 6], [6, 1, 2, 3, 4, 5], FlexRotation.ACB) as Flex;
     flexes["^"] = makeFlex("turn over", [1, 2, 3, 4, 5, 6], [-6, -5, -4, -3, -2, -1], FlexRotation.None) as Flex;
 
     flexes["P"] = makeFlex("pinch flex",
       [[-2, 1], -3, [5, -4], 6, [-8, 7], -9],
-      [2, [-4, 3], -5, [7, -6], 8, [1, 9]], FlexRotation.CounterMirror) as Flex;
+      [2, [-4, 3], -5, [7, -6], 8, [1, 9]], FlexRotation.BAC) as Flex;
     flexes["T"] = makeFlex("tuck flex",
       [[[-2, 3], 1], 4, 5, [-7, 6], -8, -9],
       [3, 4, 5, [-7, 6], -8, [2, [-9, -1]]], FlexRotation.None) as Flex;
@@ -110,7 +110,7 @@ namespace Flexagonator {
       [[-2, [9, [1, -10]]], -3, -4, [6, -5], 7, 8], FlexRotation.None) as Flex;
     flexes["V"] = makeFlex("v flex",
       [1, [-3, 2], [5, -4], 6, 7, [-9, 8]],
-      [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.ClockMirror) as Flex;
+      [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.CBA) as Flex;
     flexes["F"] = makeFlex("flip flex",
       [[-2, 1], -3, -4, -5, [[-8, 9], [-6, 7]], 10],
       [9, [[2, -3], [10, -1]], -4, -5, -6, [8, -7]], FlexRotation.None) as Flex;
@@ -122,22 +122,22 @@ namespace Flexagonator {
       [1, [[-3, 4], 2], 5, 6, 7, [[-9, 10], 8]], FlexRotation.None) as Flex;
     flexes["Ltf"] = makeFlex("slot tuck top front",
       [[[[3, -2], -4], 1], -5, -6, -7, [9, -8], 10],
-      [10, [-2, 1], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.None) as Flex;
+      [10, [-2, 1], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.ACB) as Flex;
     flexes["Ltb"] = makeFlex("slot tuck top back",
       [[[-2, [-4, 3]], 1], -5, -6, -7, [9, -8], 10],
-      [-1, -2, -3, [5, -4], [[-7, 8], 6], [-10, 9]], FlexRotation.ClockMirror) as Flex;
+      [-1, -2, -3, [5, -4], [[-7, 8], 6], [-10, 9]], FlexRotation.BAC) as Flex;
     flexes["Lbf"] = makeFlex("slot tuck bottom front",
       [[[-2, 3], 1], [-5, 4], -6, -7, [9, -8], 10],
-      [[-3, 2], -4, [6, -5], [-8, 7], -9, [1, -10]], FlexRotation.CounterMirror) as Flex;
+      [[-3, 2], -4, [6, -5], [-8, 7], -9, [1, -10]], FlexRotation.CBA) as Flex;
     flexes["Lbb"] = makeFlex("slot tuck bottom back",
       [[[-2, 3], 1], [-5, 4], -6, -7, [[9, -10], -8], -11],
-      [-2, [4, -3], 5, [[-7, 8], 6], 9, [[-11, -1], 10]], FlexRotation.CounterMirror) as Flex;
+      [-2, [4, -3], 5, [[-7, 8], 6], 9, [[-11, -1], 10]], FlexRotation.BCA) as Flex;
     flexes["Lh"] = makeFlex("slot half",
       [[[-2, [-4, 3]], 1], -5, -6, -7, [[9, -10], -8], -11],
-      [[[-11, -1], 10], -2, -3, [5, -4], [[-7, 8], 6], 9], FlexRotation.CounterMirror) as Flex;
+      [[[-11, -1], 10], -2, -3, [5, -4], [[-7, 8], 6], 9], FlexRotation.BAC) as Flex;
     flexes["Lk"] = makeFlex("slot pocket",
       [[[[3, -2], -4], 1], -5, -6, -7, [[[-10, 9], 11], -8], 12],
-      [10, [-2, [11, [1, -12]]], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.None) as Flex;
+      [10, [-2, [11, [1, -12]]], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.ACB) as Flex;
     flexes["Tk"] = makeFlex("ticket flex",
       [1, 2, 3, [-5, 4], [[[-8, 7], 9], -6], [-11, 10]],
       [-8, [6, -7], [-4, 5], -3, -2, [[10, -9], [-1, -11]]], FlexRotation.None) as Flex;
@@ -153,8 +153,8 @@ namespace Flexagonator {
       leftOut[i] = i < 1 ? patCount : i;
       overOut[i] = i - patCount;
     }
-    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.Mirror) as Flex;
-    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Mirror) as Flex;
+    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.ACB) as Flex;
+    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.ACB) as Flex;
     flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None) as Flex;
   }
 
@@ -195,7 +195,7 @@ namespace Flexagonator {
       b = (b == 0 ? leaves : b);
       output.push([(a + 4) % leaves, -b]);
     }
-    return makeFlex("pinch flex", input, output, FlexRotation.CounterMirror) as Flex;
+    return makeFlex("pinch flex", input, output, FlexRotation.BAC) as Flex;
   }
 
   function createDoublePinch(patCount: number, which: number[]): Flex {
@@ -330,7 +330,7 @@ namespace Flexagonator {
       output = one.concat(two);
     }
 
-    return makeFlex("v flex", input, output, FlexRotation.ClockMirror) as Flex;
+    return makeFlex("v flex", input, output, FlexRotation.CBA) as Flex;
   }
 
   function createFlip(patCount: number): Flex {
@@ -423,10 +423,10 @@ namespace Flexagonator {
       input = [[1, 2], [3, 4], 5, [6, 7], 8, 9, [10, 11], [12, 13], 14, [15, 16], 17, 18];
       output = [-1, -4, [-5, 3], -7, [-8, 6], [11, -9], -10, -13, [-14, 12], -16, [-17, 15], [2, -18]];
     }
-    return makeFlex("twist flex", input, output, FlexRotation.CounterMirror) as Flex;
+    return makeFlex("twist flex", input, output, FlexRotation.CBA) as Flex;
   }
 
-  function createSlotTuck(patCount: number): Flex {
+  function createLtf(patCount: number): Flex {
     // (((1,2)3)4) ... (i) ... (n-4) (n-3) (n-2,n-1) (n)
     // (n) (2,4) (^1) (3) ... (i) ... (n-2(n-4(n-1,^n-3)))
     const input: LeafTree = [];
@@ -450,7 +450,7 @@ namespace Flexagonator {
     }
     output.push([leaves - 2, [leaves - 4, [leaves - 1, -(leaves - 3)]]]);
 
-    return makeFlex("slot tuck flex", input, output, FlexRotation.None) as Flex;
+    return makeFlex("slot tuck top front", input, output, FlexRotation.ACB) as Flex;
   }
 
   function createSlotPocket(patCount: number): Flex {
@@ -477,7 +477,7 @@ namespace Flexagonator {
     }
     output.push([leaves - 3, [leaves - 6, [leaves - 1, -(leaves - 5)]]]);
 
-    return makeFlex("slot pocket", input, output, FlexRotation.None) as Flex;
+    return makeFlex("slot pocket", input, output, FlexRotation.ACB) as Flex;
   }
 
 

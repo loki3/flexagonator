@@ -10,7 +10,7 @@ namespace Flexagonator {
       expect(angles[2]).toBe(70);
     });
     it('understands current vertex', () => {
-      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make(1, false)) as Flexagon;
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make([1, 2, 0], false)) as Flexagon;
       const fa = FlexagonAngles.makeAngles(50, 60, true);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(60);
@@ -18,7 +18,7 @@ namespace Flexagonator {
       expect(angles[2]).toBe(50);
     });
     it('understands mirror', () => {
-      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make(0, true)) as Flexagon;
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make([0, 2, 1], true)) as Flexagon;
       const fa = FlexagonAngles.makeAngles(50, 60, true);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(50);
@@ -26,7 +26,7 @@ namespace Flexagonator {
       expect(angles[2]).toBe(60);
     });
     it('understands current vertex with mirror', () => {
-      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make(1, true)) as Flexagon;
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make([1, 0, 2], true)) as Flexagon;
       const fa = FlexagonAngles.makeAngles(50, 60, true);
       const angles = fa.getAngles(f);
       expect(angles[0]).toBe(60);
@@ -34,7 +34,7 @@ namespace Flexagonator {
       expect(angles[2]).toBe(70);
     });
     it('can use deprecated value', () => {
-      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make(0, false, 1/*deprecated value*/)) as Flexagon;
+      const f = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], AngleTracker.make([0, 1, 2], false, 1/*deprecated value*/)) as Flexagon;
       const fa = FlexagonAngles.makeAngles(50, 60, false/*useCorrect*/);
       const angles = fa.getAngles(f); // [60,70,50] instead of [50,60,70] because the deprecated corner is 1
       expect(angles[0]).toBe(60);

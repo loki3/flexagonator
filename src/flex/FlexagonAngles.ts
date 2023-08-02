@@ -38,11 +38,16 @@ namespace Flexagonator {
     // [center angle, clockwise, clockwise]
     getAngles(flexagon: Flexagon): number[] {
       const angles: number[] = [this.angleCenter, this.angleCounter, 180 - this.angleCenter - this.angleCounter];
-      const v = this.useCorrect ? flexagon.angleTracker.whichCorner : flexagon.angleTracker.oldCorner;
-      if (flexagon.angleTracker.isMirrored) {
-        return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
+      if (this.useCorrect) {
+        const v = flexagon.angleTracker.corners;
+        return [angles[v[0]], angles[v[1]], angles[v[2]]];
+      } else {
+        const v = flexagon.angleTracker.oldCorner;
+        if (flexagon.angleTracker.oldIsMirrored) {
+          return [angles[v], angles[(v + 2) % 3], angles[(v + 1) % 3]];
+        }
+        return [angles[v], angles[(v + 1) % 3], angles[(v + 2) % 3]];
       }
-      return [angles[v], angles[(v + 1) % 3], angles[(v + 2) % 3]];
     }
 
     getCenterAngleSum(flexagon: Flexagon): CenterAngle {

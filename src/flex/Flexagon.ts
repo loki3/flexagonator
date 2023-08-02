@@ -104,22 +104,37 @@ namespace Flexagonator {
 
   /**
    * tracks how the FlexagonAngles associated with a Flexagon should be used.
-   * whichAngle: which of the 3 angles is currently in the center of the flexagon (012)
-   * isMirrored: if !isMirrored, angles are 012, else 021
+   * corners: array of 0,1,or 2 - lists which angle is center/lower, first clockwise, and final angle
+   * isMirrored: for backward compat with the old API, if !isMirrored, angles are 012, else 021
    * oldAngle: for backward compat with the old API, same as 'whichAngle' except it's often wrong
    */
   export class AngleTracker {
-    static make(whichCorner: number, isMirrored: boolean, oldCorner?: number) {
-      return new AngleTracker(whichCorner, isMirrored, oldCorner !== undefined ? oldCorner : whichCorner);
+    static make(corners: number[], oldIsMirrored: boolean, oldCorner?: number) {
+      return new AngleTracker(corners, oldIsMirrored, oldCorner !== undefined ? oldCorner : corners[0]);
     }
     static makeDefault() {
-      return new AngleTracker(0, false, 0);
+      return new AngleTracker([0, 1, 2], false, 0);
     }
 
     private constructor(
-      readonly whichCorner: number, readonly isMirrored: boolean,
-      readonly oldCorner: number
+      readonly corners: number[],
+      readonly oldIsMirrored: boolean, readonly oldCorner: number
     ) {
+    }
+
+    rotate(fr: FlexRotation): number[] {
+      switch (fr) {
+        case FlexRotation.ACB: return this.apply(0, 2, 1);
+        case FlexRotation.BAC: return this.apply(1, 0, 2);
+        case FlexRotation.BCA: return this.apply(1, 2, 0);
+        case FlexRotation.CAB: return this.apply(2, 0, 1);
+        case FlexRotation.CBA: return this.apply(2, 1, 0);
+      }
+      return this.corners;
+    }
+
+    private apply(a: number, b: number, c: number): number[] {
+      return [this.corners[a], this.corners[b], this.corners[c]];
     }
   }
 }

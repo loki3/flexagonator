@@ -276,11 +276,11 @@
     drawStripPinch("diff-bronze-tri-tetra1", 6, "P*P+", 150, undefined, undefined, -1, "4a", 0, [60, 90]);
     drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [30, 60], "solid");
     drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [90, 30]);
-    drawStripPinch2("diff-bronze-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [30, 60]);
+    drawStripPinch2("diff-bronze-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [60, 90]);
     drawStripSequence("diff-silver-tri-hexa", 6, "P+", 135, [45, 45], ">", -3, 0, "3");
     drawStripPinch("diff-silver-tetra-octa1", 8, "P*P+", 45, undefined, undefined, 3, "4a", 1, [90, 45], "solid");
     drawStripPinch("diff-silver-tetra-octa2", 8, "P*P+", 225, undefined, undefined, -1, "4b", 1, [45, 90]);
-    drawStripPinch2("diff-silver-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 135, 1, "6a", undefined, [90, 45]);
+    drawStripPinch2("diff-silver-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 135, 1, "6a", undefined, [45, 45]);
     drawStripSequence("diff-silver-hexa-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
     drawStripSequence("diff-other-tri-hexa", 6, "P+", 140, [65, 40], ">", -3, 0, "3");
 
@@ -410,7 +410,7 @@
     drawStripSequence("V-minimal-hexa", 6, "V*", 60, undefined, undefined, 0, 2);
     drawStripSequence("V-cycle6", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
     drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
-    drawStripSequence("V-minimal-octa", 8, "V*", -45, [45, 45], undefined, -1, 0);
+    drawStripSequence("V-minimal-octa", 8, "V*", -45, [45, 90], undefined, -1, 0);
   </script>
 
   <h3 id="breakdown">breaking down flexes</h3>
@@ -604,9 +604,9 @@
   <span id="silverOcta-6a" width="1200" height="204"></span><br/><br/>
   <span id="silverOcta-6b" width="1200" height="204"></span><br/><br/>
   <script type="text/javascript">
-    drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 90], ">", -1, 1, "Tw");
+    drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 45], ">", -1, 1, "Tw");
 
-    var hexa = [{ numPats: 8, angles2: [45, 45], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
+    var hexa = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
     drawStripComplex("silverOcta-6a", hexa,
       { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] });
     drawStripComplex("silverOcta-6b", hexa,
@@ -618,7 +618,7 @@
   <span id="bronzeDodeca-6b" width="1100" height="300"></span><br/><br/>
   <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
   <script type="text/javascript">
-    var hexa = [{ numPats: 12, angles2: [60, 30], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
+    var hexa = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
     drawStripComplex("bronzeDodeca-6a", hexa,
       { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
     drawStripComplex("bronzeDodeca-6b", hexa,

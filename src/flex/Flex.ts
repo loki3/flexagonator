@@ -1,11 +1,16 @@
 namespace Flexagonator {
 
-  /** describes how a flex rotates & mirrors leaves */
+  /**
+   * if the first leaf after the reference hinge has angles ABC (A in the center/lower & B clockwise),
+   * this describes the new arrangement of angles after a given flex
+   */
   export enum FlexRotation {
-    None,          // same center vertex, no mirroring
-    ClockMirror,   // new center = 1 step clockwise, flexagon is mirrored
-    CounterMirror, // new center = 1 step counterclockwise, flexagon is mirrored
-    Mirror,        // same center vertex, flexagon is mirrored
+    None,          // ABC, unchanged
+    ACB,
+    BAC,
+    BCA,
+    CAB,
+    CBA,
   }
 
   /*
@@ -67,11 +72,12 @@ namespace Flexagonator {
     private newAngleTracker(flexagon: Flexagon): AngleTracker {
       const tracker = flexagon.angleTracker;
 
-      const newWhich: number = this.getNewCorner(tracker.whichCorner, tracker.isMirrored);
-      const oldWhich: number = this.getOldCorner(tracker.oldCorner, tracker.isMirrored);
-      const mirrored: boolean = (this.rotation == FlexRotation.None) ? tracker.isMirrored : !tracker.isMirrored;
+      const corners = tracker.rotate(this.rotation);
+      // deprecated info
+      const oldWhich: number = this.getOldCorner(tracker.oldCorner, tracker.oldIsMirrored);
+      const mirrored: boolean = (this.rotation == FlexRotation.None) ? tracker.oldIsMirrored : !tracker.oldIsMirrored;
 
-      return AngleTracker.make(newWhich, mirrored, oldWhich);
+      return AngleTracker.make(corners, mirrored, oldWhich);
     }
 
     private newDirections(directions?: Directions): Directions | undefined {
@@ -88,10 +94,14 @@ namespace Flexagonator {
     }
 
     private invertRotation(fr: FlexRotation): FlexRotation {
-      if (fr === FlexRotation.None || fr === FlexRotation.Mirror) {
-        return fr;
+      switch (fr) {
+        case FlexRotation.ACB: return FlexRotation.ACB;
+        case FlexRotation.BAC: return FlexRotation.BAC;
+        case FlexRotation.BCA: return FlexRotation.CAB;
+        case FlexRotation.CAB: return FlexRotation.BCA;
+        case FlexRotation.CBA: return FlexRotation.CBA;
       }
-      return (fr === FlexRotation.ClockMirror) ? FlexRotation.CounterMirror : FlexRotation.ClockMirror;
+      return FlexRotation.None;
     }
 
     // create a pat given a tree of indices into a set of matched pats
@@ -115,22 +125,13 @@ namespace Flexagonator {
       return { reason: FlexCode.BadFlexOutput };
     }
 
-    private getNewCorner(whichCorner: number, isFirstMirrored: boolean): number {
-      if (this.rotation === FlexRotation.None || this.rotation === FlexRotation.Mirror) {
-        return whichCorner;
-      }
-      if ((this.rotation === FlexRotation.ClockMirror && isFirstMirrored) ||
-        (this.rotation === FlexRotation.CounterMirror && !isFirstMirrored)) {
-        return (whichCorner + 1) % 3;
-      }
-      return (whichCorner + 2) % 3;
-    }
+    /** deprecated: incorrectly supports a subset of rotations */
     private getOldCorner(whichCorner: number, isFirstMirrored: boolean): number {
-      if (this.rotation === FlexRotation.None || this.rotation === FlexRotation.Mirror) {
+      if (this.rotation === FlexRotation.None || this.rotation === FlexRotation.ACB) {
         return whichCorner;
       }
-      if ((this.rotation === FlexRotation.ClockMirror && !isFirstMirrored) ||
-        (this.rotation === FlexRotation.CounterMirror && isFirstMirrored)) {
+      if ((this.rotation === FlexRotation.CBA && !isFirstMirrored) ||
+        (this.rotation === FlexRotation.BAC && isFirstMirrored)) {
         return (whichCorner + 1) % 3;
       }
       return (whichCorner + 2) % 3;
