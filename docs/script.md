@@ -246,17 +246,14 @@ you can turn the flexagon over and, without `>` or `<`, perform the same flex ag
 In other words, `A = ^A^`, though this isn't always possible.
 
 There is one more optional parameter when defining a flex using pat notation called `rotation`,
-which takes the values `0`, `1`, `2`, or `3` in JSON or one of the following values in JavaScript:
+which describes how the angles in the first leaf after the current hinge change as a result of the flex.
+For reference, ABC describes the angles before the flex,
+where A is the center (or lower) angle, B is the angle clockwise from A, and C is the final angle.
 
-* `FlexRotation.None`:          same center vertex, no mirroring (the default)
-* `FlexRotation.ClockMirror`:   new center = 1 step clockwise, flexagon is mirrored
-* `FlexRotation.CounterMirror`: new center = 1 step counterclockwise, flexagon is mirrored
-* `FlexRotation.Mirror`:        same center vertex, flexagon is mirrored
+The possible values for `rotation` are `ABC` (the default), `ACB`, `BAC`, `BCA`, `CAB`, and `CBA`.
 
-This describes how the top leaf in the first pat rotates when the flex is performed.
-For many flexes (such as `T`, `S`, and `F`), rotation doesn't change, so you can rely on the default of `None`.
+For many flexes (such as `T`, `S`, and `F`), rotation doesn't change, so you can rely on the default of `ABC`.
 But for other flexs (such as `P` and `V`), the leaves rotate so a different corner of the leaf triangle is pointing into the center.
-When you change the current hinge with `>` or `<`, the leaves are mirrored, not rotated, so they use `FlexRotation.Mirror`.
 
 
 ## Properties

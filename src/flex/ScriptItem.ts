@@ -61,10 +61,13 @@ namespace Flexagonator {
     readonly name: string,
     readonly input: LeafTree[],
     readonly output: LeafTree[],
-    readonly rotation?: FlexRotation,
+    readonly rotation?: AngleOrder,
     /** the new order for the directions between pats, 1-based */
     readonly orderOfDirs?: number[],
   }
+
+  /** the order of the angles ABC after a flex */
+  export type AngleOrder = 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA';
 
   // define a flex in terms of a flex sequence
   export interface FlexFromSequence {

@@ -137,7 +137,7 @@ namespace Flexagonator {
       const f = item.addFlex;
       const newFlex = isFlexFromSequence(f)
         ? makeFlexFromSequence(f.sequence, fm.allFlexes, f.name)
-        : makeFlex(f.name, f.input, f.output, f.rotation == undefined ? FlexRotation.None : f.rotation, f.orderOfDirs);
+        : makeFlex(f.name, f.input, f.output, angleOrderToFlexRotation(f.rotation), f.orderOfDirs);
       if (isFlexError(newFlex)) {
         return newFlex;
       }
@@ -215,5 +215,17 @@ namespace Flexagonator {
         fm.setUnsetFaceColor(unsetFace.back.color, false);
       }
     }
+  }
+
+  function angleOrderToFlexRotation(order?: AngleOrder): FlexRotation {
+    switch (order) {
+      case 'ABC': return FlexRotation.None;
+      case 'ACB': return FlexRotation.ACB;
+      case 'BAC': return FlexRotation.BAC;
+      case 'BCA': return FlexRotation.BCA;
+      case 'CAB': return FlexRotation.CAB;
+      case 'CBA': return FlexRotation.CBA;
+    }
+    return FlexRotation.None;
   }
 }
