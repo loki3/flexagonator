@@ -108,10 +108,10 @@
     <li><a href="#part2">Part Two: Asymmetric Flexes</a></li>
     <ul>
       <li><a href="#flex-diagrams">flex diagrams</a></li>
-      <li><a href="#flip">flip flex</a></li>
-      <li><a href="#tuck">tuck flex</a></li>
-      <li><a href="#pyramid shuffle">pyramid shuffle</a></li>
       <li><a href="#vflex">v flex</a></li>
+      <li><a href="#tuck">tuck flex</a></li>
+      <li><a href="#flip">flip flex</a></li>
+      <li><a href="#pyramid shuffle">pyramid shuffle</a></li>
       <li><a href="#breakdown">breaking down flexes</a></li>
       <li><a href="#slot-flexes">slot flexes</a></li>
     </ul>
@@ -363,6 +363,30 @@
 
   <h3 id="flex-diagrams">flex diagrams</h3>
 
+  <h3 id="vflex">v flex</h3>
+
+  <canvas id="V-minimal-hexa" width="900" height="450"></canvas>
+  <canvas id="V-cycle6" width="1000" height="140"></canvas>
+  <canvas id="V-cycle15" width="1000" height="110"></canvas>
+  <canvas id="V-minimal-octa" width="1000" height="252"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("V-minimal-hexa", 6, "V*", 60, undefined, undefined, 0, 2);
+    drawStripSequence("V-cycle6", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
+    drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
+    drawStripSequence("V-minimal-octa", 8, "V*", -45, [45, 90], undefined, -1, 0);
+  </script>
+
+  <h3 id="tuck">tuck flex</h3>
+
+  <canvas id="T-6-bronze-minimal" width="750" height="500"></canvas><br/><br/>
+  <canvas id="T-6-minimal" width="900" height="400"></canvas><br/><br/>
+  <canvas id="T-8" width="500" height="500"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
+    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
+    drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 3, undefined, undefined, "solid");
+  </script>
+
   <h3 id="flip">flip flex</h3>
 
   <canvas id="F-8-minimal" width="900" height="400"></canvas><br/><br/>
@@ -378,17 +402,6 @@
     drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
   </script>
 
-  <h3 id="tuck">tuck flex</h3>
-
-  <canvas id="T-6-bronze-minimal" width="750" height="500"></canvas><br/><br/>
-  <canvas id="T-6-minimal" width="900" height="400"></canvas><br/><br/>
-  <canvas id="T-8" width="500" height="500"></canvas>
-  <script type="text/javascript">
-    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
-    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
-    drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 3, undefined, undefined, "solid");
-  </script>
-
   <h3 id="pyramid shuffle">pyramid shuffle</h3>
 
   <canvas id="S-6-minimal" width="800" height="500"></canvas><br/><br/>
@@ -398,19 +411,6 @@
     drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
     drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
     drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*", undefined, 1);
-  </script>
-
-  <h3 id="vflex">v flex</h3>
-
-  <canvas id="V-minimal-hexa" width="900" height="450"></canvas>
-  <canvas id="V-cycle6" width="1000" height="140"></canvas>
-  <canvas id="V-cycle15" width="1000" height="110"></canvas>
-  <canvas id="V-minimal-octa" width="1000" height="252"></canvas>
-  <script type="text/javascript">
-    drawStripSequence("V-minimal-hexa", 6, "V*", 60, undefined, undefined, 0, 2);
-    drawStripSequence("V-cycle6", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
-    drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
-    drawStripSequence("V-minimal-octa", 8, "V*", -45, [45, 90], undefined, -1, 0);
   </script>
 
   <h3 id="breakdown">breaking down flexes</h3>

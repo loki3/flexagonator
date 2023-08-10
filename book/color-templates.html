@@ -81,11 +81,10 @@
     </ul>
     <li><a href="#part2">Part Two: Flexes</a></li>
     <ul>
-      <li><a href="#flip">flip flex</a></li>
-      <li><a href="#tuck">tuck flex</a></li>
-      <li><a href="#pyramid-shuffle">pyramid shuffle</a></li>
       <li><a href="#v-flex">v flex</a></li>
-      <li><a href="#silver-tetra">silver tetra flex</a></li>
+      <li><a href="#tuck">tuck flex</a></li>
+      <li><a href="#flip">flip flex</a></li>
+      <li><a href="#pyramid-shuffle">pyramid shuffle</a></li>
       <li><a href="#breaking-down">breaking down flexes</a></li>
       <li><a href="#slots">slot flexes</a></li>
     </ul>
@@ -159,6 +158,23 @@
   <!-- part 2 -->
   <h1 id="part2">part 2</h1>
 
+  <h2 id="v-flex">v-flex</h2>
+  <canvas id="V-minimal1" width="1000" height="435"></canvas>
+  <canvas id="V-minimal2" width="1000" height="435"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("V-minimal", 6, "V*", 60);
+  </script>
+
+  <h2 id="tuck">tuck</h2>
+  <canvas id="T-6-bronze-minimal1" width="800" height="555"></canvas><br/><br/>
+  <canvas id="T-6-bronze-minimal2" width="800" height="555"></canvas><br/><br/>
+  <canvas id="T-6-minimal1" width="920" height="400"></canvas><br/><br/>
+  <canvas id="T-6-minimal2" width="920" height="400"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
+    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
+  </script>
+
   <h2 id="flip">flip</h2>
   <canvas id="F-8-minimal1" width="1000" height="400"></canvas><br/><br/>
   <canvas id="F-8-minimal2" width="1000" height="400"></canvas><br/><br/>
@@ -174,16 +190,6 @@
     drawStripSequence("F-7-cycle", 7, "(F*<)5", 128, undefined, "^", -3, 1, leafProps7);
   </script>
 
-  <h2 id="tuck">tuck</h2>
-  <canvas id="T-6-bronze-minimal1" width="800" height="555"></canvas><br/><br/>
-  <canvas id="T-6-bronze-minimal2" width="800" height="555"></canvas><br/><br/>
-  <canvas id="T-6-minimal1" width="920" height="400"></canvas><br/><br/>
-  <canvas id="T-6-minimal2" width="920" height="400"></canvas><br/><br/>
-  <script type="text/javascript">
-    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
-    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
-  </script>
-
   <h2 id="pyramid-shuffle">pyramid shuffle</h2>
   <canvas id="S-6-minimal1" width="810" height="600"></canvas><br/><br/>
   <canvas id="S-6-minimal2" width="810" height="600"></canvas><br/><br/>
@@ -192,23 +198,6 @@
   <script type="text/javascript">
     drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
     drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
-  </script>
-
-  <h2 id="v-flex">v-flex</h2>
-  <canvas id="V-minimal1" width="1000" height="435"></canvas>
-  <canvas id="V-minimal2" width="1000" height="435"></canvas>
-  <script type="text/javascript">
-    drawStripSequence("V-minimal", 6, "V*", 60);
-  </script>
-
-  <h2 id="silver-tetra">silver tetra</h2>
-  <canvas id="St-minimal1" width="800" height="600"></canvas>
-  <canvas id="St-minimal2" width="800" height="600"></canvas>
-  <canvas id="St-octa1" width="700" height="700"></canvas>
-  <canvas id="St-octa2" width="700" height="700"></canvas>
-  <script type="text/javascript">
-    drawStripSequence("St-minimal", 4, "St*", 0, [45, 90], ">");
-    drawStripSequence("St-octa", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
   </script>
 
   <h2 id="breaking-down">breaking down flexes</h2>
@@ -224,6 +213,15 @@
     var captions = [{ text: "Mk", which: 0 }, { text: "Mk", which: -1 }];
     Flexagonator.drawUnfolded('silverMorphFlexes1', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'front' } });
     Flexagonator.drawUnfolded('silverMorphFlexes2', fm, { rotation: 135, captions, content: { showLeafProps: true, inset, face: 'back' } });
+  </script>
+
+  <canvas id="St-minimal1" width="800" height="600"></canvas>
+  <canvas id="St-minimal2" width="800" height="600"></canvas>
+  <canvas id="St-octa1" width="700" height="700"></canvas>
+  <canvas id="St-octa2" width="700" height="700"></canvas>
+  <script type="text/javascript">
+    drawStripSequence("St-minimal", 4, "St*", 0, [45, 90], ">");
+    drawStripSequence("St-octa", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
   </script>
 
   <h2 id="slots">slot flexes</h2>
