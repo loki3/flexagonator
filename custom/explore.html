@@ -178,8 +178,8 @@
       var searchStartStr = document.getElementById('searchStart').value;
       var searchEndStr = document.getElementById('searchEnd').value;
       var output = document.getElementById('flexSequence');
-      var searchStart = Flexagonator.parseLeafTrees(searchStartStr);
-      var searchEnd = Flexagonator.parseLeafTrees(searchEndStr);
+      var searchStart = turnIntoLeafTrees(searchStartStr);
+      var searchEnd = turnIntoLeafTrees(searchEndStr);
       if (Flexagonator.isError(searchStart)) {
         var str = Flexagonator.errorToString(searchStart);
         output.innerHTML = str;
@@ -208,6 +208,17 @@
       } else {
         output.innerHTML = "not found - searched " + find.getMaxDepth() + " levels deep";
       }
+    }
+
+    // we have a string that's either pats (e.g. [1,[2,3]]) or an index into the explored flexagon states
+    function turnIntoLeafTrees(s) {
+      if (s[0] !== '[') {
+        const flexagon = explorer.getFlexagons()[Number.parseInt(s)];
+        if (flexagon) {
+          return flexagon.getAsLeafTrees();
+        }
+      }
+      return Flexagonator.parseLeafTrees(s);
     }
 
     function findDisconnected() {
