@@ -135,6 +135,19 @@
       }
     }
 
+    function groupByStructure(flexagons) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        var str = "states grouped by structure\n\n";
+        const groups = Flexagonator.groupByStructure(flexagons);
+        for (var i = 0; i < groups.length; i++) {
+          var line = groups[i].map(n => n.toString()).join(',') + '\n';
+          str += line;
+        }
+        box.value = str;
+      }
+    }
+
     function showDotSimple(found) {
       var box = document.getElementById('states');
       if (box !== null) {
@@ -246,6 +259,8 @@
     <input onclick="showLabels(explorer.getFlexagons());" type="button" value="show labels" />
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
     <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
+    <input onclick="groupByStructure(explorer.getFlexagons());" type="button" value="group by structure" />
+    <br/>
     <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), false);" type="button" value="DOT: directed flexes" />
