@@ -2,7 +2,7 @@
 
 ## Purpose
 
-"Atomic flex theory" describes at a low level how flexagons operate.
+"Atomic flex theory" describes at a low level how triangle flexagons operate.
 It can be used to describe any flex, and explains how to fold a template, unfold a flexagon, and how a flexagon can shape shift.
 
 The fundamental axiom, `Ur = a # [-2,1] / b ->  a # 1 \ 2 / -b`,
@@ -13,7 +13,7 @@ Combined with its folding inverse, `Ur'`, it explains how flexagons work.
 
 Flex definitions include an initial pattern that must be present in the flexagon in order to perform the flex,
 followed by a final pattern that describes how the flex has changed the flexagon.
-They are relative to a "current hinge", which can be changed,
+They are relative to a "reference hinge", which can be changed,
 allowing us to move around a flexagon, performing flexes in different locations.
 
 The notation leverages many of the concepts of [pat notation](https://github.com/loki3/flexagonator/blob/master/docs/pat-notation.md)
@@ -22,7 +22,7 @@ with a few additional concepts.
 Here are the symbols used in defining a flex:
 
 ```
-#       current hinge
+#       reference hinge
 a       all the remaining pats to the left
 b       all the remaining pats to the right
 -       turn over a leaf or pat
@@ -38,13 +38,13 @@ For example, the definition `Ur = a # [-2,1] / b ->  a # 1 \ 2 / -b` means the f
 
 * define a flex named `Ur`
 * the input pattern is `a # [-2,1] / b`
-    * everything to the left of the current hinge is referred to as `a`
-    * the first pat to the right of the current hinge has a pat called `-2` folded on top of a pat called `1`
+    * everything to the left of the reference hinge is referred to as `a`
+    * the first pat to the right of the reference hinge has a pat called `-2` folded on top of a pat called `1`
     * `\` means the next pat is connected to the upper right side of the triangle, with the previous pat connected to the left
     * everything to the right of that pat is referred to as `b`
 * the output pattern is `a # 1 \ 2 / -b`
     * `a` is unchanged
-    * the `1` subpat becomes the first pat after the current hinge
+    * the `1` subpat becomes the first pat after the reference hinge
     * `/` means the next pat is connected to the lower right side of the `1` subpat
     * the `2` subpat is next and has been turned over, since it changed from `-2`
     * `\` means the next pat is connected to the upper right side of the `2` subpat
@@ -54,7 +54,7 @@ We can also define new flexes in terms of existing flexes
 using [flex notation](https://github.com/loki3/flexagonator/blob/master/docs/flex-notation.md),
 e.g. `Xr = Ur> ^Ur'^`.
 
-An extra note on how the changes to `a` and `b` should be interpreted based on where the are relative to the current hinge and whether they start with a minus (`-`)
+An extra note on how the changes to `a` and `b` should be interpreted based on where the are relative to the reference hinge and whether they start with a minus (`-`)
 , which can be confirmed by experimenting with a physical flexagon:
 
 * `a # -> a #` : keep everything in `a` the same
@@ -70,7 +70,7 @@ An extra note on how the changes to `a` and `b` should be interpreted based on w
 
 All flexes can be defined as the composition of just 4 different operations:
 
-* `>`  shift the current hinge one pat to the right
+* `>`  shift the reference hinge one pat to the right
 * `^`  turn over the flexagon across the vertical axis
 * `~`  turn over the flexagon across the horizontal axis
 * `Ur` unfold a hinge to the right
@@ -87,7 +87,7 @@ Ur =  a # [-2,1] / b ->  a # 1 \ 2 / -b
 From those 4 definitions, we can derive several convenient building blocks in terms of those initial flexes:
 
 ```
-# shift current hinge one pat to the left
+# shift reference hinge one pat to the left
 <  = >'
    = a 1 # b  ->  a # 1 b
 
@@ -134,7 +134,7 @@ Here are the definitions of various morph flexes:
 
 ```
 # flexes that morph from main to kite, inverse from kite to main
-# current hinge in middle
+# reference hinge in middle
 Mkf  = K > Ul' <
 Mkb  = ^Mkf^
 Mkr  = << Ur >>>> Xl << Ul' ~
