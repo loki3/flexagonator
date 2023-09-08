@@ -92,6 +92,7 @@
     <ul>
       <li><a href="#square-silver-octa">square silver octa</a></li>
       <li><a href="#pentagonal-deca">pentagonal deca</a></li>
+      <li><a href="#bracelets">bracelets</a></li>
     </ul>
   </ul>
 
@@ -252,6 +253,16 @@
   <canvas id="pentagonal-deca2" width="800" height="1000"></canvas><br/><br/>
   <script type="text/javascript">
     drawStripSequence("pentagonal-deca", 10, "(S*<<)5", 20.5, [36, 54], "");
+  </script>
+
+  <h3 id="bracelets">bracelets</h3>
+  <span id="tetra-16-bracelet-1" width="890" height="800"></span><br/><br/>
+  <span id="tetra-16-bracelet-2" width="890" height="800"></span><br/><br/>
+  <script type="text/javascript">
+    var tetra = [0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]]];
+    var script = [{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetra, labelAsTree: leafColors }];
+    var options = { rotation: 0, captions: starCaptions };
+    drawFrontBackOptions("tetra-16-bracelet-", script, options, options);
   </script>
 
 </body>
