@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460174.456030081
+2460196.8229629514
   9
 $TDUUPDATE
  40
-2460174.7893634262
+2460197.1562962965
   9
 $TDINDWG
  40
-101.066585648148
+123.43349537037
   9
 $TDUSRTIMER
  40
-101.066585648148
+123.43349537037
   9
 $USRTIMER
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-26.852902
+26.899654
  22
--12.612328
+-12.622862
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-44.463524
+44.410698
  41
 1.782719
  42
@@ -320987,7 +320987,7 @@ AcDbText
  40
 0.15
   1
-St variant
+Cascade16
   7
 labels
 100
@@ -324861,7 +324861,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -325027,7 +325027,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -325787,7 +325787,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -325823,7 +325823,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -326123,7 +326123,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -326211,7 +326211,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -326739,7 +326739,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -326775,7 +326775,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -327527,7 +327527,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -327615,7 +327615,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -327993,7 +327993,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -328029,7 +328029,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -328781,7 +328781,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -329211,7 +329211,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -329849,7 +329849,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -330279,7 +330279,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -330643,7 +330643,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -331073,7 +331073,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -331373,7 +331373,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -331725,7 +331725,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -332255,7 +332255,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -332581,7 +332581,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -332961,7 +332961,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-5
 100
 AcDbTrace
  10
@@ -332997,7 +332997,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -333349,7 +333349,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -333463,7 +333463,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-5
 100
 AcDbTrace
  10
@@ -333941,7 +333941,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -334371,7 +334371,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -335315,7 +335315,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -335351,7 +335351,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -336057,7 +336057,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -336613,7 +336613,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-6
 100
 AcDbTrace
  10
@@ -336701,7 +336701,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-6
 100
 AcDbTrace
  10
@@ -336789,7 +336789,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -336825,7 +336825,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -337303,7 +337303,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -337733,7 +337733,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -338315,7 +338315,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -338377,7 +338377,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -339067,7 +339067,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -339243,7 +339243,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -339773,7 +339773,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -339861,7 +339861,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -340141,7 +340141,7 @@ SOLID
 100
 AcDbEntity
   8
-face-2
+face-5
 100
 AcDbTrace
  10
@@ -340177,7 +340177,7 @@ SOLID
 100
 AcDbEntity
   8
-face-2
+face-5
 100
 AcDbTrace
  10
@@ -340681,7 +340681,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-5
 100
 AcDbTrace
  10
@@ -340717,7 +340717,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-5
 100
 AcDbTrace
  10
@@ -340753,7 +340753,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-6
 100
 AcDbTrace
  10
@@ -340919,7 +340919,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-6
 100
 AcDbTrace
  10
@@ -340955,7 +340955,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-5
 100
 AcDbTrace
  10
@@ -340991,7 +340991,7 @@ SOLID
 100
 AcDbEntity
   8
-face-4
+face-5
 100
 AcDbTrace
  10
@@ -341431,7 +341431,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
@@ -341597,7 +341597,7 @@ SOLID
 100
 AcDbEntity
   8
-face-3
+face-4
 100
 AcDbTrace
  10
