@@ -179,6 +179,6 @@ Some other selected flexes:
 # on a pentaflexagon
 L3  = (K^)3 (<)4 (K'^)3
 
-# "inner pivot" with pat directions \//\
-Iv  = > Ul > Ul <<<< Ur' Ul' >>
+# transfer4 with pat directions \//\
+Tr4  = > Ul > Ul <<<< Ur' Ul' >>
 ```

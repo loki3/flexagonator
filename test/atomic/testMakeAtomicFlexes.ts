@@ -142,8 +142,8 @@ namespace Flexagonator {
     });
 
     it("should handle /\\\\/ flexes", () => {
-      testDefinition("Iv", AtomicDecomposition.Iv);
-      testDefinition("Rfb", AtomicDecomposition.Rfb);
+      testDefinition("Tr4", AtomicDecomposition.Tr4);
+      testDefinition("Bf", AtomicDecomposition.Bf);
       testDefinition("Rsrf", AtomicDecomposition.Rsrf);
     });
 
