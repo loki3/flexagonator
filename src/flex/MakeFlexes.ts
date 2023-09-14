@@ -144,20 +144,25 @@ namespace Flexagonator {
   }
 
   function addRotates(patCount: number, flexes: Flexes) {
-    const input = [], rightOut = [], leftOut = [], overOut = [];
-    const rightDirs = [], leftDirs = [];
+    const input = [], rightOut = [], leftOut = [], overOut = [], changeOut = [];
+    const rightDirs = [], leftDirs = [], overDirs = [], changeDirs = [];
     for (let i = 0; i < patCount; i++) {
       input[i] = i + 1;
       rightOut[i] = i + 2 > patCount ? 1 : i + 2;
       leftOut[i] = i < 1 ? patCount : i;
       overOut[i] = i - patCount;
+      changeOut[i] = -i - 1;
       // directions start at 1
       rightDirs[i] = i == patCount - 1 ? 1 : i + 2;
       leftDirs[i] = i == 0 ? patCount : i;
+      overDirs[i] = patCount - i;
+      changeDirs[i] = -(i + 1); // means that direction should be reversed
     }
     flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.Right, rightDirs) as Flex;
     flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Left, leftDirs) as Flex;
-    flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None) as Flex;
+    flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None, overDirs) as Flex;
+    // disable ~ for now since it causes a test slowdown, seems to specifically be 'changeOut'
+    //flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, changeDirs) as Flex;
   }
 
   function addDoublePinches(patCount: number, flexes: Flexes) {

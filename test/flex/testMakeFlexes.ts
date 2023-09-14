@@ -155,6 +155,22 @@ namespace Flexagonator {
       expect(afterLeftLeft.angleTracker.corners[0]).toBe(0);
       expect(afterLeftLeft.angleTracker.corners[1]).toBe(1);
     });
+
+    it('turning it over adjusts pats & directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], undefined, Directions.make("/|////")) as Flexagon;
+
+      const afterOver = flexes["^"].apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(afterOver.getAsLeafTrees(), [-6, -5, -4, -3, -2, -1])).toBeTruthy();
+      const actualOver = (afterOver.directions as Directions).asString(true);
+      expect(actualOver).toBe("////|/");
+
+      /* disable ~ for now since it causes a test slowdown
+      const afterChange = flexes["~"].apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(afterChange.getAsLeafTrees(), [-1, -2, -3, -4, -5, -6])).toBeTruthy();
+      const actualChange = (afterChange.directions as Directions).asString(true);
+      expect(actualChange).toBe("|/||||");
+      */
+    });
   });
 
   /*

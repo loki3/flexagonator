@@ -67,13 +67,13 @@ namespace Flexagonator {
 
 
   // get a list of all the unique flex names (ingoring * and +, but including ')
-  // and optionally excluding ><^
+  // and optionally excluding ><^~
   export function getUniqueFlexes(flexStr: string, excludeRotates: boolean): string[] {
     let result: string[] = [];
     const names: FlexName[] = parseFlexSequence(flexStr);
     for (let name of names) {
       const flexName = name.flexName;
-      if (excludeRotates && (flexName == '<' || flexName == '>' || flexName == '^')) {
+      if (excludeRotates && (flexName == '<' || flexName == '>' || flexName == '^' || flexName == '~')) {
         continue;
       }
       if (result.find(x => (x === flexName)) === undefined) {

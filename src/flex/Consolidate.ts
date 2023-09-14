@@ -42,7 +42,7 @@ namespace Flexagonator {
   }
 
   function isRotate(flexName: FlexName): boolean {
-    return flexName.fullName === '>' || flexName.fullName === '<' || flexName.fullName === '^';
+    return flexName.fullName === '>' || flexName.fullName === '<' || flexName.fullName === '^' || flexName.flexName === '~';
   }
 
   function simplify(flexNames: FlexName[], numPats: number): FlexName[] {

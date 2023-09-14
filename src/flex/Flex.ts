@@ -101,7 +101,9 @@ namespace Flexagonator {
 
       // e.g., [2,3,1] means that the 2nd direction should now be first, followed by the 3rd & 1st
       const oldRaw = directions.asRaw();
-      const newRaw = this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1]);
+      const newRaw = this.orderOfDirs[0] > 0
+        ? this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1])   // move directions around
+        : this.orderOfDirs.map(newIndex => !oldRaw[-newIndex - 1]); // flip the directions, used by ~
       return Directions.make(newRaw);
     }
 
