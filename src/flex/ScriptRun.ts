@@ -225,6 +225,8 @@ namespace Flexagonator {
       case 'BCA': return FlexRotation.BCA;
       case 'CAB': return FlexRotation.CAB;
       case 'CBA': return FlexRotation.CBA;
+      case 'Right': return FlexRotation.Right;
+      case 'Left': return FlexRotation.Left;
     }
     return FlexRotation.None;
   }

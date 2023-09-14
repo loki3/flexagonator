@@ -155,8 +155,8 @@ namespace Flexagonator {
       rightDirs[i] = i == patCount - 1 ? 1 : i + 2;
       leftDirs[i] = i == 0 ? patCount : i;
     }
-    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.ACB, rightDirs) as Flex;
-    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.ACB, leftDirs) as Flex;
+    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.Right, rightDirs) as Flex;
+    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Left, leftDirs) as Flex;
     flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None) as Flex;
   }
 

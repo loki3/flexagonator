@@ -419,7 +419,7 @@
   <canvas id="silverMorphFlexes" width="1000" height="500"></canvas><br/><br/>
   <script type="text/javascript">
     var silverMorphFlexes = [
-      { numPats: 8, "angles": [45, 45], "addMorphFlexes": true },
+      { numPats: 8, "angles": [90, 45], "addMorphFlexes": true },
       { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
       { labelAsTree: [] }
     ];
@@ -469,9 +469,10 @@
       // this is basically one' followed by two, with shifts to get the correct hinge
       var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
       var script = [
-        { "name": "pentagonal silver decaflexagon" },
-        { "addMorphFlexes": true },
-        { "flexes": flexes }
+        //{ "name": "pentagonal silver decaflexagon" },
+        { numPats: 10, directions: "///|//|///", angles2: [45, 45] },
+        { addMorphFlexes: true },
+        { flexes }
       ];
       return Flexagonator.createFromScript(script);
     }
@@ -723,8 +724,9 @@
     var script = [...base, bf];
     var captions = [firstStar, lastStar, { text: "Bf", which: 10, edge: 1 }, { text: "#", which: 10, edge: 0 }, { text: "#", which: 7, edge: 2 }];
     drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
-    const mobius = [{ numPats: 14, angles2: [45, 45], directions: "/||//||//||//|", addMorphFlexes: true }, bf];
-    const mobiusCaptions = [...captions, { text: "möbius", which: 11, edge: 2 }];
+    // note that it doesn't know it's a Möbius strip so it doesn't know how to <<<< across the half-twist
+    const mobius = [{ numPats: 14, angles2: [45, 45], directions: "/||//||//||//|", addMorphFlexes: true }, bf, { flexes: ">>>>" }];
+    const mobiusCaptions = [firstStar, lastStar, { text: "Möbius Bf", which: 11, edge: 2 }];
     drawStripComplex("bracelet-silver-mobius", mobius, { rotation: -45, content: { showLeafProps: true }, captions: mobiusCaptions });
 
     // make a bracelet template that wraps a flex such as F or S
@@ -768,7 +770,7 @@
     drawStripSequence("decorate-tri-deca", 10, "P+", 180 + 36, [36, 36], undefined, -6, 2, "pivot");
     drawStripSequence("decorate-tri-dodeca", 12, "P+", 180 + 30, [30, 30], undefined, -3, 2, "pivot");
 
-    var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles: [36, 54], labelAsTree: [] }];
+    var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree: [] }];
     var drawOptions = { rotation: 0, content: { showLeafProps: true } };
     drawStripComplex("decorate-tuck-deca1", script, { ...drawOptions, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
     drawStripComplex("decorate-tuck-deca2", script, { ...drawOptions, start: 10, captions: [{ text: "a", which: 0 }, lastStar] });

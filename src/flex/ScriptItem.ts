@@ -67,7 +67,7 @@ namespace Flexagonator {
   }
 
   /** the order of the angles ABC after a flex */
-  export type AngleOrder = 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA';
+  export type AngleOrder = 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA' | 'Right' | 'Left';
 
   // define a flex in terms of a flex sequence
   export interface FlexFromSequence {

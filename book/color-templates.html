@@ -17,13 +17,13 @@
     const inset = 0.15;
 
     // draw an unfolded strip, front & back, for a generating sequence that's not just pinch flexes
-    // canvasId: string, numPats: number, flexes: string, rotation: number, angles: [number],
+    // canvasId: string, numPats: number, flexes: string, rotation: number, angles2: [number],
     //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
     //   edge: [optional] which edge to draw flex on
     //   leafProps: [optional] explicit labels & colors rather than auto-numbering
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles, postFlexes, whereFlex, edge, leafProps) {
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles2, postFlexes, whereFlex, edge, leafProps) {
       const labelAsTree = leafProps === undefined ? leafColors : undefined; // auto-number if no explicit leaf props
-      const script = [{ numPats, flexes, angles, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
+      const script = [{ numPats, flexes, angles2, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text: flexes, which: whereFlex, edge });
       drawFrontBack(canvasId, script, rotation, captions);
@@ -188,7 +188,7 @@
     drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
     const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
     [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
-    drawStripSequence("F-7-cycle", 7, "(F*<)5", 128, undefined, "^", -3, 1, leafProps7);
+    drawStripSequence("F-7-cycle", 7, "(F*<)5", 128, [360 / 7, (180 - 360 / 7) / 2], "^", -3, 1, leafProps7);
   </script>
 
   <h2 id="pyramid-shuffle">pyramid shuffle</h2>
@@ -206,7 +206,7 @@
   <canvas id="silverMorphFlexes2" width="1000" height="500"></canvas><br/><br/>
   <script type="text/javascript">
     var silverMorphFlexes = [
-      { numPats: 8, "angles": [45, 45], addMorphFlexes: true },
+      { numPats: 8, "angles": [90, 45], addMorphFlexes: true },
       { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
       { labelAsTree: leafColors }
     ];

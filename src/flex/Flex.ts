@@ -5,12 +5,14 @@ namespace Flexagonator {
    * this describes the new arrangement of angles after a given flex
    */
   export enum FlexRotation {
-    None,          // ABC, unchanged
-    ACB,
-    BAC,
-    BCA,
-    CAB,
-    CBA,
+    None = 'ABC',    // unchanged
+    ACB = 'ACB',
+    BAC = 'BAC',
+    BCA = 'BCA',
+    CAB = 'CAB',
+    CBA = 'CBA',
+    Right = 'Right',  // ACB if next hinge is /, BAC if next hinge is \
+    Left = 'Left',    // ACB if previous hinge is /, BAC if previous hinge is \
   }
 
   /*
@@ -72,12 +74,22 @@ namespace Flexagonator {
     private newAngleTracker(flexagon: Flexagon): AngleTracker {
       const tracker = flexagon.angleTracker;
 
-      const corners = tracker.rotate(this.rotation);
+      const nextPrevDirs = this.getAdjacentDirections(flexagon.directions);
+      const corners = tracker.rotate(this.rotation, nextPrevDirs);
       // deprecated info
       const oldWhich: number = this.getOldCorner(tracker.oldCorner, tracker.oldIsMirrored);
       const mirrored: boolean = (this.rotation == FlexRotation.None) ? tracker.oldIsMirrored : !tracker.oldIsMirrored;
 
       return AngleTracker.make(corners, mirrored, oldWhich);
+    }
+
+    /** get [next direction, previous direction], where true=/ and false=\ */
+    private getAdjacentDirections(directions?: Directions): [boolean, boolean] {
+      if (directions === undefined) {
+        return [true, true];
+      }
+      const all = directions.asRaw();
+      return [all[0], all[all.length - 1]];
     }
 
     private newDirections(directions?: Directions): Directions | undefined {
@@ -100,6 +112,8 @@ namespace Flexagonator {
         case FlexRotation.BCA: return FlexRotation.CAB;
         case FlexRotation.CAB: return FlexRotation.BCA;
         case FlexRotation.CBA: return FlexRotation.CBA;
+        case FlexRotation.Right: return FlexRotation.Left;
+        case FlexRotation.Left: return FlexRotation.Right;
       }
       return FlexRotation.None;
     }

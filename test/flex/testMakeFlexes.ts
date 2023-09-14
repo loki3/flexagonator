@@ -119,7 +119,7 @@ namespace Flexagonator {
   describe('makeFlexes', () => {
     const flexes: Flexes = makeAllFlexes(6);
 
-    it('shifts adjust directions', () => {
+    it('shifts adjust pats & directions', () => {
       const flexagon = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], undefined, Directions.make("/|////")) as Flexagon;
 
       const afterRight = flexes[">"].apply(flexagon) as Flexagon;
@@ -131,6 +131,29 @@ namespace Flexagonator {
       expect(areLTArraysEqual(afterLeft.getAsLeafTrees(), [6, 1, 2, 3, 4, 5])).toBeTruthy();
       const actualLeft = (afterLeft.directions as Directions).asString(true);
       expect(actualLeft).toBe("//|///");
+    });
+
+    it('shifts adjust angles', () => {
+      const angles = AngleTracker.make([0, 1, 2], false);
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], angles, Directions.make("/|////")) as Flexagon;
+
+      // dir is / so ABC -> ACB
+      const afterRight = flexes[">"].apply(flexagon) as Flexagon;
+      expect(afterRight.angleTracker.corners[0]).toBe(0);
+      expect(afterRight.angleTracker.corners[1]).toBe(2);
+      // dir is \ so ABC -> ACB -> CAB
+      const afterRightRight = flexes[">"].apply(afterRight) as Flexagon;
+      expect(afterRightRight.angleTracker.corners[0]).toBe(2);
+      expect(afterRightRight.angleTracker.corners[1]).toBe(0);
+
+      // < should undo the >
+      const afterLeft = flexes["<"].apply(afterRightRight) as Flexagon;
+      expect(afterLeft.angleTracker.corners[0]).toBe(0);
+      expect(afterLeft.angleTracker.corners[1]).toBe(2);
+      // and back to ABC
+      const afterLeftLeft = flexes["<"].apply(afterLeft) as Flexagon;
+      expect(afterLeftLeft.angleTracker.corners[0]).toBe(0);
+      expect(afterLeftLeft.angleTracker.corners[1]).toBe(1);
     });
   });
 

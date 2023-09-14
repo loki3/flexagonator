@@ -122,13 +122,18 @@ namespace Flexagonator {
     ) {
     }
 
-    rotate(fr: FlexRotation): number[] {
+    /** @param nextPrevDirs [next direction, previous direction], where true=/ and false=\ */
+    rotate(fr: FlexRotation, nextPrevDirs: [boolean, boolean]): number[] {
       switch (fr) {
         case FlexRotation.ACB: return this.apply(0, 2, 1);
         case FlexRotation.BAC: return this.apply(1, 0, 2);
         case FlexRotation.BCA: return this.apply(1, 2, 0);
         case FlexRotation.CAB: return this.apply(2, 0, 1);
         case FlexRotation.CBA: return this.apply(2, 1, 0);
+        case FlexRotation.Right:
+          return nextPrevDirs[0] ? this.apply(0, 2, 1) : this.apply(1, 0, 2);
+        case FlexRotation.Left:
+          return nextPrevDirs[1] ? this.apply(0, 2, 1) : this.apply(1, 0, 2);
       }
       return this.corners;
     }
