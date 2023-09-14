@@ -86,9 +86,7 @@ namespace Flexagonator {
   function makeHexaFlexes(): Flexes {
     const flexes: Flexes = {};
 
-    flexes[">"] = makeFlex("shift right", [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 1], FlexRotation.ACB) as Flex;
-    flexes["<"] = makeFlex("shift left", [1, 2, 3, 4, 5, 6], [6, 1, 2, 3, 4, 5], FlexRotation.ACB) as Flex;
-    flexes["^"] = makeFlex("turn over", [1, 2, 3, 4, 5, 6], [-6, -5, -4, -3, -2, -1], FlexRotation.None) as Flex;
+    addRotates(6, flexes);
 
     flexes["P"] = makeFlex("pinch flex",
       [[-2, 1], -3, [5, -4], 6, [-8, 7], -9],
@@ -147,14 +145,18 @@ namespace Flexagonator {
 
   function addRotates(patCount: number, flexes: Flexes) {
     const input = [], rightOut = [], leftOut = [], overOut = [];
+    const rightDirs = [], leftDirs = [];
     for (let i = 0; i < patCount; i++) {
       input[i] = i + 1;
       rightOut[i] = i + 2 > patCount ? 1 : i + 2;
       leftOut[i] = i < 1 ? patCount : i;
       overOut[i] = i - patCount;
+      // directions start at 1
+      rightDirs[i] = i == patCount - 1 ? 1 : i + 2;
+      leftDirs[i] = i == 0 ? patCount : i;
     }
-    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.ACB) as Flex;
-    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.ACB) as Flex;
+    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.ACB, rightDirs) as Flex;
+    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.ACB, leftDirs) as Flex;
     flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None) as Flex;
   }
 

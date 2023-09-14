@@ -21,20 +21,13 @@ namespace Flexagonator {
         return;
       }
 
-      // apply P and S flexes
-      const afterP = flexes["P"].apply(flexagon);
-      if (isFlexError(afterP)) {
-        fail();
-        return;
-      }
-      const afterPS = flexes["S"].apply(afterP);
-      if (isFlexError(afterPS)) {
-        fail();
-        return;
-      }
+      // PS>
+      const afterP = flexes["P"].apply(flexagon) as Flexagon;
+      const afterPS = flexes["S"].apply(afterP) as Flexagon;
+      const afterPSshift = flexes[">"].apply(afterPS) as Flexagon;
 
-      const expected = [[1, [2, [3, [4, 5]]]], [6, 7], 8, [9, 10], [11, 12], 13];
-      expect(areLTArraysEqual(afterPS.getAsLeafTrees(), expected)).toBeTruthy();
+      const expected = [[6, 7], 8, [9, 10], [11, 12], 13, [1, [2, [3, [4, 5]]]]];
+      expect(areLTArraysEqual(afterPSshift.getAsLeafTrees(), expected)).toBeTruthy();
     });
   });
 
@@ -120,6 +113,24 @@ namespace Flexagonator {
       checkV(6);
       checkV(8);
       checkV(10);
+    });
+  });
+
+  describe('makeFlexes', () => {
+    const flexes: Flexes = makeAllFlexes(6);
+
+    it('shifts adjust directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], undefined, Directions.make("/|////")) as Flexagon;
+
+      const afterRight = flexes[">"].apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(afterRight.getAsLeafTrees(), [2, 3, 4, 5, 6, 1])).toBeTruthy();
+      const actualRight = (afterRight.directions as Directions).asString(true);
+      expect(actualRight).toBe("|/////");
+
+      const afterLeft = flexes["<"].apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(afterLeft.getAsLeafTrees(), [6, 1, 2, 3, 4, 5])).toBeTruthy();
+      const actualLeft = (afterLeft.directions as Directions).asString(true);
+      expect(actualLeft).toBe("//|///");
     });
   });
 
