@@ -161,8 +161,7 @@ namespace Flexagonator {
     flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.Right, rightDirs) as Flex;
     flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Left, leftDirs) as Flex;
     flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None, overDirs) as Flex;
-    // disable ~ for now since it causes a test slowdown, seems to specifically be 'changeOut'
-    //flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, changeDirs) as Flex;
+    flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, changeDirs) as Flex;
   }
 
   function addDoublePinches(patCount: number, flexes: Flexes) {

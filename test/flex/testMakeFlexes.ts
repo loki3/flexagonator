@@ -164,12 +164,10 @@ namespace Flexagonator {
       const actualOver = (afterOver.directions as Directions).asString(true);
       expect(actualOver).toBe("////|/");
 
-      /* disable ~ for now since it causes a test slowdown
       const afterChange = flexes["~"].apply(flexagon) as Flexagon;
       expect(areLTArraysEqual(afterChange.getAsLeafTrees(), [-1, -2, -3, -4, -5, -6])).toBeTruthy();
       const actualChange = (afterChange.directions as Directions).asString(true);
       expect(actualChange).toBe("|/||||");
-      */
     });
   });
 

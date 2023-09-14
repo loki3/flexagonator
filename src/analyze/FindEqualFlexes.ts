@@ -5,6 +5,7 @@ namespace Flexagonator {
    * If so, return the shortest sequence, otherwise return false.
    */
   export function findEqualFlexes(check: Flex, flexes: Flexes): string | false {
+    flexes = removeFlex(flexes, 'change directions'); // for perf, don't use ~
     flexes = removeFlex(flexes, check.name);
     const input = Flexagon.makeFromTree(check.input) as Flexagon;
     const output = Flexagon.makeFromTree(check.output) as Flexagon;
