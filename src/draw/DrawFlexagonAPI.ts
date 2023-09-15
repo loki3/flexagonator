@@ -71,14 +71,24 @@ namespace Flexagonator {
     const showCurrent = (options.showCurrent === undefined || options.showCurrent);
     const showNumbers = (options.showNumbers === undefined || options.showNumbers);
     const showCenterMarker = options.showCenterMarker === undefined ? false : options.showCenterMarker;
-    drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker);
-    if (options.both) {
-      const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
-      drawFlexagon(paint, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);
+
+    if (objects.flexagon.directions !== undefined) {
+      drawWithDirections(paint, objects, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker, rotate);
+      if (options.stats !== undefined && options.stats) {
+        drawLeafCount(paint, objects.flexagon);
+      }
+    } else {
+      drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker);
+      if (options.both) {
+        const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
+        drawFlexagon(paint, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);
+      }
+      if (options.stats !== undefined && options.stats) {
+        drawLeafCount(paint, objects.flexagon);
+        drawAnglesText(paint, objects.flexagon, objects.angleInfo);
+      }
     }
-    if (options.stats !== undefined && options.stats) {
-      drawStatsText(paint, objects.flexagon, objects.angleInfo);
-    }
+
     paint.end();
 
     const generate = (options.generate !== undefined && options.generate);
@@ -116,7 +126,7 @@ namespace Flexagonator {
     return createFlexRegions(fm.flexagon, fm.allFlexes, fm.flexesToSearch, !front, generate, polygon);
   }
 
-  function drawStatsText(paint: Paint, flexagon: Flexagon, angleInfo: FlexagonAngles) {
+  function drawLeafCount(paint: Paint, flexagon: Flexagon) {
     paint.setTextColor("black");
     paint.setTextHorizontal("left");
     paint.setTextVertical("bottom");
@@ -125,7 +135,9 @@ namespace Flexagonator {
     const leafCount = flexagon.getLeafCount();
     const leafText = leafCount.toString() + " leaves";
     paint.drawText(leafText, 0, 20);
+  }
 
+  function drawAnglesText(paint: Paint, flexagon: Flexagon, angleInfo: FlexagonAngles) {
     const center = angleInfo.getCenterAngleSum(flexagon);
     if (center === CenterAngle.GreaterThan360) {
       paint.drawText(">360, doesn't lie flat", 0, 40);
