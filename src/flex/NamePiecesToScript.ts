@@ -85,7 +85,7 @@ namespace Flexagonator {
       return {};
     }
     const center = 360 / n;
-    return { angles: [center, (180 - center) / 2] };
+    return { angles2: [center, (180 - center) / 2] };
   }
 
   // convert overallShape to ScriptItem by leveraging patsPrefix
@@ -104,10 +104,10 @@ namespace Flexagonator {
     if (overallShape === 'star' && (n % 2 === 0 && n >= 6)) {
       switch (n) {
         // 6 & 8 are somewhat arbitrary, since an isosceles triangle wouldn't make a star
-        case 6: return { angles: [60, 15] };
-        case 8: return { angles: [45, 30] };
+        case 6: return { angles2: [60, 15] };
+        case 8: return { angles2: [45, 30] };
         // all others are isosceles triangles
-        default: return { angles: [360 / n, 360 / n] };
+        default: return { angles2: [360 / n, 360 / n] };
       }
     }
 
@@ -131,22 +131,22 @@ namespace Flexagonator {
 
       // hexagonal ring dodecaflexagon
       if (sides === 6 && n === 12) {
-        return { angles: [60, 60], directions: Directions.make('//|/'.repeat(3)) };
+        return { angles2: [60, 60], directions: Directions.make('//|/'.repeat(3)) };
       }
       // hexagonal ring tetradecaflexagon
       if (sides === 6 && n === 14) {
-        return { angles: [60, 60], directions: Directions.make('/|///|/'.repeat(2)) };
+        return { angles2: [60, 60], directions: Directions.make('/|///|/'.repeat(2)) };
       }
       // octagonal ring tetradecaflexagon
       if (sides === 8 && n === 14) {
-        return { angles: [72, 72], directions: Directions.make('|//|//|'.repeat(2)) };
+        return { angles2: [72, 72], directions: Directions.make('|//|//|'.repeat(2)) };
       }
     }
 
     // triangular bronze octadecaflexagon
     if (sides === 3 && leafShape && leafShape.startsWith('bronze') && n === 18) {
       const directions = Directions.make('/|//|/'.repeat(3));
-      return { angles: [30, 60], directions };
+      return { angles2: [30, 60], directions };
     }
 
     // hexagonal regular decaflexagon
@@ -157,36 +157,36 @@ namespace Flexagonator {
     if (sides === 6 && leafShape && leafShape.startsWith('silver')) {
       if (n === 12) {
         const directions = Directions.make('|//'.repeat(4));
-        return { angles: [45, 90], directions };
+        return { angles2: [45, 90], directions };
       } else if (n === 14) {
         const directions = Directions.make('/|////|'.repeat(2));
-        return { angles: [90, 45], directions };
+        return { angles2: [90, 45], directions };
       }
     }
     // rhombic dodeca
     if (overallShape === 'rhombic' && n === 12) {
       const directions = Directions.make('//||//'.repeat(2));
-      return { angles: [60, 90], directions };
+      return { angles2: [60, 90], directions };
     }
     // rhombic hexadeca
     if (overallShape === 'rhombic' && n === 16) {
       const directions = Directions.make('//|//|//'.repeat(2));
-      return { angles: [30, 90], directions };
+      return { angles2: [30, 90], directions };
     }
     // kite bronze octaflexagon
     if (overallShape === 'kite' && leafShape === 'bronze' && n === 8) {
       const directions = Directions.make('/|////|/');
-      return { angles: [90, 30], directions };
+      return { angles2: [90, 30], directions };
     }
     // pentagonal silver decaflexagon
     if (overallShape === 'pentagonal' && leafShape === 'silver' && n === 10) {
       const directions = Directions.make('///|//|///');
-      return { angles: [45, 45], directions };
+      return { angles2: [45, 45], directions };
     }
 
     // all pats meet in middle, leaves are right triangles
     if (sides !== null && sides >= 3 && sides === n / 2) {
-      return { angles: [360 / n, 90] };
+      return { angles2: [360 / n, 90] };
     }
 
     return { error: { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix } };
@@ -200,7 +200,7 @@ namespace Flexagonator {
     const a = (total - 180 * n) / (sides - 2 * n);
 
     const directions = Directions.make('/|/'.repeat(n / 3));
-    return { angles: [a, 180 - 2 * a], directions };
+    return { angles2: [a, 180 - 2 * a], directions };
   }
 
   /// compute a ring flexagon where there are 2 right triangle pats along each of the n/4 inside edges that form a regular (n/4)-gon
@@ -208,7 +208,7 @@ namespace Flexagonator {
     const sides = n / 4;
     const a = 180 * (sides - 2) / (4 * sides);  // each corner of the outer polygon has 4 triangles in it
     const directions = Directions.make('/||/'.repeat(n / 4));
-    return { angles: [90 - a, a], directions };
+    return { angles2: [90 - a, a], directions };
   }
 
   /// compute a ring flexagon where there are 2 isosceles triangle pats along each of the n/2 inside edges
@@ -217,7 +217,7 @@ namespace Flexagonator {
     const sides = n / 4;
     const a = ((180 * (sides - 2)) / sides) / 3;
     const directions = Directions.make('/||/'.repeat(n / 4));
-    return { angles: [(180 - a) / 2, a], directions };
+    return { angles2: [(180 - a) / 2, a], directions };
   }
 
   // convert leafShape to ScriptItem
@@ -226,17 +226,17 @@ namespace Flexagonator {
       // leafShape & patsPrefix may require a specific orientation
       const n = greekPrefixToNumber(patsPrefix);
       if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 4) {
-        return { angles: [90, 45] };
+        return { angles2: [90, 45] };
       } else if (leafShape.startsWith('bronze') && n === 4) {
-        return { angles: [90, 30] };
+        return { angles2: [90, 30] };
       } else if ((leafShape.startsWith('bronze') || leafShape.startsWith('right')) && n === 6) {
-        return { angles: [60, 90] };
+        return { angles2: [60, 90] };
       } else if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 8) {
-        return { angles: [45, 90] };
+        return { angles2: [45, 90] };
       } else if ((leafShape.startsWith('bronze') || leafShape.startsWith('right')) && n === 12) {
-        return { angles: [30, 90] };
+        return { angles2: [30, 90] };
       } else if (leafShape.startsWith('right') && n !== null && n % 2 === 0) {
-        return { angles: [360 / n, 90] };
+        return { angles2: [360 / n, 90] };
       }
     }
 
@@ -244,13 +244,13 @@ namespace Flexagonator {
     switch (leafShape) {
       case 'triangle':
       case 'regular':
-        return { angles: [60, 60] };
+        return { angles2: [60, 60] };
       case 'silver':
       case 'silver triangle':
-        return { angles: [45, 45] };
+        return { angles2: [45, 45] };
       case 'bronze':
       case 'bronze triangle':
-        return { angles: [30, 60] };
+        return { angles2: [30, 60] };
       case 'right':
       case 'right triangle':
       case 'isosceles':
@@ -423,8 +423,8 @@ namespace Flexagonator {
       } else if (this.description.numPats) {
         script.push({ numPats: this.description.numPats });
       }
-      if (this.description.angles) {
-        script.push({ angles: this.description.angles });
+      if (this.description.angles2) {
+        script.push({ angles2: this.description.angles2 });
       }
       if (this.description.directions) {
         script.push({ directions: this.description.directions.asRaw() });
@@ -476,7 +476,7 @@ namespace Flexagonator {
   interface Description {
     readonly numPats?: number;
     readonly pats?: LeafTree[];
-    readonly angles?: number[];
+    readonly angles2?: number[];
     readonly directions?: Directions;
     readonly flexes?: string;
 

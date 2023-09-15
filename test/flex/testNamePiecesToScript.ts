@@ -31,7 +31,7 @@ namespace Flexagonator {
       }
     });
 
-    it('should set angles assuming pats meet in middle when patsPrefix but no overallShape or leafShape', () => {
+    it('should set angles2 assuming pats meet in middle when patsPrefix but no overallShape or leafShape', () => {
       // pentaflexagon
       const name: NamePieces = { patsPrefix: 'penta' };
       const [script, errors] = namePiecesToScript(name);
@@ -39,16 +39,16 @@ namespace Flexagonator {
       expect(errors.length).toBe(0);
 
       expect(script[0].numPats).toBe(5);
-      const angles = script[1].angles;
-      if (angles === undefined) {
-        fail('script[1].angles should exist');
+      const angles2 = script[1].angles2;
+      if (angles2 === undefined) {
+        fail('script[1].angles2 should exist');
       } else {
-        expect(angles[0]).toBe(72);
-        expect(angles[1]).toBe(54);
+        expect(angles2[0]).toBe(72);
+        expect(angles2[1]).toBe(54);
       }
     });
 
-    it('should use overallShape with patsPrefix to set angles when pats meet in middle', () => {
+    it('should use overallShape with patsPrefix to set angles2 when pats meet in middle', () => {
       // triangular hexaflexagon
       const name: NamePieces = { overallShape: 'triangular', patsPrefix: 'hexa' };
       const [script, errors] = namePiecesToScript(name);
@@ -56,16 +56,16 @@ namespace Flexagonator {
       expect(errors.length).toBe(0);
 
       expect(script[0].numPats).toBe(6);
-      const angles = script[1].angles;
-      if (angles === undefined) {
-        fail('script[1].angles should exist');
+      const angles2 = script[1].angles2;
+      if (angles2 === undefined) {
+        fail('script[1].angles2 should exist');
       } else {
-        expect(angles[0]).toBe(60);
-        expect(angles[1]).toBe(90);
+        expect(angles2[0]).toBe(60);
+        expect(angles2[1]).toBe(90);
       }
     });
 
-    it('should use overallShape with patsPrefix to set angles for stars', () => {
+    it('should use overallShape with patsPrefix to set angles2 for stars', () => {
       // star decaflexagon
       const name: NamePieces = { overallShape: 'star', patsPrefix: 'deca' };
       const [script, errors] = namePiecesToScript(name);
@@ -73,16 +73,16 @@ namespace Flexagonator {
       expect(errors.length).toBe(0);
 
       expect(script[0].numPats).toBe(10);
-      const angles = script[1].angles;
-      if (angles === undefined) {
-        fail('script[1].angles should exist');
+      const angles2 = script[1].angles2;
+      if (angles2 === undefined) {
+        fail('script[1].angles2 should exist');
       } else {
-        expect(angles[0]).toBe(36);
-        expect(angles[1]).toBe(36);
+        expect(angles2[0]).toBe(36);
+        expect(angles2[1]).toBe(36);
       }
     });
 
-    it('should use overallShape with patsPrefix to set angles for rings', () => {
+    it('should use overallShape with patsPrefix to set angles2 for rings', () => {
       // star decaflexagon
       const name: NamePieces = { overallShape: 'decagonal ring', patsPrefix: 'pentadeca' };
       const [script, errors] = namePiecesToScript(name);
@@ -90,12 +90,12 @@ namespace Flexagonator {
       expect(errors.length).toBe(0);
 
       expect(script[0].numPats).toBe(15);
-      const angles = script[1].angles;
-      if (angles === undefined) {
-        fail('script[1].angles should exist');
+      const angles2 = script[1].angles2;
+      if (angles2 === undefined) {
+        fail('script[1].angles2 should exist');
       } else {
-        expect(angles[0]).toBe(63);
-        expect(angles[1]).toBe(54);
+        expect(angles2[0]).toBe(63);
+        expect(angles2[1]).toBe(54);
       }
       const directions = script[2].directions;
       if (directions === undefined) {
@@ -107,7 +107,7 @@ namespace Flexagonator {
       }
     });
 
-    it('should use overallShape with patsPrefix and leafShape to set angles', () => {
+    it('should use overallShape with patsPrefix and leafShape to set angles2', () => {
       // star decaflexagon
       const name: NamePieces = { overallShape: 'hexagonal', patsPrefix: 'dodeca', leafShape: 'silver' };
       const [script, errors] = namePiecesToScript(name);
@@ -115,12 +115,12 @@ namespace Flexagonator {
       expect(errors.length).toBe(0);
 
       expect(script[0].numPats).toBe(12);
-      const angles = script[1].angles;
-      if (angles === undefined) {
-        fail('script[1].angles should exist');
+      const angles2 = script[1].angles2;
+      if (angles2 === undefined) {
+        fail('script[1].angles2 should exist');
       } else {
-        expect(angles[0]).toBe(45);
-        expect(angles[1]).toBe(90); // note: different from default for 'silver flexagon'
+        expect(angles2[0]).toBe(45);
+        expect(angles2[1]).toBe(90); // note: different from default for 'silver flexagon'
       }
       const directions = script[2].directions;
       if (directions === undefined) {
@@ -132,18 +132,18 @@ namespace Flexagonator {
       }
     });
 
-    it('should map leafShape to angles', () => {
+    it('should map leafShape to angles2', () => {
       const name: NamePieces = { leafShape: 'bronze' };
       const [script, errors] = namePiecesToScript(name);
       expect(script.length).toBe(1);
       expect(errors.length).toBe(1);
 
-      const angles = script[0].angles;
-      if (angles === undefined) {
-        fail('script[0].angles should exist');
+      const angles2 = script[0].angles2;
+      if (angles2 === undefined) {
+        fail('script[0].angles2 should exist');
       } else {
-        expect(angles[0]).toBe(30);
-        expect(angles[1]).toBe(60);
+        expect(angles2[0]).toBe(30);
+        expect(angles2[1]).toBe(60);
       }
 
       const error = errors[0];
@@ -175,7 +175,7 @@ namespace Flexagonator {
       expect(script.length).toBe(3);
       expect(errors.length).toBe(0);
 
-      // script[0] is numPats, script[1] is angles
+      // script[0] is numPats, script[1] is angles2
       const flexes = script[2].flexes;
       if (flexes === undefined) {
         fail('script[1].flexes should exist');
