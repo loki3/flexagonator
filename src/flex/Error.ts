@@ -82,6 +82,7 @@ namespace Flexagonator {
     BadFlexOutput,  // flex output template misformed
     UnknownFlex,    // flex isn't one the system knows about
     CantApplyFlex,  // current state of the flexagon doesn't support the flex
+    BadDirections,  // the flex's directions between pats are invalid
   }
 
   export interface FlexError {

@@ -1,5 +1,39 @@
 namespace Flexagonator {
 
+  describe('makeFlex', () => {
+    it('validates lengths', () => {
+      const error1 = makeFlex('test', [1, 2], [3, 2, 1], FlexRotation.None);
+      if (!isFlexError(error1)) {
+        fail();
+      } else {
+        expect(error1.reason).toBe(FlexCode.SizeMismatch);
+      }
+
+      const error2 = makeFlex('test', [1, 2, 3], [3, 2], FlexRotation.None);
+      if (!isFlexError(error2)) {
+        fail();
+      } else {
+        expect(error2.reason).toBe(FlexCode.SizeMismatch);
+      }
+
+      const error3 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None, "//");
+      if (!isFlexError(error3)) {
+        fail();
+      } else {
+        expect(error3.reason).toBe(FlexCode.SizeMismatch);
+      }
+    });
+
+    it('validates directions', () => {
+      const error1 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None, "QQQ");
+      if (!isFlexError(error1)) {
+        fail();
+      } else {
+        expect(error1.reason).toBe(FlexCode.BadDirections);
+      }
+    });
+  });
+
   describe('Flex.apply', () => {
     it('should transform a flexagon properly', () => {
       const flexagon = Flexagon.makeFromTree([1, [2, -3], -4, [-5, 6]]);
@@ -118,7 +152,7 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTree([1, 2, 3, 4], undefined, Directions.make('/||/')) as Flexagon;
 
       const flex = new Flex("test", [1, 2, 3, 4], [1, 3, 2, 4], FlexRotation.None,
-        DirectionsOpt.make('/||?'), DirectionsOpt.make('?//?'));
+        DirectionsOpt.make('/||?') as DirectionsOpt, DirectionsOpt.make('?//?') as DirectionsOpt);
       const result = flex.apply(flexagon) as Flexagon;
       expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
       const newDirs = result.directions as Directions;

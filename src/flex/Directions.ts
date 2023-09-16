@@ -54,13 +54,22 @@ namespace Flexagonator {
      * either as a string - \: up, /: down, ?:don't care, assuming previous to left
      * or array - false: left or up, true: right or down, null: don't care
      */
-    public static make(input: (boolean | null)[] | string): DirectionsOpt {
+    public static make(input: (boolean | null)[] | string): DirectionsOpt | null {
       if (typeof input !== 'string') {
         return new DirectionsOpt(input);
       }
       const directions: (boolean | null)[] = [];
       for (let i = 0; i < input.length; i++) {
-        directions.push(input[i] === '?' ? null : input[i] === '/');
+        switch (input[i]) {
+          case '?':
+            directions.push(null); break;
+          case '/':
+          case '|':
+          case '\\':
+            directions.push(input[i] === '/'); break;
+          default:
+            return null;
+        }
       }
       return new DirectionsOpt(directions);
     }

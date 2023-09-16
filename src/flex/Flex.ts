@@ -30,13 +30,20 @@ namespace Flexagonator {
     name: string, input: LeafTree[], output: LeafTree[],
     fr: FlexRotation, inputDirs?: string, outputDirs?: string, orderOfDirs?: number[]
   ): Flex | FlexError {
-    if (input.length !== output.length) {
-      return { reason: FlexCode.SizeMismatch };
-    } else if (orderOfDirs !== undefined && input.length !== orderOfDirs.length) {
+    if (input.length !== output.length
+      || (inputDirs !== undefined && input.length !== inputDirs.length)
+      || (outputDirs !== undefined && input.length !== outputDirs.length)
+      || (orderOfDirs !== undefined && input.length !== orderOfDirs.length)
+    ) {
       return { reason: FlexCode.SizeMismatch };
     }
+
     const inDirections = inputDirs ? DirectionsOpt.make(inputDirs) : undefined;
     const outDirections = outputDirs ? DirectionsOpt.make(outputDirs) : undefined;
+    if (inDirections === null || outDirections === null) {
+      return { reason: FlexCode.BadDirections };
+    }
+
     return new Flex(name, input, output, fr, inDirections, outDirections, orderOfDirs);
   }
 

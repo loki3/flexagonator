@@ -108,7 +108,7 @@ namespace Flexagonator {
 
     it('reports pats that match if directions match', () => {
       const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
-      const directions = DirectionsOpt.make('/|/');
+      const directions = DirectionsOpt.make('/|/') as DirectionsOpt;
       const match = flexagon.matchPattern(pattern, directions);
       if (isPatternError(match)) {
         fail();
@@ -121,7 +121,7 @@ namespace Flexagonator {
     it('supports optional directions', () => {
       // match
       const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
-      const directions = DirectionsOpt.make('??/');
+      const directions = DirectionsOpt.make('??/') as DirectionsOpt;
       const match = flexagon.matchPattern(pattern, directions);
       if (isPatternError(match)) {
         console.log(match)
@@ -131,7 +131,7 @@ namespace Flexagonator {
       expect(match.map(p => p.getString()).join(',')).toBe('1,-2,3,[4,5],[6,-7]');
 
       // mismatch
-      const directions2 = DirectionsOpt.make('??|');
+      const directions2 = DirectionsOpt.make('??|') as DirectionsOpt;
       const match2 = flexagon.matchPattern(pattern, directions2);
       if (!isPatternError(match2) || match2.expectedDirs === undefined || match2.actualDirs === undefined) {
         fail();
@@ -143,8 +143,8 @@ namespace Flexagonator {
 
     it('reports if directions mismatch', () => {
       const pattern: LeafTree[] = [0, 1, 2];
-      const directions = DirectionsOpt.make('//|');
-      const match = flexagon.matchPattern(pattern, directions);
+      const directions = DirectionsOpt.make('//|') as DirectionsOpt;
+      const match = flexagon.matchPattern(pattern, directions) as DirectionsOpt;
       if (!isPatternError(match) || match.expectedDirs === undefined || match.actualDirs === undefined) {
         fail();
         return;
