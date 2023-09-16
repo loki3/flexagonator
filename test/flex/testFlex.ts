@@ -103,15 +103,26 @@ namespace Flexagonator {
   });
 
   describe('Flex.apply/directions', () => {
-    it('modifies directions if specified', () => {
+    it('rearranges directions if specified', () => {
       const flexagon = Flexagon.makeFromTree([1, 2, 3], undefined, Directions.make('/||')) as Flexagon;
 
-      const flex = new Flex("test", [1, 2, 3], [2, 3, 1], FlexRotation.None, undefined,
-        [2, 3, 1]);  // the new order for the list of directions
+      const flex = new Flex("test", [1, 2, 3], [2, 3, 1], FlexRotation.None,
+        undefined, undefined, [2, 3, 1]);  // the new order for the list of directions
       const result = flex.apply(flexagon) as Flexagon;
       expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('||/'); // rotated by one
+    });
+
+    it('works with input and output directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4], undefined, Directions.make('/||/')) as Flexagon;
+
+      const flex = new Flex("test", [1, 2, 3, 4], [1, 3, 2, 4], FlexRotation.None,
+        DirectionsOpt.make('/||?'), DirectionsOpt.make('?//?'));
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
+      const newDirs = result.directions as Directions;
+      expect(newDirs.asString(true)).toBe('////');  // two directions changed, two stayed the same
     });
   });
 

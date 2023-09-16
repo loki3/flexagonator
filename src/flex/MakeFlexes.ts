@@ -158,10 +158,10 @@ namespace Flexagonator {
       overDirs[i] = patCount - i;
       changeDirs[i] = -(i + 1); // means that direction should be reversed
     }
-    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.Right, undefined, rightDirs) as Flex;
-    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Left, undefined, leftDirs) as Flex;
-    flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None, undefined, overDirs) as Flex;
-    flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, undefined, changeDirs) as Flex;
+    flexes[">"] = makeFlex("shift right", input, rightOut, FlexRotation.Right, undefined, undefined, rightDirs) as Flex;
+    flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Left, undefined, undefined, leftDirs) as Flex;
+    flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None, undefined, undefined, overDirs) as Flex;
+    flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, undefined, undefined, changeDirs) as Flex;
   }
 
   function addDoublePinches(patCount: number, flexes: Flexes) {

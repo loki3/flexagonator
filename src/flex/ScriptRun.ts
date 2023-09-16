@@ -137,7 +137,7 @@ namespace Flexagonator {
       const f = item.addFlex;
       const newFlex = isFlexFromSequence(f)
         ? makeFlexFromSequence(f.sequence, fm.allFlexes, f.name)
-        : makeFlex(f.name, f.input, f.output, angleOrderToFlexRotation(f.rotation), f.inputDirs, f.orderOfDirs);
+        : makeFlex(f.name, f.input, f.output, angleOrderToFlexRotation(f.rotation), f.inputDirs, f.outputDirs, f.orderOfDirs);
       if (isFlexError(newFlex)) {
         return newFlex;
       }

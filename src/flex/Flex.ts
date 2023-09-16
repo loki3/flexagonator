@@ -21,10 +21,14 @@ namespace Flexagonator {
       with negative numbers indicating that the matching pat should be flipped
     e.g. input:  [1, [2, 3], 4, [5, 6]]
          output: [[-5, 1], -2, [4, -3], -6]
+    specifying pat directions is optional, with two techniques:
+      inputDirs: use when input dirs must match a given pattern
+      outputDirs: use when flex has specific pat directions as its output
+      orderOfDirs: use if directions get rearranged, e.g., > or ^
   */
   export function makeFlex(
     name: string, input: LeafTree[], output: LeafTree[],
-    fr: FlexRotation, inputDirs?: string, orderOfDirs?: number[]
+    fr: FlexRotation, inputDirs?: string, outputDirs?: string, orderOfDirs?: number[]
   ): Flex | FlexError {
     if (input.length !== output.length) {
       return { reason: FlexCode.SizeMismatch };
@@ -32,7 +36,8 @@ namespace Flexagonator {
       return { reason: FlexCode.SizeMismatch };
     }
     const inDirections = inputDirs ? DirectionsOpt.make(inputDirs) : undefined;
-    return new Flex(name, input, output, fr, inDirections, orderOfDirs);
+    const outDirections = outputDirs ? DirectionsOpt.make(outputDirs) : undefined;
+    return new Flex(name, input, output, fr, inDirections, outDirections, orderOfDirs);
   }
 
   /*
@@ -46,7 +51,9 @@ namespace Flexagonator {
       readonly rotation: FlexRotation,
       /** flexagon must be connected with these directions for flex to work */
       readonly inputDirs?: DirectionsOpt,
-      /** new order for directions, 1-based */
+      /** specific pat directions for output flexagon */
+      readonly outputDirs?: DirectionsOpt,
+      /** old directions get rearranged, specify new order for old directions, 1-based */
       readonly orderOfDirs?: number[],
     ) {
     }
@@ -71,7 +78,6 @@ namespace Flexagonator {
         newPats.push(newPat);
       }
 
-      // to do: if directions have changed, angles also need to change
       const angleTracker = this.newAngleTracker(flexagon);
       const directions = this.newDirections(flexagon.directions);
       return new Flexagon(newPats, angleTracker, directions);
@@ -101,16 +107,37 @@ namespace Flexagonator {
     private newDirections(directions?: Directions): Directions | undefined {
       if (directions === undefined) {
         return undefined; // flexagon didn't specify directions, so no directions
-      } else if (this.orderOfDirs === undefined) {
-        return directions;  // flex didn't specify directions, so don't modify
       }
 
-      // e.g., [2,3,1] means that the 2nd direction should now be first, followed by the 3rd & 1st
-      const oldRaw = directions.asRaw();
-      const newRaw = this.orderOfDirs[0] > 0
-        ? this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1])   // move directions around
-        : this.orderOfDirs.map(newIndex => !oldRaw[-newIndex - 1]); // flip the directions, used by ~
-      return Directions.make(newRaw);
+      // rearrange directions
+      if (this.orderOfDirs !== undefined) {
+        // e.g., [2,3,1] means that the 2nd direction should now be first, followed by the 3rd & 1st
+        const oldRaw = directions.asRaw();
+        const newRaw = this.orderOfDirs[0] > 0
+          ? this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1])   // move directions around
+          : this.orderOfDirs.map(newIndex => !oldRaw[-newIndex - 1]); // flip the directions, used by ~
+        return Directions.make(newRaw);
+      }
+
+      // explicitly set new directions
+      if (this.outputDirs !== undefined) {
+        const flexDirs = this.outputDirs.asRaw();
+        const oldDirs = directions.asRaw();
+        const newDirs: boolean[] = [];
+        for (let i = 0; i < oldDirs.length; i++) {
+          const flexDir = flexDirs[i];
+          if (flexDir === null || flexDir === undefined) {
+            // flex preserves old direction
+            newDirs.push(oldDirs[i]);
+          } else {
+            // use flex's explicit direction
+            newDirs.push(flexDir);
+          }
+        }
+        return Directions.make(newDirs);
+      }
+
+      return directions;
     }
 
     private invertRotation(fr: FlexRotation): FlexRotation {
