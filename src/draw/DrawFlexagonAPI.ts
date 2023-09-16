@@ -72,8 +72,9 @@ namespace Flexagonator {
     const showNumbers = (options.showNumbers === undefined || options.showNumbers);
     const showCenterMarker = options.showCenterMarker === undefined ? false : options.showCenterMarker;
 
+    let hinges = undefined;
     if (objects.flexagon.directions !== undefined) {
-      drawWithDirections(paint, objects, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker, rotate);
+      hinges = drawWithDirections(paint, objects, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker, rotate);
       if (options.stats !== undefined && options.stats) {
         drawLeafCount(paint, objects.flexagon);
       }
@@ -92,7 +93,7 @@ namespace Flexagonator {
     paint.end();
 
     const generate = (options.generate !== undefined && options.generate);
-    return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, generate, polygon);
+    return createFlexRegions(objects.flexagon, objects.allFlexes, objects.flexesToSearch, !showFront, generate, polygon, hinges);
   }
 
   function getStructureType(options?: DrawFlexagonOptions): StructureType {

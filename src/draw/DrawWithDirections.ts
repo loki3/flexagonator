@@ -1,10 +1,13 @@
 namespace Flexagonator {
 
-  /** draw a flexagon that specifies directions, with lots of options for additional pieces */
+  /**
+   * draw a flexagon that specifies directions, with lots of options for additional pieces
+   * @returns hinges in pixels
+   */
   export function drawWithDirections(paint: Paint, objects: DrawFlexagonObjects,
     showFront: boolean, showStructure: StructureType, showIds: boolean,
     showCurrent: boolean, showNumbers: boolean, showCenterMarker: boolean, rotation?: number
-  ) {
+  ): Line[] {
     const leaflines = getLeafLines(objects.flexagon, objects.angleInfo, showFront, rotation);
     const content: LeafContent = { showLeafProps: true, showIds, face: showFront ? 'front' : 'back', inset: 0.1 };
     drawStrip(paint, leaflines, content, objects.leafProps, undefined, 0);
@@ -14,6 +17,8 @@ namespace Flexagonator {
     if (showCurrent) {
       drawCurrentMarker(paint, hinges[0], minSide / 12);
     }
+
+    return hinges;
   }
 
   /** use directions & angles to figure out how to draw the flexagon surface */
