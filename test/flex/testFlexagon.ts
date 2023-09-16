@@ -78,4 +78,31 @@ namespace Flexagonator {
       expect(result[2]).toBe(7);
     });
   });
+
+  describe('matchPattern', () => {
+    const trees: LeafTree[] = [1, [-2, 3], [[4, 5], [6, -7]]];
+    const flexagon = Flexagon.makeFromTree(trees) as Flexagon;
+
+    it('reports the portion that matches', () => {
+      const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
+      const match = flexagon.matchPattern(pattern);
+      if (isPatternError(match)) {
+        fail();
+        return;
+      }
+      // e.g. 0 matches 1 and 3 matches [4,5]
+      expect(match.map(p => p.getString()).join(',')).toBe('1,-2,3,[4,5],[6,-7]');
+    });
+
+    it('reports if mismatch', () => {
+      const pattern: LeafTree[] = [[0, 1], 2, 3];
+      const match = flexagon.matchPattern(pattern);
+      if (!isPatternError(match)) {
+        fail();
+        return;
+      }
+      expect(match.expected.toString()).toBe('0,1');
+      expect(match.actual).toBe(1);
+    });
+  });
 }
