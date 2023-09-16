@@ -106,7 +106,7 @@ namespace Flexagonator {
     it('modifies directions if specified', () => {
       const flexagon = Flexagon.makeFromTree([1, 2, 3], undefined, Directions.make('/||')) as Flexagon;
 
-      const flex = new Flex("test", [1, 2, 3], [2, 3, 1], FlexRotation.None,
+      const flex = new Flex("test", [1, 2, 3], [2, 3, 1], FlexRotation.None, undefined,
         [2, 3, 1]);  // the new order for the list of directions
       const result = flex.apply(flexagon) as Flexagon;
       expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();

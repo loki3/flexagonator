@@ -22,13 +22,17 @@ namespace Flexagonator {
     e.g. input:  [1, [2, 3], 4, [5, 6]]
          output: [[-5, 1], -2, [4, -3], -6]
   */
-  export function makeFlex(name: string, input: LeafTree[], output: LeafTree[], fr: FlexRotation, orderOfDirs?: number[]): Flex | FlexError {
+  export function makeFlex(
+    name: string, input: LeafTree[], output: LeafTree[],
+    fr: FlexRotation, inputDirs?: string, orderOfDirs?: number[]
+  ): Flex | FlexError {
     if (input.length !== output.length) {
       return { reason: FlexCode.SizeMismatch };
     } else if (orderOfDirs !== undefined && input.length !== orderOfDirs.length) {
       return { reason: FlexCode.SizeMismatch };
     }
-    return new Flex(name, input, output, fr, orderOfDirs);
+    const inDirections = inputDirs ? DirectionsOpt.make(inputDirs) : undefined;
+    return new Flex(name, input, output, fr, inDirections, orderOfDirs);
   }
 
   /*
@@ -40,6 +44,8 @@ namespace Flexagonator {
       readonly input: LeafTree[],
       readonly output: LeafTree[],
       readonly rotation: FlexRotation,
+      /** flexagon must be connected with these directions for flex to work */
+      readonly inputDirs?: DirectionsOpt,
       /** new order for directions, 1-based */
       readonly orderOfDirs?: number[],
     ) {
@@ -51,7 +57,7 @@ namespace Flexagonator {
 
     // apply this flex to the given flexagon
     apply(flexagon: Flexagon): Flexagon | FlexError {
-      const matches = flexagon.matchPattern(this.input);
+      const matches = flexagon.matchPattern(this.input, this.inputDirs);
       if (isPatternError(matches)) {
         return { reason: FlexCode.BadFlexInput, patternError: matches };
       }

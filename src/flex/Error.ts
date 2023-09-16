@@ -14,8 +14,16 @@ namespace Flexagonator {
       }
       return str;
     } else if (isPatternError(error)) {
-      return "Error in flex pattern definition; expected '" + error.expected.toString()
-        + "' but found '" + error.actual.toString() + "'";
+      let str = "Error in flex pattern definition; ";
+      if (error.expected && error.actual) {
+        str += "expected '" + error.expected.toString()
+          + "' but found '" + error.actual.toString() + "'";
+      }
+      if (error.expectedDirs && error.actualDirs) {
+        str += "expected '" + error.expectedDirs.asString(false)
+          + "' but found '" + error.actualDirs.asString(false) + "'";
+      }
+      return str;
     } else if (isFlexError(error)) {
       let str = "Flex Error: " + FlexCode[error.reason];
       if (error.flexName) {
@@ -53,24 +61,21 @@ namespace Flexagonator {
 
 
 
-  /*
-    Error looking for substructure in a pat
-  */
-
+  /** Error looking for substructure in a pat */
   export interface PatternError {
-    readonly expected: LeafTree;
-    readonly actual: LeafTree;
+    readonly expected?: LeafTree;
+    readonly actual?: LeafTree;
+    readonly expectedDirs?: DirectionsOpt;
+    readonly actualDirs?: Directions;
   }
 
   export function isPatternError(result: any): result is PatternError {
-    return (result as PatternError).expected !== undefined;
+    return (result as PatternError).expected !== undefined
+      || (result as PatternError).expectedDirs !== undefined;
   }
 
 
-  /*
-    Error performing a flex on a flexagon
-  */
-
+  /** Error performing a flex on a flexagon */
   export enum FlexCode {
     SizeMismatch,   // input, output, & flexagon arrays should all be same size
     BadFlexInput,   // flex input pattern misformed

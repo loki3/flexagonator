@@ -81,9 +81,10 @@ namespace Flexagonator {
 
   describe('matchPattern', () => {
     const trees: LeafTree[] = [1, [-2, 3], [[4, 5], [6, -7]]];
-    const flexagon = Flexagon.makeFromTree(trees) as Flexagon;
+    const directions = Directions.make('/|/')
+    const flexagon = Flexagon.makeFromTree(trees, undefined, directions) as Flexagon;
 
-    it('reports the portion that matches', () => {
+    it('reports pats that match', () => {
       const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
       const match = flexagon.matchPattern(pattern);
       if (isPatternError(match)) {
@@ -94,15 +95,62 @@ namespace Flexagonator {
       expect(match.map(p => p.getString()).join(',')).toBe('1,-2,3,[4,5],[6,-7]');
     });
 
-    it('reports if mismatch', () => {
+    it('reports if pats mismatch', () => {
       const pattern: LeafTree[] = [[0, 1], 2, 3];
       const match = flexagon.matchPattern(pattern);
-      if (!isPatternError(match)) {
+      if (!isPatternError(match) || match.expected === undefined) {
         fail();
         return;
       }
       expect(match.expected.toString()).toBe('0,1');
       expect(match.actual).toBe(1);
+    });
+
+    it('reports pats that match if directions match', () => {
+      const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
+      const directions = DirectionsOpt.make('/|/');
+      const match = flexagon.matchPattern(pattern, directions);
+      if (isPatternError(match)) {
+        fail();
+        return;
+      }
+      // e.g. 0 matches 1 and 3 matches [4,5]
+      expect(match.map(p => p.getString()).join(',')).toBe('1,-2,3,[4,5],[6,-7]');
+    });
+
+    it('supports optional directions', () => {
+      // match
+      const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
+      const directions = DirectionsOpt.make('??/');
+      const match = flexagon.matchPattern(pattern, directions);
+      if (isPatternError(match)) {
+        console.log(match)
+        fail();
+        return;
+      }
+      expect(match.map(p => p.getString()).join(',')).toBe('1,-2,3,[4,5],[6,-7]');
+
+      // mismatch
+      const directions2 = DirectionsOpt.make('??|');
+      const match2 = flexagon.matchPattern(pattern, directions2);
+      if (!isPatternError(match2) || match2.expectedDirs === undefined || match2.actualDirs === undefined) {
+        fail();
+        return;
+      }
+      expect(match2.expectedDirs.asString(true)).toBe('??|');
+      expect(match2.actualDirs.asString(true)).toBe('/|/');
+    });
+
+    it('reports if directions mismatch', () => {
+      const pattern: LeafTree[] = [0, 1, 2];
+      const directions = DirectionsOpt.make('//|');
+      const match = flexagon.matchPattern(pattern, directions);
+      if (!isPatternError(match) || match.expectedDirs === undefined || match.actualDirs === undefined) {
+        fail();
+        return;
+      }
+      expect(match.expectedDirs.asString(true)).toBe('//|');
+      expect(match.actualDirs.asString(true)).toBe('/|/');
     });
   });
 }

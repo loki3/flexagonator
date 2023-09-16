@@ -70,11 +70,13 @@ namespace Flexagonator {
       return this.pats.every((pat, i) => pat.hasPattern(pattern[i]));
     }
 
-    matchPattern(pattern: LeafTree[]): Pat[] | PatternError {
+    /** if pats & directions match, return a lookup from pattern leaf id to matching pat */
+    matchPattern(pattern: LeafTree[], patternDirs?: DirectionsOpt): Pat[] | PatternError {
       if (this.pats.length !== pattern.length) {
         return { expected: pattern, actual: this.pats };
       }
 
+      // check pats & save matches
       const match: Pat[] = [];
       for (let i in this.pats) {
         const imatch = this.pats[i].matchPattern(pattern[i]);
@@ -85,6 +87,25 @@ namespace Flexagonator {
           match[j] = imatch[j];
         }
       }
+
+      // verify that directions match
+      if (patternDirs) {
+        if (this.directions === undefined) {
+          return { expectedDirs: patternDirs, actualDirs: this.directions };
+        } else if (patternDirs.getCount() !== this.directions.getCount()) {
+          return { expectedDirs: patternDirs, actualDirs: this.directions };
+        }
+        const expected = patternDirs.asRaw();
+        const actual = this.directions.asRaw();
+        let i = 0;
+        for (const e of expected) {
+          if (e !== null && e != actual[i]) {
+            return { expectedDirs: patternDirs, actualDirs: this.directions };
+          }
+          i++;
+        }
+      }
+
       return match;
     }
 

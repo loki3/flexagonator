@@ -42,4 +42,42 @@ namespace Flexagonator {
 
     public asRaw(): boolean[] { return this.directions; }
   }
+
+
+  /** optional direction between pats, Direction + ? (don't care about direction) */
+  export type DirectionOpt = '/' | '\\' | '|' | '?';
+
+  /** used to specify optional directions between adjacent pats or leaves */
+  export class DirectionsOpt {
+    /**
+     * how each pat is connected to the previous pat;
+     * either as a string - \: up, /: down, ?:don't care, assuming previous to left
+     * or array - false: left or up, true: right or down, null: don't care
+     */
+    public static make(input: (boolean | null)[] | string): DirectionsOpt {
+      if (typeof input !== 'string') {
+        return new DirectionsOpt(input);
+      }
+      const directions: (boolean | null)[] = [];
+      for (let i = 0; i < input.length; i++) {
+        directions.push(input[i] === '?' ? null : input[i] === '/');
+      }
+      return new DirectionsOpt(directions);
+    }
+
+    private constructor(private directions: (boolean | null)[]) {
+    }
+
+    public getCount(): number { return this.directions.length; }
+
+    /** if 'jsonFriendly', use | instead of \ so escaping doesn't obfuscate the patterns */
+    public asString(jsonFriendly: boolean): string {
+      return jsonFriendly
+        ? this.directions.map(d => d === null ? '?' : d ? '/' : '|').join('')
+        : this.directions.map(d => d === null ? '?' : d ? '/' : '\\').join('');
+    }
+
+    public asRaw(): (boolean | null)[] { return this.directions; }
+  }
+
 }

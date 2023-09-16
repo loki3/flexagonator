@@ -62,6 +62,8 @@ namespace Flexagonator {
     readonly input: LeafTree[],
     readonly output: LeafTree[],
     readonly rotation?: AngleOrder,
+    /** flexagon must be connected with these directions for flex to work: /\? */
+    readonly inputDirs?: string,
     /** the new order for the directions between pats, 1-based */
     readonly orderOfDirs?: number[],
   }
