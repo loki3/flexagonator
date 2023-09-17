@@ -17,6 +17,10 @@ namespace Flexagonator {
     if (showCurrent) {
       drawCurrentMarker(paint, hinges[0], minSide / 12);
     }
+    if (showStructure !== StructureType.None) {
+      const centers = getCenterPoints(paint, leaflines, showFront);
+      drawPatStructures(paint, minSide / 22, centers, objects.flexagon, showStructure);
+    }
 
     return hinges;
   }
@@ -59,19 +63,52 @@ namespace Flexagonator {
     return lines;
   }
 
+  /** transform raw triangular faces in abstract coordinates into center points in pixels */
+  function getCenterPoints(paint: Paint, leaflines: LeafLines, showFront: boolean): Point[] {
+    const [w, h] = paint.getSize();
+    const extents: [Point, Point] = getExtents(leaflines);
+    const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], !showFront, undefined, 1);
+
+    const centers = leaflines.faces.map(face => {
+      const center = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
+      const centerPix = transform.apply(center);
+      return { x: centerPix.x, y: centerPix.y }
+    });
+    return centers;
+  }
+
   function getMinSide(paint: Paint): number {
     const [w, h] = paint.getSize();
     return Math.min(w, h);
   }
 
-  function drawCurrentMarker(paint: Paint, line: Line, fontsize: number) {
-    paint.setTextColor('black');
+  function setTextProps(paint: Paint, fontsize: number) {
+    paint.setTextColor("black");
+    paint.setTextHorizontal("center");
+    paint.setTextVertical("middle");
     paint.setTextSize(fontsize);
-    paint.setTextHorizontal('center');
-    paint.setTextVertical('middle');
+  }
 
+  /** put a * at the current hinge */
+  function drawCurrentMarker(paint: Paint, line: Line, fontsize: number) {
+    setTextProps(paint, fontsize);
     const x = (line.a.x + line.b.x) / 2;
     const y = (line.a.y + line.b.y) / 2;
     paint.drawText('⚹', x, y);
+  }
+
+  /** draw pat structure, like [-[--]], near the centers of the faces */
+  function drawPatStructures(paint: Paint, fontsize: number, centers: Point[], flexagon: Flexagon, patstructure: StructureType) {
+    if (patstructure === StructureType.None) {
+      return;
+    }
+    setTextProps(paint, fontsize);
+    for (let i = 0; i < flexagon.getPatCount(); i++) {
+      const pat = flexagon.pats[i];
+      const structure: string = patstructure === StructureType.All
+        ? pat.getStructure()
+        : pat.getStructureLTEId(flexagon.getPatCount());
+      paint.drawText(structure, centers[i].x, centers[i].y + 15);
+    }
   }
 }
