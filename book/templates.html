@@ -719,8 +719,8 @@
       { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "tetra", which: 2, edge: 0 }] });
 
     // Bf = Mkf'Mkb
-    const bf = { flexes: "Mkf'* Mkb+ Mkf <<<<", labelAsTree };
-    var script = [...base, bf];
+    const bf = { flexes: ">>>> Mkf'* Mkb+ Mkf <<<<<<<<", labelAsTree };
+    var script = [...base, bf, { flexes: ">>>>" }];
     var captions = [firstStar, lastStar, { text: "Bf", which: 10, edge: 1 }, { text: "#", which: 10, edge: 0 }, { text: "#", which: 7, edge: 2 }];
     drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
     // note that it doesn't know it's a Möbius strip so it doesn't know how to <<<< across the half-twist
