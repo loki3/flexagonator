@@ -70,6 +70,26 @@ namespace Flexagonator {
       return this.pats.every((pat, i) => pat.hasPattern(pattern[i]));
     }
 
+    /** check if the flexagon's pat directions match the given pattern */
+    hasDirections(patternDirs?: DirectionsOpt): boolean {
+      if (!patternDirs || !this.directions) {
+        return true;
+      }
+      if (patternDirs.getCount() !== this.directions.getCount()) {
+        return false;
+      }
+      const expected = patternDirs.asRaw();
+      const actual = this.directions.asRaw();
+      let i = 0;
+      for (const e of expected) {
+        if (e !== null && e != actual[i]) {
+          return false;
+        }
+        i++;
+      }
+      return true;
+    }
+
     /** if pats & directions match, return a lookup from pattern leaf id to matching pat */
     matchPattern(pattern: LeafTree[], patternDirs?: DirectionsOpt): Pat[] | PatternError {
       if (this.pats.length !== pattern.length) {
@@ -89,21 +109,8 @@ namespace Flexagonator {
       }
 
       // verify that directions match
-      if (patternDirs) {
-        if (this.directions === undefined) {
-          return { expectedDirs: patternDirs, actualDirs: this.directions };
-        } else if (patternDirs.getCount() !== this.directions.getCount()) {
-          return { expectedDirs: patternDirs, actualDirs: this.directions };
-        }
-        const expected = patternDirs.asRaw();
-        const actual = this.directions.asRaw();
-        let i = 0;
-        for (const e of expected) {
-          if (e !== null && e != actual[i]) {
-            return { expectedDirs: patternDirs, actualDirs: this.directions };
-          }
-          i++;
-        }
+      if (!this.hasDirections(patternDirs)) {
+        return { expectedDirs: patternDirs, actualDirs: this.directions };
       }
 
       return match;

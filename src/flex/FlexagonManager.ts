@@ -82,15 +82,19 @@ namespace Flexagonator {
     // apply a flex without adding it to the history list
     private rawApplyFlex(flexName: FlexName): boolean | FlexError {
       const name = flexName.flexName;
+      const flex = this.allFlexes[name];
 
-      if (this.allFlexes[name] === undefined) {
+      if (flex === undefined) {
         return { reason: FlexCode.UnknownFlex, flexName: name };
       }
 
+      if (flexName.shouldGenerate && !this.flexagon.hasDirections(flex.inputDirs)) {
+        return { reason: FlexCode.CantApplyFlex, flexName: name };
+      }
       const [input, splits] = flexName.shouldGenerate
-        ? this.allFlexes[name].createPattern(this.flexagon)
+        ? flex.createPattern(this.flexagon)
         : [this.flexagon, []];
-      const result = flexName.shouldApply ? this.allFlexes[name].apply(input) : input;
+      const result = flexName.shouldApply ? flex.apply(input) : input;
       if (isFlexError(result)) {
         return { reason: FlexCode.CantApplyFlex, flexName: name };
       }
