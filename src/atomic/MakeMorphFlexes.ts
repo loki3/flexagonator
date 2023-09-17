@@ -65,37 +65,4 @@ namespace Flexagonator {
     return flexes;
   }
 
-  function createLocalFlex(name: string, patsNeeded: number, nextId: number,
-    inLeft: LeafTree[], inRight: LeafTree[], outLeft: LeafTree[], outRight: LeafTree[],
-    inDirLeft?: string, inDirRight?: string, outDirLeft?: string, outDirRight?: string,
-    rotation?: FlexRotation
-  ): Flex {
-    const input = createLeafTree(patsNeeded, nextId, inLeft, inRight);
-    const output = createLeafTree(patsNeeded, nextId, outLeft, outRight);
-    const inputDirs = createDirectionsOpt(patsNeeded, inDirLeft, inDirRight);
-    const outputDirs = createDirectionsOpt(patsNeeded, outDirLeft, outDirRight);
-    const fr = rotation === undefined ? FlexRotation.None : rotation;
-    return makeFlex(name, input, output, fr, inputDirs, outputDirs) as Flex;
-  }
-
-  /** make [<right>, nextId, nextId+1..., <left>] so current hinge is between left & right */
-  function createLeafTree(patsNeeded: number, nextId: number, left: LeafTree[], right: LeafTree[]): LeafTree[] {
-    let pats: LeafTree[] = right;
-    for (let i = nextId; i < nextId + patsNeeded; i++) {
-      pats = pats.concat(i);
-    }
-    return pats.concat(left);
-  }
-
-  /** flex out the directions for the entire flexagon: right + ?'s + left */
-  function createDirectionsOpt(
-    patsNeeded: number, inDirLeft?: string, inDirRight?: string
-  ): string | undefined {
-    if (inDirLeft === undefined || inDirRight === undefined) {
-      return undefined;
-    }
-    const dirs = inDirRight + '?'.repeat(patsNeeded) + inDirLeft;
-    return dirs;
-  }
-
 }
