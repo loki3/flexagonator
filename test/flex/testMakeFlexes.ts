@@ -50,13 +50,13 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["P"].input, Pin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["P"].output, Pout)).toBeTruthy();
 
-      const Sin = [[1, 2], 3, 4, 5, 6, 7, [[[8, 9], 10], 11], 12];
-      const Sout = [[1, [10, [2, -12]]], 3, 4, 5, 6, 7, [9, 11], -8];
+      const Sin = [[7, -6], 8, 9, 10, 11, 12, [[[3, -2], -4], 1], -5];
+      const Sout = [[7, [-4, [-6, 5]]], 8, 9, 10, 11, 12, [-2, 1], -3];
       expect(areLTArraysEqual(flexes["S"].input, Sin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["S"].output, Sout)).toBeTruthy();
 
-      const S3in = [[2, -1], 3, 4, 5, 6, [[[9, -8], -10], 7], -11, -12];
-      const S3out = [[2, [-11, [-1, 12]]], 3, 4, 5, 6, [-8, 7], -9, -10];
+      const S3in = [[8, -7], 9, 10, 11, 12, [[[3, -2], -4], 1], -5, -6];
+      const S3out = [[8, [-5, [-7, 6]]], 9, 10, 11, 12, [-2, 1], -3, -4];
       expect(areLTArraysEqual(flexes["S3"].input, S3in)).toBeTruthy();
       expect(areLTArraysEqual(flexes["S3"].output, S3out)).toBeTruthy();
 
@@ -65,13 +65,13 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["V"].input, Vin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["V"].output, Vout)).toBeTruthy();
 
-      const Fin = [[1, 2], 3, 4, 5, 6, 7, [[8, 9], [10, 11]], 12];
-      const Fout = [9, [[-1, 3], [12, -2]], 4, 5, 6, 7, 10, [-8, -11]];
+      const Fin = [[7, -6], 8, 9, 10, 11, 12, [[3, -4], [1, -2]], -5];
+      const Fout = [-4, [[-7, 8], [-5, 6]], 9, 10, 11, 12, 1, [-3, 2]];
       expect(areLTArraysEqual(flexes["F"].input, Fin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["F"].output, Fout)).toBeTruthy();
 
-      const Stin = [[1, [2, 3]], 4, 5, 6, 7, 8, [9, [10, 11]], 12];
-      const Stout = [2, [[-1, 4], -3], 5, 6, 7, 8, 10, [[-9, 12], -11]];
+      const Stin = [[7, [5, -6]], 8, 9, 10, 11, 12, [3, [1, -2]], 4];
+      const Stout = [5, [[-7, 8], 6], 9, 10, 11, 12, 1, [[-3, 4], 2]];
       expect(areLTArraysEqual(flexes["St"].input, Stin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["St"].output, Stout)).toBeTruthy();
 
@@ -80,8 +80,8 @@ namespace Flexagonator {
       expect(areLTArraysEqual(flexes["Ltf"].input, Ltin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Ltf"].output, Ltout)).toBeTruthy();
 
-      const Fmin = [[2, -1], 3, 4, 5, 6, [[9, -10], [7, -8]], -11, -12];
-      const Fmout = [[2, [-11, [-1, 12]]], 3, 4, 5, 6, 7, [-9, 8], -10];
+      const Fmin = [[8, -7], 9, 10, 11, 12, [[3, -4], [1, -2]], -5, -6];
+      const Fmout = [[8, [-5, [-7, 6]]], 9, 10, 11, 12, 1, [-3, 2], -4];
       expect(areLTArraysEqual(flexes["Fm"].input, Fmin)).toBeTruthy();
       expect(areLTArraysEqual(flexes["Fm"].output, Fmout)).toBeTruthy();
     });

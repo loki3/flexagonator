@@ -10,7 +10,7 @@ namespace Flexagonator {
 
     it('should find that Lh is not prime', () => {
       const result = findEqualFlexes(flexes["Lh"], flexes);
-      expect(result).toBe("Ltb T'");
+      expect(result).toBe("Ltb Tf'");
     })
   });
 

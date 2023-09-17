@@ -732,12 +732,14 @@
     function makeWithWrap(canvasId, flexes, rotation, extraCaptions) {
       var script = [
         { numPats: 12, angles2: [90, 45], directions: "|//||//||//|" },
-        {
+        { // a [1,-2] \ # -3 \ -4 / -5 / b  ->  a 1 / [-3,2] / # -4 / -5 / b
           addFlex: {
             name: "wrapper",
             shorthand: "W",
             input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, [12, -13]],
-            output: [[1, 13], 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+            output: [[1, 13], 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+            inputDirs: "|//||//||//|",
+            outputDirs: "///||//||///"
           }
         },
         { flexes, labelAsTree }

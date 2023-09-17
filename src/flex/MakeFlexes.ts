@@ -24,21 +24,12 @@ namespace Flexagonator {
     }
     else {
       addRotates(patCount, flexes);
+      addLocalFlexes(patCount, flexes);
 
       if (patCount % 2 == 0)
         flexes["P"] = createPinch(patCount);
-      if (patCount >= 5)
-        flexes["S"] = createPyramidShuffle(patCount);
-      if (patCount >= 6)
-        flexes["S3"] = createPyramidShuffle3(patCount);
       if (patCount >= 6 && patCount % 2 === 0)
         flexes["V"] = createV(patCount);
-      if (patCount >= 6)
-        flexes["F"] = createFlip(patCount);
-      if (patCount >= 6)
-        flexes["Fm"] = createMobiusFlip(patCount);
-      if (patCount === 4 || patCount >= 6)
-        flexes["St"] = createSilverTetra(patCount);
       if (patCount == 8 || patCount == 10 || patCount == 12)
         flexes["Tw"] = createTwist(patCount);
       if (patCount >= 5)
@@ -48,7 +39,6 @@ namespace Flexagonator {
       if (patCount == 5)
         flexes["L3"] = createSlotTriplePocket();
 
-      flexes["Tf"] = createForcedTuck(patCount);
       for (let i = 0; i < patCount - 5; i++) {
         const s = "T" + (i + 1).toString();
         flexes[s] = createTuck(patCount, i);
@@ -87,6 +77,7 @@ namespace Flexagonator {
     const flexes: Flexes = {};
 
     addRotates(6, flexes);
+    addLocalFlexes(6, flexes);
 
     flexes["P"] = makeFlex("pinch flex",
       [[-2, 1], -3, [5, -4], 6, [-8, 7], -9],
@@ -94,30 +85,12 @@ namespace Flexagonator {
     flexes["T"] = makeFlex("tuck flex",
       [[[-2, 3], 1], 4, 5, [-7, 6], -8, -9],
       [3, 4, 5, [-7, 6], -8, [2, [-9, -1]]], FlexRotation.None) as Flex;
-    flexes["Tf"] = makeFlex("forced tuck",
-      [[[-2, 3], 1], 4, 5, 6, 7, 8],
-      [3, 4, 5, 6, 7, [2, [8, -1]]], FlexRotation.None) as Flex;
     flexes["Ttf"] = makeFlex("tuck top front",
       [[[-2, 3], 1], [-5, 4], -6, [8, -7], 9, 10],
       [[4, -3], 5, [-7, 6], -8, [[10, -1], -9], -2], FlexRotation.None) as Flex;
-    flexes["S"] = makeFlex("pyramid shuffle",
-      [[-2, 1], -3, -4, -5, [[[-8, 7], 9], -6], 10],
-      [[-2, [9, [1, -10]]], -3, -4, -5, [7, -6], 8], FlexRotation.None) as Flex;
-    flexes["S3"] = makeFlex("pyramid shuffle 3",
-      [[-2, 1], -3, -4, [[[-7, 6], 8], -5], 9, 10],
-      [[-2, [9, [1, -10]]], -3, -4, [6, -5], 7, 8], FlexRotation.None) as Flex;
     flexes["V"] = makeFlex("v flex",
       [1, [-3, 2], [5, -4], 6, 7, [-9, 8]],
       [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.CBA) as Flex;
-    flexes["F"] = makeFlex("flip flex",
-      [[-2, 1], -3, -4, -5, [[-8, 9], [-6, 7]], 10],
-      [9, [[2, -3], [10, -1]], -4, -5, -6, [8, -7]], FlexRotation.None) as Flex;
-    flexes["Fm"] = makeFlex("mobius flip",
-      [[-2, 1], -3, -4, [[-7, 8], [-5, 6]], 9, 10],
-      [[-2, [9, [1, -10]]], -3, -4, -5, [7, -6], 8], FlexRotation.None) as Flex;
-    flexes["St"] = makeFlex("silver tetra flex",
-      [[3, [1, -2]], 4, 5, 6, [9, [7, -8]], 10],
-      [1, [[-3, 4], 2], 5, 6, 7, [[-9, 10], 8]], FlexRotation.None) as Flex;
     flexes["Ltf"] = makeFlex("slot tuck top front",
       [[[[3, -2], -4], 1], -5, -6, -7, [9, -8], 10],
       [10, [-2, 1], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.ACB) as Flex;
@@ -162,6 +135,42 @@ namespace Flexagonator {
     flexes["<"] = makeFlex("shift left", input, leftOut, FlexRotation.Left, undefined, undefined, leftDirs) as Flex;
     flexes["^"] = makeFlex("turn over", input, overOut, FlexRotation.None, undefined, undefined, overDirs) as Flex;
     flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, undefined, undefined, changeDirs) as Flex;
+  }
+
+  function addLocalFlexes(patCount: number, flexes: Flexes) {
+    flexes["Tf"] = createLocalFlex("forced tuck", patCount - 2, 5,
+      [1], /**/[[[-3, 4], 2]],
+      [[3, [1, -2]]], /**/[4],
+      "/", "/", "/", "/");  // /#/
+
+    if (patCount === 4 || patCount >= 6) {
+      flexes["St"] = createLocalFlex("silver tetra", patCount - 4, 9,
+        [[3, [1, -2]], 4], /**/[[7, [5, -6]], 8],
+        [1, [[-3, 4], 2]], /**/[5, [[-7, 8], 6]],
+        "//", "//", "//", "//");  // //#//
+    }
+
+    if (patCount >= 5) {
+      flexes["S"] = createLocalFlex("pyramid shuffle", patCount - 3, 8,
+        [[[[3, -2], -4], 1], -5], /**/[[7, -6]],
+        [[-2, 1], -3], /**/[[7, [-4, [-6, 5]]]],
+        "//", "/", "//", "/");  // //#/
+    }
+
+    if (patCount >= 6) {
+      flexes["F"] = createLocalFlex("flip", patCount - 4, 9,
+        [[[3, -4], [1, -2]], -5], /**/[[7, -6], 8],
+        [1, [-3, 2]], /**/[-4, [[-7, 8], [-5, 6]]],
+        "//", "//", "//", "//");  // //#//
+      flexes["Fm"] = createLocalFlex("mobius flip", patCount - 4, 9,
+        [[[3, -4], [1, -2]], -5, -6], /**/[[8, -7]],
+        [1, [-3, 2], -4], /**/[[8, [-5, [-7, 6]]]],
+        "///", "/", "///", "/");  // ///#/
+      flexes["S3"] = createLocalFlex("pyramid shuffle 3", patCount - 4, 9,
+        [[[[3, -2], -4], 1], -5, -6], /**/[[8, -7]],
+        [[-2, 1], -3, -4], /**/[[8, [-5, [-7, 6]]]],
+        "///", "/", "///", "/");  // ///#/
+    }
   }
 
   function addDoublePinches(patCount: number, flexes: Flexes) {
@@ -248,59 +257,6 @@ namespace Flexagonator {
     return makeFlex("pinch " + nums, input, output, FlexRotation.None) as Flex;
   }
 
-  function createPyramidShuffle(patCount: number): Flex {
-    // (1,2) (3) ... (i) ... (((n-4,n-3)n-2)n-1) (n)
-    // (1(n-2(2,^n))) (3) ... (i) ... (n-3,n-1) (^n-4)
-    const input: LeafTree = [];
-    const output: LeafTree = [];
-    const leaves = patCount + 4;
-
-    input.push([1, 2]);
-    for (let i = 3; i < patCount; i++) {
-      input.push(i);
-    }
-    input.push([[[leaves - 4, leaves - 3], leaves - 2], leaves - 1]);
-    input.push(leaves);
-
-    // post
-    output.push([1, [leaves - 2, [2, -leaves]]]);
-    for (let i = 3; i < patCount; i++) {
-      output.push(i);
-    }
-    output.push([leaves - 3, leaves - 1]);
-    output.push(-(leaves - 4));
-
-    return makeFlex("pyramid shuffle", input, output, FlexRotation.None) as Flex;
-  }
-
-  // same as the pyramid shuffle, except that you open up 3 pats instead of 2
-  function createPyramidShuffle3(patCount: number): Flex {
-    // (2,-1) (3) ... (i) ... (((n-3,^n-4)^n-2)n-5) (^n-1) (^n)
-    // (2(^n-1,(^1,n))) (3) ... (i) ... (^n-4,n-5) (^n-3) (^n-2)
-    const input: LeafTree = [];
-    const output: LeafTree = [];
-    const leaves = patCount + 4;
-
-    input.push([2, -1]);
-    for (let i = 3; i < patCount - 1; i++) {
-      input.push(i);
-    }
-    input.push([[[leaves - 3, 4 - leaves], 2 - leaves], leaves - 5]);
-    input.push(1 - leaves);
-    input.push(-leaves);
-
-    // post
-    output.push([2, [1 - leaves, [-1, leaves]]]);
-    for (let i = 3; i < patCount - 1; i++) {
-      output.push(i);
-    }
-    output.push([4 - leaves, leaves - 5]);
-    output.push(3 - leaves);
-    output.push(2 - leaves);
-
-    return makeFlex("pyramid shuffle 3", input, output, FlexRotation.None) as Flex;
-  }
-
   function createV(patCount: number): Flex {
     // (1) (^3,2) ... (i) (^i+2,i+1) ... (n-4,^n-5) (n-3)  (n-2) (^n,n-1)
     // (2,^1) (3) ... (i+1,^i) (i+2) ... (n-5) (^n-3,n-4)  (n-1,^n-2) (n)
@@ -337,83 +293,6 @@ namespace Flexagonator {
     }
 
     return makeFlex("v flex", input, output, FlexRotation.CBA) as Flex;
-  }
-
-  function createFlip(patCount: number): Flex {
-    // (1,2) (3) ... (i) ... ((n-4,n-3)(n-2,n-1)) (n)
-    // (n-3) ((^1,3)(n,^2)) ... (i) ... (n-2) (^n-4,^n-1)
-    const input: LeafTree = [];
-    const output: LeafTree = [];
-    const leaves = patCount + 4;
-
-    input.push([1, 2]);
-    for (let i = 3; i < patCount; i++) {
-      input.push(i);
-    }
-    input.push([[leaves - 4, leaves - 3], [leaves - 2, leaves - 1]]);
-    input.push(leaves);
-
-    output.push(leaves - 3);
-    output.push([[-1, 3], [leaves, -2]]);
-    for (let i = 4; i < patCount; i++) {
-      output.push(i);
-    }
-    output.push(leaves - 2);
-    output.push([-(leaves - 4), -(leaves - 1)]);
-
-    return makeFlex("flip flex", input, output, FlexRotation.None) as Flex;
-  }
-
-  // you first open it up to make a mobius strip before completing a flip flex
-  function createMobiusFlip(patCount: number): Flex {
-    // (2,-1) ... (i) ... ((n-3,^n-2)(n-5,^n-4)) (^n-1) (^n)
-    // (2(^n-1(-1,n))) ... (i) ... (^n-3,n-4) (^n-2)
-    const input: LeafTree = [];
-    const output: LeafTree = [];
-    const leaves = patCount + 4;
-
-    input.push([2, -1]);
-    for (let i = 3; i <= leaves - 6; i++) {
-      input.push(i);
-    }
-    input.push([[leaves - 3, 2 - leaves], [leaves - 5, 4 - leaves]]);
-    input.push(1 - leaves);
-    input.push(-leaves);
-
-    // post
-    output.push([2, [1 - leaves, [-1, leaves]]]);
-    for (let i = 3; i <= leaves - 5; i++) {
-      output.push(i);
-    }
-    output.push([3 - leaves, leaves - 4]);
-    output.push(2 - leaves);
-
-    return makeFlex("mobius flip", input, output, FlexRotation.None) as Flex;
-  }
-
-  function createSilverTetra(patCount: number): Flex {
-    // (1(2,3)) (4) ... (i) ... (n-3(n-2,n-1)) (n)
-    // (2) ((^1,4)^3) ... (i) ... (n-2) ((^n-3,n)^n-1)
-    const input: LeafTree = [];
-    const output: LeafTree = [];
-    const leaves = patCount + 4;
-
-    input.push([1, [2, 3]]);
-    for (let i = 4; i <= patCount; i++) {
-      input.push(i);
-    }
-    input.push([leaves - 3, [leaves - 2, leaves - 1]]);
-    input.push(leaves);
-
-    output.push(2);
-    output.push([[-1, 4], -3]);
-    for (let i = 5; i <= patCount; i++) {
-      output.push(i);
-    }
-    output.push(leaves - 2);
-    output.push([[-(leaves - 3), leaves], -(leaves - 1)]);
-
-    return makeFlex("silver tetra flex", input, output, FlexRotation.None) as Flex;
   }
 
   function createTwist(patCount: number): Flex {
@@ -524,27 +403,6 @@ namespace Flexagonator {
 
     const name = "tuck" + (where == 0 ? "" : (where + 1).toString());
     return makeFlex(name, input, output, FlexRotation.None) as Flex;
-  }
-
-  function createForcedTuck(patCount: number): Flex {
-    // ((1,2)3) (4) ... (n-1) (n)
-    // (2) (4) ... (n-1) (^1(n,^3))
-    const input: LeafTree = [];
-    const output: LeafTree = [];
-    const leaves = patCount + 2;
-
-    input.push([[1, 2], 3]);
-    for (let i = 4; i <= leaves; i++) {
-      input.push(i);
-    }
-
-    output.push(2);
-    for (let i = 4; i < leaves; i++) {
-      output.push(i);
-    }
-    output.push([-1, [leaves, -3]]);
-
-    return makeFlex("forced tuck", input, output, FlexRotation.None) as Flex;
   }
 
 }
