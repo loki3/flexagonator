@@ -66,7 +66,8 @@ namespace Flexagonator {
     }
 
     createInverse(): Flex {
-      return new Flex("inverse " + this.name, this.output, this.input, this.invertRotation(this.rotation));
+      return new Flex("inverse " + this.name, this.output, this.input,
+        this.invertRotation(this.rotation), this.outputDirs, this.inputDirs);
     }
 
     // apply this flex to the given flexagon
