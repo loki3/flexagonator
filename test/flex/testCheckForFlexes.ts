@@ -14,6 +14,20 @@ namespace Flexagonator {
       expect(results[0]).toBe("A");
       expect(results[1]).toBe("C");
     });
+
+    it('takes into account pat directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4], undefined, Directions.make("//|/")) as Flexagon;
+
+      const flexes: Flexes = {};
+      flexes["A"] = makeFlex("test", [1, 2, 3, 4], [1, 2, 3, 4], FlexRotation.None, "/??/") as Flex;
+      flexes["B"] = makeFlex("test", [1, 2, 3, 4], [1, 2, 3, 4], FlexRotation.None, "|/|/") as Flex;
+      flexes["C"] = makeFlex("test", [1, 2, 3, 4], [1, 2, 3, 4], FlexRotation.None, "//|/") as Flex;
+
+      const results = checkForFlexes(flexagon, flexes);
+      expect(results.length).toBe(2);
+      expect(results[0]).toBe("A");
+      expect(results[1]).toBe("C");
+    });
   });
 
 }
