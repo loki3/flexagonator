@@ -57,6 +57,16 @@ namespace Flexagonator {
       [1, 2, 3, 4], /**/[5, [[-7, 6], 8]],
       [[1, [3, -2]], 4], /**/[5, 6, 7, 8]);
 
+    // transfer flexes
+    flexes["Tr3"] = createLocalFlex("transfer 3", patCount - 3, 6,
+      [1, 2], /**/[[[-4, 5], 3]],
+      [[3, [1, -2]], 4], /**/[5],
+      "/|", "/", "/|", "/");  // /\#/ -> /\#/
+    flexes["Tr4"] = createLocalFlex("transfer 4", patCount - 4, 7,
+      [1, 2], /**/[3, [4, [6, -5]]],
+      [[[-2, 1], 3], 4], /**/[5, 6],
+      "|/", "/|", "|/", "/|"); // \/#/\ -> \/#/\
+
     // add all the inverses
     for (const flex of Object.keys(flexes)) {
       flexes[flex + "'"] = flexes[flex].createInverse();
