@@ -19,7 +19,7 @@ namespace Flexagonator {
     }
     if (showStructure !== StructureType.None) {
       const centers = getCenterPoints(paint, leaflines, showFront);
-      drawPatStructures(paint, minSide / 22, centers, objects.flexagon, showStructure);
+      drawPatStructures(paint, minSide / 35, centers, objects.flexagon, showStructure);
     }
 
     return hinges;
