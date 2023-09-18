@@ -6,7 +6,10 @@ namespace Flexagonator {
    * @param sequence sequence that the new flex will be equal to, e.g. "S >> T'"
    * @param flexes flex definitions to reference when creating the new flex
    */
-  export function makeFlexFromSequence(sequence: string, flexes: Flexes, name?: string): Flex | FlexError {
+  export function makeFlexFromSequence(
+    sequence: string, flexes: Flexes, name?: string,
+    rotation?: FlexRotation, inputDirs?: string, outputDirs?: string, orderOfDirs?: number[]
+  ): Flex | FlexError {
     const flexNames = parseFlexSequence(sequence);
 
     const flexagon = makeEmptyFlexagon(flexes);
@@ -27,7 +30,8 @@ namespace Flexagonator {
     const input = fm.flexagon.getAsLeafTrees();
 
     name = name ? name : "new flex";
-    return makeFlex(name, input, output, FlexRotation.None);
+    const fr = rotation ? rotation : FlexRotation.None;
+    return makeFlex(name, input, output, fr, inputDirs, outputDirs, orderOfDirs);
   }
 
   function makeEmptyFlexagon(flexes: Flexes): Flexagon {

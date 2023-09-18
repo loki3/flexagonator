@@ -78,6 +78,13 @@ namespace Flexagonator {
     readonly shorthand: string;
     readonly name: string;
     readonly sequence: string;
+    readonly rotation?: AngleOrder,
+    /** flexagon must be connected with these directions for flex to work: /\? */
+    readonly inputDirs?: string,
+    /** specific pat directions for output flexagon */
+    readonly outputDirs?: string,
+    /** if directions get rearranged: the new order for the directions between pats, 1-based */
+    readonly orderOfDirs?: number[],
   }
 
   export function isFlexFromSequence(result: any): result is FlexFromSequence {
