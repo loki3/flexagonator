@@ -1,5 +1,6 @@
 namespace Flexagonator {
 
+  /** lookup table of flexes, typically by shorthand like P or Tf */
   export interface Flexes {
     [index: string]: Flex;
   }
@@ -17,6 +18,7 @@ namespace Flexagonator {
     return flexes;
   }
 
+  /** make all the built-in flexes for flexagon with the given number of pats */
   export function makeAllFlexes(patCount: number): Flexes {
     let flexes: Flexes = {};
     if (patCount === 6) {
@@ -55,24 +57,7 @@ namespace Flexagonator {
     return flexes;
   }
 
-  // return just the flexes that can't be done using other flexes
-  export function getPrimeFlexes(all: Flexes, patCount?: number): Flexes {
-    const flexes: Flexes = {};
-    const primes = ["P", "S", "T", "T'", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'", "T1", "T1'", "T2", "T2'", "T3", "T3'", "Tf"];
-
-    for (const prime of primes) {
-      if (all[prime] !== undefined) {
-        flexes[prime] = all[prime];
-      }
-    }
-    // S3 is special in that it's not prime for n=6|7, but is for n>=8
-    if (patCount && patCount >= 8 && all['S3'] !== undefined) {
-      flexes['S3'] = all['S3'];
-    }
-
-    return flexes;
-  }
-
+  /** make all the built-in flexes for a hexaflexagon */
   function makeHexaFlexes(): Flexes {
     const flexes: Flexes = {};
 
@@ -116,6 +101,25 @@ namespace Flexagonator {
     return flexes;
   }
 
+  /** return just the flexes that can't be done using other flexes */
+  export function getPrimeFlexes(all: Flexes, patCount?: number): Flexes {
+    const flexes: Flexes = {};
+    const primes = ["P", "S", "T", "T'", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'", "T1", "T1'", "T2", "T2'", "T3", "T3'", "Tf"];
+
+    for (const prime of primes) {
+      if (all[prime] !== undefined) {
+        flexes[prime] = all[prime];
+      }
+    }
+    // S3 is special in that it's not prime for n=6|7, but is for n>=8
+    if (patCount && patCount >= 8 && all['S3'] !== undefined) {
+      flexes['S3'] = all['S3'];
+    }
+
+    return flexes;
+  }
+
+  /** add ><^~ */
   function addRotates(patCount: number, flexes: Flexes) {
     const input = [], rightOut = [], leftOut = [], overOut = [], changeOut = [];
     const rightDirs = [], leftDirs = [], overDirs = [], changeDirs = [];
@@ -137,6 +141,7 @@ namespace Flexagonator {
     flexes["~"] = makeFlex("change directions", input, changeOut, FlexRotation.CBA, undefined, undefined, changeDirs) as Flex;
   }
 
+  /** add flexes that only impact a subset of pats */
   function addLocalFlexes(patCount: number, flexes: Flexes) {
     flexes["Tf"] = createLocalFlex("forced tuck", patCount - 2, 5,
       [1], /**/[[[-3, 4], 2]],
