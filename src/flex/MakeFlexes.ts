@@ -173,24 +173,6 @@ namespace Flexagonator {
     }
   }
 
-  function addDoublePinches(patCount: number, flexes: Flexes) {
-    if (patCount === 8) {
-      flexes["P44"] = createDoublePinch(patCount, [4]);
-    }
-    if (patCount === 9) {
-      flexes["P333"] = createDoublePinch(patCount, [3, 6]);
-    }
-    if (patCount === 10) {
-      flexes["P334"] = createDoublePinch(patCount, [3, 6]);
-      flexes["P55"] = createDoublePinch(patCount, [5]);
-    }
-    if (patCount === 12) {
-      flexes["P3333"] = createDoublePinch(patCount, [3, 6, 9]);
-      flexes["P444"] = createDoublePinch(patCount, [4, 8]);
-      flexes["P66"] = createDoublePinch(patCount, [6]);
-    }
-  }
-
   function createPinch(patCount: number): Flex {
     // (1,2) (3) ... (i,i+1) (i+2) ... (n-2,n-1) (n)
     // (^1) (5,^3) ... (^i) (i+4,^i+2) ... (^n-2) (2,^n)
@@ -213,8 +195,28 @@ namespace Flexagonator {
     return makeFlex("pinch flex", input, output, FlexRotation.BAC) as Flex;
   }
 
+  /** adds some double pinch flexes for the given number of pats */
+  function addDoublePinches(patCount: number, flexes: Flexes) {
+    if (patCount === 8) {
+      flexes["P44"] = createDoublePinch(patCount, [4]);
+    }
+    if (patCount === 9) {
+      flexes["P333"] = createDoublePinch(patCount, [3, 6]);
+    }
+    if (patCount === 10) {
+      flexes["P334"] = createDoublePinch(patCount, [3, 6]);
+      flexes["P55"] = createDoublePinch(patCount, [5]);
+    }
+    if (patCount === 12) {
+      flexes["P3333"] = createDoublePinch(patCount, [3, 6, 9]);
+      flexes["P444"] = createDoublePinch(patCount, [4, 8]);
+      flexes["P66"] = createDoublePinch(patCount, [6]);
+    }
+  }
+
+  /** creates a double pinch where 'which' lists the hinges you pinch at */
   function createDoublePinch(patCount: number, which: number[]): Flex {
-    // basic unit: [1, [[2, 3], 4]]  ->  [[2, [1, -4]], 3]
+    // basic 2-pat unit: [1, [[2, 3], 4]]  ->  [[2, [1, -4]], 3]
     // 'which' lists the vertices where the basic unit will be applied after 0, e.g. [3,6] for P333
     // e.g. [[1,3], 2], 4, 5, [[6,8], 7], 9, 10, [[11,13], 12], 14, 15
     //      3, 4, [-6, [5,-7]], 8, 9, [-11, [10,-12]], 13, 14, [-1, [15,-2]]
