@@ -176,6 +176,19 @@ namespace Flexagonator {
         [[-2, 1], -3, -4], /**/[[8, [-5, [-7, 6]]]],
         "///", "/", "///", "/");  // ///#/
     }
+
+    if (patCount >= 10) {
+      flexes["F3"] = createLocalFlex("flip 3", patCount - 5, 10,
+        [[[3, -4], [1, -2]], -5, -6], /**/[[8, -7], 9],
+        [1, [-3, 2]], /**/[-4, -5, [[-8, 9], [-6, 7]]],
+        "///", "//", "///", "//", FlexRotation.Left, -1);  // ///#// => //#///
+    }
+    if (patCount >= 12) {
+      flexes["F4"] = createLocalFlex("flip 4", patCount - 6, 11,
+        [[[3, -4], [1, -2]], -5, -6, -7], /**/[[9, -8], 10],
+        [1, [-3, 2]], /**/[-4, -5, -6, [[-9, 10], [-7, 8]]],
+        "////", "//", "////", "//", FlexRotation.None, -2);  // ////#// => //#////
+    }
   }
 
   function createPinch(patCount: number): Flex {

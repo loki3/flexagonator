@@ -140,6 +140,30 @@ namespace Flexagonator {
     });
   });
 
+  describe('makeFlexes(12)', () => {
+    const flexes: Flexes = makeAllFlexes(12);
+
+    it('creates working F3', () => {
+      const f3 = flexes["F3"];
+      const flexagon = Flexagon.makeFromTree([[1, 2], 3, 4, 5, 6, 7, 8, 9, 10, [[11, 12], [13, 14]], 15, 16],
+        undefined, Directions.make("//|||||||///")) as Flexagon;
+      const after = f3.apply(flexagon) as Flexagon;
+      expect(JSON.stringify(after.getAsLeafTrees())).toBe("[12,15,[[-1,3],[16,-2]],4,5,6,7,8,9,10,13,[-11,-14]]");
+      expect(after.directions ? after.directions.asString(true) : "").toBe("///|||||||//");
+      expect(after.angleTracker.corners.toString()).toBe("0,2,1");
+    });
+
+    it('creates working F4', () => {
+      const f4 = flexes["F4"];
+      const flexagon = Flexagon.makeFromTree([[1, 2], 3, 4, 5, 6, 7, 8, 9, [[10, 11], [12, 13]], 14, 15, 16],
+        undefined, Directions.make("//||||||////")) as Flexagon;
+      const after = f4.apply(flexagon) as Flexagon;
+      expect(JSON.stringify(after.getAsLeafTrees())).toBe("[11,14,15,[[-1,3],[16,-2]],4,5,6,7,8,9,12,[-10,-13]]");
+      expect(after.directions ? after.directions.asString(true) : "").toBe("////||||||//");
+      expect(after.angleTracker.corners.toString()).toBe("0,1,2");
+    });
+  });
+
   describe('makeFlexes', () => {
     const flexes: Flexes = makeAllFlexes(6);
 
