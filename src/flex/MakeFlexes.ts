@@ -223,6 +223,7 @@ namespace Flexagonator {
     const input: LeafTree = [];
     const output: LeafTree = [];
 
+    // input
     let iWhich = -1;
     let iLeaf = 1;
     for (let iPat = 0; iPat < patCount; iPat++) {
@@ -235,6 +236,7 @@ namespace Flexagonator {
       }
     }
 
+    // output
     iWhich = 0;
     iLeaf = 3;
     for (let iPat = 0; iPat < patCount; iPat++) {
@@ -250,13 +252,22 @@ namespace Flexagonator {
       }
     }
 
+    // directions, e.g., (12,[4,4]) -> /??//??//??/
+    let directions = "";
+    for (iWhich = 0; iWhich < which.length + 1; iWhich++) {
+      const mid = iWhich === 0 ? which[0] :
+        iWhich === which.length ? patCount - which[which.length - 1] :
+          which[iWhich] - which[iWhich - 1];
+      directions += "/" + "?".repeat(mid - 2) + "/";
+    }
+
     // e.g. patCount=9 & which=[3,6] turns into "333"
     let nums = which[0].toString();
     for (let i = 1; i < which.length; i++) {
       nums += (which[i] - which[i - 1]).toString();
     }
     nums += (patCount - which[which.length - 1]).toString();
-    return makeFlex("pinch " + nums, input, output, FlexRotation.None) as Flex;
+    return makeFlex("pinch " + nums, input, output, FlexRotation.None, directions, directions) as Flex;
   }
 
   function createV(patCount: number): Flex {

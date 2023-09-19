@@ -128,6 +128,16 @@ namespace Flexagonator {
       expect(areLTArraysEqual(p444.input, [[[1, 3], 2], 4, 5, 6, [[7, 9], 8], 10, 11, 12, [[13, 15], 14], 16, 17, 18])).toBe(true);
       expect(areLTArraysEqual(p444.output, [3, 4, 5, [-7, [6, -8]], 9, 10, 11, [-13, [12, -14]], 15, 16, 17, [-1, [18, -2]]])).toBe(true);
     });
+
+    it('defines directions', () => {
+      const p3333 = flexes["P3333"];
+      expect(p3333.inputDirs ? p3333.inputDirs.asString(true) : "").toBe("/?//?//?//?/");
+      expect(p3333.outputDirs ? p3333.outputDirs.asString(true) : "").toBe("/?//?//?//?/");
+
+      const p444 = flexes["P444"];
+      expect(p444.inputDirs ? p444.inputDirs.asString(true) : "").toBe("/??//??//??/");
+      expect(p444.outputDirs ? p444.outputDirs.asString(true) : "").toBe("/??//??//??/");
+    });
   });
 
   describe('makeFlexes', () => {
