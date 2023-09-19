@@ -158,6 +158,19 @@ namespace Flexagonator {
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('////');  // two directions changed, two stayed the same
     });
+
+    it('supports both changing and rearranging directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4], undefined, Directions.make('/|//')) as Flexagon;
+
+      const flex = new Flex("test", [1, 2, 3, 4], [1, 3, 2, 4], FlexRotation.None,
+        DirectionsOpt.make('/|/?') as DirectionsOpt, DirectionsOpt.make('||/?') as DirectionsOpt,
+        [4, 1, 2, 3]);  // rotate directions after changing them
+      // /|// => ||// => /||/
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
+      const newDirs = result.directions as Directions;
+      expect(newDirs.asString(true)).toBe('/||/');
+    });
   });
 
   describe('Flex.createPattern', () => {

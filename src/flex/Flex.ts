@@ -117,16 +117,6 @@ namespace Flexagonator {
         return undefined; // flexagon didn't specify directions, so no directions
       }
 
-      // rearrange directions
-      if (this.orderOfDirs !== undefined) {
-        // e.g., [2,3,1] means that the 2nd direction should now be first, followed by the 3rd & 1st
-        const oldRaw = directions.asRaw();
-        const newRaw = this.orderOfDirs[0] > 0
-          ? this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1])   // move directions around
-          : this.orderOfDirs.map(newIndex => !oldRaw[-newIndex - 1]); // flip the directions, used by ~
-        return Directions.make(newRaw);
-      }
-
       // explicitly set new directions
       if (this.outputDirs !== undefined) {
         const flexDirs = this.outputDirs.asRaw();
@@ -142,7 +132,17 @@ namespace Flexagonator {
             newDirs.push(flexDir);
           }
         }
-        return Directions.make(newDirs);
+        directions = Directions.make(newDirs);
+      }
+
+      // rearrange directions
+      if (this.orderOfDirs !== undefined) {
+        // e.g., [2,3,1] means that the 2nd direction should now be first, followed by the 3rd & 1st
+        const oldRaw = directions.asRaw();
+        const newRaw = this.orderOfDirs[0] > 0
+          ? this.orderOfDirs.map(newIndex => oldRaw[newIndex - 1])   // move directions around
+          : this.orderOfDirs.map(newIndex => !oldRaw[-newIndex - 1]); // flip the directions, used by ~
+        directions = Directions.make(newRaw);
       }
 
       return directions;
