@@ -36,7 +36,7 @@ namespace Flexagonator {
     // label leaf faces based on deep they are in the tree, optionally assigning passed in colors
     readonly labelAsTree?: number[];
     // add a new flex to what can be applied to the current flexagon
-    readonly addFlex?: FlexDef | FlexFromSequence;
+    readonly addFlex?: FlexFromPats | FlexFromSequence;
     // a list of flexes to search
     readonly searchFlexes?: string;
     // add the morph-flexes to the list of flex definitions
@@ -55,12 +55,10 @@ namespace Flexagonator {
     readonly colors?: number[];
   }
 
-  // define a flex in terms of input & output pats
+  /** base interface for common info for defining a new flex */
   export interface FlexDef {
     readonly shorthand: string;
     readonly name: string,
-    readonly input: LeafTree[],
-    readonly output: LeafTree[],
     readonly rotation?: AngleOrder,
     /** flexagon must be connected with these directions for flex to work: /\? */
     readonly inputDirs?: string,
@@ -73,18 +71,15 @@ namespace Flexagonator {
   /** the order of the angles ABC after a flex */
   export type AngleOrder = 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA' | 'Right' | 'Left';
 
-  // define a flex in terms of a flex sequence
-  export interface FlexFromSequence {
-    readonly shorthand: string;
-    readonly name: string;
+  /** define a flex in terms of input & output pats */
+  export interface FlexFromPats extends FlexDef {
+    readonly input: LeafTree[],
+    readonly output: LeafTree[],
+  }
+
+  /** define a flex in terms of a flex sequence */
+  export interface FlexFromSequence extends FlexDef {
     readonly sequence: string;
-    readonly rotation?: AngleOrder,
-    /** flexagon must be connected with these directions for flex to work: /\? */
-    readonly inputDirs?: string,
-    /** specific pat directions for output flexagon */
-    readonly outputDirs?: string,
-    /** if directions get rearranged: the new order for the directions between pats, 1-based */
-    readonly orderOfDirs?: number[],
   }
 
   export function isFlexFromSequence(result: any): result is FlexFromSequence {
