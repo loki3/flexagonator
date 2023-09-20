@@ -469,7 +469,7 @@
       // this is basically one' followed by two, with shifts to get the correct hinge
       var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
       var script = [
-        { "name": "pentagonal silver decaflexagon" },
+        { name: "pentagonal silver decaflexagon" },
         { addMorphFlexes: true },
         { flexes }
       ];
@@ -636,47 +636,18 @@
   <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-double" width="1200" height="400"></canvas><br/><br/>
   <script type="text/javascript">
-    var angles2 = [45, 90];
-    var directions = [0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1];
-    function drawStripFromFlexes(canvasId, flexes, rotation, text, which, edge) {
-      var turnFlex = {
-        "addFlex": {
-          "name": "turn flex",
-          "shorthand": "Tu",
-          "input": [1, 2, [-4, 3], -5, -6, -7, -8, -9, [11, -10], 12, 13, 14],
-          "output": [-13, [1, -14], 2, 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12]
-        }
-      };
-      var slideFlex = {
-        "addFlex": {
-          "name": "double slide",
-          "shorthand": "Ds",
-          "input": [1, [-3, 2], -4, -5, [7, -6], 8, 9, [-11, 10], -12, -13, [15, -14], 16],
-          "output": [-14, -15, [1, -16], 2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [-13, 12]]
-        }
-      };
-      var tuck12 = {
-        "addFlex": {
-          "name": "tuck 12",
-          "shorthand": "T12",
-          "input": [[[-2, 3], 1], 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-          "output": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [2, [14, -1]]]
-        }
-      };
-      var script = [{ numPats: 12, angles2, directions }, turnFlex, slideFlex, tuck12, { flexes, labelAsTree, normalizeIds: true }];
-      var fm = Flexagonator.createFromScript(script);
-      var captions = [firstStar, lastStar, { text, which, edge }];
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true }, captions });
-    }
-    drawStripFromFlexes('silverDodecaHexa-Tu', 'Tu*Tu*', 90, 'TuTu', 0, 1);
-    drawStripFromFlexes('silverDodecaHexa-Ds', 'Ds+', 0, 'Ds', -1, 0);
-    // <T12+> for tuck in middle of long edge, >>T12+<< for tuck at point
-    drawStripFromFlexes('silverDodecaHexa-T', '<T12+>>>T12+>>>T12+>>>T12+>>>>', 90, "T12's", 1, 1);
+    const baseSilver = [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }];
+
+    drawStripComplex("silverDodecaHexa-Tu", [...baseSilver, { flexes: "Tu*Tu*", labelAsTree }],
+      { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 1 }] });
+    drawStripComplex("silverDodecaHexa-Ds", [...baseSilver, { flexes: "Ds+", labelAsTree }],
+      { rotation: 0, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] });
+    drawStripComplex("silverDodecaHexa-T", [...baseSilver, { flexes: "<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>", labelAsTree }],
+      { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] });
 
     var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-    var fm = Flexagonator.createFromScript([{ pats, angles2, directions, labelAsTree }]);
-    var captions = [firstStar, lastStar, { text: "double", which: -1, edge: 0 }]
-    Flexagonator.drawUnfolded('silverDodecaHexa-double', fm, { rotation: 0, content: { showLeafProps: true }, captions });
+    drawStripComplex("silverDodecaHexa-double", [...baseSilver, { pats, labelAsTree }],
+      { rotation: 0, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "double", which: -1, edge: 0 }] });
   </script>
 
   <h3 id="bracelets">bracelets</h3>
@@ -691,23 +662,7 @@
   <canvas id="bracelet-silver-WSW" width="1200" height="556"></canvas>
   <script type="text/javascript">
     const base = [
-      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addMorphFlexes: true },
-      {
-        addFlex: {
-          name: "transfer 2",
-          shorthand: "Tr2",
-          input: [[1, [3, -2]], 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-          output: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, [[-1, 14], 2]]
-        }
-      },
-      {
-        addFlex: {
-          name: "transfer 4",
-          shorthand: "Tr4",
-          input: [1, [2, [4, -3]], 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-          output: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, [[-14, 13], 1], 2]
-        }
-      }
+      { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addMorphFlexes: true }
     ];
 
     drawStripComplex("bracelet-silver-Tr2", [...base, { flexes: "<<Tr2+<<", labelAsTree }],
@@ -718,13 +673,12 @@
     drawStripComplex("bracelet-silver-tetra", [{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetra, labelAsTree }],
       { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "tetra", which: 2, edge: 0 }] });
 
-    // Bf = Mkf'Mkb
-    const bf = { flexes: ">>>> Mkf'* Mkb+ Mkf <<<<<<<<", labelAsTree };
-    var script = [...base, bf, { flexes: ">>>>" }];
+    const bf = { flexes: ">>>> Bf+ <<<<", labelAsTree };
+    var script = [...base, bf];
     var captions = [firstStar, lastStar, { text: "Bf", which: 10, edge: 1 }, { text: "#", which: 10, edge: 0 }, { text: "#", which: 7, edge: 2 }];
     drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
     // note that it doesn't know it's a Möbius strip so it doesn't know how to <<<< across the half-twist
-    const mobius = [{ numPats: 14, angles2: [45, 45], directions: "/||//||//||//|", addMorphFlexes: true }, bf, { flexes: ">>>>" }];
+    const mobius = [{ numPats: 14, angles2: [45, 45], directions: "/||//||//||//|", addMorphFlexes: true }, bf];
     const mobiusCaptions = [firstStar, lastStar, { text: "Möbius Bf", which: 11, edge: 2 }];
     drawStripComplex("bracelet-silver-mobius", mobius, { rotation: -45, content: { showLeafProps: true }, captions: mobiusCaptions });
 
@@ -802,7 +756,7 @@
   <p>animal pentaflexagon</p>
   <div id="animal-penta" width="800" height="760"></div>
   <script type="text/javascript">
-    var script = [{ "pats": [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { "angles": [72, 54] }];
+    var script = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { angles: [72, 54] }];
     var options = { rotation: 36 + 90, content: { showFoldingOrder: true }, captions: starCaptions };
     drawStripComplex("animal-penta", script, options);
   </script>
