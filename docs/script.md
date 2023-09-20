@@ -237,24 +237,60 @@ Note that you should figure out the simplest pat structure needed to support you
 }
 ```
 
-There are a couple additional details to be aware of when defining flexes using pat notation...
-
-Flexes are performed relative to a *current hinge*, which is between the first and last pat in your `input` and `output` definitions.
+Flexes are performed relative to a *current hinge*.
+If you're defining a flex using pats,
+this is between the first and last pat in your `input` and `output` definitions.
 For `input`, this will typically be where you fold two leaves together when starting the flex.
 For `output`, a good rule of thumb is to make it so after you perform the flex,
 you can turn the flexagon over and, without `>` or `<`, perform the same flex again to get back to the original state.
 In other words, `A = ^A^`, though this isn't always possible.
 
-There is one more optional parameter when defining a flex using pat notation called `rotation`,
+There's an optional parameter called `rotation`,
 which describes how the angles in the first leaf after the current hinge change as a result of the flex.
 For reference, ABC describes the angles before the flex,
-where A is the center (or lower) angle, B is the angle clockwise from A, and C is the final angle.
+where A is the center (or lower) angle, B is the angle counterclockwise from A, and C is the final angle.
 
-The possible values for `rotation` are `ABC` (the default), `ACB`, `BAC`, `BCA`, `CAB`, and `CBA`.
+The possible values for `rotation` are `ABC` (the default), `ACB`, `BAC`, `BCA`, `CAB`, `CBA`, `Right`, and `Left`.
+The last two are used when you need to shift the current hinge to the right or left.
+These are special cases because angle rotation depends on the pat direction.
 
 For many flexes (such as `T`, `S`, and `F`), rotation doesn't change, so you can rely on the default of `ABC`.
 But for other flexs (such as `P` and `V`), the leaves rotate so a different corner of the leaf triangle is pointing into the center.
 
+By default, flexes assume that all the pats meet in the center of the flexagon.
+If this isn't the case, then the directions between pats need to be taken into account.
+Use `inputDirs` to specify the required input pat directions
+and `outputDirs` to specify the pat directions after the flex.
+If a specific pat direction doesn't matter and doesn't change, use `?`.
+
+```javascript
+{ // define a new flex in terms of a flex sequence with pat directions
+  addFlex: {
+    name: "backflip",
+    shorthand: "Bf",
+    sequence: "Mkf' Mkb",
+    inputDirs: "/|????????|/",
+    outputDirs: "/|????????|/"
+  }
+}
+```
+
+If the directions between the pats rotate because the current hinge shifts, use `orderOfDirs`.
+It's an array that lists where each of the original pat directions moves to,
+where 1 is the first pat.
+If the direction is flipped, use a negative number.
+`orderOfDirs` is applied after `inputDirs` and `outputDirs` if they're all specified.
+
+```javascript
+{ // define a flex that shifts right twice on a hexaflexagon
+  addFlex: {
+    name: "shift right twice",
+    shorthand: "Srt",
+    sequence: ">>",
+    orderOfDirs: [3, 4, 5, 6, 1, 2]
+  }
+}
+```
 
 ## Properties
 
