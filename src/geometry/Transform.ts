@@ -8,7 +8,11 @@ namespace Flexagonator {
       private readonly offsetPx: number) {  // offset after scale, in pixels
     }
 
-    static make(outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean, scale?: number, insetPx?: number): Transform {
+    static make(
+      outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean,
+      scale?: number, insetPx?: number, center?: boolean
+    ): Transform {
+      const offset = getOffset(outputSize, inputMin, inputMax, center);
       if (insetPx) {  // inset all 4 sides by insetPx pixels
         outputSize = { x: outputSize.x - 2 * insetPx, y: outputSize.y - 2 * insetPx };
       }
@@ -18,7 +22,6 @@ namespace Flexagonator {
         scale = Math.min(scalex, scaley);
       }
 
-      const offset = { x: -inputMin.x, y: -inputMin.y };
       const xmax = flip ? outputSize.x : 0;
       return new Transform(offset, scale, xmax, insetPx ? insetPx : 0);
     }
@@ -34,4 +37,26 @@ namespace Flexagonator {
     }
   }
 
+  /** get offset necessary so that inputMin maps to (0,0), or so the input center maps to the output center */
+  function getOffset(outputSize: Point, inputMin: Point, inputMax: Point, center?: boolean): Point {
+    if (center !== true || inputMax.x === inputMin.x || inputMax.y === inputMin.y || outputSize.x === 0 || outputSize.y === 0) {
+      return { x: -inputMin.x, y: -inputMin.y };
+    }
+
+    const outAspect = outputSize.x / outputSize.y;
+    const inAspect = (inputMax.x - inputMin.x) / (inputMax.y - inputMin.y);
+    let xOff = 0, yOff = 0;
+    if (inAspect < outAspect) {
+      // center x
+      const inSize = inputMax.x - inputMin.x;
+      const inFullSize = inSize * outAspect / inAspect;
+      xOff = (inFullSize - inSize) / 2;
+    } else {
+      // center y
+      const inSize = inputMax.y - inputMin.y;
+      const inFullSize = inSize * inAspect / outAspect;
+      yOff = (inFullSize - inSize) / 2;
+    }
+    return { x: xOff - inputMin.x, y: yOff - inputMin.y };
+  }
 }

@@ -3,7 +3,7 @@ namespace Flexagonator {
   export function drawStrip(
     paint: Paint, leaflines: LeafLines,
     content: LeafContent, props: PropertiesForLeaves, scale?: number,
-    rotation?: number, captions?: DrawStripCaption[]
+    rotation?: number, captions?: DrawStripCaption[], center?: boolean
   ) {
     const [w, h] = paint.getSize();
     if (rotation !== undefined) {
@@ -14,7 +14,7 @@ namespace Flexagonator {
 
     const extents: [Point, Point] = getExtents(leaflines);
     const flip = (content.face === 'back');
-    const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], flip, scale, 1);
+    const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], flip, scale, 1, center);
 
     drawLeafContents(paint, leaflines, content, props, transform);
 

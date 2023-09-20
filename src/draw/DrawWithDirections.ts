@@ -10,15 +10,16 @@ namespace Flexagonator {
   ): Line[] {
     const leaflines = getLeafLines(objects.flexagon, objects.angleInfo, showFront, rotation);
     const content: LeafContent = { showLeafProps: true, showIds, face: showFront ? 'front' : 'back', inset: 0.1 };
-    drawStrip(paint, leaflines, content, objects.leafProps, undefined, 0);
+    drawStrip(paint, leaflines, content, objects.leafProps, undefined, 0, undefined, true/*center*/);
 
-    const hinges = getHingeLines(paint, leaflines, showFront);
+    const transform = getTransform(paint, leaflines, showFront);
+    const hinges = getHingeLines(leaflines, transform);
     const minSide = getMinSide(paint);
     if (showCurrent) {
       drawCurrentMarker(paint, hinges[0], minSide / 12);
     }
     if (showStructure !== StructureType.None) {
-      const centers = getCenterPoints(paint, leaflines, showFront);
+      const centers = getCenterPoints(leaflines, transform);
       drawPatStructures(paint, minSide / 35, centers, objects.flexagon, showStructure);
     }
 
@@ -49,12 +50,14 @@ namespace Flexagonator {
     return leafs;
   }
 
-  /** transform raw folds in abstract coordinates into hinge lines in pixels */
-  function getHingeLines(paint: Paint, leaflines: LeafLines, showFront: boolean): Line[] {
+  function getTransform(paint: Paint, leaflines: LeafLines, showFront: boolean): Transform {
     const [w, h] = paint.getSize();
     const extents: [Point, Point] = getExtents(leaflines);
-    const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], !showFront, undefined, 1);
+    return Transform.make({ x: w, y: h }, extents[0], extents[1], !showFront, undefined, 1, true/*center*/);
+  }
 
+  /** transform raw folds in abstract coordinates into hinge lines in pixels */
+  function getHingeLines(leaflines: LeafLines, transform: Transform): Line[] {
     const lines = leaflines.folds.map(hinge => {
       return {
         a: transform.apply(hinge.a), b: transform.apply(hinge.b)
@@ -64,11 +67,7 @@ namespace Flexagonator {
   }
 
   /** transform raw triangular faces in abstract coordinates into center points in pixels */
-  function getCenterPoints(paint: Paint, leaflines: LeafLines, showFront: boolean): Point[] {
-    const [w, h] = paint.getSize();
-    const extents: [Point, Point] = getExtents(leaflines);
-    const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], !showFront, undefined, 1);
-
+  function getCenterPoints(leaflines: LeafLines, transform: Transform): Point[] {
     const centers = leaflines.faces.map(face => {
       const center = getIncenter(face.corners[0], face.corners[1], face.corners[2]);
       const centerPix = transform.apply(center);
