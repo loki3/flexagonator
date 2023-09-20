@@ -6,7 +6,7 @@ namespace Flexagonator {
    */
   export function drawWithDirections(paint: Paint, objects: DrawFlexagonObjects,
     showFront: boolean, showStructure: StructureType, showIds: boolean,
-    showCurrent: boolean, showNumbers: boolean, showCenterMarker: boolean, rotation?: number
+    showCurrent: boolean, rotation?: number
   ): Line[] {
     const leaflines = getLeafLines(objects.flexagon, objects.angleInfo, showFront, rotation);
     const content: LeafContent = { showLeafProps: true, showIds, face: showFront ? 'front' : 'back', inset: 0.1 };

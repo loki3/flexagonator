@@ -74,7 +74,7 @@ namespace Flexagonator {
 
     let hinges = undefined;
     if (objects.flexagon.directions !== undefined) {
-      hinges = drawWithDirections(paint, objects, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker, rotate);
+      hinges = drawWithDirections(paint, objects, showFront, showStructure, showIds, showCurrent, rotate);
       if (options.stats !== undefined && options.stats) {
         drawLeafCount(paint, objects.flexagon);
       }
