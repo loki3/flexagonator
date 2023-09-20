@@ -42,22 +42,49 @@ namespace Flexagonator {
       flexes["Mkh"] = makeFlex("morph-kite: fold in half",
         [[-2, 1], -3, -4, [6, -5], 7, 8],
         [2, 3, [-5, 4], -6, -7, [1, -8]],
-        FlexRotation.None) as Flex;
+        FlexRotation.None) as Flex; // TODO: add directions
       flexes["Mkt"] = makeFlex("morph-kite: partial tuck",
         [2, 3, 4, [-6, 5], -7, [1, -8]],
         [[-2, 1], -3, [5, -4], 6, 7, 8],
-        FlexRotation.None) as Flex;
+        FlexRotation.None) as Flex; // TODO: add directions
+    }
+
+    // only works on a dodeca
+    if (patCount === 12) {
+      flexes["Rhm"] = makeFlex("rhombic morph",
+        [[-2, 1], -3, -4, -5, [7, -6], 8, [-10, 9], -11, -12, -13, [15, -14], 16],
+        [-1, [3, -2], 4, 5, 6, [-8, 7], -9, [11, -10], 12, 13, 14, [-16, 15]],
+        FlexRotation.CBA, "////////////", "//||////||//") as Flex;
+
+      flexes["Ds"] = makeFlex("double slide",
+        [1, [-3, 2], -4, -5, [7, -6], 8, 9, [-11, 10], -12, -13, [15, -14], 16],
+        [-14, -15, [1, -16], 2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [-13, 12]],
+        FlexRotation.None, "|//|//|//|//", "|//|//|//|//") as Flex;
+      flexes["Tu"] = makeFlex("turn",
+        [1, 2, [-4, 3], -5, -6, -7, -8, -9, [11, -10], 12, 13, 14],
+        [-13, [1, -14], 2, 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12],
+        FlexRotation.CBA, "|//|//|//|//", "|//|//|//|//") as Flex;
     }
 
     // flexes that go between kite positions
     flexes["Sp"] = createLocalFlex("partial shuffle", patCount - 5, 8,
       [1, 2, [-4, 3]], /**/[-5, [-6, 7]],
-      [[1, -2], -3], /**/[[5, -4], 6, 7]);
+      [[1, -2], -3], /**/[[5, -4], 6, 7]); // TODO: add directions
     flexes["Lkk"] = createLocalFlex("kite-to-kite slot", patCount - 6, 9,
       [1, 2, 3, 4], /**/[5, [[-7, 6], 8]],
-      [[1, [3, -2]], 4], /**/[5, 6, 7, 8]);
+      [[1, [3, -2]], 4], /**/[5, 6, 7, 8]); // TODO: add directions
+
+    // backflip = Mkf' Mkb
+    flexes["Bf"] = createLocalFlex("backflip", patCount - 4, 9,
+      [1, 2], /**/[[5, [3, -4]], [6, [8, -7]]],
+      [[[-2, 1], 3], [[-5, 6], 4]], /**/[7, 8],
+      "|/", "/|", "|/", "/|"); // \/#/\
 
     // transfer flexes
+    flexes["Tr2"] = createLocalFlex("transfer 2", patCount - 2, 5,
+      [1], /**/[[2, [4, -3]]],
+      [[[-2, 1], 3]], /**/[4],
+      "|", "|", "|", "|"); // \#\
     flexes["Tr3"] = createLocalFlex("transfer 3", patCount - 3, 6,
       [1, 2], /**/[[[-4, 5], 3]],
       [[3, [1, -2]]], /**/[4, 5],
@@ -65,7 +92,7 @@ namespace Flexagonator {
     flexes["Tr4"] = createLocalFlex("transfer 4", patCount - 4, 7,
       [1, 2], /**/[3, [4, [6, -5]]],
       [[[-2, 1], 3], 4], /**/[5, 6],
-      "|/", "/|", "|/", "/|"); // \/#/\ -> \/#/\
+      "|/", "/|", "|/", "/|"); // \/#/\
 
     // add all the inverses
     for (const flex of Object.keys(flexes)) {
