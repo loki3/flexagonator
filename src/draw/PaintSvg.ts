@@ -20,6 +20,9 @@ namespace Flexagonator {
     }
 
     start(dontClear?: "dontClear" | undefined): void {
+      if (dontClear !== "dontClear") {
+        this.container.innerHTML = "";  // remove previous svg content
+      }
     }
     end(): void {
       this.container.appendChild(this.svg);
