@@ -10,7 +10,8 @@ namespace Flexagonator {
   ): Line[] {
     const leaflines = getLeafLines(objects.flexagon, objects.angleInfo, showFront, rotation);
     const content: LeafContent = { showLeafProps: true, showIds, face: showFront ? 'front' : 'back', inset: 0.1 };
-    drawStrip(paint, leaflines, content, objects.leafProps, undefined, 0, undefined, true/*center*/);
+    const leafProps = fillInProps(objects.leafProps, objects.flexagon.getTopIds(), objects.flexagon.getBottomIds());
+    drawStrip(paint, leaflines, content, leafProps, undefined, 0, undefined, true/*center*/);
 
     const transform = getTransform(paint, leaflines, showFront);
     const hinges = getHingeLines(leaflines, transform);
@@ -48,6 +49,24 @@ namespace Flexagonator {
       leafs.push({ id: ids[i], top: 0, bottom: 0, isClock });
     }
     return leafs;
+  }
+
+  /** if any labels are missing, use the associated leaf id instead */
+  function fillInProps(leafProps: PropertiesForLeaves, topIds: number[], bottomIds: number[]): PropertiesForLeaves {
+    const newProps = new PropertiesForLeaves();
+    fillInIds(leafProps, topIds, newProps);
+    fillInIds(leafProps, bottomIds, newProps);
+    return newProps;
+  }
+  function fillInIds(leafProps: PropertiesForLeaves, ids: number[], newProps: PropertiesForLeaves) {
+    for (const id of ids) {
+      const label = leafProps.getFaceLabel(id);
+      const color = leafProps.getColorProp(id);
+      newProps.setLabelProp(id, label === undefined ? id.toString() : label);
+      if (color !== undefined) {
+        newProps.setColorProp(id, color);
+      }
+    }
   }
 
   function getTransform(paint: Paint, leaflines: LeafLines, showFront: boolean): Transform {
