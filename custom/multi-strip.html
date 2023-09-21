@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
 
@@ -5,11 +6,22 @@
   <title>Multi-part strips</title>
   <script src="../build/out.js"></script>
   <script type="text/javascript">
+    const maxPieces = 6;
+    const captions = [
+      [{ text: 'a', which: 0 }, { text: 'b', which: -1 }],
+      [{ text: 'b', which: 0 }, { text: 'c', which: -1 }],
+      [{ text: 'c', which: 0 }, { text: 'd', which: -1 }],
+      [{ text: 'd', which: 0 }, { text: 'e', which: -1 }],
+      [{ text: 'e', which: 0 }, { text: 'f', which: -1 }],
+      [{ text: 'f', which: 0 }, { text: 'g', which: -1 }]
+    ];
+
     var fm;
     var stripContent = { showFoldingOrder: true, showIds: true };
     var scale;
     var start = [];
     var end = [];
+    var lastPiece = 1;
 
     function runScript() {
       statusMessage("error parsing script");
@@ -29,14 +41,19 @@
     }
 
     function updateUI() {
-      var captions1 = [{ text: 'a', which: 0 }, { text: 'b', which: -1 }];
-      var captions2 = [{ text: 'b', which: 0 }, { text: 'c', which: -1 }];
-      var captions3 = [{ text: 'c', which: 0 }, { text: 'd', which: -1 }];
-      var captions4 = [{ text: 'd', which: 0 }, { text: 'e', which: -1 }];
-      Flexagonator.drawUnfolded('unfolded1', fm, { captions: captions1, start: start[1], end: end[1], content: stripContent, scale: scale });
-      Flexagonator.drawUnfolded('unfolded2', fm, { captions: captions2, start: start[2], end: end[2], content: stripContent, scale: scale });
-      Flexagonator.drawUnfolded('unfolded3', fm, { captions: captions3, start: start[3], end: end[3], content: stripContent, scale: scale });
-      Flexagonator.drawUnfolded('unfolded4', fm, { captions: captions4, start: start[4], end: end[4], content: stripContent, scale: scale });
+      // draw each piece
+      for (var i = 0; i < lastPiece; i++) {
+        const name = 'unfolded' + (i + 1).toString();
+        Flexagonator.drawUnfolded(name, fm, { captions: captions[i], start: start[i], end: end[i], content: stripContent, scale: scale });
+      }
+      // clear everything else
+      for (; i < maxPieces; i++) {
+        const name = 'unfolded' + (i + 1).toString();
+        var element = document.getElementById(name);
+        if (element !== null) {
+          element.innerHTML = null;
+        }
+      }
     }
 
     function statusMessage(message) {
@@ -53,16 +70,26 @@
       }
     }
 
-    function setStart(keyCode, str, key, which) {
-      start[which] = asNumber(str, key);
+    function setDividers(keyCode, str, key) {
       if (keyCode == 13) {
-        updateUI();
-      }
-    }
-
-    function setEnd(keyCode, str, key, which) {
-      end[which] = asNumber(str, key);
-      if (keyCode == 13) {
+        // convert list of numbers into ranges, e.g., 2,5 => [0,2], [3, 5], [5,20]
+        var pieces = str.split(',');
+        var numbers = pieces.map(p => Number.parseInt(p));
+        start = [];
+        end = [];
+        var prev = 0;
+        for (var i = 0; i < numbers.length; i++) {
+          start[i] = prev;
+          end[i] = numbers[i];
+          prev = numbers[i] + 1;
+        }
+        // last piece is all remaining leaves
+        if (prev < fm.flexagon.getLeafCount()) {
+          start[i] = prev;
+          end[i] = fm.flexagon.getLeafCount();
+          i++;
+        }
+        lastPiece = i;
         updateUI();
       }
     }
@@ -82,7 +109,7 @@
   <p>
     Run a script to describe a flexagon, then specify a subset of the unfolded strip to display. Useful for strips that
     are too
-    long to fit on a page, or for strips that twist back on themselves. There are letters are the two ends of each
+    long to fit on a page, or for strips that twist back on themselves. There are letters at the two ends of each
     sub-strip
     that indicate how they should be connected to the other strips, e.g. 'a' connects to the end of the last strip, the
     'b's
@@ -110,38 +137,18 @@
     <label>scale:</label>
     <input onkeypress="setScale(event.keyCode, event.target.value, event.key, 1)" size="5" />
   </div>
-
   <div>
-    <label>start:</label>
-    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 1)" size="5" />
-    <label>end:</label>
-    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 1)" size="5" />
+    <label>dividers:</label>
+    <input onkeypress="setDividers(event.keyCode, event.target.value, event.key)" size="20" />
+    (comma separated numbers for where to split template)
   </div>
-  <canvas id="unfolded1" width="800" height="600"></canvas>
 
-  <div>
-    <label>start:</label>
-    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 2)" size="5" />
-    <label>end:</label>
-    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 2)" size="5" />
-  </div>
-  <canvas id="unfolded2" width="800" height="600"></canvas>
-
-  <div>
-    <label>start:</label>
-    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 3)" size="5" />
-    <label>end:</label>
-    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 3)" size="5" />
-  </div>
-  <canvas id="unfolded3" width="800" height="600"></canvas>
-
-  <div>
-    <label>start:</label>
-    <input onkeypress="setStart(event.keyCode, event.target.value, event.key, 4)" size="5" />
-    <label>end:</label>
-    <input onkeypress="setEnd(event.keyCode, event.target.value, event.key, 4)" size="5" />
-  </div>
-  <canvas id="unfolded4" width="800" height="600"></canvas>
+  <span id="unfolded1" width="800" height="600"></span>
+  <span id="unfolded2" width="800" height="600"></span>
+  <span id="unfolded3" width="800" height="600"></span>
+  <span id="unfolded4" width="800" height="600"></span>
+  <span id="unfolded5" width="800" height="600"></span>
+  <span id="unfolded6" width="800" height="600"></span>
 
 </body>
 
