@@ -34,11 +34,22 @@ namespace Flexagonator {
     const leafs = getAsLeafs(flexagon.getPatCount(), ids, flexagon.directions);
     const angles = angleInfo.getUnfoldedAngles(flexagon, leafs);
     const leaflines = leafsToLines(leafs, toRadians(angles[0]), toRadians(angles[1]));
-    if (rotation === undefined) {
-      return leaflines;
-    } else {
-      return rotateLeafLines(leaflines, toRadians(rotation));
-    }
+
+    // rotate lines so the current hinge is at the top, then add in user specified rotation
+    const straighten = getCurrentHingeAngle(leaflines);
+    rotation = (rotation === undefined ? 0 : toRadians(rotation)) - straighten - Math.PI / 2;
+    return rotateLeafLines(leaflines, rotation);
+  }
+
+  /** figure out angle to the current hinge */
+  function getCurrentHingeAngle(leaflines: LeafLines) {
+    const extents: [Point, Point] = getExtents(leaflines);
+    const prime = leaflines.folds[0];
+    const cx = (extents[0].x + extents[1].x) / 2;
+    const cy = (extents[0].y + extents[1].y) / 2;
+    const px = (prime.a.x + prime.b.x) / 2;
+    const py = (prime.a.y + prime.b.y) / 2;
+    return Math.atan2(py - cy, px - cx);
   }
 
   /** turn raw flexagon info into a form used to generate lines to draw  */
