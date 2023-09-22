@@ -129,6 +129,7 @@
       <li><a href="#hexa-bronze-dodeca">hexagonal bronze dodeca</a></li>
       <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
       <li><a href="#bracelets">bracelets</a></li>
+      <li><a href="#octa-ring-14">octagonal ring tetradecaflexagon</a></li>
     </ul>
     <li><a href="#part5">Part Five: Fun</a></li>
     <ul>
@@ -703,6 +704,18 @@
     }
     makeWithWrap("bracelet-silver-WFW", "W*>F*<W'*  W>F'<W'  >>>>", 18, [{ text: "F", which: 9, edge: 0 }]);
     makeWithWrap("bracelet-silver-WSW", "W*>S*<W'*  W>S'<W'  <<<<", 104, [{ text: "S", which: 5, edge: 1 }]);
+  </script>
+
+  <h3 id="octa-ring-14">octagonal ring tetradecaflexagon</h3>
+
+  <span id="octa-ring-14-bf-a" width="617" height="600"></span><br/><br/>
+  <span id="octa-ring-14-bf-b" width="762" height="600"></span><br/><br/>
+  <script type="text/javascript">
+    const base14 = [{ name: "octagonal ring tetradecaflexagon" }, { addMorphFlexes: true }];
+    const options14 = { content: { showLeafProps: true }, captions: [firstStar, lastStar] };
+
+    drawStripComplex("octa-ring-14-bf-a", [...base14, { flexes: ">>Bf+", labelAsTree }], { ...options14, rotation: 90 });
+    drawStripComplex("octa-ring-14-bf-b", [...base14, { flexes: ">>Bf+>>>", labelAsTree }], { ...options14, rotation: 90 });
   </script>
 
   <hr />

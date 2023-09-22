@@ -150,6 +150,7 @@
       <li><a href="#hexa-bronze-dodeca">hexagonal bronze dodeca</a></li>
       <li><a href="#hexa-silver-dodeca">hexagonal silver dodeca</a></li>
       <li><a href="#bracelets">bracelets</a></li>
+      <li><a href="#octa-ring-14">octagonal ring tetradecaflexagon</a></li>
     </ul>
     <li><a href="#part5">Part Five: Fun</a></li>
     <ul>
@@ -705,6 +706,21 @@
   </script>
 
   <h3 id="bracelets">bracelets</h3>
+
+  <h3 id="octa-ring-14">octagonal ring tetradecaflexagon</h3>
+
+  <span id="octa-ring-14-main" width="280" height="200"></span><br/>
+  <canvas id="octa-ring-14-flexes" width="560" height="400"></canvas><br/><br/>
+  <script type="text/javascript">
+    drawFromName("octa-ring-14-main", "octagonal ring tetradecaflexagon", 54);
+
+    const localFlexes = [
+      { name: "octagonal ring tetradecaflexagon" }, { addMorphFlexes: true },
+      { flexes: "(Tr2+ >> Tf+Bf+Tr4+ >> Tr3+ > Tf+Bf+Tr4+ >>)2", labelAsTree },
+      { searchFlexes: "Tf Tr2 Tr3 Tr4 Bf" }
+    ];
+    drawFlexagonComplex("octa-ring-14-flexes", localFlexes, {});
+  </script>
 
   <hr />
 
