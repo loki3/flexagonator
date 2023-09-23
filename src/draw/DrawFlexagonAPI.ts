@@ -109,14 +109,15 @@ namespace Flexagonator {
     flexagon: Flexagon,
     angleInfo: FlexagonAngles,
     showFront: boolean,
-    regions: RegionForFlexes[]
+    regions: RegionForFlexes[],
+    fontsize?: number
   ): ScriptButtons {
     const output: HTMLCanvasElement = canvas instanceof HTMLCanvasElement ? canvas : document.getElementById(canvas) as HTMLCanvasElement;
     const ctx = output.getContext("2d") as CanvasRenderingContext2D;
     const [width, height] = [ctx.canvas.clientWidth, ctx.canvas.clientHeight];
 
     const polygon = createPolygon(width, height, flexagon, angleInfo, showFront);
-    const bheight = polygon.radius / 9;
+    const bheight = fontsize !== undefined ? fontsize : polygon.radius / 9;
     return drawPossibleFlexes(ctx, regions, bheight);
   }
 

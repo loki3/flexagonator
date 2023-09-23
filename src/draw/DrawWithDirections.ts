@@ -15,13 +15,13 @@ namespace Flexagonator {
 
     const transform = getTransform(paint, leaflines, showFront);
     const hinges = getHingeLines(leaflines, transform);
-    const minSide = getMinSide(paint);
+    const edge = getAverageEdge(leaflines, transform);
     if (showCurrent) {
-      drawCurrentMarker(paint, hinges[0], minSide / 12);
+      drawCurrentMarker(paint, hinges[0], edge / 5);
     }
     if (showStructure !== StructureType.None) {
       const centers = getCenterPoints(leaflines, transform);
-      drawPatStructures(paint, minSide / 35, centers, objects.flexagon, showStructure);
+      drawPatStructures(paint, edge / 14, centers, objects.flexagon, showStructure);
     }
 
     return hinges;
@@ -106,9 +106,13 @@ namespace Flexagonator {
     return centers;
   }
 
-  function getMinSide(paint: Paint): number {
-    const [w, h] = paint.getSize();
-    return Math.min(w, h);
+  function getAverageEdge(leaflines: LeafLines, transform: Transform): number {
+    const corners = leaflines.faces[0].corners;
+    const pixels = corners.map(c => transform.apply(c));
+    const a = lengthOf(pixels[0], pixels[1]);
+    const b = lengthOf(pixels[1], pixels[2]);
+    const c = lengthOf(pixels[2], pixels[0]);
+    return (a + b + c) / 3;
   }
 
   function setTextProps(paint: Paint, fontsize: number) {

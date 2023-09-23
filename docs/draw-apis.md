@@ -98,7 +98,7 @@ The following shows how you can hook up mouse events using these "script buttons
 ```javascript
 // example using returned ScriptButtons
 var regions = Flexagonator.drawEntireFlexagon('my-target', fm, {});
-// drawScriptButtons takes a canvas id, flexagon, angle info, boolean for front/back, and RegionForFlexes[]
+// drawScriptButtons takes a canvas id, flexagon, angle info, boolean for front/back, RegionForFlexes[], optional fontsize
 var buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
 var interface = document.getElementById('interface');
 interface.addEventListener('click', interfaceMouseClick, false);
