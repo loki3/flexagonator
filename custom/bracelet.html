@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>bracelet</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    const leafColors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
+    const baseScript = [
+      { numPats: 16, angles2: [45, 45], directions: "/||//||//||//||/", addMorphFlexes: true },
+      {
+        addFlex: {
+          name: "inner transform 2", shorthand: "Ti2",
+          input: [[[3, -4], -2], 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1],
+          output: [-4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, [-3, [-1, 2]]],
+          inputDirs: "/??????????????/",
+          outputDirs: "/??????????????/",
+        }
+      },
+      {
+        addFlex: {
+          name: "inner transform 4", shorthand: "Ti4",
+          input: [-3, [[5, -6], -4], 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1, -2],
+          output: [-5, -6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, [-3, [-1, 2]], -4],
+          inputDirs: "|/????????????/|",
+          outputDirs: "|/????????????/|",
+        }
+      },
+      {
+        addFlex: {
+          name: "inner backflip", shorthand: "Bi",
+          input: [[[4, -3], -5], [[7, -8], -6], 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, -1, -2],
+          output: [-7, -8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, [-3, [-1, 2]], [-4, [-6, 5]]],
+          inputDirs: "|/????????????/|",
+          outputDirs: "|/????????????/|",
+        }
+      },
+      { searchFlexes: "Tr2 Ti2 Tr4 Ti4 Bf Bi" },
+      { flexes: "Bf+>>>>>>" },
+      { labelAsTree: leafColors }
+    ];
+    let fm = Flexagonator.createFromScript(baseScript);
+    let buttonsFront = null;
+
+    function updateUI() {
+      var regionsFront = Flexagonator.drawEntireFlexagon('front', fm, { structure: true, rotate: -90 });
+      buttonsFront = Flexagonator.drawScriptButtons('front', fm.flexagon, fm.getAngleInfo(), true, regionsFront, 28);
+      Flexagonator.drawEntireFlexagon('back', fm, { structure: true, rotate: -90, back: true });
+
+      var historyBox = document.getElementById('history');
+      if (historyBox !== null) {
+        var history = fm.getFlexHistory().join(' ');
+        historyBox.value = history;
+      }
+    }
+
+
+    function applySequence(key, sequence) {
+      if (key == 13) {
+        var result = fm.applyFlexes(sequence, true);
+        if (result === true) {
+          updateUI();
+        } else {
+          console.log(result);
+        }
+      }
+    }
+
+    function reset() {
+      fm = Flexagonator.createFromScript(baseScript);
+      updateUI();
+    }
+
+    function undo() {
+      fm.undo();
+      updateUI();
+    }
+
+    function redo() {
+      fm.redo();
+      updateUI();
+    }
+
+    function interfaceMouseMove(event, id, buttons) {
+      var script = Flexagonator.getScriptItem(event, id, buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event, id, buttons) {
+      var script = Flexagonator.getScriptItem(event, id, buttons);
+      if (script != null) {
+        var result = Flexagonator.runScriptItem(fm, script);
+        if (!Flexagonator.isError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>bracelet</h1>
+
+  <p>
+    Bracelets support cycles of <b>Bf&lt;&lt;</b> and <b>Tr4&lt;&lt; Tr2&lt;&lt; Tr4&lt;&lt;</b>,
+    alternating between the outer and inner versions of the sequences, e.g., Bf&lt;&lt; Bi&lt;&lt; Bf&lt;&lt;
+    Bi&lt;&lt;.
+  </p>
+
+  <div>
+    <label>enter flex sequence</label>
+    <input onkeypress="applySequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" />
+  </div>
+  </p>
+  <p>
+    <input onclick="reset();" type="button" value="reset" />
+    <input onclick="undo();" type="button" value="undo" />
+    <input onclick="redo();" type="button" value="redo" />
+    <textarea id="history" readonly=true cols="100" rows="2"></textarea>
+  </p>
+
+  <canvas id="front" width="1200" height="200"></canvas>
+  <canvas id="back" width="1200" height="200"></canvas>
+
+  <script type="text/javascript">
+    updateUI();
+    var canvasFront = document.getElementById('front');
+    canvasFront.addEventListener('mousemove', (event) => { interfaceMouseMove(event, 'front', buttonsFront) }, false);
+    canvasFront.addEventListener('click', (event) => { interfaceMouseClick(event, 'front', buttonsFront) }, false);
+  </script>
+
+</body>
+
+</html>
