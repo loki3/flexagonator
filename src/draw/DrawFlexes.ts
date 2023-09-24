@@ -24,10 +24,11 @@ namespace Flexagonator {
     const pad = 3;
     const y = region.corner.y + h;
     let x = region.corner.x;
+    const isOnLeft = x < 2 ? false : region.isOnLeft;
 
     for (let flex of region.flexes) {
       const metrics = ctx.measureText(flex);
-      const thisx = region.isOnLeft ? x - metrics.width : x;
+      const thisx = isOnLeft ? x - metrics.width : x;
       const thisy = region.isOnTop ? y - h : y;
       const thisflex = region.prefix + flex + region.postfix;
       const thisWidth = metrics.width;
@@ -35,7 +36,7 @@ namespace Flexagonator {
       ctx.fillText(flex, thisx, thisy);
       buttons.addFlexButton({ x: thisx - pad, y: thisy - h - pad, w: thisWidth + pad * 2, h: h + pad * 2 }, thisflex);
 
-      x = region.isOnLeft ? x - thisWidth - spaceWidth : x + thisWidth + spaceWidth;
+      x = isOnLeft ? x - thisWidth - spaceWidth : x + thisWidth + spaceWidth;
     }
   }
 
