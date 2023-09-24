@@ -635,7 +635,6 @@
   <canvas id="silverDodecaHexa-Tu" width="1200" height="136"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-Ds" width="800" height="400"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-double" width="1200" height="400"></canvas><br/><br/>
   <script type="text/javascript">
     const baseSilver = [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }];
 
@@ -645,10 +644,6 @@
       { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] });
     drawStripComplex("silverDodecaHexa-T", [...baseSilver, { flexes: "<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>", labelAsTree }],
       { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] });
-
-    var pats = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
-    drawStripComplex("silverDodecaHexa-double", [...baseSilver, { pats, labelAsTree }],
-      { rotation: 0, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "double", which: -1, edge: 0 }] });
   </script>
 
   <h3 id="bracelets">bracelets</h3>
