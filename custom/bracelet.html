@@ -37,7 +37,7 @@
         }
       },
       { searchFlexes: "Tr2 Ti2 Tr4 Ti4 Bf Bi" },
-      { flexes: "Bf+>>>>>>" },
+      { flexes: "Bf+" },
       { labelAsTree: leafColors }
     ];
     let fm = Flexagonator.createFromScript(baseScript);
@@ -53,6 +53,18 @@
         var history = fm.getFlexHistory().join(' ');
         historyBox.value = history;
       }
+
+      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
+      }
     }
 
 
@@ -62,7 +74,7 @@
         if (result === true) {
           updateUI();
         } else {
-          console.log(result);
+          statusMessage(result);
         }
       }
     }
@@ -123,6 +135,7 @@
 
   <canvas id="front" width="1200" height="200"></canvas>
   <canvas id="back" width="1200" height="200"></canvas>
+  <div id="status"></div>
 
   <script type="text/javascript">
     updateUI();
