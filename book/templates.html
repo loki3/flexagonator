@@ -633,7 +633,7 @@
   <h3 id="hexa-silver-dodeca">hexagonal silver dodeca</h3>
 
   <canvas id="silverDodecaHexa-Tu" width="1200" height="136"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-Ds" width="600" height="400"></canvas><br/><br/>
+  <canvas id="silverDodecaHexa-Ds" width="800" height="400"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
   <canvas id="silverDodecaHexa-double" width="1200" height="400"></canvas><br/><br/>
   <script type="text/javascript">
@@ -641,8 +641,8 @@
 
     drawStripComplex("silverDodecaHexa-Tu", [...baseSilver, { flexes: "Tu*Tu*", labelAsTree }],
       { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 1 }] });
-    drawStripComplex("silverDodecaHexa-Ds", [...baseSilver, { flexes: "Ds+", labelAsTree }],
-      { rotation: 0, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] });
+    drawStripComplex("silverDodecaHexa-Ds", [...baseSilver, { flexes: "<<Ds+", labelAsTree }],
+      { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] });
     drawStripComplex("silverDodecaHexa-T", [...baseSilver, { flexes: "<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>", labelAsTree }],
       { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] });
 
