@@ -7,6 +7,7 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     const leafColors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
+    const dirs = "|/????????????/|";  // kite directions
     const baseScript = [
       { numPats: 16, angles2: [45, 45], directions: "/||//||//||//||/", addMorphFlexes: true },
       {
@@ -20,22 +21,12 @@
       },
       {
         addFlex: {
-          name: "inner transform 4", shorthand: "Ti4",
+          name: "inner transform 4", shorthand: "Ti4", inputDirs: dirs, outputDirs: dirs,
           input: [-3, [[5, -6], -4], 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1, -2],
           output: [-5, -6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, [-3, [-1, 2]], -4],
-          inputDirs: "|/????????????/|",
-          outputDirs: "|/????????????/|",
         }
       },
-      {
-        addFlex: {
-          name: "inner backflip", shorthand: "Bi",
-          input: [[[4, -3], -5], [[7, -8], -6], 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, -1, -2],
-          output: [-7, -8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, [-3, [-1, 2]], [-4, [-6, 5]]],
-          inputDirs: "|/????????????/|",
-          outputDirs: "|/????????????/|",
-        }
-      },
+      { addFlex: { name: "inner backflip", shorthand: "Bi", sequence: "~Mkf' Mkb~", inputDirs: dirs, outputDirs: dirs } },
       { searchFlexes: "Tr2 Ti2 Tr4 Ti4 Bf Bi" },
       { flexes: "Bf+" },
       { labelAsTree: leafColors }
