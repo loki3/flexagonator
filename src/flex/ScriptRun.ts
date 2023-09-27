@@ -135,10 +135,11 @@ namespace Flexagonator {
 
     if (item.addFlex !== undefined) {
       const f = item.addFlex;
+      const name = f.name ? f.name : f.shorthand;
       const fr = angleOrderToFlexRotation(f.rotation);
       const newFlex = isFlexFromSequence(f)
-        ? makeFlexFromSequence(f.sequence, fm.allFlexes, f.name, fr, f.inputDirs, f.outputDirs, f.orderOfDirs)
-        : makeFlex(f.name, f.input, f.output, fr, f.inputDirs, f.outputDirs, f.orderOfDirs);
+        ? makeFlexFromSequence(f.sequence, fm.allFlexes, name, fr, f.inputDirs, f.outputDirs, f.orderOfDirs)
+        : makeFlex(name, f.input, f.output, fr, f.inputDirs, f.outputDirs, f.orderOfDirs);
       if (isFlexError(newFlex)) {
         return newFlex;
       }

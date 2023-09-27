@@ -58,7 +58,7 @@ namespace Flexagonator {
   /** base interface for common info for defining a new flex */
   export interface FlexDef {
     readonly shorthand: string;
-    readonly name: string,
+    readonly name?: string,
     readonly rotation?: AngleOrder,
     /** flexagon must be connected with these directions for flex to work: /\? */
     readonly inputDirs?: string,
