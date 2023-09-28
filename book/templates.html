@@ -454,46 +454,39 @@
     drawStripSequence("morph-Fm", 8, "Fm*", 45, [45, 45], ">>", -2);
     drawStripSequence("morph-S3", 8, "S3*", 45, [45, 45], ">>", -2);
   </script>
-  <!-- plain pentagonal silver decaflexagon -->
-  <p>pentagonal silver decaflexagon</p>
-  <!-- various full flexes -->
-  <p>Mkf'Mkb</p>
-  <canvas id="psd-MkfMkb1" width="500" height="500"></canvas>
-  <canvas id="psd-MkfMkb2" width="500" height="500"></canvas>
-  <p>Mkr'Mkl</p>
-  <canvas id="psd-MkrMkl" width="1000" height="350"></canvas>
-  <p>Mkfs'Mkb</p>
-  <canvas id="psd-MkfsMkb" width="1000" height="500"></canvas>
+  <!-- kite -->
+  <h4>kite bronze octaflexagon</h4>
+  <span id="kite-rl" width="900" height="447"></span><br/>
+  <span id="kite-fr" width="774" height="447"></span><br/>
+  <span id="kite-bfs" width="866" height="500"></span><br/>
+  <span id="kite-bf1" width="523" height="454"></span>
+  <span id="kite-bf2" width="455" height="393"></span>
+  <p>all morph-kite combos</p>
+  <span id="kite-all1" width="523" height="454"></span>
+  <span id="kite-all2" width="523" height="454"></span><br/>
+  <span id="kite-all3" width="523" height="454"></span>
+  <span id="kite-all4" width="454" height="264"></span><br/>
   <script type="text/javascript">
-    // pairs that give non-overlapping templates: Mkf'Mkb, Mkf'Mkr, Mkf'Mkl, Mkf'Mkbs, Mkr'Mkf, Mkr'Mkb, Mkr'Mkl, Mkfs'Mkb
-    function makeScript(one, two) {
-      // this is basically one' followed by two, with shifts to get the correct hinge
-      var flexes = ">>>>> " + one + "'* " + two + "+ " + one + "<<<<<";
-      var script = [
-        { name: "pentagonal silver decaflexagon" },
-        { addMorphFlexes: true },
-        { flexes }
+    function makeKiteScript(flexes) {
+      return [
+        { name: "kite bronze octaflexagon" }, { addMorphFlexes: true }, { flexes },
+        { normalizeIds: true, labelAsTree: [] }
       ];
-      return Flexagonator.createFromScript(script);
     }
-    function draw(canvas, one, two, rotation, which, edge) {
-      var fm = makeScript(one, two);
-      Flexagonator.drawUnfolded(canvas, fm,
-        { rotation, content: { showFoldingOrder: true }, captions: [firstStar, lastStar, { text: one + "'" + two, which, edge }] });
-    }
-    function drawMkfMkb() {
-      var fm = makeScript("Mkf", "Mkb");
-      Flexagonator.drawUnfolded("psd-MkfMkb1", fm,
-        {
-          rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 0, end: 10,
-          captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf' Mkb", which: 1 }]
-        });
-      Flexagonator.drawUnfolded("psd-MkfMkb2", fm,
-        { rotation: 0, content: { showFoldingOrder: true }, scale: 245, start: 11, end: 14, captions: [{ text: "a", which: 0 }, lastStar] });
-    }
-    drawMkfMkb();
-    draw("psd-MkrMkl", "Mkr", "Mkl", 0, 1);
-    draw("psd-MkfsMkb", "Mkfs", "Mkb", 90, 2, 1);
+
+    drawStripComplex("kite-rl", makeKiteScript("Mkr'* Mkl+ Mkr >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkr'Mkl", which: 0, edge: 2 }] });
+    drawStripComplex("kite-fr", makeKiteScript("Mkf'* Mkr+ Mkf >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkf'Mkr", which: 0, edge: 2 }] });
+    drawStripComplex("kite-bfs", makeKiteScript("Mkb'* Mkfs+ Mkb >>>"), { rotation: 0, captions: [...starCaptions, { text: "Mkb'Mkfs", which: 0, edge: 0 }] });
+    drawStripComplex("kite-bf1", makeKiteScript("Bf+ >>>"), { rotation: -30, scale: 300, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf'Mkb", which: 0, edge: 2 }] });
+    drawStripComplex("kite-bf2", makeKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] });
+
+    const kiteAll = makeKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
+    const fmAll = Flexagonator.createFromScript(kiteAll);
+    const optionsAll = { scale: 300, content: { showLeafProps: true } };
+    Flexagonator.drawUnfolded("kite-all1", fmAll, { ...optionsAll, rotation: 30, start: 0, end: 6, captions: [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }] });
+    Flexagonator.drawUnfolded("kite-all2", fmAll, { ...optionsAll, rotation: 150, start: 7, end: 13, captions: [{ text: "a", which: 0 }, { text: "b", which: -1 }] });
+    Flexagonator.drawUnfolded("kite-all3", fmAll, { ...optionsAll, rotation: 210, start: 14, end: 19, captions: [{ text: "b", which: 0 }, { text: "c", which: -1 }] });
+    Flexagonator.drawUnfolded("kite-all4", fmAll, { ...optionsAll, rotation: 300, start: 20, end: 24, captions: [lastStar, { text: "c", which: 0 }] });
   </script>
 
   <h3 id="slot-flexes">slot flexes</h3>
