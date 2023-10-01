@@ -7,7 +7,8 @@
   <script src="../build/out.js"></script>
   <script type="text/javascript">
     const leafColors = [0x2E4172, 0x2B803E, 0xAA4439, 0x622870, 0xffff00, 0x553900, 0xdddddd, 0x999999];
-    const dirs = "|/????????????/|";  // kite directions
+    const dirs1 = "/|????????????|/";  // \//\
+    const dirs2 = "|/????????????/|";  // /\\/
     const baseScript = [
       { numPats: 16, angles2: [45, 45], directions: "/||//||//||//||/", addMorphFlexes: true },
       {
@@ -21,13 +22,18 @@
       },
       {
         addFlex: {
-          name: "inner transform 4", shorthand: "Ti4", inputDirs: dirs, outputDirs: dirs,
+          name: "inner transform 4", shorthand: "Ti4", inputDirs: dirs2, outputDirs: dirs2,
           input: [-3, [[5, -6], -4], 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1, -2],
           output: [-5, -6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, [-3, [-1, 2]], -4],
         }
       },
-      { addFlex: { name: "inner backflip", shorthand: "Bi", sequence: "~Mkf' Mkb~", inputDirs: dirs, outputDirs: dirs } },
+      { addFlex: { name: "inner backflip", shorthand: "Bi", sequence: "~Mkf' Mkb~", inputDirs: dirs2, outputDirs: dirs2 } },
+      { addFlex: { shorthand: "Krf", sequence: "Mkr' Mkf", inputDirs: dirs1, outputDirs: dirs1 } },
       { searchFlexes: "Tr2 Ti2 Tr4 Ti4 Bf Bi" },
+      //{ searchFlexes: "Tr2' Ti2' Tr4' Ti4' Bf Bi" },
+      //{ searchFlexes: "Tr2 Ti2 Tr4 Ti4 Bf' Bi'" },
+      //{ searchFlexes: "Bf Bi Bf' Bi'" },
+      //{ searchFlexes: "Tr2 Ti2 Tr4 Ti4 Tr2' Ti2' Tr4' Ti4'" },
       { flexes: "Bf+" },
       { labelAsTree: leafColors }
     ];
@@ -110,6 +116,7 @@
     Bracelets support cycles of <b>Bf&lt;&lt;</b> and <b>Tr4&lt;&lt; Tr2&lt;&lt; Tr4&lt;&lt;</b>,
     alternating between the outer and inner versions of the sequences, e.g., Bf&lt;&lt; Bi&lt;&lt; Bf&lt;&lt;
     Bi&lt;&lt;.
+    They can also move the opposite direction by using the flex inverses, e.g., Bf'&gt;&gt; Bi&gt;&gt;.
   </p>
 
   <div>
