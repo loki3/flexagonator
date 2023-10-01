@@ -57,11 +57,14 @@ namespace Flexagonator {
     // as a single undoable operation
     applyFlexes(flexStr: string | FlexName[], separatelyUndoable: boolean): boolean | FlexError {
       const flexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
+      let count = 0;
       for (const flexName of flexNames) {
         const result = separatelyUndoable ? this.applyFlex(flexName) : this.rawApplyFlex(flexName);
         if (isFlexError(result)) {
+          if (separatelyUndoable) { for (let i = 0; i < count; i++) { this.history.undo(); } }
           return { reason: FlexCode.CantApplyFlex, flexName: flexName.fullName };
         }
+        count++;
       }
       if (!separatelyUndoable) {
         this.history.add(flexNames, this.flexagon, this.tracker.getCopy());
