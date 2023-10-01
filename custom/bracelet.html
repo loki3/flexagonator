@@ -14,19 +14,10 @@
       {
         addFlex: {
           name: "inner transform 2", shorthand: "Ti2",
-          input: [[[3, -4], -2], 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1],
-          output: [-4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, [-3, [-1, 2]]],
-          inputDirs: "/??????????????/",
-          outputDirs: "/??????????????/",
+          sequence: "~Tr2~", inputDirs: "/??????????????/", outputDirs: "/??????????????/",
         }
       },
-      {
-        addFlex: {
-          name: "inner transform 4", shorthand: "Ti4", inputDirs: dirs2, outputDirs: dirs2,
-          input: [-3, [[5, -6], -4], 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, -1, -2],
-          output: [-5, -6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, [-3, [-1, 2]], -4],
-        }
-      },
+      { addFlex: { name: "inner transform 4", shorthand: "Ti4", sequence: "~Tr4~", inputDirs: dirs2, outputDirs: dirs2, } },
       { addFlex: { name: "inner backflip", shorthand: "Bi", sequence: "~Mkf' Mkb~", inputDirs: dirs2, outputDirs: dirs2 } },
       { addFlex: { shorthand: "Krf", sequence: "Mkr' Mkf", inputDirs: dirs1, outputDirs: dirs1 } },
       { searchFlexes: "Tr2 Ti2 Tr4 Ti4 Bf Bi" },
