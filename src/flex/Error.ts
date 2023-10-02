@@ -8,7 +8,7 @@ namespace Flexagonator {
   // get details about an error
   export function errorToString(error: TreeError | PatternError | FlexError): string {
     if (isTreeError(error)) {
-      let str = "Tree Error: " + TreeCode[error.reason];
+      let str = "Tree Error: " + error.reason;
       if (error.context) {
         str += " with context " + error.context.toString();
       }
@@ -25,7 +25,7 @@ namespace Flexagonator {
       }
       return str;
     } else if (isFlexError(error)) {
-      let str = "Flex Error: " + FlexCode[error.reason];
+      let str = "Flex Error: " + error.reason;
       if (error.flexName) {
         str += " for flex " + error.flexName;
       }
@@ -42,12 +42,12 @@ namespace Flexagonator {
   */
 
   export enum TreeCode {
-    LeafIdMustBeInt,
-    ArrayMustHave2Items,
-    TooFewPats,
-    ExpectedArray,
-    ErrorInSubArray,
-    ParseError,
+    LeafIdMustBeInt = 'leaf id must be an integer',
+    ArrayMustHave2Items = 'array must have 2 items',
+    TooFewPats = 'too few pats',
+    ExpectedArray = 'expected array',
+    ErrorInSubArray = 'error in subarray',
+    ParseError = 'parse error',
   }
 
   export interface TreeError {
@@ -77,12 +77,12 @@ namespace Flexagonator {
 
   /** Error performing a flex on a flexagon */
   export enum FlexCode {
-    SizeMismatch,   // input, output, & flexagon arrays should all be same size
-    BadFlexInput,   // flex input pattern misformed
-    BadFlexOutput,  // flex output template misformed
-    UnknownFlex,    // flex isn't one the system knows about
-    CantApplyFlex,  // current state of the flexagon doesn't support the flex
-    BadDirections,  // the flex's directions between pats are invalid
+    SizeMismatch = 'size mismatch',       // input, output, & flexagon arrays should all be same size
+    BadFlexInput = 'bad flex input',      // flex input pattern misformed
+    BadFlexOutput = 'bad flex output',    // flex output template misformed
+    UnknownFlex = 'unknown flex',         // flex isn't one the system knows about
+    CantApplyFlex = 'cant apply flex',    // current state of the flexagon doesn't support the flex
+    BadDirections = 'bad pat directions', // the flex's directions between pats are invalid
   }
 
   export interface FlexError {

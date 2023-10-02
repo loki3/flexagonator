@@ -52,12 +52,14 @@
     // pass in a full script & full options for drawUnfolded
     function drawStripComplex(canvasId, script, drawOptions) {
       const fm = Flexagonator.createFromScript(script);
+      if (Flexagonator.isError(fm)) { console.log("drawStripComplex - ", Flexagonator.errorToString(fm)); return; }
       Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
     }
 
     // draw a folded flexagon, showing possible flexes
     function drawFlexagonComplex(canvasId, script, options) {
       const fm = Flexagonator.createFromScript(script);
+      if (Flexagonator.isError(fm)) { console.log("drawFlexagonComplex - ", Flexagonator.errorToString(fm)); return; }
       const defaultOptions = { showIds: false, showCurrent: false };
       const regions = Flexagonator.drawEntireFlexagon(canvasId, fm, { ...defaultOptions, ...options });
       Flexagonator.drawScriptButtons(canvasId, fm.flexagon, fm.getAngleInfo(), true, regions);
@@ -65,6 +67,7 @@
 
     function drawFromName(canvasId, name, rotation) {
       const fm = Flexagonator.createFromScript([{ name }]);
+      if (Flexagonator.isError(fm)) { console.log("drawFromName - ", Flexagonator.errorToString(fm)); return; }
       Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: {} });
     }
 
@@ -72,6 +75,7 @@
     // optionally highlighting one flex sequence
     function drawTuckerman(canvasId, generator, highlight) {
       const fm = Flexagonator.createFromScript([{ flexes: generator }]);
+      if (Flexagonator.isError(fm)) { console.log("drawTuckerman - ", Flexagonator.errorToString(fm)); return; }
       const traverse = Flexagonator.findTuckermanTraverse(fm.flexagon);
       Flexagonator.drawPinchGraph(canvasId, { traverse: traverse, flexes: highlight });
     }
@@ -85,6 +89,7 @@
     function drawSequence(canvasId, numPats, generator, sequence, scale, rotate, showCurrent) {
       const script = [{ numPats }, { flexes: generator }, { labelAsTree }];
       const fm = Flexagonator.createFromScript(script);
+      if (Flexagonator.isError(fm)) { console.log("drawSequence - ", Flexagonator.errorToString(fm)); return; }
       for (let i = 0; i < sequence.length; i++) {
         const id = canvasId + (i + 1).toString();
         fm.applyFlexes(sequence[i]);
@@ -98,6 +103,7 @@
       const script = numPats % 2 === 0 ? [{ numPats, flexes: flex + "+", angles2, labelAsTree }]
         : [{ numPats, flexAndColor: { flexes: flex + "+", colors: labelAsTree }, angles2 }];
       const fm = Flexagonator.createFromScript(script);
+      if (Flexagonator.isError(fm)) { console.log("drawBeforeAfter - ", Flexagonator.errorToString(fm)); return; }
       const rotate = numPats === 6 ? -30 : numPats === 8 ? -22.5 : 0;
       const options = { showIds: false, scale: 1.1, rotate, showCurrent: true, showCenterMarker: true };
       const options1 = { ...options, structure: true };
