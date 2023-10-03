@@ -676,15 +676,15 @@
 
   <!-- computers-->
   <h3 id="computers">computers</h3>
-  <p>state 0110</p>
-  <canvas id="computer-0110" width="400" height="400"></canvas><br/>
+  <p>state 1011</p>
+  <canvas id="computer-1011" width="400" height="400"></canvas><br/>
   <p>state 111 before and after R111</p>
   <canvas id="computer-R111-pre" width="400" height="400"></canvas>
   <canvas id="computer-R111-post" width="400" height="400"></canvas><br/>
-  <p>state 0110 with copies of each cell</p>
+  <p>state 1011 with copies of each cell</p>
   <canvas id="computer-copy" width="400" height="400"></canvas><br/>
-  <p>state 001, after Rx01, after copy</p>
-  <canvas id="computer-001" width="400" height="400"></canvas>
+  <p>state 1011, after Rx01, after copy</p>
+  <canvas id="computer-start" width="400" height="400"></canvas>
   <canvas id="computer-Rx01" width="400" height="400"></canvas>
   <canvas id="computer-final" width="400" height="400"></canvas><br/>
   <script type="text/javascript">
@@ -694,39 +694,39 @@
     const flexRx01 = { addFlex: { shorthand: "Rx01", sequence: "TT' >>>>T'T<<<< T" } };
     const flexCon = { addFlex: { shorthand: "Con", sequence: "T'T >>T<<" } };
     const flexCoff = { addFlex: { shorthand: "Coff", sequence: "TT' >>T'<<" } };
-    const init12 = "(T*>>)6", init16 = "(T*>>)8", init24 = "(T*>>)12", init32 = "(T*>>)16";
+    const init12 = "(T*>>)6", init16 = "(T*>>)8", init32 = "(T*>>)16";
 
-    // state 0110
-    const script1 = [{ numPats: 16 }, flexT, { flexes: init16, labelAsTree, searchFlexes: "T T'" }, { flexes: "T'>>>>>>T'<<" }];
-    drawFlexagonComplex("computer-0110", script1, { rotate: 11.25, structure: true });
+    // state 1011
+    const script1 = [{ numPats: 16 }, flexT, { flexes: init16, labelAsTree, searchFlexes: "T T'" }, { flexes: "T'>>" }];
+    drawFlexagonComplex("computer-1011", script1, { rotate: 11.25, structure: true });
     // state 111 before and after R111
     const script2 = [{ numPats: 12 }, flexT, flexR111a, { flexes: init12, labelAsTree, searchFlexes: "R111" }, { flexes: "(T'>>)3 >>" }];
     drawFlexagonComplex("computer-R111-pre", script2, { rotate: -15, structure: true });
     drawFlexagonComplex("computer-R111-post", [...script2, { flexes: "R111" }], { rotate: -15, structure: true });
 
-    // state 0110 with copies of each cell
+    // state 1011 with copies of each cell
     const isOn = { label: "1", color: 0x7fbcff }, isOff = { label: "0", color: 0xff827f };
     const copyOn = { label: "1", color: 0xbfecff }, copyOff = { label: "0", color: 0xffc2bf };
     const propsArray = [
       { front: isOn }, { front: copyOff }, null, { front: copyOn, back: copyOff },
       { front: copyOn }, { front: isOff }, null, { front: isOn, back: isOff },
     ];
+    const leafProps32 = propsArray.concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray);
     const script3 = [
-      { numPats: 32 }, flexT, { flexes: init32, searchFlexes: "T T'" }, { normalizeIds: true },
-      { leafProps: propsArray.concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray) },
-      { flexes: "(T'>>)2 (>>)4 (T'>>)2 (<<)4" } // 0110
+      { numPats: 32 }, flexT, { flexes: init32, searchFlexes: "T T'" }, { normalizeIds: true }, { leafProps: leafProps32 },
+      { flexes: "(T'>>)2" } // 1011
     ];
     drawFlexagonComplex("computer-copy", script3, { rotate: 11.25 / 2, structure: false });
 
-    // state 001, after Rx01, after copy
+    // state 1011, after Rx01, after copy
     const script4 = [
-      { numPats: 24 }, flexT, flexRx01, flexCon, { flexes: init24, searchFlexes: "" }, { normalizeIds: true },
-      { leafProps: propsArray.concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray).concat(propsArray) },
-      { flexes: "(T'>>)2 (T'>>)2 <<" } // 001
+      { numPats: 32 }, flexT, flexR111b, flexRx01, flexCon, { flexes: init32, searchFlexes: "" },
+      { normalizeIds: true }, { leafProps: leafProps32 },
+      { flexes: "(T'>>)2 (>)4 (T'>>)2 (>)4 (>)4 (T'>>)2 (<)12" } // 010110
     ];
-    drawFlexagonComplex("computer-001", [...script4, { searchFlexes: "Rx01" }], { rotate: 15 / 2, structure: false });
-    drawFlexagonComplex("computer-Rx01", [...script4, { flexes: "<<Rx01>>", searchFlexes: "Con" }], { rotate: 15 / 2, structure: false });
-    drawFlexagonComplex("computer-final", [...script4, { flexes: "<<Rx01 Con>>" }], { rotate: 15 / 2, structure: false });
+    drawFlexagonComplex("computer-start", [...script4, { searchFlexes: "Rx01" }], { rotate: 11.25 / 2, structure: false });
+    drawFlexagonComplex("computer-Rx01", [...script4, { flexes: "<<<<Rx01>>>>", searchFlexes: "Con" }], { rotate: 11.25 / 2, structure: false });
+    drawFlexagonComplex("computer-final", [...script4, { flexes: "<<<<Rx01 Con>>>>", searchFlexes: "R111" }], { rotate: 11.25 / 2, structure: false });
   </script>
 
   <!-- part 4 -->
