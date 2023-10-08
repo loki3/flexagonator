@@ -322,12 +322,13 @@
   <canvas id="P444c" width="300" height="300"></canvas>
   <canvas id="P444d" width="300" height="300"></canvas>
   <script type="text/javascript">
-    function showPiece(canvas, labelA, labelB) {
-      var script = [{ numPats: 12, flexAndColor: { flexes: "^(T1'+>)12", colors: labelAsTree } }];
+    function showPiece(canvas, labelA, labelB, extraLabel) {
+      var script = [{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }];
       var captions = [{ text: labelA, which: 0, edge: 1 }, { text: labelB, which: -1, edge: 2 }];
+      if (extraLabel) { captions.push(extraLabel); }
       drawStripComplex(canvas, script, { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' }, captions });
     }
-    showPiece("P444a", "d", "a");
+    showPiece("P444a", "d", "a", { text: "P444", which: 1 });
     showPiece("P444b", "a", "b");
     showPiece("P444c", "b", "c");
     showPiece("P444d", "c", "d");
@@ -352,8 +353,11 @@
   <script type="text/javascript">
     var captions = starCaptions.concat({ text: "P223h", which: 3, edge: 0 });
     drawStripComplex("P223h",
-      [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] }],
-      { rotation: 25.714, captions });
+      [
+        { pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
+        { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]] } },
+      ],
+      { rotation: 25.714, content: { showLeafProps: true }, captions });
   </script>
 
   <hr />
