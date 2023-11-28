@@ -39,12 +39,12 @@
     //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
     //   edge: [optional] which edge to draw flex on
     //   captions: [optional] use given captions instead of defaults
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles2, postFlexes, whereFlex, edge, text, endStyle, customCaptions) {
+    function drawStripSequence(canvasId, numPats, flexes, rotation, angles2, postFlexes, whereFlex, edge, text, endStyle, customCaptions, scale) {
       const script = [{ numPats, flexes, angles2, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
       const fm = Flexagonator.createFromScript(script);
       text = text ? text : flexes;
       const captions = customCaptions !== undefined ? customCaptions
-        : whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
+        : whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge, scale });
       const options = { rotation, content: { showLeafProps: true, endStyle }, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
     }
@@ -396,12 +396,12 @@
 
   <canvas id="F-8-minimal" width="900" height="400"></canvas><br/><br/>
   <canvas id="F-6-minimal" width="900" height="500"></canvas><br/><br/>
-  <canvas id="F-10-F5" width="1100" height="500"></canvas><br/><br/>
+  <canvas id="F-10-F5" width="1100" height="488"></canvas><br/><br/>
   <canvas id="F-7-cycle" width="1000" height="600"></canvas>
   <script type="text/javascript">
     drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
     drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
-    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 2);
+    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 2, undefined, undefined, undefined, 1.35);
     const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
     [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
     drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
