@@ -550,6 +550,8 @@
   <canvas id="diagram-tuckerman-6a" width="200" height="200"></canvas>
   <canvas id="diagram-tuckerman-6b" width="200" height="200"></canvas>
   <canvas id="diagram-tuckerman-6c" width="265" height="200"></canvas><br/>
+  <canvas id="state-P3a" width="450" height="400"></canvas>
+  <canvas id="state-P3b" width="450" height="400"></canvas>
 
   <script type="text/javascript">
     drawTuckerman("diagram-tuckerman-4", "(P*)2");
@@ -557,6 +559,11 @@
     drawTuckerman("diagram-tuckerman-6a", "P* P* P+ > P P*");
     drawTuckerman("diagram-tuckerman-6b", "(P*^>)4");
     drawTuckerman("diagram-tuckerman-6c", "(P*)4");
+
+    var script = [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [], searchFlexes: "S" }];
+    var options = { showIds: true, structure: true, rotate: -30 };
+    drawFlexagonComplex("state-P3a", script, options);
+    drawFlexagonComplex("state-P3b", script, { ...options, back: true });
   </script>
 
   <!-- sequences -->
