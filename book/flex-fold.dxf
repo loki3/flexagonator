@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460281.8626967478
+2460282.3448148146
   9
 $TDUUPDATE
  40
-2460282.1960300924
+2460282.6781481481
   9
 $TDINDWG
  40
-134.64224537037
+135.124351851852
   9
 $TDUSRTIMER
  40
-134.64224537037
+135.124351851852
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-D5114B2
+D5114B6
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-29.69895
+29.652198
  22
--12.440344
+-12.440491
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-47.573529
+47.626355
  41
 1.782719
  42
@@ -426863,9 +426863,9 @@ AcDbPolyline
  20
 -17.2
  10
-19.440752
+19.288892
  20
--17.268643
+-17.522994
  10
 19.5
  20
@@ -431908,6 +431908,110 @@ D5114B1
 AcDbEntity
   8
 edge
+  0
+TEXT
+  5
+D5114B2
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+16.6
+ 20
+-16.9
+ 30
+0.0
+ 40
+0.15
+  1
+1)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+D5114B3
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+17.8
+ 20
+-16.9
+ 30
+0.0
+ 40
+0.15
+  1
+2)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+D5114B4
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+19.0
+ 20
+-16.9
+ 30
+0.0
+ 40
+0.15
+  1
+3)
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+D5114B5
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+21.4
+ 20
+-16.9
+ 30
+0.0
+ 40
+0.15
+  1
+4)
+  7
+labels
+100
+AcDbText
   0
 ENDSEC
   0
