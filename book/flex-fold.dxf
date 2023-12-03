@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460277.6540740626
+2460281.8626967478
   9
 $TDUUPDATE
  40
-2460277.9874074073
+2460282.1960300924
   9
 $TDINDWG
  40
-130.43369212963
+134.64224537037
   9
 $TDUSRTIMER
  40
-130.43369212963
+134.64224537037
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-D51122E
+D5114B2
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-29.652198
+29.69895
  22
--12.440491
+-12.440344
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-47.626355
+47.573529
  41
 1.782719
  42
@@ -420388,6 +420388,11526 @@ AcDbText
 labels
 100
 AcDbText
+  0
+SOLID
+  5
+D51122E
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 11
+15.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+15.380385
+ 22
+-17.2
+ 32
+0.0
+ 13
+15.380385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D51122F
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 11
+15.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+16.419615
+ 22
+-17.2
+ 32
+0.0
+ 13
+16.419615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511230
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+16.419615
+ 20
+-17.2
+ 30
+0.0
+ 11
+15.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+16.159807
+ 22
+-17.65
+ 32
+0.0
+ 13
+16.159807
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511231
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+16.159807
+ 20
+-17.65
+ 30
+0.0
+ 11
+15.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+15.9
+ 22
+-18.1
+ 32
+0.0
+ 13
+15.9
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511232
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+15.9
+ 20
+-18.1
+ 30
+0.0
+ 11
+15.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+15.640193
+ 22
+-17.65
+ 32
+0.0
+ 13
+15.640193
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511233
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+15.640193
+ 20
+-17.65
+ 30
+0.0
+ 11
+15.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+15.380385
+ 22
+-17.2
+ 32
+0.0
+ 13
+15.380385
+ 23
+-17.2
+ 33
+0.0
+  0
+TEXT
+  5
+D511265
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+15.851492
+ 20
+-16.870186
+ 30
+0.0
+ 40
+0.1
+  1
+#
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+D511266
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+15.2
+ 20
+-16.9
+ 30
+0.0
+ 40
+0.15
+  1
+Bf'
+  7
+labels
+100
+AcDbText
+  0
+SOLID
+  5
+D5112B5
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 11
+16.419615
+ 21
+-17.2
+ 31
+0.0
+ 12
+15.9
+ 22
+-16.9
+ 32
+0.0
+ 13
+15.9
+ 23
+-16.9
+ 33
+0.0
+  0
+SOLID
+  5
+D5112B6
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+15.9
+ 20
+-16.9
+ 30
+0.0
+ 11
+15.380385
+ 21
+-17.2
+ 31
+0.0
+ 12
+15.9
+ 22
+-17.2
+ 32
+0.0
+ 13
+15.9
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5112B7
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+16.419615
+ 20
+-17.2
+ 30
+0.0
+ 11
+16.159807
+ 21
+-17.65
+ 31
+0.0
+ 12
+16.419615
+ 22
+-17.8
+ 32
+0.0
+ 13
+16.419615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D5112B8
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+16.419615
+ 20
+-17.8
+ 30
+0.0
+ 11
+16.159807
+ 21
+-17.65
+ 31
+0.0
+ 12
+15.9
+ 22
+-18.1
+ 32
+0.0
+ 13
+15.9
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D5112B9
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+15.9
+ 20
+-18.1
+ 30
+0.0
+ 11
+15.640193
+ 21
+-17.65
+ 31
+0.0
+ 12
+15.380385
+ 22
+-17.8
+ 32
+0.0
+ 13
+15.380385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D5112BA
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+15.380385
+ 20
+-17.8
+ 30
+0.0
+ 11
+15.640193
+ 21
+-17.65
+ 31
+0.0
+ 12
+15.380385
+ 22
+-17.2
+ 32
+0.0
+ 13
+15.380385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D5112BB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112BC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.380385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112BD
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112BE
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112BF
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112C0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112C1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.380385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112C2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112C3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112C4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-16.9
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112C5
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112C6
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112C7
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112C8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.159807
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112C9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.419615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112CA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112CB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112CC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.419615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112CD
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112CE
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112CF
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112D0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112D1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112D2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112D3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112D4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112D5
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.419615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112D6
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112D7
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112D8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.159807
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112D9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.419615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112DA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112DB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112DC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.159807
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112DD
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112DE
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112DF
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112E0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112E1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112E2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112E3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112E4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112E5
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.380385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112E6
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5112E7
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112E8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112E9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.380385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112EA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+LWPOLYLINE
+  5
+D5112EB
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        6
+ 70
+     1
+ 43
+0.01
+ 10
+15.9
+ 20
+-18.1
+ 10
+16.419615
+ 20
+-17.8
+ 10
+16.419615
+ 20
+-17.2
+ 10
+15.9
+ 20
+-16.9
+ 10
+15.380385
+ 20
+-17.2
+ 10
+15.380385
+ 20
+-17.8
+  0
+POLYLINE
+  5
+D5112EC
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112ED
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112EE
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112EF
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5112F0
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112F1
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112F2
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.159807
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112F3
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5112F4
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5112F5
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5112F6
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+15.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5112F7
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+SOLID
+  5
+D5112F8
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 11
+17.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+16.580385
+ 22
+-17.2
+ 32
+0.0
+ 13
+16.580385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5112F9
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 11
+17.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+17.619615
+ 22
+-17.2
+ 32
+0.0
+ 13
+17.619615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5112FA
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+17.619615
+ 20
+-17.2
+ 30
+0.0
+ 11
+17.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+17.359808
+ 22
+-17.65
+ 32
+0.0
+ 13
+17.359808
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D5112FB
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+17.359808
+ 20
+-17.65
+ 30
+0.0
+ 11
+17.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+17.1
+ 22
+-18.1
+ 32
+0.0
+ 13
+17.1
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D5112FC
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+17.1
+ 20
+-18.1
+ 30
+0.0
+ 11
+17.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+16.840193
+ 22
+-17.65
+ 32
+0.0
+ 13
+16.840193
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D5112FD
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+16.840193
+ 20
+-17.65
+ 30
+0.0
+ 11
+17.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+16.580385
+ 22
+-17.2
+ 32
+0.0
+ 13
+16.580385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5112FE
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 11
+17.619615
+ 21
+-17.2
+ 31
+0.0
+ 12
+17.1
+ 22
+-16.9
+ 32
+0.0
+ 13
+17.1
+ 23
+-16.9
+ 33
+0.0
+  0
+SOLID
+  5
+D5112FF
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+17.1
+ 20
+-16.9
+ 30
+0.0
+ 11
+16.580385
+ 21
+-17.2
+ 31
+0.0
+ 12
+17.1
+ 22
+-17.2
+ 32
+0.0
+ 13
+17.1
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511300
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+17.619615
+ 20
+-17.2
+ 30
+0.0
+ 11
+17.359808
+ 21
+-17.65
+ 31
+0.0
+ 12
+17.619615
+ 22
+-17.8
+ 32
+0.0
+ 13
+17.619615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511301
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+17.619615
+ 20
+-17.8
+ 30
+0.0
+ 11
+17.359808
+ 21
+-17.65
+ 31
+0.0
+ 12
+17.1
+ 22
+-18.1
+ 32
+0.0
+ 13
+17.1
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511302
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+17.1
+ 20
+-18.1
+ 30
+0.0
+ 11
+16.840193
+ 21
+-17.65
+ 31
+0.0
+ 12
+16.580385
+ 22
+-17.8
+ 32
+0.0
+ 13
+16.580385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511303
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+16.580385
+ 20
+-17.8
+ 30
+0.0
+ 11
+16.840193
+ 21
+-17.65
+ 31
+0.0
+ 12
+16.580385
+ 22
+-17.2
+ 32
+0.0
+ 13
+16.580385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D511304
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511305
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.580385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511306
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511307
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511308
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511309
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51130A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.580385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51130B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51130C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51130D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-16.9
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51130E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51130F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511310
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511311
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511312
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.619615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511313
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511314
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511315
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.619615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511316
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511317
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511318
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511319
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51131A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51131B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51131C
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51131D
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51131E
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.619615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51131F
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+  0
+POLYLINE
+  5
+D511320
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511321
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511322
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.619615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511323
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511324
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511325
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511326
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511327
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511328
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511329
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51132A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51132B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51132C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51132D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51132E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.580385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51132F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511330
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511331
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511332
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.580385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511333
+330
+1F
+100
+AcDbEntity
+  8
+mountain
+  0
+LWPOLYLINE
+  5
+D511334
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        6
+ 70
+     1
+ 43
+0.01
+ 10
+17.1
+ 20
+-18.1
+ 10
+17.619615
+ 20
+-17.8
+ 10
+17.619615
+ 20
+-17.2
+ 10
+17.1
+ 20
+-16.9
+ 10
+16.580385
+ 20
+-17.2
+ 10
+16.580385
+ 20
+-17.8
+  0
+POLYLINE
+  5
+D511335
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511336
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511337
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+16.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511338
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D511339
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51133A
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51133B
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51133C
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D51133D
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51133E
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51133F
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511340
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+LWPOLYLINE
+  5
+D511341
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+16.995236
+ 20
+-17.028159
+ 42
+0.226312
+ 10
+16.983162
+ 20
+-17.374574
+ 42
+-0.290796
+  0
+LWPOLYLINE
+  5
+D511342
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 43
+0.01
+ 10
+16.962426
+ 20
+-17.307715
+ 10
+16.905783
+ 20
+-17.293873
+ 10
+16.983162
+ 20
+-17.374574
+  0
+LWPOLYLINE
+  5
+D511343
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 43
+0.01
+ 10
+17.237574
+ 20
+-17.307715
+ 10
+17.294217
+ 20
+-17.293873
+ 10
+17.216838
+ 20
+-17.374574
+  0
+LWPOLYLINE
+  5
+D511344
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+17.204764
+ 20
+-17.028159
+ 42
+-0.226312
+ 10
+17.216838
+ 20
+-17.374574
+ 42
+0.290796
+  0
+SOLID
+  5
+D511345
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+18.3
+ 20
+-17.2
+ 30
+0.0
+ 11
+18.3
+ 21
+-17.5
+ 31
+0.0
+ 12
+17.780385
+ 22
+-17.2
+ 32
+0.0
+ 13
+17.780385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511346
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+18.3
+ 20
+-17.2
+ 30
+0.0
+ 11
+18.3
+ 21
+-17.5
+ 31
+0.0
+ 12
+18.819615
+ 22
+-17.2
+ 32
+0.0
+ 13
+18.819615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511347
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+18.819615
+ 20
+-17.2
+ 30
+0.0
+ 11
+18.3
+ 21
+-17.5
+ 31
+0.0
+ 12
+18.559808
+ 22
+-17.65
+ 32
+0.0
+ 13
+18.559808
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511348
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+18.559808
+ 20
+-17.65
+ 30
+0.0
+ 11
+18.3
+ 21
+-17.5
+ 31
+0.0
+ 12
+18.3
+ 22
+-18.1
+ 32
+0.0
+ 13
+18.3
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511349
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+18.3
+ 20
+-18.1
+ 30
+0.0
+ 11
+18.3
+ 21
+-17.5
+ 31
+0.0
+ 12
+18.040193
+ 22
+-17.65
+ 32
+0.0
+ 13
+18.040193
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D51134A
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+18.040193
+ 20
+-17.65
+ 30
+0.0
+ 11
+18.3
+ 21
+-17.5
+ 31
+0.0
+ 12
+17.780385
+ 22
+-17.2
+ 32
+0.0
+ 13
+17.780385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D51134B
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+18.819615
+ 20
+-17.2
+ 30
+0.0
+ 11
+18.559808
+ 21
+-17.65
+ 31
+0.0
+ 12
+18.819615
+ 22
+-17.8
+ 32
+0.0
+ 13
+18.819615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D51134C
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+18.819615
+ 20
+-17.8
+ 30
+0.0
+ 11
+18.559808
+ 21
+-17.65
+ 31
+0.0
+ 12
+18.3
+ 22
+-18.1
+ 32
+0.0
+ 13
+18.3
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D51134D
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+18.3
+ 20
+-18.1
+ 30
+0.0
+ 11
+18.040193
+ 21
+-17.65
+ 31
+0.0
+ 12
+17.780385
+ 22
+-17.8
+ 32
+0.0
+ 13
+17.780385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D51134E
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+17.780385
+ 20
+-17.8
+ 30
+0.0
+ 11
+18.040193
+ 21
+-17.65
+ 31
+0.0
+ 12
+17.780385
+ 22
+-17.2
+ 32
+0.0
+ 13
+17.780385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D51134F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511350
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.780385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511351
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511352
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511353
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511354
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.040193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511355
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.780385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511356
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51135B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51135C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.559808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51135D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.819615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51135E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51135F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511360
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.819615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511361
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511362
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511363
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511364
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511365
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511366
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51136B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51136C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.559808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51136D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.819615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51136E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51136F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511370
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.559808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511371
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511372
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511373
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511374
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.040193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511375
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511376
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511377
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511378
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.040193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511379
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+17.780385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51137A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+LWPOLYLINE
+  5
+D51137F
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        5
+ 70
+     1
+ 43
+0.01
+ 10
+18.3
+ 20
+-18.1
+ 10
+18.819615
+ 20
+-17.8
+ 10
+18.819615
+ 20
+-17.2
+ 10
+17.780385
+ 20
+-17.2
+ 10
+17.780385
+ 20
+-17.8
+  0
+POLYLINE
+  5
+D511380
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511381
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511382
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.040193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511383
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D511384
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511385
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511386
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.559808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511387
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D511388
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511389
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51138A
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.3
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51138B
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+TEXT
+  5
+D51138C
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+18.063549
+ 20
+-17.340229
+ 30
+0.0
+ 40
+0.1
+  1
+1
+  7
+labels
+100
+AcDbText
+  0
+LWPOLYLINE
+  5
+D51138D
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+18.178122
+ 20
+-17.24812
+ 42
+-0.226312
+ 10
+18.051801
+ 20
+-17.570908
+ 42
+0.290796
+  0
+LWPOLYLINE
+  5
+D51138E
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+18.154843
+ 20
+-17.527518
+ 10
+18.051801
+ 20
+-17.570908
+  0
+LWPOLYLINE
+  5
+D51138F
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+18.078916
+ 20
+-17.462441
+ 10
+18.051801
+ 20
+-17.570908
+  0
+SOLID
+  5
+D511390
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+19.5
+ 20
+-17.2
+ 30
+0.0
+ 11
+19.5
+ 21
+-17.5
+ 31
+0.0
+ 12
+18.980385
+ 22
+-17.2
+ 32
+0.0
+ 13
+18.980385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511391
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+19.5
+ 20
+-17.2
+ 30
+0.0
+ 11
+19.5
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.019615
+ 22
+-17.2
+ 32
+0.0
+ 13
+20.019615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511392
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+20.019615
+ 20
+-17.2
+ 30
+0.0
+ 11
+19.5
+ 21
+-17.5
+ 31
+0.0
+ 12
+19.759808
+ 22
+-17.65
+ 32
+0.0
+ 13
+19.759808
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511393
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+19.759808
+ 20
+-17.65
+ 30
+0.0
+ 11
+19.5
+ 21
+-17.5
+ 31
+0.0
+ 12
+19.5
+ 22
+-18.1
+ 32
+0.0
+ 13
+19.5
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511394
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+19.5
+ 20
+-18.1
+ 30
+0.0
+ 11
+19.5
+ 21
+-17.5
+ 31
+0.0
+ 12
+19.240192
+ 22
+-17.65
+ 32
+0.0
+ 13
+19.240192
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511395
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+19.240192
+ 20
+-17.65
+ 30
+0.0
+ 11
+19.5
+ 21
+-17.5
+ 31
+0.0
+ 12
+18.980385
+ 22
+-17.2
+ 32
+0.0
+ 13
+18.980385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511396
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+20.019615
+ 20
+-17.2
+ 30
+0.0
+ 11
+19.759808
+ 21
+-17.65
+ 31
+0.0
+ 12
+20.019615
+ 22
+-17.8
+ 32
+0.0
+ 13
+20.019615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511397
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+20.019615
+ 20
+-17.8
+ 30
+0.0
+ 11
+19.759808
+ 21
+-17.65
+ 31
+0.0
+ 12
+19.5
+ 22
+-18.1
+ 32
+0.0
+ 13
+19.5
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511398
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+19.5
+ 20
+-18.1
+ 30
+0.0
+ 11
+19.240192
+ 21
+-17.65
+ 31
+0.0
+ 12
+18.980385
+ 22
+-17.8
+ 32
+0.0
+ 13
+18.980385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511399
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+18.980385
+ 20
+-17.8
+ 30
+0.0
+ 11
+19.240192
+ 21
+-17.65
+ 31
+0.0
+ 12
+18.980385
+ 22
+-17.2
+ 32
+0.0
+ 13
+18.980385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D51139A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51139B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.980385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51139C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51139D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51139E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51139F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.240192
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113A0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.980385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113A1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113A2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113A3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.759808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113A4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.019615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113A5
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113A6
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113A7
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.019615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113A8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113A9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113AA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113AB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113AC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113AD
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113AE
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113AF
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.759808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113B0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.019615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113B1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113B2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113B3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.759808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113B4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113B5
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113B6
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113B7
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.240192
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113B8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113B9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113BA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113BB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.240192
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113BC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+18.980385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113BD
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+LWPOLYLINE
+  5
+D5113BE
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        5
+ 70
+     1
+ 43
+0.01
+ 10
+19.5
+ 20
+-18.1
+ 10
+20.019615
+ 20
+-17.8
+ 10
+20.019615
+ 20
+-17.2
+ 10
+18.980385
+ 20
+-17.2
+ 10
+18.980385
+ 20
+-17.8
+  0
+POLYLINE
+  5
+D5113BF
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113C0
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113C1
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.240192
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113C2
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5113C3
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113C4
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113C5
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.759808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113C6
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5113C7
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113C8
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113C9
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+19.5
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113CA
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+LWPOLYLINE
+  5
+D5113D3
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 43
+0.01
+ 10
+18.980385
+ 20
+-17.2
+ 10
+19.440752
+ 20
+-17.268643
+ 10
+19.5
+ 20
+-17.5
+  0
+LWPOLYLINE
+  5
+D5113D7
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+19.293997
+ 20
+-17.087967
+ 10
+19.401333
+ 20
+-17.056672
+  0
+LWPOLYLINE
+  5
+D5113D8
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+19.311895
+ 20
+-16.989581
+ 10
+19.401333
+ 20
+-17.056672
+  0
+LWPOLYLINE
+  5
+D5113D9
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+19.058897
+ 20
+-17.1104
+ 42
+-0.226312
+ 10
+19.401333
+ 20
+-17.056672
+ 42
+0.290796
+  0
+SOLID
+  5
+D5113DA
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+20.440193
+ 20
+-17.65
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.180385
+ 22
+-17.2
+ 32
+0.0
+ 13
+20.180385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5113DB
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+20.7
+ 20
+-17.2
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+21.219615
+ 22
+-17.2
+ 32
+0.0
+ 13
+21.219615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5113DC
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+21.219615
+ 20
+-17.2
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.959808
+ 22
+-17.65
+ 32
+0.0
+ 13
+20.959808
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D5113DD
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+20.959808
+ 20
+-17.65
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.7
+ 22
+-18.1
+ 32
+0.0
+ 13
+20.7
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D5113DE
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+20.7
+ 20
+-18.1
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.440193
+ 22
+-17.65
+ 32
+0.0
+ 13
+20.440193
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D5113DF
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+20.489107
+ 20
+-17.518636
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.180385
+ 22
+-17.2
+ 32
+0.0
+ 13
+20.180385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D5113E0
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+21.219615
+ 20
+-17.2
+ 30
+0.0
+ 11
+20.959808
+ 21
+-17.65
+ 31
+0.0
+ 12
+21.219615
+ 22
+-17.8
+ 32
+0.0
+ 13
+21.219615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D5113E1
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+21.219615
+ 20
+-17.8
+ 30
+0.0
+ 11
+20.959808
+ 21
+-17.65
+ 31
+0.0
+ 12
+20.7
+ 22
+-18.1
+ 32
+0.0
+ 13
+20.7
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D5113E2
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+20.7
+ 20
+-18.1
+ 30
+0.0
+ 11
+20.440193
+ 21
+-17.65
+ 31
+0.0
+ 12
+20.180385
+ 22
+-17.8
+ 32
+0.0
+ 13
+20.180385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D5113E3
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+20.180385
+ 20
+-17.8
+ 30
+0.0
+ 11
+20.440193
+ 21
+-17.65
+ 31
+0.0
+ 12
+20.180385
+ 22
+-17.2
+ 32
+0.0
+ 13
+20.180385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D5113E4
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113E5
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.180385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113E6
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113E7
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5113E8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113E9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.440193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113EA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.180385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113EB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113EC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113ED
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.959808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113EE
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.219615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113EF
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113F0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113F1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.219615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113F2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113F3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113F4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113F5
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113F6
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113F7
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113F8
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113F9
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.959808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113FA
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.219615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113FB
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5113FC
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5113FD
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.959808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5113FE
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5113FF
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511400
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511401
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.440193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511402
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511403
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511404
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511405
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.440193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511406
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.180385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511407
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511409
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51140A
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51140B
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.440193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51140C
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D51140D
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51140E
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51140F
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.959808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511410
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+LWPOLYLINE
+  5
+D511415
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 43
+0.01
+ 10
+20.180385
+ 20
+-17.2
+ 10
+20.180385
+ 20
+-17.8
+ 10
+20.7
+ 20
+-18.1
+  0
+SOLID
+  5
+D511417
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+20.489107
+ 20
+-17.518636
+ 30
+0.0
+ 11
+20.7
+ 21
+-17.5
+ 31
+0.0
+ 12
+20.7
+ 22
+-16.958409
+ 32
+0.0
+ 13
+20.7
+ 23
+-16.958409
+ 33
+0.0
+  0
+LWPOLYLINE
+  5
+D511418
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        5
+ 70
+     0
+ 43
+0.01
+ 10
+20.7
+ 20
+-18.1
+ 10
+21.219615
+ 20
+-17.8
+ 10
+21.219615
+ 20
+-17.2
+ 10
+20.7
+ 20
+-17.2
+ 10
+20.7
+ 20
+-16.958409
+  0
+POLYLINE
+  5
+D511419
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51141A
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51141B
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+20.7
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51141C
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+LWPOLYLINE
+  5
+D51141D
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 43
+0.01
+ 10
+20.180385
+ 20
+-17.2
+ 10
+20.489107
+ 20
+-17.518636
+ 10
+20.7
+ 20
+-17.5
+  0
+LWPOLYLINE
+  5
+D51141E
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+20.7
+ 20
+-16.958409
+ 10
+20.489107
+ 20
+-17.518636
+  0
+LWPOLYLINE
+  5
+D51141F
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+21.006314
+ 20
+-17.116392
+ 10
+21.115413
+ 20
+-17.140845
+  0
+LWPOLYLINE
+  5
+D511420
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+21.069515
+ 20
+-17.038895
+ 10
+21.115413
+ 20
+-17.140845
+  0
+LWPOLYLINE
+  5
+D511421
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+20.78963
+ 20
+-17.022458
+ 42
+-0.226312
+ 10
+21.115413
+ 20
+-17.140845
+ 42
+0.290796
+  0
+SOLID
+  5
+D511422
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+21.9
+ 20
+-17.2
+ 30
+0.0
+ 11
+21.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+21.380385
+ 22
+-17.2
+ 32
+0.0
+ 13
+21.380385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511423
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+21.9
+ 20
+-17.2
+ 30
+0.0
+ 11
+21.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+22.419615
+ 22
+-17.2
+ 32
+0.0
+ 13
+22.419615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511424
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+22.419615
+ 20
+-17.2
+ 30
+0.0
+ 11
+21.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+22.159808
+ 22
+-17.65
+ 32
+0.0
+ 13
+22.159808
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511425
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+22.159808
+ 20
+-17.65
+ 30
+0.0
+ 11
+21.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+21.9
+ 22
+-18.1
+ 32
+0.0
+ 13
+21.9
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511426
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+21.9
+ 20
+-18.1
+ 30
+0.0
+ 11
+21.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+21.640193
+ 22
+-17.65
+ 32
+0.0
+ 13
+21.640193
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D511427
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+21.640193
+ 20
+-17.65
+ 30
+0.0
+ 11
+21.9
+ 21
+-17.5
+ 31
+0.0
+ 12
+21.380385
+ 22
+-17.2
+ 32
+0.0
+ 13
+21.380385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511428
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+22.419615
+ 20
+-17.2
+ 30
+0.0
+ 11
+22.159808
+ 21
+-17.65
+ 31
+0.0
+ 12
+22.419615
+ 22
+-17.8
+ 32
+0.0
+ 13
+22.419615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511429
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+22.419615
+ 20
+-17.8
+ 30
+0.0
+ 11
+22.159808
+ 21
+-17.65
+ 31
+0.0
+ 12
+21.9
+ 22
+-18.1
+ 32
+0.0
+ 13
+21.9
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D51142A
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+21.9
+ 20
+-18.1
+ 30
+0.0
+ 11
+21.640193
+ 21
+-17.65
+ 31
+0.0
+ 12
+21.380385
+ 22
+-17.8
+ 32
+0.0
+ 13
+21.380385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D51142B
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+21.380385
+ 20
+-17.8
+ 30
+0.0
+ 11
+21.640193
+ 21
+-17.65
+ 31
+0.0
+ 12
+21.380385
+ 22
+-17.2
+ 32
+0.0
+ 13
+21.380385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D51142C
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51142D
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.380385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51142E
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51142F
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D511430
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511431
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511432
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.380385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511433
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511434
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511435
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.159808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511436
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.419615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511437
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511438
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511439
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.419615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51143A
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51143B
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D51143C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51143D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51143E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51143F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511440
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511441
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.159808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511442
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.419615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511443
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511444
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511445
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.159808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511446
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511447
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511448
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511449
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51144A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51144B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51144C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51144D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51144E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.380385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51144F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+LWPOLYLINE
+  5
+D511450
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        5
+ 70
+     1
+ 43
+0.01
+ 10
+21.9
+ 20
+-18.1
+ 10
+22.419615
+ 20
+-17.8
+ 10
+22.419615
+ 20
+-17.2
+ 10
+21.380385
+ 20
+-17.2
+ 10
+21.380385
+ 20
+-17.8
+  0
+POLYLINE
+  5
+D511451
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511452
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511453
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.640193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511454
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D511455
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511456
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511457
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.159808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511458
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D511459
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51145A
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51145B
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.9
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51145C
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D51145D
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51145E
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.0
+ 20
+-17.05
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51145F
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.0
+ 20
+-17.35
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511460
+330
+1F
+100
+AcDbEntity
+  8
+0
+  0
+LWPOLYLINE
+  5
+D511461
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        4
+ 70
+     0
+ 43
+0.01
+ 10
+22.05
+ 20
+-17.15
+ 10
+22.05
+ 20
+-17.15
+ 10
+22.0
+ 20
+-17.05
+ 10
+21.95
+ 20
+-17.15
+  0
+POLYLINE
+  5
+D511462
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511463
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.8
+ 20
+-17.05
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511464
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+21.8
+ 20
+-17.35
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511465
+330
+1F
+100
+AcDbEntity
+  8
+0
+  0
+LWPOLYLINE
+  5
+D511466
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbPolyline
+ 90
+        4
+ 70
+     0
+ 43
+0.01
+ 10
+21.85
+ 20
+-17.15
+ 10
+21.85
+ 20
+-17.15
+ 10
+21.8
+ 20
+-17.05
+ 10
+21.75
+ 20
+-17.15
+  0
+TEXT
+  5
+D511467
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+21.637504
+ 20
+-17.150008
+ 30
+0.0
+ 40
+0.1
+  1
+1
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+D511468
+330
+1F
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+22.08563
+ 20
+-17.150008
+ 30
+0.0
+ 40
+0.1
+  1
+1
+  7
+labels
+100
+AcDbText
+  0
+SOLID
+  5
+D511469
+330
+1F
+100
+AcDbEntity
+  8
+face-6
+100
+AcDbTrace
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 11
+23.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+22.580385
+ 22
+-17.2
+ 32
+0.0
+ 13
+22.580385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D51146A
+330
+1F
+100
+AcDbEntity
+  8
+face-6
+100
+AcDbTrace
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 11
+23.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+23.619615
+ 22
+-17.2
+ 32
+0.0
+ 13
+23.619615
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D51146B
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+23.619615
+ 20
+-17.2
+ 30
+0.0
+ 11
+23.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+23.359808
+ 22
+-17.65
+ 32
+0.0
+ 13
+23.359808
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D51146C
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+23.359808
+ 20
+-17.65
+ 30
+0.0
+ 11
+23.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+23.1
+ 22
+-18.1
+ 32
+0.0
+ 13
+23.1
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D51146D
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+23.1
+ 20
+-18.1
+ 30
+0.0
+ 11
+23.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+22.840193
+ 22
+-17.65
+ 32
+0.0
+ 13
+22.840193
+ 23
+-17.65
+ 33
+0.0
+  0
+SOLID
+  5
+D51146E
+330
+1F
+100
+AcDbEntity
+  8
+face-2
+100
+AcDbTrace
+ 10
+22.840193
+ 20
+-17.65
+ 30
+0.0
+ 11
+23.1
+ 21
+-17.5
+ 31
+0.0
+ 12
+22.580385
+ 22
+-17.2
+ 32
+0.0
+ 13
+22.580385
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D51146F
+330
+1F
+100
+AcDbEntity
+  8
+face-6
+100
+AcDbTrace
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 11
+23.619615
+ 21
+-17.2
+ 31
+0.0
+ 12
+23.1
+ 22
+-16.9
+ 32
+0.0
+ 13
+23.1
+ 23
+-16.9
+ 33
+0.0
+  0
+SOLID
+  5
+D511470
+330
+1F
+100
+AcDbEntity
+  8
+face-6
+100
+AcDbTrace
+ 10
+23.1
+ 20
+-16.9
+ 30
+0.0
+ 11
+22.580385
+ 21
+-17.2
+ 31
+0.0
+ 12
+23.1
+ 22
+-17.2
+ 32
+0.0
+ 13
+23.1
+ 23
+-17.2
+ 33
+0.0
+  0
+SOLID
+  5
+D511471
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+23.619615
+ 20
+-17.2
+ 30
+0.0
+ 11
+23.359808
+ 21
+-17.65
+ 31
+0.0
+ 12
+23.619615
+ 22
+-17.8
+ 32
+0.0
+ 13
+23.619615
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511472
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+23.619615
+ 20
+-17.8
+ 30
+0.0
+ 11
+23.359808
+ 21
+-17.65
+ 31
+0.0
+ 12
+23.1
+ 22
+-18.1
+ 32
+0.0
+ 13
+23.1
+ 23
+-18.1
+ 33
+0.0
+  0
+SOLID
+  5
+D511473
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+23.1
+ 20
+-18.1
+ 30
+0.0
+ 11
+22.840193
+ 21
+-17.65
+ 31
+0.0
+ 12
+22.580385
+ 22
+-17.8
+ 32
+0.0
+ 13
+22.580385
+ 23
+-17.8
+ 33
+0.0
+  0
+SOLID
+  5
+D511474
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+22.580385
+ 20
+-17.8
+ 30
+0.0
+ 11
+22.840193
+ 21
+-17.65
+ 31
+0.0
+ 12
+22.580385
+ 22
+-17.2
+ 32
+0.0
+ 13
+22.580385
+ 23
+-17.2
+ 33
+0.0
+  0
+POLYLINE
+  5
+D511475
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511476
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.580385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511477
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511478
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511479
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51147A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51147B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.580385
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51147C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51147D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51147E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-16.9
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51147F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511480
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511481
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511482
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511483
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.619615
+ 20
+-17.8
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511484
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511485
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511486
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.619615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511487
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511488
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511489
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51148A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51148B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51148C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51148D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51148E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51148F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.619615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511490
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511491
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511492
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511493
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.619615
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511494
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511495
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D511496
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D511497
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D511498
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D511499
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51149A
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51149B
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-18.1
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D51149C
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D51149D
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D51149E
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D51149F
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.580385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5114A0
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+POLYLINE
+  5
+D5114A1
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5114A2
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5114A3
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.580385
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5114A4
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+  0
+LWPOLYLINE
+  5
+D5114A5
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        6
+ 70
+     1
+ 43
+0.01
+ 10
+23.1
+ 20
+-18.1
+ 10
+23.619615
+ 20
+-17.8
+ 10
+23.619615
+ 20
+-17.2
+ 10
+23.1
+ 20
+-16.9
+ 10
+22.580385
+ 20
+-17.2
+ 10
+22.580385
+ 20
+-17.8
+  0
+POLYLINE
+  5
+D5114A6
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5114A7
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5114A8
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+22.840193
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5114A9
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5114AA
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5114AB
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5114AC
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.359808
+ 20
+-17.65
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5114AD
+330
+1F
+100
+AcDbEntity
+  8
+edge
+  0
+POLYLINE
+  5
+D5114AE
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D5114AF
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.2
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D5114B0
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+23.1
+ 20
+-17.5
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D5114B1
+330
+1F
+100
+AcDbEntity
+  8
+edge
   0
 ENDSEC
   0
