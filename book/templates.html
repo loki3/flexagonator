@@ -761,8 +761,9 @@
   <p>animal pentaflexagon</p>
   <div id="animal-penta" width="800" height="760"></div>
   <script type="text/javascript">
-    var script = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { angles: [72, 54] }];
-    var options = { rotation: 36 + 90, content: { showFoldingOrder: true }, captions: starCaptions };
+    var setLabels = { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]] };
+    var script = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { angles: [72, 54], setLabels }];
+    var options = { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions };
     drawStripComplex("animal-penta", script, options);
   </script>
 
