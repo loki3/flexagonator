@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="favicon.ico" />
+  <title>Flexagon Inspector</title>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+  </style>
+
+  <script src="../../build/out.js"></script>
+  <script>
+    let flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
+    let fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
+    let stripContent = 4/*StripContent.LeafLabels*/;
+    let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
+    let buttons = null;
+
+    function updateUI() {
+      let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
+      buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
+      Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
+      Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent, captions: captions });
+
+      let historyBox = document.getElementById('history');
+      if (historyBox !== null) {
+        let history = fm.getFlexHistory().join(' ');
+        historyBox.value = history;
+      }
+      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+    }
+
+    function statusMessage(message) {
+      let statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
+      }
+    }
+
+    function flexAndShow(flex) {
+      let result = fm.applyFlex(flex);
+      if (result === true) {
+        updateUI();
+      } else {
+        statusMessage(result);
+      }
+    }
+
+    function undo() {
+      fm.undo();
+      updateUI();
+    }
+    function redo() {
+      fm.redo();
+      updateUI();
+    }
+
+    function interfaceMouseMove(event) {
+      let script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+    function interfaceMouseClick(event) {
+      let script = Flexagonator.getScriptItem(event, 'interface', buttons);
+      if (script != null) {
+        let result = Flexagonator.runScriptItem(fm, script);
+        if (!Flexagonator.isError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+
+    function backsideMouseMove(event) {
+      event.target.style.cursor = 'pointer';
+    }
+    function backsideMouseClick(event) {
+      flexAndShow('^');
+    }
+  </script>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <h1>Flexagon Inspector</h1>
+
+  <canvas id="interface" width="700" height="400"></canvas>
+  <canvas id="backside" width="300" height="300"></canvas>
+  <div id="status"></div>
+  <p>
+    <input onclick="undo();" type="button" value="undo" />
+    <input onclick="redo();" type="button" value="redo" />
+    <textarea id="history" readonly=true cols="70" rows="1"></textarea>
+  </p>
+
+  <span id="unfolded" width="800" height="600"></span>
+
+  <script type="text/javascript">
+    updateUI();
+
+    let interface = document.getElementById('interface');
+    interface.addEventListener('mousemove', interfaceMouseMove, false);
+    interface.addEventListener('click', interfaceMouseClick, false);
+    let backside = document.getElementById('backside');
+    backside.addEventListener('mousemove', backsideMouseMove, false);
+    backside.addEventListener('click', backsideMouseClick, false);
+  </script>
+</body>
+
+</html>
