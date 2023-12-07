@@ -58,6 +58,24 @@
       }
     }
 
+    function applyFlexes(sequence) {
+      if (!sequence) {
+        const flexesBox = document.getElementById('enterFlexes');
+        sequence = flexesBox.value;
+      }
+      const result = fm.applyFlexes(sequence, true);
+      if (result === true) {
+        updateUI();
+      } else {
+        statusMessage(result);
+      }
+    }
+    function checkSequence(key, sequence) {
+      if (key == 13) {
+        applyFlexes(sequence);
+      }
+    }
+
     function undo() {
       fm.undo();
       updateUI();
@@ -94,6 +112,11 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <h1>Flexagon Inspector</h1>
+
+  <p>
+    <input onclick="applyFlexes();" type="button" value="apply flexes" />
+    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false" />
+  </p>
 
   <canvas id="interface" width="700" height="400"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
