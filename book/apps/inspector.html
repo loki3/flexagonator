@@ -106,12 +106,57 @@
     function backsideMouseClick(event) {
       flexAndShow('^');
     }
+
+    // initialize UI that lists the various parts of a flexagon name
+    function initNamesUI() {
+      const lists = Flexagonator.getNamePieces({});
+      const overall = document.getElementById('nameOverall');
+      setOptions(overall, lists.overallShapes);
+      const leaf = document.getElementById('nameLeaf');
+      setOptions(leaf, lists.leafShapes);
+      const count = document.getElementById('nameCount');
+      setOptions(count, lists.patCounts);
+    }
+
+    function setOverallShape(overall) {
+      //
+    }
+    function setLeafShape(leaf) {
+      //
+    }
+    function setPatCount(count) {
+      //
+    }
+
+    // set the list:string[] of <option> elements under a <select> element
+    function setOptions(element, list) {
+      // clear out list
+      element.value = null;
+      const old = element.options;
+      for (let i = old.length - 1; i >= 0; i--) {
+        element.remove(old[i]);
+      }
+      // add new items
+      list.forEach(item => {
+        const opt = document.createElement("option");
+        opt.value = item;
+        opt.text = item;
+        element.add(opt, null);
+      });
+    }
   </script>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <h1>Flexagon Inspector</h1>
+
+  overall shape:
+  <select id="nameOverall" onchange="setOverallShape(event.target.value)"></select>
+  &nbsp;&nbsp;&nbsp;leaf shape:
+  <select id="nameLeaf" onchange="setLeafShape(event.target.value)"></select>
+  &nbsp;&nbsp;&nbsp;pat count:
+  <select id="nameCount" onchange="setPatCount(event.target.value)"></select>
 
   <p>
     <input onclick="applyFlexes();" type="button" value="apply flexes" />
@@ -130,6 +175,7 @@
   <span id="unfolded" width="800" height="600"></span>
 
   <script type="text/javascript">
+    initNamesUI();
     updateUI();
 
     let interface = document.getElementById('interface');
