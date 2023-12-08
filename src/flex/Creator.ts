@@ -10,8 +10,9 @@ namespace Flexagonator {
     /** pass colors to use when creating flexagons, initializes a default hexa-hexaflexagon */
     constructor(private readonly colors: number[]) {
       this.pieces = { patsPrefix: 6 };
+      this.pats = [[0, 0], [[0, 0], [0, 0]], [0, 0], [[0, 0], [0, 0]], [0, 0], [[0, 0], [0, 0]]];
       const script: ScriptItem[] = [
-        { pats: [[0, 0], [[0, 0], [0, 0]], [0, 0], [[0, 0], [0, 0]], [0, 0], [[0, 0], [0, 0]]] },
+        { pats: this.pats },
         { normalizeIds: true, labelAsTree: colors }
       ];
       this.fm = createFromScript(script) as FlexagonManager;
@@ -23,7 +24,14 @@ namespace Flexagonator {
 
     /** get the name of the current flexagon */
     getName() {
-      return namePiecesToName(this.pieces);
+      let name = namePiecesToName(this.pieces);
+      if (this.generator) {
+        name += ` (generator: ${this.generator})`;
+      }
+      if (this.pats) {
+        name += ` (pats: ${JSON.stringify(this.pats)})`;
+      }
+      return name;
     }
 
     /** get the directions between pats */

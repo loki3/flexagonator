@@ -23,8 +23,22 @@ namespace Flexagonator {
       creator.setNamePieces({ patsPrefix: 9 });
       const result = creator.createFromSequence("S+");
       expect(result).toBe(true);
+
       creator.runScriptItem({ flexes: "S" });
       expect(creator.getFlexagonManager().getTotalStates()).toBe(2);
+
+      const name = creator.getName();
+      expect(name).toBe('enneaflexagon (generator: S+)');
+    });
+
+    it('uses pats', () => {
+      const creator = new Creator([]);
+      creator.setNamePieces({ patsPrefix: 4 });
+      const result = creator.createFromPats("[0,0,0,[0,0]]");
+      expect(result).toBe(true);
+
+      const name = creator.getName();
+      expect(name).toBe('tetraflexagon (pats: [0,0,0,[0,0]])');
     });
 
     it('complains about bad pats', () => {
