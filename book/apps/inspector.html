@@ -59,9 +59,13 @@
       }
     }
 
-    function newFlexagonByName(namePieces/*: NamePieces*/) {
-      const [script, errors] = Flexagonator.namePiecesToScript(namePieces);
+    // create a new flexagon from 'selectedPieces' & an optional extra script command
+    function newFlexagon(extraScript) {
+      const [script, errors] = Flexagonator.namePiecesToScript(selectedPieces);
       if (errors.length === 0) {
+        if (extraScript) {
+          script.push(extraScript);
+        }
         script.push({ labelAsTree }); // label & color
         const result = Flexagonator.createFromScript(script);
         if (Flexagonator.isError(result)) {
@@ -82,6 +86,34 @@
       }
     }
 
+    // generating sequence
+    function applyGenerator() {
+      const flexes = document.getElementById('enterGenerator').value;
+      newFlexagon({ flexes, history: 'clear' });
+    }
+    function checkGenerator(key) {
+      if (key == 13) {
+        applyGenerator();
+      }
+    }
+
+    // create from pats
+    function applyPats() {
+      const rawPats = document.getElementById('enterPats').value;
+      const asPats = JSON.parse(rawPats);
+      if (!Array.isArray(asPats)) {
+        statusMessage('pats should be an array');
+      } else {
+        newFlexagon({ pats: asPats });
+      }
+    }
+    function checkPats(key, pats) {
+      if (key == 13) {
+        applyPats(pats);
+      }
+    }
+
+    // general flex sequences
     function applyFlexes(sequence) {
       if (!sequence) {
         const flexesBox = document.getElementById('enterFlexes');
@@ -153,18 +185,18 @@
     function setOverallShape(overallShape) {
       selectedPieces = { ...selectedPieces, overallShape };
       fillNameLists();
-      newFlexagonByName(selectedPieces);
+      newFlexagon();
     }
     function setLeafShape(leafShape) {
       selectedPieces = { ...selectedPieces, leafShape };
       fillNameLists();
-      newFlexagonByName(selectedPieces);
+      newFlexagon();
     }
     function setPatCount(patsPrefix) {
       const n = Number.parseInt(patsPrefix);
       selectedPieces = { ...selectedPieces, patsPrefix: n };
       fillNameLists();
-      newFlexagonByName(selectedPieces);
+      newFlexagon();
     }
 
     // set the list:string[] of <option> elements under a <select> element
@@ -190,12 +222,21 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <h1>Flexagon Inspector</h1>
 
+  <!-- create flexagon -->
   overall shape:
   <select id="nameOverall" onchange="setOverallShape(event.target.value)" style="min-width: 150px;"></select>
   &nbsp;&nbsp;&nbsp;leaf shape:
   <select id="nameLeaf" onchange="setLeafShape(event.target.value)" style="min-width: 100px;"></select>
   &nbsp;&nbsp;&nbsp;pat count:
   <select id="nameCount" onchange="setPatCount(event.target.value)" style="min-width: 50px;"></select>
+
+  <p>
+    <input onclick="applyGenerator();" type="button" value="generating sequence" />
+    <input onkeypress="checkGenerator(event.keyCode)" id="enterGenerator" size="25" spellcheck="false" />
+    &nbsp;&nbsp;&nbsp;
+    <input onclick="applyPats();" type="button" value="create pats" />
+    <input onkeypress="checkPats(event.keyCode)" id="enterPats" size="25" spellcheck="false" />
+  </p>
 
   <!-- interactive flexagon -->
   <hr />
