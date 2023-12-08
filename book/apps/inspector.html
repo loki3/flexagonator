@@ -24,7 +24,7 @@
     let stripContent = 4/*StripContent.LeafLabels*/;
     let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
     let buttons = null;
-    let selectedPieces = {};  // track selected flexagon name pieces
+    let selectedPieces = { patsPrefix: 6 };  // track selected flexagon name pieces
     const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
 
     function updateUI() {
@@ -197,21 +197,25 @@
   &nbsp;&nbsp;&nbsp;pat count:
   <select id="nameCount" onchange="setPatCount(event.target.value)" style="min-width: 50px;"></select>
 
-  <p>
-    <input onclick="applyFlexes();" type="button" value="apply flexes" />
-    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false" />
-  </p>
-
+  <!-- interactive flexagon -->
+  <hr />
   <div id="flexagon"></div>
   <canvas id="interface" width="700" height="400"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
   <div id="status"></div>
+
+  <p>
+    <input onclick="applyFlexes();" type="button" value="apply flexes" />
+    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false" />
+  </p>
   <p>
     <input onclick="undo();" type="button" value="undo" />
     <input onclick="redo();" type="button" value="redo" />
-    <textarea id="history" readonly=true cols="70" rows="1"></textarea>
+    <textarea id="history" readonly=true cols="75" rows="1"></textarea>
   </p>
 
+  <!-- unfolded strip -->
+  <hr />
   <span id="unfolded" width="800" height="600"></span>
 
   <script type="text/javascript">
