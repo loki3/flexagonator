@@ -5,29 +5,37 @@ namespace Flexagonator {
    */
   export function namePiecesToScript(name: NamePieces): [ScriptItem[], NamePiecesError[]] {
     const info: InfoStorer = new InfoStorer();
+    const patCount = getPatsPrefixAsNumber(name.patsPrefix);
 
     // patsPrefix -> numPats
     if (name.patsPrefix) {
-      const item = patsPrefixToScript(name.patsPrefix);
-      info.add(item);
+      if (patCount === null) {
+        info.add({ error: { nameError: 'unknown patsPrefix', propValue: name.patsPrefix.toString() } });
+      } else {
+        info.add({ numPats: patCount });
+      }
     }
 
-    // patsPrefix, !leafShape, !overallShape -> angles
-    if (name.patsPrefix && !name.leafShape && !name.overallShape) {
-      const item = patsPrefixToAnglesScript(name.patsPrefix);
+    // patCount, !leafShape, !overallShape -> angles
+    if (patCount && !name.leafShape && !name.overallShape) {
+      const item = patCountToAnglesScript(patCount);
       info.add(item);
     }
 
     // leafShape -> angles
     if (name.leafShape) {
-      const item = leafShapeToScript(name.leafShape, name.patsPrefix);
+      const item = leafShapeToScript(name.leafShape, patCount);
       info.add(item);
     }
 
-    // overallShape + patsPrefix + leafShape -> angles, directions
-    if (name.overallShape && name.patsPrefix) {
-      const item = overallShapeToScript(name.overallShape as OverallShapeType, name.patsPrefix, name.leafShape);
-      info.add(item);
+    // overallShape + patCount + leafShape -> angles, directions
+    if (name.overallShape && patCount) {
+      const item = overallShapeToScript(name.overallShape as OverallShapeType, patCount, name.leafShape);
+      if (item === null) {
+        info.add({ error: { nameError: 'unrecognized overall shape', propValue: name.overallShape + ' ' + name.patsPrefix } });
+      } else {
+        info.add(item);
+      }
     }
 
     // pats -> pats
@@ -70,33 +78,16 @@ namespace Flexagonator {
     return result && (result as NamePiecesError).nameError !== undefined;
   }
 
-  function patsPrefixToScript(patsPrefix: GreekNumberType): Description {
-    const n = greekPrefixToNumber(patsPrefix);
-    if (n === null) {
-      return { error: { nameError: 'unknown patsPrefix', propValue: patsPrefix } };
-    }
-    return { numPats: n };
-  }
-
   // assuming pats meet in the middle, figure out the angles
-  function patsPrefixToAnglesScript(patsPrefix: GreekNumberType): Description {
-    const n = greekPrefixToNumber(patsPrefix);
-    if (n === null) {
-      return {};
-    }
-    const center = 360 / n;
+  function patCountToAnglesScript(patCount: number): Description {
+    const center = 360 / patCount;
     return { angles2: [center, (180 - center) / 2] };
   }
 
   // convert overallShape to ScriptItem by leveraging patsPrefix
   function overallShapeToScript(
-    overallShape: OverallShapeType, patsPrefix: GreekNumberType, leafShape?: LeafShapeType
-  ): Description {
-    // number of pats
-    const n = greekPrefixToNumber(patsPrefix);
-    if (n === null) {
-      return { error: { nameError: 'missing the number of pats' } };
-    }
+    overallShape: OverallShapeType, n: number, leafShape?: LeafShapeType
+  ): Description | null {
     // number of sides in overall polygon, not including specific shapes like 'rhombic'
     const sides = adjectiveToNumber(overallShape);
 
@@ -189,7 +180,7 @@ namespace Flexagonator {
       return { angles2: [360 / n, 90] };
     }
 
-    return { error: { nameError: 'unrecognized overall shape', propValue: overallShape + ' ' + patsPrefix } };
+    return null;
   }
 
   /// compute a ring flexagon where there's a single pat along each of the n/3 inside edges that form a regular (n/3)-gon
@@ -221,10 +212,9 @@ namespace Flexagonator {
   }
 
   // convert leafShape to ScriptItem
-  function leafShapeToScript(leafShape: LeafShapeType, patsPrefix?: GreekNumberType): Description {
-    if (patsPrefix) {
-      // leafShape & patsPrefix may require a specific orientation
-      const n = greekPrefixToNumber(patsPrefix);
+  function leafShapeToScript(leafShape: LeafShapeType, n: number | null): Description {
+    if (n) {
+      // leafShape & patCount may require a specific orientation
       if ((leafShape.startsWith('silver') || leafShape.startsWith('right')) && n === 4) {
         return { angles2: [90, 45] };
       } else if (leafShape.startsWith('bronze') && n === 4) {
@@ -235,7 +225,7 @@ namespace Flexagonator {
         return { angles2: [45, 90] };
       } else if ((leafShape.startsWith('bronze') || leafShape.startsWith('right')) && n === 12) {
         return { angles2: [30, 90] };
-      } else if (leafShape.startsWith('right') && n !== null && n % 2 === 0) {
+      } else if (leafShape.startsWith('right') && n % 2 === 0) {
         return { angles2: [360 / n, 90] };
       }
     }
@@ -333,35 +323,6 @@ namespace Flexagonator {
       case 12: return [[[[[0, 0], 0], [[0, 0], 0]], [[[0, 0], 0], [[0, 0], 0]]]];
     }
     return [];
-  }
-
-  export function greekPrefixToNumber(prefix: GreekNumberType): number | null {
-    switch (prefix) {
-      case 'di': return 2;
-      case 'tri': return 3;
-      case 'tetra': return 4;
-      case 'penta': return 5;
-      case 'hexa': return 6;
-      case 'hepta': return 7;
-      case 'octa': return 8;
-      case 'ennea': return 9;
-      case 'deca': return 10;
-      case 'hendeca': return 11;
-      case 'dodeca': return 12;
-      case 'trideca': return 13;
-      case 'tetradeca': return 14;
-      case 'pentadeca': return 15;
-      case 'hexadeca': return 16;
-      case 'heptadeca': return 17;
-      case 'octadeca': return 18;
-      case 'enneadeca': return 19;
-      case 'icosa': return 20;
-      case 'icosihena': return 21;
-      case 'icosidi': return 22;
-      case 'icositri': return 23;
-      case 'icositetra': return 24;
-      default: return null;
-    }
   }
 
   function adjectiveToNumber(adj: string): number | null {

@@ -20,7 +20,7 @@ namespace Flexagonator {
       const name = { patsPrefix: 'blah' };
       const [script, errors] = namePiecesToScript(name as NamePieces);
       expect(script.length).toBe(0);
-      expect(errors.length).toBe(2);
+      expect(errors.length).toBe(1);
 
       const error = errors[0];
       if (error === undefined) {

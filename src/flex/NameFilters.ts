@@ -13,7 +13,7 @@ namespace Flexagonator {
    */
   export function getNamePieces(filter: NamePieces): NamePieceLists {
     // filter to just the flexagon names matching the selected pieces, if any
-    const patCount = filter.patsPrefix ? greekPrefixToNumber(filter.patsPrefix) : null;
+    const patCount = filter.patsPrefix ? getPatsPrefixAsNumber(filter.patsPrefix) : null;
     const names1 = !filter.overallShape ? flexagonNames : flexagonNames.filter(f => f[0] === filter.overallShape);
     const names2 = !filter.leafShape ? names1 : names1.filter(f => f[1] === filter.leafShape);
     const names3 = !filter.patsPrefix ? names2 : names2.filter(f => f[2] === patCount);
