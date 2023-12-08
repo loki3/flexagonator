@@ -335,7 +335,7 @@ namespace Flexagonator {
     return [];
   }
 
-  function greekPrefixToNumber(prefix: GreekNumberType): number | null {
+  export function greekPrefixToNumber(prefix: GreekNumberType): number | null {
     switch (prefix) {
       case 'di': return 2;
       case 'tri': return 3;

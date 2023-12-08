@@ -12,11 +12,71 @@ namespace Flexagonator {
    * optionally filtered to a selected overall shape, leaf shape, and/or pat count
    */
   export function getNamePieces(filter: NamePieces): NamePieceLists {
-    // TODO: implement filter
-    return {
-      overallShapes: overallShapeNames,
-      leafShapes: leafShapeNames,
-      patCounts: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-    };
+    // filter to just the flexagon names matching the selected pieces, if any
+    const patCount = filter.patsPrefix ? greekPrefixToNumber(filter.patsPrefix) : null;
+    const names1 = !filter.overallShape ? flexagonNames : flexagonNames.filter(f => f[0] === filter.overallShape);
+    const names2 = !filter.leafShape ? names1 : names1.filter(f => f[1] === filter.leafShape);
+    const names3 = !filter.patsPrefix ? names2 : names2.filter(f => f[2] === patCount);
+
+    // make lists of the unique names for each piece
+    const overallShapes = getUnique(names3.map(n => n[0]));
+    const leafShapes = getUnique(names3.map(n => n[1]).filter(n => n !== ''));
+    const patCounts = getUnique(names3.map(n => n[2])).sort((a, b) => a > b ? 1 : -1);
+
+    return { overallShapes, leafShapes, patCounts };
+  }
+
+  type NameList = [OverallShapeType, LeafShapeType | '', number];
+  /** a collection of supported flexagons by name pieces (not exhaustive) */
+  const flexagonNames: NameList[] = [
+    ['triangular', 'bronze', 6],
+    ['triangular', 'bronze', 18],
+    ['triangular ring', 'right', 12],
+    ['square', 'silver', 4],
+    ['square', 'silver', 8],
+    ['square ring', 'right', 16],
+    ['rhombic', 'bronze', 4],
+    ['rhombic', 'bronze', 12],
+    ['rhombic', 'bronze', 16],
+    ['kite', 'bronze', 8],
+    ['pentagonal', 'isosceles', 5],
+    ['pentagonal', 'right', 10],
+    ['pentagonal', 'silver', 10],
+    ['pentagonal ring', 'right', 20],
+    ['hexagonal', 'regular', 6],
+    ['hexagonal', 'regular', 10],
+    ['hexagonal', 'silver', 12],
+    ['hexagonal', 'bronze', 12],
+    ['hexagonal ring', 'isosceles', 9],
+    ['hexagonal ring', 'regular', 12],
+    ['hexagonal ring', 'isosceles', 12],
+    ['hexagonal ring', 'regular', 14],
+    ['hexagonal ring', 'silver', 14],
+    ['hexagonal ring', 'regular', 18],
+    ['hexagonal ring', 'bronze', 24],
+    ['heptagonal', 'isosceles', 7],
+    ['octagonal', 'isosceles', 8],
+    ['octagonal ring', 'isosceles', 12],
+    ['octagonal ring', 'isosceles', 14],
+    ['octagonal ring', 'isosceles', 16],
+    ['enneagonal', 'isosceles', 9],
+    ['decagonal', 'isosceles', 10],
+    ['decagonal ring', 'isosceles', 15],
+    ['decagonal ring', 'isosceles', 20],
+    ['dodecagonal', 'isosceles', 12],
+    ['dodecagonal ring', 'isosceles', 24],
+    ['star', '', 6],
+    ['star', '', 8],
+    ['star', 'isosceles', 10],
+    ['star', 'isosceles', 12],
+    ['star', 'isosceles', 14],
+    ['star', 'isosceles', 16],
+  ];
+
+  /** return a list of all the unique items from the list */
+  function getUnique<T>(list: T[]): T[] {
+    const newList: T[] = [];
+    list.forEach(s => { if (newList.indexOf(s) === -1) newList.push(s) });
+    return newList;
   }
 }

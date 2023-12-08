@@ -21,14 +21,6 @@ namespace Flexagonator {
     'decagonal' | 'hendecagonal' | 'dodecagonal' | 'dodecagonal ring' |
     'star' | 'triangular ring' | 'square ring' | 'pentagonal ring' | 'hexagonal ring' | 'octagonal ring' | 'decagonal ring' |
     'square' | 'rectangular' | 'rhombic' | 'kite';
-  // useful subset for presenting to the user
-  export const overallShapeNames = [
-    'triangular', 'triangular ring', 'square', 'square ring', 'rhombic', 'kite',
-    'pentagonal', 'pentagonal ring', 'hexagonal', 'hexagonal ring',
-    'heptagonal', 'octagonal', 'octagonal ring', 'enneagonal',
-    'decagonal', 'decagonal ring', 'dodecagonal', 'dodecagonal ring',
-    'star',
-  ];
 
   // various triangles are supported, while other shapes have very limited support
   export type LeafShapeType = 'triangle' | 'regular' | 'isosceles' | 'isosceles triangle'
@@ -37,18 +29,11 @@ namespace Flexagonator {
     | 'square' | 'rhombus' | 'kite' | 'trapezoid'
     | 'pentagon' | 'hexagon' | 'heptagon' | 'octagon'
     ;
-  // fully supported, non-redundant ones
-  export const leafShapeNames = [
-    'regular', 'isosceles', 'right', 'silver', 'bronze',
-  ];
 
   // greek number prefixes (simplified) - see https://en.wikipedia.org/wiki/List_of_polygons#List_of_n-gons_by_Greek_numerical_prefixes
   export type GreekNumberType =
     'di' | 'tri' | 'tetra' | 'penta' | 'hexa' | 'hepta' | 'octa' | 'ennea' |
     'deca' | 'hendeca' | 'dodeca' | 'trideca' | 'tetradeca' | 'pentadeca' | 'hexadeca' | 'heptadeca' | 'octadeca' | 'enneadeca' |
     'icosa' | 'icosihena' | 'icosidi' | 'icositri' | 'icositetra';
-  // useful subset of common pat counts
-  export const patCountList =
-    [3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 16, 18, 20, 24];
 
 }

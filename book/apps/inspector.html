@@ -24,6 +24,7 @@
     let stripContent = 4/*StripContent.LeafLabels*/;
     let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
     let buttons = null;
+    let selectedPieces = {};  // track selected flexagon name pieces
 
     function updateUI() {
       let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
@@ -107,22 +108,30 @@
       flexAndShow('^');
     }
 
-    // initialize UI that lists the various parts of a flexagon name
-    function initNamesUI() {
-      const lists = Flexagonator.getNamePieces({});
+    // fill in the lists that show possible flexagon name pieces
+    function fillNameLists() {
+      const lists = Flexagonator.getNamePieces(selectedPieces);
+
       const overall = document.getElementById('nameOverall');
-      setOptions(overall, lists.overallShapes);
+      setOptions(overall, [''].concat(lists.overallShapes));
+      overall.value = selectedPieces.overallShape !== undefined ? selectedPieces.overallShape : '';
+
       const leaf = document.getElementById('nameLeaf');
-      setOptions(leaf, lists.leafShapes);
+      setOptions(leaf, [''].concat(lists.leafShapes));
+      leaf.value = selectedPieces.leafShape !== undefined ? selectedPieces.leafShape : '';
+
       const count = document.getElementById('nameCount');
-      setOptions(count, lists.patCounts);
+      setOptions(count, [''].concat(lists.patCounts));
+      count.value = selectedPieces.patCount !== undefined ? selectedPieces.patCount : '';
     }
 
-    function setOverallShape(overall) {
-      //
+    function setOverallShape(overallShape) {
+      selectedPieces = { ...selectedPieces, overallShape };
+      fillNameLists();
     }
-    function setLeafShape(leaf) {
-      //
+    function setLeafShape(leafShape) {
+      selectedPieces = { ...selectedPieces, leafShape };
+      fillNameLists();
     }
     function setPatCount(count) {
       //
@@ -152,11 +161,11 @@
   <h1>Flexagon Inspector</h1>
 
   overall shape:
-  <select id="nameOverall" onchange="setOverallShape(event.target.value)"></select>
+  <select id="nameOverall" onchange="setOverallShape(event.target.value)" style="min-width: 150px;"></select>
   &nbsp;&nbsp;&nbsp;leaf shape:
-  <select id="nameLeaf" onchange="setLeafShape(event.target.value)"></select>
+  <select id="nameLeaf" onchange="setLeafShape(event.target.value)" style="min-width: 100px;"></select>
   &nbsp;&nbsp;&nbsp;pat count:
-  <select id="nameCount" onchange="setPatCount(event.target.value)"></select>
+  <select id="nameCount" onchange="setPatCount(event.target.value)" style="min-width: 50px;"></select>
 
   <p>
     <input onclick="applyFlexes();" type="button" value="apply flexes" />
@@ -175,7 +184,7 @@
   <span id="unfolded" width="800" height="600"></span>
 
   <script type="text/javascript">
-    initNamesUI();
+    fillNameLists();
     updateUI();
 
     let interface = document.getElementById('interface');
