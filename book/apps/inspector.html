@@ -39,7 +39,18 @@
         historyBox.value = history;
       }
       showFlexagonName();
-      statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+      statusMessage('flexagonStatus', "in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
+    }
+
+    // show status in the <div> with the given id - if no message is passed, it's cleared
+    function statusMessage(id, message) {
+      let statusDiv = document.getElementById(id);
+      if (statusDiv !== null) {
+        if (Flexagonator.isError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message ? message : "";
+      }
     }
 
     function showFlexagonName() {
@@ -47,15 +58,6 @@
       if (flexagonDiv !== null) {
         const name = Flexagonator.namePiecesToName(selectedPieces);
         flexagonDiv.innerHTML = name;
-      }
-    }
-    function statusMessage(message) {
-      let statusDiv = document.getElementById('status');
-      if (statusDiv !== null) {
-        if (Flexagonator.isError(message)) {
-          message = Flexagonator.errorToString(message);
-        }
-        statusDiv.innerHTML = message;
       }
     }
 
@@ -69,10 +71,11 @@
         script.push({ labelAsTree }); // label & color
         const result = Flexagonator.createFromScript(script);
         if (Flexagonator.isError(result)) {
-          statusMessage(result);
+          statusMessage('creatorStatus', result);
         } else {
           fm = result;
           updateUI();
+          statusMessage('creatorStatus');
         }
       }
     }
@@ -82,7 +85,7 @@
       if (result === true) {
         updateUI();
       } else {
-        statusMessage(result);
+        statusMessage('flexagonStatus', result);
       }
     }
 
@@ -102,7 +105,7 @@
       const rawPats = document.getElementById('enterPats').value;
       const asPats = JSON.parse(rawPats);
       if (!Array.isArray(asPats)) {
-        statusMessage('pats should be an array');
+        statusMessage('creatorStatus', 'pats should be an array');
       } else {
         newFlexagon({ pats: asPats });
       }
@@ -123,7 +126,7 @@
       if (result === true) {
         updateUI();
       } else {
-        statusMessage(result);
+        statusMessage('flexagonStatus', result);
       }
     }
     function checkSequence(key, sequence) {
@@ -237,13 +240,14 @@
     <input onclick="applyPats();" type="button" value="create pats" />
     <input onkeypress="checkPats(event.keyCode)" id="enterPats" size="25" spellcheck="false" />
   </p>
+  <div id="creatorStatus"></div>
 
   <!-- interactive flexagon -->
   <hr />
   <div id="flexagon"></div>
   <canvas id="interface" width="700" height="400"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
-  <div id="status"></div>
+  <div id="flexagonStatus"></div>
 
   <p>
     <input onclick="applyFlexes();" type="button" value="apply flexes" />

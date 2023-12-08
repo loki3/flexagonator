@@ -56,7 +56,7 @@ namespace Flexagonator {
   }
 
   export function isTreeError(result: any): result is TreeError {
-    return (result as TreeError).context !== undefined;
+    return result && (result as TreeError).context !== undefined;
   }
 
 
@@ -70,8 +70,8 @@ namespace Flexagonator {
   }
 
   export function isPatternError(result: any): result is PatternError {
-    return (result as PatternError).expected !== undefined
-      || (result as PatternError).expectedDirs !== undefined;
+    return result && ((result as PatternError).expected !== undefined
+      || (result as PatternError).expectedDirs !== undefined);
   }
 
 
@@ -92,6 +92,6 @@ namespace Flexagonator {
   }
 
   export function isFlexError(result: any): result is FlexError {
-    return result !== null && (result as FlexError).reason !== undefined;
+    return result && (result as FlexError).reason !== undefined;
   }
 }
