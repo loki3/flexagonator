@@ -38,9 +38,17 @@
         let history = fm.getFlexHistory().join(' ');
         historyBox.value = history;
       }
+      showFlexagonName();
       statusMessage("in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
     }
 
+    function showFlexagonName() {
+      let flexagonDiv = document.getElementById('flexagon');
+      if (flexagonDiv !== null) {
+        const name = Flexagonator.namePiecesToName(selectedPieces);
+        flexagonDiv.innerHTML = name;
+      }
+    }
     function statusMessage(message) {
       let statusDiv = document.getElementById('status');
       if (statusDiv !== null) {
@@ -194,6 +202,7 @@
     <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false" />
   </p>
 
+  <div id="flexagon"></div>
   <canvas id="interface" width="700" height="400"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
   <div id="status"></div>

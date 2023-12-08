@@ -36,6 +36,32 @@ namespace Flexagonator {
     'deca' | 'hendeca' | 'dodeca' | 'trideca' | 'tetradeca' | 'pentadeca' | 'hexadeca' | 'heptadeca' | 'octadeca' | 'enneadeca' |
     'icosa' | 'icosihena' | 'icosidi' | 'icositri' | 'icositetra';
 
+  /** create a full flexagon name from pieces */
+  export function namePiecesToName(pieces: NamePieces): string {
+    let name = '';
+    if (pieces.overallShape) {
+      name += pieces.overallShape + ' ';
+    }
+    if (pieces.leafShape) {
+      name += pieces.leafShape + ' ';
+    }
+    if (pieces.faceCount) {
+      name += pieces.faceCount + "-"
+    }
+    if (pieces.patsPrefix) {
+      let prefix = pieces.patsPrefix.toString();
+      if (typeof pieces.patsPrefix === 'number') {
+        const greek = numberToGreekPrefix(pieces.patsPrefix);
+        if (greek) {
+          prefix = greek;
+        }
+      }
+      name += prefix;
+    }
+    name += "flexagon";
+    return name;
+  }
+
   export function getPatsPrefixAsNumber(patsPrefix?: GreekNumberType | number): number | null {
     if (patsPrefix === undefined) {
       return null;
@@ -71,6 +97,34 @@ namespace Flexagonator {
       case 'icosidi': return 22;
       case 'icositri': return 23;
       case 'icositetra': return 24;
+      default: return null;
+    }
+  }
+  function numberToGreekPrefix(n: number): GreekNumberType | null {
+    switch (n) {
+      case 2: return 'di';
+      case 3: return 'tri';
+      case 4: return 'tetra';
+      case 5: return 'penta';
+      case 6: return 'hexa';
+      case 7: return 'hepta';
+      case 8: return 'octa';
+      case 9: return 'ennea';
+      case 10: return 'deca';
+      case 11: return 'hendeca';
+      case 12: return 'dodeca';
+      case 13: return 'trideca';
+      case 14: return 'tetradeca';
+      case 15: return 'pentadeca';
+      case 16: return 'hexadeca';
+      case 17: return 'heptadeca';
+      case 18: return 'octadeca';
+      case 19: return 'enneadeca';
+      case 20: return 'icosa';
+      case 21: return 'icosihena';
+      case 22: return 'icosidi';
+      case 23: return 'icositri';
+      case 24: return 'icositetra';
       default: return null;
     }
   }
