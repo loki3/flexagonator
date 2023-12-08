@@ -19,15 +19,14 @@
 
   <script src="../../build/out.js"></script>
   <script>
-    let flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
-    let fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
+    const creator = new Flexagonator.Creator([0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd]);
     let stripContent = 4/*StripContent.LeafLabels*/;
     let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
     let buttons = null;
     let selectedPieces = { patsPrefix: 6 };  // track selected flexagon name pieces
-    const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
 
     function updateUI() {
+      const fm = creator.getFlexagonManager();
       let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
       buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
@@ -56,43 +55,25 @@
     function showFlexagonName() {
       let flexagonDiv = document.getElementById('flexagon');
       if (flexagonDiv !== null) {
-        const name = Flexagonator.namePiecesToName(selectedPieces);
+        const name = creator.getName();
         flexagonDiv.innerHTML = name;
       }
     }
 
-    // create a new flexagon from 'selectedPieces' & an optional extra script command
-    function newFlexagon(extraScript) {
-      const [script, errors] = Flexagonator.namePiecesToScript(selectedPieces);
-      if (errors.length === 0) {
-        if (extraScript) {
-          script.push(extraScript);
-        }
-        script.push({ labelAsTree }); // label & color
-        const result = Flexagonator.createFromScript(script);
-        if (Flexagonator.isError(result)) {
-          statusMessage('creatorStatus', result);
-        } else {
-          fm = result;
-          updateUI();
-          statusMessage('creatorStatus');
-        }
-      }
-    }
-
-    function flexAndShow(flex) {
-      let result = fm.applyFlex(flex);
+    // handle the results of trying to create a new flexagon
+    function handleCreation(result) {
       if (result === true) {
         updateUI();
-      } else {
-        statusMessage('flexagonStatus', result);
+        statusMessage('creatorStatus');
+      } else if (Flexagonator.isError(result)) {
+        statusMessage('creatorStatus', result);
       }
     }
 
     // generating sequence
     function applyGenerator() {
       const flexes = document.getElementById('enterGenerator').value;
-      newFlexagon({ flexes, history: 'clear' });
+      handleCreation(creator.createFromSequence(flexes));
     }
     function checkGenerator(key) {
       if (key == 13) {
@@ -103,12 +84,7 @@
     // create from pats
     function applyPats() {
       const rawPats = document.getElementById('enterPats').value;
-      const asPats = JSON.parse(rawPats);
-      if (!Array.isArray(asPats)) {
-        statusMessage('creatorStatus', 'pats should be an array');
-      } else {
-        newFlexagon({ pats: asPats });
-      }
+      handleCreation(creator.createFromPats(rawPats));
     }
     function checkPats(key, pats) {
       if (key == 13) {
@@ -122,7 +98,7 @@
         const flexesBox = document.getElementById('enterFlexes');
         sequence = flexesBox.value;
       }
-      const result = fm.applyFlexes(sequence, true);
+      const result = creator.getFlexagonManager().applyFlexes(sequence, true);
       if (result === true) {
         updateUI();
       } else {
@@ -135,12 +111,21 @@
       }
     }
 
+    function flexAndShow(flex) {
+      let result = creator.getFlexagonManager().applyFlex(flex);
+      if (result === true) {
+        updateUI();
+      } else {
+        statusMessage('flexagonStatus', result);
+      }
+    }
+
     function undo() {
-      fm.undo();
+      creator.getFlexagonManager().undo();
       updateUI();
     }
     function redo() {
-      fm.redo();
+      creator.getFlexagonManager().redo();
       updateUI();
     }
 
@@ -151,7 +136,7 @@
     function interfaceMouseClick(event) {
       let script = Flexagonator.getScriptItem(event, 'interface', buttons);
       if (script != null) {
-        let result = Flexagonator.runScriptItem(fm, script);
+        let result = creator.runScriptItem(script);
         if (!Flexagonator.isError(result)) {
           fm = result;
           updateUI();
@@ -188,18 +173,18 @@
     function setOverallShape(overallShape) {
       selectedPieces = { ...selectedPieces, overallShape };
       fillNameLists();
-      newFlexagon();
+      handleCreation(creator.setNamePieces(selectedPieces));
     }
     function setLeafShape(leafShape) {
       selectedPieces = { ...selectedPieces, leafShape };
       fillNameLists();
-      newFlexagon();
+      handleCreation(creator.setNamePieces(selectedPieces));
     }
     function setPatCount(patsPrefix) {
       const n = Number.parseInt(patsPrefix);
       selectedPieces = { ...selectedPieces, patsPrefix: n };
       fillNameLists();
-      newFlexagon();
+      handleCreation(creator.setNamePieces(selectedPieces));
     }
 
     // set the list:string[] of <option> elements under a <select> element
