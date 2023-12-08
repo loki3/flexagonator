@@ -123,20 +123,22 @@
       flexAndShow('^');
     }
 
-    // fill in the lists that show possible flexagon name pieces
+    // fill in the lists that show possible flexagon name pieces,
+    // each list shows what's possible given the other 0/1/2 selections
     function fillNameLists() {
-      const lists = Flexagonator.getNamePieces(selectedPieces);
-
+      const listsForOverall = Flexagonator.getNamePieces({ leafShape: selectedPieces.leafShape, patsPrefix: selectedPieces.patsPrefix });
       const overall = document.getElementById('nameOverall');
-      setOptions(overall, [''].concat(lists.overallShapes));
+      setOptions(overall, [''].concat(listsForOverall.overallShapes));
       overall.value = selectedPieces.overallShape !== undefined ? selectedPieces.overallShape : '';
 
+      const listsForLeaf = Flexagonator.getNamePieces({ overallShape: selectedPieces.overallShape, patsPrefix: selectedPieces.patsPrefix });
       const leaf = document.getElementById('nameLeaf');
-      setOptions(leaf, [''].concat(lists.leafShapes));
+      setOptions(leaf, [''].concat(listsForLeaf.leafShapes));
       leaf.value = selectedPieces.leafShape !== undefined ? selectedPieces.leafShape : '';
 
+      const listsForCount = Flexagonator.getNamePieces({ overallShape: selectedPieces.overallShape, leafShape: selectedPieces.leafShape });
       const count = document.getElementById('nameCount');
-      setOptions(count, [''].concat(lists.patCounts));
+      setOptions(count, [''].concat(listsForCount.patCounts));
       count.value = selectedPieces.patsPrefix !== undefined ? selectedPieces.patsPrefix : '';
     }
 
