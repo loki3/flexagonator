@@ -91,6 +91,11 @@ namespace Flexagonator {
     // number of sides in overall polygon, not including specific shapes like 'rhombic'
     const sides = adjectiveToNumber(overallShape);
 
+    // overallShape & n agree, with optional isosceles
+    if (sides === n && (!leafShape || leafShape.startsWith('isosceles'))) {
+      return patCountToAnglesScript(n);
+    }
+
     // stars, pats meet in the middle
     if (overallShape === 'star' && (n % 2 === 0 && n >= 6)) {
       switch (n) {
@@ -125,8 +130,13 @@ namespace Flexagonator {
         return { angles2: [60, 60], directions: Directions.make('//|/'.repeat(3)) };
       }
       // hexagonal ring tetradecaflexagon
-      if (sides === 6 && n === 14) {
+      if (sides === 6 && n === 14 && (!leafShape || leafShape === 'regular')) {
         return { angles2: [60, 60], directions: Directions.make('/|///|/'.repeat(2)) };
+      }
+      // hexagonal ring silver tetradecaflexagon
+      if (sides === 6 && n === 14 && leafShape && leafShape.startsWith('silver')) {
+        const directions = Directions.make('/|////|'.repeat(2));
+        return { angles2: [90, 45], directions };
       }
       // octagonal ring tetradecaflexagon
       if (sides === 8 && n === 14) {
@@ -144,25 +154,24 @@ namespace Flexagonator {
     if (sides === 6 && leafShape === 'regular' && n === 10) {
       return { directions: Directions.make('//|//'.repeat(2)) };
     }
-    // hexagonal silver dodecaflexagon, hexagonal silver tetradecaflexagon
-    if (sides === 6 && leafShape && leafShape.startsWith('silver')) {
-      if (n === 12) {
-        const directions = Directions.make('|//'.repeat(4));
-        return { angles2: [45, 90], directions };
-      } else if (n === 14) {
-        const directions = Directions.make('/|////|'.repeat(2));
-        return { angles2: [90, 45], directions };
+    // hexagonal silver dodecaflexagon
+    if (sides === 6 && leafShape && leafShape.startsWith('silver') && n === 12) {
+      const directions = Directions.make('|//'.repeat(4));
+      return { angles2: [45, 90], directions };
+    }
+    if (overallShape === 'rhombic' && (!leafShape || leafShape.startsWith('bronze'))) {
+      if (n === 4) {
+        // rhombic tetra
+        return { angles2: [90, 30] };
+      } else if (n === 12) {
+        // rhombic dodeca
+        const directions = Directions.make('//||//'.repeat(2));
+        return { angles2: [60, 90], directions };
+      } else if (n === 16) {
+        // rhombic hexadeca
+        const directions = Directions.make('//|//|//'.repeat(2));
+        return { angles2: [30, 90], directions };
       }
-    }
-    // rhombic dodeca
-    if (overallShape === 'rhombic' && n === 12) {
-      const directions = Directions.make('//||//'.repeat(2));
-      return { angles2: [60, 90], directions };
-    }
-    // rhombic hexadeca
-    if (overallShape === 'rhombic' && n === 16) {
-      const directions = Directions.make('//|//|//'.repeat(2));
-      return { angles2: [30, 90], directions };
     }
     // kite bronze octaflexagon
     if (overallShape === 'kite' && leafShape === 'bronze' && n === 8) {

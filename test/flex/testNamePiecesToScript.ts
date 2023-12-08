@@ -48,6 +48,23 @@ namespace Flexagonator {
       }
     });
 
+    it('should support overallShape even when redundant', () => {
+      // pentaflexagon
+      const name: NamePieces = { overallShape: 'pentagonal', patsPrefix: 'penta' };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(2);
+      expect(errors.length).toBe(0);
+
+      expect(script[0].numPats).toBe(5);
+      const angles2 = script[1].angles2;
+      if (angles2 === undefined) {
+        fail('script[1].angles2 should exist');
+      } else {
+        expect(angles2[0]).toBe(72);
+        expect(angles2[1]).toBe(54);
+      }
+    });
+
     it('should use overallShape with patsPrefix to set angles2 when pats meet in middle', () => {
       // triangular hexaflexagon
       const name: NamePieces = { overallShape: 'triangular', patsPrefix: 'hexa' };
