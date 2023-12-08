@@ -56,7 +56,8 @@
       let flexagonDiv = document.getElementById('flexagon');
       if (flexagonDiv !== null) {
         const name = creator.getName();
-        flexagonDiv.innerHTML = name;
+        const directions = creator.getDirections();
+        flexagonDiv.innerHTML = `${name} &nbsp;&nbsp;&nbsp;&nbsp; ${directions}`;
       }
     }
 
@@ -229,7 +230,7 @@
 
   <!-- interactive flexagon -->
   <hr />
-  <div id="flexagon"></div>
+  <div id="flexagon"></div><br/>
   <canvas id="interface" width="700" height="400"></canvas>
   <canvas id="backside" width="300" height="300"></canvas>
   <div id="flexagonStatus"></div>
