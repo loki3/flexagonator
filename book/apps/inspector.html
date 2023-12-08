@@ -25,6 +25,7 @@
     let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
     let buttons = null;
     let selectedPieces = {};  // track selected flexagon name pieces
+    const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
 
     function updateUI() {
       let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
@@ -47,6 +48,20 @@
           message = Flexagonator.errorToString(message);
         }
         statusDiv.innerHTML = message;
+      }
+    }
+
+    function newFlexagonByName(namePieces/*: NamePieces*/) {
+      const [script, errors] = Flexagonator.namePiecesToScript(namePieces);
+      if (errors.length === 0) {
+        script.push({ labelAsTree }); // label & color
+        const result = Flexagonator.createFromScript(script);
+        if (Flexagonator.isError(result)) {
+          statusMessage(result);
+        } else {
+          fm = result;
+          updateUI();
+        }
       }
     }
 
@@ -128,15 +143,18 @@
     function setOverallShape(overallShape) {
       selectedPieces = { ...selectedPieces, overallShape };
       fillNameLists();
+      newFlexagonByName(selectedPieces);
     }
     function setLeafShape(leafShape) {
       selectedPieces = { ...selectedPieces, leafShape };
       fillNameLists();
+      newFlexagonByName(selectedPieces);
     }
     function setPatCount(patsPrefix) {
       const n = Number.parseInt(patsPrefix);
       selectedPieces = { ...selectedPieces, patsPrefix: n };
       fillNameLists();
+      newFlexagonByName(selectedPieces);
     }
 
     // set the list:string[] of <option> elements under a <select> element
