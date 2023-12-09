@@ -231,6 +231,9 @@ namespace Flexagonator {
       flexes["P444"] = createDoublePinch(patCount, [4, 8]);
       flexes["P66"] = createDoublePinch(patCount, [6]);
     }
+    if (patCount === 14) {
+      flexes["P3434"] = createDoublePinch(patCount, [3, 7, 10]);
+    }
   }
 
   /** creates a double pinch where 'which' lists the hinges you pinch at */
