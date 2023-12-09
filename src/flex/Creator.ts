@@ -6,6 +6,8 @@ namespace Flexagonator {
     private pieces: NamePieces;
     private generator?: string;
     private pats?: LeafTree[];
+    private interestingFlexes: string[] = [];
+    private primeFlexes: string = ''
 
     /** pass colors to use when creating flexagons, initializes a default hexa-hexaflexagon */
     constructor(private readonly colors: number[]) {
@@ -16,6 +18,8 @@ namespace Flexagonator {
         { normalizeIds: true, labelAsTree: colors }
       ];
       this.fm = createFromScript(script) as FlexagonManager;
+      this.interestingFlexes = findInterestingFlexes(this.fm);
+      this.primeFlexes = filterToPrime(this.interestingFlexes, 6).join(' ');
     }
 
     getFlexagonManager(): FlexagonManager {
@@ -40,16 +44,9 @@ namespace Flexagonator {
       return !dirs ? '' : dirs.asString(false);
     }
 
-    /** get a list of all supported flexes */
-    getSupportedFlexes(): string[] {
-      const flexes: Flexes = {};
-      const allNames = Object.getOwnPropertyNames(this.fm.allFlexes);
-      allNames.forEach(name => {
-        if (name !== '>' && name !== '<' && name !== '^' && name !== '~' && name[name.length - 1] !== "'") {
-          flexes[name] = this.fm.allFlexes[name];
-        }
-      })
-      return checkForPossibleFlexes(this.fm.flexagon, this.fm.allFlexes, flexes);
+    /** get a list of flexes to display in the UI */
+    getInterestingFlexes(): string[] {
+      return this.interestingFlexes;
     }
 
     runScriptItem(script: ScriptItem): true | FlexError | TreeError {
@@ -65,10 +62,21 @@ namespace Flexagonator {
       if (namePiecesToScript(pieces)[1].length > 0) {
         return false; // not enough pieces to determine flexagon
       }
+
+      // reset everything
       this.pieces = pieces;
       this.generator = undefined;
       this.pats = undefined;
-      return this.newFlexagon();
+      this.interestingFlexes = [];
+      this.primeFlexes = '';
+
+      const result = this.newFlexagon();
+      if (result === true) {  // figure out flexes to show in UI
+        this.interestingFlexes = findInterestingFlexes(this.fm);
+        this.primeFlexes = filterToPrime(this.interestingFlexes, this.fm.flexagon.getPatCount()).join(' ');
+        runScriptItem(this.fm, { searchFlexes: this.primeFlexes });
+      }
+      return result;
     }
 
     /** create a new flexagon from a flex sequence */
@@ -112,6 +120,9 @@ namespace Flexagonator {
         script.push({ pats: this.pats });
       }
       script.push({ labelAsTree: this.colors }); // label & color
+      if (this.primeFlexes.length > 0) {
+        script.push({ searchFlexes: this.primeFlexes });
+      }
 
       // create flexagon
       const result = Flexagonator.createFromScript(script);
@@ -121,6 +132,20 @@ namespace Flexagonator {
       this.fm = result;
       return true;  // success
     }
+  }
+
+  /** figure out which flexes can be used based on pat direction, not pat structure */
+  function findInterestingFlexes(fm: FlexagonManager): string[] {
+    const flexes: Flexes = {};
+    const allNames = Object.getOwnPropertyNames(fm.allFlexes);
+    allNames.forEach(name => {
+      const c = name[0];  // ignore shifts & rotates
+      if (c !== '>' && c !== '<' && c !== '^' && c !== '~') {
+        flexes[name] = fm.allFlexes[name];
+      }
+    })
+    const supported = checkForPossibleFlexes(fm.flexagon, fm.allFlexes, flexes);
+    return filterToInteresting(supported);
   }
 
 }

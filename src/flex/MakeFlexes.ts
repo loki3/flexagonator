@@ -105,7 +105,6 @@ namespace Flexagonator {
   /** return just the flexes that can't be done using other flexes */
   export function getPrimeFlexes(all: Flexes, patCount?: number): Flexes {
     const flexes: Flexes = {};
-    const primes = ["P", "S", "T", "T'", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'", "T1", "T1'", "T2", "T2'", "T3", "T3'", "Tf"];
 
     for (const prime of primes) {
       if (all[prime] !== undefined) {
@@ -119,6 +118,30 @@ namespace Flexagonator {
 
     return flexes;
   }
+
+  export function filterToPrime(flexes: string[], patCount: number): string[] {
+    const filtered = flexes.filter(f => primes.indexOf(f) !== -1);
+    if (patCount >= 8 && flexes.indexOf('S3') !== -1) {
+      filtered.push('S3');
+    }
+    return filtered;
+  }
+
+  /** filter 'flexes' to eliminate redundancies (e.g., P not P', but both T & T') */
+  export function filterToInteresting(flexes: string[]): string[] {
+    const filtered = flexes.filter(f => primes.indexOf(f) !== -1 || unique.indexOf(f) !== -1);
+    return filtered;
+  }
+
+  const primes = [
+    "P", "S", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'",
+    "T", "T'", "Tf", "T1", "T1'", "T2", "T2'",  // limit the tuck variants
+    "Bf", "Tr2", "Tr3", "Tr4", "Ds", "Tu",      // directions other than ////
+  ];
+  const unique = [  // interesting non-primes
+    "S3", "St", "Fm", "F3", "F4",
+    "Lbf", "Lbb", "Lh", "Lk", "L3",
+  ];
 
   /** add ><^~ */
   function addRotates(patCount: number, flexes: Flexes) {

@@ -65,7 +65,7 @@
     function handleCreation(result) {
       if (result === true) {
         updateUI();
-        statusMessage('creatorFlexes', `possible flexes: ${creator.getSupportedFlexes().join(' ')}`);
+        statusMessage('creatorFlexes', `flexes: ${creator.getInterestingFlexes().join(' ')}`);
         statusMessage('creatorStatus');
       } else if (Flexagonator.isError(result)) {
         statusMessage('creatorStatus', result);
