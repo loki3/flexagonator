@@ -65,6 +65,7 @@
     function handleCreation(result) {
       if (result === true) {
         updateUI();
+        statusMessage('creatorFlexes', `possible flexes: ${creator.getSupportedFlexes().join(' ')}`);
         statusMessage('creatorStatus');
       } else if (Flexagonator.isError(result)) {
         statusMessage('creatorStatus', result);
@@ -226,6 +227,7 @@
     <input onclick="applyPats();" type="button" value="create pats" />
     <input onkeypress="checkPats(event.keyCode)" id="enterPats" size="25" spellcheck="false" />
   </p>
+  <div id="creatorFlexes"></div>
   <div id="creatorStatus"></div>
 
   <!-- interactive flexagon -->
