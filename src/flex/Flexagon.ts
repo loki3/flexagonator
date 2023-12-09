@@ -90,6 +90,15 @@ namespace Flexagonator {
       return true;
     }
 
+    /** check if all pats go in the same direction */
+    hasSameDirections(): boolean {
+      if (!this.directions) {
+        return true;
+      }
+      const raw = this.directions.asRaw();
+      return raw.every(d => d) || raw.every(d => !d);
+    }
+
     /** if pats & directions match, return a lookup from pattern leaf id to matching pat */
     matchPattern(pattern: LeafTree[], patternDirs?: DirectionsOpt): Pat[] | PatternError {
       if (this.pats.length !== pattern.length) {
