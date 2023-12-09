@@ -98,6 +98,7 @@ namespace Flexagonator {
       }
 
       // build up complete script for creating flexagon
+      script.push({ addMorphFlexes: true });
       if (this.generator) {
         script.push({ flexes: this.generator, history: 'clear' });
       } else if (this.pats) {
