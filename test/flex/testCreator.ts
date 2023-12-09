@@ -45,7 +45,7 @@ namespace Flexagonator {
       const creator = new Creator([]);
       creator.setNamePieces({ patsPrefix: 9 });
       const result = creator.createFromPats('invalid') as TreeError;
-      expect(result.reason).toBe('expected array');
+      expect(result.reason).toBe('parse error');
     });
   });
 

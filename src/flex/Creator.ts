@@ -73,16 +73,16 @@ namespace Flexagonator {
 
     /** create a new flexagon from a description of the pats to use */
     createFromPats(rawPats: string): boolean | TreeError | FlexError {
-      try {
-        const parsed = JSON.parse(rawPats);
-        if (!Array.isArray(parsed)) {
-          return { reason: TreeCode.ExpectedArray, context: rawPats };
-        }
-        this.pats = parsed;
-        return this.newFlexagon();
-      } catch (e) {
-        return { reason: TreeCode.ExpectedArray, context: rawPats };
+      const n = getPatsPrefixAsNumber(this.pieces.patsPrefix);
+      if (n === null) {
+        return false;
       }
+      const parsed = parsePats(rawPats, n);
+      if (!parsed) {
+        return { reason: TreeCode.ParseError, context: rawPats };
+      }
+      this.pats = parsed;
+      return this.newFlexagon();
     }
 
     /**
