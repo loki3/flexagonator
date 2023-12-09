@@ -19,8 +19,9 @@ namespace Flexagonator {
   }
 
   /** make all the built-in flexes for flexagon with the given number of pats */
-  export function makeAllFlexes(patCount: number): Flexes {
+  export function makeAllFlexes(patCount: number, includeDirs?: boolean): Flexes {
     let flexes: Flexes = {};
+    const dirs = includeDirs ? getIsoDirs(patCount) : undefined;
     if (patCount === 6) {
       flexes = makeHexaFlexes();
     }
@@ -29,21 +30,21 @@ namespace Flexagonator {
       addLocalFlexes(patCount, flexes);
 
       if (patCount % 2 == 0)
-        flexes["P"] = createPinch(patCount);
+        flexes["P"] = createPinch(patCount, dirs);
       if (patCount >= 6 && patCount % 2 === 0)
-        flexes["V"] = createV(patCount);
+        flexes["V"] = createV(patCount, dirs);
       if (patCount == 8 || patCount == 10 || patCount == 12)
-        flexes["Tw"] = createTwist(patCount);
+        flexes["Tw"] = createTwist(patCount, dirs);
       if (patCount >= 5)
-        flexes["Ltf"] = createLtf(patCount);
+        flexes["Ltf"] = createLtf(patCount, dirs);
       if (patCount >= 5)
-        flexes["Lk"] = createSlotPocket(patCount);
+        flexes["Lk"] = createSlotPocket(patCount, dirs);
       if (patCount == 5)
-        flexes["L3"] = createSlotTriplePocket();
+        flexes["L3"] = createSlotTriplePocket(dirs);
 
       for (let i = 0; i < patCount - 5; i++) {
         const s = "T" + (i + 1).toString();
-        flexes[s] = createTuck(patCount, i);
+        flexes[s] = createTuck(patCount, i, dirs);
       }
 
       addDoublePinches(patCount, flexes);
@@ -191,7 +192,7 @@ namespace Flexagonator {
     }
   }
 
-  function createPinch(patCount: number): Flex {
+  function createPinch(patCount: number, dirs?: string): Flex {
     // (1,2) (3) ... (i,i+1) (i+2) ... (n-2,n-1) (n)
     // (^1) (5,^3) ... (^i) (i+4,^i+2) ... (^n-2) (2,^n)
     const input: LeafTree = [];
@@ -210,7 +211,7 @@ namespace Flexagonator {
       b = (b == 0 ? leaves : b);
       output.push([(a + 4) % leaves, -b]);
     }
-    return makeFlex("pinch flex", input, output, FlexRotation.BAC) as Flex;
+    return makeFlex("pinch flex", input, output, FlexRotation.BAC, dirs, dirs) as Flex;
   }
 
   /** adds some double pinch flexes for the given number of pats */
@@ -288,7 +289,7 @@ namespace Flexagonator {
     return makeFlex("pinch " + nums, input, output, FlexRotation.None, directions, directions) as Flex;
   }
 
-  function createV(patCount: number): Flex {
+  function createV(patCount: number, dirs?: string): Flex {
     // (1) (^3,2) ... (i) (^i+2,i+1) ... (n-4,^n-5) (n-3)  (n-2) (^n,n-1)
     // (2,^1) (3) ... (i+1,^i) (i+2) ... (n-5) (^n-3,n-4)  (n-1,^n-2) (n)
     const input: LeafTree = [];
@@ -323,10 +324,10 @@ namespace Flexagonator {
       output = one.concat(two);
     }
 
-    return makeFlex("v flex", input, output, FlexRotation.CBA) as Flex;
+    return makeFlex("v flex", input, output, FlexRotation.CBA, dirs, dirs) as Flex;
   }
 
-  function createTwist(patCount: number): Flex {
+  function createTwist(patCount: number, dirs?: string): Flex {
     var input: LeafTree = [];
     var output: LeafTree = [];
     if (patCount == 8) {
@@ -339,10 +340,10 @@ namespace Flexagonator {
       input = [[1, 2], [3, 4], 5, [6, 7], 8, 9, [10, 11], [12, 13], 14, [15, 16], 17, 18];
       output = [-1, -4, [-5, 3], -7, [-8, 6], [11, -9], -10, -13, [-14, 12], -16, [-17, 15], [2, -18]];
     }
-    return makeFlex("twist flex", input, output, FlexRotation.CBA) as Flex;
+    return makeFlex("twist flex", input, output, FlexRotation.CBA, dirs, dirs) as Flex;
   }
 
-  function createLtf(patCount: number): Flex {
+  function createLtf(patCount: number, dirs?: string): Flex {
     // (((1,2)3)4) ... (i) ... (n-4) (n-3) (n-2,n-1) (n)
     // (n) (2,4) (^1) (3) ... (i) ... (n-2(n-4(n-1,^n-3)))
     const input: LeafTree = [];
@@ -366,10 +367,10 @@ namespace Flexagonator {
     }
     output.push([leaves - 2, [leaves - 4, [leaves - 1, -(leaves - 3)]]]);
 
-    return makeFlex("slot tuck top front", input, output, FlexRotation.ACB) as Flex;
+    return makeFlex("slot tuck top front", input, output, FlexRotation.ACB, dirs, dirs) as Flex;
   }
 
-  function createSlotPocket(patCount: number): Flex {
+  function createSlotPocket(patCount: number, dirs?: string): Flex {
     // (((1,2)3)4) ... (i) ... (n-5) (((n-4,n-3)n-2)n-1) (n)
     // (^n-4) (2(n-2(4,^n))) (^1) (3) ... (i) ... (n-3(n-6(n-1,^n-5)))
     const input: LeafTree = [];
@@ -393,18 +394,18 @@ namespace Flexagonator {
     }
     output.push([leaves - 3, [leaves - 6, [leaves - 1, -(leaves - 5)]]]);
 
-    return makeFlex("slot pocket", input, output, FlexRotation.ACB) as Flex;
+    return makeFlex("slot pocket", input, output, FlexRotation.ACB, dirs, dirs) as Flex;
   }
 
 
-  function createSlotTriplePocket(): Flex {
+  function createSlotTriplePocket(dirs?: string): Flex {
     const input: LeafTree = [[[[12, -11], -13], 10], [[[2, -1], -3], -14], -4, [[[-7, 6], 8], -5], 9];
     const output: LeafTree = [-2, [6, [-3, [-5, 4]]], 7, [-11, [8, [10, -9]]], [-1, [-12, [-14, 13]]]];
-    return makeFlex("slot triple pocket", input, output, FlexRotation.None) as Flex;
+    return makeFlex("slot triple pocket", input, output, FlexRotation.None, dirs, dirs) as Flex;
   }
 
   // where: which opposite hinge is open starting from 0
-  function createTuck(patCount: number, where: number): Flex {
+  function createTuck(patCount: number, where: number, dirs?: string): Flex {
     // ((1,2)3) (4) ... (i,i+1) ... (n-1) (n)
     // (2) (4) ... (i,i+1) ... (n-1) (^1(n,^3))
     const input: LeafTree = [];
@@ -433,7 +434,14 @@ namespace Flexagonator {
     output.push([-1, [leaves, -3]]);
 
     const name = "tuck" + (where == 0 ? "" : (where + 1).toString());
-    return makeFlex(name, input, output, FlexRotation.None) as Flex;
+    return makeFlex(name, input, output, FlexRotation.None, dirs, dirs) as Flex;
+  }
+
+  /** get the pat directions for an isoflexagon with all pats meeting in the center */
+  function getIsoDirs(patCount: number): string {
+    let s = '';
+    for (let i = 0; i < patCount; i++) s += '/';
+    return s;
   }
 
 }

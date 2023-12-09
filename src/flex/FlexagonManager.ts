@@ -16,7 +16,7 @@ namespace Flexagonator {
     constructor(flexagon: Flexagon, leafProps?: LeafProperties[], useFlexes?: Flexes) {
       this.flexagon = flexagon;
       this.leafProps = new PropertiesForLeaves(leafProps);
-      this.allFlexes = useFlexes ? useFlexes : makeAllFlexes(flexagon.getPatCount());
+      this.allFlexes = useFlexes ? useFlexes : makeAllFlexes(flexagon.getPatCount(), flexagon.hasDirections());
       this.flexesToSearch = getPrimeFlexes(this.allFlexes, flexagon.getPatCount());
       this.setIsosceles(true);
       this.tracker = Tracker.make(flexagon);
