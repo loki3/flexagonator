@@ -71,6 +71,17 @@ namespace Flexagonator {
     ['star', 'isosceles', 12],
     ['star', 'isosceles', 14],
     ['star', 'isosceles', 16],
+    ['bracelet', 'regular', 8],
+    ['bracelet', 'regular', 10],
+    ['bracelet', 'regular', 12],
+    ['bracelet', 'regular', 16],
+    ['bracelet', 'regular', 20],
+    ['bracelet', 'regular', 24],
+    ['bracelet', 'silver', 8],
+    ['bracelet', 'silver', 12],
+    ['bracelet', 'silver', 16],
+    ['bracelet', 'silver', 20],
+    ['bracelet', 'silver', 24],
   ];
 
   /** return a list of all the unique items from the list */

@@ -174,14 +174,26 @@ namespace Flexagonator {
       }
     }
     // kite bronze octaflexagon
-    if (overallShape === 'kite' && leafShape === 'bronze' && n === 8) {
+    if (overallShape === 'kite' && leafShape && leafShape.startsWith('bronze') && n === 8) {
       const directions = Directions.make('/|////|/');
       return { angles2: [90, 30], directions };
     }
     // pentagonal silver decaflexagon
-    if (overallShape === 'pentagonal' && leafShape === 'silver' && n === 10) {
+    if (overallShape === 'pentagonal' && leafShape && leafShape.startsWith('silver') && n === 10) {
       const directions = Directions.make('///|//|///');
       return { angles2: [45, 45], directions };
+    }
+
+    // bracelets
+    if (overallShape === 'bracelet') {
+      if (leafShape && leafShape.startsWith('silver')) {
+        const directions = Directions.make("/||/".repeat(n / 4));
+        return { angles2: [45, 45], directions };
+      }
+      if (!leafShape || leafShape.startsWith('regular')) {
+        const directions = Directions.make("/|".repeat(n / 2));
+        return { angles2: [60, 60], directions };
+      }
     }
 
     // all pats meet in middle, leaves are right triangles
