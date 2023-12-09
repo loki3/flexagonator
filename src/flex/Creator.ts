@@ -82,6 +82,7 @@ namespace Flexagonator {
         return { reason: TreeCode.ParseError, context: rawPats };
       }
       this.pats = parsed;
+      this.generator = undefined;
       return this.newFlexagon();
     }
 
