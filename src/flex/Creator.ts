@@ -41,8 +41,15 @@ namespace Flexagonator {
     }
 
     /** get a list of all supported flexes */
-    getSupportedFlexes() {
-      // TBD
+    getSupportedFlexes(): string[] {
+      const flexes: Flexes = {};
+      const allNames = Object.getOwnPropertyNames(this.fm.allFlexes);
+      allNames.forEach(name => {
+        if (name !== '>' && name !== '<' && name !== '^' && name !== '~' && name[name.length - 1] !== "'") {
+          flexes[name] = this.fm.allFlexes[name];
+        }
+      })
+      return checkForPossibleFlexes(this.fm.flexagon, this.fm.allFlexes, flexes);
     }
 
     runScriptItem(script: ScriptItem): true | FlexError | TreeError {
