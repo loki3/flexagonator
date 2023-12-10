@@ -12,9 +12,9 @@ namespace Flexagonator {
     /** pass colors to use when creating flexagons, initializes a default hexa-hexaflexagon */
     constructor(private readonly colors: number[]) {
       this.pieces = { patsPrefix: 6 };
-      this.pats = [[0, 0], [[0, 0], [0, 0]], [0, 0], [[0, 0], [0, 0]], [0, 0], [[0, 0], [0, 0]]];
+      this.generator = "P* P* P+ > P P+";
       const script: ScriptItem[] = [
-        { pats: this.pats },
+        { flexes: this.generator },
         { normalizeIds: true, labelAsTree: colors }
       ];
       this.fm = createFromScript(script) as FlexagonManager;
