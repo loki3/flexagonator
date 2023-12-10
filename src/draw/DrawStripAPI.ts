@@ -85,6 +85,7 @@ namespace Flexagonator {
 
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
+    slices.computeAcross(leaflines);
 
     for (let i = 0; i < slices.paints.length; i++) {
       const paint = slices.paints[i];
@@ -105,7 +106,7 @@ namespace Flexagonator {
     /** a paint per slice */
     readonly paints: (Paint | null)[];
     /** options for each slice */
-    readonly options: DrawStripOptions[];
+    options: DrawStripOptions[];
 
     constructor(target: string | HTMLCanvasElement | string[], options?: DrawStripOptions | DrawStripOptions[]) {
       if (Array.isArray(target)) {
@@ -123,6 +124,26 @@ namespace Flexagonator {
       }
 
       this.isMatched = (this.paints.length === this.options.length);
+    }
+
+    /** if needed, compute a common scale */
+    computeAcross(leaflines: LeafLines) {
+      if (this.options[0].scale) {
+        return; // scale is already set
+      }
+
+      // find scale that works for every slice
+      const paints = this.paints.filter(p => p !== null) as Paint[];
+      const sliceIn = paints.map((p, i) => {
+        const [width, height] = p.getSize();
+        const options = this.options[i];
+        return { ...options, width, height };
+      });
+      const sliceOut = computeAcrossSlices(leaflines, sliceIn);
+
+      this.options = sliceOut.map((s, i) => {
+        return { ...this.options[i], scale: s.scale };
+      });
     }
   }
 

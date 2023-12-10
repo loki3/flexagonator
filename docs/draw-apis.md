@@ -233,6 +233,8 @@ drawUnfolded('my-target', fm, { captions: [ { text: '⚹', which: 0 }, { text: '
 You can also break a strip up into multiple pieces.
 A single piece can be drawn by setting `start` and `end` in `options`.
 Or you can draw multiple pieces at once by passing arrays of targets and options.
+If you have it draw multiple pieces at once and you don't specify a scale,
+it will figure out the best common scale to make each piece fit.
 
 ```javascript
 const targets = ['div1', 'div2'];

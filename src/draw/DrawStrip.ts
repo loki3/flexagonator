@@ -9,7 +9,7 @@ namespace Flexagonator {
     if (rotation !== undefined) {
       leaflines = rotateLeafLines(leaflines, toRadians(rotation));
     } else {
-      leaflines = findBestRotation(leaflines, { x: w, y: h });
+      [leaflines] = findBestRotation(leaflines, { x: w, y: h });
     }
 
     const extents: [Point, Point] = getExtents(leaflines);
@@ -57,21 +57,6 @@ namespace Flexagonator {
     if (content.showIds && content.face !== 'back') {
       drawIds(paint, leaflines.faces, transform);
     }
-  }
-
-  // search for the rotation that optimizes the amount of 'box' that gets filled
-  function findBestRotation(leaflines: LeafLines, box: Point): LeafLines {
-    let bestlines = leaflines;
-    const best = new BestBoxInBox(box);
-    for (let i = 0; i < 24; i++) {
-      const rotation = (i * Math.PI * 2) / 24;
-      const thislines = rotateLeafLines(leaflines, rotation);
-      const extents: [Point, Point] = getExtents(thislines);
-      if (best.isBest(extents[0], extents[1])) {
-        bestlines = thislines;
-      }
-    }
-    return bestlines;
   }
 
   function drawLines(paint: Paint, lines: Line[], transform: Transform, dashed?: "dashed") {
