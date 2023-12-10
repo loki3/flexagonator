@@ -142,7 +142,7 @@ namespace Flexagonator {
       const sliceOut = computeAcrossSlices(leaflines, sliceIn);
 
       this.options = sliceOut.map((s, i) => {
-        return { ...this.options[i], scale: s.scale };
+        return { ...this.options[i], scale: s.scale * 0.99 };
       });
     }
   }
