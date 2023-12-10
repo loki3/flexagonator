@@ -153,10 +153,10 @@ They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawStripObjects`.
 
 ```javascript
-// target:   element to draw in (string | HTMLCanvasElement)
+// target:   element(s) to draw in (string | HTMLCanvasElement)
 // fm:       an instance of FlexagonManager
 // objects:  an instance of DrawStripObjects
-// options:  an instance of DrawStripOptions
+// options:  an instance or array of DrawStripOptions
 function drawUnfolded(target, fm, options) {}
 function drawUnfoldedObjects(target, objects, options) {}
 ```
@@ -228,6 +228,16 @@ The following shows how you could add a `⚹` to the first and last edges to ind
 
 ```javascript
 drawUnfolded('my-target', fm, { captions: [ { text: '⚹', which: 0 }, { text: '⚹', which: -1 } ] });
+```
+
+You can also break a strip up into multiple pieces.
+A single piece can be drawn by setting `start` and `end` in `options`.
+Or you can draw multiple pieces at once by passing arrays of targets and options.
+
+```javascript
+const targets = ['div1', 'div2'];
+const options = [{start:0, end: 5}, {start:6, end:10}];
+drawUnfolded(targets, fm, options);
 ```
 
 

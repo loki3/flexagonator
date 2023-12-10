@@ -58,7 +58,7 @@ namespace Flexagonator {
   }
 
   // draw an unfolded flexagon strip
-  export function drawUnfolded(canvas: string | HTMLCanvasElement, fm: FlexagonManager, options?: DrawStripOptions) {
+  export function drawUnfolded(canvas: string | HTMLCanvasElement | string[], fm: FlexagonManager, options?: DrawStripOptions | DrawStripOptions[]) {
     const directions = fm.getDirections();
     const objects = {
       flexagon: fm.flexagon,
@@ -69,31 +69,61 @@ namespace Flexagonator {
     return drawUnfoldedObjects(canvas, objects, options);
   }
 
-  export function drawUnfoldedObjects(target: string | HTMLCanvasElement, objects: DrawStripObjects, options?: DrawStripOptions) {
-    const paint = newPaint(target);
-    if (paint === null) {
-      return;
+  export function drawUnfoldedObjects(target: string | HTMLCanvasElement | string[], objects: DrawStripObjects, options?: DrawStripOptions | DrawStripOptions[]) {
+    const slices = new TrackSlices(target, options);
+    if (!slices.isMatched) {
+      console.log("drawUnfoldedObjects: mismatched targets & slices");
     }
 
     const directions = objects.directions ? Directions.make(objects.directions) : undefined;
     const unfolded = unfold(objects.flexagon.getAsLeafTrees(), directions);
     if (isTreeError(unfolded)) {
-      console.log("error unfolding flexagon");
+      console.log("drawUnfoldedObjects: error unfolding flexagon");
       console.log(unfolded);
       return;
     }
 
-    if (!options) {
-      options = {};
-    }
-    const content = getLeafContent(options.content);
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
-    const leaflinesSubset = sliceLeafLines(leaflines, options.start, options.end);
 
-    paint.start();
-    drawStrip(paint, leaflinesSubset, content, objects.leafProps, options.scale, options.rotation, options.captions);
-    paint.end();
+    for (let i = 0; i < slices.paints.length; i++) {
+      const paint = slices.paints[i];
+      const opt = slices.options[i];
+      if (paint && opt) {
+        const content = getLeafContent(opt.content);
+        const leaflinesSubset = sliceLeafLines(leaflines, opt.start, opt.end);
+        paint.start();
+        drawStrip(paint, leaflinesSubset, content, objects.leafProps, opt.scale, opt.rotation, opt.captions);
+        paint.end();
+      }
+    }
+  }
+
+  /** keep track of info for each slice of the strip we're drawing */
+  class TrackSlices {
+    readonly isMatched: boolean;
+    /** a paint per slice */
+    readonly paints: (Paint | null)[];
+    /** options for each slice */
+    readonly options: DrawStripOptions[];
+
+    constructor(target: string | HTMLCanvasElement | string[], options?: DrawStripOptions | DrawStripOptions[]) {
+      if (Array.isArray(target)) {
+        this.paints = target.map(t => newPaint(t));
+      } else {
+        this.paints = [newPaint(target)];
+      }
+
+      if (Array.isArray(options)) {
+        this.options = options;
+      } else if (options) {
+        this.options = [options];
+      } else {
+        this.options = [{}];
+      }
+
+      this.isMatched = (this.paints.length === this.options.length);
+    }
   }
 
   // use showFoldingOrder if nothing specified

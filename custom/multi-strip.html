@@ -42,10 +42,10 @@
 
     function updateUI() {
       // draw each piece
-      for (var i = 0; i < lastPiece; i++) {
-        const name = 'unfolded' + (i + 1).toString();
-        Flexagonator.drawUnfolded(name, fm, { captions: captions[i], start: start[i], end: end[i], content: stripContent, scale: scale });
-      }
+      const names = [];
+      for (var i = 0; i < lastPiece; i++) { names.push(`unfolded${i + 1}`); }
+      const options = names.map((_, i) => { return { captions: captions[i], start: start[i], end: end[i], content: stripContent, scale: scale } });
+      Flexagonator.drawUnfolded(names, fm, options);
       // clear everything else
       for (; i < maxPieces; i++) {
         const name = 'unfolded' + (i + 1).toString();
