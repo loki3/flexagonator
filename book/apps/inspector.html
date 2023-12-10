@@ -20,17 +20,16 @@
   <script src="../../build/out.js"></script>
   <script>
     const creator = new Flexagonator.Creator([0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd]);
-    let stripContent = 4/*StripContent.LeafLabels*/;
-    let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
     let buttons = null;
     let selectedPieces = { patsPrefix: 6 };  // track selected flexagon name pieces
+    let gSlices = null;  // track how they want the template sliced
 
     function updateUI() {
       const fm = creator.getFlexagonManager();
       let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
       buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
       Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
-      Flexagonator.drawUnfolded('unfolded', fm, { content: stripContent, captions: captions });
+      drawTemplates();
 
       let historyBox = document.getElementById('history');
       if (historyBox !== null) {
@@ -64,6 +63,7 @@
     // handle the results of trying to create a new flexagon
     function handleCreation(result) {
       if (result === true) {
+        clearSlices();
         updateUI();
         statusMessage('creatorFlexes', `flexes: ${creator.getInterestingFlexes().join(' ')}`);
         statusMessage('creatorStatus');
@@ -210,6 +210,62 @@
         element.add(opt, null);
       });
     }
+
+    // slice up the template
+    function applySlices() {
+      parseSlices(document.getElementById('enterSlices').value);
+    }
+    function checkSlices(key, pats) {
+      if (key == 13) {
+        applySlices(pats);
+      }
+    }
+    function clearSlices() {
+      statusMessage('sliceStatus');
+      document.getElementById('enterSlices').value = '';
+      gSlices = null;
+    }
+
+    function parseSlices(text) {
+      const raw = text.split(',');
+      const numbers = raw.map(s => Number.parseInt(s));
+      if (numbers.some(n => !(n > 0))) {
+        statusMessage('sliceStatus', "separate the number of leaves in a slice with commas");
+        return;
+      }
+      statusMessage('sliceStatus');
+
+      let last = 0;
+      gSlices = numbers.map(n => {
+        const slice = { start: last, end: last + n - 1 };
+        last = n;
+        return slice;
+      });
+      gSlices.push({ start: last });  // everything else
+      drawTemplates();
+    }
+
+    function drawTemplates() {
+      const maxPieces = 10; // the number of divs used for template pieces
+      let stripContent = 4/*StripContent.LeafLabels*/;
+      let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
+
+      const fm = creator.getFlexagonManager();
+      if (gSlices === null) {
+        Flexagonator.drawUnfolded('unfolded1', fm, { content: stripContent, captions: captions });
+      } else {
+        const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
+        const names = slices.map((_, i) => `unfolded${i + 1}`);
+        const options = slices.map(slice => { return { ...slice, content: stripContent, captions: captions } });
+        Flexagonator.drawUnfolded(names, fm, options);
+      }
+
+      // clear all unused divs
+      for (i = gSlices === null ? 1 : gSlices.length; i < maxPieces; i++) {
+        document.getElementById(`unfolded${i + 1}`).innerHTML = null;
+      }
+    }
+
   </script>
 </head>
 
@@ -253,9 +309,19 @@
     <textarea id="history" readonly=true cols="75" rows="1"></textarea>
   </p>
 
-  <!-- unfolded strip -->
+  <!-- unfolded template -->
   <hr />
-  <span id="unfolded" width="800" height="600"></span>
+  <p>
+    <input onclick="applySlices();" type="button" value="leaves per slice" />
+    <input onkeypress="checkSlices(event.keyCode)" id="enterSlices" size="25" spellcheck="false" />
+    &nbsp;&nbsp;&nbsp;
+    <span id="sliceStatus"></span>
+  </p>
+  <span id="unfolded1" width="800" height="600"></span> <span id="unfolded2" width="800" height="600"></span>
+  <span id="unfolded3" width="800" height="600"></span> <span id="unfolded4" width="800" height="600"></span>
+  <span id="unfolded5" width="800" height="600"></span> <span id="unfolded6" width="800" height="600"></span>
+  <span id="unfolded7" width="800" height="600"></span> <span id="unfolded8" width="800" height="600"></span>
+  <span id="unfolded9" width="800" height="600"></span> <span id="unfolded10" width="800" height="600"></span>
 
   <script type="text/javascript">
     fillNameLists();
