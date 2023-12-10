@@ -172,6 +172,11 @@
       count.value = selectedPieces.patsPrefix !== undefined ? selectedPieces.patsPrefix : '';
     }
 
+    function clearPieces() {
+      selectedPieces = {};
+      fillNameLists();
+      handleCreation(creator.setNamePieces(selectedPieces));
+    }
     function setOverallShape(overallShape) {
       selectedPieces = { ...selectedPieces, overallShape };
       fillNameLists();
@@ -213,6 +218,7 @@
   <h1>Flexagon Inspector</h1>
 
   <!-- create flexagon -->
+  <input onclick="clearPieces();" type="button" value="clear" />
   overall shape:
   <select id="nameOverall" onchange="setOverallShape(event.target.value)" style="min-width: 150px;"></select>
   &nbsp;&nbsp;&nbsp;leaf shape:
