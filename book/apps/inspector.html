@@ -227,9 +227,10 @@
     }
 
     function parseSlices(text) {
+      text = text.trim();
       const raw = text.split(',');
-      const numbers = raw.map(s => Number.parseInt(s));
-      if (numbers.some(n => !(n > 0))) {
+      const numbers = text.length === 0 ? [] : raw.map(s => Number.parseInt(s));
+      if (numbers.length > 0 && numbers.some(n => !(n > 0))) {
         statusMessage('sliceStatus', "separate the number of leaves in a slice with commas");
         return;
       }
