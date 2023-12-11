@@ -141,6 +141,7 @@ namespace Flexagonator {
   const unique = [  // interesting non-primes
     "S3", "St", "Fm", "F3", "F4",
     "Lbf", "Lbb", "Lh", "Lk", "L3",
+    "P44", "P333", "P334", "P55", "P3333", "P444", "P66", "P3434",
   ];
 
   /** add ><^~ */
