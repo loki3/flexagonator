@@ -22,6 +22,7 @@
     const creator = new Flexagonator.Creator([0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd]);
     let buttons = null;
     let selectedPieces = { patsPrefix: 6 };  // track selected flexagon name pieces
+    let gFace = 'both';  // track whether template should show front and/or back faces
     let gSlices = null;  // track how they want the template sliced
 
     function updateUI() {
@@ -246,14 +247,19 @@
       drawTemplates();
     }
 
+    function setTemplateFaces(option) {
+      gFace = option;
+      drawTemplates();
+    }
+
     function drawTemplates() {
       const maxPieces = 10; // the number of divs used for template pieces
-      const stripContent = 4/*StripContent.LeafLabels*/;
+      const content = { face: gFace, showLeafProps: true };
 
       const fm = creator.getFlexagonManager();
       if (gSlices === null) {
         const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
-        Flexagonator.drawUnfolded('unfolded1', fm, { content: stripContent, captions: captions });
+        Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions });
       } else {
         const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
         const names = slices.map((_, i) => `unfolded${i + 1}`);
@@ -261,7 +267,7 @@
           // e.g., captions of (⚹, a) - (a, b) - (b, ⚹)
           const one = i === 0 ? '⚹' : String.fromCharCode([97 + i - 1]);
           const two = i === slices.length - 1 ? '⚹' : String.fromCharCode([97 + i]);
-          return { ...slice, content: stripContent, captions: [{ text: one, which: 0 }, { text: two, which: -1 }] };
+          return { ...slice, content, captions: [{ text: one, which: 0 }, { text: two, which: -1 }] };
         });
         Flexagonator.drawUnfolded(names, fm, options);
       }
@@ -318,6 +324,11 @@
   <!-- unfolded template -->
   <hr />
   <p>
+    show faces:
+    <input onclick="setTemplateFaces('both');" type="button" value="front & back" />
+    <input onclick="setTemplateFaces('front');" type="button" value="front" />
+    <input onclick="setTemplateFaces('back');" type="button" value="back" />
+    &nbsp;&nbsp;&nbsp;
     <input onclick="applySlices();" type="button" value="leaves per slice" />
     <input onkeypress="checkSlices(event.keyCode)" id="enterSlices" size="25" spellcheck="false" />
     &nbsp;&nbsp;&nbsp;
