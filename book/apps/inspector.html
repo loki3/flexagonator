@@ -239,7 +239,7 @@
       let last = 0;
       gSlices = numbers.map(n => {
         const slice = { start: last, end: last + n - 1 };
-        last = n;
+        last += n;
         return slice;
       });
       gSlices.push({ start: last });  // everything else
@@ -248,16 +248,21 @@
 
     function drawTemplates() {
       const maxPieces = 10; // the number of divs used for template pieces
-      let stripContent = 4/*StripContent.LeafLabels*/;
-      let captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
+      const stripContent = 4/*StripContent.LeafLabels*/;
 
       const fm = creator.getFlexagonManager();
       if (gSlices === null) {
+        const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
         Flexagonator.drawUnfolded('unfolded1', fm, { content: stripContent, captions: captions });
       } else {
         const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
         const names = slices.map((_, i) => `unfolded${i + 1}`);
-        const options = slices.map(slice => { return { ...slice, content: stripContent, captions: captions } });
+        const options = slices.map((slice, i) => {
+          // e.g., captions of (⚹, a) - (a, b) - (b, ⚹)
+          const one = i === 0 ? '⚹' : String.fromCharCode([97 + i - 1]);
+          const two = i === slices.length - 1 ? '⚹' : String.fromCharCode([97 + i]);
+          return { ...slice, content: stripContent, captions: [{ text: one, which: 0 }, { text: two, which: -1 }] };
+        });
         Flexagonator.drawUnfolded(names, fm, options);
       }
 
