@@ -212,6 +212,24 @@
       });
     }
 
+    // advanced options
+    function setAdvanced(checked) {
+      const element = document.getElementById('advancedArea');
+      element.hidden = !checked;
+    }
+
+    function showCreationScript(script) {
+      const element = document.getElementById('creationScript');
+      element.value = script ? script : '';
+    }
+
+    function applyScript() {
+      const element = document.getElementById('script');
+      const result = creator.runScriptString(element.value);
+      statusMessage('scriptStatus', result === true ? undefined : result);
+      updateUI();
+    }
+
     // slice up the template
     function applySlices() {
       parseSlices(document.getElementById('enterSlices').value);
@@ -313,13 +331,25 @@
 
   <p>
     <input onclick="applyFlexes();" type="button" value="apply flexes" />
-    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck="false" />
+    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck=false />
   </p>
   <p>
     <input onclick="undo();" type="button" value="undo" />
     <input onclick="redo();" type="button" value="redo" />
-    <textarea id="history" readonly=true cols="75" rows="1"></textarea>
+    <textarea id="history" cols="75" rows="1" readonly=true></textarea>
   </p>
+
+  <input type="checkbox" id="advancedCheck" onclick="setAdvanced(event.target.checked)">
+  <label for="advancedCheck"> advanced options</label>
+  <br>
+  <div id="advancedArea" hidden="true">
+    creation script:<br/>
+    <textarea id="creationScript" cols="75" rows="4" readonly=true></textarea>
+    <br/><br/>
+    <input onclick="applyScript();" type="button" value="apply script" /><br/>
+    <textarea id="script" cols="75" rows="4" spellcheck=false></textarea>
+    <div id="scriptStatus"></div>
+  </div>
 
   <!-- unfolded template -->
   <hr />
@@ -330,7 +360,7 @@
     <input onclick="setTemplateFaces('back');" type="button" value="back" />
     &nbsp;&nbsp;&nbsp;
     <input onclick="applySlices();" type="button" value="leaves per slice" />
-    <input onkeypress="checkSlices(event.keyCode)" id="enterSlices" size="25" spellcheck="false" />
+    <input onkeypress="checkSlices(event.keyCode)" id="enterSlices" size="25" spellcheck=false />
     &nbsp;&nbsp;&nbsp;
     <span id="sliceStatus"></span>
   </p>

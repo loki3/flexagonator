@@ -57,6 +57,15 @@ namespace Flexagonator {
       return true;
     }
 
+    runScriptString(str: string): true | FlexError | TreeError {
+      const result = runScriptString(this.fm, str);
+      if (isError(result)) {
+        return result;
+      }
+      this.fm = result;
+      return true;
+    }
+
     /** use the given name pieces to generate subsequent flexagons */
     setNamePieces(pieces: NamePieces): boolean | TreeError | FlexError {
       if (namePiecesToScript(pieces)[1].length > 0) {
