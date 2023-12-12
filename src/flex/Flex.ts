@@ -51,6 +51,8 @@ namespace Flexagonator {
     Manages flexing a flexagon.
   */
   export class Flex {
+    private readonly needsDirections: boolean;
+
     constructor(
       readonly name: string,
       readonly input: LeafTree[],
@@ -63,6 +65,8 @@ namespace Flexagonator {
       /** old directions get rearranged, specify new order for old directions, 1-based */
       readonly orderOfDirs?: number[],
     ) {
+      // check if flex will change a flexagon that's all ////'s
+      this.needsDirections = outputDirs ? outputDirs.asRaw().some((d) => d === false) : false;
     }
 
     createInverse(): Flex {
@@ -114,7 +118,12 @@ namespace Flexagonator {
 
     private newDirections(directions?: Directions): Directions | undefined {
       if (directions === undefined) {
-        return undefined; // flexagon didn't specify directions, so no directions
+        if (!this.needsDirections || !this.outputDirs) {
+          return undefined;
+        }
+        // flexagon didn't have directions, but the flex needs them
+        const raw = this.outputDirs.asRaw().map(_ => true);
+        directions = Directions.make(raw);
       }
 
       // explicitly set new directions

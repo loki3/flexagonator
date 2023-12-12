@@ -50,6 +50,7 @@ namespace Flexagonator {
       }
       const expected = [[-6, 5], -4, [2, -3], -1];
       expect(areLTArraysEqual(result.getAsLeafTrees(), expected)).toBeTruthy();
+      expect(result.directions === undefined).toBe(true); // doesn't add unneeded directions
     });
   });
 
@@ -170,6 +171,23 @@ namespace Flexagonator {
       expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('/||/');
+    });
+
+    it('adds directions to a flexagon w/out directions if flex changes directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4]) as Flexagon; // no directions => ////
+
+      const flex = new Flex("test", [1, 2, 3, 4], [1, 3, 2, 4], FlexRotation.None,
+        DirectionsOpt.make('////') as DirectionsOpt, DirectionsOpt.make('/||/') as DirectionsOpt);
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
+
+      // flexagon now includes directions
+      if (result.directions === undefined) {
+        fail('flexagon should include directions');
+      } else {
+        const newDirs = result.directions as Directions;
+        expect(newDirs.asString(true)).toBe('/||/');
+      }
     });
   });
 
