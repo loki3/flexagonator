@@ -109,29 +109,20 @@ namespace Flexagonator {
 
     // rings with a hole in the middle
     if (overallShape.endsWith('ring') && sides !== null) {
-      // e.g. octagonal ring dodecaflexagon
-      if (sides >= 6 && sides === 2 * n / 3) {
-        return computeRing1Script(n);
-      } if (sides === 6 && n === 18) {
-        // hexagonal ring octadecaflexagon is special because the pattern would suggest it should be dodecagonal
-        return computeRing1Script(n);
-      }
-      // e.g. triangular ring dodecaflexagon
-      if (sides >= 3 && sides === n / 4) {
-        return computeRing2Script(n);
-      }
-      // e.g. hexagonal ring isosceles dodecaflexagon
-      if (sides >= 6 && sides === n / 2 && leafShape && leafShape.startsWith('isosceles')) {
-        return computeRing3Script(n);
-      }
-
-      // hexagonal ring dodecaflexagon
-      if (sides === 6 && n === 12) {
-        return { angles2: [60, 60], directions: Directions.make('//|/'.repeat(3)) };
-      }
-      // hexagonal ring tetradecaflexagon
-      if (sides === 6 && n === 14 && (!leafShape || leafShape === 'regular')) {
-        return { angles2: [60, 60], directions: Directions.make('/|///|/'.repeat(2)) };
+      // hexagonal ring regular n-flexagon
+      if (sides === 6 && (!leafShape || leafShape === 'regular')) {
+        switch (n) {
+          case 12:
+            return { angles2: [60, 60], directions: Directions.make('//|/'.repeat(3)) };
+          case 14:
+            return { angles2: [60, 60], directions: Directions.make('/|///|/'.repeat(2)) };
+          case 18:
+            return computeRing1Script(n);
+          // another possible hexagonal ring regular 18-flexagon...
+          // return { angles2: [60, 60], directions: Directions.make('//|/|/'.repeat(3)) };
+          case 24:
+            return { angles2: [60, 60], directions: Directions.make('//|/|/|/'.repeat(3)) };
+        }
       }
       // hexagonal ring silver tetradecaflexagon
       if (sides === 6 && n === 14 && leafShape && leafShape.startsWith('silver')) {
@@ -139,8 +130,22 @@ namespace Flexagonator {
         return { angles2: [90, 45], directions };
       }
       // octagonal ring tetradecaflexagon
-      if (sides === 8 && n === 14) {
+      if (sides === 8 && n === 14 && (!leafShape || leafShape.startsWith('isosceles'))) {
         return { angles2: [72, 72], directions: Directions.make('|//|//|'.repeat(2)) };
+      }
+
+      // (6,12), (8,16) e.g. hexagonal ring isosceles dodecaflexagon
+      if (sides >= 6 && sides === n / 2 && (!leafShape || leafShape.startsWith('isosceles'))) {
+        return computeRing3Script(n);
+      }
+
+      // (6,9) (8,12), (10,15), (12,18), (14,21) e.g. octagonal ring dodecaflexagon
+      if (sides >= 6 && sides === 2 * n / 3) {
+        return computeRing1Script(n);
+      }
+      // (3,12) (4,16) (5,20) (6,24) e.g. triangular ring dodecaflexagon
+      if (sides >= 3 && sides === n / 4) {
+        return computeRing2Script(n);
       }
     }
 

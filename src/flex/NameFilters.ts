@@ -53,6 +53,7 @@ namespace Flexagonator {
     ['hexagonal ring', 'regular', 14],
     ['hexagonal ring', 'silver', 14],
     ['hexagonal ring', 'regular', 18],
+    ['hexagonal ring', 'regular', 24],
     ['hexagonal ring', 'bronze', 24],
     ['heptagonal', 'isosceles', 7],
     ['octagonal', 'isosceles', 8],
