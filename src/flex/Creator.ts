@@ -142,17 +142,20 @@ namespace Flexagonator {
     }
 
     /**
-     * create a script that will create a flexagon given the current creation setting
+     * make a script that will create a flexagon given the current creation setting
      * @returns full script needed to create flexagon, or empty script if not enough information
      */
     private makeNewFlexagonScript(): ScriptItem[] {
-      // use name pieces if complete enough
-      const [script, errors] = namePiecesToScript(this.pieces);
+      // check if name is complete enough
+      const [, errors] = namePiecesToScript(this.pieces);
       if (errors.length > 0) {
         return []; // insufficient info, don't create a script
       }
+      const name = namePiecesToName(this.pieces);
 
       // build up complete script for creating flexagon
+      const script: ScriptItem[] = [];
+      script.push({ name });
       script.push({ addMorphFlexes: true });
       if (this.generator) {
         script.push({ flexes: this.generator, history: 'clear' });
