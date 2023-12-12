@@ -91,8 +91,11 @@ namespace Flexagonator {
     // number of sides in overall polygon, not including specific shapes like 'rhombic'
     const sides = adjectiveToNumber(overallShape);
 
-    // overallShape & n agree, with optional isosceles
-    if (sides === n && (!leafShape || leafShape.startsWith('isosceles'))) {
+    // overallShape & n agree, with optional isosceles/silver/regular
+    if ((sides === n && (!leafShape || leafShape.startsWith('isosceles')))
+      || (sides === n && n == 4 && leafShape && leafShape.startsWith('silver'))
+      || (sides === n && n == 6 && leafShape && leafShape.startsWith('regular'))
+    ) {
       return patCountToAnglesScript(n);
     }
 
@@ -150,14 +153,14 @@ namespace Flexagonator {
     }
 
     // triangular bronze octadecaflexagon
-    if (sides === 3 && leafShape && leafShape.startsWith('bronze') && n === 18) {
+    if (sides === 3 && (!leafShape || leafShape.startsWith('bronze')) && n === 18) {
       const directions = Directions.make('/|//|/'.repeat(3));
       return { angles2: [30, 60], directions };
     }
 
     // hexagonal regular decaflexagon
-    if (sides === 6 && leafShape === 'regular' && n === 10) {
-      return { directions: Directions.make('//|//'.repeat(2)) };
+    if (sides === 6 && (!leafShape || leafShape === 'regular') && n === 10) {
+      return { angles2: [60, 60], directions: Directions.make('//|//'.repeat(2)) };
     }
     // hexagonal silver dodecaflexagon
     if (sides === 6 && leafShape && leafShape.startsWith('silver') && n === 12) {
@@ -179,7 +182,7 @@ namespace Flexagonator {
       }
     }
     // kite bronze octaflexagon
-    if (overallShape === 'kite' && leafShape && leafShape.startsWith('bronze') && n === 8) {
+    if (overallShape === 'kite' && (!leafShape || leafShape.startsWith('bronze')) && n === 8) {
       const directions = Directions.make('/|////|/');
       return { angles2: [90, 30], directions };
     }
