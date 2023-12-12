@@ -48,6 +48,11 @@ namespace Flexagonator {
       expect(compare(pieces2, { overallShape: 'hexagonal ring', leafShape: 'bronze triangle' })).toBeTruthy();
     });
 
+    it('can adjust for the amibiguity of a square overallShape & leafShape', () => {
+      const pieces = namePiecesFromName('square octaflexagon');
+      expect(compare(pieces, { overallShape: 'square', patsPrefix: 'octa' })).toBeTruthy();
+    });
+
   });
 
 }

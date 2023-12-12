@@ -16,6 +16,10 @@ namespace Flexagonator {
     const faceCount = getFaceCount(words[words.length - 1]);
     const patsPrefix = getPatsPrefix(words[words.length - 1]);
 
+    if (!overallShape && leafShape === 'square' && patsPrefix === 'octa') {
+      // special handling of 'square octaflexagon', since 'square' is ambiguous
+      return { overallShape: 'square', patsPrefix: 'octa' };
+    }
     return { overallShape, leafShape, faceCount, patsPrefix };
   }
 
