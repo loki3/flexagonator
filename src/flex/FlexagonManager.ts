@@ -33,7 +33,7 @@ namespace Flexagonator {
       if (other && other.flexagon.directions && other.flexagon.directions.getCount() === flexagon.getPatCount()) {
         flexagon = flexagon.changeDirections(other.flexagon.directions);
       }
-      const fm = new FlexagonManager(flexagon);
+      const fm = new FlexagonManager(flexagon, undefined, other.allFlexes);
       if (other && !other.angleInfo.isDefault) {
         fm.angleInfo = other.angleInfo;
       }
