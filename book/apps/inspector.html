@@ -66,6 +66,7 @@
       if (result === true) {
         clearSlices();
         updateUI();
+        showCreationScript();
         statusMessage('creatorFlexes', `flexes: ${creator.getInterestingFlexes().join(' ')}`);
         statusMessage('creatorStatus');
       } else if (Flexagonator.isError(result)) {
@@ -218,9 +219,10 @@
       element.hidden = !checked;
     }
 
-    function showCreationScript(script) {
+    function showCreationScript() {
       const element = document.getElementById('creationScript');
-      element.value = script ? script : '';
+      const script = creator.getCreationScript();
+      element.value = script;
     }
 
     function applyScript() {
@@ -373,6 +375,7 @@
   <script type="text/javascript">
     fillNameLists();
     updateUI();
+    showCreationScript();
 
     let interface = document.getElementById('interface');
     interface.addEventListener('mousemove', interfaceMouseMove, false);

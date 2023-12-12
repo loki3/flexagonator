@@ -49,6 +49,17 @@ namespace Flexagonator {
       return this.interestingFlexes;
     }
 
+    /** get a flexagonator script that can create the current flexagon */
+    getCreationScript(): string {
+      const script = this.makeNewFlexagonScript();
+      if (script.length === 0) {
+        return '';
+      }
+      const content = script.map(item => JSON.stringify(item));
+      const text = `[\n${content.join('\n')}\n]`;
+      return text;
+    }
+
     runScriptItem(script: ScriptItem): true | FlexError | TreeError {
       const result = runScriptItem(this.fm, script);
       if (isError(result)) {
@@ -115,10 +126,29 @@ namespace Flexagonator {
      * @returns true for success, false if name is incomplete, or specific error
      */
     private newFlexagon(): boolean | TreeError | FlexError {
+      const script = this.makeNewFlexagonScript();
+      if (script.length === 0) {
+        return false; // insufficient info, so nothing changed
+      }
+
+      // create flexagon
+      const result = Flexagonator.createFromScript(script);
+      if (Flexagonator.isError(result)) {
+        return result;  // report specific error
+      }
+      this.fm = result;
+      return true;  // success
+    }
+
+    /**
+     * create a script that will create a flexagon given the current creation setting
+     * @returns full script needed to create flexagon, or empty script if not enough information
+     */
+    private makeNewFlexagonScript(): ScriptItem[] {
       // use name pieces if complete enough
       const [script, errors] = namePiecesToScript(this.pieces);
       if (errors.length > 0) {
-        return false; // insufficient info, so nothing changed
+        return []; // insufficient info, don't create a script
       }
 
       // build up complete script for creating flexagon
@@ -132,14 +162,7 @@ namespace Flexagonator {
       if (this.primeFlexes.length > 0) {
         script.push({ searchFlexes: this.primeFlexes });
       }
-
-      // create flexagon
-      const result = Flexagonator.createFromScript(script);
-      if (Flexagonator.isError(result)) {
-        return result;  // report specific error
-      }
-      this.fm = result;
-      return true;  // success
+      return script;
     }
   }
 
