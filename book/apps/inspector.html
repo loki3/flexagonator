@@ -278,12 +278,14 @@
 
       const fm = creator.getFlexagonManager();
       if (gSlices === null) {
+        document.getElementById("unfolded1").hidden = false;
         const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
         Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions });
       } else {
         const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
         const names = slices.map((_, i) => `unfolded${i + 1}`);
         const options = slices.map((slice, i) => {
+          document.getElementById(`unfolded${i + 1}`).hidden = false;
           // e.g., captions of (⚹, a) - (a, b) - (b, ⚹)
           const one = i === 0 ? '⚹' : String.fromCharCode([97 + i - 1]);
           const two = i === slices.length - 1 ? '⚹' : String.fromCharCode([97 + i]);
@@ -292,9 +294,9 @@
         Flexagonator.drawUnfolded(names, fm, options);
       }
 
-      // clear all unused divs
+      // hide all unused canvases
       for (i = gSlices === null ? 1 : gSlices.length; i < maxPieces; i++) {
-        document.getElementById(`unfolded${i + 1}`).innerHTML = null;
+        document.getElementById(`unfolded${i + 1}`).hidden = true;
       }
     }
 
@@ -366,11 +368,16 @@
     &nbsp;&nbsp;&nbsp;
     <span id="sliceStatus"></span>
   </p>
-  <span id="unfolded1" width="800" height="600"></span> <span id="unfolded2" width="800" height="600"></span>
-  <span id="unfolded3" width="800" height="600"></span> <span id="unfolded4" width="800" height="600"></span>
-  <span id="unfolded5" width="800" height="600"></span> <span id="unfolded6" width="800" height="600"></span>
-  <span id="unfolded7" width="800" height="600"></span> <span id="unfolded8" width="800" height="600"></span>
-  <span id="unfolded9" width="800" height="600"></span> <span id="unfolded10" width="800" height="600"></span>
+  <canvas id="unfolded1" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded2" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded3" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded4" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded5" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded6" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded7" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded8" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded9" width="800" height="600" hidden="true"></canvas>
+  <canvas id="unfolded10" width="800" height="600" hidden="true"></canvas>
 
   <script type="text/javascript">
     fillNameLists();
