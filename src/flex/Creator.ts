@@ -56,7 +56,7 @@ namespace Flexagonator {
         return '';
       }
       const content = script.map(item => JSON.stringify(item));
-      const text = `[\n${content.join('\n')}\n]`;
+      const text = `[\n${content.join(',\n')}\n]`;
       return text;
     }
 
@@ -65,6 +65,7 @@ namespace Flexagonator {
       if (isError(result)) {
         return result;
       }
+      this.fm = result;
       return true;
     }
 
