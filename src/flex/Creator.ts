@@ -38,6 +38,13 @@ namespace Flexagonator {
       return name;
     }
 
+    /** get all 3 leaf angles as a string with n significant digits */
+    getLeafAngles(n: number): string {
+      const angles = this.fm.getAngleInfo().getAngles(this.fm.flexagon);
+      const twoDigits = angles.map(a => a === Math.trunc(a) ? a.toString() : a.toPrecision(n));
+      return `[${twoDigits.join(', ')}]`;
+    }
+
     /** get the directions between pats */
     getDirections(): string {
       const dirs = this.fm.getDirections();
