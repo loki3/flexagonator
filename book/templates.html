@@ -496,17 +496,19 @@
   <h3 id="slot-flexes">slot flexes</h3>
 
   <p>supports Lh Lk Ltf Ltb Lbb Lbf</p>
-  <canvas id="slot-6-many" width="1000" height="600"></canvas><br/><br/>
+  <canvas id="slot-6-many" width="1000" height="580"></canvas><br/><br/>
   <canvas id="slot-8" width="1000" height="500"></canvas><br/><br/>
   <p>supports L3, Lk, Ltf</p>
-  <canvas id="slot-5-L3" width="800" height="500"></canvas><br/><br/>
+  <canvas id="slot-5-L3" width="750" height="500"></canvas><br/><br/>
   <script type="text/javascript">
-    drawStripSequence("slot-6-many", 6, "Lk+Ltb+Lbb+", 90, [60, 60], ">>>^", -6);
-    drawStripSequence("slot-8", 8, "Lk+ Ltf+", 45, [], ">>^", 2);
+    const slot6Captions = [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }];
+    drawStripSequence("slot-6-many", 6, "Lk+Ltb+Lbb+", 90, [60, 60], ">>>^", undefined, undefined, undefined, undefined, slot6Captions);
+    const slot8Captions = [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }];
+    drawStripSequence("slot-8", 8, "Lk+ Ltf+", 45, [], ">>^", undefined, undefined, undefined, undefined, slot8Captions);
 
     // custom labels for the L3 pentaflexagon to make the flex diagram simpler
     const leafProps = pairsToProps([[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]);
-    drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3", leafProps);
+    drawOddStripSequence("slot-5-L3", 5, "L3*", 252, "", 2, "L3", leafProps, 2);
   </script>
 
   <!-- part 3 -->
