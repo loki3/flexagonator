@@ -69,10 +69,12 @@ namespace Flexagonator {
     // flexes that go between kite positions
     flexes["Sp"] = createLocalFlex("partial shuffle", patCount - 5, 8,
       [1, 2, [-4, 3]], /**/[-5, [-6, 7]],
-      [[1, -2], -3], /**/[[5, -4], 6, 7]); // TODO: add directions
+      [[1, -2], -3], /**/[[5, -4], 6, 7],
+      "/|/", "/|", "|/", "/|/");
     flexes["Lkk"] = createLocalFlex("kite-to-kite slot", patCount - 6, 9,
       [1, 2, 3, 4], /**/[5, [[-7, 6], 8]],
-      [[1, [3, -2]], 4], /**/[5, 6, 7, 8]); // TODO: add directions
+      [[1, [3, -2]], 4], /**/[5, 6, 7, 8],
+      "//|/", "/|", "|/", "/|//");
 
     // backflip = Mkf' Mkb
     flexes["Bf"] = createLocalFlex("backflip", patCount - 4, 9,
