@@ -67,7 +67,7 @@ namespace Flexagonator {
         const which = flex.startsWith('Mk') || (flex === 'Sp') || (flex === 'Lkk') ? morphFlexes : mainFlexes;
         const result = which[flex].apply(flexagon);
         if (isFlexError(result)) {
-          console.log('failed to apply ', flex, ' with error ', result);
+          console.log('failed to apply ', flex, ' with error ', JSON.stringify(result));
           return flexagon;
         }
         flexagon = result;

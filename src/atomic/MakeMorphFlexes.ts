@@ -42,11 +42,11 @@ namespace Flexagonator {
       flexes["Mkh"] = makeFlex("morph-kite: fold in half",
         [[-2, 1], -3, -4, [6, -5], 7, 8],
         [2, 3, [-5, 4], -6, -7, [1, -8]],
-        FlexRotation.None) as Flex; // TODO: add directions
+        FlexRotation.BCA, "//////", "/|//|/") as Flex;
       flexes["Mkt"] = makeFlex("morph-kite: partial tuck",
         [2, 3, 4, [-6, 5], -7, [1, -8]],
         [[-2, 1], -3, [5, -4], 6, 7, 8],
-        FlexRotation.None) as Flex; // TODO: add directions
+        FlexRotation.BCA, "//////", "/|//|/") as Flex;
     }
 
     // only works on a dodeca
