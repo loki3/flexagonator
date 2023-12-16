@@ -55,7 +55,7 @@
     function showFlexagonName() {
       let flexagonDiv = document.getElementById('flexagon');
       if (flexagonDiv !== null) {
-        const name = creator.getName();
+        const name = creator.getName().replace(/</, "&lt;");
         const angles = creator.getLeafAngles(4);  // 4 digits
         const directions = creator.getDirections();
         const space = '&nbsp;&nbsp;&nbsp;&nbsp;';
