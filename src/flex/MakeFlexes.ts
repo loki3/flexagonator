@@ -136,7 +136,7 @@ namespace Flexagonator {
   const primes = [
     "P", "S", "V", "F", "Tw", "Ltf", "Ltb", "Ltb'",
     "T", "T'", "Tf", "T1", "T1'", "T2", "T2'",  // limit the tuck variants
-    "Bf", "Tr2", "Tr3", "Tr4", "Ds", "Tu",      // directions other than ////
+    "Bf", "Tr2", "Tr3", "Tr4", "Ds", "Tu", "Tao"      // directions other than ////
   ];
   const unique = [  // interesting non-primes
     "S3", "St", "Fm", "F3", "F4",

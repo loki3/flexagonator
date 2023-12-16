@@ -49,6 +49,14 @@ namespace Flexagonator {
         FlexRotation.BCA, "//////", "/|//|/") as Flex;
     }
 
+    // only works on a deca
+    if (patCount === 10) {
+      flexes["Tao"] = makeFlex("three-and-open",
+        [[-2, 1], -3, -4, -5, -6, -7, -8, [10, -9], 11, 12],
+        [-11, [1, -12], 2, 3, [-5, 4], -6, -7, -8, -9, -10],
+        FlexRotation.BAC, "///|////|/", "///|////|/") as Flex;
+    }
+
     // only works on a dodeca
     if (patCount === 12) {
       flexes["Rhm"] = makeFlex("rhombic morph",
