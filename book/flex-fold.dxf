@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460300.4756828705
+2460300.534826389
   9
 $TDUUPDATE
  40
-2460300.8090162035
+2460300.8681597221
   9
 $TDINDWG
  40
-149.915810185185
+149.97494212963
   9
 $TDUSRTIMER
  40
-149.915810185185
+149.97494212963
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-D512152
+D512157
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-29.69895
+29.652198
  22
--14.791076
+-14.888723
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-47.573529
+47.626355
  41
 1.782719
  42
@@ -31409,7 +31409,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+valley
 100
 AcDb2dPolyline
  66
@@ -31433,7 +31433,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+valley
 100
 AcDbVertex
 100
@@ -31457,7 +31457,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+valley
 100
 AcDbVertex
 100
@@ -31481,7 +31481,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+valley
   0
 POLYLINE
   5
@@ -31855,7 +31855,7 @@ POLYLINE
 100
 AcDbEntity
   8
-hinge
+mountain
 100
 AcDb2dPolyline
  66
@@ -31879,7 +31879,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+mountain
 100
 AcDbVertex
 100
@@ -31903,7 +31903,7 @@ VERTEX
 100
 AcDbEntity
   8
-hinge
+mountain
 100
 AcDbVertex
 100
@@ -31927,7 +31927,7 @@ SEQEND
 100
 AcDbEntity
   8
-hinge
+mountain
   0
 POLYLINE
   5
@@ -33452,88 +33452,6 @@ AcDb2dVertex
 SEQEND
   5
 13CCA7
-330
-1F
-100
-AcDbEntity
-  8
-edge
-  0
-POLYLINE
-  5
-13CCAD
-330
-1F
-100
-AcDbEntity
-  8
-edge
-100
-AcDb2dPolyline
- 66
-     1
- 10
-0.0
- 20
-0.0
- 30
-0.0
- 40
-0.01
- 41
-0.01
-  0
-VERTEX
-  5
-13CCAE
-330
-1F
-100
-AcDbEntity
-  8
-edge
-100
-AcDbVertex
-100
-AcDb2dVertex
- 10
--0.1
- 20
--17.3
- 30
-0.0
- 70
-     2
- 50
-0.0
-  0
-VERTEX
-  5
-13CCAF
-330
-1F
-100
-AcDbEntity
-  8
-edge
-100
-AcDbVertex
-100
-AcDb2dVertex
- 10
-0.5
- 20
--17.3
- 30
-0.0
- 70
-     2
- 50
-0.0
-  0
-SEQEND
-  5
-13CCB0
 330
 1F
 100
@@ -483468,6 +483386,138 @@ AcDbText
 labels
 100
 AcDbText
+  0
+SOLID
+  5
+D512152
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+-0.1
+ 20
+-17.3
+ 30
+0.0
+ 11
+0.5
+ 21
+-17.3
+ 31
+0.0
+ 12
+0.101765
+ 22
+-17.412256
+ 32
+0.0
+ 13
+0.101765
+ 23
+-17.412256
+ 33
+0.0
+  0
+SOLID
+  5
+D512154
+330
+1F
+100
+AcDbEntity
+  8
+face-3
+100
+AcDbTrace
+ 10
+-0.1
+ 20
+-17.3
+ 30
+0.0
+ 11
+0.5
+ 21
+-17.3
+ 31
+0.0
+ 12
+0.101765
+ 22
+-17.187744
+ 32
+0.0
+ 13
+0.101765
+ 23
+-17.187744
+ 33
+0.0
+  0
+LWPOLYLINE
+  5
+D512155
+330
+1F
+100
+AcDbEntity
+  8
+hinge
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.01
+ 10
+-0.1
+ 20
+-17.3
+ 10
+0.5
+ 20
+-17.3
+  0
+LWPOLYLINE
+  5
+D512156
+330
+1F
+100
+AcDbEntity
+  8
+edge
+100
+AcDbPolyline
+ 90
+        4
+ 70
+     1
+ 43
+0.01
+ 10
+0.101765
+ 20
+-17.187744
+ 10
+-0.1
+ 20
+-17.3
+ 10
+0.101765
+ 20
+-17.412256
+ 10
+0.5
+ 20
+-17.3
   0
 ENDSEC
   0
