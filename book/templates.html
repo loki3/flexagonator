@@ -21,26 +21,24 @@
       Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
     }
 
-
-    // draw an unfolded strip on the given canvas
-    // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
-    function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge, angles2, endStyle) {
-      angles2 = angles2 ? angles2 : undefined;
-      const script = [{ numPats, angles2, flexes, labelAsTree: [] }];
-      const fm = Flexagonator.createFromScript(script);
+    function getPinchScript(numPats, flexes, angles2) {
+      return [{ numPats, angles2, flexes, labelAsTree: [] }];
+    }
+    function getPinchOptions(rotation, start, end, whereFlex, text, edge, endStyle) {
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions, start, end });
+      return { rotation, content: { showLeafProps: true, endStyle }, captions, start, end };
     }
 
-    // same as drawStripPinch except that it numbers the faces as they're created by 'flexes'
-    function drawStripPinch2(canvasId, numPats, flexes, rotation, whereFlex, flexText, endStyle, angles2) {
+    // same as getPinchScript except that it numbers the faces as they're created by 'flexes'
+    function getPinch2Script(numPats, flexes, angles2) {
       angles2 = angles2 ? angles2 : [60, 60];
-      const script = [{ numPats, angles2, flexAndColor: { flexes: flexes } }];
-      const fm = Flexagonator.createFromScript(script);
-      const text = flexText ?? flexes;
-      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
-      Flexagonator.drawUnfolded(canvasId, fm, { rotation, content: { showLeafProps: true, endStyle }, captions });
+      return [{ numPats, angles2, flexAndColor: { flexes: flexes } }];
     }
+    function getPinch2Options(rotation, whereFlex, text, endStyle) {
+      const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
+      return { rotation, content: { showLeafProps: true, endStyle }, captions };
+    }
+
 
     // draw an unfolded strip for a generating sequence that's not just pinch flexes
     // canvasId: string, numPats: number, flexes: string, rotation: number, angles2: [number],
@@ -152,7 +150,7 @@
   <h4>tri-hexaflexagon</h4>
   <canvas id="tri-hexa" width="800" height="180"></canvas>
   <script type="text/javascript">
-    drawStripPinch("tri-hexa", 6, "P*", 120, undefined, undefined, 0, "3", 2);
+    drawOne("tri-hexa", getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2));
   </script>
 
   <!-- 4, 5, & 6 faces-->
@@ -161,7 +159,7 @@
   <h4>tetra-hexaflexagon</h4>
   <canvas id="tetra-hexa" width="800" height="233"></canvas>
   <script type="text/javascript">
-    drawStripPinch("tetra-hexa", 6, "P*P+", 210, undefined, undefined, -1, "4", 1);
+    drawOne("tetra-hexa", getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1));
   </script>
 
   <h4>penta-hexaflexagon</h4>
@@ -175,9 +173,9 @@
   <canvas id="hexa-hexa2" width="700" height="610"></canvas>
   <canvas id="hexa-hexa3" width="700" height="700"></canvas>
   <script type="text/javascript">
-    drawStripPinch2("hexa-hexa1", 6, "P* P+ >P>P P+ ^P P+ ^P^", 120, 1, "6a");
-    drawStripPinch2("hexa-hexa2", 6, "P* P+ >P>P P+ PP+ ^P", 0, 1, "6b", "solid");
-    drawStripPinch2("hexa-hexa3", 6, "P* P+ >P>P P+ >PPP+ ^PP", 0, -2, "6c", "solid");
+    drawOne("hexa-hexa1", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a"));
+    drawOne("hexa-hexa2", getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid"));
+    drawOne("hexa-hexa3", getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid"));
   </script>
 
   <h4>dodeca-hexaflexagon</h4>
@@ -275,14 +273,14 @@
     drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3, 0, "3");
     drawStripSequence("diff-regular-tri-hexa-abc", 6, "P+", 120, [60, 60], ">", undefined, undefined, undefined, undefined, triCaptions);
     drawStripSequence("diff-bronze-tri-hexa-abc", 6, "P+", 90, [60, 90], ">", undefined, undefined, undefined, undefined, triCaptions);
-    drawStripPinch("diff-bronze-tri-tetra1", 6, "P*P+", 150, undefined, undefined, -1, "4a", 0, [60, 90]);
-    drawStripPinch("diff-bronze-tri-tetra2", 6, "P*P+", 30, undefined, undefined, -1, "4b", 0, [30, 60], "solid");
-    drawStripPinch("diff-bronze-tri-tetra3", 6, "P*P+", 120, undefined, undefined, -1, "4c", 0, [90, 30]);
-    drawStripPinch2("diff-bronze-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 90, 1, "6a", undefined, [60, 90]);
+    drawOne("diff-bronze-tri-tetra1", getPinchScript(6, "P*P+", [60, 90]), getPinchOptions(150, undefined, undefined, -1, "4a", 0));
+    drawOne("diff-bronze-tri-tetra2", getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid"));
+    drawOne("diff-bronze-tri-tetra3", getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0));
+    drawOne("diff-bronze-hexa-octa", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a"));
     drawStripSequence("diff-silver-tri-hexa", 6, "P+", 135, [45, 45], ">", -3, 0, "3");
-    drawStripPinch("diff-silver-tetra-octa1", 8, "P*P+", 45, undefined, undefined, 3, "4a", 1, [90, 45], "solid");
-    drawStripPinch("diff-silver-tetra-octa2", 8, "P*P+", 225, undefined, undefined, -1, "4b", 1, [45, 90]);
-    drawStripPinch2("diff-silver-hexa-octa", 6, "P* P+ >P>P P+ ^P P+ ^P^", 135, 1, "6a", undefined, [45, 45]);
+    drawOne("diff-silver-tetra-octa1", getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid"));
+    drawOne("diff-silver-tetra-octa2", getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1));
+    drawOne("diff-silver-hexa-octa", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a"));
     drawStripSequence("diff-silver-hexa-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
     drawStripSequence("diff-other-tri-hexa", 6, "P+", 140, [65, 40], ">", -3, 0, "3");
 
