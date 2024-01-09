@@ -15,6 +15,14 @@
     const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
 
     // draw an unfolded strip on the given canvas
+    // pass in a full script & full options for drawUnfolded
+    function drawOne(canvasId, script, drawOptions) {
+      const fm = Flexagonator.createFromScript(script);
+      Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
+    }
+
+
+    // draw an unfolded strip on the given canvas
     // canvasId: string, numPats: number, flexes: string, rotation: number, start: number, end: number
     function drawStripPinch(canvasId, numPats, flexes, rotation, start, end, whereFlex, text, edge, angles2, endStyle) {
       angles2 = angles2 ? angles2 : undefined;
@@ -58,13 +66,6 @@
       const content = leafProps ? { showLeafProps: true } : { showFoldingOrder: true };
       const options = { rotation, content, captions };
       Flexagonator.drawUnfolded(canvasId, fm, options);
-    }
-
-    // draw an unfolded strip on the given canvas
-    // pass in a full script & full options for drawUnfolded
-    function drawStripComplex(canvasId, script, drawOptions) {
-      const fm = Flexagonator.createFromScript(script);
-      Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
     }
 
     // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
@@ -216,7 +217,7 @@
     var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
     var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 }, { text: "+", which: 3, edge: 1 }, { text: "+", which: 4, edge: 1 });
     var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions };
-    drawStripComplex("tri-tetra", script, drawOptions);
+    drawOne("tri-tetra", script, drawOptions);
   </script>
 
   <h4>regular penta-tetraflexagon</h4>
@@ -231,7 +232,7 @@
     var script = [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
     var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 });
     var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions };
-    drawStripComplex("tri-octa", script, drawOptions);
+    drawOne("tri-octa", script, drawOptions);
   </script>
 
   <h4>regular penta-octaflexagon</h4>
@@ -286,9 +287,9 @@
     drawStripSequence("diff-other-tri-hexa", 6, "P+", 140, [65, 40], ">", -3, 0, "3");
 
     var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
-    drawStripComplex("diff-silver-penta-tetra-a", script,
+    drawOne("diff-silver-penta-tetra-a", script,
       { rotation: 45, content: { showLeafProps: true }, start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] });
-    drawStripComplex("diff-silver-penta-tetra-b", script,
+    drawOne("diff-silver-penta-tetra-b", script,
       { rotation: 45, content: { showLeafProps: true }, start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
   </script>
 
@@ -303,16 +304,16 @@
   <script type="text/javascript">
     var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }];
     var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
-    drawStripComplex("P333", script, { rotation: 4, content: { showLeafProps: true }, captions });
+    drawOne("P333", script, { rotation: 4, content: { showLeafProps: true }, captions });
   </script>
   <script type="text/javascript">
     var script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
     { setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]] } },
     { angles: [40, 70] }];
     var captions = [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }];
-    drawStripComplex("P333-8a", script, { rotation: 0, content: { showLeafProps: true }, captions });
-    drawStripComplex("P333-8b", script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: -1, edge: 1 }] });
-    drawStripComplex("P333-8c", script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] });
+    drawOne("P333-8a", script, { rotation: 0, content: { showLeafProps: true }, captions });
+    drawOne("P333-8b", script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: -1, edge: 1 }] });
+    drawOne("P333-8c", script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] });
   </script>
   <br/>
 
@@ -326,7 +327,7 @@
       var script = [{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }];
       var captions = [{ text: labelA, which: 0, edge: 1 }, { text: labelB, which: -1, edge: 2 }];
       if (extraLabel) { captions.push(extraLabel); }
-      drawStripComplex(canvas, script, { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' }, captions });
+      drawOne(canvas, script, { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' }, captions });
     }
     showPiece("P444a", "d", "a", { text: "P444", which: 1 });
     showPiece("P444b", "a", "b");
@@ -345,14 +346,14 @@
     { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
     { angles: [30, 60] }];
     var captions = starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 });
-    drawStripComplex("P444-half", script, { rotation: 120, content: { showLeafProps: true }, captions });
+    drawOne("P444-half", script, { rotation: 120, content: { showLeafProps: true }, captions });
   </script>
 
   <h4>P223h</h4>
   <canvas id="P223h" width="1200" height="360"></canvas>
   <script type="text/javascript">
     var captions = starCaptions.concat({ text: "P223h", which: 3, edge: 0 });
-    drawStripComplex("P223h",
+    drawOne("P223h",
       [
         { pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
         { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]] } },
@@ -478,11 +479,11 @@
       ];
     }
 
-    drawStripComplex("kite-rl", makeKiteScript("Mkr'* Mkl+ Mkr >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkr'Mkl", which: 0, edge: 2 }] });
-    drawStripComplex("kite-fr", makeKiteScript("Mkf'* Mkr+ Mkf >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkf'Mkr", which: 0, edge: 2 }] });
-    drawStripComplex("kite-rfs", makeKiteScript("Mkr'* Mkfs+ Mkr <"), { rotation: 150, captions: [...starCaptions, { text: "Mkr'Mkfs", which: -3, edge: 2 }] });
-    drawStripComplex("kite-bf1", makeKiteScript("Bf+ >>>"), { rotation: -30, scale: 300, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf'Mkb", which: 0, edge: 2 }] });
-    drawStripComplex("kite-bf2", makeKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] });
+    drawOne("kite-rl", makeKiteScript("Mkr'* Mkl+ Mkr >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkr'Mkl", which: 0, edge: 2 }] });
+    drawOne("kite-fr", makeKiteScript("Mkf'* Mkr+ Mkf >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkf'Mkr", which: 0, edge: 2 }] });
+    drawOne("kite-rfs", makeKiteScript("Mkr'* Mkfs+ Mkr <"), { rotation: 150, captions: [...starCaptions, { text: "Mkr'Mkfs", which: -3, edge: 2 }] });
+    drawOne("kite-bf1", makeKiteScript("Bf+ >>>"), { rotation: -30, scale: 300, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf'Mkb", which: 0, edge: 2 }] });
+    drawOne("kite-bf2", makeKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] });
 
     const kiteAll = makeKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
     const fmAll = Flexagonator.createFromScript(kiteAll);
@@ -531,10 +532,10 @@
   <canvas id="diagram-hexa11" width="1000" height="350"></canvas><br/>
 
   <script type="text/javascript">
-    drawStripComplex("diagram-s3",
+    drawOne("diagram-s3",
       [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
       { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions });
-    drawStripComplex("diagram-hexa11",
+    drawOne("diagram-hexa11",
       [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree: [] }],
       { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions });
   </script>
@@ -551,12 +552,12 @@
 
   <script type="text/javascript">
     var flipleft = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
-    drawStripComplex("sequences-flipleft1", flipleft,
+    drawOne("sequences-flipleft1", flipleft,
       { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
-    drawStripComplex("sequences-flipleft2", flipleft,
+    drawOne("sequences-flipleft2", flipleft,
       { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] });
 
-    drawStripComplex("sequences-hexa12",
+    drawOne("sequences-hexa12",
       [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
       { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] });
   </script>
@@ -587,10 +588,10 @@
     var fm2 = Flexagonator.createFromScript(trihexa);
     Flexagonator.drawUnfolded("pats-trihexa-unfolded", fm2, { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions });
     // visible
-    drawStripComplex("pats-visible-Tf",
+    drawOne("pats-visible-Tf",
       [{ "pats": [[[-2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
       { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions });
-    drawStripComplex("pats-visible-T",
+    drawOne("pats-visible-T",
       [{ "pats": [[[-2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
       { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions });
   </script>
@@ -613,9 +614,9 @@
     drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 45], ">", -1, 1, "Tw");
 
     var hexa = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
-    drawStripComplex("silverOcta-6a", hexa,
+    drawOne("silverOcta-6a", hexa,
       { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] });
-    drawStripComplex("silverOcta-6b", hexa,
+    drawOne("silverOcta-6b", hexa,
       { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
   </script>
 
@@ -625,13 +626,13 @@
   <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
   <script type="text/javascript">
     var hexa = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
-    drawStripComplex("bronzeDodeca-6a", hexa,
+    drawOne("bronzeDodeca-6a", hexa,
       { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
-    drawStripComplex("bronzeDodeca-6b", hexa,
+    drawOne("bronzeDodeca-6b", hexa,
       { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
 
     var morph = [{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }];
-    drawStripComplex("bronzeDodeca-morph", morph,
+    drawOne("bronzeDodeca-morph", morph,
       { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] });
   </script>
 
@@ -643,11 +644,11 @@
   <script type="text/javascript">
     const baseSilver = [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }];
 
-    drawStripComplex("silverDodecaHexa-Tu", [...baseSilver, { flexes: "Tu*Tu*", labelAsTree }],
+    drawOne("silverDodecaHexa-Tu", [...baseSilver, { flexes: "Tu*Tu*", labelAsTree }],
       { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 1 }] });
-    drawStripComplex("silverDodecaHexa-Ds", [...baseSilver, { flexes: "<<Ds+", labelAsTree }],
+    drawOne("silverDodecaHexa-Ds", [...baseSilver, { flexes: "<<Ds+", labelAsTree }],
       { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] });
-    drawStripComplex("silverDodecaHexa-T", [...baseSilver, { flexes: "<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>", labelAsTree }],
+    drawOne("silverDodecaHexa-T", [...baseSilver, { flexes: "<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>", labelAsTree }],
       { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] });
   </script>
 
@@ -666,22 +667,22 @@
       { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addMorphFlexes: true }
     ];
 
-    drawStripComplex("bracelet-silver-Tr2", [...base, { flexes: "<<Tr2+<<", labelAsTree }],
+    drawOne("bracelet-silver-Tr2", [...base, { flexes: "<<Tr2+<<", labelAsTree }],
       { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Tr2", which: 2, edge: 0 }] });
-    drawStripComplex("bracelet-silver-Tr4", [...base, { flexes: "Tr4+", labelAsTree }],
+    drawOne("bracelet-silver-Tr4", [...base, { flexes: "Tr4+", labelAsTree }],
       { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Tr4", which: -1, edge: 2 }] });
     var tetra = [0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]]];
-    drawStripComplex("bracelet-silver-tetra", [{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetra, labelAsTree }],
+    drawOne("bracelet-silver-tetra", [{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetra, labelAsTree }],
       { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "tetra", which: 2, edge: 0 }] });
 
     const bf = { flexes: ">>>> Bf+ <<<<", labelAsTree };
     var script = [...base, bf];
     var captions = [firstStar, lastStar, { text: "Bf", which: 10, edge: 1 }, { text: "#", which: 10, edge: 0 }, { text: "#", which: 7, edge: 2 }];
-    drawStripComplex("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
+    drawOne("bracelet-silver-cycle", script, { rotation: -45, content: { showLeafProps: true }, captions });
     // note that it doesn't know it's a Möbius strip so it doesn't know how to <<<< across the half-twist
     const mobius = [{ numPats: 14, angles2: [45, 45], directions: "/||//||//||//|", addMorphFlexes: true }, bf];
     const mobiusCaptions = [firstStar, lastStar, { text: "Möbius Bf", which: 11, edge: 2 }];
-    drawStripComplex("bracelet-silver-mobius", mobius, { rotation: -45, content: { showLeafProps: true }, captions: mobiusCaptions });
+    drawOne("bracelet-silver-mobius", mobius, { rotation: -45, content: { showLeafProps: true }, captions: mobiusCaptions });
 
     // make a bracelet template that wraps a flex such as F or S
     function makeWithWrap(canvasId, flexes, rotation, extraCaptions) {
@@ -700,7 +701,7 @@
         { flexes, labelAsTree }
       ];
       var captions = [...extraCaptions, firstStar, lastStar];
-      drawStripComplex(canvasId, script, { rotation, content: { showLeafProps: true }, captions });
+      drawOne(canvasId, script, { rotation, content: { showLeafProps: true }, captions });
     }
     makeWithWrap("bracelet-silver-WFW", "W*>F*<W'*  W>F'<W'  >>>>", 18, [{ text: "F", which: 9, edge: 0 }]);
     makeWithWrap("bracelet-silver-WSW", "W*>S*<W'*  W>S'<W'  <<<<", 104, [{ text: "S", which: 5, edge: 1 }]);
@@ -714,8 +715,8 @@
     const base14 = [{ name: "octagonal ring tetradecaflexagon" }, { addMorphFlexes: true }];
     const options14 = { content: { showLeafProps: true }, captions: [firstStar, lastStar] };
 
-    drawStripComplex("octa-ring-14-bf-a", [...base14, { flexes: ">>Tf+", labelAsTree }], options14);
-    drawStripComplex("octa-ring-14-bf-b", [...base14, { flexes: ">>Tf+>", labelAsTree }], options14);
+    drawOne("octa-ring-14-bf-a", [...base14, { flexes: ">>Tf+", labelAsTree }], options14);
+    drawOne("octa-ring-14-bf-b", [...base14, { flexes: ">>Tf+>", labelAsTree }], options14);
   </script>
 
   <hr />
@@ -740,8 +741,8 @@
 
     var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree: [] }];
     var drawOptions = { rotation: 0, content: { showLeafProps: true } };
-    drawStripComplex("decorate-tuck-deca1", script, { ...drawOptions, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
-    drawStripComplex("decorate-tuck-deca2", script, { ...drawOptions, start: 10, captions: [{ text: "a", which: 0 }, lastStar] });
+    drawOne("decorate-tuck-deca1", script, { ...drawOptions, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
+    drawOne("decorate-tuck-deca2", script, { ...drawOptions, start: 10, captions: [{ text: "a", which: 0 }, lastStar] });
   </script>
 
   <!-- puzzles & mazes -->
@@ -760,7 +761,7 @@
       { text: "a⚹", which: -1, edge: 1 }, { text: "b", which: -1, edge: 0 }, { text: "c", which: -1, edge: 2 }, // D
     ];
     var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions };
-    drawStripComplex("puzzle-hepta", script, drawOptions);
+    drawOne("puzzle-hepta", script, drawOptions);
   </script>
 
   <!-- popups -->
@@ -772,7 +773,7 @@
     var setLabels = { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]] };
     var script = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { angles: [72, 54], setLabels }];
     var options = { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions };
-    drawStripComplex("animal-penta", script, options);
+    drawOne("animal-penta", script, options);
   </script>
 
 </body>
