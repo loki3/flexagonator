@@ -131,7 +131,7 @@
   <h3 id="pinch">1: pinch flex</h3>
 
   <h4>tri-hexaflexagon</h4>
-  <canvas id="tri-hexa" width="800" height="180"></canvas>
+  <span id="tri-hexa" width="800" height="180"></span>
   <script type="text/javascript">
     drawOne("tri-hexa", getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2));
   </script>
@@ -140,21 +140,21 @@
   <h3 id="more-faces">3: more faces</h3>
 
   <h4>tetra-hexaflexagon</h4>
-  <canvas id="tetra-hexa" width="800" height="233"></canvas>
+  <span id="tetra-hexa" width="800" height="233"></span>
   <script type="text/javascript">
     drawOne("tetra-hexa", getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1));
   </script>
 
   <h4>penta-hexaflexagon</h4>
-  <canvas id="penta-hexa" width="1000" height="475"></canvas>
+  <span id="penta-hexa" width="1000" height="475"></span>
   <script type="text/javascript">
     drawOne("penta-hexa", getPentaScript(6), getPentaOptions(60));
   </script>
 
   <h4>hexa-hexaflexagon</h4>
-  <canvas id="hexa-hexa1" width="1200" height="120"></canvas>
-  <canvas id="hexa-hexa2" width="700" height="610"></canvas>
-  <canvas id="hexa-hexa3" width="700" height="700"></canvas>
+  <span id="hexa-hexa1" width="1200" height="120"></span>
+  <span id="hexa-hexa2" width="700" height="610"></span>
+  <span id="hexa-hexa3" width="700" height="700"></span>
   <script type="text/javascript">
     drawOne("hexa-hexa1", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a"));
     drawOne("hexa-hexa2", getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid"));
@@ -162,9 +162,9 @@
   </script>
 
   <h4>dodeca-hexaflexagon</h4>
-  <canvas id="dodeca-hexa" width="1200" height="163"></canvas>
+  <span id="dodeca-hexa" width="1200" height="163"></span>
   <h4>icositetra-hexaflexagon strip</h4>
-  <canvas id="icositetra-hexa" width="1200" height="86"></canvas>
+  <span id="icositetra-hexa" width="1200" height="86"></span>
   <script type="text/javascript">
     function drawPartial(canvasId, flexes, end, which, edge, text, labels) {
       var script = [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
@@ -192,7 +192,7 @@
   <h3 id="tetra-octa">4: triangle tetra & octa</h3>
 
   <h4>regular tri-tetraflexagon</h4>
-  <canvas id="tri-tetra" width="880" height="220"></canvas>
+  <span id="tri-tetra" width="880" height="220"></span>
   <script type="text/javascript">
     var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
     var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 }, { text: "+", which: 3, edge: 1 }, { text: "+", which: 4, edge: 1 });
@@ -201,13 +201,13 @@
   </script>
 
   <h4>regular penta-tetraflexagon</h4>
-  <canvas id="penta-tetra" width="770" height="500"></canvas>
+  <span id="penta-tetra" width="770" height="500"></span>
   <script type="text/javascript">
     drawOne("penta-tetra", getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }]));
   </script>
 
   <h4>regular tri-octaflexagon</h4>
-  <canvas id="tri-octa" width="1200" height="220"></canvas>
+  <span id="tri-octa" width="1200" height="220"></span>
   <script type="text/javascript">
     var script = [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
     var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 });
@@ -216,7 +216,7 @@
   </script>
 
   <h4>regular penta-octaflexagon</h4>
-  <canvas id="penta-octa" width="1200" height="448"></canvas>
+  <span id="penta-octa" width="1200" height="448"></span>
   <script type="text/javascript">
     drawOne("penta-octa", getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }]));
   </script>
@@ -224,21 +224,21 @@
   <!-- different triangles -->
   <h3 id="different">5: different triangles</h3>
 
-  <canvas id="diff-bronze-tri-hexa" width="1000" height="500"></canvas><br/><br/>
-  <canvas id="diff-regular-tri-hexa-abc" width="1000" height="176"></canvas><br/><br/>
-  <canvas id="diff-bronze-tri-hexa-abc" width="1000" height="500"></canvas><br/><br/>
-  <canvas id="diff-bronze-tri-tetra1" width="1038" height="452"></canvas><br/><br/>
-  <canvas id="diff-bronze-tri-tetra2" width="600" height="521"></canvas><br/><br/>
-  <canvas id="diff-bronze-tri-tetra3" width="900" height="521"></canvas><br/><br/>
-  <canvas id="diff-bronze-hexa-octa" width="1200" height="322"></canvas><br/><br/>
-  <canvas id="diff-silver-tri-hexa" width="1000" height="333"></canvas><br/><br/>
-  <canvas id="diff-silver-tetra-octa1" width="750" height="750"></canvas><br/><br/>
-  <canvas id="diff-silver-tetra-octa2" width="1100" height="140"></canvas><br/><br/>
-  <canvas id="diff-silver-hexa-octa" width="1200" height="202"></canvas><br/><br/>
-  <canvas id="diff-silver-penta-tetra-a" width="500" height="250"></canvas>
-  <canvas id="diff-silver-penta-tetra-b" width="500" height="250"></canvas><br/><br/>
-  <canvas id="diff-silver-hexa-tetra" width="800" height="400"></canvas>
-  <canvas id="diff-other-tri-hexa" width="1000" height="372"></canvas><br/><br/>
+  <span id="diff-bronze-tri-hexa" width="1000" height="500"></span><br/><br/>
+  <span id="diff-regular-tri-hexa-abc" width="1000" height="176"></span><br/><br/>
+  <span id="diff-bronze-tri-hexa-abc" width="1000" height="500"></span><br/><br/>
+  <span id="diff-bronze-tri-tetra1" width="1038" height="452"></span><br/><br/>
+  <span id="diff-bronze-tri-tetra2" width="600" height="521"></span><br/><br/>
+  <span id="diff-bronze-tri-tetra3" width="900" height="521"></span><br/><br/>
+  <span id="diff-bronze-hexa-octa" width="1200" height="322"></span><br/><br/>
+  <span id="diff-silver-tri-hexa" width="1000" height="333"></span><br/><br/>
+  <span id="diff-silver-tetra-octa1" width="750" height="750"></span><br/><br/>
+  <span id="diff-silver-tetra-octa2" width="1100" height="140"></span><br/><br/>
+  <span id="diff-silver-hexa-octa" width="1200" height="202"></span><br/><br/>
+  <span id="diff-silver-penta-tetra-a" width="500" height="250"></span>
+  <span id="diff-silver-penta-tetra-b" width="500" height="250"></span><br/><br/>
+  <span id="diff-silver-hexa-tetra" width="800" height="400"></span>
+  <span id="diff-other-tri-hexa" width="1000" height="372"></span><br/><br/>
   <script type="text/javascript">
     const triCaptions = [
       { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
@@ -277,10 +277,10 @@
   <h3 id="pinch-variations">6: pinch flex variations</h3>
 
   <h4>P333</h4>
-  <canvas id="P333" width="1200" height="400"></canvas><br/>
-  <canvas id="P333-8a" width="390" height="400"></canvas>
-  <canvas id="P333-8b" width="390" height="400"></canvas>
-  <canvas id="P333-8c" width="390" height="400"></canvas>
+  <span id="P333" width="1200" height="400"></span><br/>
+  <span id="P333-8a" width="390" height="400"></span>
+  <span id="P333-8b" width="390" height="400"></span>
+  <span id="P333-8c" width="390" height="400"></span>
   <script type="text/javascript">
     var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }];
     var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
@@ -298,10 +298,10 @@
   <br/>
 
   <h4>P3333, P444, P66</h4>
-  <canvas id="P444a" width="300" height="300"></canvas>
-  <canvas id="P444b" width="300" height="300"></canvas>
-  <canvas id="P444c" width="300" height="300"></canvas>
-  <canvas id="P444d" width="300" height="300"></canvas>
+  <span id="P444a" width="300" height="300"></span>
+  <span id="P444b" width="300" height="300"></span>
+  <span id="P444c" width="300" height="300"></span>
+  <span id="P444d" width="300" height="300"></span>
   <script type="text/javascript">
     function showPiece(canvas, labelA, labelB, extraLabel) {
       var script = [{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }];
@@ -320,7 +320,7 @@
     you can do a P444h (half of a P444) on this one & it'll still be flat,
     though the leaves no longer meet in the middle
   </p>
-  <canvas id="P444-half" width="1200" height="233"></canvas>
+  <span id="P444-half" width="1200" height="233"></span>
   <script type="text/javascript">
     var script = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
     { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
@@ -330,7 +330,7 @@
   </script>
 
   <h4>P223h</h4>
-  <canvas id="P223h" width="1200" height="360"></canvas>
+  <span id="P223h" width="1200" height="360"></span>
   <script type="text/javascript">
     var captions = starCaptions.concat({ text: "P223h", which: 3, edge: 0 });
     drawOne("P223h",
@@ -351,10 +351,10 @@
 
   <h3 id="vflex">10: v-flex</h3>
 
-  <canvas id="V-minimal-hexa" width="900" height="450"></canvas>
-  <canvas id="V-cycle6" width="1000" height="140"></canvas>
-  <canvas id="V-cycle15" width="1000" height="110"></canvas>
-  <canvas id="V-minimal-octa" width="1000" height="252"></canvas>
+  <span id="V-minimal-hexa" width="900" height="450"></span>
+  <span id="V-cycle6" width="1000" height="140"></span>
+  <span id="V-cycle15" width="1000" height="110"></span>
+  <span id="V-minimal-octa" width="1000" height="252"></span>
   <script type="text/javascript">
     drawOne("V-minimal-hexa", getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V"));
     drawOne("V-cycle6", getSeqScript(6, "(V*>)6"), getSeqOptions(-60, -1, 1, "(V>)6"));
@@ -364,9 +364,9 @@
 
   <h3 id="tuck">11: tuck flex</h3>
 
-  <canvas id="T-6-bronze-minimal" width="750" height="500"></canvas><br/><br/>
-  <canvas id="T-6-minimal" width="900" height="400"></canvas><br/><br/>
-  <canvas id="T-8" width="500" height="500"></canvas>
+  <span id="T-6-bronze-minimal" width="750" height="500"></span><br/><br/>
+  <span id="T-6-minimal" width="900" height="400"></span><br/><br/>
+  <span id="T-8" width="500" height="500"></span>
   <script type="text/javascript">
     drawOne("T-6-bronze-minimal", getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T"));
     drawOne("T-6-minimal", getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T"));
@@ -375,10 +375,10 @@
 
   <h3 id="flip">12: flip flex</h3>
 
-  <canvas id="F-8-minimal" width="900" height="400"></canvas><br/><br/>
-  <canvas id="F-6-minimal" width="900" height="500"></canvas><br/><br/>
-  <canvas id="F-10-F5" width="1100" height="488"></canvas><br/><br/>
-  <canvas id="F-7-cycle" width="1000" height="600"></canvas>
+  <span id="F-8-minimal" width="900" height="400"></span><br/><br/>
+  <span id="F-6-minimal" width="900" height="500"></span><br/><br/>
+  <span id="F-10-F5" width="1100" height="488"></span><br/><br/>
+  <span id="F-7-cycle" width="1000" height="600"></span>
   <script type="text/javascript">
     drawOne("F-8-minimal", getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F"));
     drawOne("F-6-minimal", getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F"));
@@ -390,9 +390,9 @@
 
   <h3 id="pyramid shuffle">13: pyramid shuffle</h3>
 
-  <canvas id="S-6-minimal" width="800" height="500"></canvas><br/><br/>
-  <canvas id="S-8-silver-minimal" width="1000" height="400"></canvas><br/><br/>
-  <canvas id="S-5-minimal" width="800" height="500"></canvas><br/><br/>
+  <span id="S-6-minimal" width="800" height="500"></span><br/><br/>
+  <span id="S-8-silver-minimal" width="1000" height="400"></span><br/><br/>
+  <span id="S-5-minimal" width="800" height="500"></span><br/><br/>
   <script type="text/javascript">
     drawOne("S-6-minimal", getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S"));
     drawOne("S-8-silver-minimal", getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S"));
@@ -402,7 +402,7 @@
   <h3 id="breakdown">14: breaking down flexes</h3>
 
   <p>silver octaflexagon: Mkf, Mkb, Mkr, Mkl, Mkfs, Mkbs</p>
-  <canvas id="silverMorphFlexes" width="1000" height="500"></canvas><br/><br/>
+  <span id="silverMorphFlexes" width="1000" height="500"></span><br/><br/>
   <script type="text/javascript">
     const silverMorphScript = [
       { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
@@ -412,9 +412,9 @@
     drawOne('silverMorphFlexes', silverMorphScript, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] });
   </script>
   <!-- minimal morph-flex templates on a silver octaflexagon -->
-  <canvas id="silver-morph-Mkf" width="500" height="500"></canvas><br/><br/>
-  <canvas id="silver-morph-Mkr" width="500" height="500"></canvas><br/><br/>
-  <canvas id="silver-morph-Mkfs" width="500" height="500"></canvas><br/><br/>
+  <span id="silver-morph-Mkf" width="500" height="500"></span><br/><br/>
+  <span id="silver-morph-Mkr" width="500" height="500"></span><br/><br/>
+  <span id="silver-morph-Mkfs" width="500" height="500"></span><br/><br/>
   <script type="text/javascript">
     function drawTemplate(canvasId, flexes, text, rotation) {
       const script = [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
@@ -429,9 +429,9 @@
     drawTemplate("silver-morph-Mkfs", "Mkfs+", "Mkfs", -45); // Mkbs
   </script>
   <!-- St, Fm, and S3 -->
-  <canvas id="morph-St" width="700" height="700"></canvas>
-  <canvas id="morph-Fm" width="1000" height="400"></canvas><br/><br/>
-  <canvas id="morph-S3" width="1000" height="400"></canvas><br/><br/>
+  <span id="morph-St" width="700" height="700"></span>
+  <span id="morph-Fm" width="1000" height="400"></span><br/><br/>
+  <span id="morph-S3" width="1000" height="400"></span><br/><br/>
   <script type="text/javascript">
     drawOne("morph-St", getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St"));
     drawOne("morph-Fm", getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm"));
@@ -472,7 +472,7 @@
   </script>
   <!-- pockets: isosceles octaflexagon -->
   <p>pockets: isosceles octaflexagon</p>
-  <canvas id="iso-penta-octa" width="1000" height="500"></canvas>
+  <span id="iso-penta-octa" width="1000" height="500"></span>
   <script type="text/javascript">
     drawOne("iso-penta-octa", getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5"));
   </script>
@@ -480,10 +480,10 @@
   <h3 id="slot-flexes">15: slot flexes</h3>
 
   <p>supports Lh Lk Ltf Ltb Lbb Lbf</p>
-  <canvas id="slot-6-many" width="1000" height="580"></canvas><br/><br/>
-  <canvas id="slot-8" width="1000" height="500"></canvas><br/><br/>
+  <span id="slot-6-many" width="1000" height="580"></span><br/><br/>
+  <span id="slot-8" width="1000" height="500"></span><br/><br/>
   <p>supports L3, Lk, Ltf</p>
-  <canvas id="slot-5-L3" width="750" height="500"></canvas><br/><br/>
+  <span id="slot-5-L3" width="750" height="500"></span><br/><br/>
   <script type="text/javascript">
     const slot6Captions = [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }];
     drawOne("slot-6-many", getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"), getSeqOptions(90, undefined, undefined, undefined, undefined, slot6Captions));
@@ -503,10 +503,10 @@
   <h3 id="state-diagrams">17: state-diagrams</h3>
 
   <p>(S&lt;)3</p>
-  <canvas id="diagram-s3" width="1000" height="750"></canvas><br/>
+  <span id="diagram-s3" width="1000" height="750"></span><br/>
 
   <p>11 leaf hexaflexagon</p>
-  <canvas id="diagram-hexa11" width="1000" height="350"></canvas><br/>
+  <span id="diagram-hexa11" width="1000" height="350"></span><br/>
 
   <script type="text/javascript">
     drawOne("diagram-s3",
@@ -521,11 +521,11 @@
   <h3 id="sequences">18: sequences</h3>
 
   <p>(F&lt;)6</p>
-  <canvas id="sequences-flipleft1" width="1200" height="240"></canvas><br/>
-  <canvas id="sequences-flipleft2" width="1200" height="240"></canvas><br/>
+  <span id="sequences-flipleft1" width="1200" height="240"></span><br/>
+  <span id="sequences-flipleft2" width="1200" height="240"></span><br/>
 
   <p>(Ltb>P>P>) 12</p>
-  <canvas id="sequences-hexa12" width="1200" height="170"></canvas><br/>
+  <span id="sequences-hexa12" width="1200" height="170"></span><br/>
 
   <script type="text/javascript">
     var flipleft = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
@@ -543,12 +543,12 @@
   <h3 id="pat-notation">19: pat notation</h3>
 
   <p>example</p>
-  <canvas id="pats-example-unfolded" width="1000" height="600"></canvas><br/>
+  <span id="pats-example-unfolded" width="1000" height="600"></span><br/>
   <p>tri-hexa</p>
-  <canvas id="pats-trihexa-unfolded" width="1000" height="180"></canvas><br/>
+  <span id="pats-trihexa-unfolded" width="1000" height="180"></span><br/>
   <p>same visible leaves, different structure</p>
-  <canvas id="pats-visible-Tf" width="1100" height="480"></canvas><br/>
-  <canvas id="pats-visible-T" width="1200" height="500"></canvas>
+  <span id="pats-visible-Tf" width="1100" height="480"></span><br/>
+  <span id="pats-visible-T" width="1200" height="500"></span>
   <script type="text/javascript">
     // example
     const exampleScript = [
@@ -610,9 +610,9 @@
 
   <h3 id="hexa-silver-dodeca">30: hexagonal silver dodeca</h3>
 
-  <canvas id="silverDodecaHexa-Tu" width="1200" height="136"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-Ds" width="800" height="400"></canvas><br/><br/>
-  <canvas id="silverDodecaHexa-T" width="840" height="600"></canvas><br/><br/>
+  <span id="silverDodecaHexa-Tu" width="1200" height="136"></span><br/><br/>
+  <span id="silverDodecaHexa-Ds" width="800" height="400"></span><br/><br/>
+  <span id="silverDodecaHexa-T" width="840" height="600"></span><br/><br/>
   <script type="text/javascript">
     const baseSilver = [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }];
 
@@ -626,14 +626,14 @@
 
   <h3 id="bracelets">31: bracelets</h3>
 
-  <canvas id="bracelet-silver-Tr2" width="1200" height="404"></canvas><br/><br/>
-  <canvas id="bracelet-silver-Tr4" width="1200" height="175"></canvas><br/><br/>
-  <canvas id="bracelet-silver-tetra" width="1200" height="403"></canvas><br/><br/>
+  <span id="bracelet-silver-Tr2" width="1200" height="404"></span><br/><br/>
+  <span id="bracelet-silver-Tr4" width="1200" height="175"></span><br/><br/>
+  <span id="bracelet-silver-tetra" width="1200" height="403"></span><br/><br/>
   <br/>
-  <canvas id="bracelet-silver-cycle" width="1200" height="153"></canvas><br/><br/>
-  <canvas id="bracelet-silver-mobius" width="1200" height="136"></canvas><br/><br/>
-  <canvas id="bracelet-silver-WFW" width="1200" height="405"></canvas><br/><br/>
-  <canvas id="bracelet-silver-WSW" width="1200" height="556"></canvas>
+  <span id="bracelet-silver-cycle" width="1200" height="153"></span><br/><br/>
+  <span id="bracelet-silver-mobius" width="1200" height="136"></span><br/><br/>
+  <span id="bracelet-silver-WFW" width="1200" height="405"></span><br/><br/>
+  <span id="bracelet-silver-WSW" width="1200" height="556"></span>
   <script type="text/javascript">
     const base = [
       { numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addMorphFlexes: true }
@@ -700,9 +700,9 @@
   <!-- decorating -->
   <h3 id="decorating">34: decorating</h3>
 
-  <canvas id="decorate-tri-octa" width="1000" height="225"></canvas>
-  <canvas id="decorate-tri-deca" width="1000" height="244"></canvas>
-  <canvas id="decorate-tri-dodeca" width="1000" height="250"></canvas>
+  <span id="decorate-tri-octa" width="1000" height="225"></span>
+  <span id="decorate-tri-deca" width="1000" height="244"></span>
+  <span id="decorate-tri-dodeca" width="1000" height="250"></span>
   <p>(T+>>)5 pentagonal right decaflexagon</p>
   <span id="decorate-tuck-deca1" width="500" height="500"></span>
   <span id="decorate-tuck-deca2" width="365" height="500"></span>
