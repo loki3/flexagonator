@@ -60,9 +60,8 @@
       return { rotation, content, captions };
     }
 
-
     // special handling of the regular penta-<x>flexagon to make for a better numbering scheme
-    function drawPenta(canvasId, numPats, rotation, extraCaptions) {
+    function getPentaScript(numPats) {
       const pentaPats = [0, [0, [0, [0, 0]]]];
       const pentaNums = [[2, 1], [2, 3], [3, 4], [4, 5], [5, 1]];
       const pats = Array(numPats / 2).fill(pentaPats).flatMap(p => p);
@@ -70,13 +69,12 @@
       const leafProps = numbers.map(pair => {
         return { front: { label: pair[0].toString() }, back: { label: pair[1].toString() } };
       });
-
-      const script = [{ pats, angles2: [60, 60], leafProps }];
-      const fm = Flexagonator.createFromScript(script);
+      return [{ pats, angles2: [60, 60], leafProps }];
+    }
+    function getPentaOptions(rotation, extraCaptions) {
       let captions = starCaptions.concat({ text: "5", which: 2, edge: 2 });
       if (extraCaptions) captions = captions.concat(extraCaptions);
-      const options = { rotation, content: { showLeafProps: true }, captions };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
+      return { rotation, content: { showLeafProps: true }, captions };
     }
 
     // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
@@ -160,7 +158,7 @@
   <h4>penta-hexaflexagon</h4>
   <canvas id="penta-hexa" width="1000" height="475"></canvas>
   <script type="text/javascript">
-    drawPenta("penta-hexa", 6, 60);
+    drawOne("penta-hexa", getPentaScript(6), getPentaOptions(60));
   </script>
 
   <h4>hexa-hexaflexagon</h4>
@@ -216,7 +214,7 @@
   <h4>regular penta-tetraflexagon</h4>
   <canvas id="penta-tetra" width="770" height="500"></canvas>
   <script type="text/javascript">
-    drawPenta("penta-tetra", 4, 60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }]);
+    drawOne("penta-tetra", getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }]));
   </script>
 
   <h4>regular tri-octaflexagon</h4>
@@ -231,7 +229,7 @@
   <h4>regular penta-octaflexagon</h4>
   <canvas id="penta-octa" width="1200" height="448"></canvas>
   <script type="text/javascript">
-    drawPenta("penta-octa", 8, 60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }]);
+    drawOne("penta-octa", getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }]));
   </script>
 
   <!-- different triangles -->
