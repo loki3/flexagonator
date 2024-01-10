@@ -19,8 +19,10 @@ namespace Flexagonator {
   export function convertLeafProps(labels: (string | number)[][], repeat?: number, colors?: number[]): LeafProperties[] {
     let numbers: (string | number)[][] = labels;
     if (repeat) {
+      // if we have an odd number of pats, every other repeat swaps top & bottom
+      const alt = labels.length % 2 === 0 ? labels : labels.map(p => [p[1], p[0]]);
       for (let i = 1; i < repeat; i++) {
-        numbers = numbers.concat(labels);
+        numbers = numbers.concat(i % 2 === 0 ? labels : alt);
       }
     }
     const leafProps = numbers.map(pair => {
