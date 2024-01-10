@@ -12,7 +12,7 @@ the flexagon as described in [pat notation](pat-notation.md) and figure out how 
 There's also a function for drawing the graph of states accessible by just using the pinch flex.
 
 The draw routines can accept the name of an HTML element that's either a canvas
-or something to attach an SVG under, such as a `<div>`.
+or something to attach an SVG under, such as a `<div>` or `<span>`.
 
 ```html
 <canvas id="canvas-name" width="800" height="500"></canvas>
@@ -153,7 +153,7 @@ They differ in how you pass information about the flexagon itself,
 which could come either from an instance of `FlexagonManager` or bundled up in `DrawStripObjects`.
 
 ```javascript
-// target:   element(s) to draw in (string | HTMLCanvasElement)
+// target:   element(s) to draw in (string | string[] | HTMLCanvasElement)
 // fm:       an instance of FlexagonManager
 // objects:  an instance of DrawStripObjects
 // options:  an instance or array of DrawStripOptions

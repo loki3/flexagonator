@@ -58,7 +58,7 @@ namespace Flexagonator {
   }
 
   // draw an unfolded flexagon strip
-  export function drawUnfolded(canvas: string | HTMLCanvasElement | string[], fm: FlexagonManager, options?: DrawStripOptions | DrawStripOptions[]) {
+  export function drawUnfolded(target: string | HTMLCanvasElement | string[], fm: FlexagonManager, options?: DrawStripOptions | DrawStripOptions[]) {
     const directions = fm.getDirections();
     const objects = {
       flexagon: fm.flexagon,
@@ -66,7 +66,7 @@ namespace Flexagonator {
       directions: directions ? directions.asRaw() : undefined,
       leafProps: fm.leafProps,
     };
-    return drawUnfoldedObjects(canvas, objects, options);
+    return drawUnfoldedObjects(target, objects, options);
   }
 
   export function drawUnfoldedObjects(target: string | HTMLCanvasElement | string[], objects: DrawStripObjects, options?: DrawStripOptions | DrawStripOptions[]) {
