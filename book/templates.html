@@ -229,28 +229,16 @@
 
   <h4>P333</h4>
   <span id="P333" width="1200" height="400"></span><br/>
-  <span id="P333-8a" width="390" height="400"></span>
-  <span id="P333-8b" width="390" height="400"></span>
-  <span id="P333-8c" width="390" height="400"></span>
+  <span id="P333-8-1" width="390" height="400"></span>
+  <span id="P333-8-2" width="390" height="400"></span>
+  <span id="P333-8-3" width="390" height="400"></span>
   <br/>
 
   <h4>P3333, P444, P66</h4>
-  <span id="P444a" width="300" height="300"></span>
-  <span id="P444b" width="300" height="300"></span>
-  <span id="P444c" width="300" height="300"></span>
-  <span id="P444d" width="300" height="300"></span>
-  <script type="text/javascript">
-    function showPiece(canvas, labelA, labelB, extraLabel) {
-      var script = [{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }];
-      var captions = [{ text: labelA, which: 0, edge: 1 }, { text: labelB, which: -1, edge: 2 }];
-      if (extraLabel) { captions.push(extraLabel); }
-      drawOne(canvas, script, { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' }, captions });
-    }
-    showPiece("P444a", "d", "a", { text: "P444", which: 1 });
-    showPiece("P444b", "a", "b");
-    showPiece("P444c", "b", "c");
-    showPiece("P444d", "c", "d");
-  </script>
+  <span id="P444-1" width="300" height="300"></span>
+  <span id="P444-2" width="300" height="300"></span>
+  <span id="P444-3" width="300" height="300"></span>
+  <span id="P444-4" width="300" height="300"></span>
   <br/>
 
   <p>
@@ -584,9 +572,16 @@
         [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }],
         { rotation: 4, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 }) }
       ],
-      "P333-8a": [p333Script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }] }],
-      "P333-8b": [p333Script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: - 1, edge: 1 }] }],
-      "P333-8c": [p333Script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }],
+      "P333-8": [p333Script, { rotation: 0, content: { showLeafProps: true } },
+        [{ captions: [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }] },
+        { captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: - 1, edge: 1 }] },
+        { captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }]],
+      "P444": [[{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }],
+      { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' } },
+      [{ captions: [{ text: "d", which: 0, edge: 1 }, { text: "a", which: -1, edge: 2 }, { text: "P444", which: 1 }] },
+      { captions: [{ text: "a", which: 0, edge: 1 }, { text: "b", which: -1, edge: 2 }] },
+      { captions: [{ text: "b", which: 0, edge: 1 }, { text: "c", which: -1, edge: 2 }] },
+      { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }]],
       "P444-half": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
       "P223h": [
         [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
