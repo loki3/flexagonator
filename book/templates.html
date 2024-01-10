@@ -132,34 +132,20 @@
 
   <h4>tri-hexaflexagon</h4>
   <span id="tri-hexa" width="800" height="180"></span>
-  <script type="text/javascript">
-    drawOne("tri-hexa", getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2));
-  </script>
 
   <!-- 4, 5, & 6 faces-->
   <h3 id="more-faces">3: more faces</h3>
 
   <h4>tetra-hexaflexagon</h4>
   <span id="tetra-hexa" width="800" height="233"></span>
-  <script type="text/javascript">
-    drawOne("tetra-hexa", getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1));
-  </script>
 
   <h4>penta-hexaflexagon</h4>
   <span id="penta-hexa" width="1000" height="475"></span>
-  <script type="text/javascript">
-    drawOne("penta-hexa", getPentaScript(6), getPentaOptions(60));
-  </script>
 
   <h4>hexa-hexaflexagon</h4>
   <span id="hexa-hexa1" width="1200" height="120"></span>
   <span id="hexa-hexa2" width="700" height="610"></span>
   <span id="hexa-hexa3" width="700" height="700"></span>
-  <script type="text/javascript">
-    drawOne("hexa-hexa1", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a"));
-    drawOne("hexa-hexa2", getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid"));
-    drawOne("hexa-hexa3", getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid"));
-  </script>
 
   <h4>dodeca-hexaflexagon</h4>
   <span id="dodeca-hexa" width="1200" height="163"></span>
@@ -193,33 +179,15 @@
 
   <h4>regular tri-tetraflexagon</h4>
   <span id="tri-tetra" width="880" height="220"></span>
-  <script type="text/javascript">
-    var script = [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 }, { text: "+", which: 3, edge: 1 }, { text: "+", which: 4, edge: 1 });
-    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions };
-    drawOne("tri-tetra", script, drawOptions);
-  </script>
 
   <h4>regular penta-tetraflexagon</h4>
   <span id="penta-tetra" width="770" height="500"></span>
-  <script type="text/javascript">
-    drawOne("penta-tetra", getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }]));
-  </script>
 
   <h4>regular tri-octaflexagon</h4>
   <span id="tri-octa" width="1200" height="220"></span>
-  <script type="text/javascript">
-    var script = [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }];
-    var captions = starCaptions.concat({ text: "3", which: 0, edge: 2 });
-    var drawOptions = { rotation: 120, content: { showLeafProps: true }, captions };
-    drawOne("tri-octa", script, drawOptions);
-  </script>
 
   <h4>regular penta-octaflexagon</h4>
   <span id="penta-octa" width="1200" height="448"></span>
-  <script type="text/javascript">
-    drawOne("penta-octa", getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }]));
-  </script>
 
   <!-- different triangles -->
   <h3 id="different">5: different triangles</h3>
@@ -239,39 +207,6 @@
   <span id="diff-silver-penta-tetra-b" width="500" height="250"></span><br/><br/>
   <span id="diff-silver-hexa-tetra" width="800" height="400"></span>
   <span id="diff-other-tri-hexa" width="1000" height="372"></span><br/><br/>
-  <script type="text/javascript">
-    const triCaptions = [
-      { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
-      { text: "a", which: 1, edge: 0 }, { text: "b", which: 1, edge: 1 }, { text: "c", which: 1, edge: 2 },
-      { text: "c", which: 2, edge: 0 }, { text: "b", which: 2, edge: 1 }, { text: "a", which: 2, edge: 2 },
-      { text: "b", which: 3, edge: 0 }, { text: "c", which: 3, edge: 1 }, { text: "a", which: 3, edge: 2 },
-      { text: "a", which: 4, edge: 0 }, { text: "c", which: 4, edge: 1 }, { text: "b", which: 4, edge: 2 },
-      { text: "c", which: 5, edge: 0 }, { text: "a", which: 5, edge: 1 }, { text: "b", which: 5, edge: 2 },
-      { text: "b", which: 6, edge: 0 }, { text: "a", which: 6, edge: 1 }, { text: "c", which: 6, edge: 2 },
-      { text: "a", which: 7, edge: 0 }, { text: "b", which: 7, edge: 1 }, { text: "c", which: 7, edge: 2 },
-      { text: "c", which: 8, edge: 0 }, { text: "b", which: 8, edge: 1 }, { text: "a", which: 8, edge: 2 },
-    ];
-
-    drawOne("diff-bronze-tri-hexa", getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, -3, 0, "3"));
-    drawOne("diff-regular-tri-hexa-abc", getSeqScript(6, "P+", [60, 60], ">"), getSeqOptions(120, undefined, undefined, undefined, undefined, triCaptions));
-    drawOne("diff-bronze-tri-hexa-abc", getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, undefined, undefined, undefined, undefined, triCaptions));
-    drawOne("diff-bronze-tri-tetra1", getPinchScript(6, "P*P+", [60, 90]), getPinchOptions(150, undefined, undefined, -1, "4a", 0));
-    drawOne("diff-bronze-tri-tetra2", getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid"));
-    drawOne("diff-bronze-tri-tetra3", getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0));
-    drawOne("diff-bronze-hexa-octa", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a"));
-    drawOne("diff-silver-tri-hexa", getSeqScript(6, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3"));
-    drawOne("diff-silver-tetra-octa1", getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid"));
-    drawOne("diff-silver-tetra-octa2", getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1));
-    drawOne("diff-silver-hexa-octa", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a"));
-    drawOne("diff-silver-hexa-tetra", getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid"));
-    drawOne("diff-other-tri-hexa", getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3"));
-
-    var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
-    drawOne("diff-silver-penta-tetra-a", script,
-      { rotation: 45, content: { showLeafProps: true }, start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] });
-    drawOne("diff-silver-penta-tetra-b", script,
-      { rotation: 45, content: { showLeafProps: true }, start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
-  </script>
 
   <!-- pinch flex variations -->
   <h3 id="pinch-variations">6: pinch flex variations</h3>
@@ -281,20 +216,6 @@
   <span id="P333-8a" width="390" height="400"></span>
   <span id="P333-8b" width="390" height="400"></span>
   <span id="P333-8c" width="390" height="400"></span>
-  <script type="text/javascript">
-    var script = [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }];
-    var captions = starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 });
-    drawOne("P333", script, { rotation: 4, content: { showLeafProps: true }, captions });
-  </script>
-  <script type="text/javascript">
-    var script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
-    { setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]] } },
-    { angles: [40, 70] }];
-    var captions = [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }];
-    drawOne("P333-8a", script, { rotation: 0, content: { showLeafProps: true }, captions });
-    drawOne("P333-8b", script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: -1, edge: 1 }] });
-    drawOne("P333-8c", script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] });
-  </script>
   <br/>
 
   <h4>P3333, P444, P66</h4>
@@ -321,25 +242,9 @@
     though the leaves no longer meet in the middle
   </p>
   <span id="P444-half" width="1200" height="233"></span>
-  <script type="text/javascript">
-    var script = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
-    { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
-    { angles: [30, 60] }];
-    var captions = starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 });
-    drawOne("P444-half", script, { rotation: 120, content: { showLeafProps: true }, captions });
-  </script>
 
   <h4>P223h</h4>
   <span id="P223h" width="1200" height="360"></span>
-  <script type="text/javascript">
-    var captions = starCaptions.concat({ text: "P223h", which: 3, edge: 0 });
-    drawOne("P223h",
-      [
-        { pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
-        { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]] } },
-      ],
-      { rotation: 25.714, content: { showLeafProps: true }, captions });
-  </script>
 
   <hr />
 
@@ -355,23 +260,12 @@
   <span id="V-cycle6" width="1000" height="140"></span>
   <span id="V-cycle15" width="1000" height="110"></span>
   <span id="V-minimal-octa" width="1000" height="252"></span>
-  <script type="text/javascript">
-    drawOne("V-minimal-hexa", getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V"));
-    drawOne("V-cycle6", getSeqScript(6, "(V*>)6"), getSeqOptions(-60, -1, 1, "(V>)6"));
-    drawOne("V-cycle15", getSeqScript(6, "(V*<)15"), getSeqOptions(60, -2, 2, "(V<)15"));
-    drawOne("V-minimal-octa", getSeqScript(8, "V*", [45, 90]), getSeqOptions(-45, -1, 0, "V"));
-  </script>
 
   <h3 id="tuck">11: tuck flex</h3>
 
   <span id="T-6-bronze-minimal" width="750" height="500"></span><br/><br/>
   <span id="T-6-minimal" width="900" height="400"></span><br/><br/>
   <span id="T-8" width="500" height="500"></span>
-  <script type="text/javascript">
-    drawOne("T-6-bronze-minimal", getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T"));
-    drawOne("T-6-minimal", getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T"));
-    drawOne("T-8", getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4"));
-  </script>
 
   <h3 id="flip">12: flip flex</h3>
 
@@ -379,25 +273,12 @@
   <span id="F-6-minimal" width="900" height="500"></span><br/><br/>
   <span id="F-10-F5" width="1100" height="488"></span><br/><br/>
   <span id="F-7-cycle" width="1000" height="600"></span>
-  <script type="text/javascript">
-    drawOne("F-8-minimal", getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F"));
-    drawOne("F-6-minimal", getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F"));
-    drawOne("F-10-F5", getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35));
-    const labels7 = [[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
-    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]];
-    drawOne("F-7-cycle", getOddScript(7, "(F*<)5", "^", labels7, 1), getOddOptions(undefined, -3, 1, "(F<)5", true));
-  </script>
 
   <h3 id="pyramid shuffle">13: pyramid shuffle</h3>
 
   <span id="S-6-minimal" width="800" height="500"></span><br/><br/>
   <span id="S-8-silver-minimal" width="1000" height="400"></span><br/><br/>
   <span id="S-5-minimal" width="800" height="500"></span><br/><br/>
-  <script type="text/javascript">
-    drawOne("S-6-minimal", getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S"));
-    drawOne("S-8-silver-minimal", getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S"));
-    drawOne("S-5-minimal", getOddScript(5, "S*", ">>"), getOddOptions(-72, -2, 1, "S"));
-  </script>
 
   <h3 id="breakdown">14: breaking down flexes</h3>
 
@@ -746,6 +627,117 @@
     var script = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { angles: [72, 54], setLabels }];
     var options = { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions };
     drawOne("animal-penta", script, options);
+  </script>
+
+  <script type="text/javascript">
+    // data for specific templates
+    const triCaptions = [
+      { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
+      { text: "a", which: 1, edge: 0 }, { text: "b", which: 1, edge: 1 }, { text: "c", which: 1, edge: 2 },
+      { text: "c", which: 2, edge: 0 }, { text: "b", which: 2, edge: 1 }, { text: "a", which: 2, edge: 2 },
+      { text: "b", which: 3, edge: 0 }, { text: "c", which: 3, edge: 1 }, { text: "a", which: 3, edge: 2 },
+      { text: "a", which: 4, edge: 0 }, { text: "c", which: 4, edge: 1 }, { text: "b", which: 4, edge: 2 },
+      { text: "c", which: 5, edge: 0 }, { text: "a", which: 5, edge: 1 }, { text: "b", which: 5, edge: 2 },
+      { text: "b", which: 6, edge: 0 }, { text: "a", which: 6, edge: 1 }, { text: "c", which: 6, edge: 2 },
+      { text: "a", which: 7, edge: 0 }, { text: "b", which: 7, edge: 1 }, { text: "c", which: 7, edge: 2 },
+      { text: "c", which: 8, edge: 0 }, { text: "b", which: 8, edge: 1 }, { text: "a", which: 8, edge: 2 },
+    ];
+    const silverPentaScript = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
+    const p333Script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
+    { setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]] } },
+    { angles: [40, 70] }];
+    const p444hScript = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
+    { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
+    { angles: [30, 60] }];
+    const labelsF7 = [[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
+    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]];
+
+    // details on drawing the templates: { templateId: [script, drawOptions] }
+    const templates = {
+      // pinch flex
+      "tri-hexa": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2)],
+
+      // 4, 5, & 6 faces
+      "tetra-hexa": [getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1)],
+      "penta-hexa": [getPentaScript(6), getPentaOptions(60)],
+      "hexa-hexa1": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a")],
+      "hexa-hexa2": [getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid")],
+      "hexa-hexa3": [getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid")],
+
+      // triangle tetra & octa
+      "tri-tetra": [
+        [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }],
+        { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "3", which: 0, edge: 2 }, { text: "+", which: 3, edge: 1 }, { text: "+", which: 4, edge: 1 }) }
+      ],
+      "penta-tetra": [getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }])],
+      "tri-octa": [
+        [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }],
+        { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "3", which: 0, edge: 2 }) }
+      ],
+      "penta-octa": [getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }])],
+
+      // different triangles
+      "diff-bronze-tri-hexa": [getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, -3, 0, "3")],
+      "diff-regular-tri-hexa-abc": [getSeqScript(6, "P+", [60, 60], ">"), getSeqOptions(120, undefined, undefined, undefined, undefined, triCaptions)],
+      "diff-bronze-tri-hexa-abc": [getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, undefined, undefined, undefined, undefined, triCaptions)],
+      "diff-bronze-tri-tetra1": [getPinchScript(6, "P*P+", [60, 90]), getPinchOptions(150, undefined, undefined, -1, "4a", 0)],
+      "diff-bronze-tri-tetra2": [getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid")],
+      "diff-bronze-tri-tetra3": [getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0)],
+      "diff-bronze-hexa-octa": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a")],
+      "diff-silver-tri-hexa": [getSeqScript(6, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3")],
+      "diff-silver-tetra-octa1": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid")],
+      "diff-silver-tetra-octa2": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1)],
+      "diff-silver-hexa-octa": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
+      "diff-silver-hexa-tetra": [getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid")],
+      "diff-other-tri-hexa": [getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3")],
+      "diff-silver-penta-tetra-a": [silverPentaScript,
+        { rotation: 45, content: { showLeafProps: true }, start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] }],
+      "diff-silver-penta-tetra-b": [silverPentaScript,
+        { rotation: 45, content: { showLeafProps: true }, start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }],
+
+      // pinch flex variations
+      "P333": [
+        [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }],
+        { rotation: 4, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 }) }
+      ],
+      "P333-8a": [p333Script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }] }],
+      "P333-8b": [p333Script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: - 1, edge: 1 }] }],
+      "P333-8c": [p333Script, { rotation: 0, content: { showLeafProps: true }, captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }],
+      "P444-half": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
+      "P223h": [
+        [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
+        { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]] } }],
+        { rotation: 25.714, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P223h", which: 3, edge: 0 }) }],
+
+      // v-flex
+      "V-minimal-hexa": [getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V")],
+      "V-cycle6": [getSeqScript(6, "(V*>)6"), getSeqOptions(-60, -1, 1, "(V>)6")],
+      "V-cycle15": [getSeqScript(6, "(V*<)15"), getSeqOptions(60, -2, 2, "(V<)15")],
+      "V-minimal-octa": [getSeqScript(8, "V*", [45, 90]), getSeqOptions(-45, -1, 0, "V")],
+
+      // tuck
+      "T-6-bronze-minimal": [getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T")],
+      "T-6-minimal": [getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T")],
+      "T-8": [getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4")],
+
+      // flip
+      "F-8-minimal": [getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F")],
+      "F-6-minimal": [getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F")],
+      "F-10-F5": [getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35)],
+      "F-7-cycle": [getOddScript(7, "(F*<)5", "^", labelsF7, 1), getOddOptions(undefined, -3, 1, "(F<)5", true)],
+
+      // pyramid shuffle
+      "S-6-minimal": [getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S")],
+      "S-8-silver-minimal": [getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S")],
+      "S-5-minimal": [getOddScript(5, "S*", ">>"), getOddOptions(-72, -2, 1, "S")],
+    };
+
+    // display all the templates
+    const ids = Object.getOwnPropertyNames(templates);
+    for (let id of ids) {
+      const [script, options] = templates[id];
+      drawOne(id, script, options);
+    }
   </script>
 
 </body>
