@@ -87,6 +87,10 @@
       const optionsAll = { scale: 300, content: { showLeafProps: true } };
       return { ...optionsAll, rotation, start, end, captions };
     }
+
+    function getSilver12Script(flexes) {
+      return [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }, { flexes, labelAsTree }];
+    }
   </script>
 </head>
 
@@ -344,15 +348,6 @@
   <p>11 leaf hexaflexagon</p>
   <span id="diagram-hexa11" width="1000" height="350"></span><br/>
 
-  <script type="text/javascript">
-    drawOne("diagram-s3",
-      [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
-      { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions });
-    drawOne("diagram-hexa11",
-      [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree: [] }],
-      { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions });
-  </script>
-
   <!-- sequences -->
   <h3 id="sequences">18: sequences</h3>
 
@@ -362,18 +357,6 @@
 
   <p>(Ltb>P>P>) 12</p>
   <span id="sequences-hexa12" width="1200" height="170"></span><br/>
-
-  <script type="text/javascript">
-    var flipleft = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
-    drawOne("sequences-flipleft1", flipleft,
-      { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3 }] });
-    drawOne("sequences-flipleft2", flipleft,
-      { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] });
-
-    drawOne("sequences-hexa12",
-      [{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
-      { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] });
-  </script>
 
   <!-- pat-notation -->
   <h3 id="pat-notation">19: pat notation</h3>
@@ -385,24 +368,6 @@
   <p>same visible leaves, different structure</p>
   <span id="pats-visible-Tf" width="1100" height="480"></span><br/>
   <span id="pats-visible-T" width="1200" height="500"></span>
-  <script type="text/javascript">
-    // example
-    const exampleScript = [
-      { pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] },
-      { labelAsTree: [], searchFlexes: "P S T V" }
-    ];
-    drawOne("pats-example-unfolded", exampleScript, { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions });
-    // tri-hexa
-    const trihexaScript = [{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree: [] }];
-    drawOne("pats-trihexa-unfolded", trihexaScript, { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions });
-    // visible
-    drawOne("pats-visible-Tf",
-      [{ "pats": [[[-2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
-      { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions });
-    drawOne("pats-visible-T",
-      [{ "pats": [[[-2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
-      { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions });
-  </script>
 
   <!-- atomic flex theory -->
   <h3 id="atomic-flex-theory">20: atomic flex theory</h3>
@@ -418,47 +383,17 @@
   <span id="silverOcta-Tw" width="1000" height="250"></span><br/><br/>
   <span id="silverOcta-6a" width="1200" height="204"></span><br/><br/>
   <span id="silverOcta-6b" width="1200" height="204"></span><br/><br/>
-  <script type="text/javascript">
-    drawOne("silverOcta-Tw", getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw"));
-
-    var hexa = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
-    drawOne("silverOcta-6a", hexa,
-      { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] });
-    drawOne("silverOcta-6b", hexa,
-      { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
-  </script>
 
   <h3 id="hexa-bronze-dodeca">29: hexagonal bronze dodeca</h3>
   <span id="bronzeDodeca-6a" width="1100" height="300"></span><br/><br/>
   <span id="bronzeDodeca-6b" width="1100" height="300"></span><br/><br/>
   <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
-  <script type="text/javascript">
-    var hexa = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
-    drawOne("bronzeDodeca-6a", hexa,
-      { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] });
-    drawOne("bronzeDodeca-6b", hexa,
-      { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] });
-
-    var morph = [{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }];
-    drawOne("bronzeDodeca-morph", morph,
-      { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] });
-  </script>
 
   <h3 id="hexa-silver-dodeca">30: hexagonal silver dodeca</h3>
 
   <span id="silverDodecaHexa-Tu" width="1200" height="136"></span><br/><br/>
   <span id="silverDodecaHexa-Ds" width="800" height="400"></span><br/><br/>
   <span id="silverDodecaHexa-T" width="840" height="600"></span><br/><br/>
-  <script type="text/javascript">
-    const baseSilver = [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }];
-
-    drawOne("silverDodecaHexa-Tu", [...baseSilver, { flexes: "Tu*Tu*", labelAsTree }],
-      { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 1 }] });
-    drawOne("silverDodecaHexa-Ds", [...baseSilver, { flexes: "<<Ds+", labelAsTree }],
-      { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] });
-    drawOne("silverDodecaHexa-T", [...baseSilver, { flexes: "<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>", labelAsTree }],
-      { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] });
-  </script>
 
   <h3 id="bracelets">31: bracelets</h3>
 
@@ -612,6 +547,9 @@
       { labelAsTree: [] }
     ];
     const kiteAllScript = getKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
+    const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
+    const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
+    const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
 
     // details on drawing the templates: { templateId: [script, drawOptions] }
     const templates = {
@@ -718,6 +656,57 @@
       getSeqOptions(45, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }])],
       "slot-5-L3": [getOddScript(5, "L3*", "", [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]),
       getOddOptions(252, 2, 2, "L3", true)],
+
+      // state diagrams
+      "diagram-s3": [
+        [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
+        { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions }],
+      "diagram-hexa11": [
+        [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree: [] }],
+        { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions }],
+
+      // sequences
+      "sequences-flipleft1": [flipleftScript,
+        { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] }],
+      "sequences-flipleft2": [flipleftScript,
+        { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],
+      "sequences-hexa12": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
+      { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] }],
+
+      // pat notation
+      "pats-example-unfolded": [
+        [{ pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] }, { labelAsTree: [], searchFlexes: "P S T V" }],
+        { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions }],
+      "pats-trihexa-unfolded": [[{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree: [] }],
+      { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions }],
+      "pats-visible-Tf": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
+      { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
+      "pats-visible-T": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
+      { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
+
+      // square silver octa
+      "silverOcta-Tw": [getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw")],
+      "silverOcta-6a": [silverOcta8Script,
+        { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] }],
+      "silverOcta-6b": [silverOcta8Script,
+        { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] }],
+
+      // hexa bronze dodeca
+      "bronzeDodeca-6a": [bronzeHexaScript,
+        { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] }],
+      "bronzeDodeca-6b": [bronzeHexaScript,
+        { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] }],
+      "bronzeDodeca-morph": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }],
+      { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] }],
+
+
+      // hexa silver dodeca
+      "silverDodecaHexa-Tu": [getSilver12Script("Tu*Tu*"),
+      { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 1 }] }],
+      "silverDodecaHexa-Ds": [getSilver12Script("<<Ds+"),
+      { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] }],
+      "silverDodecaHexa-T": [getSilver12Script("<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>"),
+      { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] }],
     };
 
     // display all the templates
