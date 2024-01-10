@@ -296,13 +296,13 @@
   <span id="morph-S3" width="1000" height="400"></span><br/><br/>
   <!-- kite -->
   <h4>kite bronze octaflexagon</h4>
-  <span id="kite-bf1" width="523" height="454"></span>
-  <span id="kite-bf2" width="455" height="393"></span>
+  <span id="kite-bf-1" width="523" height="454"></span>
+  <span id="kite-bf-2" width="455" height="393"></span>
   <p>all morph-kite combos</p>
-  <span id="kite-all1" width="523" height="454"></span>
-  <span id="kite-all2" width="523" height="454"></span><br/>
-  <span id="kite-all3" width="523" height="454"></span>
-  <span id="kite-all4" width="454" height="264"></span><br/>
+  <span id="kite-all-1" width="523" height="454"></span>
+  <span id="kite-all-2" width="523" height="454"></span><br/>
+  <span id="kite-all-3" width="523" height="454"></span>
+  <span id="kite-all-4" width="454" height="264"></span><br/>
   <!-- pockets: isosceles octaflexagon -->
   <p>pockets: isosceles octaflexagon</p>
   <span id="iso-penta-octa" width="1000" height="500"></span>
@@ -332,8 +332,8 @@
   <h3 id="sequences">18: sequences</h3>
 
   <p>(F&lt;)6</p>
-  <span id="sequences-flipleft1" width="1200" height="240"></span><br/>
-  <span id="sequences-flipleft2" width="1200" height="240"></span><br/>
+  <span id="sequences-flipleft-1" width="1200" height="240"></span><br/>
+  <span id="sequences-flipleft-2" width="1200" height="240"></span><br/>
 
   <p>(Ltb>P>P>) 12</p>
   <span id="sequences-hexa12" width="1200" height="170"></span><br/>
@@ -354,13 +354,13 @@
   <h2 id="part4">Part 4: Exploring</h2>
 
   <h3 id="square-silver-octa">28: square silver octa</h3>
-  <span id="silverOcta-6a" width="1200" height="204"></span><br/><br/>
-  <span id="silverOcta-6b" width="1200" height="204"></span><br/><br/>
+  <span id="silverOcta-6-1" width="1200" height="204"></span><br/><br/>
+  <span id="silverOcta-6-2" width="1200" height="204"></span><br/><br/>
   <span id="silverOcta-Tw" width="1000" height="250"></span><br/><br/>
 
   <h3 id="hexa-bronze-dodeca">29: hexagonal bronze dodeca</h3>
-  <span id="bronzeDodeca-6a" width="1100" height="300"></span><br/><br/>
-  <span id="bronzeDodeca-6b" width="1100" height="300"></span><br/><br/>
+  <span id="bronzeDodeca-6-1" width="1100" height="300"></span><br/><br/>
+  <span id="bronzeDodeca-6-2" width="1100" height="300"></span><br/><br/>
   <span id="bronzeDodeca-morph" width="1100" height="426"></span><br/><br/>
 
   <h3 id="hexa-silver-dodeca">30: hexagonal silver dodeca</h3>
@@ -618,12 +618,14 @@
       "morph-St": [getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St")],
       "morph-Fm": [getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm")],
       "morph-S3": [getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3")],
-      "kite-bf1": [getKiteScript("Bf+ >>>"), { rotation: -30, scale: 300, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Bf", which: 0, edge: 2 }] }],
-      "kite-bf2": [getKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] }],
-      "kite-all1": [kiteAllScript, getKiteOptions(30, 0, 6, [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }])],
-      "kite-all2": [kiteAllScript, getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }])],
-      "kite-all3": [kiteAllScript, getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }])],
-      "kite-all4": [kiteAllScript, getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],
+      "kite-bf": [getKiteScript("Bf+ >>>"), {},
+      [{ rotation: -30, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Bf", which: 0, edge: 2 }] },
+      { rotation: 0, start: 8, captions: [lastStar, { text: "a", which: 0 }] }]],
+      "kite-all": [kiteAllScript, {},
+        [getKiteOptions(30, 0, 6, [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }]),
+        getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }]),
+        getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }]),
+        getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],],
       "iso-penta-octa": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5")],
 
       // slots
@@ -643,10 +645,9 @@
         { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions }],
 
       // sequences
-      "sequences-flipleft1": [flipleftScript,
-        { end: 11, content: { showLeafProps: true }, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] }],
-      "sequences-flipleft2": [flipleftScript,
-        { start: 12, content: { showLeafProps: true }, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],
+      "sequences-flipleft": [flipleftScript, { content: { showLeafProps: true } },
+        [{ end: 11, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] },
+        { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],],
       "sequences-hexa12": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
       { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] }],
 
@@ -662,17 +663,15 @@
       { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
 
       // square silver octa
-      "silverOcta-6a": [silverOcta8Script,
-        { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] }],
-      "silverOcta-6b": [silverOcta8Script,
-        { start: 6, end: 17, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] }],
+      "silverOcta-6": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 },
+        [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] },
+        { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] },]],
       "silverOcta-Tw": [getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw")],
 
       // hexa bronze dodeca
-      "bronzeDodeca-6a": [bronzeHexaScript,
-        { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] }],
-      "bronzeDodeca-6b": [bronzeHexaScript,
-        { start: 4, end: 21, content: { showLeafProps: true }, rotation: 90, captions: [lastStar, { text: "a", which: 0 }] }],
+      "bronzeDodeca-6": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 },
+        [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
+        { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }],],
       "bronzeDodeca-morph": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }],
       { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] }],
 
