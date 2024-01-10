@@ -39,21 +39,15 @@
       return { rotation, content: { showLeafProps: true, endStyle }, captions };
     }
 
-
-    // draw an unfolded strip for a generating sequence that's not just pinch flexes
-    // canvasId: string, numPats: number, flexes: string, rotation: number, angles2: [number],
-    //   postFlexes: string (run after leaves are numbered), whereFlex: number (which pat to label with the generating sequence)
-    //   edge: [optional] which edge to draw flex on
-    //   captions: [optional] use given captions instead of defaults
-    function drawStripSequence(canvasId, numPats, flexes, rotation, angles2, postFlexes, whereFlex, edge, text, endStyle, customCaptions, scale) {
-      const script = [{ numPats, flexes, angles2, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
-      const fm = Flexagonator.createFromScript(script);
-      text = text ? text : flexes;
+    function getSeqScript(numPats, flexes, angles2, postFlexes) {
+      return [{ numPats, flexes, angles2, labelAsTree, reverseFlexes: flexes }, { flexes: postFlexes }];
+    }
+    function getSeqOptions(rotation, whereFlex, edge, text, endStyle, customCaptions, scale) {
       const captions = customCaptions !== undefined ? customCaptions
         : whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge, scale });
-      const options = { rotation, content: { showLeafProps: true, endStyle }, captions };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
+      return { rotation, content: { showLeafProps: true, endStyle }, captions };
     }
+
 
     // use folding order rather than tree order for odd-ordered flexagon
     function drawOddStripSequence(canvasId, numPats, flexes, rotation, postFlexes, whereFlex, text, leafProps, edge) {
@@ -270,19 +264,19 @@
       { text: "c", which: 8, edge: 0 }, { text: "b", which: 8, edge: 1 }, { text: "a", which: 8, edge: 2 },
     ];
 
-    drawStripSequence("diff-bronze-tri-hexa", 6, "P+", 90, [60, 90], ">", -3, 0, "3");
-    drawStripSequence("diff-regular-tri-hexa-abc", 6, "P+", 120, [60, 60], ">", undefined, undefined, undefined, undefined, triCaptions);
-    drawStripSequence("diff-bronze-tri-hexa-abc", 6, "P+", 90, [60, 90], ">", undefined, undefined, undefined, undefined, triCaptions);
+    drawOne("diff-bronze-tri-hexa", getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, -3, 0, "3"));
+    drawOne("diff-regular-tri-hexa-abc", getSeqScript(6, "P+", [60, 60], ">"), getSeqOptions(120, undefined, undefined, undefined, undefined, triCaptions));
+    drawOne("diff-bronze-tri-hexa-abc", getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, undefined, undefined, undefined, undefined, triCaptions));
     drawOne("diff-bronze-tri-tetra1", getPinchScript(6, "P*P+", [60, 90]), getPinchOptions(150, undefined, undefined, -1, "4a", 0));
     drawOne("diff-bronze-tri-tetra2", getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid"));
     drawOne("diff-bronze-tri-tetra3", getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0));
     drawOne("diff-bronze-hexa-octa", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a"));
-    drawStripSequence("diff-silver-tri-hexa", 6, "P+", 135, [45, 45], ">", -3, 0, "3");
+    drawOne("diff-silver-tri-hexa", getSeqScript(6, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3"));
     drawOne("diff-silver-tetra-octa1", getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid"));
     drawOne("diff-silver-tetra-octa2", getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1));
     drawOne("diff-silver-hexa-octa", getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a"));
-    drawStripSequence("diff-silver-hexa-tetra", 4, "P* ^> P* ^> P* P+", 45, [90, 45], undefined, -1, 0, "6", "solid");
-    drawStripSequence("diff-other-tri-hexa", 6, "P+", 140, [65, 40], ">", -3, 0, "3");
+    drawOne("diff-silver-hexa-tetra", getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid"));
+    drawOne("diff-other-tri-hexa", getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3"));
 
     var script = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
     drawOne("diff-silver-penta-tetra-a", script,
@@ -374,10 +368,10 @@
   <canvas id="V-cycle15" width="1000" height="110"></canvas>
   <canvas id="V-minimal-octa" width="1000" height="252"></canvas>
   <script type="text/javascript">
-    drawStripSequence("V-minimal-hexa", 6, "V*", 60, undefined, undefined, 0, 2);
-    drawStripSequence("V-cycle6", 6, "(V*>)6", -60, undefined, undefined, -1, 1);
-    drawStripSequence("V-cycle15", 6, "(V*<)15", 60, undefined, undefined, -2, 2);
-    drawStripSequence("V-minimal-octa", 8, "V*", -45, [45, 90], undefined, -1, 0);
+    drawOne("V-minimal-hexa", getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V"));
+    drawOne("V-cycle6", getSeqScript(6, "(V*>)6"), getSeqOptions(-60, -1, 1, "(V>)6"));
+    drawOne("V-cycle15", getSeqScript(6, "(V*<)15"), getSeqOptions(60, -2, 2, "(V<)15"));
+    drawOne("V-minimal-octa", getSeqScript(8, "V*", [45, 90]), getSeqOptions(-45, -1, 0, "V"));
   </script>
 
   <h3 id="tuck">tuck flex</h3>
@@ -386,9 +380,9 @@
   <canvas id="T-6-minimal" width="900" height="400"></canvas><br/><br/>
   <canvas id="T-8" width="500" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("T-6-bronze-minimal", 6, "T*", 120, [60, 30], "^>>", -2);
-    drawStripSequence("T-6-minimal", 6, "T*", -60, undefined, "^>>", -2);
-    drawStripSequence("T-8", 8, "(T2+>>)4", 45, [45, 45], "", 3, undefined, undefined, "solid");
+    drawOne("T-6-bronze-minimal", getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T"));
+    drawOne("T-6-minimal", getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T"));
+    drawOne("T-8", getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4"));
   </script>
 
   <h3 id="flip">flip flex</h3>
@@ -398,9 +392,9 @@
   <canvas id="F-10-F5" width="1100" height="488"></canvas><br/><br/>
   <canvas id="F-7-cycle" width="1000" height="600"></canvas>
   <script type="text/javascript">
-    drawStripSequence("F-8-minimal", 8, "F*", 0, [45, 90], ">>", -2, 1);
-    drawStripSequence("F-6-minimal", 6, "F*", 90, [60, 90], ">>", -2, 1);
-    drawStripSequence("F-10-F5", 10, "(F+>>)5", 0, [36, 90], undefined, 2, 2, undefined, undefined, undefined, 1.35);
+    drawOne("F-8-minimal", getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F"));
+    drawOne("F-6-minimal", getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F"));
+    drawOne("F-10-F5", getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35));
     const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
     [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
     drawOddStripSequence("F-7-cycle", 7, "(F*<)5", undefined, "^", -3, "(F<)5", leafProps7, 1);
@@ -412,8 +406,8 @@
   <canvas id="S-8-silver-minimal" width="1000" height="400"></canvas><br/><br/>
   <canvas id="S-5-minimal" width="800" height="500"></canvas><br/><br/>
   <script type="text/javascript">
-    drawStripSequence("S-6-minimal", 6, "S*", -120, undefined, ">>", -2, 1);
-    drawStripSequence("S-8-silver-minimal", 8, "S*", 0, [45, 90], ">>", -2, 1);
+    drawOne("S-6-minimal", getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S"));
+    drawOne("S-8-silver-minimal", getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S"));
     drawOddStripSequence("S-5-minimal", 5, "S*", -72, ">>", -2, "S*", undefined, 1);
   </script>
 
@@ -453,9 +447,9 @@
   <canvas id="morph-Fm" width="1000" height="400"></canvas><br/><br/>
   <canvas id="morph-S3" width="1000" height="400"></canvas><br/><br/>
   <script type="text/javascript">
-    drawStripSequence("morph-St", 8, "St*", 135, [45, 90], ">>>>", 5, 1);
-    drawStripSequence("morph-Fm", 8, "Fm*", 45, [45, 45], ">>", -2);
-    drawStripSequence("morph-S3", 8, "S3*", 45, [45, 45], ">>", -2);
+    drawOne("morph-St", getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St"));
+    drawOne("morph-Fm", getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm"));
+    drawOne("morph-S3", getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3"));
   </script>
   <!-- kite -->
   <h4>kite bronze octaflexagon</h4>
@@ -495,7 +489,7 @@
   <p>pockets: isosceles octaflexagon</p>
   <canvas id="iso-penta-octa" width="1000" height="500"></canvas>
   <script type="text/javascript">
-    drawStripSequence("iso-penta-octa", 8, "(P*^>)3", undefined, undefined, undefined, 2, 0, "5");
+    drawOne("iso-penta-octa", getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5"));
   </script>
 
   <h3 id="slot-flexes">slot flexes</h3>
@@ -507,9 +501,9 @@
   <canvas id="slot-5-L3" width="750" height="500"></canvas><br/><br/>
   <script type="text/javascript">
     const slot6Captions = [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }];
-    drawStripSequence("slot-6-many", 6, "Lk+Ltb+Lbb+", 90, [60, 60], ">>>^", undefined, undefined, undefined, undefined, slot6Captions);
+    drawOne("slot-6-many", getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"), getSeqOptions(90, undefined, undefined, undefined, undefined, slot6Captions));
     const slot8Captions = [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }];
-    drawStripSequence("slot-8", 8, "Lk+ Ltf+", 45, [], ">>^", undefined, undefined, undefined, undefined, slot8Captions);
+    drawOne("slot-8", getSeqScript(8, "Lk+ Ltf+", [], ">>^"), getSeqOptions(45, undefined, undefined, undefined, undefined, slot8Captions));
 
     // custom labels for the L3 pentaflexagon to make the flex diagram simpler
     const leafProps = pairsToProps([[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]);
@@ -609,7 +603,7 @@
   <span id="silverOcta-6a" width="1200" height="204"></span><br/><br/>
   <span id="silverOcta-6b" width="1200" height="204"></span><br/><br/>
   <script type="text/javascript">
-    drawStripSequence("silverOcta-Tw", 8, "Tw*", 45, [45, 45], ">", -1, 1, "Tw");
+    drawOne("silverOcta-Tw", getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw"));
 
     var hexa = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
     drawOne("silverOcta-6a", hexa,
@@ -733,9 +727,9 @@
   <span id="decorate-tuck-deca1" width="500" height="500"></span>
   <span id="decorate-tuck-deca2" width="365" height="500"></span>
   <script type="text/javascript">
-    drawStripSequence("decorate-tri-octa", 8, "P+", 180 + 45, [45, 45], undefined, -3, 2, "pivot");
-    drawStripSequence("decorate-tri-deca", 10, "P+", 180 + 36, [36, 36], undefined, -6, 2, "pivot");
-    drawStripSequence("decorate-tri-dodeca", 12, "P+", 180 + 30, [30, 30], undefined, -3, 2, "pivot");
+    drawOne("decorate-tri-octa", getSeqScript(8, "P+", [45, 45],), getSeqOptions(180 + 45, -3, 2, "pivot"));
+    drawOne("decorate-tri-deca", getSeqScript(10, "P+", [36, 36],), getSeqOptions(180 + 36, -6, 2, "pivot"));
+    drawOne("decorate-tri-dodeca", getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot"));
 
     var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree: [] }];
     var drawOptions = { rotation: 0, content: { showLeafProps: true } };
