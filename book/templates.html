@@ -168,10 +168,9 @@
   <script type="text/javascript">
     function drawPartial(canvasId, flexes, end, which, edge, text, labels) {
       var script = [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
-      var fm = Flexagonator.createFromScript(script);
       var captions = starCaptions.concat({ text, which, edge });
       var options = { rotation: 120, content: { showLeafProps: true }, captions, start: 0, end };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
+      drawOne(canvasId, script, options);
     }
 
     var A = "P'*>(P*)2";
@@ -405,31 +404,29 @@
   <p>silver octaflexagon: Mkf, Mkb, Mkr, Mkl, Mkfs, Mkbs</p>
   <canvas id="silverMorphFlexes" width="1000" height="500"></canvas><br/><br/>
   <script type="text/javascript">
-    var silverMorphFlexes = [
+    const silverMorphScript = [
       { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
       { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
       { labelAsTree: [] }
     ];
-    var fm = Flexagonator.createFromScript(silverMorphFlexes);
-    Flexagonator.drawUnfolded('silverMorphFlexes', fm, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] });
+    drawOne('silverMorphFlexes', silverMorphScript, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] });
   </script>
   <!-- minimal morph-flex templates on a silver octaflexagon -->
   <canvas id="silver-morph-Mkf" width="500" height="500"></canvas><br/><br/>
   <canvas id="silver-morph-Mkr" width="500" height="500"></canvas><br/><br/>
   <canvas id="silver-morph-Mkfs" width="500" height="500"></canvas><br/><br/>
   <script type="text/javascript">
-    function drawTemplate(canvasId, flexes, rotation) {
+    function drawTemplate(canvasId, flexes, text, rotation) {
       const script = [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
-      const fm = Flexagonator.createFromScript(script);
       const options = {
         rotation, content: { showLeafProps: true },
-        captions: [firstStar, lastStar, { text: flexes, which: -2, edge: 1 }]
+        captions: [firstStar, lastStar, { text, which: -2, edge: 1 }]
       };
-      Flexagonator.drawUnfolded(canvasId, fm, options);
+      drawOne(canvasId, script, options);
     }
-    drawTemplate("silver-morph-Mkf", "Mkf+", 225);   // Mkb
-    drawTemplate("silver-morph-Mkr", "Mkr+", -45);   // Mkl
-    drawTemplate("silver-morph-Mkfs", "Mkfs+", -45); // Mkbs
+    drawTemplate("silver-morph-Mkf", "Mkf+", "Mkf", 225);    // Mkb
+    drawTemplate("silver-morph-Mkr", "Mkr+", "Mkr", -45);    // Mkl
+    drawTemplate("silver-morph-Mkfs", "Mkfs+", "Mkfs", -45); // Mkbs
   </script>
   <!-- St, Fm, and S3 -->
   <canvas id="morph-St" width="700" height="700"></canvas>
@@ -467,12 +464,11 @@
     drawOne("kite-bf2", makeKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] });
 
     const kiteAll = makeKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
-    const fmAll = Flexagonator.createFromScript(kiteAll);
     const optionsAll = { scale: 300, content: { showLeafProps: true } };
-    Flexagonator.drawUnfolded("kite-all1", fmAll, { ...optionsAll, rotation: 30, start: 0, end: 6, captions: [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }] });
-    Flexagonator.drawUnfolded("kite-all2", fmAll, { ...optionsAll, rotation: 150, start: 7, end: 13, captions: [{ text: "a", which: 0 }, { text: "b", which: -1 }] });
-    Flexagonator.drawUnfolded("kite-all3", fmAll, { ...optionsAll, rotation: 210, start: 14, end: 19, captions: [{ text: "b", which: 0 }, { text: "c", which: -1 }] });
-    Flexagonator.drawUnfolded("kite-all4", fmAll, { ...optionsAll, rotation: 300, start: 20, end: 24, captions: [lastStar, { text: "c", which: 0 }] });
+    drawOne("kite-all1", kiteAll, { ...optionsAll, rotation: 30, start: 0, end: 6, captions: [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }] });
+    drawOne("kite-all2", kiteAll, { ...optionsAll, rotation: 150, start: 7, end: 13, captions: [{ text: "a", which: 0 }, { text: "b", which: -1 }] });
+    drawOne("kite-all3", kiteAll, { ...optionsAll, rotation: 210, start: 14, end: 19, captions: [{ text: "b", which: 0 }, { text: "c", which: -1 }] });
+    drawOne("kite-all4", kiteAll, { ...optionsAll, rotation: 300, start: 20, end: 24, captions: [lastStar, { text: "c", which: 0 }] });
   </script>
   <!-- pockets: isosceles octaflexagon -->
   <p>pockets: isosceles octaflexagon</p>
@@ -555,19 +551,14 @@
   <canvas id="pats-visible-T" width="1200" height="500"></canvas>
   <script type="text/javascript">
     // example
-    var example = [
+    const exampleScript = [
       { pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] },
       { labelAsTree: [], searchFlexes: "P S T V" }
     ];
-    var fm1 = Flexagonator.createFromScript(example);
-    Flexagonator.drawUnfolded("pats-example-unfolded", fm1, { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions });
+    drawOne("pats-example-unfolded", exampleScript, { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions });
     // tri-hexa
-    var trihexa = [
-      { pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9] },
-      { labelAsTree: [] }
-    ];
-    var fm2 = Flexagonator.createFromScript(trihexa);
-    Flexagonator.drawUnfolded("pats-trihexa-unfolded", fm2, { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions });
+    const trihexaScript = [{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree: [] }];
+    drawOne("pats-trihexa-unfolded", trihexaScript, { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions });
     // visible
     drawOne("pats-visible-Tf",
       [{ "pats": [[[-2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
