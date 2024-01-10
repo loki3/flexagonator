@@ -72,6 +72,21 @@
       if (extraCaptions) captions = captions.concat(extraCaptions);
       return { rotation, content: { showLeafProps: true }, captions };
     }
+
+    // morph-kites
+    function getMkScript(flexes) {
+      return [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
+    }
+    function getMkOptions(rotation, text) {
+      return { rotation, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text, which: -2, edge: 1 }] };
+    }
+    function getKiteScript(flexes) {
+      return [{ name: "kite bronze octaflexagon" }, { addMorphFlexes: true }, { flexes }, { normalizeIds: true, labelAsTree: [] }];
+    }
+    function getKiteOptions(rotation, start, end, captions) {
+      const optionsAll = { scale: 300, content: { showLeafProps: true } };
+      return { ...optionsAll, rotation, start, end, captions };
+    }
   </script>
 </head>
 
@@ -284,40 +299,14 @@
 
   <p>silver octaflexagon: Mkf, Mkb, Mkr, Mkl, Mkfs, Mkbs</p>
   <span id="silverMorphFlexes" width="1000" height="500"></span><br/><br/>
-  <script type="text/javascript">
-    const silverMorphScript = [
-      { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
-      { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
-      { labelAsTree: [] }
-    ];
-    drawOne('silverMorphFlexes', silverMorphScript, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] });
-  </script>
   <!-- minimal morph-flex templates on a silver octaflexagon -->
   <span id="silver-morph-Mkf" width="500" height="500"></span><br/><br/>
   <span id="silver-morph-Mkr" width="500" height="500"></span><br/><br/>
   <span id="silver-morph-Mkfs" width="500" height="500"></span><br/><br/>
-  <script type="text/javascript">
-    function drawTemplate(canvasId, flexes, text, rotation) {
-      const script = [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
-      const options = {
-        rotation, content: { showLeafProps: true },
-        captions: [firstStar, lastStar, { text, which: -2, edge: 1 }]
-      };
-      drawOne(canvasId, script, options);
-    }
-    drawTemplate("silver-morph-Mkf", "Mkf+", "Mkf", 225);    // Mkb
-    drawTemplate("silver-morph-Mkr", "Mkr+", "Mkr", -45);    // Mkl
-    drawTemplate("silver-morph-Mkfs", "Mkfs+", "Mkfs", -45); // Mkbs
-  </script>
   <!-- St, Fm, and S3 -->
   <span id="morph-St" width="700" height="700"></span>
   <span id="morph-Fm" width="1000" height="400"></span><br/><br/>
   <span id="morph-S3" width="1000" height="400"></span><br/><br/>
-  <script type="text/javascript">
-    drawOne("morph-St", getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St"));
-    drawOne("morph-Fm", getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm"));
-    drawOne("morph-S3", getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3"));
-  </script>
   <!-- kite -->
   <h4>kite bronze octaflexagon</h4>
   <span id="kite-rl" width="900" height="447"></span><br/>
@@ -330,33 +319,9 @@
   <span id="kite-all2" width="523" height="454"></span><br/>
   <span id="kite-all3" width="523" height="454"></span>
   <span id="kite-all4" width="454" height="264"></span><br/>
-  <script type="text/javascript">
-    function makeKiteScript(flexes) {
-      return [
-        { name: "kite bronze octaflexagon" }, { addMorphFlexes: true }, { flexes },
-        { normalizeIds: true, labelAsTree: [] }
-      ];
-    }
-
-    drawOne("kite-rl", makeKiteScript("Mkr'* Mkl+ Mkr >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkr'Mkl", which: 0, edge: 2 }] });
-    drawOne("kite-fr", makeKiteScript("Mkf'* Mkr+ Mkf >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkf'Mkr", which: 0, edge: 2 }] });
-    drawOne("kite-rfs", makeKiteScript("Mkr'* Mkfs+ Mkr <"), { rotation: 150, captions: [...starCaptions, { text: "Mkr'Mkfs", which: -3, edge: 2 }] });
-    drawOne("kite-bf1", makeKiteScript("Bf+ >>>"), { rotation: -30, scale: 300, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf'Mkb", which: 0, edge: 2 }] });
-    drawOne("kite-bf2", makeKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] });
-
-    const kiteAll = makeKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
-    const optionsAll = { scale: 300, content: { showLeafProps: true } };
-    drawOne("kite-all1", kiteAll, { ...optionsAll, rotation: 30, start: 0, end: 6, captions: [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }] });
-    drawOne("kite-all2", kiteAll, { ...optionsAll, rotation: 150, start: 7, end: 13, captions: [{ text: "a", which: 0 }, { text: "b", which: -1 }] });
-    drawOne("kite-all3", kiteAll, { ...optionsAll, rotation: 210, start: 14, end: 19, captions: [{ text: "b", which: 0 }, { text: "c", which: -1 }] });
-    drawOne("kite-all4", kiteAll, { ...optionsAll, rotation: 300, start: 20, end: 24, captions: [lastStar, { text: "c", which: 0 }] });
-  </script>
   <!-- pockets: isosceles octaflexagon -->
   <p>pockets: isosceles octaflexagon</p>
   <span id="iso-penta-octa" width="1000" height="500"></span>
-  <script type="text/javascript">
-    drawOne("iso-penta-octa", getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5"));
-  </script>
 
   <h3 id="slot-flexes">15: slot flexes</h3>
 
@@ -365,16 +330,6 @@
   <span id="slot-8" width="1000" height="500"></span><br/><br/>
   <p>supports L3, Lk, Ltf</p>
   <span id="slot-5-L3" width="750" height="500"></span><br/><br/>
-  <script type="text/javascript">
-    const slot6Captions = [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }];
-    drawOne("slot-6-many", getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"), getSeqOptions(90, undefined, undefined, undefined, undefined, slot6Captions));
-    const slot8Captions = [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }];
-    drawOne("slot-8", getSeqScript(8, "Lk+ Ltf+", [], ">>^"), getSeqOptions(45, undefined, undefined, undefined, undefined, slot8Captions));
-
-    // custom labels for the L3 pentaflexagon to make the flex diagram simpler
-    const labels = [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]];
-    drawOne("slot-5-L3", getOddScript(5, "L3*", "", labels), getOddOptions(252, 2, 2, "L3", true));
-  </script>
 
   <!-- part 3 -->
 
@@ -651,6 +606,12 @@
     { angles: [30, 60] }];
     const labelsF7 = [[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
     [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]];
+    const silverMorphScript = [
+      { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
+      { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
+      { labelAsTree: [] }
+    ];
+    const kiteAllScript = getKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
 
     // details on drawing the templates: { templateId: [script, drawOptions] }
     const templates = {
@@ -730,6 +691,33 @@
       "S-6-minimal": [getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S")],
       "S-8-silver-minimal": [getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S")],
       "S-5-minimal": [getOddScript(5, "S*", ">>"), getOddOptions(-72, -2, 1, "S")],
+
+      // breakdown
+      "silverMorphFlexes": [silverMorphScript, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] }],
+      "silver-morph-Mkf": [getMkScript("Mkf+"), getMkOptions(225, "Mkf")],
+      "silver-morph-Mkr": [getMkScript("Mkr+"), getMkOptions(-45, "Mkr")],
+      "silver-morph-Mkfs": [getMkScript("Mkfs+"), getMkOptions(-45, "Mkfs")],
+      "morph-St": [getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St")],
+      "morph-Fm": [getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm")],
+      "morph-S3": [getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3")],
+      "kite-rl": [getKiteScript("Mkr'* Mkl+ Mkr >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkr'Mkl", which: 0, edge: 2 }] }],
+      "kite-fr": [getKiteScript("Mkf'* Mkr+ Mkf >>>"), { rotation: -30, captions: [...starCaptions, { text: "Mkf'Mkr", which: 0, edge: 2 }] }],
+      "kite-rfs": [getKiteScript("Mkr'* Mkfs+ Mkr <"), { rotation: 150, captions: [...starCaptions, { text: "Mkr'Mkfs", which: -3, edge: 2 }] }],
+      "kite-bf1": [getKiteScript("Bf+ >>>"), { rotation: -30, scale: 300, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Mkf'Mkb", which: 0, edge: 2 }] }],
+      "kite-bf2": [getKiteScript("Bf+ >>>"), { rotation: 0, scale: 300, start: 8, captions: [lastStar, { text: "a", which: 0 }] }],
+      "kite-all1": [kiteAllScript, getKiteOptions(30, 0, 6, [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }])],
+      "kite-all2": [kiteAllScript, getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }])],
+      "kite-all3": [kiteAllScript, getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }])],
+      "kite-all4": [kiteAllScript, getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],
+      "iso-penta-octa": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5")],
+
+      // slots
+      "slot-6-many": [getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"),
+      getSeqOptions(90, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }])],
+      "slot-8": [getSeqScript(8, "Lk+ Ltf+", [], ">>^"),
+      getSeqOptions(45, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }])],
+      "slot-5-L3": [getOddScript(5, "L3*", "", [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]),
+      getOddOptions(252, 2, 2, "L3", true)],
     };
 
     // display all the templates
