@@ -73,6 +73,23 @@
       return { rotation, content: { showLeafProps: true }, captions };
     }
 
+    function get12Script() {
+      const A = "P'*>(P*)2";
+      const B = "P'*>(P*)4";
+      const flexes = A + B + A + B + A;
+      const labels = [[4, 7], [1, 7], [2, 8], [4, 8], [5, 9], [3, 9], [1, 10], [5, 10], [6, 11], [2, 11], [3, 12], [6, 12]];
+      return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
+    }
+    function get24Script() {
+      const A = "P'*>(P*)2";
+      const B = "P'*>(P*)4";
+      const C = "P'*>(P*)6";
+      const flexes = A + B + A + C + A + B + A + C + A + B + A;
+      const labels = [[7, 13], [4, 13], [1, 14], [7, 14], [8, 15], [2, 15], [4, 16], [8, 16], [9, 17], [5, 17], [3, 18], [9, 18],
+      [10, 19], [1, 19], [5, 20], [10, 20], [11, 21], [6, 21], [2, 22], [11, 22], [12, 23], [3, 23], [6, 24], [12, 24]];
+      return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
+    }
+
     // morph-kites
     function getMkScript(flexes) {
       return [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
@@ -167,28 +184,6 @@
   <span id="dodeca-hexa" width="1200" height="163"></span>
   <h4>icositetra-hexaflexagon strip</h4>
   <span id="icositetra-hexa" width="1200" height="86"></span>
-  <script type="text/javascript">
-    function drawPartial(canvasId, flexes, end, which, edge, text, labels) {
-      var script = [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
-      var captions = starCaptions.concat({ text, which, edge });
-      var options = { rotation: 120, content: { showLeafProps: true }, captions, start: 0, end };
-      drawOne(canvasId, script, options);
-    }
-
-    var A = "P'*>(P*)2";
-    var B = "P'*>(P*)4";
-    var sequence = A + B + A + B + A;
-    drawPartial("dodeca-hexa", sequence, 11, 1, 1, "12",
-      [[4, 7], [1, 7], [2, 8], [4, 8], [5, 9], [3, 9], [1, 10], [5, 10], [6, 11], [2, 11], [3, 12], [6, 12]]);
-
-    var A = "P'*>(P*)2";
-    var B = "P'*>(P*)4";
-    var C = "P'*>(P*)6";
-    var sequence = A + B + A + C + A + B + A + C + A + B + A;
-    drawPartial("icositetra-hexa", sequence, 23, 2, 2, "24",
-      [[7, 13], [4, 13], [1, 14], [7, 14], [8, 15], [2, 15], [4, 16], [8, 16], [9, 17], [5, 17], [3, 18], [9, 18],
-      [10, 19], [1, 19], [5, 20], [10, 20], [11, 21], [6, 21], [2, 22], [11, 22], [12, 23], [3, 23], [6, 24], [12, 24]]);
-  </script>
 
   <!-- triangle tetra & octa -->
   <h3 id="tetra-octa">4: triangle tetra & octa</h3>
@@ -449,49 +444,19 @@
   <span id="decorate-tri-deca" width="1000" height="244"></span>
   <span id="decorate-tri-dodeca" width="1000" height="250"></span>
   <p>(T+>>)5 pentagonal right decaflexagon</p>
-  <span id="decorate-tuck-deca1" width="500" height="500"></span>
-  <span id="decorate-tuck-deca2" width="365" height="500"></span>
-  <script type="text/javascript">
-    drawOne("decorate-tri-octa", getSeqScript(8, "P+", [45, 45],), getSeqOptions(180 + 45, -3, 2, "pivot"));
-    drawOne("decorate-tri-deca", getSeqScript(10, "P+", [36, 36],), getSeqOptions(180 + 36, -6, 2, "pivot"));
-    drawOne("decorate-tri-dodeca", getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot"));
-
-    var script = [{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree: [] }];
-    var drawOptions = { rotation: 0, content: { showLeafProps: true } };
-    drawOne("decorate-tuck-deca1", script, { ...drawOptions, end: 9, captions: [firstStar, { text: "a", which: -1 }] });
-    drawOne("decorate-tuck-deca2", script, { ...drawOptions, start: 10, captions: [{ text: "a", which: 0 }, lastStar] });
-  </script>
+  <span id="decorate-tuck-deca-1" width="500" height="500"></span>
+  <span id="decorate-tuck-deca-2" width="365" height="500"></span>
 
   <!-- puzzles & mazes -->
   <h3 id="puzzles">36: puzzles & mazes</h3>
 
   <div id="puzzle-hepta" width="1100" height="295"></div>
-  <script type="text/javascript">
-    var script = [{
-      numPats: 4, flexes: "(P*^>)5", reverseFlexes: "(P*^>)5", angles: [60, 60],
-      setLabels: { labels: [[2, 1], [3, 4], [6, 5], [6, "C"], [5, 4], [2, 3], [1, "B"], [1, 2], [4, 3], [5, 6], ["A", 6], [4, 5], [3, 2], ["D", 1]] }
-    }];
-    var captions = [firstStar,
-      { text: "a", which: -4, edge: 0 }, { text: "b", which: -4, edge: 1 }, { text: "c", which: -4, edge: 2 }, // A
-      { text: "a", which: 6, edge: 2 }, { text: "b", which: 6, edge: 0 }, { text: "c", which: 6, edge: 1 }, // B
-      { text: "a", which: 3, edge: 0 }, { text: "b", which: 3, edge: 2 }, { text: "c", which: 3, edge: 1 }, // C
-      { text: "a⚹", which: -1, edge: 1 }, { text: "b", which: -1, edge: 0 }, { text: "c", which: -1, edge: 2 }, // D
-    ];
-    var drawOptions = { rotation: 60, content: { showLeafProps: true }, captions };
-    drawOne("puzzle-hepta", script, drawOptions);
-  </script>
 
   <!-- popups -->
   <h3 id="popups">37: popups</h3>
 
   <p>animal pentaflexagon</p>
   <div id="animal-penta" width="800" height="760"></div>
-  <script type="text/javascript">
-    var setLabels = { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]] };
-    var script = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] }, { angles: [72, 54], setLabels }];
-    var options = { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions };
-    drawOne("animal-penta", script, options);
-  </script>
 
   <script type="text/javascript">
     // data for specific templates
@@ -523,6 +488,18 @@
     const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
     const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
     const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
+    const puzzleHeptaScript = [{
+      numPats: 4, flexes: "(P*^>)5", reverseFlexes: "(P*^>)5", angles: [60, 60],
+      setLabels: { labels: [[2, 1], [3, 4], [6, 5], [6, "C"], [5, 4], [2, 3], [1, "B"], [1, 2], [4, 3], [5, 6], ["A", 6], [4, 5], [3, 2], ["D", 1]] }
+    }];
+    const puzzleHeptaCaptions = [firstStar,
+      { text: "a", which: -4, edge: 0 }, { text: "b", which: -4, edge: 1 }, { text: "c", which: -4, edge: 2 }, // A
+      { text: "a", which: 6, edge: 2 }, { text: "b", which: 6, edge: 0 }, { text: "c", which: 6, edge: 1 }, // B
+      { text: "a", which: 3, edge: 0 }, { text: "b", which: 3, edge: 2 }, { text: "c", which: 3, edge: 1 }, // C
+      { text: "a⚹", which: -1, edge: 1 }, { text: "b", which: -1, edge: 0 }, { text: "c", which: -1, edge: 2 }, // D
+    ];
+    const animalScript = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] },
+    { angles: [72, 54], setLabels: { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]] } }];
 
     // details on drawing the templates: { templateId: [script, drawOptions, optional-option-array] }
     const templates = {
@@ -535,6 +512,8 @@
       "hexa-hexa1": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a")],
       "hexa-hexa2": [getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid")],
       "hexa-hexa3": [getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid")],
+      "dodeca-hexa": [get12Script(), getPinchOptions(120, 0, 11, 1, "12", 1)],
+      "icositetra-hexa": [get24Script(), getPinchOptions(120, 0, 23, 2, "24", 2)],
 
       // triangle tetra & octa
       "tri-tetra": [
@@ -682,6 +661,20 @@
       { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] }],
       "silverDodecaHexa-T": [getSilver12Script("<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>"),
       { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] }],
+
+      // decorating
+      "decorate-tri-octa": [getSeqScript(8, "P+", [45, 45],), getSeqOptions(180 + 45, -3, 2, "pivot")],
+      "decorate-tri-deca": [getSeqScript(10, "P+", [36, 36],), getSeqOptions(180 + 36, -6, 2, "pivot")],
+      "decorate-tri-dodeca": [getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot")],
+      "decorate-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree: [] }], { rotation: 0, content: { showLeafProps: true } },
+      [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
+      { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }],],
+
+      // puzzles
+      "puzzle-hepta": [puzzleHeptaScript, { rotation: 60, content: { showLeafProps: true }, captions: puzzleHeptaCaptions }],
+
+      // popups
+      "animal-penta": [animalScript, { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions }],
     };
 
     // display all the templates
