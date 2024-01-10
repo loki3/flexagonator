@@ -219,8 +219,8 @@
   <span id="diff-silver-tetra-octa1" width="750" height="750"></span><br/><br/>
   <span id="diff-silver-tetra-octa2" width="1100" height="140"></span><br/><br/>
   <span id="diff-silver-hexa-octa" width="1200" height="202"></span><br/><br/>
-  <span id="diff-silver-penta-tetra-a" width="500" height="250"></span>
-  <span id="diff-silver-penta-tetra-b" width="500" height="250"></span><br/><br/>
+  <span id="diff-silver-penta-tetra-1" width="500" height="250"></span>
+  <span id="diff-silver-penta-tetra-2" width="500" height="250"></span><br/><br/>
   <span id="diff-silver-hexa-tetra" width="800" height="400"></span>
   <span id="diff-other-tri-hexa" width="1000" height="372"></span><br/><br/>
 
@@ -518,7 +518,6 @@
       { text: "a", which: 7, edge: 0 }, { text: "b", which: 7, edge: 1 }, { text: "c", which: 7, edge: 2 },
       { text: "c", which: 8, edge: 0 }, { text: "b", which: 8, edge: 1 }, { text: "a", which: 8, edge: 2 },
     ];
-    const silverPentaScript = [{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }];
     const p333Script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
     { setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]] } },
     { angles: [40, 70] }];
@@ -537,7 +536,7 @@
     const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
     const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
 
-    // details on drawing the templates: { templateId: [script, drawOptions] }
+    // details on drawing the templates: { templateId: [script, drawOptions, optional-option-array] }
     const templates = {
       // pinch flex
       "tri-hexa": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2)],
@@ -573,12 +572,12 @@
       "diff-silver-tetra-octa1": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid")],
       "diff-silver-tetra-octa2": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1)],
       "diff-silver-hexa-octa": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
+      "diff-silver-penta-tetra": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }],
+      { rotation: 45, content: { showLeafProps: true } },
+      [{ start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] },
+      { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }]],
       "diff-silver-hexa-tetra": [getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid")],
       "diff-other-tri-hexa": [getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3")],
-      "diff-silver-penta-tetra-a": [silverPentaScript,
-        { rotation: 45, content: { showLeafProps: true }, start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] }],
-      "diff-silver-penta-tetra-b": [silverPentaScript,
-        { rotation: 45, content: { showLeafProps: true }, start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }],
 
       // pinch flex variations
       "P333": [
@@ -693,9 +692,19 @@
 
     // display all the templates
     const ids = Object.getOwnPropertyNames(templates);
-    for (let id of ids) {
-      const [script, options] = templates[id];
-      drawOne(id, script, options);
+    for (const id of ids) {
+      const [script, options, extras] = templates[id];
+      if (!extras) {
+        drawOne(id, script, options);
+      } else {  // template is split into pieces
+        const ids = [], pieces = [];
+        let i = 1;
+        for (const extra of extras) {
+          ids.push(`${id}-${i++}`);
+          pieces.push({ ...options, ...extra });
+        }
+        drawOne(ids, script, pieces);
+      }
     }
   </script>
 
