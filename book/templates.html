@@ -49,14 +49,14 @@
     }
 
     // use folding order rather than tree order for odd-ordered flexagon
-    function getOddScript(numPats, flexes, postFlexes, leafProps) {
+    function getOddScript(numPats, flexes, postFlexes, labels, repeats) {
       const script = [{ numPats, flexes, angles2: [], reverseFlexes: flexes }, { flexes: postFlexes }];
-      if (leafProps) script.push({ normalizeIds: true, leafProps });  // tack on leaf props if present
+      if (labels) script.push({ setLabels: { labels, repeats } });
       return script;
     }
-    function getOddOptions(rotation, whereFlex, edge, text, leafProps) {
+    function getOddOptions(rotation, whereFlex, edge, text, showLeafProps) {
       const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
-      const content = leafProps ? { showLeafProps: true } : { showFoldingOrder: true };
+      const content = showLeafProps ? { showLeafProps: true } : { showFoldingOrder: true };
       return { rotation, content, captions };
     }
 
@@ -75,12 +75,6 @@
       let captions = starCaptions.concat({ text: "5", which: 2, edge: 2 });
       if (extraCaptions) captions = captions.concat(extraCaptions);
       return { rotation, content: { showLeafProps: true }, captions };
-    }
-
-    // turn template numbering like [[2,1],[2,3],[3,4]] into leafProps containing labels & colors
-    // [optional] array of colors, otherwise uses default set of colors
-    function pairsToProps(numbering, repeats, colors) {
-      return Flexagonator.convertLeafProps(numbering, repeats, colors ?? labelAsTree);
     }
   </script>
 </head>
@@ -394,9 +388,9 @@
     drawOne("F-8-minimal", getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F"));
     drawOne("F-6-minimal", getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F"));
     drawOne("F-10-F5", getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35));
-    const leafProps7 = pairsToProps([[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
-    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]], 1);
-    drawOne("F-7-cycle", getOddScript(7, "(F*<)5", "^", leafProps7), getOddOptions(undefined, -3, 1, "(F<)5", leafProps7));
+    const labels7 = [[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
+    [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]];
+    drawOne("F-7-cycle", getOddScript(7, "(F*<)5", "^", labels7, 1), getOddOptions(undefined, -3, 1, "(F<)5", true));
   </script>
 
   <h3 id="pyramid shuffle">pyramid shuffle</h3>
@@ -505,8 +499,8 @@
     drawOne("slot-8", getSeqScript(8, "Lk+ Ltf+", [], ">>^"), getSeqOptions(45, undefined, undefined, undefined, undefined, slot8Captions));
 
     // custom labels for the L3 pentaflexagon to make the flex diagram simpler
-    const leafProps = pairsToProps([[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]);
-    drawOne("slot-5-L3", getOddScript(5, "L3*", "", leafProps), getOddOptions(252, 2, 2, "L3", leafProps));
+    const labels = [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]];
+    drawOne("slot-5-L3", getOddScript(5, "L3*", "", labels), getOddOptions(252, 2, 2, "L3", true));
   </script>
 
   <!-- part 3 -->
