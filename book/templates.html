@@ -316,18 +316,7 @@
     // display all the templates
     const ids = Object.getOwnPropertyNames(allTemplates);
     for (const id of ids) {
-      const [script, options, extras] = allTemplates[id];
-      if (!extras) {
-        drawOne(id, script, options);
-      } else {  // template is split into pieces
-        const ids = [], pieces = [];
-        let i = 1;
-        for (const extra of extras) {
-          ids.push(`${id}-${i++}`);
-          pieces.push({ ...options, ...extra });
-        }
-        drawOne(ids, script, pieces);
-      }
+      drawTemplate(id);
     }
   </script>
 

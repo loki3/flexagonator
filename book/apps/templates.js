@@ -3,6 +3,52 @@
   Script & draw options for flexagon templates
 */
 
+/**
+ * draw a template
+ * @param name name of the template, e.g., "fig1.1"
+ * @param outputId id of output element, defaults to template name
+ * @param face 'both' | 'front' | 'back', defaults to 'both'
+ */
+function drawTemplate(name, outputId, face) {
+  const [script, options, extras] = allTemplates[name];
+  const id = outputId ? outputId : name;
+  const drawOptions = addFace(options, face);
+  if (!extras) {
+    drawOne(id, script, drawOptions);
+  } else {  // template is split into pieces
+    const ids = [], pieces = [];
+    let i = 1;
+    for (const extra of extras) {
+      ids.push(`${id}-${i++}`);
+      pieces.push({ ...drawOptions, ...extra });
+    }
+    drawOne(ids, script, pieces);
+  }
+}
+
+/**
+ * draw an unfolded strip in the given element
+ * @param outputId id of output element
+ * @param script flexagonator script describing flexagon
+ * @param drawOptions options for how to draw template
+ */
+function drawOne(outputId, script, drawOptions) {
+  const fm = Flexagonator.createFromScript(script);
+  Flexagonator.drawUnfolded(outputId, fm, drawOptions);
+}
+
+// optionally specify just 'front' | 'back' face
+function addFace(options, face) {
+  if (!face || face === 'both') {
+    return options;
+  }
+  const moreContent = { face, showLeafProps: true, inset: 0.1 };
+  let content = options.content;
+  content = content ? { ...content, ...moreContent } : moreContent;
+  return { ...options, content };
+}
+
+
 // draw * on the edges that should be taped together
 const firstStar = { text: "⚹", which: 0, scale: 1.8 };
 const lastStar = { text: "⚹", which: -1, scale: 1.8 };
@@ -10,13 +56,6 @@ const starCaptions = [firstStar, lastStar];
 // common colors for faces
 const colors = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
 const labelAsTree = colors;
-
-// draw an unfolded strip on the given canvas
-// pass in a full script & full options for drawUnfolded
-function drawOne(canvasId, script, drawOptions) {
-  const fm = Flexagonator.createFromScript(script);
-  Flexagonator.drawUnfolded(canvasId, fm, drawOptions);
-}
 
 function getPinchScript(numPats, flexes, angles2) {
   return [{ numPats, angles2, flexes, labelAsTree }];

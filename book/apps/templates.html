@@ -41,23 +41,13 @@
 
     function showTemplate(name) {
       gName = name;
-      const [script, options, extras] = allTemplates[name];
-      let optionsWithFace = addFace(options);
       clearAll();
-      if (!extras) {
-        drawOne("image-1", script, optionsWithFace);
-      } else {  // template is split into pieces
-        const ids = [], pieces = [];
-        let i = 1;
-        for (const extra of extras) {
-          ids.push(`image-${i++}`);
-          pieces.push({ ...optionsWithFace, ...extra });
-        }
-        drawOne(ids, script, pieces);
-      }
+      drawTemplate(name, "image", gFace);
     }
 
     function clearAll() {
+      const output = document.getElementById("image");
+      output.innerHTML = "";
       for (let i = 0; i < 6; i++) {
         const output = document.getElementById(`image-${i + 1}`);
         output.innerHTML = "";
@@ -67,15 +57,6 @@
     function setTemplateFaces(option) {
       gFace = option;
       showTemplate(gName);
-    }
-    function addFace(options) {
-      if (gFace === 'both') {
-        return options; // don't need to change
-      }
-      const moreContext = { face: gFace, showLeafProps: true, inset: 0.1 };
-      let content = options.content;
-      content = content ? { ...content, ...moreContext } : moreContext;
-      return { ...options, content };
     }
   </script>
 </head>
@@ -94,6 +75,7 @@
     <input onclick="setTemplateFaces('back');" type="button" value="back" />
   </p>
 
+  <span id="image" width="800" height="800"></span>
   <span id="image-1" width="800" height="800"></span>
   <span id="image-2" width="800" height="800"></span>
   <span id="image-3" width="800" height="800"></span>
