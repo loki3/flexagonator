@@ -14,7 +14,7 @@ namespace Flexagonator {
     constructor(private readonly container: HTMLElement) {
       const [w, h] = this.getSize();
       this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      this.svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+      this.svg.setAttribute("viewBox", `0 0 ${w + 2} ${h + 2}`);
       this.svg.setAttribute("width", w.toString());
       this.svg.setAttribute("height", h.toString());
     }
@@ -31,7 +31,9 @@ namespace Flexagonator {
     getSize(): [number, number] {
       const width = this.container.getAttribute("width");
       const height = this.container.getAttribute("height");
-      return [width === null ? 400 : Number.parseInt(width), height === null ? 400 : Number.parseInt(height)];
+      const useWidth = width === null ? 400 : Number.parseInt(width) - 2;
+      const useHeight = height === null ? 400 : Number.parseInt(height) - 2;
+      return [useWidth, useHeight];
     }
 
     setLineColor(color: string | number): void {
