@@ -8,7 +8,8 @@ const firstStar = { text: "⚹", which: 0, scale: 1.8 };
 const lastStar = { text: "⚹", which: -1, scale: 1.8 };
 const starCaptions = [firstStar, lastStar];
 // common colors for faces
-const labelAsTree = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
+const colors = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
+const labelAsTree = colors;
 
 // draw an unfolded strip on the given canvas
 // pass in a full script & full options for drawUnfolded
@@ -28,7 +29,7 @@ function getPinchOptions(rotation, start, end, whereFlex, text, edge, endStyle) 
 // same as getPinchScript except that it numbers the faces as they're created by 'flexes'
 function getPinch2Script(numPats, flexes, angles2) {
   angles2 = angles2 ? angles2 : [60, 60];
-  return [{ numPats, angles2, flexAndColor: { flexes: flexes, colors: labelAsTree } }];
+  return [{ numPats, angles2, flexAndColor: { flexes: flexes, colors } }];
 }
 function getPinch2Options(rotation, whereFlex, text, endStyle) {
   const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
@@ -47,7 +48,7 @@ function getSeqOptions(rotation, whereFlex, edge, text, endStyle, customCaptions
 // use folding order rather than tree order for odd-ordered flexagon
 function getOddScript(numPats, flexes, postFlexes, labels, repeats) {
   const script = [{ numPats, flexes, angles2: [], reverseFlexes: flexes }, { flexes: postFlexes }];
-  if (labels) script.push({ setLabels: { labels, repeats } });
+  if (labels) script.push({ setLabels: { labels, repeats, colors } });
   return script;
 }
 function getOddOptions(rotation, whereFlex, edge, text, showLeafProps) {
@@ -61,7 +62,7 @@ function getPentaScript(numPats) {
   const pentaPats = [0, [0, [0, [0, 0]]]];
   const pats = Array(numPats / 2).fill(pentaPats).flatMap(p => p);
   const pentaNums = [[2, 1], [3, 4], [1, 5], [4, 5], [3, 2]];
-  return [{ pats, angles2: [60, 60], setLabels: { labels: pentaNums, repeat: numPats / 2 } }];
+  return [{ pats, angles2: [60, 60], setLabels: { labels: pentaNums, repeat: numPats / 2, colors } }];
 }
 function getPentaOptions(rotation, extraCaptions) {
   let captions = starCaptions.concat({ text: "5", which: 2, edge: 2 });
@@ -83,7 +84,7 @@ function get12Script() {
   const B = "P'*>(P*)4";
   const flexes = A + B + A + B + A;
   const labels = [[4, 7], [1, 7], [2, 8], [4, 8], [5, 9], [3, 9], [1, 10], [5, 10], [6, 11], [2, 11], [3, 12], [6, 12]];
-  return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
+  return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3, colors } }];
 }
 function get24Script() {
   const A = "P'*>(P*)2";
@@ -92,7 +93,7 @@ function get24Script() {
   const flexes = A + B + A + C + A + B + A + C + A + B + A;
   const labels = [[7, 13], [4, 13], [1, 14], [7, 14], [8, 15], [2, 15], [4, 16], [8, 16], [9, 17], [5, 17], [3, 18], [9, 18],
   [10, 19], [1, 19], [5, 20], [10, 20], [11, 21], [6, 21], [2, 22], [11, 22], [12, 23], [3, 23], [6, 24], [12, 24]];
-  return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
+  return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3, colors } }];
 }
 const templatesMoreFaces = {
   "fig3.1": [getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1)],
@@ -144,7 +145,7 @@ const templatesDifferent = {
   "fig5.11": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid")],
   "fig5.12": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1)],
   "fig5.15": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
-  "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>", colors: labelAsTree }, angles2: [90, 45] }],
+  "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>", colors }, angles2: [90, 45] }],
   { rotation: 45, content: { showLeafProps: true } },
   [{ start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] },
   { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }]],
@@ -155,14 +156,14 @@ const templatesDifferent = {
 ///////////
 // 6: pinch flex variations
 const p333Script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
-{ setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]] } },
+{ setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]], colors } },
 { angles: [40, 70] }];
 const p444hScript = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
-{ setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
+{ setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]], colors } },
 { angles: [30, 60] }];
 const templatesPinchVariations = {
   "fig6.2": [
-    [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }],
+    [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors } }],
     { rotation: 4, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 }) }
   ],
   "fig6.4": [p333Script, { rotation: 0, content: { showLeafProps: true } },
@@ -178,7 +179,7 @@ const templatesPinchVariations = {
   "fig6.7": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
   "fig6.9": [
     [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
-    { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]] } }],
+    { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]], colors } }],
     { rotation: 25.714, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P223h", which: 3, edge: 0 }) }],
 }
 
@@ -230,8 +231,7 @@ function getKiteScript(flexes) {
   return [{ name: "kite bronze octaflexagon" }, { addMorphFlexes: true }, { flexes }, { normalizeIds: true, labelAsTree }];
 }
 function getKiteOptions(rotation, start, end, captions) {
-  const optionsAll = { scale: 300, content: { showLeafProps: true } };
-  return { ...optionsAll, rotation, start, end, captions };
+  return { scale: 300, content: { showLeafProps: true }, rotation, start, end, captions };
 }
 const silverMorphScript = [
   { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
@@ -282,12 +282,12 @@ const templatesStateDiagrams = {
 
 ///////////
 // 18: sequences
-const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
+const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree }];
 const templatesSequences = {
   "fig18.2": [flipleftScript, { content: { showLeafProps: true } },
     [{ end: 11, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] },
     { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],],
-  "fig18.5": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
+  "fig18.5": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree }],
   { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] }],
 }
 
@@ -307,7 +307,7 @@ const templatesPatNotation = {
 
 ///////////
 // 28: square silver octa
-const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors: labelAsTree } }];
+const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesSilverOcta = {
   "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 },
     [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] },
@@ -317,7 +317,7 @@ const templatesSilverOcta = {
 
 ///////////
 // 29: hexa bronze dodeca
-const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors: labelAsTree } }];
+const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesBronzeDodeca = {
   "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 },
     [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
@@ -393,7 +393,7 @@ const templatesDecorating = {
 // 36: puzzles
 const puzzleHeptaScript = [{
   numPats: 4, flexes: "(P*^>)5", reverseFlexes: "(P*^>)5", angles: [60, 60],
-  setLabels: { labels: [[2, 1], [3, 4], [6, 5], [6, "C"], [5, 4], [2, 3], [1, "B"], [1, 2], [4, 3], [5, 6], ["A", 6], [4, 5], [3, 2], ["D", 1]] }
+  setLabels: { labels: [[2, 1], [3, 4], [6, 5], [6, "C"], [5, 4], [2, 3], [1, "B"], [1, 2], [4, 3], [5, 6], ["A", 6], [4, 5], [3, 2], ["D", 1]], colors }
 }];
 const puzzleHeptaCaptions = [firstStar,
   { text: "a", which: -4, edge: 0 }, { text: "b", which: -4, edge: 1 }, { text: "c", which: -4, edge: 2 }, // A
@@ -408,7 +408,7 @@ const templatesPuzzles = {
 ///////////
 // 37: popups
 const animalScript = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] },
-{ angles: [72, 54], setLabels: { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]] } }];
+{ angles: [72, 54], setLabels: { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]], colors } }];
 const templatesPopups = {
   "animal-penta": [animalScript, { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions }],
 }
