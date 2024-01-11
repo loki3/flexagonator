@@ -187,43 +187,43 @@
     }
 
     ///////////
-    // v-flex
+    // 10: v-flex
     const templatesV = {
-      "V-minimal-hexa": [getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V")],
-      "V-cycle6": [getSeqScript(6, "(V*>)6"), getSeqOptions(-60, -1, 1, "(V>)6")],
-      "V-cycle15": [getSeqScript(6, "(V*<)15"), getSeqOptions(60, -2, 2, "(V<)15")],
-      "V-minimal-octa": [getSeqScript(8, "V*", [45, 90]), getSeqOptions(-45, -1, 0, "V")],
+      "fig10.1": [getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V")],
+      "fig10.4": [getSeqScript(6, "(V*>)6"), getSeqOptions(-60, -1, 1, "(V>)6")],
+      "fig10.6": [getSeqScript(6, "(V*<)15"), getSeqOptions(60, -2, 2, "(V<)15")],
+      "fig10.8": [getSeqScript(8, "V*", [45, 90]), getSeqOptions(-45, -1, 0, "V")],
     }
 
     ///////////
-    // tuck
+    // 11: tuck
     const templatesTuck = {
-      "T-6-bronze-minimal": [getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T")],
-      "T-6-minimal": [getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T")],
-      "T-8": [getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4")],
+      "fig11.1": [getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T")],
+      "fig11.5": [getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T")],
+      "fig11.7": [getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4")],
     }
 
     ///////////
-    // flip
+    // 12: flip
     const labelsF7 = [[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [3, 4],
     [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1], [5, 3], [1, 2], [3, 2], [3, 1]];
     const templatesFlip = {
-      "F-8-minimal": [getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F")],
-      "F-6-minimal": [getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F")],
-      "F-10-F5": [getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35)],
-      "F-7-cycle": [getOddScript(7, "(F*<)5", "^", labelsF7, 1), getOddOptions(undefined, -3, 1, "(F<)5", true)],
+      "fig12.1": [getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F")],
+      "fig12.4": [getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F")],
+      "fig12.5": [getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35)],
+      "fig12.6": [getOddScript(7, "(F*<)5", "^", labelsF7, 1), getOddOptions(undefined, -3, 1, "(F<)5", true)],
     }
 
     ///////////
-    // pyramid shuffle
+    // 13: pyramid shuffle
     const templatesS = {
-      "S-6-minimal": [getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S")],
-      "S-8-silver-minimal": [getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S")],
-      "S-5-minimal": [getOddScript(5, "S*", ">>"), getOddOptions(-72, -2, 1, "S")],
+      "fig13.1": [getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S")],
+      "fig13.4": [getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S")],
+      "fig13.5": [getOddScript(5, "S*", ">>"), getOddOptions(-72, -2, 1, "S")],
     }
 
     ///////////
-    // breakdown
+    // 14: breakdown
     function getMkScript(flexes) {
       return [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
     }
@@ -244,32 +244,32 @@
     ];
     const kiteAllScript = getKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
     const templatesBreakdown = {
-      "silver-morph-Mkf": [getMkScript("Mkf+"), getMkOptions(225, "Mkf")],
-      "silver-morph-Mkfs": [getMkScript("Mkfs+"), getMkOptions(-45, "Mkfs")],
-      "silver-morph-Mkr": [getMkScript("Mkr+"), getMkOptions(-45, "Mkr")],
-      "silverMorphFlexes": [silverMorphScript, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] }],
-      "morph-St": [getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St")],
-      "morph-Fm": [getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm")],
-      "morph-S3": [getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3")],
-      "kite-bf": [getKiteScript("Bf+ >>>"), {},
+      "fig14.3": [getMkScript("Mkf+"), getMkOptions(225, "Mkf")],
+      "fig14.5": [getMkScript("Mkfs+"), getMkOptions(-45, "Mkfs")],
+      "fig14.7": [getMkScript("Mkr+"), getMkOptions(-45, "Mkr")],
+      "fig14.8": [silverMorphScript, { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Mk's", which: 1, edge: 1 }] }],
+      "fig14.10": [getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St")],
+      "fig14.13": [getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm")],
+      "fig14.16": [getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3")],
+      "fig14.20": [getKiteScript("Bf+ >>>"), {},
       [{ rotation: -30, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Bf", which: 0, edge: 2 }] },
       { rotation: 0, start: 8, captions: [lastStar, { text: "a", which: 0 }] }]],
-      "kite-all": [kiteAllScript, {},
+      "fig14.22": [kiteAllScript, {},
         [getKiteOptions(30, 0, 6, [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }]),
         getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }]),
         getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }]),
         getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],],
-      "iso-penta-octa": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5")],
+      "fig14.25": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5")],
     }
 
     ///////////
-    // pyramid shuffle
+    // 15: slots
     const templatesSlot = {
-      "slot-6-many": [getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"),
+      "fig15.1": [getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"),
       getSeqOptions(90, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }])],
-      "slot-8": [getSeqScript(8, "Lk+ Ltf+", [], ">>^"),
+      "fig15.9": [getSeqScript(8, "Lk+ Ltf+", [], ">>^"),
       getSeqOptions(45, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }])],
-      "slot-5-L3": [getOddScript(5, "L3*", "", [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]),
+      "fig15.10": [getOddScript(5, "L3*", "", [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]),
       getOddOptions(252, 2, 2, "L3", true)],
     }
 
@@ -587,62 +587,62 @@
 
   <h3 id="vflex">10: v-flex</h3>
 
-  <span id="V-minimal-hexa" width="900" height="450"></span>
-  <span id="V-cycle6" width="1000" height="140"></span>
-  <span id="V-cycle15" width="1000" height="110"></span>
-  <span id="V-minimal-octa" width="1000" height="252"></span>
+  <span id="fig10.1" width="900" height="450"></span>
+  <span id="fig10.4" width="1000" height="140"></span>
+  <span id="fig10.6" width="1000" height="110"></span>
+  <span id="fig10.8" width="1000" height="252"></span>
 
   <h3 id="tuck">11: tuck flex</h3>
 
-  <span id="T-6-bronze-minimal" width="750" height="500"></span><br/><br/>
-  <span id="T-6-minimal" width="900" height="400"></span><br/><br/>
-  <span id="T-8" width="500" height="500"></span>
+  <span id="fig11.1" width="750" height="500"></span><br/><br/>
+  <span id="fig11.5" width="900" height="400"></span><br/><br/>
+  <span id="fig11.7" width="500" height="500"></span>
 
   <h3 id="flip">12: flip flex</h3>
 
-  <span id="F-8-minimal" width="900" height="400"></span><br/><br/>
-  <span id="F-6-minimal" width="900" height="500"></span><br/><br/>
-  <span id="F-10-F5" width="1100" height="488"></span><br/><br/>
-  <span id="F-7-cycle" width="1000" height="600"></span>
+  <span id="fig12.1" width="900" height="400"></span><br/><br/>
+  <span id="fig12.4" width="900" height="500"></span><br/><br/>
+  <span id="fig12.5" width="1100" height="488"></span><br/><br/>
+  <span id="fig12.6" width="1000" height="600"></span>
 
   <h3 id="pyramid shuffle">13: pyramid shuffle</h3>
 
-  <span id="S-6-minimal" width="800" height="500"></span><br/><br/>
-  <span id="S-8-silver-minimal" width="1000" height="400"></span><br/><br/>
-  <span id="S-5-minimal" width="800" height="500"></span><br/><br/>
+  <span id="fig13.1" width="800" height="500"></span><br/><br/>
+  <span id="fig13.4" width="1000" height="400"></span><br/><br/>
+  <span id="fig13.5" width="800" height="500"></span><br/><br/>
 
   <h3 id="breakdown">14: breaking down flexes</h3>
 
   <p>silver octaflexagon: Mkf, Mkb, Mkr, Mkl, Mkfs, Mkbs</p>
   <!-- minimal morph-flex templates on a silver octaflexagon -->
-  <span id="silver-morph-Mkf" width="500" height="500"></span><br/><br/>
-  <span id="silver-morph-Mkfs" width="500" height="500"></span><br/><br/>
-  <span id="silver-morph-Mkr" width="500" height="500"></span><br/><br/>
-  <span id="silverMorphFlexes" width="1000" height="500"></span><br/><br/>
+  <span id="fig14.3" width="500" height="500"></span><br/><br/>
+  <span id="fig14.5" width="500" height="500"></span><br/><br/>
+  <span id="fig14.7" width="500" height="500"></span><br/><br/>
+  <span id="fig14.8" width="1000" height="500"></span><br/><br/>
   <!-- St, Fm, and S3 -->
-  <span id="morph-St" width="700" height="700"></span>
-  <span id="morph-Fm" width="1000" height="400"></span><br/><br/>
-  <span id="morph-S3" width="1000" height="400"></span><br/><br/>
+  <span id="fig14.10" width="700" height="700"></span>
+  <span id="fig14.13" width="1000" height="400"></span><br/><br/>
+  <span id="fig14.16" width="1000" height="400"></span><br/><br/>
   <!-- kite -->
   <h4>kite bronze octaflexagon</h4>
-  <span id="kite-bf-1" width="523" height="454"></span>
-  <span id="kite-bf-2" width="455" height="393"></span>
+  <span id="fig14.20-1" width="523" height="454"></span>
+  <span id="fig14.20-2" width="455" height="393"></span>
   <p>all morph-kite combos</p>
-  <span id="kite-all-1" width="523" height="454"></span>
-  <span id="kite-all-2" width="523" height="454"></span><br/>
-  <span id="kite-all-3" width="523" height="454"></span>
-  <span id="kite-all-4" width="454" height="264"></span><br/>
+  <span id="fig14.22-1" width="523" height="454"></span>
+  <span id="fig14.22-2" width="523" height="454"></span><br/>
+  <span id="fig14.22-3" width="523" height="454"></span>
+  <span id="fig14.22-4" width="454" height="264"></span><br/>
   <!-- pockets: isosceles octaflexagon -->
   <p>pockets: isosceles octaflexagon</p>
-  <span id="iso-penta-octa" width="1000" height="500"></span>
+  <span id="fig14.25" width="1000" height="500"></span>
 
   <h3 id="slot-flexes">15: slot flexes</h3>
 
   <p>supports Lh Lk Ltf Ltb Lbb Lbf</p>
-  <span id="slot-6-many" width="1000" height="580"></span><br/><br/>
-  <span id="slot-8" width="1000" height="500"></span><br/><br/>
+  <span id="fig15.1" width="1000" height="580"></span><br/><br/>
+  <span id="fig15.9" width="1000" height="500"></span><br/><br/>
   <p>supports L3, Lk, Ltf</p>
-  <span id="slot-5-L3" width="750" height="500"></span><br/><br/>
+  <span id="fig15.10" width="750" height="500"></span><br/><br/>
 
   <!-- part 3 -->
 
