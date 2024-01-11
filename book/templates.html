@@ -75,13 +75,13 @@
 
 
     ///////////
-    // pinch flex
+    // 1: pinch flex
     const templatesPinch = {
-      "tri-hexa": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2)],
+      "fig1.1": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2)],
     }
 
     ///////////
-    // more faces
+    // 3: more faces
     function get12Script() {
       const A = "P'*>(P*)2";
       const B = "P'*>(P*)4";
@@ -99,32 +99,32 @@
       return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3 } }];
     }
     const templatesMoreFaces = {
-      "tetra-hexa": [getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1)],
-      "penta-hexa": [getPentaScript(6), getPentaOptions(60)],
-      "hexa-hexa1": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a")],
-      "hexa-hexa2": [getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid")],
-      "hexa-hexa3": [getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid")],
-      "dodeca-hexa": [get12Script(), getPinchOptions(120, 0, 11, 1, "12", 1)],
-      "icositetra-hexa": [get24Script(), getPinchOptions(120, 0, 23, 2, "24", 2)],
+      "fig3.1": [getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1)],
+      "fig3.3": [getPentaScript(6), getPentaOptions(60)],
+      "fig3.4": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a")],
+      "fig3.5": [getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid")],
+      "fig3.6": [getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid")],
+      "fig3.7": [get12Script(), getPinchOptions(120, 0, 11, 1, "12", 1)],
+      "fig3.8": [get24Script(), getPinchOptions(120, 0, 23, 2, "24", 2)],
     }
 
     ///////////
-    // triangle tetra & octa
+    // 4: triangle tetra & octa
     const templatesTetraOcta = {
-      "tri-tetra": [
+      "fig4.1": [
         [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }],
         { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "3", which: 0, edge: 2 }, { text: "+", which: 3, edge: 1 }, { text: "+", which: 4, edge: 1 }) }
       ],
-      "penta-tetra": [getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }])],
-      "tri-octa": [
+      "fig4.3": [getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }])],
+      "fig4.5": [
         [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }],
         { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "3", which: 0, edge: 2 }) }
       ],
-      "penta-octa": [getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }])],
+      "fig4.7": [getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }])],
     }
 
     ///////////
-    // different triangles
+    // 5: different triangles
     const triCaptions = [
       { text: "a", which: 0, edge: 0 }, { text: "b", which: 0, edge: 1 }, { text: "c", which: 0, edge: 2 },
       { text: "a", which: 1, edge: 0 }, { text: "b", which: 1, edge: 1 }, { text: "c", which: 1, edge: 2 },
@@ -137,27 +137,27 @@
       { text: "c", which: 8, edge: 0 }, { text: "b", which: 8, edge: 1 }, { text: "a", which: 8, edge: 2 },
     ];
     const templatesDifferent = {
-      "diff-bronze-tri-hexa": [getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, -3, 0, "3")],
-      "diff-regular-tri-hexa-abc": [getSeqScript(6, "P+", [60, 60], ">"), getSeqOptions(120, undefined, undefined, undefined, undefined, triCaptions)],
-      "diff-bronze-tri-hexa-abc": [getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, undefined, undefined, undefined, undefined, triCaptions)],
-      "diff-bronze-tri-tetra1": [getPinchScript(6, "P*P+", [60, 90]), getPinchOptions(150, undefined, undefined, -1, "4a", 0)],
-      "diff-bronze-tri-tetra2": [getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid")],
-      "diff-bronze-tri-tetra3": [getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0)],
-      "diff-bronze-hexa-octa": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a")],
-      "diff-silver-tri-hexa": [getSeqScript(6, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3")],
-      "diff-silver-tetra-octa1": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid")],
-      "diff-silver-tetra-octa2": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1)],
-      "diff-silver-hexa-octa": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
-      "diff-silver-penta-tetra": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }],
+      "fig5.1": [getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, -3, 0, "3")],
+      "fig5.3": [getSeqScript(6, "P+", [60, 60], ">"), getSeqOptions(120, undefined, undefined, undefined, undefined, triCaptions)],
+      "fig5.4": [getSeqScript(6, "P+", [60, 90], ">"), getSeqOptions(90, undefined, undefined, undefined, undefined, triCaptions)],
+      "fig5.5": [getPinchScript(6, "P*P+", [60, 90]), getPinchOptions(150, undefined, undefined, -1, "4a", 0)],
+      "fig5.6": [getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid")],
+      "fig5.7": [getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0)],
+      "fig5.9": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a")],
+      "fig5.10": [getSeqScript(6, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3")],
+      "fig5.11": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid")],
+      "fig5.12": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1)],
+      "fig5.15": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
+      "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }],
       { rotation: 45, content: { showLeafProps: true } },
       [{ start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] },
       { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }]],
-      "diff-silver-hexa-tetra": [getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid")],
-      "diff-other-tri-hexa": [getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3")],
+      "fig5.X": [getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid")],
+      "fig5.18": [getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3")],
     }
 
     ///////////
-    // pinch flex variations
+    // 6: pinch flex variations
     const p333Script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
     { setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]] } },
     { angles: [40, 70] }];
@@ -165,22 +165,22 @@
     { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]] } },
     { angles: [30, 60] }];
     const templatesPinchVariations = {
-      "P333": [
+      "fig6.2": [
         [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors: labelAsTree } }],
         { rotation: 4, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 }) }
       ],
-      "P333-8": [p333Script, { rotation: 0, content: { showLeafProps: true } },
+      "fig6.4": [p333Script, { rotation: 0, content: { showLeafProps: true } },
         [{ captions: [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }] },
         { captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: - 1, edge: 1 }] },
         { captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }]],
-      "P444": [[{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }],
+      "fig6.5": [[{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }],
       { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' } },
       [{ captions: [{ text: "d", which: 0, edge: 1 }, { text: "a", which: -1, edge: 2 }, { text: "P444", which: 1 }] },
       { captions: [{ text: "a", which: 0, edge: 1 }, { text: "b", which: -1, edge: 2 }] },
       { captions: [{ text: "b", which: 0, edge: 1 }, { text: "c", which: -1, edge: 2 }] },
       { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }]],
-      "P444-half": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
-      "P223h": [
+      "fig6.7": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
+      "fig6.9": [
         [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
         { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]] } }],
         { rotation: 25.714, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P223h", which: 3, edge: 0 }) }],
@@ -498,86 +498,86 @@
   <h3 id="pinch">1: pinch flex</h3>
 
   <h4>tri-hexaflexagon</h4>
-  <span id="tri-hexa" width="800" height="180"></span>
+  <span id="fig1.1" width="800" height="180"></span>
 
   <!-- 4, 5, & 6 faces-->
   <h3 id="more-faces">3: more faces</h3>
 
   <h4>tetra-hexaflexagon</h4>
-  <span id="tetra-hexa" width="800" height="233"></span>
+  <span id="fig3.1" width="800" height="233"></span>
 
   <h4>penta-hexaflexagon</h4>
-  <span id="penta-hexa" width="1000" height="475"></span>
+  <span id="fig3.3" width="1000" height="475"></span>
 
   <h4>hexa-hexaflexagon</h4>
-  <span id="hexa-hexa1" width="1200" height="120"></span>
-  <span id="hexa-hexa2" width="700" height="610"></span>
-  <span id="hexa-hexa3" width="700" height="700"></span>
+  <span id="fig3.4" width="1200" height="120"></span>
+  <span id="fig3.5" width="700" height="610"></span>
+  <span id="fig3.6" width="700" height="700"></span>
 
   <h4>dodeca-hexaflexagon</h4>
-  <span id="dodeca-hexa" width="1200" height="163"></span>
+  <span id="fig3.7" width="1200" height="163"></span>
   <h4>icositetra-hexaflexagon strip</h4>
-  <span id="icositetra-hexa" width="1200" height="86"></span>
+  <span id="fig3.8" width="1200" height="86"></span>
 
   <!-- triangle tetra & octa -->
   <h3 id="tetra-octa">4: triangle tetra & octa</h3>
 
   <h4>regular tri-tetraflexagon</h4>
-  <span id="tri-tetra" width="880" height="220"></span>
+  <span id="fig4.1" width="880" height="220"></span>
 
   <h4>regular penta-tetraflexagon</h4>
-  <span id="penta-tetra" width="770" height="500"></span>
+  <span id="fig4.3" width="770" height="500"></span>
 
   <h4>regular tri-octaflexagon</h4>
-  <span id="tri-octa" width="1200" height="220"></span>
+  <span id="fig4.5" width="1200" height="220"></span>
 
   <h4>regular penta-octaflexagon</h4>
-  <span id="penta-octa" width="1200" height="448"></span>
+  <span id="fig4.7" width="1200" height="448"></span>
 
   <!-- different triangles -->
   <h3 id="different">5: different triangles</h3>
 
-  <span id="diff-bronze-tri-hexa" width="1000" height="500"></span><br/><br/>
-  <span id="diff-regular-tri-hexa-abc" width="1000" height="176"></span><br/><br/>
-  <span id="diff-bronze-tri-hexa-abc" width="1000" height="500"></span><br/><br/>
-  <span id="diff-bronze-tri-tetra1" width="1038" height="452"></span><br/><br/>
-  <span id="diff-bronze-tri-tetra2" width="600" height="521"></span><br/><br/>
-  <span id="diff-bronze-tri-tetra3" width="900" height="521"></span><br/><br/>
-  <span id="diff-bronze-hexa-octa" width="1200" height="322"></span><br/><br/>
-  <span id="diff-silver-tri-hexa" width="1000" height="333"></span><br/><br/>
-  <span id="diff-silver-tetra-octa1" width="750" height="750"></span><br/><br/>
-  <span id="diff-silver-tetra-octa2" width="1100" height="140"></span><br/><br/>
-  <span id="diff-silver-hexa-octa" width="1200" height="202"></span><br/><br/>
-  <span id="diff-silver-penta-tetra-1" width="500" height="250"></span>
-  <span id="diff-silver-penta-tetra-2" width="500" height="250"></span><br/><br/>
-  <span id="diff-silver-hexa-tetra" width="800" height="400"></span>
-  <span id="diff-other-tri-hexa" width="1000" height="372"></span><br/><br/>
+  <span id="fig5.1" width="1000" height="500"></span><br/><br/>
+  <span id="fig5.3" width="1000" height="176"></span><br/><br/>
+  <span id="fig5.4" width="1000" height="500"></span><br/><br/>
+  <span id="fig5.5" width="1038" height="452"></span><br/><br/>
+  <span id="fig5.6" width="600" height="521"></span><br/><br/>
+  <span id="fig5.7" width="900" height="521"></span><br/><br/>
+  <span id="fig5.9" width="1200" height="322"></span><br/><br/>
+  <span id="fig5.10" width="1000" height="333"></span><br/><br/>
+  <span id="fig5.11" width="500" height="500"></span><br/><br/>
+  <span id="fig5.12" width="1100" height="140"></span><br/><br/>
+  <span id="fig5.15" width="1200" height="202"></span><br/><br/>
+  <span id="fig5.16-1" width="500" height="250"></span>
+  <span id="fig5.16-2" width="500" height="250"></span><br/><br/>
+  <span id="fig5.X" width="800" height="400"></span>
+  <span id="fig5.18" width="1000" height="372"></span><br/><br/>
 
   <!-- pinch flex variations -->
   <h3 id="pinch-variations">6: pinch flex variations</h3>
 
   <h4>P333</h4>
-  <span id="P333" width="1200" height="400"></span><br/>
-  <span id="P333-8-1" width="390" height="400"></span>
-  <span id="P333-8-2" width="390" height="400"></span>
-  <span id="P333-8-3" width="390" height="400"></span>
+  <span id="fig6.2" width="1200" height="400"></span><br/>
+  <span id="fig6.4-1" width="390" height="400"></span>
+  <span id="fig6.4-2" width="390" height="400"></span>
+  <span id="fig6.4-3" width="390" height="400"></span>
   <br/>
 
   <h4>P3333, P444, P66</h4>
-  <span id="P444-1" width="300" height="300"></span>
-  <span id="P444-2" width="300" height="300"></span>
-  <span id="P444-3" width="300" height="300"></span>
-  <span id="P444-4" width="300" height="300"></span>
+  <span id="fig6.5-1" width="300" height="300"></span>
+  <span id="fig6.5-2" width="300" height="300"></span>
+  <span id="fig6.5-3" width="300" height="300"></span>
+  <span id="fig6.5-4" width="300" height="300"></span>
   <br/>
 
   <p>
     you can do a P444h (half of a P444) on this one & it'll still be flat,
     though the leaves no longer meet in the middle
   </p>
-  <span id="P444-half" width="1200" height="233"></span>
+  <span id="fig6.7" width="1200" height="233"></span>
 
   <h4>P223h</h4>
-  <span id="P223h" width="1200" height="360"></span>
+  <span id="fig6.9" width="1200" height="360"></span>
 
   <hr />
 
