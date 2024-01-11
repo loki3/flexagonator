@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>flexagon templates</title>
+
+  <script src="../../build/out.js"></script>
+  <script src="templates.js"></script>
+  <script type="text/javascript">
+    function fillTemplateList() {
+      const input = document.getElementById("templateList");
+      const ids = Object.getOwnPropertyNames(allTemplates);
+      for (const id of ids) {
+        const option = document.createElement("option");
+        option.text = id;
+        input.add(option);
+      }
+      input.selectedIndex = 0;
+    }
+
+    function pickTemplate(name) {
+      const [script, options, extras] = allTemplates[name];
+      clearAll();
+      if (!extras) {
+        drawOne("image-1", script, options);
+      } else {  // template is split into pieces
+        const ids = [], pieces = [];
+        let i = 1;
+        for (const extra of extras) {
+          ids.push(`image-${i++}`);
+          pieces.push({ ...options, ...extra });
+        }
+        drawOne(ids, script, pieces);
+      }
+    }
+
+    function clearAll() {
+      for (let i = 0; i < 6; i++) {
+        const output = document.getElementById(`image-${i + 1}`);
+        output.innerHTML = "";
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Templates</h1>
+
+  <select id="templateList" onchange="pickTemplate(event.target.value)">
+  </select>
+  <br/><br/>
+
+  <span id="image-1" width="800" height="800"></span>
+  <span id="image-2" width="800" height="800"></span>
+  <span id="image-3" width="800" height="800"></span>
+  <span id="image-4" width="800" height="800"></span>
+  <span id="image-5" width="800" height="800"></span>
+  <span id="image-6" width="800" height="800"></span>
+
+  <script type="text/javascript">
+    fillTemplateList();
+    pickTemplate("fig1.1");
+  </script>
+</body>
+
+</html>
