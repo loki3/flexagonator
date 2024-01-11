@@ -18,7 +18,7 @@ function drawOne(canvasId, script, drawOptions) {
 }
 
 function getPinchScript(numPats, flexes, angles2) {
-  return [{ numPats, angles2, flexes, labelAsTree: [] }];
+  return [{ numPats, angles2, flexes, labelAsTree }];
 }
 function getPinchOptions(rotation, start, end, whereFlex, text, edge, endStyle) {
   const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex, edge });
@@ -28,7 +28,7 @@ function getPinchOptions(rotation, start, end, whereFlex, text, edge, endStyle) 
 // same as getPinchScript except that it numbers the faces as they're created by 'flexes'
 function getPinch2Script(numPats, flexes, angles2) {
   angles2 = angles2 ? angles2 : [60, 60];
-  return [{ numPats, angles2, flexAndColor: { flexes: flexes } }];
+  return [{ numPats, angles2, flexAndColor: { flexes: flexes, colors: labelAsTree } }];
 }
 function getPinch2Options(rotation, whereFlex, text, endStyle) {
   const captions = whereFlex === undefined ? starCaptions : starCaptions.concat({ text, which: whereFlex });
@@ -108,12 +108,12 @@ const templatesMoreFaces = {
 // 4: triangle tetra & octa
 const templatesTetraOcta = {
   "fig4.1": [
-    [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree: [] }],
+    [{ numPats: 4, flexes: "P*", angles: [60, 60], labelAsTree }],
     { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "3", which: 0, edge: 2 }, { text: "+", which: 3, edge: 1 }, { text: "+", which: 4, edge: 1 }) }
   ],
   "fig4.3": [getPentaScript(4), getPentaOptions(60, [{ text: "+", which: 0, edge: 2 }, { text: "+", which: -1, edge: 0 }])],
   "fig4.5": [
-    [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree: [] }],
+    [{ numPats: 8, flexes: "P*", angles: [60, 60], labelAsTree }],
     { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "3", which: 0, edge: 2 }) }
   ],
   "fig4.7": [getPentaScript(8), getPentaOptions(60, [{ text: "+", which: 2, edge: 0 }, { text: "+", which: 5, edge: 0 }])],
@@ -144,7 +144,7 @@ const templatesDifferent = {
   "fig5.11": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid")],
   "fig5.12": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1)],
   "fig5.15": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
-  "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>" }, angles2: [90, 45] }],
+  "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>", colors: labelAsTree }, angles2: [90, 45] }],
   { rotation: 45, content: { showLeafProps: true } },
   [{ start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] },
   { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }]],
@@ -221,13 +221,13 @@ const templatesS = {
 ///////////
 // 14: breakdown
 function getMkScript(flexes) {
-  return [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree: [] }];
+  return [{ numPats: 8, angles2: [45, 90], addMorphFlexes: true }, { flexes, labelAsTree }];
 }
 function getMkOptions(rotation, text) {
   return { rotation, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text, which: -2, edge: 1 }] };
 }
 function getKiteScript(flexes) {
-  return [{ name: "kite bronze octaflexagon" }, { addMorphFlexes: true }, { flexes }, { normalizeIds: true, labelAsTree: [] }];
+  return [{ name: "kite bronze octaflexagon" }, { addMorphFlexes: true }, { flexes }, { normalizeIds: true, labelAsTree }];
 }
 function getKiteOptions(rotation, start, end, captions) {
   const optionsAll = { scale: 300, content: { showLeafProps: true } };
@@ -236,7 +236,7 @@ function getKiteOptions(rotation, start, end, captions) {
 const silverMorphScript = [
   { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
   { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
-  { labelAsTree: [] }
+  { labelAsTree }
 ];
 const kiteAllScript = getKiteScript("Mkf'* Mkb+Mkl+Mkr+Mkbs+Mkfs+ Mkf Mkb'* Mkf+Mkl+Mkr+Mkbs+Mkfs+ Mkb Mkl'* Mkf+Mkb+Mkr+Mkbs+Mkfs+ Mkl Mkr'* Mkf+Mkb+Mkl+Mkbs+Mkfs+ Mkr Mkbs'* Mkf+Mkb+Mkl+Mkr+Mkfs+ Mkbs Mkfs'* Mkf+Mkb+Mkl+Mkr+Mkbs+ Mkfs >>>");
 const templatesBreakdown = {
@@ -273,10 +273,10 @@ const templatesSlot = {
 // 17: state diagrams
 const templatesStateDiagrams = {
   "fig17.13": [
-    [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
+    [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree }],
     { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions }],
   "diagram-hexa11": [
-    [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree: [] }],
+    [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree }],
     { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions }],
 }
 
@@ -295,9 +295,9 @@ const templatesSequences = {
 // 19: pat notation
 const templatesPatNotation = {
   "fig19.1": [
-    [{ pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] }, { labelAsTree: [], searchFlexes: "P S T V" }],
+    [{ pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] }, { labelAsTree, searchFlexes: "P S T V" }],
     { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions }],
-  "fig19.2": [[{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree: [] }],
+  "fig19.2": [[{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree }],
   { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions }],
   "fig19.4": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
   { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
@@ -307,7 +307,7 @@ const templatesPatNotation = {
 
 ///////////
 // 28: square silver octa
-const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
+const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors: labelAsTree } }];
 const templatesSilverOcta = {
   "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 },
     [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] },
@@ -317,12 +317,12 @@ const templatesSilverOcta = {
 
 ///////////
 // 29: hexa bronze dodeca
-const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^" } }];
+const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors: labelAsTree } }];
 const templatesBronzeDodeca = {
   "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 },
     [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
     { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }],],
-  "fig29.9": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree: [] }],
+  "fig29.9": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree }],
   { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] }],
 }
 
@@ -384,7 +384,7 @@ const templatesDecorating = {
   "fig34.4": [getSeqScript(8, "P+", [45, 45],), getSeqOptions(180 + 45, -3, 2, "pivot")],
   "fig34.5": [getSeqScript(10, "P+", [36, 36],), getSeqOptions(180 + 36, -6, 2, "pivot")],
   "fig34.6": [getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot")],
-  "decorate-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree: [] }], { rotation: 0, content: { showLeafProps: true } },
+  "decorate-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
   { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }],],
 }
