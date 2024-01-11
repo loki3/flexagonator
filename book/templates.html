@@ -274,9 +274,9 @@
     }
 
     ///////////
-    // state diagrams
+    // 17: state diagrams
     const templatesStateDiagrams = {
-      "diagram-s3": [
+      "fig17.13": [
         [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree: [] }],
         { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions }],
       "diagram-hexa11": [
@@ -285,27 +285,27 @@
     }
 
     ///////////
-    // sequences
+    // 18: sequences
     const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree: true }];
     const templatesSequences = {
-      "sequences-flipleft": [flipleftScript, { content: { showLeafProps: true } },
+      "fig18.2": [flipleftScript, { content: { showLeafProps: true } },
         [{ end: 11, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] },
         { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],],
-      "sequences-hexa12": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
+      "fig18.5": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree: true }],
       { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] }],
     }
 
     ///////////
-    // pat notation
+    // 19: pat notation
     const templatesPatNotation = {
-      "pats-example-unfolded": [
+      "fig19.1": [
         [{ pats: [1, [-3, 2], [-6, [-4, 5]], [[8, -9], -7], -10, [[[-13, 12], 14], -11]] }, { labelAsTree: [], searchFlexes: "P S T V" }],
         { content: { showLeafProps: true, showIds: true }, rotation: 180, captions: starCaptions }],
-      "pats-trihexa-unfolded": [[{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree: [] }],
+      "fig19.2": [[{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree: [] }],
       { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions }],
-      "pats-visible-Tf": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
+      "fig19.4": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
       { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
-      "pats-visible-T": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
+      "fig19.5": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
       { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
     }
 
@@ -652,7 +652,7 @@
   <h3 id="state-diagrams">17: state-diagrams</h3>
 
   <p>(S&lt;)3</p>
-  <span id="diagram-s3" width="1000" height="750"></span><br/>
+  <span id="fig17.13" width="1000" height="750"></span><br/>
 
   <p>11 leaf hexaflexagon</p>
   <span id="diagram-hexa11" width="1000" height="350"></span><br/>
@@ -661,22 +661,22 @@
   <h3 id="sequences">18: sequences</h3>
 
   <p>(F&lt;)6</p>
-  <span id="sequences-flipleft-1" width="1200" height="240"></span><br/>
-  <span id="sequences-flipleft-2" width="1200" height="240"></span><br/>
+  <span id="fig18.2-1" width="1200" height="240"></span><br/>
+  <span id="fig18.2-2" width="1200" height="240"></span><br/>
 
   <p>(Ltb>P>P>) 12</p>
-  <span id="sequences-hexa12" width="1200" height="170"></span><br/>
+  <span id="fig18.5" width="1200" height="170"></span><br/>
 
   <!-- pat-notation -->
   <h3 id="pat-notation">19: pat notation</h3>
 
   <p>example</p>
-  <span id="pats-example-unfolded" width="1000" height="600"></span><br/>
+  <span id="fig19.1" width="1000" height="600"></span><br/>
   <p>tri-hexa</p>
-  <span id="pats-trihexa-unfolded" width="1000" height="180"></span><br/>
+  <span id="fig19.2" width="1000" height="180"></span><br/>
   <p>same visible leaves, different structure</p>
-  <span id="pats-visible-Tf" width="1100" height="480"></span><br/>
-  <span id="pats-visible-T" width="1200" height="500"></span>
+  <span id="fig19.4" width="1100" height="480"></span><br/>
+  <span id="fig19.5" width="1200" height="500"></span>
 
   <!-- part 4 -->
 
