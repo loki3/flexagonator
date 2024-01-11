@@ -452,8 +452,12 @@ const templatesPopups = {
   "animal-penta": [animalScript, { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions }],
 }
 
-///////////
-// details on drawing the templates: { templateId: [script, drawOptions, optional-option-array] }
+/**
+ * details on drawing all the templates, arrays keyed by figure name, e.g., "fig1.1"
+ * 1: flexagonator script to create flexagon
+ * 2: options for drawing the template
+ * 3: [optional] array of additional options when splitting template into multiple pieces
+ */
 const allTemplates = {
   ...templatesPinch,
   ...templatesMoreFaces,
