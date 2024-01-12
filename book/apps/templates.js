@@ -362,7 +362,7 @@ const templatesStateDiagrams = {
   "fig17.13": [
     [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree }],
     { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions }],
-  "diagram-hexa11": [
+  "fig17-hexa11": [
     [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree }],
     { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions }],
 }
@@ -390,6 +390,14 @@ const templatesPatNotation = {
   { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
   "fig19.5": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
   { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions }],
+}
+
+///////////
+// 21: defining flexagon
+const templatesDefine = {
+  "fig21.3": "templates/fig21.3.png",
+  "fig21.4": "templates/fig21.4.png",
+  "fig21.5": "templates/fig21.5.png",
 }
 
 ///////////
@@ -468,12 +476,21 @@ const templatesBracelets = {
 ///////////
 // 34: decorating
 const templatesDecorating = {
+  "fig34.2": "templates/fig34.2.png",
   "fig34.4": [getSeqScript(8, "P+", [45, 45],), getSeqOptions(180 + 45, -3, 2, "pivot")],
   "fig34.5": [getSeqScript(10, "P+", [36, 36],), getSeqOptions(180 + 36, -6, 2, "pivot")],
   "fig34.6": [getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot")],
-  "decorate-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
+  "fig34.7": "templates/fig34.7.png",
+  "fig34-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
   { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }],],
+}
+
+///////////
+// 35: books
+const templatesBooks = {
+  "fig35.1": "templates/fig35.1.png",
+  "fig35.4": "templates/fig35.4.png",
 }
 
 ///////////
@@ -489,7 +506,9 @@ const puzzleHeptaCaptions = [firstStar,
   { text: "a⚹", which: -1, edge: 1 }, { text: "b", which: -1, edge: 0 }, { text: "c", which: -1, edge: 2 }, // D
 ];
 const templatesPuzzles = {
-  "puzzle-hepta": [puzzleHeptaScript, { rotation: 60, content: { showLeafProps: true }, captions: puzzleHeptaCaptions }],
+  "fig36.1": "templates/fig36.1.png",
+  "fig36-hepta": [puzzleHeptaScript, { rotation: 60, content: { showLeafProps: true }, captions: puzzleHeptaCaptions }],
+  "fig36-maze": "templates/fig36-maze.png",
 }
 
 ///////////
@@ -497,7 +516,11 @@ const templatesPuzzles = {
 const animalScript = [{ pats: [0, 0, [[[0, 0], 0], 0], 0, [[[0, 0], 0], 0]] },
 { angles: [72, 54], setLabels: { labels: [[1, 2], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [5, 4], [5, 1], [4, 3]], colors } }];
 const templatesPopups = {
-  "animal-penta": [animalScript, { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions }],
+  "fig37.3": "templates/fig37.3.png",
+  "fig37.4": "templates/fig37.4.png",
+  "fig37.6": "templates/fig37.6.png",
+  "fig37.8": "templates/fig37.8.png",
+  "fig37.11": [animalScript, { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions }],
 }
 
 /**
@@ -524,11 +547,13 @@ const allTemplates = {
   ...templatesStateDiagrams,
   ...templatesSequences,
   ...templatesPatNotation,
+  ...templatesDefine,
   ...templatesSilverOcta,
   ...templatesBronzeDodeca,
   ...templatesSilverDodeca,
   ...templatesBracelets,
   ...templatesDecorating,
+  ...templatesBooks,
   ...templatesPuzzles,
   ...templatesPopups,
 };
