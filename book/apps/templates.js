@@ -19,15 +19,17 @@ function drawTemplate(name, outputId, face) {
   }
 
   const [script, options, extras, size] = template;
-  const drawOptions = addFace(options, face);
   if (!extras) {
+    const drawOptions = addFace(options, face);
     drawOne(id, script, drawOptions);
   } else {  // template is split into pieces
     const ids = [], pieces = [];
     let i = 1;
     for (const extra of extras) {
       ids.push(`${id}-${i++}`);
-      pieces.push({ ...drawOptions, ...extra });
+      // build up common options + specific options + face
+      const drawOptions = addFace({ ...options, ...extra }, face);
+      pieces.push(drawOptions);
     }
     drawOne(ids, script, pieces, size);
   }
