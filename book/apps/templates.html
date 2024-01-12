@@ -20,6 +20,7 @@
   <script src="../../build/out.js"></script>
   <script src="templates.js"></script>
   <script type="text/javascript">
+    const gDefaultSize = 800;
     let gName = "";  // current template
     let gFace = 'both';  // track whether template should show front and/or back faces
 
@@ -48,6 +49,7 @@
     function clearAll() {
       const output = document.getElementById("image");
       output.innerHTML = "";
+      output.style.width = output.style.height = gDefaultSize;
       for (let i = 0; i < 6; i++) {
         const output = document.getElementById(`image-${i + 1}`);
         output.innerHTML = "";

@@ -18,7 +18,7 @@ function drawTemplate(name, outputId, face) {
     return;
   }
 
-  const [script, options, extras] = template;
+  const [script, options, extras, size] = template;
   const drawOptions = addFace(options, face);
   if (!extras) {
     drawOne(id, script, drawOptions);
@@ -29,17 +29,27 @@ function drawTemplate(name, outputId, face) {
       ids.push(`${id}-${i++}`);
       pieces.push({ ...drawOptions, ...extra });
     }
-    drawOne(ids, script, pieces);
+    drawOne(ids, script, pieces, size);
   }
 }
 
 /**
  * draw an unfolded strip in the given element
- * @param outputId id of output element
+ * @param outputId id(s) of output element
  * @param script flexagonator script describing flexagon
  * @param drawOptions options for how to draw template
+ * @param size [optional] output size to use for multiple pieces
  */
-function drawOne(outputId, script, drawOptions) {
+function drawOne(outputId, script, drawOptions, size) {
+  if (Array.isArray(outputId) && size && size[0] && size[1]) {
+    for (const id of outputId) {
+      const output = document.getElementById(id);
+      output.style.display = 'inline-block';
+      output.style.width = `${size[0]}px`;
+      output.style.height = `${size[1]}px`;
+    }
+  }
+
   const fm = Flexagonator.createFromScript(script);
   Flexagonator.drawUnfolded(outputId, fm, drawOptions);
 }
@@ -207,7 +217,8 @@ const templatesDifferent = {
   "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>", colors }, angles2: [90, 45] }],
   { rotation: 45, content: { showLeafProps: true } },
   [{ start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] },
-  { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }]],
+  { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }],
+  [500, 250]],
   "fig5.X": [getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid")],
   "fig5.18": [getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3")],
 }
@@ -228,13 +239,15 @@ const templatesPinchVariations = {
   "fig6.4": [p333Script, { rotation: 0, content: { showLeafProps: true } },
     [{ captions: [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }] },
     { captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: - 1, edge: 1 }] },
-    { captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }]],
+    { captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }],
+    [390, 400]],
   "fig6.5": [[{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }],
   { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' } },
   [{ captions: [{ text: "d", which: 0, edge: 1 }, { text: "a", which: -1, edge: 2 }, { text: "P444", which: 1 }] },
   { captions: [{ text: "a", which: 0, edge: 1 }, { text: "b", which: -1, edge: 2 }] },
   { captions: [{ text: "b", which: 0, edge: 1 }, { text: "c", which: -1, edge: 2 }] },
-  { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }]],
+  { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }],
+  [300, 300]],
   "fig6.7": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
   "fig6.9": [
     [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
@@ -336,12 +349,14 @@ const templatesBreakdown = {
   "fig14.16": [getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3")],
   "fig14.20": [getKiteScript("Bf+ >>>"), {},
   [{ rotation: -30, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Bf", which: 0, edge: 2 }] },
-  { rotation: 0, start: 8, captions: [lastStar, { text: "a", which: 0 }] }]],
+  { rotation: 0, start: 8, captions: [lastStar, { text: "a", which: 0 }] }],
+  [523, 454]],
   "fig14.22": [kiteAllScript, {},
     [getKiteOptions(30, 0, 6, [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }]),
     getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }]),
     getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }]),
-    getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],],
+    getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],
+    [523, 454]],
   "fig14.25": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5")],
 }
 
@@ -373,7 +388,8 @@ const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree }];
 const templatesSequences = {
   "fig18.2": [flipleftScript, { content: { showLeafProps: true } },
     [{ end: 11, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] },
-    { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],],
+    { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],
+    [1066, 240]],
   "fig18.5": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree }],
   { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] }],
 }
@@ -406,7 +422,8 @@ const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flex
 const templatesSilverOcta = {
   "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 },
     [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] },
-    { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] },]],
+    { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] }],
+    [1200, 204]],
   "fig28.7": [getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw")],
 }
 
@@ -416,7 +433,8 @@ const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flex
 const templatesBronzeDodeca = {
   "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 },
     [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
-    { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }],],
+    { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }],
+    [1100, 275]],
   "fig29.9": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree }],
   { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] }],
 }
@@ -483,7 +501,8 @@ const templatesDecorating = {
   "fig34.7": "templates/fig34.7.png",
   "fig34-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
-  { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }],],
+  { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }],
+  [500, 500]],
 }
 
 ///////////
@@ -529,6 +548,7 @@ const templatesPopups = {
  * 1: flexagonator script to create flexagon
  * 2: options for drawing the template
  * 3: [optional] array of additional options when splitting template into multiple pieces
+ * 4: [optional] [width,height] to use for each piece of a split template
  */
 const allTemplates = {
   ...templatesPinch,
