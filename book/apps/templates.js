@@ -13,7 +13,7 @@ function drawTemplate(name, outputId, face) {
   const id = outputId ? outputId : name;
   const template = allTemplates[name];
 
-  if (typeof template === 'string') {
+  if (isBitmapTemplate(name)) {
     addImage(id, template);
     return;
   }
@@ -579,3 +579,8 @@ const allTemplates = {
   ...templatesPuzzles,
   ...templatesPopups,
 };
+
+// return true if the template is a bitmap rather than a script
+function isBitmapTemplate(name) {
+  return typeof allTemplates[name] === 'string';
+}

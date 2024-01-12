@@ -40,12 +40,6 @@
       input.selectedIndex = 0;
     }
 
-    function showTemplate(name) {
-      gName = name;
-      clearAll();
-      drawTemplate(name, "image", gFace);
-    }
-
     function clearAll() {
       const output = document.getElementById("image");
       output.innerHTML = "";
@@ -54,6 +48,20 @@
         const output = document.getElementById(`image-${i + 1}`);
         output.innerHTML = "";
       }
+    }
+
+    function enableButtons(name) {
+      // can display front/back for a scripted template, but not a bitmap
+      const disabled = isBitmapTemplate(name);
+      document.getElementById("frontButton").disabled = disabled;
+      document.getElementById("backButton").disabled = disabled;
+    }
+
+    function showTemplate(name) {
+      gName = name;
+      clearAll();
+      drawTemplate(name, "image", gFace);
+      enableButtons(name);
     }
 
     function setTemplateFaces(option) {
@@ -72,9 +80,9 @@
   </select>
     &nbsp;&nbsp;&nbsp;
     show faces:
-    <input onclick="setTemplateFaces('both');" type="button" value="front & back" />
-    <input onclick="setTemplateFaces('front');" type="button" value="front" />
-    <input onclick="setTemplateFaces('back');" type="button" value="back" />
+    <input onclick="setTemplateFaces('both');" type="button" value="front & back" id="bothButton" />
+    <input onclick="setTemplateFaces('front');" type="button" value="front" id="frontButton" />
+    <input onclick="setTemplateFaces('back');" type="button" value="back" id="backButton" />
   </p>
 
   <span id="image" width="800" height="800"></span>
