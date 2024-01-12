@@ -3,3 +3,4 @@ node_modules
 *.vbk
 book/photos
 book/images
+book/apps/templates

@@ -10,8 +10,15 @@
  * @param face 'both' | 'front' | 'back', defaults to 'both'
  */
 function drawTemplate(name, outputId, face) {
-  const [script, options, extras] = allTemplates[name];
   const id = outputId ? outputId : name;
+  const template = allTemplates[name];
+
+  if (typeof template === 'string') {
+    addImage(id, template);
+    return;
+  }
+
+  const [script, options, extras] = template;
   const drawOptions = addFace(options, face);
   if (!extras) {
     drawOne(id, script, drawOptions);
@@ -46,6 +53,19 @@ function addFace(options, face) {
   let content = options.content;
   content = content ? { ...content, ...moreContent } : moreContent;
   return { ...options, content };
+}
+
+// under element 'id', add <img src=template>
+function addImage(id, template) {
+  const output = document.getElementById(id);
+  if (!output) {
+    return;
+  }
+
+  const img = document.createElement("img");
+  img.src = template;
+  img.width = 800;
+  output.appendChild(img);
 }
 
 
@@ -220,6 +240,34 @@ const templatesPinchVariations = {
     [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
     { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]], colors } }],
     { rotation: 25.714, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P223h", which: 3, edge: 0 }) }],
+}
+
+///////////
+// 7: book flex
+const templatesBook = {
+  "fig7.1": "templates/fig7.1.png",
+  "fig7.3": "templates/fig7.3.png",
+  "fig7.4": "templates/fig7.4.png",
+  "fig7.5": "templates/fig7.5.png",
+  "fig7.6": "templates/fig7.6.png",
+  "fig7.7": "templates/fig7.7.png",
+  "fig7.8": "templates/fig7.8.png",
+  "fig7.9": "templates/fig7.9.png",
+  "fig7.10": "templates/fig7.10.png",
+  "fig7.11": "templates/fig7.11.png",
+  "fig7.12": "templates/fig7.12.png",
+  "fig7.13": "templates/fig7.13.png",
+}
+
+///////////
+// 8: box flex
+const templatesBox = {
+  "fig8.1": "templates/fig8.1.png",
+  "fig8.3": "templates/fig8.3.png",
+  "fig8.5": "templates/fig8.5.png",
+  "fig8.6": "templates/fig8.6.png",
+  "fig8.7": "templates/fig8.7.png",
+  "fig8.8": "templates/fig8.8.png",
 }
 
 ///////////
@@ -454,6 +502,7 @@ const templatesPopups = {
 
 /**
  * details on drawing all the templates, arrays keyed by figure name, e.g., "fig1.1"
+ * content is either an image file name or an array with the following items:
  * 1: flexagonator script to create flexagon
  * 2: options for drawing the template
  * 3: [optional] array of additional options when splitting template into multiple pieces
@@ -464,6 +513,8 @@ const allTemplates = {
   ...templatesTetraOcta,
   ...templatesDifferent,
   ...templatesPinchVariations,
+  ...templatesBook,
+  ...templatesBox,
   ...templatesV,
   ...templatesTuck,
   ...templatesFlip,
