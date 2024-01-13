@@ -99,9 +99,10 @@
 
     // draw front/back of the before/after states of a flex using the given # of pats & optional angles,
     // requires 4 drawing areas that are canvasId + "-before/after-1/2"
-    function drawBeforeAfter(canvasId, flex, numPats, angles2) {
-      const script = numPats % 2 === 0 ? [{ numPats, flexes: flex + "+", angles2, labelAsTree }]
-        : [{ numPats, flexAndColor: { flexes: flex + "+", colors: labelAsTree }, angles2 }];
+    function drawBeforeAfter(canvasId, flex, numPats, angles2, script) {
+      if (!script) {
+        script = [{ numPats, flexes: flex + "+", angles2, labelAsTree }];
+      }
       const fm = Flexagonator.createFromScript(script);
       if (Flexagonator.isError(fm)) { console.log("drawBeforeAfter - ", Flexagonator.errorToString(fm)); return; }
       const rotate = numPats === 6 ? -30 : numPats === 8 ? -22.5 : 0;
@@ -506,7 +507,9 @@
   <span id="S-minimal-after-1" width="180" height="180"></span>
   <span id="S-minimal-after-2" width="160" height="180"></span>
   <script type="text/javascript">
-    drawBeforeAfter("S-minimal", "S", 5);
+    const labelsS5 = [[1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [1, 3], [1, 2]];
+    const scriptS5 = [{ numPats: 5, flexes: "S+>>", angles2: [] }, { setLabels: { labels: labelsS5, repeats: 1, colors: labelAsTree } }, { flexes: "<<" }];
+    drawBeforeAfter("S-minimal", "S", 5, [], scriptS5);
   </script>
 
   <h3 id="breakdown">breaking down flexes</h3>

@@ -315,10 +315,11 @@ const templatesFlip = {
 
 ///////////
 // 13: pyramid shuffle
+const labelsS5 = [[1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [1, 3], [1, 2]];
 const templatesS = {
   "fig13.1": [getSeqScript(6, "S*", undefined, ">>"), getSeqOptions(-120, -2, 1, "S")],
   "fig13.4": [getSeqScript(8, "S*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "S")],
-  "fig13.5": [getOddScript(5, "S*", ">>"), getOddOptions(-72, -2, 1, "S")],
+  "fig13.5": [getOddScript(5, "S*", ">>", labelsS5, 1), getOddOptions(-72, -2, 1, "S", true)],
 }
 
 ///////////
