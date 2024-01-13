@@ -22,7 +22,6 @@
   <script type="text/javascript">
     const gDefaultSize = 800;
     let gName = "";  // current template
-    let gFace = 'both';  // track whether template should show front and/or back faces
 
     function fillTemplateList() {
       const input = document.getElementById("templateList");
@@ -57,16 +56,11 @@
       document.getElementById("backButton").disabled = disabled;
     }
 
-    function showTemplate(name) {
+    function showTemplate(name, face) {
       gName = name;
       clearAll();
-      drawTemplate(name, "image", gFace);
+      drawTemplate(name, "image", face);
       enableButtons(name);
-    }
-
-    function setTemplateFaces(option) {
-      gFace = option;
-      showTemplate(gName);
     }
   </script>
 </head>
@@ -80,9 +74,9 @@
   </select>
     &nbsp;&nbsp;&nbsp;
     show faces:
-    <input onclick="setTemplateFaces('both');" type="button" value="front & back" id="bothButton" />
-    <input onclick="setTemplateFaces('front');" type="button" value="front" id="frontButton" />
-    <input onclick="setTemplateFaces('back');" type="button" value="back" id="backButton" />
+    <input onclick="showTemplate(gName, 'both');" type="button" value="front & back" id="bothButton" />
+    <input onclick="showTemplate(gName, 'front');" type="button" value="front" id="frontButton" />
+    <input onclick="showTemplate(gName, 'back');" type="button" value="back" id="backButton" />
   </p>
 
   <span id="image" width="800" height="800"></span>
