@@ -7,7 +7,8 @@ namespace Flexagonator {
     start(dontClear?: "dontClear"): void {
       if (dontClear !== "dontClear") {
         const [width, height] = this.getSize();
-        this.ctx.clearRect(0, 0, width, height);
+        this.ctx.fillStyle = "white";
+        this.ctx.fillRect(0, 0, width + 3, height + 3);
       }
       this.ctx.save();
     }
@@ -16,7 +17,7 @@ namespace Flexagonator {
     }
 
     getSize(): [number, number] {
-      return [this.ctx.canvas.clientWidth, this.ctx.canvas.clientHeight];
+      return [this.ctx.canvas.clientWidth - 2, this.ctx.canvas.clientHeight - 2];
     }
 
     setLineColor(color: string | number): void {
