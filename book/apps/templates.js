@@ -18,7 +18,7 @@ function drawTemplate(name, outputId, face) {
     return;
   }
 
-  const [script, options, extras, size] = template;
+  const [script, options, size, extras] = template;
   if (!extras) {
     const drawOptions = addFace(options, face);
     drawOne(id, script, drawOptions);
@@ -250,9 +250,9 @@ const templatesDifferent = {
   "fig5.15": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a")],
   "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>", colors }, angles2: [90, 45] }],
   { rotation: 45, content: { showLeafProps: true } },
+  /*sz*/[500, 250],
   [{ start: 0, end: 5, captions: [{ text: "a", which: 0 }, lastStar, { text: "5", which: 1, edge: 2 }] },
-  { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }],
-  [500, 250]],
+  { start: 6, end: 9, captions: [firstStar, { text: "a", which: -1 }] }]],
   "fig5.X": [getSeqScript(4, "P* ^> P* ^> P* P+", [90, 45]), getSeqOptions(45, -1, 0, "6", "solid")],
   "fig5.18": [getSeqScript(6, "P+", [65, 40], ">"), getSeqOptions(140, -3, 0, "3")],
 }
@@ -270,18 +270,17 @@ const templatesPinchVariations = {
     [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors } }],
     { rotation: 4, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 }) }
   ],
-  "fig6.4": [p333Script, { rotation: 0, content: { showLeafProps: true } },
+  "fig6.4": [p333Script, { rotation: 0, content: { showLeafProps: true } }, /*sz*/[390, 400],
     [{ captions: [{ text: "a", which: 0, edge: 2 }, { text: "b", which: -1, edge: 1 }, { text: "P333 8", which: 1, edge: 0 }] },
     { captions: [{ text: "b", which: 0, edge: 2 }, { text: "c", which: - 1, edge: 1 }] },
-    { captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }],
-    [390, 400]],
+    { captions: [{ text: "c", which: 0, edge: 2 }, { text: "a", which: -1, edge: 1 }] }]],
   "fig6.5": [[{ numPats: 12, flexes: "(P*P+P'>)2", labelAsTree }, { flexes: "^" }],
   { rotation: -15, start: 0, end: 8, content: { showLeafProps: true, endStyle: 'solid' } },
+  /*sz*/[300, 300],
   [{ captions: [{ text: "d", which: 0, edge: 1 }, { text: "a", which: -1, edge: 2 }, { text: "P444", which: 1 }] },
   { captions: [{ text: "a", which: 0, edge: 1 }, { text: "b", which: -1, edge: 2 }] },
   { captions: [{ text: "b", which: 0, edge: 1 }, { text: "c", which: -1, edge: 2 }] },
-  { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }],
-  [300, 300]],
+  { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }]],
   "fig6.7": [p444hScript, { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) }],
   "fig6.9": [
     [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
@@ -382,16 +381,14 @@ const templatesBreakdown = {
   "fig14.10": [getSeqScript(8, "St*", [45, 90], ">>>>"), getSeqOptions(135, 5, 1, "St")],
   "fig14.13": [getSeqScript(8, "Fm*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "Fm")],
   "fig14.16": [getSeqScript(8, "S3*", [45, 45], ">>"), getSeqOptions(45, -2, 0, "S3")],
-  "fig14.20": [getKiteScript("Bf+ >>>"), {},
+  "fig14.20": [getKiteScript("Bf+ >>>"), {}, /*sz*/[523, 454],
   [{ rotation: -30, end: 7, captions: [firstStar, { text: "a", which: -1 }, { text: "Bf", which: 0, edge: 2 }] },
-  { rotation: 0, start: 8, captions: [lastStar, { text: "a", which: 0 }] }],
-  [523, 454]],
-  "fig14.22": [kiteAllScript, {},
+  { rotation: 0, start: 8, captions: [lastStar, { text: "a", which: 0 }] }]],
+  "fig14.22": [kiteAllScript, {}, /*sz*/[523, 454],
     [getKiteOptions(30, 0, 6, [firstStar, { text: "a", which: -1 }, { text: "Mk's", which: 0, edge: 0 }]),
     getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }]),
     getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }]),
-    getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])],
-    [523, 454]],
+    getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])]],
   "fig14.25": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5")],
 }
 
@@ -421,10 +418,9 @@ const templatesStateDiagrams = {
 // 18: sequences
 const flipleftScript = [{ numPats: 8 }, { flexes: "(F*<)6" }, { labelAsTree }];
 const templatesSequences = {
-  "fig18.2": [flipleftScript, { content: { showLeafProps: true } },
+  "fig18.2": [flipleftScript, { content: { showLeafProps: true } }, /*sz*/[1066, 240],
     [{ end: 11, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] },
-    { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }],
-    [1066, 240]],
+    { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig18.5": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree }],
   { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] }],
 }
@@ -455,10 +451,9 @@ const templatesDefine = {
 // 28: square silver octa
 const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesSilverOcta = {
-  "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 },
+  "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1200, 204],
     [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] },
-    { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] }],
-    [1200, 204]],
+    { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig28.7": [getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw")],
 }
 
@@ -466,10 +461,9 @@ const templatesSilverOcta = {
 // 29: hexa bronze dodeca
 const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesBronzeDodeca = {
-  "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 },
+  "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1100, 275],
     [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
-    { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }],
-    [1100, 275]],
+    { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig29.9": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree }],
   { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] }],
 }
@@ -535,9 +529,9 @@ const templatesDecorating = {
   "fig34.6": [getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot")],
   "fig34.7": "templates/fig34.7.png",
   "fig34-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
+  /*sz*/[500, 500],
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
-  { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }],
-  [500, 500]],
+  { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }]],
 }
 
 ///////////
@@ -582,8 +576,8 @@ const templatesPopups = {
  * content is either an image file name or an array with the following items:
  * 1: flexagonator script to create flexagon
  * 2: options for drawing the template
- * 3: [optional] array of additional options when splitting template into multiple pieces
- * 4: [optional] [width,height] to use for each piece of a split template
+ * 3: [optional] [width,height] output size for each piece of template
+ * 4: [optional] array of additional options when splitting template into multiple pieces
  */
 const allTemplates = {
   ...templatesPinch,
