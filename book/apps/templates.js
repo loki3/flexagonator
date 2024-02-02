@@ -45,15 +45,33 @@ function drawTemplate(name, outputId, face) {
 function drawOne(outputId, script, drawOptions, size) {
   if (Array.isArray(outputId) && size && size[0] && size[1]) {
     for (const id of outputId) {
-      const output = document.getElementById(id);
-      output.style.display = 'inline-block';
-      output.style.width = `${size[0]}px`;
-      output.style.height = `${size[1]}px`;
+      setElementSize(id, size[0], size[1]);
+    }
+  } else {
+    // make sure a canvas has a size
+    const output = document.getElementById(outputId);
+    if (output && output.getContext && output.width === 0) {
+      setElementSize(outputId, 800, 800);
     }
   }
 
   const fm = Flexagonator.createFromScript(script);
   Flexagonator.drawUnfolded(outputId, fm, drawOptions);
+}
+
+/** resize the element appropriately, whether SVG or canvas */
+function setElementSize(id, width, height) {
+  const output = document.getElementById(id);
+  if (output && !output.getContext) {
+    // SVG
+    output.style.display = 'inline-block';
+    output.style.width = `${width}px`;
+    output.style.height = `${height}px`;
+  } else if (output) {
+    // canvas
+    output.width = width;
+    output.height = height;
+  }
 }
 
 // optionally specify just 'front' | 'back' face
@@ -67,7 +85,8 @@ function addFace(options, face) {
   return { ...options, content };
 }
 
-// under element 'id', add <img src=template>
+// if element 'id' is a canvas, draw the image,
+// otherwise under element 'id', add <img src=template>
 function addImage(id, template) {
   const output = document.getElementById(id);
   if (!output) {
@@ -76,8 +95,21 @@ function addImage(id, template) {
 
   const img = document.createElement("img");
   img.src = template;
-  img.width = 800;
-  output.appendChild(img);
+  const targetWidth = 900;
+
+  if (output.getContext) {
+    // canvas
+    img.addEventListener("load", (e) => {
+      if (img.width > 0 && img.height > 0) {
+        output.width = targetWidth;
+        output.height = targetWidth * (img.height / img.width);
+        output.getContext("2d").drawImage(img, 0, 0, output.width, output.height);
+      }
+    });
+  } else {
+    img.width = targetWidth;
+    output.appendChild(img);
+  }
 }
 
 

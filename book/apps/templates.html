@@ -46,12 +46,9 @@
     }
 
     function clearAll() {
-      const output = document.getElementById("image");
-      output.innerHTML = "";
-      output.style.width = output.style.height = gDefaultSize;
+      setElementSize("image", 0, 0);
       for (let i = 0; i < 6; i++) {
-        const output = document.getElementById(`image-${i + 1}`);
-        output.innerHTML = "";
+        setElementSize(`image-${i + 1}`, 0, 0);
       }
     }
 
@@ -83,13 +80,13 @@
     <input onclick="showTemplate(gName, 'back');" type="button" value="back" id="backButton" />
   </p>
 
-  <span id="image" width="800" height="800"></span>
-  <span id="image-1" width="800" height="800"></span>
-  <span id="image-2" width="800" height="800"></span>
-  <span id="image-3" width="800" height="800"></span>
-  <span id="image-4" width="800" height="800"></span>
-  <span id="image-5" width="800" height="800"></span>
-  <span id="image-6" width="800" height="800"></span>
+  <canvas id="image" width="800" height="800"></canvas>
+  <canvas id="image-1" width="800" height="800"></canvas>
+  <canvas id="image-2" width="800" height="800"></canvas>
+  <canvas id="image-3" width="800" height="800"></canvas>
+  <canvas id="image-4" width="800" height="800"></canvas>
+  <canvas id="image-5" width="800" height="800"></canvas>
+  <canvas id="image-6" width="800" height="800"></canvas>
 
   <script type="text/javascript">
     fillTemplateList();
