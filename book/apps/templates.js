@@ -21,7 +21,7 @@ function drawTemplate(name, outputId, face) {
   const [script, options, size, extras] = template;
   if (!extras) {
     const drawOptions = addFace(options, face);
-    drawOne(id, script, drawOptions);
+    drawOne(id, script, drawOptions, size);
   } else {  // template is split into pieces
     const ids = [], pieces = [];
     let i = 1;
@@ -47,6 +47,8 @@ function drawOne(outputId, script, drawOptions, size) {
     for (const id of outputId) {
       setElementSize(id, size[0], size[1]);
     }
+  } else if (size && size[0] && size[1]) {
+    setElementSize(outputId, size[0], size[1]);
   } else {
     // make sure a canvas has a size
     const output = document.getElementById(outputId);
@@ -177,7 +179,7 @@ function getPentaOptions(rotation, extraCaptions) {
 ///////////
 // 1: pinch flex
 const templatesPinch = {
-  "fig1.1": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2)],
+  "fig1.1": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2), /*sz*/[800, 141]],
 }
 
 ///////////
@@ -199,13 +201,13 @@ function get24Script() {
   return [{ numPats: 6, flexes, setLabels: { labels, repeats: 3, colors } }];
 }
 const templatesMoreFaces = {
-  "fig3.1": [getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1)],
-  "fig3.3": [getPentaScript(6), getPentaOptions(60)],
-  "fig3.4": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a")],
-  "fig3.5": [getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid")],
-  "fig3.6": [getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid")],
-  "fig3.7": [get12Script(), getPinchOptions(120, 0, 11, 1, "12", 1)],
-  "fig3.8": [get24Script(), getPinchOptions(120, 0, 23, 2, "24", 2)],
+  "fig3.1": [getPinchScript(6, "P*P+"), getPinchOptions(210, undefined, undefined, -1, "4", 1), /*sz*/[800, 233]],
+  "fig3.3": [getPentaScript(6), getPentaOptions(60), /*sz*/[1000, 475]],
+  "fig3.4": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^"), getPinch2Options(120, 1, "6a"), /*sz*/[1200, 112]],
+  "fig3.5": [getPinch2Script(6, "P* P+ >P>P P+ PP+ ^P"), getPinch2Options(0, 1, "6b", "solid"), /*sz*/[700, 606]],
+  "fig3.6": [getPinch2Script(6, "P* P+ >P>P P+ >PPP+ ^PP"), getPinch2Options(0, -2, "6c", "solid"), /*sz*/[700, 692]],
+  "fig3.7": [get12Script(), getPinchOptions(120, 0, 11, 1, "12", 1), /*sz*/[1200, 163]],
+  "fig3.8": [get24Script(), getPinchOptions(120, 0, 23, 2, "24", 2), /*sz*/[1200, 86]],
 }
 
 ///////////
