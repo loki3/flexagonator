@@ -9,6 +9,7 @@ namespace Flexagonator {
         const [width, height] = this.getSize();
         this.ctx.fillStyle = "white";
         this.ctx.fillRect(0, 0, width + 3, height + 3);
+        this.ctx.fillStyle = "black";
       }
       this.ctx.save();
     }
