@@ -177,8 +177,9 @@ By default, it draws the entire strip scaled and rotated to fill the drawing reg
 
 // LeafContent
 {
-  // [optional] default 'both'; draw both front and back labels, or just front, or just back
-  face: 'both' | 'front' | 'back';
+  // [optional] default 'both'; draw both front and back labels, or just front,
+  // or just back (flipped left-to-right) or back-y (flipped top-to-bottom)
+  face: 'both' | 'front' | 'back' | 'back-y';
   // [optional] default false; draw labels that show folding order
   showFoldingOrder;
   // [optional] default false; draw labels and colors from leaf properties

@@ -10,8 +10,9 @@ namespace Flexagonator {
 
   // which labels to draw on the leaves
   export interface LeafContent {
-    /** draw both front and back labels, or just front, or just back: default 'both' */
-    readonly face?: 'both' | 'front' | 'back';
+    /** draw both front and back labels, or just front, or just back: default 'both',
+     * flips left-to-right if 'back', flips top-to-bottom if 'back-y' */
+    readonly face?: 'both' | 'front' | 'back' | 'back-y';
     /** draw labels that show folding order; default false */
     readonly showFoldingOrder?: boolean;
     /** draw labels and colors from leaf properties; default false */

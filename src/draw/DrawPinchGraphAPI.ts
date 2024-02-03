@@ -28,7 +28,7 @@ namespace Flexagonator {
       if (isFlexError(traverseGraph)) {
         return traverseGraph;
       }
-      transform = Transform.make(box, traverseGraph.min, traverseGraph.max, false);
+      transform = Transform.make(box, traverseGraph.min, traverseGraph.max);
 
       paint.setLineColor(traverseColor);
       drawGraph(paint, transform, traverseGraph);
@@ -45,7 +45,7 @@ namespace Flexagonator {
         return flexGraph;
       }
       if (!transform) {
-        transform = Transform.make(box, flexGraph.min, flexGraph.max, false);
+        transform = Transform.make(box, flexGraph.min, flexGraph.max);
       }
 
       paint.setLineColor(flexColor);

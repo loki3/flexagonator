@@ -7,7 +7,7 @@
  * draw a template
  * @param name name of the template, e.g., "fig1.1"
  * @param outputId id of output element, defaults to template name
- * @param face [optional] 'both' | 'front' | 'back', defaults to 'both'
+ * @param face [optional] 'both' | 'front' | 'back' | 'back-y', defaults to 'both'
  */
 function drawTemplate(name, outputId, face) {
   const id = outputId ? outputId : name;

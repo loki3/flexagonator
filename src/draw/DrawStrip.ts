@@ -13,7 +13,7 @@ namespace Flexagonator {
     }
 
     const extents: [Point, Point] = getExtents(leaflines);
-    const flip = (content.face === 'back');
+    const flip = (content.face === 'back') ? 'x' : (content.face === 'back-y') ? 'y' : undefined;
     const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], flip, scale, 1, center);
 
     drawLeafContents(paint, leaflines, content, props, transform);
@@ -40,7 +40,7 @@ namespace Flexagonator {
   function drawLeafContents(paint: Paint, leaflines: LeafLines,
     content: LeafContent, props: PropertiesForLeaves, transform: Transform
   ): void {
-    if (content.face === 'front' || content.face === 'back') {
+    if (content.face === 'front' || content.face === 'back' || content.face === 'back-y') {
       if (content.showLeafProps) {
         drawFaceProps(paint, leaflines.faces, transform, props, content.face === 'front', content.inset);
       }
@@ -54,7 +54,7 @@ namespace Flexagonator {
       }
     }
 
-    if (content.showIds && content.face !== 'back') {
+    if (content.showIds && content.face !== 'back' && content.face !== 'back-y') {
       drawIds(paint, leaflines.faces, transform);
     }
   }

@@ -5,11 +5,12 @@ namespace Flexagonator {
       private readonly offset: Point, // offset before scale, in input coordinates
       private readonly scale: number,
       private readonly xmax: number,
+      private readonly ymax: number,
       private readonly offsetPx: number) {  // offset after scale, in pixels
     }
 
     static make(
-      outputSize: Point, inputMin: Point, inputMax: Point, flip: boolean,
+      outputSize: Point, inputMin: Point, inputMax: Point, flip?: 'x' | 'y',
       scale?: number, insetPx?: number, center?: boolean
     ): Transform {
       const offset = getOffset(outputSize, inputMin, inputMax, center);
@@ -22,14 +23,16 @@ namespace Flexagonator {
         scale = Math.min(scalex, scaley);
       }
 
-      const xmax = flip ? outputSize.x : 0;
-      return new Transform(offset, scale, xmax, insetPx ? insetPx : 0);
+      const xmax = flip === 'x' ? outputSize.x : 0;
+      const ymax = flip === 'y' ? outputSize.y : 0;
+      return new Transform(offset, scale, xmax, ymax, insetPx ? insetPx : 0);
     }
 
     apply(point: Point): Point {
       const p: Point = { x: (point.x + this.offset.x) * this.scale, y: (point.y + this.offset.y) * this.scale };
-      const p1: Point = this.xmax === 0 ? p : { x: this.xmax - p.x, y: p.y };
-      return { x: p1.x + this.offsetPx, y: p1.y + this.offsetPx };
+      const x = this.xmax === 0 ? p.x : this.xmax - p.x;
+      const y = this.ymax === 0 ? p.y : this.ymax - p.y;
+      return { x: x + this.offsetPx, y: y + this.offsetPx };
     }
 
     applyScale(len: number): number {

@@ -83,7 +83,8 @@ namespace Flexagonator {
   function getTransform(paint: Paint, leaflines: LeafLines, showFront: boolean): Transform {
     const [w, h] = paint.getSize();
     const extents: [Point, Point] = getExtents(leaflines);
-    return Transform.make({ x: w, y: h }, extents[0], extents[1], !showFront, undefined, 1, true/*center*/);
+    const flip = showFront ? undefined : 'x';
+    return Transform.make({ x: w, y: h }, extents[0], extents[1], flip, undefined, 1, true/*center*/);
   }
 
   /** transform raw folds in abstract coordinates into hinge lines in pixels */
