@@ -258,7 +258,7 @@ const templatesDifferent = {
   "fig5.9": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a"), /*sz*/[1200, 322]],
   "fig5.10": [getSeqScript(8, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3"), /*sz*/[1200, 304]],
   "fig5.11": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid"), /*sz*/[500, 500]],
-  "fig5.12": [getPinchScript(8, "P*P+", [45, 90]), getPinchOptions(225, undefined, undefined, -1, "4b", 1), /*sz*/[1100, 140]],
+  "fig5.12": [getPinchScript(8, "P*P*>", [45, 90]), getPinchOptions(-45, undefined, undefined, -2, "4b", 1), /*sz*/[1100, 140]],
   "fig5.15": [getPinch2Script(8, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a"), /*sz*/[1200, 152]],
   "fig5.16": [[{ numPats: 4, flexAndColor: { flexes: "P*(^>P*)2>", colors }, angles2: [90, 45] }],
   { rotation: 45, content: { showLeafProps: true } },
