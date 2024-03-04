@@ -91,6 +91,11 @@ namespace Flexagonator {
     // number of sides in overall polygon, not including specific shapes like 'rhombic'
     const sides = adjectiveToNumber(overallShape);
 
+    // pyramid [regular] tetra
+    if (overallShape === 'pyramid' && n === 4 && (!leafShape || leafShape.startsWith('regular'))) {
+      return { angles2: [60, 60] };
+    }
+
     // overallShape & n agree, with optional isosceles/silver/regular
     if ((sides === n && (!leafShape || leafShape.startsWith('isosceles')))
       || (sides === n && n == 4 && leafShape && leafShape.startsWith('silver'))

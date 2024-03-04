@@ -32,6 +32,7 @@ namespace Flexagonator {
     ['triangular', 'bronze', 6],
     ['triangular', 'bronze', 18],
     ['triangular ring', 'right', 12],
+    ['pyramid', 'regular', 4],
     ['square', 'silver', 4],
     ['square', 'silver', 8],
     ['square ring', 'right', 16],
