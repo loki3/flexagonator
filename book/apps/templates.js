@@ -5,7 +5,7 @@
 
 /**
  * draw a template
- * @param name name of the template, e.g., "fig1.1"
+ * @param name name of the template, e.g., "fig1.2"
  * @param outputId id of output element, defaults to template name
  * @param face [optional] 'both' | 'front' | 'back' | 'back-y', defaults to 'both'
  */
@@ -179,7 +179,7 @@ function getPentaOptions(rotation, extraCaptions) {
 ///////////
 // 1: pinch flex
 const templatesPinch = {
-  "fig1.1": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2), /*sz*/[800, 141]],
+  "fig1.2": [getPinchScript(6, "P*"), getPinchOptions(120, undefined, undefined, 0, "3", 2), /*sz*/[800, 141]],
 }
 
 ///////////
@@ -608,7 +608,7 @@ const templatesPopups = {
 }
 
 /**
- * details on drawing all the templates, arrays keyed by figure name, e.g., "fig1.1"
+ * details on drawing all the templates, arrays keyed by figure name, e.g., "fig1.2"
  * content is either an image file name or an array with the following items:
  * 1: flexagonator script to create flexagon
  * 2: options for drawing the template
