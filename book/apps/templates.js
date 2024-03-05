@@ -335,6 +335,12 @@ const templatesBox = {
 }
 
 ///////////
+// 9: flex diagrams
+const templatesFlexDiagrams = {
+  "fig9.7": "templates/fig9.7.png",
+}
+
+///////////
 // 10: v-flex
 const templatesV = {
   "fig10.1": [getSeqScript(6, "V*"), getSeqOptions(60, 0, 2, "V"), /*sz*/[900, 392]],
@@ -625,6 +631,7 @@ const allTemplates = {
   ...templatesPinchVariations,
   ...templatesBook,
   ...templatesBox,
+  ...templatesFlexDiagrams,
   ...templatesV,
   ...templatesTuck,
   ...templatesFlip,

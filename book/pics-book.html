@@ -460,6 +460,29 @@
 
   <h3 id="flex-diagrams">flex diagrams</h3>
 
+  <span id="structure-2" width="250" height="218"></span>
+  <span id="structure-3a" width="300" height="218"></span>
+  <span id="structure-3b" width="300" height="218"></span>
+  <br/>
+  <span id="structure-4a" width="310" height="300"></span>
+  <span id="structure-4b" width="290" height="300"></span>
+  <span id="structure-4c" width="290" height="202"></span>
+  <br/><br/>
+  <script type="text/javascript">
+    function getStructScript(struct) {
+      return [{ pats: [0, struct, 0, 0], labelAsTree: [] }];
+    }
+    function getStructOptions(rotation, end, text) {
+      return { rotation, end, content: { showLeafProps: true }, captions: [{ text, which: 0 }, lastStar] };
+    }
+    drawStripComplex("structure-2", getStructScript([0, 0]), getStructOptions(60, 3, "2"));
+    drawStripComplex("structure-3a", getStructScript([[0, 0], 0]), getStructOptions(120, 4, "3a"));
+    drawStripComplex("structure-3b", getStructScript([0, [0, 0]]), getStructOptions(120, 4, "3b"));
+    drawStripComplex("structure-4a", getStructScript([[[0, 0], 0], 0]), getStructOptions(90, 5, "4a"));
+    drawStripComplex("structure-4b", getStructScript([[0, 0], [0, 0]]), getStructOptions(120, 5, "4b"));
+    drawStripComplex("structure-4c", getStructScript([[0, [0, 0]], 0]), getStructOptions(60, 5, "4c"));
+  </script>
+
   <span id="P-minimal-before-1" width="210" height="200"></span>
   <span id="P-minimal-before-2" width="180" height="200"></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
