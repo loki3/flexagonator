@@ -120,8 +120,8 @@ const firstStar = { text: "⚹", which: 0, scale: 1.8 };
 const lastStar = { text: "⚹", which: -1, scale: 1.8 };
 const starCaptions = [firstStar, lastStar];
 // common colors for faces
-const bookColors = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0x999999, 0xdddddd];
-const photoColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xDDDDDD];
+const bookColors = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0xa58252, 0xdddddd];
+const photoColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xA58252];
 const colors = bookColors;
 const labelAsTree = bookColors;
 
