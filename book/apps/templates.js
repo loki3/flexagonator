@@ -440,7 +440,7 @@ const templatesStateDiagrams = {
     [{ pats: [[-2, 1], [-7, [-3, [6, [4, -5]]]], [11, [-8, [-10, 9]]], 12, [[[15, -14], -16], 13], [18, -17]] }, { labelAsTree }],
     { content: { showLeafProps: true, showIds: true }, rotation: 0, captions: starCaptions },
     /*sz*/[1000, 722]],
-  "fig17-hexa11": [
+  "fig17.19": [
     [{ pats: [[-2, 1], [[4, -5], -3], [7, -6], 8, [-10, 9], -11] }, { labelAsTree }],
     { content: { showLeafProps: true, showIds: true }, rotation: 120, captions: starCaptions },
     /*sz*/[1000, 350]],
@@ -562,9 +562,9 @@ const templatesBracelets = {
   { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Tr4", which: -1, edge: 2 }] },
     /*sz*/[1200, 175]],
   "fig31.10": [[...braceletScript, bfScript], { rotation: -45, content: { showLeafProps: true }, captions: bfCaptions }, /*sz*/[1200, 153]],
-  "fig31.X1": [mobiusScript, { rotation: -45, content: { showLeafProps: true }, captions: mobiusCaptions }, /*sz*/[1200, 136]],
+  //"fig31.X1": [mobiusScript, { rotation: -45, content: { showLeafProps: true }, captions: mobiusCaptions }, /*sz*/[1200, 136]],
   "fig31.11": [getWrapScript("W*>F*<W'*  W>F'<W'  >>>>"), getWrapOptions(18, [{ text: "F", which: 9, edge: 0 }]), /*sz*/[1200, 405]],
-  "fig31.X2": [getWrapScript("W*>S*<W'*  W>S'<W'  <<<<"), getWrapOptions(104, [{ text: "S", which: 5, edge: 1 }]), /*sz*/[1200, 556]],
+  //"fig31.X2": [getWrapScript("W*>S*<W'*  W>S'<W'  <<<<"), getWrapOptions(104, [{ text: "S", which: 5, edge: 1 }]), /*sz*/[1200, 556]],
 }
 
 ///////////
@@ -575,7 +575,7 @@ const templatesDecorating = {
   "fig34.5": [getSeqScript(10, "P+", [36, 36],), getSeqOptions(180 + 36, -6, 2, "pivot"), /*sz*/[1000, 244]],
   "fig34.6": [getSeqScript(12, "P+", [30, 30],), getSeqOptions(180 + 30, -3, 2, "pivot"), /*sz*/[1000, 250]],
   "fig34.7": "templates/fig34.7.png",
-  "fig34-tuck-deca": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
+  "fig34.11": [[{ numPats: 10, flexes: "(Tf+>>)5", angles2: [36, 54], labelAsTree }], { rotation: 0, content: { showLeafProps: true } },
   /*sz*/[500, 500],
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
   { start: 10, captions: [{ text: "a", which: 0 }, lastStar] }]],
