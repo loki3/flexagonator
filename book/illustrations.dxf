@@ -93,7 +93,7 @@ Arial
   9
 $CLAYER
   8
-0
+sector
   9
 $CELTYPE
   6
@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460420.8965509259
+2460420.9110069331
   9
 $TDUUPDATE
  40
-2460421.2298842594
+2460421.2443402777
   9
 $TDINDWG
  40
-144.914930555556
+144.929375
   9
 $TDUSRTIMER
  40
-144.914930555556
+144.929375
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-14DC26927CA
+14DC26927CB
   9
 $SURFTAB1
  70
@@ -1647,7 +1647,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-    43
+    44
   0
 LAYER
   5
@@ -2588,6 +2588,28 @@ DEFPOINTS
      0
  62
      7
+  6
+Continuous
+370
+    -3
+390
+F
+  0
+LAYER
+  5
+14DC26927CA
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+sector
+ 70
+     0
+ 62
+    81
   6
 Continuous
 370
@@ -118113,9 +118135,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -118151,9 +118171,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -118189,9 +118207,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -118227,9 +118243,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -118265,9 +118279,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -118797,9 +118809,9 @@ numbers
 100
 AcDbMText
  10
-100.940582
+100.948298
  20
--26.966471
+-26.981902
  30
 0.0
  40
@@ -118831,9 +118843,9 @@ numbers
 100
 AcDbMText
  10
-101.240582
+101.295998
  20
--27.139676
+-27.148201
  30
 0.0
  40
@@ -118865,9 +118877,9 @@ numbers
 100
 AcDbMText
  10
-101.540582
+101.595998
  20
--26.966471
+-26.974996
  30
 0.0
  40
@@ -118899,9 +118911,9 @@ numbers
 100
 AcDbMText
  10
-101.840582
+101.895998
  20
--27.139676
+-27.148201
  30
 0.0
  40
@@ -118933,9 +118945,9 @@ numbers
 100
 AcDbMText
  10
-102.140582
+102.195998
  20
--26.966471
+-26.974996
  30
 0.0
  40
@@ -118967,9 +118979,9 @@ numbers
 100
 AcDbMText
  10
-102.440582
+102.495998
  20
--27.139676
+-27.148201
  30
 0.0
  40
@@ -119001,9 +119013,9 @@ numbers
 100
 AcDbMText
  10
-102.740582
+102.795998
  20
--26.966471
+-26.974996
  30
 0.0
  40
@@ -119035,9 +119047,9 @@ numbers
 100
 AcDbMText
  10
-103.040582
+103.095998
  20
--27.139676
+-27.148201
  30
 0.0
  40
@@ -119621,9 +119633,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -119659,9 +119669,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -119697,9 +119705,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -119735,9 +119741,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -119773,9 +119777,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -120041,9 +120043,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -120717,9 +120717,9 @@ numbers
 100
 AcDbMText
  10
-101.107107
+101.157258
  20
--28.146447
+-28.165736
  30
 0.0
  40
@@ -120751,9 +120751,9 @@ numbers
 100
 AcDbMText
  10
-101.46066
+101.510811
  20
--28.5
+-28.519289
  30
 0.0
  40
@@ -120785,9 +120785,9 @@ numbers
 100
 AcDbMText
  10
-101.814214
+101.864365
  20
--28.146447
+-28.165736
  30
 0.0
  40
@@ -120871,9 +120871,9 @@ numbers
 100
 AcDbMText
  10
-102.167766
+102.217917
  20
--28.5
+-28.519289
  30
 0.0
  40
@@ -120905,9 +120905,9 @@ numbers
 100
 AcDbMText
  10
-102.52132
+102.571471
  20
--28.146447
+-28.165736
  30
 0.0
  40
@@ -120939,9 +120939,9 @@ numbers
 100
 AcDbMText
  10
-102.874873
+102.925024
  20
--28.5
+-28.519289
  30
 0.0
  40
@@ -120973,9 +120973,9 @@ numbers
 100
 AcDbMText
  10
-103.228427
+103.278578
  20
--28.146447
+-28.165736
  30
 0.0
  40
@@ -121003,9 +121003,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -121041,9 +121039,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -121975,9 +121971,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -122013,9 +122007,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -122377,9 +122369,9 @@ numbers
 100
 AcDbMText
  10
-106.674062
+106.696861
  20
--28.25
+-28.2652
  30
 0.0
  40
@@ -122903,9 +122895,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
@@ -128789,9 +128779,7 @@ SOLID
 100
 AcDbEntity
   8
-0
- 62
-    74
+sector
 100
 AcDbTrace
  10
