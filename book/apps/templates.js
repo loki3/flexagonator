@@ -276,7 +276,7 @@ const templatesDifferent = {
 const p333Script = [{ pats: [[[0, 0], 0], [[0, 0], 0], [[0, 0], 0]] },
 { setLabels: { labels: [[2, 3], [1, 4], [3, 4], [2, 5], [1, 6], [5, 6], [2, 7], [1, 8], [7, 8]], colors } },
 { angles: [40, 70] }];
-const p444hScript = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
+const p444Script = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] },
 { setLabels: { labels: [[1, 2], [3, 2], [3, 1], [2, 1], [2, 1], [2, 1], [2, 3], [1, 3], [1, 2], [1, 2], [1, 2], [3, 2], [3, 1], [2, 1], [2, 1]], colors } },
 { angles: [30, 60] }];
 const templatesPinchVariations = {
@@ -296,13 +296,13 @@ const templatesPinchVariations = {
   { captions: [{ text: "a", which: 0, edge: 1 }, { text: "b", which: -1, edge: 2 }] },
   { captions: [{ text: "b", which: 0, edge: 1 }, { text: "c", which: -1, edge: 2 }] },
   { captions: [{ text: "c", which: 0, edge: 1 }, { text: "d", which: -1, edge: 2 }] }]],
-  "fig6.7": [p444hScript,
-    { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444h", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) },
+  "fig6.7": [p444Script,
+    { rotation: 120, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P444", which: 0, edge: 2 }, { text: "#", which: -5, edge: 1 }) },
     /*sz*/[1200, 233]],
   "fig6.9": [
     [{ pats: [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]], angles: [] },
     { setLabels: { labels: [[3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [3, 2], [3, 1], [2, 4], [1, 4], [5, 2], [5, 1]], colors } }],
-    { rotation: 25.714, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P223h", which: 3, edge: 0 }) },
+    { rotation: 25.714, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "P223", which: 3, edge: 0 }) },
     /*sz*/[1200, 360]],
 }
 
