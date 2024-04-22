@@ -79,7 +79,7 @@ namespace Flexagonator {
 
   // create flexes that start and end with the same pat directions
   function addFullFlexes(flexes: AtomicFlexes): void {
-    flexes["P222h"] = makeAtomicFlex("pinch on hexa",
+    flexes["P222"] = makeAtomicFlex("pinch on hexa",
       "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / b", "-a [2,-1] / # 3 / [-5,4] / -6 / [8,-7] / 9 / -b") as AtomicFlex;
     flexes["V"] = makeAtomicFlex("v-flex on hexa",
       "a 7 / [-9,8] / # 1 / [-3,2] / [5,-4] / 6 / b", "-a [8,-7] / 9 / # [2,-1] / 3 / 4 / [-6,5] / -b") as AtomicFlex;

@@ -117,11 +117,11 @@ P = K <<< ^K'^ >>>
 
 # pinch flex variations on a dodecaflexagon
 P      = (Xr >> Xl >>)3 ~
-P3333h = Xr >>> Xl >>> Xr >>> Xl >>> ~
-P3333  = (Xr >>> Xl >>> Xr >>> Xl >>>)2
-P444h  = Xr >>>> Xl >>>> Xr >>>>
-P444   = (Xr >>>> Xl >>>> Xr >>>>)2
-P66    = (Xr (>)6 Xl (<)6)2
+P3333  = Xr >>> Xl >>> Xr >>> Xl >>> ~
+P3333d = (Xr >>> Xl >>> Xr >>> Xl >>>)2
+P444   = Xr >>>> Xl >>>> Xr >>>>
+P444d  = (Xr >>>> Xl >>>> Xr >>>>)2
+P66d   = (Xr (>)6 Xl (<)6)2
 ```
 
 Many other flexes can be assembled from a small set of "morph flexes".

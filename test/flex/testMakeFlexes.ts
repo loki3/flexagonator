@@ -120,21 +120,21 @@ namespace Flexagonator {
     const flexes: Flexes = makeAllFlexes(12);
 
     it('defines pat structure', () => {
-      const p3333 = flexes["P3333"];
+      const p3333 = flexes["P3333d"];
       expect(areLTArraysEqual(p3333.input, [[[1, 3], 2], 4, 5, [[6, 8], 7], 9, 10, [[11, 13], 12], 14, 15, [[16, 18], 17], 19, 20])).toBe(true);
       expect(areLTArraysEqual(p3333.output, [3, 4, [-6, [5, -7]], 8, 9, [-11, [10, -12]], 13, 14, [-16, [15, -17]], 18, 19, [-1, [20, -2]]])).toBe(true);
 
-      const p444 = flexes["P444"];
+      const p444 = flexes["P444d"];
       expect(areLTArraysEqual(p444.input, [[[1, 3], 2], 4, 5, 6, [[7, 9], 8], 10, 11, 12, [[13, 15], 14], 16, 17, 18])).toBe(true);
       expect(areLTArraysEqual(p444.output, [3, 4, 5, [-7, [6, -8]], 9, 10, 11, [-13, [12, -14]], 15, 16, 17, [-1, [18, -2]]])).toBe(true);
     });
 
     it('defines directions', () => {
-      const p3333 = flexes["P3333"];
+      const p3333 = flexes["P3333d"];
       expect(p3333.inputDirs ? p3333.inputDirs.asString(true) : "").toBe("/?//?//?//?/");
       expect(p3333.outputDirs ? p3333.outputDirs.asString(true) : "").toBe("/?//?//?//?/");
 
-      const p444 = flexes["P444"];
+      const p444 = flexes["P444d"];
       expect(p444.inputDirs ? p444.inputDirs.asString(true) : "").toBe("/??//??//??/");
       expect(p444.outputDirs ? p444.outputDirs.asString(true) : "").toBe("/??//??//??/");
     });

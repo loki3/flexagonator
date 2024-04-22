@@ -20,17 +20,17 @@ namespace Flexagonator {
     K4: "Xr~^ >>> Ul^",
 
     // pinch flex & variations
-    P222h: "(Xr >> AwlAwl)3 ~",
-    P222222h: "(Xr >> AwlAwl)6 ~",
-    P3333h: "(Xr >>> AwlAwlAwl)4 ~",
-    P3333: "(Xr >>> AwlAwlAwl)4 ~ (Xr >>> AwlAwlAwl)4 ~",
-    P333h: "(Xr >>> AwlAwlAwl)3 ~",
-    P444h: "(Xr >>>> AwlAwlAwlAwl)3 ~",
-    P444: "(Xr >>>> AwlAwlAwlAwl)3 ~ (Xr >>>> AwlAwlAwlAwl)3 ~",
-    P66: "(Xr >>>>>> AwlAwlAwlAwlAwlAwl)2 ~ (Xr >>>>>> AwlAwlAwlAwlAwlAwl)2 ~",
+    P222: "(Xr >> AwlAwl)3 ~",
+    P222222: "(Xr >> AwlAwl)6 ~",
+    P3333: "(Xr >>> AwlAwlAwl)4 ~",
+    P3333d: "(Xr >>> AwlAwlAwl)4 ~ (Xr >>> AwlAwlAwl)4 ~",
+    P333: "(Xr >>> AwlAwlAwl)3 ~",
+    P444: "(Xr >>>> AwlAwlAwlAwl)3 ~",
+    P444d: "(Xr >>>> AwlAwlAwlAwl)3 ~ (Xr >>>> AwlAwlAwlAwl)3 ~",
+    P66d: "(Xr >>>>>> AwlAwlAwlAwlAwlAwl)2 ~ (Xr >>>>>> AwlAwlAwlAwlAwlAwl)2 ~",
     // pinch flexes made from pocket flexes
-    P222hk: ">>>> K ^>>> K' ^",
-    P333hk: ">>>>>> K3a ^>>> K3b' ^",
+    P222k: ">>>> K ^>>> K' ^",
+    P333k: ">>>>>> K3a ^>>> K3b' ^",
 
     // "morph-kite" flexes
     Mkf: "K > Ul' <",

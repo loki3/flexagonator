@@ -44,16 +44,16 @@ namespace Flexagonator {
     });
 
     it("should compose to create the pinch flex on a hexaflexagon", () => {
-      testDefinition("P222h", "Ur> ^Ur'^ >> Ul> ^Ul'^ >> Ur> ^Ur'^ <<<<");
-      testDefinition("P222h", ">>>> K <<< ^K'^");
-      testDefinition("P222h", AtomicDecomposition.P222h);
+      testDefinition("P222", "Ur> ^Ur'^ >> Ul> ^Ul'^ >> Ur> ^Ur'^ <<<<");
+      testDefinition("P222", ">>>> K <<< ^K'^");
+      testDefinition("P222", AtomicDecomposition.P222);
     });
 
     it("should compose to create the pinch variations on an enneaflexagon", () => {
-      testFormula("P333h", AtomicDecomposition.P333h,
+      testFormula("P333", AtomicDecomposition.P333,
         "a 1 / # [-3,2] / -4 / -5 / [7,-6] / 8 / 9 / [-11,10] / -12 / b",
         "-a [2,-1] / # 3 / 4 \\ [-6,5] / -7 / -8 \\ [10,-9] / 11 / 12 \\ -b");
-      testFormula("P333h", AtomicDecomposition.P333hk,
+      testFormula("P333", AtomicDecomposition.P333k,
         "a 1 / # [-3,2] / -4 / -5 / [7,-6] / 8 / 9 / [-11,10] / -12 / b",
         "-a [2,-1] / # 3 / 4 \\ [-6,5] / -7 / -8 \\ [10,-9] / 11 / 12 \\ -b");
     });
@@ -62,19 +62,19 @@ namespace Flexagonator {
       testFormula("P", "(Xr>> AwlAwl)6 ~",
         "a 1 / # [-3,2] / -4 / [6,-5] / 7 / [-9,8] / -10 / [12,-11] / 13 / [-15,14] / -16 / [18,-17] / b",
         "-a [2,-1] / # 3 / [-5,4] / -6 / [8,-7] / 9 / [-11,10] / -12 / [14,-13] / 15 / [-17,16] / -18 / -b");
-      testFormula("P3333h", AtomicDecomposition.P3333h,
+      testFormula("P3333", AtomicDecomposition.P3333,
         "a 1 / # [-3,2] / -4 / -5 / [7,-6] / 8 / 9 / [-11,10] / -12 / -13 / [15,-14] / 16 / b",
         "-a [2,-1] / # 3 / 4 \\ [-6,5] / -7 / -8 \\ [10,-9] / 11 / 12 \\ [-14,13] / -15 / -16 \\ -b");
-      testFormula("P3333", AtomicDecomposition.P3333,
+      testFormula("P3333d", AtomicDecomposition.P3333d,
         "a 1 / # [[-3,4],2] / 5 / 6 / [[-8,9],7] / 10 / 11 / [[-13,14],12] / 15 / 16 / [[-18,19],17] / 20 / b",
         "a [3,[1,-2]] / # 4 / 5 / [8,[6,-7]] / 9 / 10 / [13,[11,-12]] / 14 / 15 / [18,[16,-17]] / 19 / 20 / b");
-      testFormula("P444h", AtomicDecomposition.P444h,
+      testFormula("P444", AtomicDecomposition.P444,
         "a 1 / # [-3,2] / -4 / -5 / -6 / [8,-7] / 9 / 10 / 11 / [-13,12] / -14 / -15 / b",
         "-a [2,-1] / # 3 / 4 \\ 5 \\ [-7,6] / -8 / -9 \\ -10 \\ [12,-11] / 13 / 14 \\ 15 \\ -b");
-      testFormula("P444", AtomicDecomposition.P444,
+      testFormula("P444d", AtomicDecomposition.P444d,
         "a 1 / # [[-3,4],2] / 5 / 6 / 7 / [[-9,10],8] / 11 / 12 / 13 / [[-15,16],14] / 17 / 18 / b",
         "a [3,[1,-2]] / # 4 / 5 / 6 / [9,[7,-8]] / 10 / 11 / 12 / [15,[13,-14]] / 16 / 17 / 18 / b");
-      testFormula("P66", AtomicDecomposition.P66,
+      testFormula("P66d", AtomicDecomposition.P66d,
         "a 1 / # [[-3,4],2] / 5 / 6 / 7 / 8 / 9 / [[-11,12],10] / 13 / 14 / 15 / 16 / b",
         "a [3,[1,-2]] / # 4 / 5 / 6 / 7 / 8 / [11,[9,-10]] / 12 / 13 / 14 / 15 / 16 / b");
     });

@@ -281,7 +281,7 @@ const p444Script = [{ pats: [0, [0, 0], 0, 0, 0, [0, 0], 0, 0, 0, [0, 0], 0, 0] 
 { angles: [30, 60] }];
 const templatesPinchVariations = {
   "fig6.2": [
-    [{ numPats: 9, flexAndColor: { flexes: "^P333'*>^", colors } }],
+    [{ numPats: 9, flexAndColor: { flexes: "^P333d'*>^", colors } }],
     { rotation: 4, content: { showLeafProps: true }, captions: starCaptions.concat({ text: "#", which: -5, edge: 1 }, { text: "P333", which: 0, edge: 0 }) },
     /*sz*/[1200, 400]
   ],

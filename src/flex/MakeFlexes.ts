@@ -141,7 +141,7 @@ namespace Flexagonator {
   const unique = [  // interesting non-primes
     "S3", "St", "Fm", "F3", "F4",
     "Lbf", "Lbb", "Lh", "Lk", "L3",
-    "P44", "P333", "P334", "P55", "P3333", "P444", "P66", "P3434",
+    "P44d", "P333d", "P334d", "P55d", "P3333d", "P444d", "P66d", "P3434d",
   ];
 
   /** add ><^~ */
@@ -241,29 +241,29 @@ namespace Flexagonator {
   /** adds some double pinch flexes for the given number of pats */
   function addDoublePinches(patCount: number, flexes: Flexes) {
     if (patCount === 8) {
-      flexes["P44"] = createDoublePinch(patCount, [4]);
+      flexes["P44d"] = createDoublePinch(patCount, [4]);
     }
     if (patCount === 9) {
-      flexes["P333"] = createDoublePinch(patCount, [3, 6]);
+      flexes["P333d"] = createDoublePinch(patCount, [3, 6]);
     }
     if (patCount === 10) {
-      flexes["P334"] = createDoublePinch(patCount, [3, 6]);
-      flexes["P55"] = createDoublePinch(patCount, [5]);
+      flexes["P334d"] = createDoublePinch(patCount, [3, 6]);
+      flexes["P55d"] = createDoublePinch(patCount, [5]);
     }
     if (patCount === 12) {
-      flexes["P3333"] = createDoublePinch(patCount, [3, 6, 9]);
-      flexes["P444"] = createDoublePinch(patCount, [4, 8]);
-      flexes["P66"] = createDoublePinch(patCount, [6]);
+      flexes["P3333d"] = createDoublePinch(patCount, [3, 6, 9]);
+      flexes["P444d"] = createDoublePinch(patCount, [4, 8]);
+      flexes["P66d"] = createDoublePinch(patCount, [6]);
     }
     if (patCount === 14) {
-      flexes["P3434"] = createDoublePinch(patCount, [3, 7, 10]);
+      flexes["P3434d"] = createDoublePinch(patCount, [3, 7, 10]);
     }
   }
 
   /** creates a double pinch where 'which' lists the hinges you pinch at */
   function createDoublePinch(patCount: number, which: number[]): Flex {
     // basic 2-pat unit: [1, [[2, 3], 4]]  ->  [[2, [1, -4]], 3]
-    // 'which' lists the vertices where the basic unit will be applied after 0, e.g. [3,6] for P333
+    // 'which' lists the vertices where the basic unit will be applied after 0, e.g. [3,6] for P333d
     // e.g. [[1,3], 2], 4, 5, [[6,8], 7], 9, 10, [[11,13], 12], 14, 15
     //      3, 4, [-6, [5,-7]], 8, 9, [-11, [10,-12]], 13, 14, [-1, [15,-2]]
     const input: LeafTree = [];
@@ -307,13 +307,13 @@ namespace Flexagonator {
       directions += "/" + "?".repeat(mid - 2) + "/";
     }
 
-    // e.g. patCount=9 & which=[3,6] turns into "333"
+    // e.g. patCount=9 & which=[3,6] turns into "333d"
     let nums = which[0].toString();
     for (let i = 1; i < which.length; i++) {
       nums += (which[i] - which[i - 1]).toString();
     }
     nums += (patCount - which[which.length - 1]).toString();
-    return makeFlex("pinch " + nums, input, output, FlexRotation.None, directions, directions) as Flex;
+    return makeFlex("pinch " + nums + "d", input, output, FlexRotation.None, directions, directions) as Flex;
   }
 
   function createV(patCount: number, dirs?: string): Flex {
