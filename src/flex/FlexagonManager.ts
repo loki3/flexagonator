@@ -33,8 +33,12 @@ namespace Flexagonator {
       if (other && other.flexagon.directions && other.flexagon.directions.getCount() === flexagon.getPatCount()) {
         flexagon = flexagon.changeDirections(other.flexagon.directions);
       }
-      const fm = new FlexagonManager(flexagon, undefined, other.allFlexes);
-      if (other && !other.angleInfo.isDefault) {
+      const samePatCount = flexagon.getPatCount() === other.flexagon.getPatCount();
+      // only keep the same flexes if the pat count matches
+      const flexes = samePatCount ? other.allFlexes : undefined;
+
+      const fm = new FlexagonManager(flexagon, undefined, flexes);
+      if (other && !other.angleInfo.isDefault && samePatCount) {
         fm.angleInfo = other.angleInfo;
       }
       return fm;
