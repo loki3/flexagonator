@@ -189,6 +189,29 @@ namespace Flexagonator {
         expect(newDirs.asString(true)).toBe('/||/');
       }
     });
+
+    it('can flip directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3], undefined, Directions.make('/||')) as Flexagon;
+
+      const flex = new Flex("~", [1, 2, 3], [2, 3, 1], FlexRotation.None,
+        undefined, undefined, [-1, -2, -3]);  // flips directions in same place w/out rearranging
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
+      const newDirs = result.directions as Directions;
+      expect(newDirs.asString(true)).toBe('|//'); // flipped
+    });
+
+    it('supports in/out dirs combined with orderDirs flipping only one direction', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3], undefined, Directions.make('/||')) as Flexagon;
+
+      const dirs = DirectionsOpt.make("/?|") as DirectionsOpt; // middle direction can be anything
+      const flex = new Flex("~", [1, 2, 3], [2, 3, 1], FlexRotation.None,
+        dirs, dirs, [1, -2, 3]);  // flips the middle direction
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
+      const newDirs = result.directions as Directions;
+      expect(newDirs.asString(true)).toBe('//|'); // middle is flipped
+    });
   });
 
   describe('Flex.createPattern', () => {
