@@ -590,20 +590,25 @@ const templatesBooks = {
 
 ///////////
 // 36: puzzles
-const puzzleHeptaScript = [{
+const puzzleHepta4Script = [{
   numPats: 4, flexes: "(P*^>)5", reverseFlexes: "(P*^>)5", angles: [60, 60],
   setLabels: { labels: [[2, 1], [3, 4], [6, 5], [6, "C"], [5, 4], [2, 3], [1, "B"], [1, 2], [4, 3], [5, 6], ["A", 6], [4, 5], [3, 2], ["D", 1]], colors }
 }];
-const puzzleHeptaCaptions = [firstStar,
+const puzzleHepta4Captions = [firstStar,
   { text: "a", which: -4, edge: 0 }, { text: "b", which: -4, edge: 1 }, { text: "c", which: -4, edge: 2 }, // A
   { text: "a", which: 6, edge: 2 }, { text: "b", which: 6, edge: 0 }, { text: "c", which: 6, edge: 1 }, // B
   { text: "a", which: 3, edge: 0 }, { text: "b", which: 3, edge: 2 }, { text: "c", which: 3, edge: 1 }, // C
   { text: "a⚹", which: -1, edge: 1 }, { text: "b", which: -1, edge: 0 }, { text: "c", which: -1, edge: 2 }, // D
 ];
+const puzzleHepta6Script = [{
+  numPats: 6, flexes: "(P*^>)5", reverseFlexes: "(P*^>)5", labelAsTree, angles: [60, 60]
+}];
+const puzzleHepta6Captions = [firstStar, lastStar, { text: "7", which: 1, edge: 1 }];
 const templatesPuzzles = {
   "fig36.1": "templates/fig36.1.png",
-  "fig36-hepta": [puzzleHeptaScript, { rotation: 60, content: { showLeafProps: true }, captions: puzzleHeptaCaptions }, /*sz*/[1100, 295]],
-  "fig36-maze": "templates/fig36-maze.png",
+  "fig36.8": "templates/fig36.8.png",
+  "fig36.10": [puzzleHepta4Script, { rotation: 60, content: { showLeafProps: true }, captions: puzzleHepta4Captions }, /*sz*/[1100, 295]],
+  "fig36.14": [puzzleHepta6Script, { rotation: 60, content: { showLeafProps: true }, captions: puzzleHepta6Captions }, /*sz*/[1100, 204]],
 }
 
 ///////////
