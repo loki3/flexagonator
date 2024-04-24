@@ -116,6 +116,43 @@ namespace Flexagonator {
     });
   });
 
+  describe('createSinglePinch', () => {
+    const flexes: Flexes = makeAllFlexes(12);
+
+    it('defines pat structure', () => {
+      const p3333 = flexes["P3333"];
+      expect(areLTArraysEqual(p3333.input, [[-2, 1], -3, -4, [6, -5], 7, 8, [-10, 9], -11, -12, [14, -13], 15, 16])).toBe(true);
+      expect(areLTArraysEqual(p3333.output, [2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [-13, 12], -14, -15, [1, 16]])).toBe(true);
+
+      const p444 = flexes["P444"];
+      expect(areLTArraysEqual(p444.input, [[-2, 1], -3, -4, -5, [7, -6], 8, 9, 10, [-12, 11], -13, -14, -15])).toBe(true);
+      expect(areLTArraysEqual(p444.output, [2, 3, 4, [-6, 5], -7, -8, -9, [11, -10], 12, 13, 14, [1, 15]])).toBe(true);
+    });
+
+    it('defines directions', () => {
+      const p3333 = flexes["P3333"];
+      expect(p3333.inputDirs ? p3333.inputDirs.asString(true) : "").toBe("/?//?//?//?/");
+      expect(p3333.outputDirs ? p3333.outputDirs.asString(true) : "").toBe("/?//?//?//?/");
+      expect(p3333.orderOfDirs ? p3333.orderOfDirs.toString() : "").toBe("1,-2,3,4,-5,6,7,-8,9,10,-11,12");
+
+      const p444 = flexes["P444"];
+      expect(p444.inputDirs ? p444.inputDirs.asString(true) : "").toBe("/??//??//??/");
+      expect(p444.outputDirs ? p444.outputDirs.asString(true) : "").toBe("/??//??//??/");
+      expect(p444.orderOfDirs ? p444.orderOfDirs.toString() : "").toBe("1,-2,-3,4,5,-6,-7,8,9,-10,-11,12");
+    });
+
+    it('correctly modifies a flexagon', () => {
+      const flexes9: Flexes = makeAllFlexes(9);
+      const p333 = flexes9["P333"];
+      const flexagon = Flexagon.makeFromTree([[-2, 1], -3, -4, [6, -5], 7, 8, [-10, 9], -11, -12],
+        undefined, Directions.make("/|//|//|/")) as Flexagon;
+      const after = p333.apply(flexagon) as Flexagon;
+      expect(JSON.stringify(after.getAsLeafTrees())).toBe("[2,3,[-5,4],-6,-7,[9,-8],10,11,[1,12]]");
+      expect(after.directions ? after.directions.asString(true) : "").toBe("/////////");
+      expect(after.angleTracker.corners.toString()).toBe("1,0,2");
+    });
+  });
+
   describe('createDoublePinch', () => {
     const flexes: Flexes = makeAllFlexes(12);
 

@@ -47,6 +47,7 @@ namespace Flexagonator {
         flexes[s] = createTuck(patCount, i, dirs);
       }
 
+      addSinglePinches(patCount, flexes);
       addDoublePinches(patCount, flexes);
     }
 
@@ -236,6 +237,100 @@ namespace Flexagonator {
       output.push([(a + 4) % leaves, -b]);
     }
     return makeFlex("pinch flex", input, output, FlexRotation.BAC, dirs, dirs) as Flex;
+  }
+
+  /** adds some single pinch flexes for the given number of pats */
+  function addSinglePinches(patCount: number, flexes: Flexes) {
+    if (patCount === 8) {
+      flexes["P44"] = createSinglePinch(patCount, [4]);
+    }
+    if (patCount === 9) {
+      flexes["P333"] = createSinglePinch(patCount, [3, 6]);
+    }
+    if (patCount === 10) {
+      flexes["P334"] = createSinglePinch(patCount, [3, 6]);
+      flexes["P55"] = createSinglePinch(patCount, [5]);
+    }
+    if (patCount === 12) {
+      flexes["P3333"] = createSinglePinch(patCount, [3, 6, 9]);
+      flexes["P444"] = createSinglePinch(patCount, [4, 8]);
+      flexes["P66"] = createSinglePinch(patCount, [6]);
+    }
+    if (patCount === 14) {
+      flexes["P3434"] = createSinglePinch(patCount, [3, 7, 10]);
+    }
+  }
+
+  /** creates a single pinch where 'which' lists the hinges you pinch at */
+  function createSinglePinch(patCount: number, which: number[]): Flex {
+    // 'which' lists the vertices where the basic unit will be applied after 0, e.g. [3,6] for P333
+    // e.g. [ [-2,1], -3, -4, [6,-5], 7, 8, [-10,9], -11, -12 ]
+    //      [ 2, 3, [-5,4], -6, -7, [9,-8], 10, 11, [1,12] ]
+    // dirs /? //? //? /
+    //      /?'//?'//?'/
+    /*
+    # [-2,1] / -3 ? -4 / [6,-5] / 7 ? 8 / [-10,9] / -11 ? -12 /
+    # 2 / 3 ?' [-5,4] / -6 / -7 ?' [9,-8] / 10 / 11 ?' [1,12] /
+
+    # [-2,1] / -3 ? -4 ? -5 / [7,-6] / 8 ? 9 ? 10 / [-12,11] / -13 ? -14 ? -15 /
+    # 2 / 3 ?' 4 ?' [-6,5] / -7 / -8 ?' -9 ?' [11,-10] / 12 / 13 ?' 14 ?' [1,15] /
+    */
+    const input: LeafTree = [];
+    const output: LeafTree = [];
+
+    // input
+    let iWhich = -1;
+    let iLeaf = 1;
+    for (let iPat = 0; iPat < patCount; iPat++) {
+      const even = iWhich % 2 === 0;
+      if ((iWhich == -1) || (iWhich < which.length && which[iWhich] === iPat)) {
+        input.push(even ? [iLeaf + 1, -iLeaf] : [-(iLeaf + 1), iLeaf]);
+        iWhich++;
+        iLeaf += 2;
+      } else {
+        input.push(even ? -iLeaf : iLeaf);
+        iLeaf++
+      }
+    }
+
+    // output
+    iWhich = 0;
+    iLeaf = 2;
+    for (let iPat = 0; iPat < patCount; iPat++) {
+      const even = iWhich % 2 === 0;
+      if (iWhich < which.length && which[iWhich] - 1 === iPat) {
+        output.push(even ? [-(iLeaf + 1), iLeaf] : [iLeaf + 1, -iLeaf]);
+        iWhich++;
+        iLeaf += 2;
+      } else if (iPat === patCount - 1) {
+        output.push([1, iLeaf]);
+      } else {
+        output.push(even ? iLeaf : -iLeaf);
+        iLeaf++;
+      }
+    }
+
+    // directions, e.g., (12,[4,4]) -> in: /??//??//??/, out: /?'?'//?'?'//?'?'/
+    let directions = "";
+    for (iWhich = 0; iWhich < which.length + 1; iWhich++) {
+      const mid = iWhich === 0 ? which[0] :
+        iWhich === which.length ? patCount - which[which.length - 1] :
+          which[iWhich] - which[iWhich - 1];
+      directions += "/" + "?".repeat(mid - 2) + "/";
+    }
+    // all the ?'s need to flip
+    const orderOfDirs: number[] = [];
+    for (let i = 0; i < directions.length; i++) {
+      orderOfDirs.push(directions[i] === '?' ? -(i + 1) : i + 1);
+    }
+
+    // e.g. patCount=9 & which=[3,6] turns into "333"
+    let nums = which[0].toString();
+    for (let i = 1; i < which.length; i++) {
+      nums += (which[i] - which[i - 1]).toString();
+    }
+    nums += (patCount - which[which.length - 1]).toString();
+    return makeFlex("pinch " + nums, input, output, FlexRotation.BAC, directions, directions, orderOfDirs) as Flex;
   }
 
   /** adds some double pinch flexes for the given number of pats */
