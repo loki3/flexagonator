@@ -394,6 +394,10 @@ function getKiteScript(flexes) {
 function getKiteOptions(rotation, start, end, captions) {
   return { scale: 300, content: { showLeafProps: true }, rotation, start, end, captions };
 }
+function getK5Options() {
+  const captions = [...starCaptions, { text: "5", which: 2, edge: 0 }, { text: '#', which: 2, edge: 2 }];
+  return { content: { showLeafProps: true }, captions };
+}
 const silverMorphScript = [
   { numPats: 8, angles2: [45, 45], "addMorphFlexes": true },
   { flexes: "> Mkf* Mkb'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkf' Mkb* Mkf'+Mkl'+Mkr'+Mkbs'+Mkfs'+ Mkb' Mkl* Mkf'+Mkb'+Mkr'+Mkbs'+Mkfs'+ Mkl' Mkr* Mkf'+Mkb'+Mkl'+Mkbs'+Mkfs'+ Mkr' Mkbs* Mkf'+Mkb'+Mkl'+Mkr'+Mkfs'+ Mkbs' Mkfs* Mkf'+Mkb'+Mkl'+Mkr'+Mkbs'+ Mkfs' >>>>" },
@@ -416,7 +420,7 @@ const templatesBreakdown = {
     getKiteOptions(150, 7, 13, [{ text: "a", which: 0 }, { text: "b", which: -1 }]),
     getKiteOptions(210, 14, 19, [{ text: "b", which: 0 }, { text: "c", which: -1 }]),
     getKiteOptions(300, 20, 24, [lastStar, { text: "c", which: 0 }])]],
-  "fig14.25": [getSeqScript(8, "(P*^>)3"), getSeqOptions(undefined, 2, 0, "5"), /*sz*/[966, 500]],
+  "fig14.25": [getSeqScript(8, "(P*^>)3"), getK5Options(), /*sz*/[966, 500]],
 }
 
 ///////////
