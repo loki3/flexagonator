@@ -354,7 +354,7 @@ const templatesV = {
 const templatesTuck = {
   "fig11.1": [getSeqScript(6, "T*", [60, 30], "^>>"), getSeqOptions(120, -2, 0, "T"), /*sz*/[724, 500]],
   "fig11.5": [getSeqScript(6, "T*", undefined, "^>>"), getSeqOptions(-60, -2, 0, "T"), /*sz*/[900, 392]],
-  "fig11.7": [getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4"), /*sz*/[500, 500]],
+  "fig11.8": [getSeqScript(8, "(T2+>>)4", [45, 45]), getSeqOptions(45, 3, 0, "(T>>)4"), /*sz*/[500, 500]],
 }
 
 ///////////
