@@ -754,7 +754,7 @@
       { labelAsTree: [], searchFlexes: "P S T V" }
     ];
     var fm1 = Flexagonator.createFromScript(example);
-    var regions = Flexagonator.drawEntireFlexagon("pats-example-folded", fm1, { showCurrent: false });
+    var regions = Flexagonator.drawEntireFlexagon("pats-example-folded", fm1, { showCurrent: false, structure: true });
     Flexagonator.drawScriptButtons("pats-example-folded", fm1.flexagon, fm1.getAngleInfo(), true, regions);
     // tri-hexa
     var trihexa = [
@@ -762,9 +762,9 @@
       { labelAsTree: [] }
     ];
     var fm2 = Flexagonator.createFromScript(trihexa);
-    Flexagonator.drawEntireFlexagon("pats-trihexa-folded1", fm2, {});
+    Flexagonator.drawEntireFlexagon("pats-trihexa-folded1", fm2, { structure: true });
     var fm3 = Flexagonator.runScript(fm2, [{ flexes: "P" }]);
-    Flexagonator.drawEntireFlexagon("pats-trihexa-folded2", fm3, {});
+    Flexagonator.drawEntireFlexagon("pats-trihexa-folded2", fm3, { structure: true });
   </script>
 
   <!-- atomic flex theory -->
