@@ -121,9 +121,19 @@ const lastStar = { text: "⚹", which: -1, scale: 1.8 };
 const starCaptions = [firstStar, lastStar];
 // common colors for faces
 const bookColors = [0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0xa58252, 0xdddddd];
-const photoColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xA58252];
-const colors = bookColors;
-const labelAsTree = bookColors;
+const photoColors = [0x2339C7, 0x39C723, 0xF00F3B, 0xC27FFF, 0xF8FF17, 0xA58252, 0xdddddd];
+const colors = getColors();
+const labelAsTree = colors;
+
+function getColors() {
+  // if "?colors=photos", use photoColors, else bookColors
+  const params = new URLSearchParams(document.location.search);
+  const colors = params.get('colors');
+  if (colors !== null && colors === 'photos') {
+    return photoColors;
+  }
+  return bookColors;
+}
 
 function getPinchScript(numPats, flexes, angles2) {
   return [{ numPats, angles2, flexes, labelAsTree }];
