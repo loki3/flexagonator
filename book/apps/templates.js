@@ -437,10 +437,10 @@ const templatesBreakdown = {
 // 15: slots
 const templatesSlot = {
   "fig15.1": [getSeqScript(6, "Lk+Ltb+Lbb+", [60, 60], ">>>^"),
-  getSeqOptions(90, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: -6 }, { text: "#", which: 5 }]),
+  getSeqOptions(90, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slot", which: 5 }]),
     /*sz*/[1000, 580]],
   "fig15.10": [getSeqScript(8, "Lk+ Ltf+", [], ">>^"),
-  getSeqOptions(45, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slots", which: 2, edge: 2 }, { text: "#", which: 5 }]),
+  getSeqOptions(45, undefined, undefined, undefined, undefined, [firstStar, lastStar, { text: "slot", which: 5 }]),
     /*sz*/[1000, 500]],
   "fig15.11": [getOddScript(5, "L3*", "", [[3, 2], [4, 5], [1, 5], [3, 4], [2, 6], [8, 7], [8, 1], [7, 6], [1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1]]),
   getOddOptions(252, 2, 2, "L3", true),
