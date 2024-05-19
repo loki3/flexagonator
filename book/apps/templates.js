@@ -519,13 +519,13 @@ const templatesBronzeDodeca = {
 
 ///////////
 // 30: hexa silver dodeca
-function getSilver12Script(flexes) {
-  return [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }, { flexes, labelAsTree }];
+function getSilver12Script(flexes, postflexes) {
+  return [{ name: "hexagonal silver dodecaflexagon" }, { addMorphFlexes: true }, { flexes, labelAsTree }, { flexes: postflexes }];
 }
 const templatesSilverDodeca = {
-  "fig30.3": [getSilver12Script("Tu*Tu*"),
-  { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 1 }] },
-    /*sz*/[1200, 136]],
+  "fig30.3": [getSilver12Script("Tu*Tu*", "<"),
+  { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 0 }] },
+    /*sz*/[1066, 136]],
   "fig30.5": [getSilver12Script("<<Ds+"),
   { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] },
     /*sz*/[800, 400]],
