@@ -482,10 +482,7 @@ const templatesPatNotation = {
   "fig19.3": [[{ pats: [[-2, 1], -3, [5, -4], 6, [-8, 7], -9], labelAsTree }],
   { content: { showLeafProps: true, showIds: true }, rotation: 60, captions: starCaptions },
     /*sz*/[1000, 176]],
-  "fig19.5": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, 9, 10, 11, 12] }],
-  { rotation: 60, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions },
-    /*sz*/[1100, 480]],
-  "fig19.6": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
+  "fig19.5": [[{ "pats": [[[- 2, [[-4, [7, [5, -6]]], 3]], 1], 8, [-10, 9], [12, -11], [-14, 13], -15] }],
   { rotation: 90, content: { showFoldingOrder: true, showIds: true }, captions: starCaptions },
     /*sz*/[1200, 498]],
 }
