@@ -6,11 +6,11 @@ namespace Flexagonator {
    */
   export function drawWithDirections(paint: Paint, objects: DrawFlexagonObjects,
     showFront: boolean, showStructure: StructureType, showIds: boolean,
-    showCurrent: boolean, rotation?: number
+    showCurrent: boolean, showNumbers: boolean, rotation?: number
   ): Line[] {
     const leaflines = getLeafLines(objects.flexagon, objects.angleInfo, showFront, rotation);
     const content: LeafContent = { showLeafProps: true, showIds, face: showFront ? 'front' : 'back', inset: 0.1 };
-    const leafProps = fillInProps(objects.leafProps, objects.flexagon.getTopIds(), objects.flexagon.getBottomIds());
+    const leafProps = fillInProps(objects.leafProps, objects.flexagon.getTopIds(), objects.flexagon.getBottomIds(), showNumbers);
     drawStrip(paint, leaflines, content, leafProps, undefined, 0, undefined, true/*center*/);
 
     const transform = getTransform(paint, leaflines, showFront);
@@ -63,15 +63,15 @@ namespace Flexagonator {
   }
 
   /** if any labels are missing, use the associated leaf id instead */
-  function fillInProps(leafProps: PropertiesForLeaves, topIds: number[], bottomIds: number[]): PropertiesForLeaves {
+  function fillInProps(leafProps: PropertiesForLeaves, topIds: number[], bottomIds: number[], showNumbers: boolean): PropertiesForLeaves {
     const newProps = new PropertiesForLeaves();
-    fillInIds(leafProps, topIds, newProps);
-    fillInIds(leafProps, bottomIds, newProps);
+    fillInIds(leafProps, topIds, newProps, showNumbers);
+    fillInIds(leafProps, bottomIds, newProps, showNumbers);
     return newProps;
   }
-  function fillInIds(leafProps: PropertiesForLeaves, ids: number[], newProps: PropertiesForLeaves) {
+  function fillInIds(leafProps: PropertiesForLeaves, ids: number[], newProps: PropertiesForLeaves, showNumbers: boolean) {
     for (const id of ids) {
-      const label = leafProps.getFaceLabel(id);
+      const label = showNumbers ? leafProps.getFaceLabel(id) : ' ';
       const color = leafProps.getColorProp(id);
       newProps.setLabelProp(id, label === undefined ? id.toString() : label);
       if (color !== undefined) {
