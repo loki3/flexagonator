@@ -816,16 +816,22 @@
   <canvas id="atomic-shuffle-directions" width="1000" height="650"></canvas><br/>
   <img src="images/shuffle-directions.png"/>
   <script>
+    function drawNameAndHinge(canvasId, name, rotate, flexes) {
+      const fm = Flexagonator.createFromScript([{ name }, { flexes }]);
+      if (Flexagonator.isError(fm)) { console.log("drawNameAndHinge - ", Flexagonator.errorToString(fm)); return; }
+      Flexagonator.drawEntireFlexagon(canvasId, fm, { rotate, showCurrent: true, showIds: false, showNumbers: false });
+    }
+
     drawFromName("atomic-iso1", "pentaflexagon", 18);
     drawFromName("atomic-iso2", "hexaflexagon", 0);
     drawFromName("atomic-iso3", "bronze hexaflexagon", 30);
     drawFromName("atomic-iso4", "heptaflexagon", -12.5);
     drawFromName("atomic-iso5", "right decaflexagon", -18);
-    drawFromName("atomic-non-iso1", "pentagonal silver decaflexagon", 45);
-    drawFromName("atomic-non-iso2", "hexagonal silver dodecaflexagon", 90);
-    drawFromName("atomic-non-iso3", "octagonal ring dodecaflexagon", 0);
-    drawFromName("atomic-non-iso4", "hexagonal ring dodecaflexagon", 0);
-    drawFromName("atomic-non-iso5", "octagonal ring tetradecaflexagon", 0);
+    drawNameAndHinge("atomic-non-iso1", "pentagonal silver decaflexagon", -90);
+    drawNameAndHinge("atomic-non-iso2", "hexagonal silver dodecaflexagon", 243.5, ">");
+    drawNameAndHinge("atomic-non-iso3", "octagonal ring dodecaflexagon", -122.5, "<");
+    drawNameAndHinge("atomic-non-iso4", "hexagonal ring dodecaflexagon", -30, "<");
+    drawNameAndHinge("atomic-non-iso5", "octagonal ring tetradecaflexagon", -135, "<<<");
     const theScript = [{ pats: [[-2, 1], -3, -4, -5, [[[-8, 7], 9], -6], 10] }];
     const theOptions = { rotation: 120, content: { showIds: true }, captions: starCaptions };
     drawStripComplex("atomic-shuffle-directions", theScript, theOptions);
