@@ -14,6 +14,7 @@ namespace Flexagonator {
     constructor(private readonly container: HTMLElement) {
       const [w, h] = this.getSize();
       this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      this.svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
       this.svg.setAttribute("viewBox", `0 0 ${w + 2} ${h + 2}`);
       this.svg.setAttribute("width", w.toString());
       this.svg.setAttribute("height", h.toString());
