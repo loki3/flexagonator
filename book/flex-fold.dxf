@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460461.5042476738
+2460465.4885532293
   9
 $TDUUPDATE
  40
-2460461.8375810185
+2460465.8218865739
   9
 $TDINDWG
  40
-190.791458333333
+194.775752314815
   9
 $TDUSRTIMER
  40
-190.791458333333
+194.775752314815
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-D512850
+D512857
   9
 $SURFTAB1
  70
@@ -991,9 +991,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-30.254365
+30.202094
  22
--15.553565
+-15.556763
  13
 0.0
  23
@@ -1019,7 +1019,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-47.601635
+47.647686
  41
 1.804322
  42
@@ -337819,7 +337819,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-hinge
+mountain
 100
 AcDbPolyline
  90
@@ -339007,7 +339007,7 @@ LWPOLYLINE
 100
 AcDbEntity
   8
-hinge
+valley
 100
 AcDbPolyline
  90
@@ -516678,6 +516678,170 @@ C
 labels
 100
 AcDbText
+  0
+TEXT
+  5
+D512850
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+50.769707
+ 20
+-30.56107
+ 30
+0.0
+ 40
+0.13
+  1
+A
+  7
+labels
+100
+AcDbText
+  0
+TEXT
+  5
+D512851
+330
+1F
+100
+AcDbEntity
+  8
+z-labels
+100
+AcDbText
+ 10
+49.946223
+ 20
+-29.745904
+ 30
+0.0
+ 40
+0.13
+  1
+B
+  7
+labels
+100
+AcDbText
+  0
+POLYLINE
+  5
+D512852
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDb2dPolyline
+ 66
+     1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 40
+0.01
+ 41
+0.01
+  0
+VERTEX
+  5
+D512853
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+50.491421
+ 20
+-30.291421
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+VERTEX
+  5
+D512854
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbVertex
+100
+AcDb2dVertex
+ 10
+50.208579
+ 20
+-30.008579
+ 30
+0.0
+ 70
+     2
+ 50
+0.0
+  0
+SEQEND
+  5
+D512855
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+  0
+LWPOLYLINE
+  5
+D512856
+330
+1F
+100
+AcDbEntity
+  8
+arrow-back
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 43
+0.01
+ 10
+50.258076
+ 20
+-30.058076
+ 10
+50.314645
+ 20
+-30.043934
+ 10
+50.208579
+ 20
+-30.008579
   0
 ENDSEC
   0
