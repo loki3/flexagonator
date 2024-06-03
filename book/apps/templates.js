@@ -634,6 +634,14 @@ const templatesPopups = {
   "fig37.11": [animalScript, { rotation: 36 + 90, content: { showLeafProps: true }, captions: starCaptions }, /*sz*/[800, 760]],
 }
 
+///////////
+// 38: cutting
+const templatesCutting = {
+  "fig38.3": "templates/fig38.3.png",
+  "fig38.5": "templates/fig38.5.png",
+  "fig38.8": "templates/fig38.8.png",
+}
+
 /**
  * details on drawing all the templates, arrays keyed by figure name, e.g., "fig1.2"
  * content is either an image file name or an array with the following items:
@@ -669,6 +677,7 @@ const allTemplates = {
   ...templatesBooks,
   ...templatesPuzzles,
   ...templatesPopups,
+  ...templatesCutting,
 };
 
 // return true if the template is a bitmap rather than a script
