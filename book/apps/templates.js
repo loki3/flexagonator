@@ -268,7 +268,7 @@ const templatesDifferent = {
   "fig5.7": [getPinchScript(6, "P*P+", [30, 60]), getPinchOptions(30, undefined, undefined, -1, "4b", 0, "solid"), /*sz*/[600, 521]],
   "fig5.8": [getPinchScript(6, "P*P+", [90, 30]), getPinchOptions(120, undefined, undefined, -1, "4c", 0), /*sz*/[900, 521]],
   "fig5.10": [getPinch2Script(6, "P* P+ >P>P P+ ^P P+ ^P^", [60, 90]), getPinch2Options(90, 1, "6a"), /*sz*/[1200, 322]],
-  "fig5.12": [getSeqScript(8, "P+", [45, 45], ">"), getSeqOptions(135, -3, 0, "3"), /*sz*/[1200, 304]],
+  "fig5.12": [getSeqScript(8, "P+", [45, 45], ">"), getSeqOptions(135, 5, 2, "3"), /*sz*/[1200, 304]],
   "fig5.15": [getPinchScript(8, "P*P+", [90, 45]), getPinchOptions(45, undefined, undefined, 3, "4a", 1, "solid"), /*sz*/[500, 500]],
   "fig5.16": [getPinchScript(8, "P*P*>", [45, 90]), getPinchOptions(-45, undefined, undefined, -2, "4b", 1), /*sz*/[1100, 140]],
   //"fig5.X1": [getPinch2Script(8, "P* P+ >P>P P+ ^P P+ ^P^", [45, 45]), getPinch2Options(135, 1, "6a"), /*sz*/[1200, 152]],
@@ -468,7 +468,7 @@ const templatesSequences = {
     [{ end: 11, scale: 140, rotation: 67.5, captions: [firstStar, { text: "a", which: -1 }, { text: "(F<)6", which: -3, edge: 2 }] },
     { start: 12, scale: 140, rotation: 180 + 67.5, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig18.5": [[{ pats: [[0, 0], 0, [0, 0], 0, [0, 0], [[0, 0], [0, 0]]] }, { labelAsTree }],
-  { content: { showLeafProps: true }, captions: [{ text: "12", which: 0 }, { text: "12", which: -1 }] },
+  { content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "12 leaves", which: 5, edge: 2 }] },
     /*sz*/[1200, 162]],
 }
 
@@ -500,7 +500,7 @@ const templatesDefine = {
 const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesSilverOcta = {
   "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1200, 204],
-    [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -1, edge: 1 }] },
+    [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: 1, edge: 1 }] },
     { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig28.7": [getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw"), /*sz*/[994, 250]],
 }
@@ -614,7 +614,7 @@ const puzzleHepta4Captions = [firstStar,
 const puzzleHepta6Script = [{
   numPats: 6, flexes: "(P*^>)5", reverseFlexes: "(P*^>)5", labelAsTree, angles: [60, 60]
 }];
-const puzzleHepta6Captions = [firstStar, lastStar, { text: "7", which: 1, edge: 1 }];
+const puzzleHepta6Captions = [firstStar, lastStar, { text: "7", which: 10, edge: 1 }];
 const templatesPuzzles = {
   "fig36.1": "templates/fig36.1.png",
   "fig36.8": "templates/fig36.8.png",
