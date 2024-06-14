@@ -347,7 +347,7 @@ const templatesBox = {
 ///////////
 // 9: flex diagrams
 const templatesFlexDiagrams = {
-  "fig9.7": "templates/fig9.7.png",
+  "fig9.6": "templates/fig9.6.png",
 }
 
 ///////////
