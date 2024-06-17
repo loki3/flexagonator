@@ -558,6 +558,8 @@ function getWrapOptions(rotation, extraCaptions) {
 }
 const braceletScript = [{ numPats: 12, angles2: [45, 45], directions: "/||//||//||/", addMorphFlexes: true }];
 const tetraPats = [0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]], 0, 0, [0, [0, 0]], [0, [0, 0]]];
+// note: labels[2] & labels[4] are swapped till an issue with setLabels is fixed
+const tetraLabels = { setLabels: { labels: [[1, 2], [1, 2], [3, 4], [2, 4], [1, 3], [3, 4], [2, 4], [1, 3]], repeat: 4, colors: labelAsTree } };
 const bfScript = { flexes: ">>>> Bf+ <<<<", labelAsTree };
 const bfCaptions = [firstStar, lastStar, { text: "Bf", which: 10, edge: 1 }, { text: "#", which: 10, edge: 0 }, { text: "#", which: 7, edge: 2 }];
 const mobiusScript = [{ numPats: 14, angles2: [45, 45], directions: "/||//||//||//|", addMorphFlexes: true }, bfScript];
@@ -566,7 +568,7 @@ const templatesBracelets = {
   "fig31.2": [[...braceletScript, { flexes: "<<Tr2+<<", labelAsTree }],
   { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Tr2", which: 2, edge: 0 }] },
     /*sz*/[1200, 402]],
-  "fig31.4": [[{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetraPats, labelAsTree }],
+  "fig31.4": [[{ angles2: [45, 45], directions: "/||//||//||//||/", pats: tetraPats }, tetraLabels],
   { rotation: 45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "tetra", which: 2, edge: 0 }] },
     /*sz*/[1200, 403]],
   "fig31.7": [[...braceletScript, { flexes: "Tr4+", labelAsTree }],
