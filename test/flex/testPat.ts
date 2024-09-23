@@ -47,6 +47,25 @@ namespace Flexagonator {
     });
   });
 
+  describe('is equal', () => {
+    it('checks if pats are equal', () => {
+      const a = makePat(1) as Pat;
+      const b1 = makePat([1, 2]) as Pat;
+      const b2 = makePat([1, 2]) as Pat;
+      const c = makePat([1, [2, 3]]) as Pat;
+      const d = makePat([1, [[-2, 3], -4]]) as Pat;
+      const e = makePat([3, [[-4, -1], 2]]) as Pat;
+
+      expect(a.isEqual(a)).toBe(true);
+      expect(a.isEqual(b1)).toBe(false);
+      expect(b1.isEqual(b2)).toBe(true);
+      expect(c.isEqual(c)).toBe(true);
+      expect(c.isEqual(d)).toBe(false);
+      expect(d.isEqual(d)).toBe(true);
+      expect(d.isEqual(e)).toBe(false);
+    });
+  });
+
   describe('remap', () => {
     it('remaps ids', () => {
       const original = [1, [[-2, 3], -4]];

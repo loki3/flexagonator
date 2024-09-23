@@ -11,6 +11,7 @@ namespace Flexagonator {
     A single pat (stack of polygons) in a flexagon
   */
   export interface Pat {
+    isEqual(pat: Pat): boolean;
     getLeafCount(): number;
     makeCopy(): Pat;
     makeFlipped(): Pat;
@@ -72,6 +73,10 @@ namespace Flexagonator {
   // single leaf
   class PatLeaf implements Pat {
     constructor(private readonly id: number) {
+    }
+
+    isEqual(pat: Pat): boolean {
+      return this.id === (pat as PatLeaf).id;
     }
 
     getLeafCount(): number {
@@ -192,6 +197,10 @@ namespace Flexagonator {
   // pair of sub-pats
   class PatPair implements Pat {
     constructor(private readonly left: Pat, private readonly right: Pat) {
+    }
+
+    isEqual(pat: Pat): boolean {
+      return this.left.isEqual((pat as PatPair).left) && this.right.isEqual((pat as PatPair).right);
     }
 
     getLeafCount(): number {
