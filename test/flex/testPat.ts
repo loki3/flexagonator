@@ -64,6 +64,15 @@ namespace Flexagonator {
       expect(d.isEqual(d)).toBe(true);
       expect(d.isEqual(e)).toBe(false);
     });
+
+    it('checks if pats are equal ignoring id', () => {
+      const a = makePat([1, [2, 3]]) as Pat;
+      const b = makePat([1, [2, 3]]) as Pat;
+      const c = makePat([1, [3, 2]]) as Pat;
+
+      expect(a.isEqual(b)).toBe(true);
+      expect(a.isEqual(c)).toBe(false);
+    });
   });
 
   describe('remap', () => {
