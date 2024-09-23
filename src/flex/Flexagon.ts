@@ -54,7 +54,7 @@ namespace Flexagonator {
       return this.pats.map(pat => pat.getBottom());
     }
 
-    // get the ids for the visible leaves [ [top1, top2...], [bottom1,  bottom2...] ]
+    /** get the ids for the visible leaves [ [top1, top2...], [bottom1,  bottom2...] ] */
     getVisible(): number[][] {
       return [this.getTopIds(), this.getBottomIds()];
     }

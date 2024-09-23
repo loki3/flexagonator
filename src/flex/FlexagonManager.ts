@@ -23,12 +23,12 @@ namespace Flexagonator {
       this.history = new History(flexagon, this.tracker.getCopy());
     }
 
-    // assume an isosceles flexagon where pats meet in the middle
+    /** assume an isosceles flexagon where pats meet in the middle */
     static make(flexagon: Flexagon, leafProps?: LeafProperties[]) {
       return new FlexagonManager(flexagon, leafProps);
     }
 
-    // assume 'flexagon' only contains pats so we should borrow other info from 'other' if appropriate
+    /** assume 'flexagon' only contains pats so we should borrow other info from 'other' if appropriate */
     static makeFromPats(flexagon: Flexagon, other: FlexagonManager) {
       if (other && other.flexagon.directions && other.flexagon.directions.getCount() === flexagon.getPatCount()) {
         flexagon = flexagon.changeDirections(other.flexagon.directions);
@@ -44,9 +44,11 @@ namespace Flexagonator {
       return fm;
     }
 
-    // apply a single flex;
-    // if the flex string ends with +, generate the needed structure
-    // if the flex string ends with *, generate the needed structure & apply the flex
+    /**
+     * apply a single flex;
+     * if the flex string ends with +, generate the needed structure
+     * if the flex string ends with *, generate the needed structure & apply the flex
+     */
     applyFlex(flexStr: string | FlexName): boolean | FlexError {
       const flexName = (typeof (flexStr) === 'string') ? makeFlexName(flexStr) : flexStr;
       const result = this.rawApplyFlex(flexName);
@@ -57,8 +59,10 @@ namespace Flexagonator {
       return true;
     }
 
-    // apply a series of flexes, e.g. "P > > S'+ ^ T"
-    // as a single undoable operation
+    /**
+     * apply a series of flexes, e.g. "P > > S'+ ^ T"
+     * as a single undoable operation
+     */
     applyFlexes(flexStr: string | FlexName[], separatelyUndoable: boolean): boolean | FlexError {
       const flexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr;
       let count = 0;
@@ -76,7 +80,7 @@ namespace Flexagonator {
       return true;
     }
 
-    // run the inverse of the flexes backwards to effectively undo a sequence
+    /** run the inverse of the flexes backwards to effectively undo a sequence */
     applyInReverse(flexStr: string | FlexName[]): boolean | FlexError {
       // note: the call to map makes a copy so .reverse() won't modify the parameter passed to the function
       const forwardFlexNames = (typeof (flexStr) === 'string') ? parseFlexSequence(flexStr) : flexStr.map(f => f);
@@ -86,7 +90,7 @@ namespace Flexagonator {
       return this.applyFlexes(inverses, false);
     }
 
-    // apply a flex without adding it to the history list
+    /** apply a flex without adding it to the history list */
     private rawApplyFlex(flexName: FlexName): boolean | FlexError {
       const name = flexName.flexName;
       const flex = this.allFlexes[name];
@@ -188,17 +192,17 @@ namespace Flexagonator {
       return flexes.map(flex => flex.fullName);
     }
 
+    /** get flexagon from before any flexes were applied */
     getBaseFlexagon(): Flexagon {
       return this.history.getStart().flexagon;
     }
 
-    // get the total number of states this flexagon has been flexed through
+    /** get the total number of states this flexagon has been flexed through */
     getTotalStates(): number {
       return this.tracker.getTotalStates();
     }
 
-    // out of the all the states this flexagon has been in, get which state we're in currently
-    // (0-based)
+    /** out of the all the states this flexagon has been in, get which state we're in currently (0-based) */
     getCurrentState(): number {
       return this.tracker.getCurrentState();
     }
