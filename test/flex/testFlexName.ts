@@ -60,4 +60,18 @@ namespace Flexagonator {
       expect(result[1]).toBe("Ltf");
     });
   });
+
+  describe('FlexName', () => {
+    it('getInverse creates the inverse flex', () => {
+      expect(makeFlexName("T").getInverse().fullName).toBe("T'");
+      expect(makeFlexName("T'").getInverse().fullName).toBe("T");
+    });
+
+    it('getGenerator adds * when needed', () => {
+      expect(makeFlexName("T").getGenerator().fullName).toBe("T*");
+      expect(makeFlexName("T*").getGenerator().fullName).toBe("T*");
+      expect(makeFlexName("T+").getGenerator().fullName).toBe("T+");
+      expect(makeFlexName(">").getGenerator().fullName).toBe(">");
+    });
+  });
 }

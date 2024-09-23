@@ -63,6 +63,12 @@ namespace Flexagonator {
     getInverse(): FlexName {
       return new FlexName(this.baseName, !this.isInverse, this.shouldGenerate, this.shouldApply);
     }
+
+    /** make the flex a generator - leave ^>< and + alone, otherwise add * */
+    getGenerator(): FlexName {
+      const b = this.baseName;
+      return this.shouldGenerate || b === '^' || b === '>' || b === '<' ? this : makeFlexName(`${this.flexName}*`);
+    }
   }
 
 
