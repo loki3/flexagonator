@@ -35,7 +35,7 @@ namespace Flexagonator {
     sequences: string[], numpats: number, directions?: Directions, maxCycle?: number
   ): GroupFromFlexes | GroupError {
     // make a flexagon with the appropriate size & directions but no pat structure
-    const tree = new Array(numpats).fill(0);
+    const tree = new Array(numpats).fill(0).map((_, i) => i + 1); // unique ids for leaves
     const plain = Flexagon.makeFromTree(tree, undefined, directions);
     if (isTreeError(plain)) {
       return { reason: 'bad-numpats' };
@@ -83,7 +83,7 @@ namespace Flexagonator {
       // once we didn't need to add any leaves, we have enough pat structure to check for cycle
       const thisCount = fm.flexagon.getLeafCount();
       if (lastCount === thisCount) {
-        return checkForCycle(fm, genSequence, i, maxCycle);
+        return checkForCycle(fm, genSequence, i - 1, maxCycle);
       }
       lastCount = thisCount;
     }

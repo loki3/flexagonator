@@ -1,11 +1,22 @@
 namespace Flexagonator {
 
   describe('getGroupFromSequences', () => {
+    it('reports cycle sizes', () => {
+      const result1 = getGroupFromSequences(['^'], 4) as GroupFromFlexes;
+      expect(result1.cycleLengths[0]).toBe(2);
+      const result2 = getGroupFromSequences(['>>'], 6) as GroupFromFlexes;
+      expect(result2.cycleLengths[0]).toBe(3);
+      const result3 = getGroupFromSequences(['(F<)2'], 8) as GroupFromFlexes;
+      expect(result3.cycleLengths[0]).toBe(3);
+    });
+
     it('creates table for the simplest cycle', () => {
       const result = getGroupFromSequences(['^'], 4) as GroupFromFlexes;
       expect(result.cycleLengths[0]).toBe(2);
       expect(result.groupElements.join(' ')).toBe('e a');
       expect(result.flexElements.join(' ')).toBe('I ^');
+      expect(result.rows[0].join(' ')).toBe('0 1');
+      expect(result.rows[1].join(' ')).toBe('1 0');
     });
 
     it('creates table for multiple sequences', () => {
