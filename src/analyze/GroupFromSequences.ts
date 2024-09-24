@@ -14,6 +14,8 @@ namespace Flexagonator {
 
     /** row[i][j] contains the result of sequence[i] * sequence[j] as an index into elements */
     readonly rows: number[][];
+    /** if ab = ba for every a & b */
+    readonly commutative: boolean;
   }
 
   /** explain why the generators don't create a group */
@@ -59,12 +61,14 @@ namespace Flexagonator {
     // build table
     const groupElements = makeGroupElements(cycleCount as number[]);
     const rows = makeRows(minimalFlexagon, flexElements);
+    const commutative = isCommutative(rows);
     const table: GroupFromFlexes = {
       sequences,
       cycleLengths: cycleCount as number[],
       groupElements: groupElements,
       flexElements: flexElements.map(seq => seq.map(f => f.fullName)).map(seq => seq.join('')),
       rows,
+      commutative,
     };
     return table;
   }
@@ -208,6 +212,18 @@ namespace Flexagonator {
     }
 
     return rows;
+  }
+
+  /** check if ab = ba for every a & b */
+  function isCommutative(rows: number[][]): boolean {
+    for (let i = 1; i < rows.length; i++) {
+      for (let j = i + 1; j < rows.length; j++) {
+        if (rows[i][j] !== rows[j][i]) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
 }

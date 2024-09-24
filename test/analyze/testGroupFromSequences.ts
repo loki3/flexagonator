@@ -47,6 +47,15 @@ namespace Flexagonator {
       expect(result.rows[5].join(' ')).toBe('5 3 4 1 2 0');
     });
 
+    it('detects if group is commutative', () => {
+      const result1 = getGroupFromSequences(['P>'], 4) as GroupFromFlexes;
+      expect(result1.commutative).toBe(true);
+      const result2 = getGroupFromSequences(['^>P>', 'PP^'], 6) as GroupFromFlexes;
+      expect(result2.commutative).toBe(true);
+      const result3 = getGroupFromSequences(['F>>>', '^>>>'], 7) as GroupFromFlexes;
+      expect(result3.commutative).toBe(false);
+    });
+
     it('reports on sequences that are not a cycle', () => {
       const result = getGroupFromSequences(['P>', 'P', 'PP'], 6) as GroupError;
       expect(result.reason).toBe('not-cyclic');
@@ -64,9 +73,11 @@ namespace Flexagonator {
     function dumpCayleyTable(check: GroupFromFlexes | GroupError) {
       if ((check as GroupError).reason !== undefined) {
         console.log('NOT A GROUP', JSON.stringify(check));
+        return;
       }
       const group = check as GroupFromFlexes;
       console.log('');
+      console.log(group.groupElements.length, 'elements in group, commutative:', group.commutative ? 'yes' : 'no');
       console.log(group.sequences.join(' '));
       console.log(' ', group.groupElements.join(' '));
       let i = 0;
