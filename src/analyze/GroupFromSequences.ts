@@ -51,7 +51,7 @@ namespace Flexagonator {
 
     // create minimal pat structure & validate that the sequences preserve it
     const flexElements = makeFlexElements(flexSequences, cycleCount as number[]);
-    const minimalFlexagon = makeMinimalFlexagon(plain, flexSequences, cycleCount as number[]);
+    const minimalFlexagon = makeMinimalFlexagon(plain, flexElements);
     if (changesStructure(minimalFlexagon, flexSequences)) {
       return { reason: 'changes-structure' };
     }
@@ -149,14 +149,14 @@ namespace Flexagonator {
 
   /** make the simplest flexagon that supports all the given flexes */
   function makeMinimalFlexagon(
-    plain: Flexagon, sequences: FlexName[][], cycleCount: number[]
+    plain: Flexagon, sequences: FlexName[][]
   ): Flexagon {
     const fm = new FlexagonManager(plain);
     for (let i = 0; i < sequences.length; i++) {
       // create generating sequence for entire cycle of this flex sequence
       const genSequence = sequences[i].map(f => f.getGenerator());
       let genCycle: FlexName[] = [];
-      for (let j = 0; j < cycleCount[i]; j++) {
+      for (let j = 0; j < sequences.length; j++) {
         genCycle = genCycle.concat(genSequence);
       }
       // apply cycle generating sequence so pat structure is added

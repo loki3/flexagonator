@@ -204,6 +204,9 @@ namespace Flexagonator {
     }
 
     isEqual(pat: Pat): boolean {
+      if (pat === undefined) {
+        return false;
+      }
       return this.left.isEqual((pat as PatPair).left) && this.right.isEqual((pat as PatPair).right);
     }
     isEqualStructure(pat: Pat): boolean {  // are they both PatPairs?

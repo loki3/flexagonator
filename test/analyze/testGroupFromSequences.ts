@@ -33,6 +33,20 @@ namespace Flexagonator {
       expect(result.rows[5].join(' ')).toBe('5 3 4 1 2 0');
     });
 
+    it('creates table for fancier sequences', () => {
+      // need to be more careful about generating the minimal flexagon for this group
+      const result = getGroupFromSequences(['<<(S^<)2', '(>>SS)2^<'], 6) as GroupFromFlexes;
+      expect(result.cycleLengths[0]).toBe(3);
+      expect(result.cycleLengths[1]).toBe(2);
+      expect(result.groupElements.join(' ')).toBe('e a a2 b ba ba2');
+      expect(result.rows[0].join(' ')).toBe('0 1 2 3 4 5');
+      expect(result.rows[1].join(' ')).toBe('1 2 0 5 3 4');
+      expect(result.rows[2].join(' ')).toBe('2 0 1 4 5 3');
+      expect(result.rows[3].join(' ')).toBe('3 4 5 0 1 2');
+      expect(result.rows[4].join(' ')).toBe('4 5 3 2 0 1');
+      expect(result.rows[5].join(' ')).toBe('5 3 4 1 2 0');
+    });
+
     it('reports on sequences that are not a cycle', () => {
       const result = getGroupFromSequences(['P>', 'P', 'PP'], 6) as GroupError;
       expect(result.reason).toBe('not-cyclic');
