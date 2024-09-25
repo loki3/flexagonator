@@ -42,10 +42,11 @@ namespace Flexagonator {
     if (isTreeError(plain)) {
       return { reason: 'bad-numpats' };
     }
+    const plainFm = FlexagonManager.make(plain);
 
     // check each flex sequence for its cycle
     const flexSequences = sequences.map(s => parseFlexSequence(s));
-    const cycleCount = flexSequences.map(s => genTillCycle(plain, s, maxCycle !== undefined ? maxCycle : defaultMaxCycle));
+    const cycleCount = flexSequences.map(s => genTillCycle(plainFm, s, maxCycle !== undefined ? maxCycle : defaultMaxCycle));
     if (cycleCount.some(c => isFlexError(c))) {
       const invalid = cycleCount.map(e => isFlexError(e) ? e.flexName : undefined).filter(e => e !== undefined) as string[];
       return { reason: 'unsupported-flex', sequences: invalid };
@@ -57,14 +58,15 @@ namespace Flexagonator {
 
     // create minimal pat structure & validate that the sequences preserve it
     const flexElements = makeFlexElements(flexSequences, cycleCount as number[]);
-    const minimalFlexagon = makeMinimalFlexagon(plain, flexElements);
+    const minimalFlexagon = makeMinimalFlexagon(plainFm, flexElements);
     if (changesStructure(minimalFlexagon, flexSequences)) {
       return { reason: 'changes-structure' };
     }
+    const minimalFm = FlexagonManager.make(minimalFlexagon);
 
     // build table
     const groupElements = makeGroupElements(cycleCount as number[]);
-    const rows = makeRows(minimalFlexagon, flexElements);
+    const rows = makeRows(minimalFm, flexElements);
     const commutative = isCommutative(rows);
     const table: GroupFromFlexes = {
       sequences,
@@ -78,20 +80,19 @@ namespace Flexagonator {
   }
 
   /** check how long it takes for the flex sequence to cycle on the given flexagon, creating pat structure as needed */
-  function genTillCycle(plain: Flexagon, sequence: FlexName[], maxCycle: number): number | false | FlexError {
-    const fm = FlexagonManager.make(plain);
+  function genTillCycle(plainFm: FlexagonManager, sequence: FlexName[], maxCycle: number): number | false | FlexError {
     const genSequence = sequence.map(s => s.getGenerator());
-    let lastCount = fm.flexagon.getLeafCount();
+    let lastCount = plainFm.flexagon.getLeafCount();
     for (let i = 0; i < maxCycle; i++) {
       // apply generating sequence
-      const result = fm.applyFlexes(genSequence, false);
+      const result = plainFm.applyFlexes(genSequence, false);
       if (isFlexError(result)) {
         return result;
       }
       // once we didn't need to add any leaves, we have enough pat structure to check for cycle
-      const thisCount = fm.flexagon.getLeafCount();
+      const thisCount = plainFm.flexagon.getLeafCount();
       if (lastCount === thisCount) {
-        return checkForCycle(fm, genSequence, i - 1, maxCycle);
+        return checkForCycle(plainFm, genSequence, i - 1, maxCycle);
       }
       lastCount = thisCount;
     }
@@ -157,9 +158,8 @@ namespace Flexagonator {
 
   /** make the simplest flexagon that supports all the given flexes */
   function makeMinimalFlexagon(
-    plain: Flexagon, sequences: FlexName[][]
+    plainFm: FlexagonManager, sequences: FlexName[][]
   ): Flexagon {
-    const fm = new FlexagonManager(plain);
     for (let i = 0; i < sequences.length; i++) {
       // create generating sequence for entire cycle of this flex sequence
       const genSequence = sequences[i].map(f => f.getGenerator());
@@ -168,9 +168,9 @@ namespace Flexagonator {
         genCycle = genCycle.concat(genSequence);
       }
       // apply cycle generating sequence so pat structure is added
-      fm.applyFlexes(genCycle, false);
+      plainFm.applyFlexes(genCycle, false);
     }
-    return fm.flexagon;
+    return plainFm.flexagon;
   }
 
   /** return true if any sequence changes the pat structure */
@@ -188,9 +188,8 @@ namespace Flexagonator {
   }
 
   /** create the rows of the Cayley table for the group */
-  function makeRows(flexagon: Flexagon, flexElements: FlexName[][]): number[][] {
+  function makeRows(fm: FlexagonManager, flexElements: FlexName[][]): number[][] {
     const rows: number[][] = [];
-    const fm = new FlexagonManager(flexagon);
     fm.normalizeIds();
 
     // compute pat structure corresponding to each element
