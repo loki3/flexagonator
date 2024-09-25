@@ -68,6 +68,11 @@ namespace Flexagonator {
       expect(result.reason).toBe('changes-structure');
     });
 
+    it('reports unsupported flex', () => {
+      const result = getGroupFromSequences(['Qqq'], 6) as GroupError;
+      expect(result.reason).toBe('unsupported-flex');
+    });
+
 
     /*
     function dumpCayleyTable(check: GroupFromFlexes | GroupError) {

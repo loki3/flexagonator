@@ -20,7 +20,7 @@ namespace Flexagonator {
 
   /** explain why the generators don't create a group */
   export interface GroupError {
-    readonly reason: 'not-cyclic' | 'changes-structure' | 'bad-numpats';
+    readonly reason: 'not-cyclic' | 'changes-structure' | 'bad-numpats' | 'unsupported-flex';
     readonly sequences?: string[];
   }
 
@@ -46,6 +46,10 @@ namespace Flexagonator {
     // check each flex sequence for its cycle
     const flexSequences = sequences.map(s => parseFlexSequence(s));
     const cycleCount = flexSequences.map(s => genTillCycle(plain, s, maxCycle !== undefined ? maxCycle : defaultMaxCycle));
+    if (cycleCount.some(c => isFlexError(c))) {
+      const invalid = cycleCount.map(e => isFlexError(e) ? e.flexName : undefined).filter(e => e !== undefined) as string[];
+      return { reason: 'unsupported-flex', sequences: invalid };
+    }
     const noCycle = cycleCount.map((c, i) => c === false ? sequences[i] : null).filter(s => s !== null);
     if (noCycle.length > 0) {
       return { reason: 'not-cyclic', sequences: noCycle as string[] };
@@ -74,15 +78,15 @@ namespace Flexagonator {
   }
 
   /** check how long it takes for the flex sequence to cycle on the given flexagon, creating pat structure as needed */
-  function genTillCycle(plain: Flexagon, sequence: FlexName[], maxCycle: number): number | false {
+  function genTillCycle(plain: Flexagon, sequence: FlexName[], maxCycle: number): number | false | FlexError {
     const fm = FlexagonManager.make(plain);
     const genSequence = sequence.map(s => s.getGenerator());
     let lastCount = fm.flexagon.getLeafCount();
     for (let i = 0; i < maxCycle; i++) {
       // apply generating sequence
       const result = fm.applyFlexes(genSequence, false);
-      if (result !== true) {
-        false;
+      if (isFlexError(result)) {
+        return result;
       }
       // once we didn't need to add any leaves, we have enough pat structure to check for cycle
       const thisCount = fm.flexagon.getLeafCount();
