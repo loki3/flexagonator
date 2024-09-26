@@ -87,8 +87,9 @@ namespace Flexagonator {
       }
       const group = check as GroupFromFlexes;
       console.log('');
+      console.log('minimal pats:', JSON.stringify(group.minimalPats));
       console.log(group.groupElements.length, 'elements in group, commutative:', group.commutative ? 'yes' : 'no');
-      console.log(group.sequences.join(' '));
+      console.log(group.sequences.join(' '), ' cyles lengths:', JSON.stringify(group.cycleLengths));
       console.log(' ', group.groupElements.join(' '));
       let i = 0;
       for (const row of group.rows) {

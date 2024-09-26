@@ -16,6 +16,9 @@ namespace Flexagonator {
     readonly rows: number[][];
     /** if ab = ba for every a & b */
     readonly commutative: boolean;
+
+    /** minimal pat structure for group */
+    readonly minimalPats: LeafTree[];
   }
 
   /** explain why the generators don't create a group */
@@ -71,6 +74,7 @@ namespace Flexagonator {
     const groupElements = makeGroupElements(cycleCount as number[]);
     const rows = makeRows(minimalFm, flexElements);
     const commutative = isCommutative(rows);
+    const minimalPats = minimalFlexagon.getAsLeafTrees();
     const table: GroupFromFlexes = {
       sequences,
       cycleLengths: cycleCount as number[],
@@ -78,6 +82,7 @@ namespace Flexagonator {
       flexElements: flexElements.map(seq => seq.map(f => f.fullName)).map(seq => seq.join('')),
       rows,
       commutative,
+      minimalPats,
     };
     return table;
   }
