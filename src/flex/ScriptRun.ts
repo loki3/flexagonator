@@ -150,8 +150,7 @@ namespace Flexagonator {
 
     if (item.addMorphFlexes || item.addHalfFlexes) {
       const morphs = makeMorphFlexes(fm.flexagon.getPatCount());
-      const keys = Object.getOwnPropertyNames(morphs);
-      keys.forEach(key => fm.allFlexes[key] = morphs[key]);
+      fm.addFlexes(morphs);
     }
 
     // manipulate the flex history: "clear", "undo", "redo", "reset"

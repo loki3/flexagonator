@@ -47,6 +47,11 @@ namespace Flexagonator {
       expect(result.rows[5].join(' ')).toBe('5 3 4 1 2 0');
     });
 
+    it('handles non-isoflexagons', () => {
+      const result = getGroupFromSequences(['Bf<<~'], 12, Directions.make('/||//||//||/')) as GroupFromFlexes;
+      expect(result.cycleLengths[0]).toBe(8);
+    });
+
     it('detects if group is commutative', () => {
       const result1 = getGroupFromSequences(['P>'], 4) as GroupFromFlexes;
       expect(result1.commutative).toBe(true);

@@ -127,6 +127,12 @@ namespace Flexagonator {
       return true;
     }
 
+    /** add a set of flexes to the list of possible flexes */
+    addFlexes(flexes: Flexes) {
+      const keys = Object.getOwnPropertyNames(flexes);
+      keys.forEach(key => this.allFlexes[key] = flexes[key]);
+    }
+
     normalizeIds() {
       this.flexagon = this.flexagon.normalizeIds();
       // changing the ids impacts tracking & history, so reset

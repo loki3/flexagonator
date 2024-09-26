@@ -43,6 +43,8 @@ namespace Flexagonator {
       return { reason: 'bad-numpats' };
     }
     const plainFm = FlexagonManager.make(plain);
+    const morphs = makeMorphFlexes(numpats);
+    plainFm.addFlexes(morphs);
 
     // check each flex sequence for its cycle
     const flexSequences = sequences.map(s => parseFlexSequence(s));
@@ -63,6 +65,7 @@ namespace Flexagonator {
       return { reason: 'changes-structure' };
     }
     const minimalFm = FlexagonManager.make(minimalFlexagon);
+    minimalFm.addFlexes(morphs);
 
     // build table
     const groupElements = makeGroupElements(cycleCount as number[]);
