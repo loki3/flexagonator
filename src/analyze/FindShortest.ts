@@ -8,10 +8,12 @@ namespace Flexagonator {
   // represents every step explored at one level of the breadth first search
   type Level = Step[];
 
-  // object that searches for the shortest flex sequence from a starting state
-  // to an ending state using a given set of sequences.
-  // NOTE: returns the first sequence it finds, though
-  // there may be others of the same length
+  /**
+   * object that searches for the shortest flex sequence from a starting state
+   * to an ending state using a given set of sequences.
+   * NOTE: returns the first sequence it finds, though
+   * there may be others of the same length
+   */
   export class FindShortest {
     private readonly flexes: Flexes;          // flexes to explore with other than <>^
     private readonly right?: Flex;            // >

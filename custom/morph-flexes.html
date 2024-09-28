@@ -159,7 +159,7 @@
       }
     }
 
-    // ehck if (pre Lkk post') can be decomposed into other flexes or if it's prime
+    // check if (pre Lkk post') can be decomposed into other flexes or if it's prime
     function decompose(pre, post, fm, slot) {
       const sequence = pre + (slot ? " Lkk " : " ") + post + "'";
       const newFlex = Flexagonator.makeFlexFromSequence(sequence, fm.allFlexes);

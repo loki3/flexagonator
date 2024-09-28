@@ -18,7 +18,7 @@ namespace Flexagonator {
     return groups;
   }
 
-  // tracks pat structure we've seen before, ignoring leaf ids
+  /** tracks pat structure we've seen before, ignoring leaf ids */
   export class TrackerStructure {
     private states: StructureState[] = [];
 

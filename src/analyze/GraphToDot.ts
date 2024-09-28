@@ -5,8 +5,10 @@ namespace Flexagonator {
     state transitions described by a list of RelativeFlexes
   */
 
-  // create a DOT graph of just the state-to-state transitions,
-  // ignoring flexes & rotations
+  /**
+   * create a DOT graph of just the state-to-state transitions,
+   * ignoring flexes & rotations
+   */
   export function dotSimple(allRelFlexes: RelativeFlexes[]): string {
     const transitions = getStateToState(allRelFlexes, true/*oneway*/);
     let str = "graph {\n";
@@ -21,7 +23,7 @@ namespace Flexagonator {
     return str;
   }
 
-  // lookup DOT properties like color based on flex name
+  /** lookup DOT properties like color based on flex name */
   export interface FlexDotProps {
     readonly [index: string]: string;
   }
@@ -44,8 +46,10 @@ namespace Flexagonator {
     F: "color=magenta",
   }
 
-  // create a DOT graph describing which flexes you can use to get between states,
-  // ignoring rotations
+  /**
+   * create a DOT graph describing which flexes you can use to get between states,
+   * ignoring rotations
+   */
   export function dotWithFlexes(allRelFlexes: RelativeFlexes[], oneway: boolean, props?: FlexDotProps): string {
     if (!props) {
       props = defaultDotProps;

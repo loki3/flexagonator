@@ -11,8 +11,10 @@ namespace Flexagonator {
     readonly max: Point;
   }
 
-  // build up the graph traversed by the given sequence of flexes,
-  // where flexes must be one of {P, P', ^, <, >}
+  /**
+   * build up the graph traversed by the given sequence of flexes,
+   * where flexes must be one of {P, P', ^, <, >}
+   */
   export function createPinchGraph(flexes: string): PinchGraph | FlexError {
     const raw = createRawPinchGraph(flexes);
     if (isFlexError(raw)) {
@@ -45,8 +47,10 @@ namespace Flexagonator {
     return [{ x: xmin - 0.1, y: ymin - 0.1 }, { x: xmax + 0.1, y: ymax + 0.1 }];
   }
 
-  // stored in a skewed coordinate system that's easy to test
-  // e.g. (0,0),(1,0),(0,1) represents a regular triangle
+  /**
+   * stored in a skewed coordinate system that's easy to test
+   * e.g. (0,0),(1,0),(0,1) represents a regular triangle
+   */
   export function createRawPinchGraph(flexes: string): Point[] | FlexError {
     const track = new TrackPinchGraph();
 

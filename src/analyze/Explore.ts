@@ -1,8 +1,10 @@
 namespace Flexagonator {
 
-  // object that can explore all the states available
-  // starting from an initial state
-  // and applying any of a given set of flexes
+  /**
+   * object that can explore all the states available
+   * starting from an initial state
+   * and applying any of a given set of flexes
+   */
   export class Explore {
     private readonly flexes: Flexes;          // flexes to explore with other than <>^
     private readonly right?: Flex;            // >

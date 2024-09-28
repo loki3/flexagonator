@@ -4,9 +4,11 @@ namespace Flexagonator {
   // every top level element is an array of other states accessbile from it
   export type StateToState = Array<Array<StateId>>;
 
-  // take a description of all the flexes that can be performed from each state
-  // and create a simple description of which states can be reach from each state.
-  // if 'oneway', only list transitions from smaller states to larger
+  /**
+   * take a description of all the flexes that can be performed from each state
+   * and create a simple description of which states can be reach from each state.
+   * if 'oneway', only list transitions from smaller states to larger
+   */
   export function getStateToState(allRelFlexes: RelativeFlexes[], oneway: boolean): StateToState {
     const result: StateToState = [];
 
@@ -33,12 +35,14 @@ namespace Flexagonator {
     readonly flex: string,
     readonly state: StateId,
   }
-  // every top level element is an array of flex->state mappings
+  /** every top level element is an array of flex->state mappings */
   export type FlexesToStates = Array<Array<FlexToState>>;
 
-  // take a description of all the flexes that can be performed from each state
-  // and create a list of which flexes can be used to get to other states,
-  // while ignoring rotations
+  /**
+   * take a description of all the flexes that can be performed from each state
+   * and create a list of which flexes can be used to get to other states,
+   * while ignoring rotations
+   */
   export function getSimpleFlexGraph(allRelFlexes: RelativeFlexes[], oneway: boolean): FlexesToStates {
     const result: FlexesToStates = [];
 

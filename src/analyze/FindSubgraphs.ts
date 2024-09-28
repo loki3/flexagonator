@@ -1,21 +1,23 @@
 namespace Flexagonator {
 
-  // if you can't access the entire graph with a given flex,
-  // figure out how many subgraphs there are
+  /**
+   * if you can't access the entire graph with a given flex,
+   * figure out how many subgraphs there are
+   */
   export function findSubgraphs(relFlexesList: RelativeFlexes[], flex: string): SubGraphStats {
     const find = new FindSubgraphs(relFlexesList, flex);
     return find.findSubgraphs();
   }
 
   export interface SubGraphStats {
-    // total number of disconnected subgraphs
+    /** total number of disconnected subgraphs */
     uniqueSubgraphs: number;
-    // how many different subgraphs were there of a given size (number of states in the subgraph)?
+    /** how many different subgraphs were there of a given size (number of states in the subgraph)? */
     sizesAndSubgraphCounts: SizeAndSubgraphCount[];
   }
   export interface SizeAndSubgraphCount {
-    size: number;           // how many states in the subgraph
-    subgraphCount: number;  // how many subgraphs of that size
+    size: number;           /** how many states in the subgraph */
+    subgraphCount: number;  /** how many subgraphs of that size */
   }
 
   class FindSubgraphs {

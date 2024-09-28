@@ -1,7 +1,9 @@
 namespace Flexagonator {
 
-  // describes a flex relative to the current hinge,
-  // possibly rotating & turning over, and what state it leads to
+  /**
+   * describes a flex relative to the current hinge,
+   * possibly rotating & turning over, and what state it leads to
+   */
   export class RelativeFlex {
     // 'where' represents > and ^ used before the given flex
     // >0 for the number of >'s; <0 is a ^ followed by (where-1) >'s

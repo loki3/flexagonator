@@ -4,6 +4,7 @@ namespace Flexagonator {
     [index: string]: number;
   }
 
+  /** count the number of states that support each flex */
   export function countStatesThatSupportFlexes(allRelFlexes: RelativeFlexes[]): FlexCounts {
     const counts: FlexCounts = {};
     for (const relFlexes of allRelFlexes) {
