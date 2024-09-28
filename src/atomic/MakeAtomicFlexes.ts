@@ -113,9 +113,9 @@ namespace Flexagonator {
     flexes["Tr2"] = makeAtomicFlex("transfer2",
       "a 1 \\ # [2,[4,-3]] \\ b", "a [[-2,1],3] \\ # 4 \\ b") as AtomicFlex;
 
-    // from \/\ to \/\
+    // from /\/ to /\/
     flexes["Tr3"] = makeAtomicFlex("transfer3",
-      "a 1 \\ 2 / # [3,[5,-4]] \\ b", "a [[-2,1],3] \\ # 4 / 5 \\ b") as AtomicFlex;
+      "a 1 / 2 \\ # [[-4, 5], 3] / b", "a [3,[1,-2]] / # 4 \\ 5 / b") as AtomicFlex;
 
     // from /\\/ to /\\/
     flexes["Tr4"] = makeAtomicFlex("transfer4",

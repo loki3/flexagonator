@@ -81,6 +81,9 @@ namespace Flexagonator {
     // start & end /////
     F3: ">Xl'<< Ul'<< Ur>>> Ul'<< Ur< Ul>Ur'>",
 
+    // start & end /\/
+    Tr3: "Ur << Ul' >> Ul << Ur' >",
+
     // start & end /\\/
     Tr4: "Xl4 Xr4",
     Bf: "Mkf' Mkb",
