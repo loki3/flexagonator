@@ -49,12 +49,20 @@ namespace Flexagonator {
         FlexRotation.BCA, "//////", "/|//|/") as Flex;
     }
 
-    // only works on a deca
+    // only works on a (////\)2 deca
     if (patCount === 10) {
       flexes["Tao"] = makeFlex("three-and-open",
         [[-2, 1], -3, -4, -5, -6, -7, -8, [10, -9], 11, 12],
         [-11, [1, -12], 2, 3, [-5, 4], -6, -7, -8, -9, -10],
         FlexRotation.BAC, "///|////|/", "///|////|/") as Flex;
+      flexes["Hat"] = makeFlex("half-and-twist",
+        [[1, -14], [-3, 2], -4, -5, -6, [8, -7], [-10, 9], -11, -12, -13],
+        [-1, -2, -3, [5, -4], [-7, 6], -8, -9, -10, [12, -11], [-14, 13]],
+        FlexRotation.BAC, "//|////|//", "//|////|//") as Flex;
+      flexes["Fet"] = makeFlex("figure-eight",
+        [[2, -1], 3, 4, 5, 6, [-8, 7], -9, -10, -11, -12],
+        [5, 6, 7, 8, [-10, 9], -11, -12, -1, -2, [4, -3]],
+        FlexRotation.BAC, "//|////|//", "//|////|//") as Flex;
     }
 
     // only works on a dodeca

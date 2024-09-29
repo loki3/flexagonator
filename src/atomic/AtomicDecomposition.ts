@@ -88,6 +88,11 @@ namespace Flexagonator {
     Tr4: "Xl4 Xr4",
     Bf: "Mkf' Mkb",
     Rsrf: "Mkfs' Mkf",
+
+    // deca: ///\////\/
+    Tao: ">> Ul' << Xr <<< Ur >>",
+    Hat: "<<< (Ur'>>Ul< Ur'>>Ul >>)2 (<)8",
+    Fet: "(Ur>>Ur' >>>)2 (<)7",
   }
 
 }
