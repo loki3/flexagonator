@@ -50,6 +50,11 @@ namespace Flexagonator {
     it('handles non-isoflexagons', () => {
       const result = getGroupFromSequences(['Bf<<~'], 12, Directions.make('/||//||//||/')) as GroupFromFlexes;
       expect(result.cycleLengths[0]).toBe(8);
+
+      const result2 = getGroupFromSequences(['<Tao>Tf', '^Fet(>)5'], 10, Directions.make("//|////|//")) as GroupFromFlexes;
+      expect(result2.cycleLengths[0]).toBe(8);
+      expect(result2.cycleLengths[1]).toBe(2);
+      expect(JSON.stringify(result2.minimalPats)).toBe('[10,-13,11,[-8,9],[-12,-7],[-14,-6],[-15,-5],-4,16,[1,[3,-2]]]');
     });
 
     it('detects if group is commutative', () => {
@@ -71,6 +76,18 @@ namespace Flexagonator {
     it('reports when generators do not support common pat structure', () => {
       const result = getGroupFromSequences(['P>', '^'], 6) as GroupError;
       expect(result.reason).toBe('changes-structure');
+    });
+
+    it('reports when generators do not cover all required states', () => {
+      /*
+      given a=<Tao>^, b=^Tf', c=^Fet(>)5,
+      we find that a*a=e, b*b=e, c*c=e so there are 8 elements {e, a, b, ba, c, ca, cb, cba}
+      and all those elements preserve the structure of the minimal flexagon
+      but you can reach 16 states with them, e.g., ab isn't one of those 8 elements
+      */
+      const result = getGroupFromSequences(['<Tao>^', '^Tf', '^Fet(>)5'], 10, Directions.make("//|////|//")) as GroupError;
+      expect(result.reason).toBe('incomplete');
+      expect(result.sequences ? result.sequences[0] : '').toBe('<Tao>^ ^Tf');
     });
 
     it('reports unsupported flex', () => {
