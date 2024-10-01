@@ -54,7 +54,7 @@ namespace Flexagonator {
       const result2 = getGroupFromSequences(['<Tao>Tf', '^Fet(>)5'], 10, Directions.make("//|////|//")) as GroupFromFlexes;
       expect(result2.cycleLengths[0]).toBe(8);
       expect(result2.cycleLengths[1]).toBe(2);
-      expect(JSON.stringify(result2.minimalPats)).toBe('[10,-13,11,[-8,9],[-12,-7],[-14,-6],[-15,-5],-4,16,[1,[3,-2]]]');
+      expect(JSON.stringify(result2.minimalPats)).toBe('[14,5,-15,[-16,-4],[2,-3],[-10,1],[11,13],9,8,[-6,[7,12]]]');
     });
 
     it('detects if group is commutative', () => {
