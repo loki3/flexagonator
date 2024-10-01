@@ -78,6 +78,12 @@ namespace Flexagonator {
       expect(result.reason).toBe('changes-structure');
     });
 
+    it('reports when sequences are redundant', () => {
+      const result = getGroupFromSequences(['P>', 'P>P>'], 6) as GroupError;
+      expect(result.reason).toBe('redundant');
+      expect(result.sequences ? result.sequences[0] : '').toBe('P>P>');
+    });
+
     it('reports when generators do not cover all required states', () => {
       /*
       given a=<Tao>^, b=^Tf', c=^Fet(>)5,
