@@ -12,6 +12,7 @@ Various routines for analyzing flexes on flexagons.
 * [FlexToGraph.ts](FlexToGraph.ts) - take a description of all the flexes that can be performed from each state and create a graph of flexagons (nodes) and flexes (edges)
 * [GraphToDot.ts](GraphToDot.ts) - create a [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language)) graph of the state-to-state transitions
 * [GroupFromSequences.ts](GroupFromSequences.ts) - given a set of flex sequences on a flexagon, check if they form a group; if so, return info about the group; if not, give a reason why not
+* [LeafGraph.ts](LeafGraph.ts) - get the graph of leaf-face ids that are adjacent across all the given flexagons
 * [PinchGraph.ts](PinchGraph.ts) - build up the graph traversed by the given sequence of flexes, where flexes must be one of {P, P', ^, <, >}
 * [RelativeFlex.ts](RelativeFlex.ts) - describes a flex relative to the current hinge, possibly rotating & turning over, and what state it leads to
 * [TrackerStructure.ts](TrackerStructure.ts) - categorize a list of flexagons by their structure (ignoring leaf ids) and return the collected flexagon indices
