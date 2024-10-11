@@ -11,6 +11,10 @@ namespace Flexagonator {
    */
   export function dotSimple(allRelFlexes: RelativeFlexes[]): string {
     const transitions = getStateToState(allRelFlexes, true/*oneway*/);
+    return dotSimpleGraph(transitions);
+  }
+
+  export function dotSimpleGraph(transitions: StateToState): string {
     let str = "graph {\n";
 
     for (const i in transitions) {
