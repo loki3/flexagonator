@@ -162,6 +162,14 @@
       }
     }
 
+    function showDotLeafGraph(flexagons) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        var graph = Flexagonator.getLeafGraph(flexagons);
+        box.value = Flexagonator.dotSimpleGraph(graph);
+      }
+    }
+
     function findStates(key, input) {
       if (key == 13) {
         var visible = JSON.parse(input);
@@ -275,6 +283,7 @@
     <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), false);" type="button" value="DOT: directed flexes" />
+    <input onclick="showDotLeafGraph(explorer.getFlexagons());" type="button" value="DOT: leaf graph" />
   </p>
 
   <p>
