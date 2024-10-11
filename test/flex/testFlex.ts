@@ -59,7 +59,6 @@ namespace Flexagonator {
       expect(inverse3.rotation).toBe(FlexRotation.Left);
     });
 
-    /*
     it('inverts changed directions', () => {
       // rotate directions
       const flex1 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None, undefined, undefined, [3, 1, 2]) as Flex;
@@ -71,7 +70,6 @@ namespace Flexagonator {
       const inverse2 = flex2.createInverse();
       expect(areLTArraysEqual([-1, -2, -3], inverse2.orderOfDirs ? inverse2.orderOfDirs : [])).toBe(true);
     });
-    */
   });
 
   describe('Flex.apply', () => {

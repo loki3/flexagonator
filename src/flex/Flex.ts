@@ -73,7 +73,8 @@ namespace Flexagonator {
 
     createInverse(): Flex {
       return new Flex("inverse " + this.name, this.output, this.input,
-        this.invertRotation(this.rotation), this.outputDirs, this.inputDirs);
+        this.invertRotation(this.rotation), this.outputDirs, this.inputDirs,
+        this.invertOrderOfDirs(this.orderOfDirs));
     }
 
     // apply this flex to the given flexagon
@@ -169,6 +170,20 @@ namespace Flexagonator {
         case FlexRotation.Left: return FlexRotation.Right;
       }
       return FlexRotation.None;
+    }
+
+    private invertOrderOfDirs(order?: number[]): number[] | undefined {
+      if (order === undefined) {
+        return undefined;
+      }
+      const newOrder: number[] = [];
+      for (let i = 0; i < order.length; i++) {
+        // this basically swaps i & order[i], adjusting for 1-based & negatives
+        const newI = Math.abs(order[i]) - 1;
+        const newVal = order[i] > 0 ? i + 1 : -(i + 1);
+        newOrder[newI] = newVal;
+      }
+      return newOrder;
     }
 
     // create a pat given a tree of indices into a set of matched pats
