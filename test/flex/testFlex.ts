@@ -34,6 +34,46 @@ namespace Flexagonator {
     });
   });
 
+  describe('Flex.createInverse', () => {
+    it('swaps inputs and outputs', () => {
+      const flex = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None, "//|", "/|/") as Flex;
+      const inverse = flex.createInverse();
+      expect(areLTArraysEqual([3, 2, 1], inverse.input)).toBe(true);
+      expect(areLTArraysEqual([1, 2, 3], inverse.output)).toBe(true);
+      expect(inverse.inputDirs ? inverse.inputDirs.asString(true) : '').toBe("/|/");
+      expect(inverse.outputDirs ? inverse.outputDirs.asString(true) : '').toBe("//|");
+    });
+
+    it('inverts rotation', () => {
+      const flex1 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None) as Flex;
+      const inverse1 = flex1.createInverse();
+      expect(inverse1.rotation).toBe(FlexRotation.None);
+
+      // A -> B, B -> C, C -> A (CAB) inverts to A -> C, B -> A, C -> B (BCA)
+      const flex2 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.CAB) as Flex;
+      const inverse2 = flex2.createInverse();
+      expect(inverse2.rotation).toBe(FlexRotation.BCA);
+
+      const flex3 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.Right) as Flex;
+      const inverse3 = flex3.createInverse();
+      expect(inverse3.rotation).toBe(FlexRotation.Left);
+    });
+
+    /*
+    it('inverts changed directions', () => {
+      // rotate directions
+      const flex1 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None, undefined, undefined, [3, 1, 2]) as Flex;
+      const inverse1 = flex1.createInverse();
+      expect(areLTArraysEqual([2, 3, 1], inverse1.orderOfDirs ? inverse1.orderOfDirs : [])).toBe(true);
+
+      // swap directions
+      const flex2 = makeFlex('test', [1, 2, 3], [3, 2, 1], FlexRotation.None, undefined, undefined, [-1, -2, -3]) as Flex;
+      const inverse2 = flex2.createInverse();
+      expect(areLTArraysEqual([-1, -2, -3], inverse2.orderOfDirs ? inverse2.orderOfDirs : [])).toBe(true);
+    });
+    */
+  });
+
   describe('Flex.apply', () => {
     it('should transform a flexagon properly', () => {
       const flexagon = Flexagon.makeFromTree([1, [2, -3], -4, [-5, 6]]);
