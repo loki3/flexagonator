@@ -29,6 +29,9 @@
       { labelAsTree: leafColors }
     ];
     let fm = Flexagonator.createFromScript(baseScript);
+    if (Flexagonator.isError(fm)) {
+      console.log(fm);
+    }
     let buttonsFront = null;
 
     function updateUI() {
