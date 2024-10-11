@@ -1,7 +1,7 @@
 namespace Flexagonator {
 
   export type StateId = number;
-  // every top level element is an array of other states accessbile from it
+  // every top level element is an array of other states accessible from it
   export type StateToState = Array<Array<StateId>>;
 
   /**
