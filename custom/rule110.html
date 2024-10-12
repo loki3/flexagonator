@@ -89,7 +89,6 @@
         applyAorB(optionFlexes['Rall1']);
         fm.applyFlexes('>>>>', true);
       }
-      updateUI();
     }
     // copy state of every cell
     function onlyCopy() {
@@ -97,7 +96,6 @@
         applyAorB(optionFlexes['Csall1']);
         fm.applyFlexes('>>>>', true);
       }
-      updateUI();
     }
     // compute the next generation of the cellular automaton
     function nextGen() {
@@ -105,10 +103,31 @@
       onlyCopy();
     }
 
+    // examine the pats to figure out what states they represent
+    function getCurrentCells() {
+      let states = '';
+      const thick = fm.flexagon.getThickness();
+      for (let i = 0; i < thick.length; i += 4) {
+        const state = thick[i] === 1 ? '1' : '0';
+        states += state;
+      }
+      return states;
+    }
+
 
     function updateUI() {
       var regionsFront = Flexagonator.drawEntireFlexagon('front', fm, { rotate: gRotate, showIds: false });
       gButtonsFront = Flexagonator.drawScriptButtons('front', fm.flexagon, fm.getAngleInfo(), true, regionsFront, 28);
+
+      var statesBox = document.getElementById('states');
+      if (statesBox !== null) {
+        if (fm.getFlexHistory().length === 0) {
+          statesBox.value = '';
+        } else {
+          const current = getCurrentCells();
+          statesBox.value += current + '\n';
+        }
+      }
 
       var historyBox = document.getElementById('history');
       if (historyBox !== null) {
@@ -197,15 +216,19 @@
     <input onkeypress="applyInitialStates(event.keyCode, event.target.value)" id="enterStates" value="11100010" size="40" />
   </div>
   <div>
-    <input onclick="nextGen();" type="button" value="compute generation" />
+    <input onclick="nextGen(); updateUI();" type="button" value="compute generation" />
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input onclick="onlyRules();" type="button" value="only run rules" />
-    <input onclick="onlyCopy();" type="button" value="only copy states" />
+    <input onclick="onlyRules(); updateUI();" type="button" value="only run rules" />
+    <input onclick="onlyCopy(); updateUI();" type="button" value="only copy states" />
   </div>
   <div id="status"></div>
 
   <canvas id="front" width="600" height="600"></canvas>
 
+  <p>
+    cell states:
+    <textarea id="states" readonly=true cols="50" rows="6"></textarea>
+  </p>
   <p>
     history:
     <textarea id="history" readonly=true cols="100" rows="4"></textarea>
