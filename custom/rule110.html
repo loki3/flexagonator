@@ -12,7 +12,7 @@
       Csall1: ["Coff", "Con", "I"], // copy state of current cell
     };
 
-    let gTotalCells = 10;
+    let gTotalCells = 8;
     let gNumPats = gTotalCells * 4;
     let gRotate = 0;
     let gButtonsFront = null;
@@ -51,6 +51,14 @@
         { leafProps }
       ];
       return Flexagonator.createFromScript(baseScript);
+    }
+
+    // adjust the flexagon to support the given number of cells
+    function changeCellCount(newCount) {
+      gTotalCells = newCount;
+      gNumPats = gTotalCells * 4;
+      fm = makeFlexagonCells();
+      updateUI();
     }
 
     // given an array of flex sequences, keep trying them till one succeeds
@@ -177,8 +185,16 @@
   </pre>
 
   <div>
+    number of cells:
+    <select onchange="changeCellCount(event.target.value)">
+      <option value=8>8</option>
+      <option value=10>10</option>
+      <option value=16>16</option>
+    </select>
+  </div>
+  <div>
     <label>enter initial states as a string of 0's (off) and 1's (on)</label>
-    <input onkeypress="applyInitialStates(event.keyCode, event.target.value)" id="enterStates" size="40" />
+    <input onkeypress="applyInitialStates(event.keyCode, event.target.value)" id="enterStates" value="11100010" size="40" />
   </div>
   <div>
     <input onclick="nextGen();" type="button" value="compute generation" />
