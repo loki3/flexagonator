@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>rule 110</title>
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    // apply the first flex that's supported
+    const optionFlexes = {
+      Rall1: ["R111", "Rx01", "I"], // run rules on current cell
+      Csall1: ["Coff", "Con", "I"], // copy state of current cell
+    };
+
+    let gTotalCells = 10;
+    let gNumPats = gTotalCells * 4;
+    let gRotate = 0;
+    let gButtonsFront = null;
+    let fm = makeFlexagonCells();
+
+    // initialize a flexagon with cells (and copies) that are all off
+    function makeFlexagonCells() {
+      gRotate = 180 / gNumPats - 90;
+
+      // on:blue, on-copy:light-blue, off:red, off-copy:light-red
+      const isOn = { label: "1", color: 0x7fbcff }, isOff = { label: "0", color: 0xff827f };
+      const copyOn = { label: "1", color: 0xbfecff }, copyOff = { label: "0", color: 0xffc2bf };
+      const propsArray = [
+        null, { front: isOn, back: isOff }, { front: isOn }, { front: copyOff },
+        null, { front: copyOn, back: copyOff }, { front: copyOn }, { front: isOff },
+      ];
+      let leafProps = [];
+      for (let i = 0; i < gNumPats / 4; i++) {
+        leafProps = leafProps.concat(propsArray);
+      }
+
+      // create flexagon with useful flexes
+      const flexes = "(T+>>)" + (gNumPats / 2).toString();
+      const baseScript = [
+        { numPats: gNumPats },
+        { addFlex: { name: "tuck", shorthand: "T", sequence: "Tf" } },
+        { addFlex: { name: "initialize on", shorthand: "Ion", sequence: "T>>T>>" } },
+        { addFlex: { name: "initialize off", shorthand: "Ioff", sequence: ">>>>" } },
+        { addFlex: { name: "rule 111", shorthand: "R111", sequence: "<<T'T>> T'T >>>>>>T'T<<<<<< T'" } },
+        { addFlex: { name: "rule x01", shorthand: "Rx01", sequence: "TT' >>>>>>T'T<<<<<< T" } },
+        { addFlex: { name: "copy off", shorthand: "Coff", sequence: "TT' >>T'<<" } },
+        { addFlex: { name: "copy on", shorthand: "Con", sequence: "T'T >>T<<" } },
+        { searchFlexes: "T T'" },
+        { flexes, clearHistory: true },
+        { normalizeIds: true },
+        { leafProps }
+      ];
+      return Flexagonator.createFromScript(baseScript);
+    }
+
+    // given an array of flex sequences, keep trying them till one succeeds
+    function applyAorB(options) {
+      for (const sequence of options) {
+        const result = fm.applyFlexes(sequence, true);
+        if (!Flexagonator.isError(result)) {
+          return; // success, don't try any other sequences
+        }
+      }
+    }
+
+    // take a string of 0's & 1's and convert it to the flexes needed to initialize the flexagon
+    function setInitialStates(states) {
+      // convert to flex sequence
+      let flexes = ''
+      for (let i = 0; i < gTotalCells; i++) {
+        flexes += (states[i] === '1') ? 'Ion' : 'Ioff';
+      }
+      // reset & apply
+      fm = makeFlexagonCells();
+      fm.applyFlexes(flexes);
+    }
+
+    // run cellular automaton rules on every cell
+    function onlyRules() {
+      for (let i = 0; i < gTotalCells; i++) {
+        applyAorB(optionFlexes['Rall1']);
+        fm.applyFlexes('>>>>', true);
+      }
+      updateUI();
+    }
+    // copy state of every cell
+    function onlyCopy() {
+      for (let i = 0; i < gTotalCells; i++) {
+        applyAorB(optionFlexes['Csall1']);
+        fm.applyFlexes('>>>>', true);
+      }
+      updateUI();
+    }
+    // compute the next generation of the cellular automaton
+    function nextGen() {
+      onlyRules();
+      onlyCopy();
+    }
+
+
+    function updateUI() {
+      var regionsFront = Flexagonator.drawEntireFlexagon('front', fm, { rotate: gRotate, showIds: false });
+      gButtonsFront = Flexagonator.drawScriptButtons('front', fm.flexagon, fm.getAngleInfo(), true, regionsFront, 28);
+
+      var historyBox = document.getElementById('history');
+      if (historyBox !== null) {
+        var history = fm.getFlexHistory().join(' ');
+        historyBox.value = history;
+      }
+    }
+
+    function statusMessage(message) {
+      var statusDiv = document.getElementById('status');
+      if (statusDiv !== null) {
+        if (Flexagonator.isError(message)) {
+          message = Flexagonator.errorToString(message);
+        }
+        statusDiv.innerHTML = message;
+      }
+    }
+
+
+    function applyInitialStates(key, states) {
+      if (key == 13) {
+        setInitialStates(states);
+        updateUI();
+        statusMessage('');
+      } else if (key !== 48 && key !== 49) {
+        statusMessage('must type in a 0 or 1');
+      } else {
+        statusMessage('');
+      }
+    }
+
+    function interfaceMouseMove(event, id, buttons) {
+      var script = Flexagonator.getScriptItem(event, id, buttons);
+      event.target.style.cursor = script == null ? 'default' : 'pointer';
+    }
+
+    function interfaceMouseClick(event, id, buttons) {
+      var script = Flexagonator.getScriptItem(event, id, buttons);
+      if (script != null) {
+        var result = Flexagonator.runScriptItem(fm, script);
+        if (!Flexagonator.isError(result)) {
+          fm = result;
+          updateUI();
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>rule 110</h1>
+
+  <p>
+    Running the 1D CA <a href="https://en.wikipedia.org/wiki/Rule_110">Rule 110</a> on a flexagon.
+  </p>
+
+  <pre>
+    TT'   check if cell is off without changing it
+    T'T   check if cell is on without changing it
+
+    Ioff  = >>>>
+    Ion   = T>>T>>
+
+    // rule: 111 -> 0
+    R111  = &lt;&lt;T'T>> T'T >>>>>>T'T&lt;&lt;&lt;&lt;&lt;&lt; T'
+    // rule: x01 -> 1
+    Rx01  = TT' >>>>>>T'T&lt;&lt;&lt;&lt;&lt;&lt; T
+
+    Coff = TT' >>T'&lt;&lt;
+    Con  = T'T >>T&lt;&lt;
+
+    Rall  = ((R111 | Rx01 | I) >>>>)n
+    Csall = ((Coff | Con | I) >>>>)n
+  </pre>
+
+  <div>
+    <label>enter initial states as a string of 0's (off) and 1's (on)</label>
+    <input onkeypress="applyInitialStates(event.keyCode, event.target.value)" id="enterStates" size="40" />
+  </div>
+  <div>
+    <input onclick="nextGen();" type="button" value="compute generation" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input onclick="onlyRules();" type="button" value="only run rules" />
+    <input onclick="onlyCopy();" type="button" value="only copy states" />
+  </div>
+  <div id="status"></div>
+
+  <canvas id="front" width="600" height="600"></canvas>
+
+  <p>
+    history:
+    <textarea id="history" readonly=true cols="100" rows="4"></textarea>
+  </p>
+
+  <script type="text/javascript">
+    updateUI();
+    var canvasFront = document.getElementById('front');
+    canvasFront.addEventListener('mousemove', (event) => { interfaceMouseMove(event, 'front', gButtonsFront) }, false);
+    canvasFront.addEventListener('click', (event) => { interfaceMouseClick(event, 'front', gButtonsFront) }, false);
+  </script>
+
+</body>
+
+</html>
