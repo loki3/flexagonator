@@ -23,13 +23,14 @@
     let buttons = null;
     let selectedPieces = { patsPrefix: 6 };  // track selected flexagon name pieces
     let gFace = 'both';  // track whether template should show front and/or back faces
+    let gRotate = 0;     // for special flexagon shapes, rotate the displayed flexagon
     let gSlices = null;  // track how they want the template sliced
 
     function updateUI() {
       const fm = creator.getFlexagonManager();
-      let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true });
+      let regions = Flexagonator.drawEntireFlexagon('interface', fm, { stats: true, structure: true, rotate: gRotate });
       buttons = Flexagonator.drawScriptButtons('interface', fm.flexagon, fm.getAngleInfo(), true, regions);
-      Flexagonator.drawEntireFlexagon('backside', fm, { back: true });
+      Flexagonator.drawEntireFlexagon('backside', fm, { back: true, rotate: gRotate });
       drawTemplates();
 
       let historyBox = document.getElementById('history');
@@ -182,6 +183,7 @@
       handleCreation(creator.setNamePieces(selectedPieces));
     }
     function setOverallShape(overallShape) {
+      gRotate = overallShape === "bracelet" ? 90 : 0; // normally current hinge at top, but bracelets fit better horizontal
       selectedPieces = { ...selectedPieces, overallShape };
       fillNameLists();
       handleCreation(creator.setNamePieces(selectedPieces));
