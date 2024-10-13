@@ -121,12 +121,8 @@
 
       var statesBox = document.getElementById('states');
       if (statesBox !== null) {
-        if (fm.getFlexHistory().length === 0) {
-          statesBox.value = '';
-        } else {
-          const current = getCurrentCells();
-          statesBox.value += current + '\n';
-        }
+        const current = getCurrentCells();
+        statesBox.value += current + '\n';
       }
 
       var historyBox = document.getElementById('history');
@@ -150,6 +146,7 @@
     function applyInitialStates(key, states) {
       if (key == 13) {
         setInitialStates(states);
+        document.getElementById('states').value = '';
         updateUI();
         statusMessage('');
       } else if (key !== 48 && key !== 49) {
