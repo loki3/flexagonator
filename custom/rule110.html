@@ -232,7 +232,16 @@
   </p>
 
   <script type="text/javascript">
+    var statesBox = document.getElementById('states');
+    if (statesBox !== null) {
+      statesBox.value = "";
+    }
+    var enterStatesBox = document.getElementById('enterStates');
+    if (enterStatesBox !== null) {
+      setInitialStates(enterStatesBox.value);
+    }
     updateUI();
+
     var canvasFront = document.getElementById('front');
     canvasFront.addEventListener('mousemove', (event) => { interfaceMouseMove(event, 'front', gButtonsFront) }, false);
     canvasFront.addEventListener('click', (event) => { interfaceMouseClick(event, 'front', gButtonsFront) }, false);
