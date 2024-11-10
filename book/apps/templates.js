@@ -513,7 +513,7 @@ const templatesBronzeDodeca = {
     [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
     { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig29.9": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree }],
-  { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic morph", which: 6, edge: 1 }] },
+  { content: { showLeafProps: true }, rotation: 30, captions: [firstStar, lastStar, { text: "#", which: -2, edge: 1 }, { text: "rhombic-morph", which: 6, edge: 1 }] },
     /*sz*/[1100, 426]],
 }
 
@@ -524,13 +524,13 @@ function getSilver12Script(flexes, postflexes) {
 }
 const templatesSilverDodeca = {
   "fig30.3": [getSilver12Script("Tu*Tu*", "<"),
-  { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 0 }] },
+  { rotation: 135, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "TuTu", which: 0, edge: 2 }] },
     /*sz*/[1066, 136]],
   "fig30.5": [getSilver12Script("<<Ds+"),
   { rotation: -45, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "Ds", which: -1, edge: 0 }] },
     /*sz*/[800, 400]],
   "fig30.7": [getSilver12Script("<Tf+>>>Tf+>>>Tf+>>>Tf+>>>>"),
-  { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "T's", which: 1, edge: 1 }] },
+  { rotation: 90, content: { showLeafProps: true }, captions: [firstStar, lastStar, { text: "(Tf>>>>)4", which: 1, edge: 1 }] },
     /*sz*/[840, 600]],
 }
 
