@@ -89,7 +89,7 @@ $TRACEWID
   9
 $TEXTSTYLE
   7
-Arial
+Arial italics
   9
 $CLAYER
   8
@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460624.6798726735
+2460624.7394328588
   9
 $TDUUPDATE
  40
-2460625.0132060186
+2460625.0727662039
   9
 $TDINDWG
  40
-177.980821759259
+178.040358796296
   9
 $TDUSRTIMER
  40
-177.980821759259
+178.040358796296
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-14DC26927E6
+14DC26927E7
   9
 $SURFTAB1
  70
@@ -2629,7 +2629,7 @@ STYLE
 100
 AcDbSymbolTable
  70
-     7
+     8
   0
 STYLE
   5
@@ -2838,6 +2838,40 @@ ACAD
 Times New Roman
 1071
        18
+  0
+STYLE
+  5
+14DC26927E6
+330
+3
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+Arial italics
+ 70
+     0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+     0
+ 42
+0.2
+  3
+ARIAL.TTF
+  4
+
+1001
+ACAD
+1000
+Arial
+1071
+ 16777250
   0
 ENDTAB
   0
@@ -117261,15 +117295,15 @@ AcDbEntity
 100
 AcDbText
  10
-108.553363
+108.523148
  20
-0.505697
+0.501381
  30
 0.0
  40
 0.2
   1
--3
+\U+22123
   7
 Arial
 100
@@ -117287,15 +117321,15 @@ AcDbEntity
 100
 AcDbText
  10
-108.350477
+108.320262
  20
-0.179527
+0.175211
  30
 0.0
  40
 0.2
   1
--2
+\U+22122
   7
 Arial
 100
@@ -117313,15 +117347,15 @@ AcDbEntity
 100
 AcDbText
  10
-108.204813
+108.174598
  20
-0.508027
+0.503711
  30
 0.0
  40
 0.2
   1
--1
+\U+22121
   7
 Arial
 100
@@ -117571,7 +117605,7 @@ AcDbMText
   1
 e
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117605,7 +117639,7 @@ AcDbMText
   1
 a
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117639,7 +117673,7 @@ AcDbMText
   1
 2
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117673,7 +117707,7 @@ AcDbMText
   1
 a
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117707,7 +117741,7 @@ AcDbMText
   1
 b
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117741,7 +117775,7 @@ AcDbMText
   1
 ba
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117775,7 +117809,7 @@ AcDbMText
   1
 ba
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117809,7 +117843,7 @@ AcDbMText
   1
 2
   7
-Arial
+Arial italics
  73
      1
  44
@@ -117827,15 +117861,15 @@ AcDbEntity
 100
 AcDbText
  10
-109.704813
+109.674598
  20
-0.508027
+0.503711
  30
 0.0
  40
 0.2
   1
--3
+\U+22123
   7
 Arial
 100
@@ -117853,15 +117887,15 @@ AcDbEntity
 100
 AcDbText
  10
-110.053363
+110.023148
  20
-0.505697
+0.501381
  30
 0.0
  40
 0.2
   1
--2
+\U+22122
   7
 Arial
 100
@@ -117879,15 +117913,15 @@ AcDbEntity
 100
 AcDbText
  10
-109.850477
+109.820262
  20
-0.179527
+0.175211
  30
 0.0
  40
 0.2
   1
--1
+\U+22121
   7
 Arial
 100
@@ -117905,15 +117939,15 @@ AcDbEntity
 100
 AcDbText
  10
-111.204813
+111.174598
  20
-0.508027
+0.503711
  30
 0.0
  40
 0.2
   1
--2
+\U+22122
   7
 Arial
 100
@@ -117931,15 +117965,15 @@ AcDbEntity
 100
 AcDbText
  10
-111.553363
+111.523148
  20
-0.505697
+0.501381
  30
 0.0
  40
 0.2
   1
--1
+\U+22121
   7
 Arial
 100
@@ -117957,15 +117991,15 @@ AcDbEntity
 100
 AcDbText
  10
-111.350477
+111.320262
  20
-0.179527
+0.175211
  30
 0.0
  40
 0.2
   1
--3
+\U+22123
   7
 Arial
 100

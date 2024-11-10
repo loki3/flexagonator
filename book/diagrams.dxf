@@ -453,19 +453,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460624.6952777663
+2460624.7219212847
   9
 $TDUUPDATE
  40
-2460625.028611111
+2460625.0552546298
   9
 $TDINDWG
  40
-77.767372685185
+77.793993055556
   9
 $TDUSRTIMER
  40
-77.767372685185
+77.793993055556
   9
 $USRTIMER
  70
@@ -505,7 +505,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-62DD
+62FD
   9
 $SURFTAB1
  70
@@ -9623,32 +9623,6 @@ AcDbText
  73
      2
   0
-LWPOLYLINE
-  5
-45B4
-330
-1F
-100
-AcDbEntity
-  8
-flex v
-100
-AcDbPolyline
- 90
-        2
- 70
-     0
- 43
-0.0441
- 10
-15.355116
- 20
--25.500005
- 10
-15.355015
- 20
--26.478417
-  0
 TEXT
   5
 45B5
@@ -10578,32 +10552,6 @@ Arial
 AcDbText
  73
      2
-  0
-LWPOLYLINE
-  5
-45D5
-330
-1F
-100
-AcDbEntity
-  8
-flex pyramid shuffle
-100
-AcDbPolyline
- 90
-        2
- 70
-     0
- 43
-0.0441
- 10
-23.420352
- 20
--24.521588
- 10
-23.420251
- 20
--25.5
   0
 LWPOLYLINE
   5
@@ -11927,46 +11875,6 @@ AcDbText
  73
      2
   0
-LWPOLYLINE
-  5
-45FD
-330
-1F
-100
-AcDbEntity
-  8
-flex tuck
-100
-AcDbPolyline
- 90
-        3
- 70
-     0
- 10
-23.420145
- 20
--21.5
- 40
-0.0
- 41
-0.2
- 10
-23.420145
- 20
--21.8
- 40
-0.0441
- 41
-0.0441
- 10
-23.420044
- 20
--22.478412
- 40
-0.04413
- 41
-0.04413
-  0
 TEXT
   5
 45FE
@@ -12002,46 +11910,6 @@ Arial
 AcDbText
  73
      2
-  0
-LWPOLYLINE
-  5
-45FF
-330
-1F
-100
-AcDbEntity
-  8
-flex tuck
-100
-AcDbPolyline
- 90
-        3
- 70
-     0
- 10
-15.455116
- 20
--28.521588
- 40
-0.0
- 41
-0.2
- 10
-15.455116
- 20
--28.821588
- 40
-0.0441
- 41
-0.0441
- 10
-15.455016
- 20
--29.5
- 40
-0.04413
- 41
-0.04413
   0
 TEXT
   5
@@ -19669,32 +19537,6 @@ AcDbEntity
   8
 0
   0
-LWPOLYLINE
-  5
-4E9B
-330
-1F
-100
-AcDbEntity
-  8
-flex pyramid shuffle
-100
-AcDbPolyline
- 90
-        2
- 70
-     0
- 43
-0.0441
- 10
-73.500101
- 20
--3.521588
- 10
-73.5
- 20
--4.5
-  0
 TEXT
   5
 4E9C
@@ -19730,32 +19572,6 @@ Arial
 AcDbText
  73
      2
-  0
-LWPOLYLINE
-  5
-4E9D
-330
-1F
-100
-AcDbEntity
-  8
-flex pyramid shuffle
-100
-AcDbPolyline
- 90
-        2
- 70
-     0
- 43
-0.0441
- 10
-73.5
- 20
--4.5
- 10
-73.499899
- 20
--5.478412
   0
 TEXT
   5
@@ -28168,32 +27984,6 @@ SEQEND
 AcDbEntity
   8
 0
-  0
-LWPOLYLINE
-  5
-5145
-330
-1F
-100
-AcDbEntity
-  8
-flex pyramid shuffle
-100
-AcDbPolyline
- 90
-        2
- 70
-     0
- 43
-0.0441
- 10
-92.500101
- 20
-0.478412
- 10
-92.5
- 20
--0.5
   0
 TEXT
   5
@@ -54732,6 +54522,762 @@ Arial
 AcDbText
  73
      2
+  0
+LWPOLYLINE
+  5
+62DD
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+92.499888
+ 20
+-0.95
+ 10
+92.500113
+ 20
+-0.05
+  0
+LWPOLYLINE
+  5
+62DE
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+100.499888
+ 20
+-0.95
+ 10
+100.500113
+ 20
+-0.05
+  0
+LWPOLYLINE
+  5
+62DF
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+73.499888
+ 20
+-4.95
+ 10
+73.500113
+ 20
+-4.05
+  0
+LWPOLYLINE
+  5
+62E0
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+81.499888
+ 20
+-4.95
+ 10
+81.500113
+ 20
+-4.05
+  0
+LWPOLYLINE
+  5
+62E1
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+73.400156
+ 20
+-8.45
+ 10
+73.400381
+ 20
+-7.55
+  0
+LWPOLYLINE
+  5
+62E2
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+81.499888
+ 20
+-8.45
+ 10
+81.500113
+ 20
+-7.55
+  0
+LWPOLYLINE
+  5
+62E3
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+73.400176
+ 20
+-11.95
+ 10
+73.400401
+ 20
+-11.05
+  0
+LWPOLYLINE
+  5
+62E4
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+81.499888
+ 20
+-11.95
+ 10
+81.500113
+ 20
+-11.05
+  0
+LWPOLYLINE
+  5
+62E5
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+73.499888
+ 20
+-15.45
+ 10
+73.500113
+ 20
+-14.55
+  0
+LWPOLYLINE
+  5
+62E6
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+81.499888
+ 20
+-15.45
+ 10
+81.500113
+ 20
+-14.55
+  0
+LWPOLYLINE
+  5
+62E8
+330
+1F
+100
+AcDbEntity
+  8
+flex pyramid shuffle
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.0441
+ 10
+92.500101
+ 20
+0.478412
+ 10
+92.5
+ 20
+-0.5
+  0
+LWPOLYLINE
+  5
+62E9
+330
+1F
+100
+AcDbEntity
+  8
+flex pyramid shuffle
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.0441
+ 10
+73.500101
+ 20
+-3.521588
+ 10
+73.5
+ 20
+-4.5
+  0
+LWPOLYLINE
+  5
+62EA
+330
+1F
+100
+AcDbEntity
+  8
+flex pyramid shuffle
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.0441
+ 10
+73.5
+ 20
+-4.5
+ 10
+73.499899
+ 20
+-5.478412
+  0
+LWPOLYLINE
+  5
+62EB
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+46.499888
+ 20
+-24.95
+ 10
+46.500113
+ 20
+-24.05
+  0
+LWPOLYLINE
+  5
+62EE
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+15.499888
+ 20
+-17.95
+ 10
+15.500113
+ 20
+-17.05
+  0
+LWPOLYLINE
+  5
+62EF
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+23.499888
+ 20
+-17.95
+ 10
+23.500113
+ 20
+-17.05
+  0
+LWPOLYLINE
+  5
+62F0
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+31.500195
+ 20
+-17.95
+ 10
+31.50042
+ 20
+-17.05
+  0
+LWPOLYLINE
+  5
+62F1
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+15.499695
+ 20
+-21.95
+ 10
+15.49992
+ 20
+-21.05
+  0
+LWPOLYLINE
+  5
+62F2
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+23.420033
+ 20
+-21.95
+ 10
+23.420258
+ 20
+-21.05
+  0
+LWPOLYLINE
+  5
+62F3
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+31.500134
+ 20
+-21.95
+ 10
+31.500359
+ 20
+-21.05
+  0
+LWPOLYLINE
+  5
+62F4
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+15.355004
+ 20
+-25.950005
+ 10
+15.355229
+ 20
+-25.050005
+  0
+LWPOLYLINE
+  5
+62F5
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+23.420139
+ 20
+-25.95
+ 10
+23.420364
+ 20
+-25.05
+  0
+LWPOLYLINE
+  5
+62F6
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+15.454904
+ 20
+-29.95
+ 10
+15.455129
+ 20
+-29.05
+  0
+LWPOLYLINE
+  5
+62F7
+330
+1F
+100
+AcDbEntity
+  8
+state-separator
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.06
+ 10
+23.499734
+ 20
+-29.95
+ 10
+23.499959
+ 20
+-29.05
+  0
+LWPOLYLINE
+  5
+62F9
+330
+1F
+100
+AcDbEntity
+  8
+flex tuck
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 10
+23.420146
+ 20
+-21.5
+ 40
+0.0
+ 41
+0.2
+ 10
+23.420146
+ 20
+-21.8
+ 40
+0.0441
+ 41
+0.0441
+ 10
+23.420044
+ 20
+-22.478412
+ 40
+0.04413
+ 41
+0.04413
+  0
+LWPOLYLINE
+  5
+62FA
+330
+1F
+100
+AcDbEntity
+  8
+flex v
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.0441
+ 10
+15.355117
+ 20
+-25.500005
+ 10
+15.355016
+ 20
+-26.478417
+  0
+LWPOLYLINE
+  5
+62FB
+330
+1F
+100
+AcDbEntity
+  8
+flex pyramid shuffle
+100
+AcDbPolyline
+ 90
+        2
+ 70
+     0
+ 43
+0.0441
+ 10
+23.420353
+ 20
+-24.521588
+ 10
+23.420251
+ 20
+-25.5
+  0
+LWPOLYLINE
+  5
+62FC
+330
+1F
+100
+AcDbEntity
+  8
+flex tuck
+100
+AcDbPolyline
+ 90
+        3
+ 70
+     0
+ 10
+15.455116
+ 20
+-28.521588
+ 40
+0.0
+ 41
+0.2
+ 10
+15.455116
+ 20
+-28.821588
+ 40
+0.0441
+ 41
+0.0441
+ 10
+15.455016
+ 20
+-29.5
+ 40
+0.04413
+ 41
+0.04413
   0
 ENDSEC
   0
