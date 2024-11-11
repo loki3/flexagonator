@@ -36,7 +36,7 @@ namespace Flexagonator {
       drawFaceText(paint, smallText, polygon.getFaceCenters(0.3), ids);
     }
     if (patstructure !== StructureType.None) {
-      drawPatStructures(paint, patText, polygon.getFaceCenters(1.05), flexagon, patstructure);
+      drawPatStructures(paint, patText, polygon.getFaceCenters(1.05), flexagon, patstructure, front);
     }
     if (showCenterMarker) {
       drawCenterMarker(paint, markerText, polygon, flexagon.angleTracker.oldCorner);
@@ -82,13 +82,16 @@ namespace Flexagonator {
     paint.setTextSize(fontsize);
   }
 
-  function drawPatStructures(paint: Paint, fontsize: number, centers: number[], flexagon: Flexagon, patstructure: StructureType) {
+  function drawPatStructures(
+    paint: Paint, fontsize: number, centers: number[], flexagon: Flexagon, patstructure: StructureType, front: boolean
+  ) {
     if (patstructure === StructureType.None) {
       return;
     }
     setTextProps(paint, fontsize);
-    for (let i = 0; i < flexagon.getPatCount(); i++) {
-      const pat = flexagon.pats[i];
+    const count = flexagon.getPatCount();
+    for (let i = 0; i < count; i++) {
+      const pat = flexagon.pats[front ? i : count - i - 1];
       const structure: string = patstructure === StructureType.All
         ? pat.getStructure()
         : pat.getStructureLTEId(flexagon.getPatCount());
