@@ -15,6 +15,7 @@ namespace Flexagonator {
     readonly both?: boolean;        // draw both front & back - default: false (front)
     readonly stats?: boolean;       // show stats - default: false
     readonly structure?: boolean;   // show pat structure - default: false
+    readonly scaleStructure?: number; // scale factor to apply to pat structure text - default: 1
     readonly structureTopIds?: boolean; // show pat structure that includes ids <= numpats - default: false
     readonly drawover?: boolean;    // draw over canvas or clear first - default: false
     readonly showIds?: boolean;     // show leaf ids - default: true
@@ -79,7 +80,8 @@ namespace Flexagonator {
         drawLeafCount(paint, objects.flexagon);
       }
     } else {
-      drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps, showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker);
+      drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps,
+        showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker, options.scaleStructure);
       if (options.both) {
         const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
         drawFlexagon(paint, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);

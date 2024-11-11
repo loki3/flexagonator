@@ -8,11 +8,13 @@ namespace Flexagonator {
 
   export function drawFlexagon(paint: Paint, flexagon: Flexagon, polygon: Polygon,
     props: PropertiesForLeaves, front: boolean, patstructure: StructureType, showids: boolean,
-    showCurrent?: boolean, showNumbers?: boolean, showCenterMarker?: boolean) {
+    showCurrent?: boolean, showNumbers?: boolean, showCenterMarker?: boolean, scaleStructure?: number
+  ) {
 
     const markerText = polygon.radius / 6;
     const largeText = polygon.radius / (flexagon.getPatCount() >= 10 ? 6 : 5);
     const smallText = polygon.radius / 14;
+    const patText = scaleStructure ? smallText * scaleStructure : smallText;
     const ids = front ? flexagon.getTopIds() : flexagon.getBottomIds().reverse();
 
     if (props !== undefined) {
@@ -34,7 +36,7 @@ namespace Flexagonator {
       drawFaceText(paint, smallText, polygon.getFaceCenters(0.3), ids);
     }
     if (patstructure !== StructureType.None) {
-      drawPatStructures(paint, smallText, polygon.getFaceCenters(1.05), flexagon, patstructure);
+      drawPatStructures(paint, patText, polygon.getFaceCenters(1.05), flexagon, patstructure);
     }
     if (showCenterMarker) {
       drawCenterMarker(paint, markerText, polygon, flexagon.angleTracker.oldCorner);

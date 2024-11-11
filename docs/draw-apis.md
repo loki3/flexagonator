@@ -50,6 +50,7 @@ such as whether to draw the front or back, and whether to display useful statist
   stats: true,       // boolean: default false, show stats such as the number of leaves
   structure: true,   // boolean: default false, show internal structure of each pat
   structureTopIds:   // boolean: default false, show pat structure that includes ids <= numpats
+  scaleStructure: 1, // number: default 1, scale factor to apply to pat structure text
   drawover: true,    // boolean: default false, draw over canvas or clear first
   showIds: true,     // boolean: default true, show leaf ids
   showCurrent: true, // boolean: default true, show an indicator next to the current hinge
