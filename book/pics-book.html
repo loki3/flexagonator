@@ -107,7 +107,7 @@
       if (Flexagonator.isError(fm)) { console.log("drawBeforeAfter - ", Flexagonator.errorToString(fm)); return; }
       const rotate = numPats === 6 ? -30 : numPats === 8 ? -22.5 : 0;
       const options = { showIds: false, scale: 1.1, rotate, showCurrent: true, showCenterMarker: true };
-      const options1 = { ...options, structure: true };
+      const options1 = { ...options, structure: true, scaleStructure: 1.9 };
       const options2 = { ...options, back: true };
 
       Flexagonator.drawEntireFlexagon(canvasId + "-before-1", fm, options1);
@@ -583,10 +583,10 @@
     <br/>
   </div>
   <br/><br/>
-  <span id="T-minimal-before-1" width="160" height="180"></span>
+  <span id="T-minimal-before-1" width="190" height="180"></span>
   <span id="T-minimal-before-2" width="160" height="180"></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <span id="T-minimal-after-1" width="160" height="180"></span>
+  <span id="T-minimal-after-1" width="190" height="180"></span>
   <span id="T-minimal-after-2" width="160" height="180"></span>
   <script type="text/javascript">
     drawBeforeAfter("T-minimal", "T", 6);
@@ -608,10 +608,10 @@
     <span class="n"><p>6</p><img src="photos/flip/flip (10).jpg" width="150"/></span>
   </div>
   <br/><br/>
-  <span id="F-minimal-before-1" width="180" height="200"></span>
+  <span id="F-minimal-before-1" width="195" height="200"></span>
   <span id="F-minimal-before-2" width="180" height="200"></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <span id="F-minimal-after-1" width="180" height="200"></span>
+  <span id="F-minimal-after-1" width="195" height="200"></span>
   <span id="F-minimal-after-2" width="180" height="200"></span>
   <script type="text/javascript">
     drawBeforeAfter("F-minimal", "F", 6, [60, 90]);
@@ -640,10 +640,10 @@
     <span class="n"><p>9</p><img src="photos/pyramid-shuffle/pyramid-shuffle (16).jpg" height="150"/></span>
   </div>
   <br/><br/>
-  <span id="S-minimal-before-1" width="190" height="180"></span>
+  <span id="S-minimal-before-1" width="210" height="180"></span>
   <span id="S-minimal-before-2" width="160" height="180"></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <span id="S-minimal-after-1" width="180" height="180"></span>
+  <span id="S-minimal-after-1" width="190" height="180"></span>
   <span id="S-minimal-after-2" width="160" height="180"></span>
   <script type="text/javascript">
     const labelsS5 = [[1, 2], [3, 2], [4, 5], [1, 5], [3, 4], [2, 1], [2, 3], [1, 3], [1, 2]];
@@ -659,13 +659,13 @@
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <span id="morph-St-after-1" width="190" height="200"></span><span id="morph-St-after-2" width="190" height="200"></span>
   <br/>Fm<br/>
-  <span id="morph-Fm-before-1" width="190" height="200"></span><span id="morph-Fm-before-2" width="190" height="200"></span>
+  <span id="morph-Fm-before-1" width="200" height="200"></span><span id="morph-Fm-before-2" width="190" height="200"></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <span id="morph-Fm-after-1" width="190" height="200"></span><span id="morph-Fm-after-2" width="190" height="200"></span>
+  <span id="morph-Fm-after-1" width="200" height="200"></span><span id="morph-Fm-after-2" width="190" height="200"></span>
   <br/>S3<br/>
-  <span id="morph-S3-before-1" width="190" height="200"></span><span id="morph-S3-before-2" width="190" height="200"></span>
+  <span id="morph-S3-before-1" width="200" height="200"></span><span id="morph-S3-before-2" width="190" height="200"></span>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <span id="morph-S3-after-1" width="190" height="200"></span><span id="morph-S3-after-2" width="190" height="200"></span>
+  <span id="morph-S3-after-1" width="200" height="200"></span><span id="morph-S3-after-2" width="190" height="200"></span>
   <script type="text/javascript">
     drawBeforeAfter("morph-St", "St", 8, [45, 90]);
     drawBeforeAfter("morph-Fm", "Fm", 8, [45, 45]);
