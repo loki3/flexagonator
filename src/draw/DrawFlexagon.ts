@@ -26,7 +26,7 @@ namespace Flexagonator {
     drawPolygon(paint, corners);
     drawSpokes(paint, corners, polygon.xCenter, polygon.yCenter);
     if (showCurrent === undefined || showCurrent) {
-      drawText(paint, markerText, corners[0], corners[1], "*");
+      drawText(paint, markerText, corners[0], corners[1], "⚹");
     }
 
     if (showNumbers === undefined || showNumbers) {
