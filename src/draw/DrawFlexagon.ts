@@ -92,9 +92,10 @@ namespace Flexagonator {
     const count = flexagon.getPatCount();
     for (let i = 0; i < count; i++) {
       const pat = flexagon.pats[front ? i : count - i - 1];
+      const displayPat = front ? pat : pat.makeFlipped();
       const structure: string = patstructure === StructureType.All
-        ? pat.getStructure()
-        : pat.getStructureLTEId(flexagon.getPatCount());
+        ? displayPat.getStructure()
+        : displayPat.getStructureLTEId(flexagon.getPatCount());
       paint.drawText(structure, centers[i * 2], centers[i * 2 + 1]);
     }
   }
