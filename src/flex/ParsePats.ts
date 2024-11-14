@@ -40,6 +40,8 @@ namespace Flexagonator {
         case '112': result.push([0, [0, [0, 0]]]); break;
         case '12-1': result.push([[0, [0, 0]], 0]); break;
         case '1-21': result.push([0, [[0, 0], 0]]); break;
+        // 8
+        case '8': result.push([[[0, 0], [0, 0]], [[0, 0], [0, 0]]]); break;
         // unhandled
         default:
           return false;
