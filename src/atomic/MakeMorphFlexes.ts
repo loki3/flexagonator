@@ -42,11 +42,11 @@ namespace Flexagonator {
       flexes["Mkh"] = makeFlex("morph-kite: fold in half",
         [[-2, 1], -3, -4, [6, -5], 7, 8],
         [2, 3, [-5, 4], -6, -7, [1, -8]],
-        FlexRotation.BCA, "//////", "/|//|/") as Flex;
+        FlexRotation.BAC, "//////", "/|//|/") as Flex;
       flexes["Mkt"] = makeFlex("morph-kite: partial tuck",
         [2, 3, 4, [-6, 5], -7, [1, -8]],
         [[-2, 1], -3, [5, -4], 6, 7, 8],
-        FlexRotation.BCA, "//////", "/|//|/") as Flex;
+        FlexRotation.BAC, "//////", "/|//|/") as Flex;
     }
 
     // only works on a (////\)2 deca
@@ -86,7 +86,7 @@ namespace Flexagonator {
     flexes["Sp"] = createLocalFlex("partial shuffle", patCount - 5, 8,
       [1, 2, [-4, 3]], /**/[-5, [-6, 7]],
       [[1, -2], -3], /**/[[5, -4], 6, 7],
-      "/|/", "/|", "|/", "/|/");
+      "/|/", "/|", "|/", "/|/", FlexRotation.BAC);
     flexes["Ss"] = createLocalFlex("single slide", patCount - 6, 9,
       [[-2, 1], -3, -4], /**/[[6, -5], 7, 8],
       [1, 2, [-4, 3]], /**/[-5, -6, [8, -7]],

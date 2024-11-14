@@ -1,7 +1,8 @@
 namespace Flexagonator {
 
   /**
-   * if the first leaf after the reference hinge has angles ABC (A in the center/lower & B clockwise),
+   * if the first leaf after the reference hinge has angles ABC
+   *  (A in the center/lower & B counterclockwise),
    * this describes the new arrangement of angles after a given flex
    */
   export enum FlexRotation {

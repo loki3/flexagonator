@@ -74,7 +74,7 @@ namespace Flexagonator {
       [3, 4, 5, [-7, 6], -8, [2, [-9, -1]]], FlexRotation.None) as Flex;
     flexes["Ttf"] = makeFlex("tuck top front",
       [[[-2, 3], 1], [-5, 4], -6, [8, -7], 9, 10],
-      [[4, -3], 5, [-7, 6], -8, [[10, -1], -9], -2], FlexRotation.None) as Flex;
+      [[4, -3], 5, [-7, 6], -8, [[10, -1], -9], -2], FlexRotation.CBA) as Flex;
     flexes["V"] = makeFlex("v flex",
       [1, [-3, 2], [5, -4], 6, 7, [-9, 8]],
       [[2, -1], 3, 4, [-6, 5], [8, -7], 9], FlexRotation.CBA) as Flex;
@@ -83,16 +83,16 @@ namespace Flexagonator {
       [10, [-2, 1], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.ACB) as Flex;
     flexes["Ltb"] = makeFlex("slot tuck top back",
       [[[-2, [-4, 3]], 1], -5, -6, -7, [9, -8], 10],
-      [-1, -2, -3, [5, -4], [[-7, 8], 6], [-10, 9]], FlexRotation.BAC) as Flex;
+      [-1, -2, -3, [5, -4], [[-7, 8], 6], [-10, 9]], FlexRotation.CBA) as Flex;
     flexes["Lbf"] = makeFlex("slot tuck bottom front",
       [[[-2, 3], 1], [-5, 4], -6, -7, [9, -8], 10],
-      [[-3, 2], -4, [6, -5], [-8, 7], -9, [1, -10]], FlexRotation.CBA) as Flex;
+      [[-3, 2], -4, [6, -5], [-8, 7], -9, [1, -10]], FlexRotation.BAC) as Flex;
     flexes["Lbb"] = makeFlex("slot tuck bottom back",
       [[[-2, 3], 1], [-5, 4], -6, -7, [[9, -10], -8], -11],
-      [-2, [4, -3], 5, [[-7, 8], 6], 9, [[-11, -1], 10]], FlexRotation.BCA) as Flex;
+      [-2, [4, -3], 5, [[-7, 8], 6], 9, [[-11, -1], 10]], FlexRotation.CAB) as Flex;
     flexes["Lh"] = makeFlex("slot half",
       [[[-2, [-4, 3]], 1], -5, -6, -7, [[9, -10], -8], -11],
-      [[[-11, -1], 10], -2, -3, [5, -4], [[-7, 8], 6], 9], FlexRotation.BAC) as Flex;
+      [[[-11, -1], 10], -2, -3, [5, -4], [[-7, 8], 6], 9], FlexRotation.CBA) as Flex;
     flexes["Lk"] = makeFlex("slot pocket",
       [[[[3, -2], -4], 1], -5, -6, -7, [[[-10, 9], 11], -8], 12],
       [10, [-2, [11, [1, -12]]], -3, -4, -5, [9, [-6, [-8, 7]]]], FlexRotation.ACB) as Flex;
