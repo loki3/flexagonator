@@ -1,23 +1,17 @@
 {
   "name": "flexagonator",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "interactive flexagon flexer",
   "scripts": {
-    "build": "echo Building... && npm run clean && npm run assemble && npm run test && npm run lint && echo Success!",
+    "build": "echo Building... && npm run assemble && npm run test && echo Success!",
     "assemble": "node ./node_modules/typescript/bin/tsc -p src",
-    "test": "node ./node_modules/typescript/bin/tsc -p test && node ./node_modules/jasmine/bin/jasmine build/test-out.js",
-    "clean": "node ./node_modules/rimraf/bin.js build"
+    "test": "node ./node_modules/typescript/bin/tsc -p test && node ./node_modules/jasmine/bin/jasmine build/test-out.js"
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/jasmine": "2.5.40",
-    "jasmine": "2.5.2",
-    "jasmine-core": "2.5.2",
-    "rimraf": "2.5.4",
-    "typescript": "3.0.1"
-  },
-  "peerDependencies": {},
-  "dependencies": {
-    "lodash": "^4.17.19"
+    "@types/jasmine": "5.1.4",
+    "jasmine": "5.4.0",
+    "jasmine-core": "5.4.0",
+    "typescript": "5.6.3"
   }
 }
