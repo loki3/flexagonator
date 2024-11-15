@@ -42,24 +42,12 @@
 * Limited flexagon structure:
     * It only supports triangles, not any other polygons ([squares](http://loki3.com/flex/square.html), pentagons, etc.).
     * The leaves must be connected across edges, not [points](http://loki3.com/flex/point-flexagon.html).
-    * When drawing folded flexagons, it assumes all triangles meet in the middle.
-      Note that drawing an unfolded flexagon *doesn't* assume the leaves in the folded flexagon meet in the middle.
-* It only looks at pat structure when determining if a flex can be performed,
-  though there are other reasons the flex might not be possible:
-    * The flex may require additional openings in the physical flexagon that aren't otherwise impacted by the flex.
-    For example, the [tuck flex](http://loki3.com/flex/flex/tuck.html) requires an opening across from the flex.
-    While there's only one possibility for this opening for the hexaflexagon
-    (thus it's easy to add to the pat structure), there are multiple possibilities on higher-ordered flexagons.
-    Currently there isn't a simple way to describe this requirement
-    * The physical model may impose limitations based on the angles of the triangles,
-    e.g. the [flip flex](http://loki3.com/flex/flex/flip.html) may only be possible at every other hinge,
-    even if the pat structure supports it.
-    Currently there isn't a simple way to describe this requirement
-* Flexes must start and end with the same arrangement of pats.
-  For example, you currently can't describe the intermediate states reachable through various
-  [pocket and slot flexes](http://loki3.com/flex/state-slot-5-hexa.html).
-  (Note: you can now use [atomic theory](../src/atomic/readme.md) to describe intermediate states,
-  though the API is still in flux.)
+* It looks at pat structure and directions when determining if a flex can be performed.
+  Note that there are other reasons the flex might not be possible.
+  For example, the physical model may impose limitations based on the angles of the triangles,
+  e.g. the [flip flex](http://loki3.com/flex/flex/flip.html) may only be possible at every other hinge,
+  even if the pat structure supports it.
+  Currently there isn't a simple way to describe this requirement
 * When drawing an unfolded flexagon, it doesn't detect when leaves overlap.
   However, you can manually break the strip up into multiple pieces with the [drawing API](draw-apis.md).
 
