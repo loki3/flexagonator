@@ -19,7 +19,7 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTreeCheckZeros(input) as Flexagon;
       const result = flexagon.getAsLeafTrees();
       for (let i in result) {
-        expect(areEqual(expected[i], result[i])).toBeTruthy();
+        expect(areEqual(expected[i], result[i])).toBeTrue();
       }
     });
     it('should start after the largest id', () => {
@@ -29,7 +29,7 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTreeCheckZeros(input) as Flexagon;
       const result = flexagon.getAsLeafTrees();
       for (let i in result) {
-        expect(areEqual(expected[i], result[i])).toBeTruthy();
+        expect(areEqual(expected[i], result[i])).toBeTrue();
       }
     });
   });
@@ -44,7 +44,7 @@ namespace Flexagonator {
       }
       const result = flexagon.getAsLeafTrees();
       for (let i in result) {
-        expect(areEqual(result[i], trees[i])).toBeTruthy();
+        expect(areEqual(result[i], trees[i])).toBeTrue();
       }
     });
   });

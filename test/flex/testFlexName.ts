@@ -7,9 +7,9 @@ namespace Flexagonator {
         expect(flex.fullName).toBe("S");
         expect(flex.baseName).toBe("S");
         expect(flex.flexName).toBe("S");
-        expect(flex.isInverse).toBeFalsy();
-        expect(flex.shouldApply).toBeTruthy();
-        expect(flex.shouldGenerate).toBeFalsy();
+        expect(flex.isInverse).toBeFalse();
+        expect(flex.shouldApply).toBeTrue();
+        expect(flex.shouldGenerate).toBeFalse();
       }
 
       {
@@ -17,9 +17,9 @@ namespace Flexagonator {
         expect(flex.fullName).toBe("Ltf'");
         expect(flex.baseName).toBe("Ltf");
         expect(flex.flexName).toBe("Ltf'");
-        expect(flex.isInverse).toBeTruthy();
-        expect(flex.shouldApply).toBeTruthy();
-        expect(flex.shouldGenerate).toBeFalsy();
+        expect(flex.isInverse).toBeTrue();
+        expect(flex.shouldApply).toBeTrue();
+        expect(flex.shouldGenerate).toBeFalse();
       }
 
       {
@@ -27,9 +27,9 @@ namespace Flexagonator {
         expect(flex.fullName).toBe("Ltb'*");
         expect(flex.baseName).toBe("Ltb");
         expect(flex.flexName).toBe("Ltb'");
-        expect(flex.isInverse).toBeTruthy();
-        expect(flex.shouldApply).toBeTruthy();
-        expect(flex.shouldGenerate).toBeTruthy();
+        expect(flex.isInverse).toBeTrue();
+        expect(flex.shouldApply).toBeTrue();
+        expect(flex.shouldGenerate).toBeTrue();
       }
 
       {
@@ -37,9 +37,9 @@ namespace Flexagonator {
         expect(flex.fullName).toBe("P+");
         expect(flex.baseName).toBe("P");
         expect(flex.flexName).toBe("P");
-        expect(flex.isInverse).toBeFalsy();
-        expect(flex.shouldApply).toBeFalsy();
-        expect(flex.shouldGenerate).toBeTruthy();
+        expect(flex.isInverse).toBeFalse();
+        expect(flex.shouldApply).toBeFalse();
+        expect(flex.shouldGenerate).toBeTrue();
       }
     });
   });

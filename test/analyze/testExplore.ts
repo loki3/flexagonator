@@ -15,7 +15,7 @@ namespace Flexagonator {
       expect(explore.getExploredStates()).toBe(0);
 
       // step
-      expect(explore.checkNext()).toBeTruthy();
+      expect(explore.checkNext()).toBeTrue();
       expect(explore.getTotalStates()).toBe(7);
       expect(explore.getExploredStates()).toBe(1);
 
@@ -37,7 +37,7 @@ namespace Flexagonator {
       const over = makeFlex("turn over", [1, 2, 3, 4], [-4, -3, -2, -1], FlexRotation.None) as Flex;
 
       const explore = new Explore(flexagon, flexes, right, over);
-      expect(explore.checkNext()).toBeTruthy();
+      expect(explore.checkNext()).toBeTrue();
 
       const found = explore.getFoundFlexes()[0];
       expect(found[0].toString()).toBe('1(A)');

@@ -87,7 +87,7 @@ namespace Flexagonator {
         return;
       }
       const expected = [[-6, 5], -4, [2, -3], -1];
-      expect(areLTArraysEqual(result.getAsLeafTrees(), expected)).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), expected)).toBeTrue();
       expect(result.directions === undefined).toBe(true); // doesn't add unneeded directions
     });
   });
@@ -182,7 +182,7 @@ namespace Flexagonator {
       const flex = new Flex("test", [1, 2, 3], [2, 3, 1], FlexRotation.None,
         undefined, undefined, [2, 3, 1]);  // the new order for the list of directions
       const result = flex.apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTrue();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('||/'); // rotated by one
     });
@@ -193,7 +193,7 @@ namespace Flexagonator {
       const flex = new Flex("test", [1, 2, 3, 4], [1, 3, 2, 4], FlexRotation.None,
         DirectionsOpt.make('/||?') as DirectionsOpt, DirectionsOpt.make('?//?') as DirectionsOpt);
       const result = flex.apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTrue();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('////');  // two directions changed, two stayed the same
     });
@@ -206,7 +206,7 @@ namespace Flexagonator {
         [4, 1, 2, 3]);  // rotate directions after changing them
       // /|// => ||// => /||/
       const result = flex.apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTrue();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('/||/');
     });
@@ -217,7 +217,7 @@ namespace Flexagonator {
       const flex = new Flex("test", [1, 2, 3, 4], [1, 3, 2, 4], FlexRotation.None,
         DirectionsOpt.make('////') as DirectionsOpt, DirectionsOpt.make('/||/') as DirectionsOpt);
       const result = flex.apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [1, 3, 2, 4])).toBeTrue();
 
       // flexagon now includes directions
       if (result.directions === undefined) {
@@ -234,7 +234,7 @@ namespace Flexagonator {
       const flex = new Flex("~", [1, 2, 3], [2, 3, 1], FlexRotation.None,
         undefined, undefined, [-1, -2, -3]);  // flips directions in same place w/out rearranging
       const result = flex.apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTrue();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('|//'); // flipped
     });
@@ -246,7 +246,7 @@ namespace Flexagonator {
       const flex = new Flex("~", [1, 2, 3], [2, 3, 1], FlexRotation.None,
         dirs, dirs, [1, -2, 3]);  // flips the middle direction
       const result = flex.apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), [2, 3, 1])).toBeTrue();
       const newDirs = result.directions as Directions;
       expect(newDirs.asString(true)).toBe('//|'); // middle is flipped
     });
@@ -259,7 +259,7 @@ namespace Flexagonator {
       const flex = new Flex("test", [[1, 2], [3, [4, 5]], [6, 7], 8], [], FlexRotation.None);
       const [result, splits] = flex.createPattern(flexagon);
       const expected = [[1, 7], [2, [-3, 8]], [-4, 9], [-5, 6]];
-      expect(areLTArraysEqual(result.getAsLeafTrees(), expected)).toBeTruthy();
+      expect(areLTArraysEqual(result.getAsLeafTrees(), expected)).toBeTrue();
       expect(splits.length).toBe(3);
     });
   });

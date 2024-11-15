@@ -15,41 +15,41 @@ namespace Flexagonator {
       const morphFlexes: Flexes = makeMorphFlexes(6);
       const mainFlexes: Flexes = makeAllFlexes(6);
 
-      expect(checkForEqual("F", "Mkf Mkb'", mainFlexes, morphFlexes)).toBeTruthy("F failed");
-      expect(checkForEqual("St", "Mkf Mkfs'", mainFlexes, morphFlexes)).toBeTruthy("St failed");
-      expect(checkForEqual("S", "< Mkfs Mkb' >", mainFlexes, morphFlexes)).toBeTruthy("S failed");
-      expect(checkForEqual("T", "< Mkr Mkf' >", mainFlexes, morphFlexes)).toBeTruthy("T failed");
-      expect(checkForEqual("Fm", "< Mkr Mkb' >", mainFlexes, morphFlexes)).toBeTruthy("Fm failed");
-      expect(checkForEqual("S3", "< Mkr Mkl' >", mainFlexes, morphFlexes)).toBeTruthy("S3 failed");
+      expect(checkForEqual("F", "Mkf Mkb'", mainFlexes, morphFlexes)).withContext("F failed").toBeTrue();
+      expect(checkForEqual("St", "Mkf Mkfs'", mainFlexes, morphFlexes)).withContext("St failed").toBeTrue();
+      expect(checkForEqual("S", "< Mkfs Mkb' >", mainFlexes, morphFlexes)).withContext("S failed").toBeTrue();
+      expect(checkForEqual("T", "< Mkr Mkf' >", mainFlexes, morphFlexes)).withContext("T failed").toBeTrue();
+      expect(checkForEqual("Fm", "< Mkr Mkb' >", mainFlexes, morphFlexes)).withContext("Fm failed").toBeTrue();
+      expect(checkForEqual("S3", "< Mkr Mkl' >", mainFlexes, morphFlexes)).withContext("S3 failed").toBeTrue();
 
-      expect(checkForEqual("S", "Mkf Sp Mkb' >", mainFlexes, morphFlexes)).toBeTruthy("S from Sp failed");
-      expect(checkForEqual("Ltf", "Mkf Lkk Mkf' <", mainFlexes, morphFlexes)).toBeTruthy("Ltf failed");
-      expect(checkForEqual("Lk", "Mkf Lkk Mkbs' <", mainFlexes, morphFlexes)).toBeTruthy("Lk failed");
+      expect(checkForEqual("S", "Mkf Sp Mkb' >", mainFlexes, morphFlexes)).withContext("S from Sp failed").toBeTrue();
+      expect(checkForEqual("Ltf", "Mkf Lkk Mkf' <", mainFlexes, morphFlexes)).withContext("Ltf failed").toBeTrue();
+      expect(checkForEqual("Lk", "Mkf Lkk Mkbs' <", mainFlexes, morphFlexes)).withContext("Lk failed").toBeTrue();
 
       // uses hexa specific flexes: Mkh, Mkt
-      expect(checkForEqual("Ttf", "Mkh Mkf'", mainFlexes, morphFlexes)).toBeTruthy("Ttf failed");
-      expect(checkForEqual("V", "Mkb Mkh'", mainFlexes, morphFlexes)).toBeTruthy("V failed");
-      expect(checkForEqual("T", "Mkh Mkt'", mainFlexes, morphFlexes)).toBeTruthy("T failed");
-      expect(checkForEqual("Lh", "Mkf Lkk Mkh'", mainFlexes, morphFlexes)).toBeTruthy("Lh failed");
-      expect(checkForEqual("Ltb", "Mkf Lkk Mkt'", mainFlexes, morphFlexes)).toBeTruthy("Ltb failed");
-      expect(checkForEqual("Lbb", "Mkf Lkk > > > Mkt' < <", mainFlexes, morphFlexes)).toBeTruthy("Lbb failed");
-      expect(checkForEqual("Lbf", "Mkf Lkk > > > Mkf' < <", mainFlexes, morphFlexes)).toBeTruthy("Lbf failed");
+      expect(checkForEqual("Ttf", "Mkh Mkf'", mainFlexes, morphFlexes)).withContext("Ttf failed").toBeTrue();
+      expect(checkForEqual("V", "Mkb Mkh'", mainFlexes, morphFlexes)).withContext("V failed").toBeTrue();
+      expect(checkForEqual("T", "Mkh Mkt'", mainFlexes, morphFlexes)).withContext("T failed").toBeTrue();
+      expect(checkForEqual("Lh", "Mkf Lkk Mkh'", mainFlexes, morphFlexes)).withContext("Lh failed").toBeTrue();
+      expect(checkForEqual("Ltb", "Mkf Lkk Mkt'", mainFlexes, morphFlexes)).withContext("Ltb failed").toBeTrue();
+      expect(checkForEqual("Lbb", "Mkf Lkk > > > Mkt' < <", mainFlexes, morphFlexes)).withContext("Lbb failed").toBeTrue();
+      expect(checkForEqual("Lbf", "Mkf Lkk > > > Mkf' < <", mainFlexes, morphFlexes)).withContext("Lbf failed").toBeTrue();
     });
 
     it('should combine into other valid flexes on an octaflexagon', () => {
       const morphFlexes: Flexes = makeMorphFlexes(8);
       const mainFlexes: Flexes = makeAllFlexes(8);
 
-      expect(checkForEqual("F", "Mkf Mkb'", mainFlexes, morphFlexes)).toBeTruthy("F failed");
-      expect(checkForEqual("St", "Mkf Mkfs'", mainFlexes, morphFlexes)).toBeTruthy("St failed");
-      expect(checkForEqual("S", "< Mkfs Mkb' >", mainFlexes, morphFlexes)).toBeTruthy("S failed");
-      expect(checkForEqual("T3", "< Mkr Mkf' >", mainFlexes, morphFlexes)).toBeTruthy("T3 failed");
-      expect(checkForEqual("Fm", "< Mkr Mkb' >", mainFlexes, morphFlexes)).toBeTruthy("Fm failed");
-      expect(checkForEqual("S3", "< Mkr Mkl' >", mainFlexes, morphFlexes)).toBeTruthy("S3 failed");
+      expect(checkForEqual("F", "Mkf Mkb'", mainFlexes, morphFlexes)).withContext("F failed").toBeTrue();
+      expect(checkForEqual("St", "Mkf Mkfs'", mainFlexes, morphFlexes)).withContext("St failed").toBeTrue();
+      expect(checkForEqual("S", "< Mkfs Mkb' >", mainFlexes, morphFlexes)).withContext("S failed").toBeTrue();
+      expect(checkForEqual("T3", "< Mkr Mkf' >", mainFlexes, morphFlexes)).withContext("T3 failed").toBeTrue();
+      expect(checkForEqual("Fm", "< Mkr Mkb' >", mainFlexes, morphFlexes)).withContext("Fm failed").toBeTrue();
+      expect(checkForEqual("S3", "< Mkr Mkl' >", mainFlexes, morphFlexes)).withContext("S3 failed").toBeTrue();
 
-      expect(checkForEqual("S", "Mkf Sp Mkb' >", mainFlexes, morphFlexes)).toBeTruthy("S from Sp failed");
-      expect(checkForEqual("Ltf", "Mkf Lkk Mkf' <", mainFlexes, morphFlexes)).toBeTruthy("Ltf failed");
-      expect(checkForEqual("Lk", "Mkf Lkk Mkbs' <", mainFlexes, morphFlexes)).toBeTruthy("Lk failed");
+      expect(checkForEqual("S", "Mkf Sp Mkb' >", mainFlexes, morphFlexes)).withContext("S from Sp failed").toBeTrue();
+      expect(checkForEqual("Ltf", "Mkf Lkk Mkf' <", mainFlexes, morphFlexes)).withContext("Ltf failed").toBeTrue();
+      expect(checkForEqual("Lk", "Mkf Lkk Mkbs' <", mainFlexes, morphFlexes)).withContext("Lk failed").toBeTrue();
     });
 
     // check that flex = sequence, when applied

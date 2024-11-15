@@ -8,7 +8,7 @@ namespace Flexagonator {
         return;
       }
       const result = pat.getAsLeafTree();
-      expect(areEqual(result, original)).toBeTruthy();
+      expect(areEqual(result, original)).toBeTrue();
     });
   });
 
@@ -43,7 +43,7 @@ namespace Flexagonator {
         return;
       }
       const result = pat.makeFlipped().getAsLeafTree();
-      expect(areEqual(result, expected)).toBeTruthy();
+      expect(areEqual(result, expected)).toBeTrue();
     });
   });
 
@@ -82,7 +82,7 @@ namespace Flexagonator {
       const map = { 1: 3, 2: 4, 3: -1, 4: -2 };
       const pat = makePat(original) as Pat;
       const result = pat.remap(map).getAsLeafTree();
-      expect(areEqual(result, expected)).toBeTruthy();
+      expect(areEqual(result, expected)).toBeTrue();
     });
   });
 
@@ -176,9 +176,9 @@ namespace Flexagonator {
       }
 
       const pattern1 = [1, 2];
-      expect(pat.hasPattern(pattern1)).toBeTruthy();
+      expect(pat.hasPattern(pattern1)).toBeTrue();
       const pattern2 = [[1, 2], [3, 4]];
-      expect(pat.hasPattern(pattern2)).toBeTruthy();
+      expect(pat.hasPattern(pattern2)).toBeTrue();
     });
   });
 
@@ -191,9 +191,9 @@ namespace Flexagonator {
       }
 
       const pattern1 = [[1, 2], 3];
-      expect(pat.hasPattern(pattern1)).toBeFalsy();
+      expect(pat.hasPattern(pattern1)).toBeFalse();
       const pattern2 = [1, [[2, 3], 4]];
-      expect(pat.hasPattern(pattern2)).toBeFalsy();
+      expect(pat.hasPattern(pattern2)).toBeFalse();
     });
   });
 
@@ -211,8 +211,8 @@ namespace Flexagonator {
         fail();
         return;
       }
-      expect(areEqual(match1[1].getAsLeafTree(), [-1, 2])).toBeTruthy();
-      expect(areEqual(match1[2].getAsLeafTree(), [-3, [4, -5]])).toBeTruthy();
+      expect(areEqual(match1[1].getAsLeafTree(), [-1, 2])).toBeTrue();
+      expect(areEqual(match1[2].getAsLeafTree(), [-3, [4, -5]])).toBeTrue();
 
       const pattern2 = [[1, 2], [3, 4]];
       const match2 = pat.matchPattern(pattern2);
@@ -220,10 +220,10 @@ namespace Flexagonator {
         fail();
         return;
       }
-      expect(areEqual(match2[1].getAsLeafTree(), -1)).toBeTruthy();
-      expect(areEqual(match2[2].getAsLeafTree(), 2)).toBeTruthy();
-      expect(areEqual(match2[3].getAsLeafTree(), -3)).toBeTruthy();
-      expect(areEqual(match2[4].getAsLeafTree(), [4, -5])).toBeTruthy();
+      expect(areEqual(match2[1].getAsLeafTree(), -1)).toBeTrue();
+      expect(areEqual(match2[2].getAsLeafTree(), 2)).toBeTrue();
+      expect(areEqual(match2[3].getAsLeafTree(), -3)).toBeTrue();
+      expect(areEqual(match2[4].getAsLeafTree(), [4, -5])).toBeTrue();
     });
   });
 
@@ -241,8 +241,8 @@ namespace Flexagonator {
         fail();
         return;
       }
-      expect(areEqual(match1[1].getAsLeafTree(), -1)).toBeTruthy();
-      expect(areEqual(match1[2].getAsLeafTree(), [[5, -4], 3])).toBeTruthy();
+      expect(areEqual(match1[1].getAsLeafTree(), -1)).toBeTrue();
+      expect(areEqual(match1[2].getAsLeafTree(), [[5, -4], 3])).toBeTrue();
     });
   });
 
@@ -256,7 +256,7 @@ namespace Flexagonator {
 
       const pattern = [[[1, 2]]];
       const match = pat.matchPattern(pattern);
-      expect(isPatternError(match)).toBeTruthy();
+      expect(isPatternError(match)).toBeTrue();
     });
   });
 
@@ -379,7 +379,7 @@ namespace Flexagonator {
       const actual = result.getAsLeafTree() as any[];
 
       const expected = [1, [[2, 3], 4]];
-      expect(areEqual(expected, actual)).toBeTruthy();
+      expect(areEqual(expected, actual)).toBeTrue();
     });
   });
 

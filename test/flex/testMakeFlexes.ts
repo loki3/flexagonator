@@ -27,7 +27,7 @@ namespace Flexagonator {
       const afterPSshift = flexes[">"].apply(afterPS) as Flexagon;
 
       const expected = [[6, 7], 8, [9, 10], [11, 12], 13, [1, [2, [3, [4, 5]]]]];
-      expect(areLTArraysEqual(afterPSshift.getAsLeafTrees(), expected)).toBeTruthy();
+      expect(areLTArraysEqual(afterPSshift.getAsLeafTrees(), expected)).toBeTrue();
     });
   });
 
@@ -47,43 +47,43 @@ namespace Flexagonator {
 
       const Pin = [[1, 2], 3, [4, 5], 6, [7, 8], 9, [10, 11], 12];
       const Pout = [-1, [5, -3], -4, [8, -6], -7, [11, -9], -10, [2, -12]];
-      expect(areLTArraysEqual(flexes["P"].input, Pin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["P"].output, Pout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["P"].input, Pin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["P"].output, Pout)).toBeTrue();
 
       const Sin = [[7, -6], 8, 9, 10, 11, 12, [[[3, -2], -4], 1], -5];
       const Sout = [[7, [-4, [-6, 5]]], 8, 9, 10, 11, 12, [-2, 1], -3];
-      expect(areLTArraysEqual(flexes["S"].input, Sin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["S"].output, Sout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["S"].input, Sin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["S"].output, Sout)).toBeTrue();
 
       const S3in = [[8, -7], 9, 10, 11, 12, [[[3, -2], -4], 1], -5, -6];
       const S3out = [[8, [-5, [-7, 6]]], 9, 10, 11, 12, [-2, 1], -3, -4];
-      expect(areLTArraysEqual(flexes["S3"].input, S3in)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["S3"].output, S3out)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["S3"].input, S3in)).toBeTrue();
+      expect(areLTArraysEqual(flexes["S3"].output, S3out)).toBeTrue();
 
       const Vin = [1, [-3, 2], 4, [-6, 5], [8, -7], 9, 10, [-12, 11]];
       const Vout = [[5, -4], 6, 7, [-9, 8], [11, -10], 12, [2, -1], 3];
-      expect(areLTArraysEqual(flexes["V"].input, Vin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["V"].output, Vout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["V"].input, Vin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["V"].output, Vout)).toBeTrue();
 
       const Fin = [[7, -6], 8, 9, 10, 11, 12, [[3, -4], [1, -2]], -5];
       const Fout = [-4, [[-7, 8], [-5, 6]], 9, 10, 11, 12, 1, [-3, 2]];
-      expect(areLTArraysEqual(flexes["F"].input, Fin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["F"].output, Fout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["F"].input, Fin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["F"].output, Fout)).toBeTrue();
 
       const Stin = [[7, [5, -6]], 8, 9, 10, 11, 12, [3, [1, -2]], 4];
       const Stout = [5, [[-7, 8], 6], 9, 10, 11, 12, 1, [[-3, 4], 2]];
-      expect(areLTArraysEqual(flexes["St"].input, Stin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["St"].output, Stout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["St"].input, Stin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["St"].output, Stout)).toBeTrue();
 
       const Ltin = [[[[1, 2], 3], 4], 5, 6, 7, 8, 9, [10, 11], 12];
       const Ltout = [12, [2, 4], -1, 3, 5, 6, 7, [10, [8, [11, -9]]]];
-      expect(areLTArraysEqual(flexes["Ltf"].input, Ltin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["Ltf"].output, Ltout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["Ltf"].input, Ltin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["Ltf"].output, Ltout)).toBeTrue();
 
       const Fmin = [[8, -7], 9, 10, 11, 12, [[3, -4], [1, -2]], -5, -6];
       const Fmout = [[8, [-5, [-7, 6]]], 9, 10, 11, 12, 1, [-3, 2], -4];
-      expect(areLTArraysEqual(flexes["Fm"].input, Fmin)).toBeTruthy();
-      expect(areLTArraysEqual(flexes["Fm"].output, Fmout)).toBeTruthy();
+      expect(areLTArraysEqual(flexes["Fm"].input, Fmin)).toBeTrue();
+      expect(areLTArraysEqual(flexes["Fm"].output, Fmout)).toBeTrue();
     });
   });
 
@@ -208,12 +208,12 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], undefined, Directions.make("/|////")) as Flexagon;
 
       const afterRight = flexes[">"].apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(afterRight.getAsLeafTrees(), [2, 3, 4, 5, 6, 1])).toBeTruthy();
+      expect(areLTArraysEqual(afterRight.getAsLeafTrees(), [2, 3, 4, 5, 6, 1])).toBeTrue();
       const actualRight = (afterRight.directions as Directions).asString(true);
       expect(actualRight).toBe("|/////");
 
       const afterLeft = flexes["<"].apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(afterLeft.getAsLeafTrees(), [6, 1, 2, 3, 4, 5])).toBeTruthy();
+      expect(areLTArraysEqual(afterLeft.getAsLeafTrees(), [6, 1, 2, 3, 4, 5])).toBeTrue();
       const actualLeft = (afterLeft.directions as Directions).asString(true);
       expect(actualLeft).toBe("//|///");
     });
@@ -245,12 +245,12 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6], undefined, Directions.make("/|////")) as Flexagon;
 
       const afterOver = flexes["^"].apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(afterOver.getAsLeafTrees(), [-6, -5, -4, -3, -2, -1])).toBeTruthy();
+      expect(areLTArraysEqual(afterOver.getAsLeafTrees(), [-6, -5, -4, -3, -2, -1])).toBeTrue();
       const actualOver = (afterOver.directions as Directions).asString(true);
       expect(actualOver).toBe("////|/");
 
       const afterChange = flexes["~"].apply(flexagon) as Flexagon;
-      expect(areLTArraysEqual(afterChange.getAsLeafTrees(), [-1, -2, -3, -4, -5, -6])).toBeTruthy();
+      expect(areLTArraysEqual(afterChange.getAsLeafTrees(), [-1, -2, -3, -4, -5, -6])).toBeTrue();
       const actualChange = (afterChange.directions as Directions).asString(true);
       expect(actualChange).toBe("|/||||");
     });
