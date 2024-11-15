@@ -188,6 +188,8 @@ namespace Flexagonator {
 
     setDirections(directions?: Directions) {
       this.flexagon = this.flexagon.changeDirections(directions);
+      // history is invalid, reset using new flexagon
+      this.clearHistory();
     }
     getDirections(): Directions | undefined {
       return this.flexagon.directions;
