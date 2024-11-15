@@ -3,27 +3,27 @@ namespace Flexagonator {
   describe('convertLeafProps', () => {
     it('handles just numbers', () => {
       const result = convertLeafProps([[1, 2], [3, 4], [5, 6]]);
-      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}},{"front":{"label":"5"},"back":{"label":"6"}}]');
+      expect(result).toEqual([{ front: { label: "1" }, back: { label: "2" } }, { front: { label: "3" }, back: { label: "4" } }, { front: { label: "5" }, back: { label: "6" } }]);
     });
 
     it('handles just strings', () => {
       const result = convertLeafProps([['1', '2'], ['3', '4'], ['5', '6']]);
-      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}},{"front":{"label":"5"},"back":{"label":"6"}}]');
+      expect(result).toEqual([{ front: { label: "1" }, back: { label: "2" } }, { front: { label: "3" }, back: { label: "4" } }, { front: { label: "5" }, back: { label: "6" } }]);
     });
 
     it('handles repeats', () => {
       const result = convertLeafProps([[1, 2], [3, 4]], 2);
-      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}},{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"3"},"back":{"label":"4"}}]');
+      expect(result).toEqual([{ front: { label: "1" }, back: { label: "2" } }, { front: { label: "3" }, back: { label: "4" } }, { front: { label: "1" }, back: { label: "2" } }, { front: { label: "3" }, back: { label: "4" } }]);
     });
 
     it('alternates sides when repeating an odd number of pats', () => {
       const result = convertLeafProps([[1, 2]], 3); // 1/2, 2/1, 1/2
-      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1"},"back":{"label":"2"}},{"front":{"label":"2"},"back":{"label":"1"}},{"front":{"label":"1"},"back":{"label":"2"}}]');
+      expect(result).toEqual([{ front: { label: "1" }, back: { label: "2" } }, { front: { label: "2" }, back: { label: "1" } }, { front: { label: "1" }, back: { label: "2" } }]);
     });
 
     it('looks up colors', () => {
       const result = convertLeafProps([[1, 2], [2, 1]], undefined, [12, 34]);
-      expect(JSON.stringify(result)).toBe('[{"front":{"label":"1","color":12},"back":{"label":"2","color":34}},{"front":{"label":"2","color":34},"back":{"label":"1","color":12}}]');
+      expect(result).toEqual([{ front: { label: "1", color: 12 }, back: { label: "2", color: 34 } }, { front: { label: "2", color: 34 }, back: { label: "1", color: 12 } }]);
     });
   });
 

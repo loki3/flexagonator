@@ -147,7 +147,7 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTree([[-2, 1], -3, -4, [6, -5], 7, 8, [-10, 9], -11, -12],
         undefined, Directions.make("/|//|//|/")) as Flexagon;
       const after = p333.apply(flexagon) as Flexagon;
-      expect(JSON.stringify(after.getAsLeafTrees())).toBe("[2,3,[-5,4],-6,-7,[9,-8],10,11,[1,12]]");
+      expect(after.getAsLeafTrees()).toEqual([2, 3, [-5, 4], -6, -7, [9, -8], 10, 11, [1, 12]]);
       expect(after.directions ? after.directions.asString(true) : "").toBe("/////////");
       expect(after.angleTracker.corners.toString()).toBe("1,0,2");
     });
@@ -185,7 +185,7 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTree([[1, 2], 3, 4, 5, 6, 7, 8, 9, 10, [[11, 12], [13, 14]], 15, 16],
         undefined, Directions.make("//|||||||///")) as Flexagon;
       const after = f3.apply(flexagon) as Flexagon;
-      expect(JSON.stringify(after.getAsLeafTrees())).toBe("[12,15,[[-1,3],[16,-2]],4,5,6,7,8,9,10,13,[-11,-14]]");
+      expect(after.getAsLeafTrees()).toEqual([12, 15, [[-1, 3], [16, -2]], 4, 5, 6, 7, 8, 9, 10, 13, [-11, -14]]);
       expect(after.directions ? after.directions.asString(true) : "").toBe("///|||||||//");
       expect(after.angleTracker.corners.toString()).toBe("0,2,1");
     });
@@ -195,7 +195,7 @@ namespace Flexagonator {
       const flexagon = Flexagon.makeFromTree([[1, 2], 3, 4, 5, 6, 7, 8, 9, [[10, 11], [12, 13]], 14, 15, 16],
         undefined, Directions.make("//||||||////")) as Flexagon;
       const after = f4.apply(flexagon) as Flexagon;
-      expect(JSON.stringify(after.getAsLeafTrees())).toBe("[11,14,15,[[-1,3],[16,-2]],4,5,6,7,8,9,12,[-10,-13]]");
+      expect(after.getAsLeafTrees()).toEqual([11, 14, 15, [[-1, 3], [16, -2]], 4, 5, 6, 7, 8, 9, 12, [-10, -13]]);
       expect(after.directions ? after.directions.asString(true) : "").toBe("////||||||//");
       expect(after.angleTracker.corners.toString()).toBe("0,1,2");
     });

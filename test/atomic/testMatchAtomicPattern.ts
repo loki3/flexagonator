@@ -160,8 +160,8 @@ namespace Flexagonator {
         return;
       }
       expect(result.atomicPatternError).toBe("PatMismatch");
-      expect(JSON.stringify(result.expectedPats)).toBe("[-3,-4]");
-      expect(JSON.stringify(result.actualPats)).toBe("4");
+      expect(result.expectedPats).toEqual([-3, -4]);
+      expect(result.actualPats).toEqual(4);
     });
 
     it("should complain if directions don't match", () => {
