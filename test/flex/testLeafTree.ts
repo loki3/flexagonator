@@ -52,10 +52,9 @@ namespace Flexagonator {
   describe('parseLeafTrees', () => {
     it('should read valid leaf trees', () => {
       const tree = [1, [[-2, 3], 4]];
-      const input = JSON.stringify(tree);
-      const output = parseLeafTrees(input);
+      const output = parseLeafTrees(JSON.stringify(tree));
       expect(isTreeError(output)).toBeFalse();
-      expect(areLTArraysEqual(tree, output as LeafTree[])).toBeTrue();
+      expect(output).toEqual(tree);
     });
     it('should produce errors on bad input', () => {
       const output1 = parseLeafTrees("abc");

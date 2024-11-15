@@ -8,7 +8,7 @@ namespace Flexagonator {
       const result = normalizeIds(pats);
 
       const final = result.map(p => p.getAsLeafTree());
-      expect(areLTArraysEqual(expected, final)).toBe(true);
+      expect(final).toEqual(expected);
     });
   });
 }

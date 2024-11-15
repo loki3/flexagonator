@@ -9,12 +9,12 @@ namespace Flexagonator {
         Flexagon.makeFromTree([1, [2, -3], -4]) as Flexagon,
       ];
       const graph = getLeafGraph(flexagons);
-      expect(areLTArraysEqual(graph[1], [2, 3, -4]));
-      expect(areLTArraysEqual(graph[2], [3, -4]));
-      expect(areLTArraysEqual(graph[3], [4]));
+      expect(graph[1]).toEqual([2, 3, -4]);
+      expect(graph[2]).toEqual([3, -4]);
+      expect(graph[3]).toEqual([4]);
       expect(graph[4]).toBeUndefined();
-      expect(areLTArraysEqual(graph[-1], [-2, 4, 3]));
-      expect(areLTArraysEqual(graph[-2], [4]));
+      expect(graph[-1]).toEqual([-2, 4, 3]);
+      expect(graph[-2]).toEqual([4]);
       expect(graph[-3]).toBeUndefined();
       expect(graph[-4]).toBeUndefined();
     });
