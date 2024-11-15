@@ -40,14 +40,14 @@ For example, the definition `Ur = a # [-2,1] / b ->  a # 1 \ 2 / -b` means the f
 * the input pattern is `a # [-2,1] / b`
     * everything to the left of the reference hinge is referred to as `a`
     * the first pat to the right of the reference hinge has a pat called `-2` folded on top of a pat called `1`
-    * `\` means the next pat is connected to the upper right side of the triangle, with the previous pat connected to the left
+    * `/` means the next pat is connected to the lower right side of the triangle, with the previous pat connected to the left
     * everything to the right of that pat is referred to as `b`
 * the output pattern is `a # 1 \ 2 / -b`
     * `a` is unchanged
     * the `1` subpat becomes the first pat after the reference hinge
-    * `/` means the next pat is connected to the lower right side of the `1` subpat
+    * `\` means the next pat is connected to the upper right side of the `1` subpat
     * the `2` subpat is next and has been turned over, since it changed from `-2`
-    * `\` means the next pat is connected to the upper right side of the `2` subpat
+    * `/` means the next pat is connected to the lower right side of the `2` subpat
     * `-b` indicates that all the pats to the right have been turned over - since a flexagon is a loop where `a` and `b` are attached to each other, this implies that `Ur` has just added a half twist to the loop
 
 We can also define new flexes in terms of existing flexes

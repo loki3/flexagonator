@@ -45,7 +45,7 @@ In this way, you can recursively describe the entire structure of a pat in neste
 
 One interesting note is that pat notation for triangle flexagons doesn't need to say which hinge connects subpats.
 This is implicit in how flexagons behave.
-Also note that Flexagonator currently assumes all the triangles meet in the center, so the full flexagon structure doesn't need to specify how the pats are connected.
+See [Atomic Theory](atomic-theory.md) for a description of how to handle flexagons where the pats don't all meet in the center.
 
 
 ## More information
