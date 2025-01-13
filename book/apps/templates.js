@@ -374,7 +374,7 @@ const labelsF7 = [[1, 2], [3, 4], [2, 4], [1, 5], [3, 5], [4, 3], [4, 2], [5, 1]
 const templatesFlip = {
   "fig12.1": [getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F"), /*sz*/[900, 361]],
   "fig12.4": [getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F"), /*sz*/[900, 500]],
-  "fig12.5": [getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F>>)5", undefined, undefined, 1.35), /*sz*/[1100, 488]],
+  "fig12.5": [getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F+>>)5", undefined, undefined, 1.35), /*sz*/[1100, 488]],
   "fig12.6": [getOddScript(7, "(F*<)5", "^", labelsF7, 1), { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1400, 256],
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
   { start: 10, captions: [lastStar, { text: "a", which: 0 }, { text: "(F<)5", which: -3, edge: 1 }] }]
