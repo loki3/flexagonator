@@ -19,6 +19,12 @@
 
   <script src="../../build/out.js"></script>
   <script>
+    // optional URL search parameters
+    const paramName = 'name';
+    const paramGenerator = 'generator';
+    const paramPats = 'pats';
+    const paramFlexes = 'flexes';
+
     const creator = new Flexagonator.Creator([0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0xa58252, 0xdddddd]);
     let buttons = null;
     let selectedPieces = { patsPrefix: 6 };  // track selected flexagon name pieces
@@ -304,6 +310,49 @@
       }
     }
 
+    // if there are URL search params, use them to initialize everything,
+    // e.g., ?name=pentaflexagon&generator=P* or ?pats=21&flexes=T%3CLtb'
+    function initFromURLParams() {
+      const params = new URLSearchParams(document.location.search);
+
+      // take apart the name & set the individual pieces if present
+      const name = params.get(paramName);
+      if (name) {
+        const pieces = Flexagonator.namePiecesFromName(name);
+        const pats = Flexagonator.greekPrefixToNumber(pieces.patsPrefix);
+        if (pats) {
+          setPatCount(pats.toString());
+        }
+        if (pieces.overallShape) {
+          setOverallShape(pieces.overallShape);
+        }
+        if (pieces.leafShape) {
+          setLeafShape(pieces.leafShape);
+        }
+      }
+
+      // generating sequence
+      const generator = params.get(paramGenerator);
+      if (generator) {
+        handleCreation(creator.createFromSequence(generator));
+        document.getElementById('enterGenerator').value = generator;
+      }
+
+      // pat structure
+      const createPats = params.get(paramPats);
+      if (createPats) {
+        handleCreation(creator.createFromPats(createPats));
+        document.getElementById('enterPats').value = createPats;
+      }
+
+      // flexes
+      const flexes = params.get(paramFlexes);
+      if (flexes) {
+        applyFlexes(flexes);
+        document.getElementById('enterFlexes').value = flexes;
+      }
+    }
+
   </script>
 </head>
 
@@ -387,6 +436,7 @@
     fillNameLists();
     updateUI();
     showCreationScript();
+    initFromURLParams();
 
     let interface = document.getElementById('interface');
     interface.addEventListener('mousemove', interfaceMouseMove, false);
