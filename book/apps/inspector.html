@@ -24,6 +24,7 @@
     const paramGenerator = 'generator';
     const paramPats = 'pats';
     const paramFlexes = 'flexes';
+    const paramSlices = 'slices';
 
     const creator = new Flexagonator.Creator([0x7fbcff, 0x7fff82, 0xff827f, 0xc27fff, 0xfbff7f, 0xa58252, 0xdddddd]);
     let buttons = null;
@@ -351,6 +352,13 @@
       if (flexes) {
         applyFlexes(flexes);
         document.getElementById('enterFlexes').value = flexes;
+      }
+
+      // slices
+      const slices = params.get(paramSlices);
+      if (slices) {
+        parseSlices(slices);
+        document.getElementById('enterSlices').value = slices;
       }
     }
 
