@@ -45,6 +45,7 @@
         historyBox.value = history;
       }
       showFlexagonName();
+      showUrlParams();
       statusMessage('flexagonStatus', "in state " + (fm.getCurrentState() + 1) + " of " + fm.getTotalStates());
     }
 
@@ -353,6 +354,29 @@
       }
     }
 
+    // take the current UI settings & turn them into URL params that can be used to recreate them
+    function getUrlParams() {
+      const name = `${paramName}=${encodeURIComponent(creator.getSimpleName())}`;
+      const generator = () => {
+        const generator = creator.getGenerator();
+        return generator ? `&${paramGenerator}=${encodeURIComponent(generator)}` : '';
+      };
+      const pats = () => {
+        const pats = creator.getCreationPats();
+        return pats ? `&${paramPats}=${encodeURIComponent(pats)}` : '';
+      }
+      const flexes = () => {
+        const fm = creator.getFlexagonManager();
+        const flexes = fm ? fm.getFlexHistory().join('') : null;
+        return flexes ? `&${paramFlexes}=${encodeURIComponent(flexes)}` : '';
+      }
+      return `?${name}${generator()}${pats()}${flexes()}`;
+    }
+
+    function showUrlParams() {
+      document.getElementById('urlParams').value = getUrlParams();
+    }
+
   </script>
 </head>
 
@@ -406,6 +430,9 @@
     <input onclick="applyScript();" type="button" value="apply script" /><br/>
     <textarea id="script" cols="75" rows="4" spellcheck=false></textarea>
     <div id="scriptStatus"></div>
+    <br/>
+    URL params:
+    <input id="urlParams" size="70" spellcheck=false readonly=true />
   </div>
 
   <!-- unfolded template -->

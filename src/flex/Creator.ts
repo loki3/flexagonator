@@ -38,6 +38,10 @@ namespace Flexagonator {
       return name;
     }
 
+    getSimpleName() { return namePiecesToName(this.pieces); }
+    getGenerator() { return this.generator; }
+    getCreationPats() { return this.pats; }
+
     /** get all 3 leaf angles as a string with n significant digits */
     getLeafAngles(n: number): string {
       const angles = this.fm.getAngleInfo().getAngles(this.fm.flexagon);
