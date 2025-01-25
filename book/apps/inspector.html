@@ -15,6 +15,27 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    .title {
+      background-color: #162773;
+      color: #F2EC8E;
+      padding: 5px;
+    }
+
+    .title-small {
+      font-size: small;
+      color: #ffffff;
+      padding-left: 40px;
+      font-weight: normal;
+    }
+
+    .title-medium {
+      font-size: medium;
+    }
+
+    .title-link {
+      color: #F2EC8E;
+    }
+
   </style>
 
   <script src="../../build/out.js"></script>
@@ -390,7 +411,13 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <h1>Flexagon Inspector</h1>
+  <h1 class="title">
+    Flexagon Inspector
+    <span class="title-small">companion app for</span>
+    <a class="title-link" href="https://www.routledge.com/The-Secret-World-of-Flexagons-Fascinating-Folded-Paper-Puzzles/Elran-Schwartz-Sherman/p/book/9781032553832">
+      <span class="title-medium">The Secret World of Flexagons</span>
+    </a>
+  </h1>
 
   <!-- create flexagon -->
   <input onclick="clearPieces();" type="button" value="clear" />

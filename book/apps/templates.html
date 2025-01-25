@@ -15,10 +15,25 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    span.title {
-      font-size: xx-large;
-      font-weight: 600;
-      padding-right: 10px;
+    .title {
+      background-color: #162773;
+      color: #F2EC8E;
+      padding: 5px;
+    }
+
+    .title-small {
+      font-size: small;
+      color: #ffffff;
+      padding-left: 40px;
+      font-weight: normal;
+    }
+
+    .title-medium {
+      font-size: medium;
+    }
+
+    .title-link {
+      color: #F2EC8E;
     }
 
   </style>
@@ -71,13 +86,20 @@
 <body>
 
   <p>
-    <span class="title">Templates</span>
-    <select id="templateList" onchange="showTemplate(event.target.value)"></select>
-    &nbsp;&nbsp;&nbsp;
-    show faces:
-    <input onclick="showTemplate(gName, 'both');" type="button" value="front & back" id="bothButton" />
-    <input onclick="showTemplate(gName, 'front');" type="button" value="front" id="frontButton" />
-    <input onclick="showTemplate(gName, 'back-y');" type="button" value="back" id="backButton" />
+  <h1 class="title">
+    Templates
+    <span class="title-small">companion app for</span>
+    <a class="title-link" href="https://www.routledge.com/The-Secret-World-of-Flexagons-Fascinating-Folded-Paper-Puzzles/Elran-Schwartz-Sherman/p/book/9781032553832">
+        <span class="title-medium">The Secret World of Flexagons</span>
+      </a>
+  </h1>
+
+  <select id="templateList" onchange="showTemplate(event.target.value)"></select>
+  &nbsp;&nbsp;&nbsp;
+  show faces:
+  <input onclick="showTemplate(gName, 'both');" type="button" value="front & back" id="bothButton" />
+  <input onclick="showTemplate(gName, 'front');" type="button" value="front" id="frontButton" />
+  <input onclick="showTemplate(gName, 'back-y');" type="button" value="back" id="backButton" />
   </p>
 
   <canvas id="image" width="800" height="800"></canvas>
