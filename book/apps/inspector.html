@@ -53,6 +53,7 @@
     let gFace = 'both';  // track whether template should show front and/or back faces
     let gRotate = 0;     // for special flexagon shapes, rotate the displayed flexagon
     let gSlices = null;  // track how they want the template sliced
+    let gSliceStr = '';  // visible string describing slices
 
     function updateUI() {
       const fm = creator.getFlexagonManager();
@@ -278,6 +279,7 @@
       statusMessage('sliceStatus');
       document.getElementById('enterSlices').value = '';
       gSlices = null;
+      gSliceStr = '';
     }
 
     function parseSlices(text) {
@@ -298,6 +300,9 @@
       });
       gSlices.push({ start: last });  // everything else
       drawTemplates();
+
+      gSliceStr = text;
+      showUrlParams();
     }
 
     function setTemplateFaces(option) {
@@ -388,6 +393,7 @@
       const name = `${paramName}=${encodeURIComponent(creator.getSimpleName())}`;
       const generator = () => {
         const generator = creator.getGenerator();
+        const withSpaces = generator?.replace(/ /g, ''); // strip spaces
         return generator ? `&${paramGenerator}=${encodeURIComponent(generator)}` : '';
       };
       const pats = () => {
@@ -399,7 +405,8 @@
         const flexes = fm ? fm.getFlexHistory().join('') : null;
         return flexes ? `&${paramFlexes}=${encodeURIComponent(flexes)}` : '';
       }
-      return `?${name}${generator()}${pats()}${flexes()}`;
+      const slices = gSliceStr ? `&${paramSlices}=${gSliceStr}` : '';
+      return `?${name}${generator()}${pats()}${flexes()}${slices}`;
     }
 
     function showUrlParams() {
