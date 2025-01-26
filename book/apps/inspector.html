@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="favicon.ico" />
   <title>Flexagon Inspector</title>
 
@@ -428,19 +429,19 @@
 
   <!-- create flexagon -->
   <input onclick="clearPieces();" type="button" value="clear" />
-  overall shape:
+  <label for="nameOverall">overall shape:</label>
   <select id="nameOverall" onchange="setOverallShape(event.target.value)" style="min-width: 150px;"></select>
-  &nbsp;&nbsp;&nbsp;leaf shape:
+  &nbsp;&nbsp;&nbsp;<label for="nameLeaf">leaf shape:</label>
   <select id="nameLeaf" onchange="setLeafShape(event.target.value)" style="min-width: 100px;"></select>
-  &nbsp;&nbsp;&nbsp;pat count:
+  &nbsp;&nbsp;&nbsp;<label for="nameCount">pat count:</label>
   <select id="nameCount" onchange="setPatCount(event.target.value)" style="min-width: 50px;"></select>
 
   <p>
     <input onclick="applyGenerator();" type="button" value="generating sequence" />
-    <input onkeypress="checkGenerator(event.keyCode)" id="enterGenerator" size="25" spellcheck="false" />
+    <input onkeypress="checkGenerator(event.keyCode)" id="enterGenerator" aria-label="generating sequence" size="25" spellcheck="false" />
     &nbsp;&nbsp;&nbsp;
     <input onclick="applyPats();" type="button" value="create pats" />
-    <input onkeypress="checkPats(event.keyCode)" id="enterPats" size="25" spellcheck="false" />
+    <input onkeypress="checkPats(event.keyCode)" id="enterPats" aria-label="create pats" size="25" spellcheck="false" />
   </p>
   <div id="creatorFlexes"></div>
   <div id="creatorStatus"></div>
@@ -454,39 +455,39 @@
 
   <p>
     <input onclick="applyFlexes();" type="button" value="apply flexes" />
-    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" size="75" spellcheck=false />
+    <input onkeypress="checkSequence(event.keyCode, event.target.value)" id="enterFlexes" aria-label="apply flexes" size="75" spellcheck=false />
   </p>
   <p>
     <input onclick="undo();" type="button" value="undo" />
     <input onclick="redo();" type="button" value="redo" />
-    <textarea id="history" cols="75" rows="1" readonly=true></textarea>
+    <textarea id="history" aria-label="history" cols="75" rows="1" readonly=true></textarea>
   </p>
 
   <input type="checkbox" id="advancedCheck" onclick="setAdvanced(event.target.checked)">
   <label for="advancedCheck"> advanced options</label>
   <br>
   <div id="advancedArea" hidden="true">
-    creation script:<br/>
+    <label for="creationScript">creation script:</label><br/>
     <textarea id="creationScript" cols="75" rows="4" readonly=true></textarea>
     <br/><br/>
     <input onclick="applyScript();" type="button" value="apply script" /><br/>
-    <textarea id="script" cols="75" rows="4" spellcheck=false></textarea>
+    <textarea id="script" aria-label="apply script" cols="75" rows="4" spellcheck=false></textarea>
     <div id="scriptStatus"></div>
     <br/>
-    URL params:
+    <label for="urlParams">URL parameters:</label>
     <input id="urlParams" size="70" spellcheck=false readonly=true />
   </div>
 
   <!-- unfolded template -->
   <hr />
   <p>
-    show faces:
-    <input onclick="setTemplateFaces('both');" type="button" value="front & back" />
+    <label for="bothFaces">show faces:</label>
+    <input onclick="setTemplateFaces('both');" type="button" value="front & back" id="bothFaces" />
     <input onclick="setTemplateFaces('front');" type="button" value="front" />
     <input onclick="setTemplateFaces('back-y');" type="button" value="back" />
     &nbsp;&nbsp;&nbsp;
     <input onclick="applySlices();" type="button" value="leaves per slice" />
-    <input onkeypress="checkSlices(event.keyCode)" id="enterSlices" size="25" spellcheck=false />
+    <input onkeypress="checkSlices(event.keyCode)" id="enterSlices" aria-label="leaves per slice" size="25" spellcheck=false />
     &nbsp;&nbsp;&nbsp;
     <span id="sliceStatus"></span>
   </p>
