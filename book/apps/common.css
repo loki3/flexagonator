@@ -7,9 +7,12 @@ body {
 }
 
 .title {
-  background-color: #162773;
-  color: #F2EC8E;
-  padding: 5px;
+  background-color: #2A2F6F;
+  color: #EDED92;
+  padding-left: 15px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 .title-small {
