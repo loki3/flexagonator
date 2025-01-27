@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2024 Scott Sherman
+  Copyright (c) 2024-2025 Scott Sherman
   Script & draw options for flexagon templates
 */
 
