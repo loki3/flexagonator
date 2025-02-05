@@ -73,7 +73,8 @@
         for (var i = 0; i < flexagons.length; i++) {
           if (flexagons[i] !== undefined) {
             var tree = flexagons[i].getAsLeafTrees();
-            str += i.toString() + ": " + JSON.stringify(tree) + '\n';
+            var treeStr = tree.map(pat => JSON.stringify(pat)).join(', ');
+            str += i.toString() + ": [ " + treeStr + ' ]\n';
           }
         }
         box.value = str;
