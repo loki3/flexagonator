@@ -20,7 +20,6 @@ namespace Flexagonator {
     getAsLeafTree(): LeafTree;
     getTop(): number;
     getBottom(): number;
-    getThickness(): number;
     getStructure(): string;
     getStructureLTEId(id: number): string;
     getString(): string;
@@ -110,10 +109,6 @@ namespace Flexagonator {
 
     getBottom(): number {
       return -this.id;
-    }
-
-    getThickness(): number {
-      return 1;
     }
 
     getStructure(): string {
@@ -239,10 +234,6 @@ namespace Flexagonator {
 
     getBottom(): number {
       return this.right.getBottom();
-    }
-
-    getThickness(): number {
-      return this.left.getThickness() + this.right.getThickness();
     }
 
     getStructure(): string {

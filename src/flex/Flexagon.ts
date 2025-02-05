@@ -59,8 +59,8 @@ namespace Flexagonator {
       return [this.getTopIds(), this.getBottomIds()];
     }
 
-    getThickness(): number[] {
-      return this.pats.map(pat => pat.getThickness());
+    getThicknesses(): number[] {
+      return this.pats.map(pat => pat.getLeafCount());
     }
 
     hasPattern(pattern: LeafTree[]): boolean {

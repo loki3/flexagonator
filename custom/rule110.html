@@ -106,7 +106,7 @@
     // examine the pats to figure out what states they represent
     function getCurrentCells() {
       let states = '';
-      const thick = fm.flexagon.getThickness();
+      const thick = fm.flexagon.getThicknesses();
       for (let i = 0; i < thick.length; i += 4) {
         const state = thick[i] === 1 ? '1' : '0';
         states += state;
