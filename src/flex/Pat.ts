@@ -77,7 +77,7 @@ namespace Flexagonator {
     }
 
     isEqual(pat: Pat): boolean {
-      return this.id === (pat as PatLeaf).id;
+      return pat !== undefined && this.id === (pat as PatLeaf).id;
     }
     isEqualStructure(pat: Pat): boolean {
       return (pat as PatLeaf).id !== undefined; // are they both PatLeafs?

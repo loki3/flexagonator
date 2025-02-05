@@ -66,13 +66,15 @@
       }
     }
 
-    function showStates(flexagons) {
-      var box = document.getElementById('states');
+    function showStates(flexagons, elementName) {
+      var box = document.getElementById(elementName);
       if (box !== null) {
         var str = "";
         for (var i = 0; i < flexagons.length; i++) {
-          var tree = flexagons[i].getAsLeafTrees();
-          str += i.toString() + ": " + JSON.stringify(tree) + '\n';
+          if (flexagons[i] !== undefined) {
+            var tree = flexagons[i].getAsLeafTrees();
+            str += i.toString() + ": " + JSON.stringify(tree) + '\n';
+          }
         }
         box.value = str;
       }
@@ -248,6 +250,47 @@
       var countsStr = counts.reduce((prev, curr) => prev + curr + '<br/>', '');
       return 'graph size: number of subgraphs<br/>' + countsStr;
     }
+
+    function findRearrangements(key, input) {
+      if (key !== 13) {
+        return;
+      }
+
+      // clear previous content
+      var errorArea = document.getElementById('rearrangementError');
+      errorArea.innerHTML = '';
+      var outputArea = document.getElementById('rearrangementBox');
+      outputArea.value = '';
+
+      // validate input
+      if (explorer === undefined) {
+        errorArea.innerHTML = "need to first explore a flexagon";
+        return;
+      }
+      var tree = Flexagonator.parseLeafTrees(input);
+      if (Flexagonator.isError(tree)) {
+        var str = Flexagonator.errorToString(tree);
+        errorArea.innerHTML = str;
+        return;
+      }
+
+      // find matches
+      var flexagons = explorer.getFlexagons();
+      var states = Flexagonator.findRearrangements(flexagons, tree);
+      if (Flexagonator.isError(states)) {
+        var str = Flexagonator.errorToString(states);
+        errorArea.innerHTML = str;
+        return;
+      }
+
+      if (states.length === 0) {
+        outputArea.value = '<none>';
+      } else {
+        var i = 0;  // mark flexagons not in list as 'undefined' so state-index & state line up in output
+        var rearranged = flexagons.map((f, j) => (states[i] == j) ? flexagons[states[i++]] : undefined);
+        showStates(rearranged, 'rearrangementBox');
+      }
+    }
   </script>
 </head>
 
@@ -273,7 +316,7 @@
   <div id="status"></div>
 
   <p>
-    <input onclick="showStates(explorer.getFlexagons());" type="button" value="show states" />
+    <input onclick="showStates(explorer.getFlexagons(), 'states');" type="button" value="show states" />
     <input onclick="showVisible(explorer.getFlexagons());" type="button" value="show visible" />
     <input onclick="showLabels(explorer.getFlexagons());" type="button" value="show labels" />
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
@@ -316,6 +359,14 @@
     <input id="useFlex" size="5" spellcheck="false" value="P" /> flex
   <div id="disconnected">-</div>
   </p>
+
+  <p>
+    Find which states have a pat that's a rearrangement of a given pat
+    <br/>
+    <input onkeypress="findRearrangements(event.keyCode, event.target.value)" id="samplePat" size="100" spellcheck="false" />
+  </p>
+  <div id="rearrangementError"></div>
+  <textarea id="rearrangementBox" cols="100" rows="10" spellcheck="false" readonly="true"></textarea>
 </body>
 
 </html>
