@@ -11,6 +11,7 @@ Various routines for analyzing flexes on flexagons.
 * [FindSubgraphs.ts](FindSubgraphs.ts) - given a graph of flexes and states, break it into the subgraphs that can be fully accessed by a list of flexes
 * [FlexGraph.ts](FlexGraph.ts) - information about a graph of flexagons (nodes) and flexes (edges)
 * [FlexToGraph.ts](FlexToGraph.ts) - take a description of all the flexes that can be performed from each state and create a graph of flexagons (nodes) and flexes (edges)
+* [GetAllSinglePats](GetAllSinglePats.ts) - starts with a template (specified as directions between the leaves) and figures out all ways to fold it into a single pat, if any
 * [GraphToDot.ts](GraphToDot.ts) - create a [DOT](https://en.wikipedia.org/wiki/DOT_(graph_description_language)) graph of the state-to-state transitions
 * [GroupFromSequences.ts](GroupFromSequences.ts) - given a set of flex sequences on a flexagon, check if they form a group; if so, return info about the group; if not, give a reason why not
 * [LeafGraph.ts](LeafGraph.ts) - get the graph of leaf-face ids that are adjacent across all the given flexagons
