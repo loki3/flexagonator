@@ -63,6 +63,28 @@ namespace Flexagonator {
       return this.pats.map(pat => pat.getLeafCount());
     }
 
+    /** check if flexagons are in the same state: pat structure, leaf ids, & directions */
+    isSameState(other: Flexagon): boolean {
+      if (this.pats.length !== other.pats.length) {
+        return false;
+      }
+      if (this.pats.some((p, i) => !p.isEqual(other.pats[i]))) {
+        return false;
+      }
+      return this.hasEqualDirections(other);
+    }
+
+    /** check if flexagons have the same pat structure & directions, ignoring leaf ids */
+    isSameStructure(other: Flexagon): boolean {
+      if (this.pats.length !== other.pats.length) {
+        return false;
+      }
+      if (this.pats.some((p, i) => !p.isEqualStructure(other.pats[i]))) {
+        return false;
+      }
+      return this.hasEqualDirections(other);
+    }
+
     hasPattern(pattern: LeafTree[]): boolean {
       if (this.pats.length !== pattern.length) {
         return false;
@@ -88,6 +110,16 @@ namespace Flexagonator {
         i++;
       }
       return true;
+    }
+
+    /** check if flexagons have same pat directions */
+    hasEqualDirections(other: Flexagon): boolean {
+      if (this.hasSameDirections() && other.hasSameDirections()) {
+        return true;
+      } else if (this.directions === undefined || other.directions === undefined) {
+        return false;
+      }
+      return this.directions.asRaw().every((d, i) => d === other.directions?.asRaw()[i]);
     }
 
     /** check if all pats go in the same direction */

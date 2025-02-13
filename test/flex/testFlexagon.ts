@@ -79,6 +79,56 @@ namespace Flexagonator {
     });
   });
 
+  describe('isSameState', () => {
+    it('rejects different pat count', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4]) as Flexagon;
+      const f2 = Flexagon.makeFromTree([[1, [2, 3]], 4, 5]) as Flexagon;
+      expect(f1.isSameState(f2)).toBe(false);
+    });
+
+    it('accepts same structure & ids', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4]) as Flexagon;
+      expect(f1.isSameState(f1)).toBe(true);
+    });
+
+    it('rejects same structure but different ids', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4]) as Flexagon;
+      const f2 = Flexagon.makeFromTree([[1, [3, 2]], 4]) as Flexagon;
+      expect(f1.isSameState(f2)).toBe(false);
+    });
+
+    it('accepts same structure, ids, and directions', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4], undefined, Directions.make('/|')) as Flexagon;
+      expect(f1.isSameState(f1)).toBe(true);
+    });
+
+    it('rejects same structure & ids but different directions', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4], undefined, Directions.make('/|')) as Flexagon;
+      const f2 = Flexagon.makeFromTree([[1, [2, 3]], 4], undefined, Directions.make('|/')) as Flexagon;
+      expect(f1.isSameState(f2)).toBe(false);
+    });
+  });
+
+  describe('isSameStructure', () => {
+    it('rejects different pat count', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4]) as Flexagon;
+      const f2 = Flexagon.makeFromTree([[1, [2, 3]], 4, 5]) as Flexagon;
+      expect(f1.isSameState(f2)).toBe(false);
+    });
+
+    it('accepts same structure but different ids', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4]) as Flexagon;
+      const f2 = Flexagon.makeFromTree([[1, [3, 2]], 4]) as Flexagon;
+      expect(f1.isSameStructure(f2)).toBe(true);
+    });
+
+    it('rejects same structure but different directions', () => {
+      const f1 = Flexagon.makeFromTree([[1, [2, 3]], 4], undefined, Directions.make('/|')) as Flexagon;
+      const f2 = Flexagon.makeFromTree([[1, [3, 2]], 4], undefined, Directions.make('|/')) as Flexagon;
+      expect(f1.isSameState(f2)).toBe(false);
+    });
+  });
+
   describe('matchPattern', () => {
     const trees: LeafTree[] = [1, [-2, 3], [[4, 5], [6, -7]]];
     const directions = Directions.make('/|/')
