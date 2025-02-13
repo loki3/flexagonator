@@ -75,6 +75,19 @@ namespace Flexagonator {
     });
   });
 
+  describe('isEqualStructure', () => {
+    it('compares structure, not ids', () => {
+      const p1 = makePat(1) as Pat;
+      const p2 = makePat(2) as Pat;
+      const p3 = makePat([[1, 2], 3]) as Pat;
+      const p4 = makePat([[3, 2], 1]) as Pat;
+      const p5 = makePat([1, [2, 3]]) as Pat;
+      expect(p1.isEqualStructure(p2)).toBe(true);
+      expect(p3.isEqualStructure(p4)).toBe(true);
+      expect(p3.isEqualStructure(p5)).toBe(false);
+    });
+  });
+
   describe('remap', () => {
     it('remaps ids', () => {
       const original = [1, [[-2, 3], -4]];

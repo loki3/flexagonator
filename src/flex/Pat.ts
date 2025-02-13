@@ -79,7 +79,7 @@ namespace Flexagonator {
       return pat !== undefined && this.id === (pat as PatLeaf).id;
     }
     isEqualStructure(pat: Pat): boolean {
-      return (pat as PatLeaf).id !== undefined; // are they both PatLeafs?
+      return pat !== undefined && (pat as PatLeaf).id !== undefined; // are they both PatLeafs?
     }
 
     getLeafCount(): number {
@@ -204,8 +204,12 @@ namespace Flexagonator {
       }
       return this.left.isEqual((pat as PatPair).left) && this.right.isEqual((pat as PatPair).right);
     }
-    isEqualStructure(pat: Pat): boolean {  // are they both PatPairs?
-      return (pat as PatPair).left !== undefined;
+    isEqualStructure(pat: Pat): boolean {  // are they both PatPairs with same structure?
+      const other = pat as PatPair;
+      if (other === undefined || other.left === undefined) {
+        return false;
+      }
+      return this.left.isEqualStructure(other.left) && this.right.isEqualStructure(other.right);
     }
 
     getLeafCount(): number {
