@@ -252,6 +252,40 @@
       return 'graph size: number of subgraphs<br/>' + countsStr;
     }
 
+    function findGroupCycles() {
+      // clear previous content
+      var errorArea = document.getElementById('cycleError');
+      errorArea.innerHTML = '';
+      var outputArea = document.getElementById('cycleBox');
+      outputArea.value = '';
+
+      // validate input
+      if (explorer === undefined) {
+        errorArea.innerHTML = "need to first explore a flexagon";
+        return;
+      }
+      var inputArea = document.getElementById('startingIndex');
+      var startingIndex = Number.parseInt(inputArea.value);
+      if (Number.isNaN(startingIndex)) {
+        errorArea.innerHTML = "invalid starting index";
+      }
+
+      // find cycles
+      var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
+      var result = Flexagonator.findGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
+      if (Flexagonator.isGroupCycleError(result)) {
+        errorArea.innerHTML = JSON.stringify(result);
+      } else {
+        var all = result.map(c => `${c.cycleLength}: ${c.sequence}`).join('\n');
+        outputArea.value = all;
+      }
+    }
+    function cycleKey(key) {
+      if (key === 13) {
+        findGroupCycles();
+      }
+    }
+
     function findRearrangements(key, input) {
       if (key !== 13) {
         return;
@@ -360,6 +394,14 @@
     <input id="useFlex" size="5" spellcheck="false" value="P" /> flex
   <div id="disconnected">-</div>
   </p>
+
+  <p>
+    <input onclick="findGroupCycles();" type="button" value="Find" />
+        all flex sequence cycles that preserve pat structure starting with state
+    <input onkeypress="cycleKey(event.keyCode)" id="startingIndex" size="5" spellcheck="false" value="0" />
+  </p>
+  <div id="cycleError"></div>
+  <textarea id="cycleBox" cols="100" rows="10" spellcheck="false" readonly="true"></textarea>
 
   <p>
     Find which states have a pat that's a rearrangement of a given pat
