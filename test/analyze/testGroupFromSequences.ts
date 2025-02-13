@@ -105,6 +105,7 @@ namespace Flexagonator {
     /*
     function dumpCayleyTable(check: GroupFromFlexes | GroupError) {
       if ((check as GroupError).reason !== undefined) {
+        console.log('');
         console.log('NOT A GROUP', JSON.stringify(check));
         return;
       }
@@ -122,6 +123,14 @@ namespace Flexagonator {
     it('dumps Cayley tables', () => {
       dumpCayleyTable(getGroupFromSequences(['F<', '^<'], 7));
       dumpCayleyTable(getGroupFromSequences(['V>', '^>'], 6));
+
+      // [ [[[5,-16],[-6,-13]],-12], -7, [[[1,-18],[-2,-15]],-10], -8, [[[3,-17],[-4,-14]],-11], -9 ]
+      dumpCayleyTable(getGroupFromSequences(["PP<^P^", "^>P<", "Ltf<Ltf>>Ltf'>>Ltf<Ltb>P^"], 6));
+      // [ [[[2,-8],[-13,-1]],[[-14,-3],[-16,11]]], -10, [[[6,-7],[-15,-5]],-18], -12, [-9,-17], -4 ]
+      dumpCayleyTable(getGroupFromSequences(["P <T >>V ^P >>^", ">>S>^", "P >>Ltb' ^Ltb' >>>V >>>Ltb' ^<Ltf >>^"], 6));
+      dumpCayleyTable(getGroupFromSequences(["P >>>T' ^>>T ^S", ">>S>^", ">>Ltf <Ltf ^S S ^<Ltf >>^"], 6));
+      // [ -9, [-16,-12], -5, [-6,-13], -7, [[[3,-17],[-4,-14]],[[[[1,-18],[-2,-15]],-10],[-11,8]]] ]
+      dumpCayleyTable(getGroupFromSequences(["^Ltb P >Ltb' ^", "T' ^P", "<Ltb ^>S Ltb' >"], 6));
     });
     */
 
