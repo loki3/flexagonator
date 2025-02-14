@@ -15,6 +15,7 @@ namespace Flexagonator {
     private cyclesDone = false;
     private cyclesIndex = 0;
     private findSequence?: FindShortest;
+    // results
     private cycles: CycleInfo[] = [];
 
     /**
@@ -102,7 +103,7 @@ namespace Flexagonator {
       this.findSequence = undefined;
 
       // see if we need to shift to get back to original pat structure
-      const extra = extraNeeded(start, result, this.flexes, this.right, this.over);
+      const extra = extraNeeded(start, result, this.flexes);
       const sequence = extra === null ? "" : extra === "" ? result : `${result} ${extra}`;
 
       // get length of cycle
@@ -145,7 +146,7 @@ namespace Flexagonator {
   }
 
   /** return any additional shifts needed to preserve the pat structure, or null if not supported */
-  function extraNeeded(f1: Flexagon, sequence: string, flexes: Flexes, right: Flex, over: Flex): string | null {
+  function extraNeeded(f1: Flexagon, sequence: string, flexes: Flexes): string | null {
     const fm = new FlexagonManager(f1, undefined, flexes);
     fm.applyFlexes(sequence, false);
 

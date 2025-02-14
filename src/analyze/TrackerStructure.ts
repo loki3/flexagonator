@@ -26,8 +26,10 @@ namespace Flexagonator {
       return this.states.length;
     }
 
-    // if we've seen this flexagon before, return which one,
-    // else add it to our list and return it's new index
+    /**
+     * if we've seen this flexagon before, return which one,
+     * else add it to our list and return new index
+     */
     findMaybeAdd(flexagon: Flexagon): number {
       const state = new StructureState(flexagon);
       const i = this.getIndex(state);
@@ -38,7 +40,7 @@ namespace Flexagonator {
       return this.states.length - 1;
     }
 
-    // returns which state we have, or null if we haven't seen it before
+    /** returns which state we have, or null if we haven't seen it before */
     private getIndex(state: StructureState): number | null {
       const i = this.states.findIndex(thisState => thisState.isEqualTo(state));
       return i !== -1 ? i : null;

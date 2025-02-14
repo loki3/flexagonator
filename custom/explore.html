@@ -271,13 +271,14 @@
       var startingIndex = Number.parseInt(inputArea.value);
       if (Number.isNaN(startingIndex)) {
         statusArea.innerHTML = "invalid starting index";
+        return;
       }
 
       // start searching for cycles
       statusArea.value = "searching...";
       var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
       var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
-      setTimeout(stepCycleFinder, 0, cycleFinder, 0);
+      setTimeout(stepCycleFinder, 1, cycleFinder, 0);
     }
     function cycleKey(key) {
       if (key === 13) {
