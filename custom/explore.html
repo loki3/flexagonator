@@ -8,6 +8,7 @@
     var fm;
     var explorer;
     var cancelled = false;
+    var cycleFinderCancelled = false;
 
     function runScript() {
       statusMessage("error parsing script");
@@ -252,37 +253,63 @@
       return 'graph size: number of subgraphs<br/>' + countsStr;
     }
 
-    function findGroupCycles() {
+    // start searching for cycles
+    function startCycleFinder() {
       // clear previous content
-      var errorArea = document.getElementById('cycleError');
-      errorArea.innerHTML = '';
-      var outputArea = document.getElementById('cycleBox');
-      outputArea.value = '';
+      var statusArea = document.getElementById('cycleStatus');
+      statusArea.innerHTML = "";
+      document.getElementById('cycleBox').value = "";
+      cycleFinderCancelled = false;
 
       // validate input
       if (explorer === undefined) {
-        errorArea.innerHTML = "need to first explore a flexagon";
+        statusArea.innerHTML = "need to first explore a flexagon";
         return;
       }
       var inputArea = document.getElementById('startingIndex');
       var startingIndex = Number.parseInt(inputArea.value);
       if (Number.isNaN(startingIndex)) {
-        errorArea.innerHTML = "invalid starting index";
+        statusArea.innerHTML = "invalid starting index";
       }
 
-      // find cycles
+      // start searching for cycles
       var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
-      var result = Flexagonator.findGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
-      if (Flexagonator.isGroupCycleError(result)) {
-        errorArea.innerHTML = JSON.stringify(result);
-      } else {
-        var all = result.map(c => `${c.cycleLength}: ${c.sequence}`).join('\n');
-        outputArea.value = all;
-      }
+      var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
+      stepCycleFinder(cycleFinder);
     }
     function cycleKey(key) {
       if (key === 13) {
-        findGroupCycles();
+        startCycleFinder();
+      }
+    }
+    function cancelCycleFinder() {
+      cycleFinderCancelled = true;
+    }
+
+    // do a single step of searching for cycles
+    function stepCycleFinder(cycleFinder) {
+      var statusArea = document.getElementById('cycleStatus');
+      if (cycleFinderCancelled) {
+        statusArea.innerHTML = "CANCELLED";
+        return;
+      }
+      while (cycleFinder.checkNext()) {
+        // prepare for next step
+        var str = "searching... " + cycleFinder.getIteration();
+        statusArea.innerHTML = str;
+        setTimeout(stepCycleFinder, 0, cycleFinder);
+        return;
+      }
+
+      // done - report results
+      if (cycleFinder.getError() !== null) {
+        var error = cycleFinder.getError();
+        statusArea.innerHTML = error.groupCycleError;
+      } else {
+        statusArea.innerHTML = "";
+        var cycles = cycleFinder.getCycles();
+        var all = cycles.map(c => `${c.cycleLength}: ${c.sequence}`).join('\n');
+        document.getElementById('cycleBox').value = all;
       }
     }
 
@@ -396,11 +423,12 @@
   </p>
 
   <p>
-    <input onclick="findGroupCycles();" type="button" value="Find" />
+    <input onclick="startCycleFinder();" type="button" value="Find" />
         all flex sequence cycles that preserve pat structure starting with state
-    <input onkeypress="cycleKey(event.keyCode)" id="startingIndex" size="5" spellcheck="false" value="0" />
+    <input onkeypress="cycleKey(event.keyCode)" id="startingIndex" size="5" spellcheck="false" value="0" /> -
+    <input onclick="cancelCycleFinder();" type="button" value="cancel" />
   </p>
-  <div id="cycleError"></div>
+  <div id="cycleStatus"></div>
   <textarea id="cycleBox" cols="100" rows="10" spellcheck="false" readonly="true"></textarea>
 
   <p>

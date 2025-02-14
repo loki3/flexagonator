@@ -11,6 +11,16 @@ namespace Flexagonator {
       Flexagon.makeFromTree([[[4, -9], -11], 5, [[6, -7], -12], 1, [[2, -8], -10], 3]) as Flexagon,
     ];
 
+    function findGroupCycles(
+      states: Flexagon[], start: number, flexes: Flexes
+    ): CycleInfo[] | GroupCycleError {
+      const finder = new FindGroupCycles(states, start, flexes);
+      while (finder.checkNext()) { }
+      const error = finder.getError();
+      return error !== null ? error : finder.getCycles();
+    }
+
+
     it('finds cycles within the states that have the same pat structure', () => {
       const flexes: Flexes = { P: allFlexes6['P'], '>': allFlexes6['>'], '^': allFlexes6['^'] };
       const result = findGroupCycles(states4_6, 2, flexes);
