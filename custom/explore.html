@@ -277,7 +277,7 @@
       statusArea.value = "searching...";
       var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
       var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
-      setTimeout(stepCycleFinder, 0, cycleFinder);
+      setTimeout(stepCycleFinder, 0, cycleFinder, 0);
     }
     function cycleKey(key) {
       if (key === 13) {
@@ -289,7 +289,7 @@
     }
 
     // do a single step of searching for cycles
-    function stepCycleFinder(cycleFinder) {
+    function stepCycleFinder(cycleFinder, totalFound) {
       var statusArea = document.getElementById('cycleStatus');
       var outputArea = document.getElementById('cycleBox');
       if (cycleFinderCancelled) {
@@ -297,12 +297,18 @@
         return;
       }
       while (cycleFinder.checkNext()) {
-        // prepare for next step
+        // provide feedback on progress
         var str = cycleFinder.getCycleCount() === 0
           ? "searching..."
           : `checking ${cycleFinder.getIteration()} of ${cycleFinder.getCycleCount()} cycles`;
         statusArea.innerHTML = str;
-        setTimeout(stepCycleFinder, 0, cycleFinder);
+        // show any new results
+        var count = cycleFinder.getCycles().length;
+        if (count !== totalFound) {
+          showCycles(cycleFinder, outputArea);
+        }
+        // queue up next step
+        setTimeout(stepCycleFinder, 0, cycleFinder, count);
         return;
       }
 
@@ -312,10 +318,13 @@
         statusArea.innerHTML = error.groupCycleError;
       } else {
         statusArea.innerHTML = `total cycles: ${cycleFinder.getCycleCount()}`;
-        var cycles = cycleFinder.getCycles();
-        var all = cycles.map(c => `${c.cycleLength}: ${c.sequence}`).join('\n');
-        outputArea.value = all;
+        showCycles(cycleFinder, outputArea);
       }
+    }
+    function showCycles(cycleFinder, outputArea) {
+      var cycles = cycleFinder.getCycles();
+      var all = cycles.map(c => `${c.cycleLength}: ${c.sequence}`).join('\n');
+      outputArea.value = all;
     }
 
     function findRearrangements(key, input) {

@@ -13,10 +13,6 @@ namespace Flexagonator {
     // step 1
     private searchStates?: number[];
     // step 2
-    private sequencesDone = false;
-    private sequenceIndex = 0;
-    private sequences: string[] = [];
-    // step 3
     private cyclesDone = false;
     private cyclesIndex = 0;
     private cycles: CycleInfo[] = [];
@@ -47,10 +43,8 @@ namespace Flexagonator {
       // next slice of work
       if (this.searchStates === undefined) {
         return this.findSearchStates();
-      } else if (!this.sequencesDone) {
-        return this.findNextSequence();
       } else if (!this.cyclesDone) {
-        return this.findNextCycleLength();
+        return this.checkNextCycle();
       }
       return false;
     }
@@ -88,32 +82,21 @@ namespace Flexagonator {
       return true;  // still more steps
     }
 
-    /** find structure preserving sequences from start to each target */
-    private findNextSequence(): boolean {
+    /** find sequence that goes from start to next target & see how long it takes to cycle */
+    private checkNextCycle(): boolean {
       if (this.searchStates === undefined) {
         return false;
       }
 
       // get sequence for next search state
       const from = this.states[this.start];
-      const to = this.states[this.searchStates[this.sequenceIndex++]];
-      const s = findSequence(from, to, this.flexes, this.right, this.over);
-      this.sequences.push(s);
-      this.sequencesDone = this.sequenceIndex >= this.searchStates.length;
-      return true;
-    }
-
-    /** figure out how long next cycle is  */
-    private findNextCycleLength(): boolean {
-      if (this.searchStates === undefined) {
-        return false;
-      }
-
-      const original = this.states[this.start];
-      const sequence = this.sequences[this.cyclesIndex++];
-      const cycleLength = getCycleLength(original, this.flexes, sequence);
+      const to = this.states[this.searchStates[this.cyclesIndex++]];
+      const sequence = findSequence(from, to, this.flexes, this.right, this.over);
+      // get length of cycle
+      const cycleLength = getCycleLength(from, this.flexes, sequence);
       this.cycles.push({ sequence, cycleLength });
-      this.cyclesDone = this.cyclesIndex >= this.sequences.length;
+      // are we done?
+      this.cyclesDone = this.cyclesIndex >= this.searchStates.length;
       return !this.cyclesDone;
     }
   }
