@@ -131,6 +131,15 @@ namespace Flexagonator {
       dumpCayleyTable(getGroupFromSequences(["P >>>T' ^>>T ^S", ">>S>^", ">>Ltf <Ltf ^S S ^<Ltf >>^"], 6));
       // [ -9, [-16,-12], -5, [-6,-13], -7, [[[3,-17],[-4,-14]],[[[[1,-18],[-2,-15]],-10],[-11,8]]] ]
       dumpCayleyTable(getGroupFromSequences(["^Ltb P >Ltb' ^", "T' ^P", "<Ltb ^>S Ltb' >"], 6));
+
+      // cycles of [4,3,2,2] = 48
+      // [ [[9,-8],[-13,24]], [-20,-7], -16, [-12,-23], [[19,-15],[-6,5]], [[[4,-11],[-18,-3]],-22], [[10,-2],[-14,21]], [-17,-1]
+      dumpCayleyTable(getGroupFromSequences([
+        "^V <<<V <<<V <<<V ^>>V <<<V <<<V <<<V",
+        "^V <<<V <<<V <<<V P ^>>>V <<<V <<<V <<<V",
+        "^V ^<<<V ^>S ^V <V ^<<V <V <V <V ^>>V ^>>V <V <V <<<",
+        ">P V <V <V <V P ^<"
+      ], 8));
     });
     */
 
