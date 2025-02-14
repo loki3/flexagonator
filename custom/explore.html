@@ -293,14 +293,15 @@
       var statusArea = document.getElementById('cycleStatus');
       var outputArea = document.getElementById('cycleBox');
       if (cycleFinderCancelled) {
-        statusArea.innerHTML = "CANCELLED";
+        var result = `found ${cycleFinder.getFoundCount()} of ${cycleFinder.getCycleCount()} cycles`;
+        statusArea.innerHTML = "CANCELLED: " + result;
         return;
       }
       while (cycleFinder.checkNext()) {
         // provide feedback on progress
         var str = cycleFinder.getCycleCount() === 0
           ? "searching..."
-          : `checking ${cycleFinder.getIteration()} of ${cycleFinder.getCycleCount()} cycles`;
+          : `found ${cycleFinder.getFoundCount()} of ${cycleFinder.getCycleCount()} cycles`;
         statusArea.innerHTML = str;
         // show any new results
         var count = cycleFinder.getCycles().length;

@@ -7,7 +7,6 @@ namespace Flexagonator {
   export class FindGroupCycles {
     private error: GroupCycleError | null = null;
     // state referenced during iterations
-    private iteration = 0;
     private readonly right;
     private readonly over;
     // step 1
@@ -15,6 +14,7 @@ namespace Flexagonator {
     // step 2
     private cyclesDone = false;
     private cyclesIndex = 0;
+    private findSequence?: FindShortest;
     private cycles: CycleInfo[] = [];
 
     /**
@@ -38,7 +38,6 @@ namespace Flexagonator {
       if (this.error !== null || this.cyclesDone) {
         return false; // done
       }
-      this.iteration++;
 
       // next slice of work
       if (this.searchStates === undefined) {
@@ -63,9 +62,9 @@ namespace Flexagonator {
     getCycleCount(): number {
       return this.searchStates !== undefined ? this.searchStates.length : 0;
     }
-    /** how many times we've iterated */
-    getIteration(): number {
-      return this.iteration;
+    /** how many cycles we've found */
+    getFoundCount(): number {
+      return this.cycles.length;
     }
 
     /** find all the flexagons with the same pat structure, which we'll search thru */
@@ -88,15 +87,29 @@ namespace Flexagonator {
         return false;
       }
 
-      // get sequence for next search state
-      const from = this.states[this.start];
-      const to = this.states[this.searchStates[this.cyclesIndex++]];
-      const sequence = findSequence(from, to, this.flexes, this.right, this.over);
+      const start = this.states[this.start];
+      if (this.findSequence === undefined) {
+        // start a new search for a sequence from start to next target
+        const end = this.states[this.searchStates[this.cyclesIndex]];
+        this.findSequence = new FindShortest(start, end, this.flexes, this.right, this.over);
+        return true;  // keep going
+      } else if (this.findSequence.checkLevel()) {
+        return true;  // keep going
+      }
+
+      // done with search
+      const result = this.findSequence.getFlexes();
+      this.findSequence = undefined;
+
+      // see if we need to shift to get back to original pat structure
+      const extra = extraNeeded(start, result, this.flexes, this.right, this.over);
+      const sequence = extra === null ? "" : extra === "" ? result : `${result} ${extra}`;
+
       // get length of cycle
-      const cycleLength = getCycleLength(from, this.flexes, sequence);
+      const cycleLength = getCycleLength(start, this.flexes, sequence);
       this.cycles.push({ sequence, cycleLength });
-      // are we done?
-      this.cyclesDone = this.cyclesIndex >= this.searchStates.length;
+      // are we completely done?
+      this.cyclesDone = ++this.cyclesIndex >= this.searchStates.length;
       return !this.cyclesDone;
     }
   }
@@ -129,19 +142,6 @@ namespace Flexagonator {
       }
     }
     return null;
-  }
-
-  /** find a structure-preserving flex sequence that goes from 'start' to 'end' */
-  function findSequence(
-    start: Flexagon, end: Flexagon, flexes: Flexes, right: Flex, over: Flex
-  ): string {
-    // find a sequence between two states
-    const find = new FindShortest(start, end, flexes, right, over);
-    while (find.checkLevel()) { }
-    // see if extra shifts are needed to preserve pat structure
-    const sequence = find.getFlexes();
-    const extra = extraNeeded(start, sequence, flexes, right, over);
-    return extra === null ? "" : extra === "" ? sequence : `${sequence} ${extra}`;
   }
 
   /** return any additional shifts needed to preserve the pat structure, or null if not supported */
