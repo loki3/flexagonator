@@ -257,8 +257,9 @@
     function startCycleFinder() {
       // clear previous content
       var statusArea = document.getElementById('cycleStatus');
+      var outputArea = document.getElementById('cycleBox');
       statusArea.innerHTML = "";
-      document.getElementById('cycleBox').value = "";
+      outputArea.value = "";
       cycleFinderCancelled = false;
 
       // validate input
@@ -273,9 +274,10 @@
       }
 
       // start searching for cycles
+      statusArea.value = "searching...";
       var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
       var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
-      stepCycleFinder(cycleFinder);
+      setTimeout(stepCycleFinder, 0, cycleFinder);
     }
     function cycleKey(key) {
       if (key === 13) {
@@ -289,13 +291,16 @@
     // do a single step of searching for cycles
     function stepCycleFinder(cycleFinder) {
       var statusArea = document.getElementById('cycleStatus');
+      var outputArea = document.getElementById('cycleBox');
       if (cycleFinderCancelled) {
         statusArea.innerHTML = "CANCELLED";
         return;
       }
       while (cycleFinder.checkNext()) {
         // prepare for next step
-        var str = "searching... " + cycleFinder.getIteration();
+        var str = cycleFinder.getCycleCount() === 0
+          ? "searching..."
+          : `checking ${cycleFinder.getIteration()} of ${cycleFinder.getCycleCount()} cycles`;
         statusArea.innerHTML = str;
         setTimeout(stepCycleFinder, 0, cycleFinder);
         return;
@@ -306,10 +311,10 @@
         var error = cycleFinder.getError();
         statusArea.innerHTML = error.groupCycleError;
       } else {
-        statusArea.innerHTML = "";
+        statusArea.innerHTML = `total cycles: ${cycleFinder.getCycleCount()}`;
         var cycles = cycleFinder.getCycles();
         var all = cycles.map(c => `${c.cycleLength}: ${c.sequence}`).join('\n');
-        document.getElementById('cycleBox').value = all;
+        outputArea.value = all;
       }
     }
 

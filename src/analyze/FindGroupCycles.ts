@@ -65,6 +65,10 @@ namespace Flexagonator {
       return this.error;
     }
 
+    /** total number of cycles, or 0 if we don't know yet */
+    getCycleCount(): number {
+      return this.searchStates !== undefined ? this.searchStates.length : 0;
+    }
     /** how many times we've iterated */
     getIteration(): number {
       return this.iteration;
