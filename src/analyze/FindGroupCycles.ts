@@ -22,8 +22,14 @@ namespace Flexagonator {
      * @param states a list of flexagon states (perhaps the output of Explore())
      * @param start index of state to start from
      * @param flexes try sequences that use these flexes
+     * @param groups flexagons (indices into states) grouped by pat structure (computed if not passed in)
      */
-    constructor(private readonly states: Flexagon[], private readonly start: number, private readonly flexes: Flexes) {
+    constructor(
+      private readonly states: Flexagon[],
+      private readonly start: number,
+      private readonly flexes: Flexes,
+      private readonly groups?: number[][]
+    ) {
       this.right = flexes['>'];
       this.over = flexes['^'];
       if (this.right === undefined || this.over === undefined) {
@@ -70,7 +76,8 @@ namespace Flexagonator {
 
     /** find all the flexagons with the same pat structure, which we'll search thru */
     private findSearchStates(): boolean {
-      const searchStates = findStructureGroup(this.states, this.start);
+      const groups: number[][] = this.groups ?? groupByStructure(this.states);
+      const searchStates = findStructureGroup(groups, this.start);
       if (searchStates === null) {
         this.error = { groupCycleError: "invalid start" };
         return false;
@@ -133,8 +140,7 @@ namespace Flexagonator {
   }
 
   /** return the indices into 'states' of all the flexagons that share the pat structure of states[index] */
-  function findStructureGroup(states: Flexagon[], index: number): number[] | null {
-    const groups: number[][] = groupByStructure(states);
+  function findStructureGroup(groups: number[][], index: number): number[] | null {
     for (let i = 0; i < groups.length; i++) {
       for (const j of groups[i]) {
         if (j === index) {

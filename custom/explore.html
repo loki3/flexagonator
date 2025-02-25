@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <meta charset="UTF-8">
 <html>
 
@@ -139,11 +140,10 @@
       }
     }
 
-    function groupByStructure(flexagons) {
+    function groupByStructure(groups) {
       var box = document.getElementById('states');
       if (box !== null) {
         var str = "states grouped by structure\n\n";
-        const groups = Flexagonator.groupByStructure(flexagons);
         for (var i = 0; i < groups.length; i++) {
           var line = groups[i].map(n => n.toString()).join(',') + '\n';
           str += line;
@@ -277,7 +277,7 @@
       // start searching for cycles
       statusArea.value = "searching...";
       var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
-      var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes);
+      var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes, explorer.fetchGroupByStructure());
       setTimeout(stepCycleFinder, 1, cycleFinder, 0);
     }
     function cycleKey(key) {
@@ -399,7 +399,7 @@
     <input onclick="showLabels(explorer.getFlexagons());" type="button" value="show labels" />
     <input onclick="showFlexes(explorer.getFoundFlexes());" type="button" value="show flexes" />
     <input onclick="showCounts(explorer.getFoundFlexes());" type="button" value="show counts" />
-    <input onclick="groupByStructure(explorer.getFlexagons());" type="button" value="group by structure" />
+    <input onclick="groupByStructure(explorer.fetchGroupByStructure());" type="button" value="group by structure" />
     <br/>
     <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />

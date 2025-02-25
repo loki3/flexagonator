@@ -15,6 +15,8 @@ namespace Flexagonator {
     private flexagons: Flexagon[] = [];
     private tracker: Tracker;
     private found: RelativeFlexes[] = [];
+    // flexagons grouped by pat structure (cached)
+    private grouped: number[][] | null = null;
 
     constructor(flexagon: Flexagon, flexes: Flexes, right?: Flex, over?: Flex) {
       // initialize flexes
@@ -53,8 +55,18 @@ namespace Flexagonator {
       return new FlexGraph(this.flexagons, this.found);
     }
 
-    // check the next unexplored state
-    // returns false once there are no more states to explore
+    /** get lists of flexagons grouped by pat structure (computed then cached) */
+    fetchGroupByStructure(): number[][] {
+      if (this.grouped === null || this.grouped.length === 0) {
+        this.grouped = groupByStructure(this.flexagons);
+      }
+      return this.grouped;
+    }
+
+    /**
+     * check the next unexplored state
+     * returns false once there are no more states to explore
+     */
     checkNext(): boolean {
       if (this.current === this.flexagons.length) {
         return false;
