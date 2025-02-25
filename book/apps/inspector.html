@@ -24,6 +24,7 @@
     let gRotate = 0;     // for special flexagon shapes, rotate the displayed flexagon
     let gSlices = null;  // track how they want the template sliced
     let gSliceStr = '';  // visible string describing slices
+    let gCreatedBy = 'name';  // how the current flexagon was created: name | generator | pats | script
 
     function updateUI() {
       const fm = creator.getFlexagonManager();
@@ -65,8 +66,11 @@
     }
 
     // handle the results of trying to create a new flexagon
-    function handleCreation(result) {
+    function handleCreation(result, createdBy) {
       if (result === true) {
+        if (createdBy) {
+          gCreatedBy = createdBy;
+        }
         clearSlices();
         updateUI();
         showCreationScript();
@@ -80,7 +84,7 @@
     // generating sequence
     function applyGenerator() {
       const flexes = document.getElementById('enterGenerator').value;
-      handleCreation(creator.createFromSequence(flexes));
+      handleCreation(creator.createFromSequence(flexes), 'generator');
     }
     function checkGenerator(key) {
       if (key == 13) {
@@ -91,7 +95,7 @@
     // create from pats
     function applyPats() {
       const rawPats = document.getElementById('enterPats').value;
-      handleCreation(creator.createFromPats(rawPats));
+      handleCreation(creator.createFromPats(rawPats), 'pats');
     }
     function checkPats(key, pats) {
       if (key == 13) {
@@ -186,18 +190,18 @@
       gRotate = overallShape === "bracelet" ? 90 : 0; // normally current hinge at top, but bracelets fit better horizontal
       selectedPieces = { ...selectedPieces, overallShape };
       fillNameLists();
-      handleCreation(creator.setNamePieces(selectedPieces));
+      handleCreation(creator.setNamePieces(selectedPieces), 'name');
     }
     function setLeafShape(leafShape) {
       selectedPieces = { ...selectedPieces, leafShape };
       fillNameLists();
-      handleCreation(creator.setNamePieces(selectedPieces));
+      handleCreation(creator.setNamePieces(selectedPieces), 'name');
     }
     function setPatCount(patsPrefix) {
       const n = Number.parseInt(patsPrefix);
       selectedPieces = { ...selectedPieces, patsPrefix: n };
       fillNameLists();
-      handleCreation(creator.setNamePieces(selectedPieces));
+      handleCreation(creator.setNamePieces(selectedPieces), 'name');
     }
 
     // set the list:string[] of <option> elements under a <select> element
@@ -233,6 +237,9 @@
       const element = document.getElementById('script');
       const result = creator.runScriptString(element.value);
       statusMessage('scriptStatus', result === true ? undefined : result);
+      if (result === true) {
+        gCreatedBy = 'script';
+      }
       updateUI();
     }
 
@@ -332,14 +339,14 @@
       // generating sequence
       const generator = params.get(paramGenerator);
       if (generator) {
-        handleCreation(creator.createFromSequence(generator));
+        handleCreation(creator.createFromSequence(generator), 'generator');
         document.getElementById('enterGenerator').value = generator;
       }
 
       // pat structure
       const createPats = params.get(paramPats);
       if (createPats) {
-        handleCreation(creator.createFromPats(createPats));
+        handleCreation(creator.createFromPats(createPats), 'pats');
         document.getElementById('enterPats').value = createPats;
       }
 
@@ -380,7 +387,8 @@
     }
 
     function showUrlParams() {
-      document.getElementById('urlParams').value = getUrlParams();
+      const newParams = gCreatedBy === 'script' ? '' : getUrlParams()
+      document.getElementById('urlParams').value = newParams;
     }
 
   </script>
