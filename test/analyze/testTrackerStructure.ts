@@ -20,6 +20,18 @@ namespace Flexagonator {
       const flipRotateNo = new StructureState(Flexagon.makeFromTree([[4, 5], [6, 7], [1, [2, 3]]]) as Flexagon);
       expect(base.isEqualTo(flipRotateNo)).toBe(false);
     });
+
+    it('understands directions', () => {
+      const base = new StructureState(Flexagon.makeFromTree([1, [2, 3], 4, [5, 6]], undefined, Directions.make('///|')) as Flexagon);
+      expect(base.isEqualTo(base)).toBe(true);
+
+      // 1 / [2,3] / 4 / [5,6] \   =  4 / [5,6] / 1 / [2,3] \
+      const rotate2 = new StructureState(Flexagon.makeFromTree([4, [5, 6], 1, [2, 3]], undefined, Directions.make('///|')) as Flexagon);
+      expect(base.isEqualTo(rotate2)).toBe(true);
+      // 1 / [2,3] / 4 / [5,6] \  !=  1 \ [2,3] \ 4 \ [5,6] /
+      const rotate1 = new StructureState(Flexagon.makeFromTree([1, [2, 3], 4, [5, 6]], undefined, Directions.make('|||/')) as Flexagon);
+      expect(base.isEqualTo(rotate1)).toBe(false);
+    });
   });
 
   describe('TrackerStructure', () => {

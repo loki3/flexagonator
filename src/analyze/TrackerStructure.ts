@@ -52,22 +52,28 @@ namespace Flexagonator {
     // flexagon is oriented relative to other states we'll see
     private readonly stateA: string[];
     private readonly stateB: string[];
+    private readonly dirsA?: boolean[];
+    private readonly dirsB?: boolean[];
 
     constructor(flexagon: Flexagon) {
       this.stateA = flexagon.pats.map(p => p.getStructure());
       this.stateB = flexagon.pats.map(p => p.makeFlipped().getStructure()).reverse();
+      if (flexagon.directions) {
+        this.dirsA = flexagon.directions.asRaw();
+        this.dirsB = this.dirsA.reverse();
+      }
     }
 
     /** are the pat structures of 'this' & 'state' the same? */
     isEqualTo(state: StructureState): boolean {
       const patCount = state.stateA.length;
       for (let i = 0; i < patCount; i++) {
-        if (areEqual(patCount, this.stateA, state.stateA, i)) {
+        if (areEqual(patCount, i, this.stateA, state.stateA, this.dirsA, state.dirsA)) {
           return true;
         }
       }
       for (let i = 0; i < patCount; i++) {
-        if (areEqual(patCount, this.stateB, state.stateA, i)) {
+        if (areEqual(patCount, i, this.stateB, state.stateA, this.dirsB, state.dirsA)) {
           return true;
         }
       }
@@ -76,9 +82,15 @@ namespace Flexagonator {
   }
 
   /** is state1[i] = state2[start+i] for every i? */
-  function areEqual(len: number, state1: string[], state2: string[], start: number): boolean {
+  function areEqual(
+    len: number, start: number, state1: string[], state2: string[], dirs1?: boolean[], dirs2?: boolean[]
+  ): boolean {
     for (let i = 0; i < len; i++) {
-      if (state1[i] !== state2[(i + start) % len]) {
+      const j = (i + start) % len;
+      if (state1[i] !== state2[j]) {
+        return false;
+      }
+      if (dirs1 && dirs2 && dirs1[i] !== dirs2[j]) {
         return false;
       }
     }
