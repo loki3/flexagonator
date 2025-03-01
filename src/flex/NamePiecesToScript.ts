@@ -78,6 +78,10 @@ namespace Flexagonator {
     return result && (result as NamePiecesError).nameError !== undefined;
   }
 
+  /** generating sequence for 'straight' strip with 6 faces,
+   * designed so 1/2/3 are the common faces & it starts from 1/2 */
+  export const straightHexaGenerator = 'P* P+ >P>P P+ ^P P+ ^P^';
+
   // assuming pats meet in the middle, figure out the angles
   function patCountToAnglesScript(patCount: number): Description {
     const center = 360 / patCount;
@@ -310,7 +314,7 @@ namespace Flexagonator {
     } else if (n === 6) {
       // we'll assume they want the "straight strip" version
       return {
-        flexes: 'P* P* P+ > P P*',
+        flexes: straightHexaGenerator,
         error: { nameError: 'warning: there are multiple possibilities for face count', propValue: n.toString() }
       };
     }

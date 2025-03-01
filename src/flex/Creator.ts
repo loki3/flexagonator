@@ -9,10 +9,10 @@ namespace Flexagonator {
     private interestingFlexes: string[] = [];
     private primeFlexes: string = ''
 
-    /** pass colors to use when creating flexagons, initializes a default hexa-hexaflexagon */
+    /** pass colors to use when creating flexagons, initializes a default straight-strip hexa-hexaflexagon */
     constructor(private readonly colors: number[]) {
       this.pieces = { patsPrefix: 6 };
-      this.generator = "P* P* P+ > P P+";
+      this.generator = straightHexaGenerator;
       const script: ScriptItem[] = [
         { flexes: this.generator },
         { normalizeIds: true, labelAsTree: colors }
