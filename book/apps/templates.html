@@ -11,6 +11,7 @@
   <script src="../../build/out.js"></script>
   <script src="templates.js"></script>
   <script type="text/javascript">
+    const version = "1.0";
     const gDefaultSize = 800;
     let gName = "";  // current template
 
@@ -60,8 +61,8 @@
     Templates
     <span class="title-small">companion app for</span>
     <a class="title-link" href="https://www.routledge.com/The-Secret-World-of-Flexagons-Fascinating-Folded-Paper-Puzzles/Elran-Schwartz-Sherman/p/book/9781032553832">
-      <span class="title-medium">The Secret World of Flexagons</span>
-    </a>
+      <span class="title-medium">The Secret World of Flexagons</span></a>
+    <span class="title-small" id="version"></span>
   </h1>
 
   <select id="templateList" onchange="showTemplate(event.target.value)" aria-label="template selection"></select>
@@ -81,6 +82,7 @@
   <canvas id="image-6" width="800" height="800"></canvas>
 
   <script type="text/javascript">
+    document.getElementById('version').innerHTML = `version ${version}`;
     fillTemplateList();
     showTemplate("fig1.2");
   </script>

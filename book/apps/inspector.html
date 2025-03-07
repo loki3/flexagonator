@@ -10,6 +10,7 @@
 
   <script src="../../build/out.js"></script>
   <script>
+    const version = "1.0";
     // optional URL search parameters
     const paramName = 'name';
     const paramGenerator = 'generator';
@@ -400,8 +401,8 @@
     Flexagon Inspector
     <span class="title-small">companion app for</span>
     <a class="title-link" href="https://www.routledge.com/The-Secret-World-of-Flexagons-Fascinating-Folded-Paper-Puzzles/Elran-Schwartz-Sherman/p/book/9781032553832">
-      <span class="title-medium">The Secret World of Flexagons</span>
-    </a>
+      <span class="title-medium">The Secret World of Flexagons</span></a>
+    <span class="title-small" id="version"></span>
   </h1>
 
   <!-- create flexagon -->
@@ -480,6 +481,8 @@
   <canvas id="unfolded10" width="800" height="600" hidden="true"></canvas>
 
   <script type="text/javascript">
+    document.getElementById('version').innerHTML = `version ${version}`;
+
     fillNameLists();
     updateUI();
     showCreationScript();
