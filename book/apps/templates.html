@@ -51,6 +51,23 @@
       drawTemplate(name, "image", face);
       enableButtons(name);
     }
+
+    function showInitialTemplate() {
+      // if "?figure=#.#", show specified figure, else default to first template
+      const params = new URLSearchParams(document.location.search);
+      const figure = params.get('figure');
+      if (figure !== null) {
+        const possible = `fig${figure}`;
+        if (allTemplates[possible] !== undefined) {
+          // they specified a valid figure, use it
+          showTemplate(possible);
+          document.getElementById("templateList").value = possible;
+          return;
+        }
+      }
+      // default
+      showTemplate("fig1.2");
+    }
   </script>
 </head>
 
@@ -84,7 +101,7 @@
   <script type="text/javascript">
     document.getElementById('version').innerHTML = `version ${version}`;
     fillTemplateList();
-    showTemplate("fig1.2");
+    showInitialTemplate();
   </script>
 </body>
 
