@@ -1,6 +1,8 @@
 namespace Flexagonator {
 
+  /** take a string representing a flex and break it into its details */
   export function makeFlexName(fullName: string): FlexName {
+    fullName = normalizeFlexName(fullName);
     const last = fullName[fullName.length - 1];
     const shouldGenerate = (last === '+') || (last === '*');
     const shouldApply = (last !== '+');
@@ -27,10 +29,17 @@ namespace Flexagonator {
     return new FlexName(baseName, isInverse, shouldGenerate, shouldApply);
   }
 
-  // can interpret a string representing a flex, whether it's an inverse, etc.
-  // '  inverse
-  // +  generate necessary structure but don't apply
-  // *  generate necessary structure and apply
+  /** make the symbols consistent, e.g., deal with various tick marks */
+  export function normalizeFlexName(name: string): string {
+    return name.replace(/’/g, "'");
+  }
+
+  /**
+   * can interpret a string representing a flex, whether it's an inverse, etc.
+   *  '  inverse
+   *  +  generate necessary structure but don't apply
+   *  *  generate necessary structure and apply
+   */
   export class FlexName {
     readonly fullName: string;      // e.g. S'*
     readonly baseName: string;      // e.g. S
@@ -72,8 +81,11 @@ namespace Flexagonator {
   }
 
 
-  // get a list of all the unique flex names (ingoring * and +, but including ')
-  // and optionally excluding ><^~
+  /**
+   * get a list of all the unique flex names (ingoring * and +, but including ')
+   * @param flexStr string representing list of flexes
+   * @param excludeRotates optionally exclude ><^~
+   */
   export function getUniqueFlexes(flexStr: string, excludeRotates: boolean): string[] {
     let result: string[] = [];
     const names: FlexName[] = parseFlexSequence(flexStr);

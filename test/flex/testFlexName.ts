@@ -42,6 +42,16 @@ namespace Flexagonator {
         expect(flex.shouldGenerate).toBeTrue();
       }
     });
+
+    it('deals with alternate symbols', () => {
+      const flex = makeFlexName("S’");
+      expect(flex.fullName).toBe("S'");
+      expect(flex.baseName).toBe("S");
+      expect(flex.flexName).toBe("S'");
+      expect(flex.isInverse).toBeTrue();
+      expect(flex.shouldApply).toBeTrue();
+      expect(flex.shouldGenerate).toBeFalse();
+    });
   });
 
   describe('getUniqueFlexes', () => {
