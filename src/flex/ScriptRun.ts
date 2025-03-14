@@ -43,7 +43,14 @@ namespace Flexagonator {
     }
 
     if (item.pats !== undefined) {
-      const result = Flexagon.makeFromTreeCheckZeros(item.pats);
+      // pats can be nested arrays of leaf ids -or- a string that can contain abbreviations
+      const pats = typeof item.pats !== 'string' ? item.pats
+        : parsePats(item.pats, fm.flexagon.getPatCount());
+      if (!pats) {
+        return { reason: TreeCode.InvalidPats, context: item.pats };
+      }
+
+      const result = Flexagon.makeFromTreeCheckZeros(pats);
       if (isTreeError(result)) {
         return result;
       }

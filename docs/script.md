@@ -60,6 +60,24 @@ you can simply specify 0's for all the ids and useful ids will be filled in for 
 
 See [Pat Notation](pat-notation.md) for details on how to create and interpret pat notation.
 
+Alternately, `pats` can be specified as a string with various abbreviations for small pats:
+
+```javascript
+   1 = 0                 2 = [0,0]
+  12 = [0,[0,0]]        21 = [[0,0],0]
+ 112 = [0,[0,[0,0]]]   211 = [[[0,0],0],0]
+12-1 = [[0,[0,0]],0]  1-21 = [0,[[0,0],0]]
+   4 = [[0,0],[0,0]]
+```
+
+If not all pats are specified in the string, it will repeat the pattern for any pats not specified.
+For example, the following two lines have the same effect:
+
+```javascript
+{ numPats: 6, pats: "12, 1" }
+{ pats: [ [0,[0,0]], 0, [0,[0,0]], 0, [0,[0,0]], 0 ] }
+```
+
 ### the `numPats` command
 
 Use the `numPats` command to create a new flexagon with the given number of pats, but only one leaf per pat.

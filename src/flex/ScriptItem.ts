@@ -5,7 +5,7 @@ namespace Flexagonator {
     // which can be used to determine properties such as pats, numPats, angles, etc.
     readonly name?: string;
     // creates a new flexagon with the given pat structure
-    readonly pats?: LeafTree[];
+    readonly pats?: LeafTree[] | string;
     // specify the number of pats for a new flexagon
     readonly numPats?: number;
     // for first leaf: [center angle, counterclockwise angle]

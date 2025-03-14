@@ -45,6 +45,7 @@ namespace Flexagonator {
     LeafIdMustBeInt = 'leaf id must be an integer',
     ArrayMustHave2Items = 'array must have 2 items',
     TooFewPats = 'too few pats',
+    InvalidPats = 'invalid pat specification',
     ExpectedArray = 'expected array',
     ErrorInSubArray = 'error in subarray',
     ParseError = 'parse error',
