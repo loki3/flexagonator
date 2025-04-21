@@ -39,6 +39,10 @@ Some of its features:
 ## For more information
 
 * [Flexagonator documentation](docs/readme.md)
+* [The Secret World of Flexagons](https://loki3.github.io/flex/secret.html)
+  A book that covers a wide variety of flexagons and flexes,
+  discusses how to use them in art and puzzles,
+  and delves into the mathematics behind them so you can design your own.
 * [Flexagon Theory](http://loki3.com/flex/g4g10/Flex-Theory.pdf):
   Background on the flex and pat notations used in the program
 * [Main flexagon page](http://loki3.com/flex/)
