@@ -63,18 +63,21 @@ namespace Flexagonator {
   }
 
   export function getExtents(leaflines: LeafLines): [Point, Point] {
-    let xmin = 0, ymin = 0, xmax = 0, ymax = 0;
+    let xmin = null, ymin = null, xmax = null, ymax = null;
     for (const face of leaflines.faces) {
       for (const point of face.corners) {
-        if (point.x < xmin)
+        if (xmin === null || point.x < xmin)
           xmin = point.x;
-        if (point.x > xmax)
+        if (xmax === null || point.x > xmax)
           xmax = point.x;
-        if (point.y < ymin)
+        if (ymin === null || point.y < ymin)
           ymin = point.y;
-        if (point.y > ymax)
+        if (ymax === null || point.y > ymax)
           ymax = point.y;
       }
+    }
+    if (xmin === null || ymin === null || xmax === null || ymax === null) {
+      return [{ x: 0, y: 0 }, { x: 0, y: 0 }];
     }
     return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
   }

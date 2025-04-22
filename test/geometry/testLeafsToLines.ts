@@ -21,6 +21,23 @@ namespace Flexagonator {
     });
   });
 
+  describe('getExtents', () => {
+    it('properly computes extents', () => {
+      const leaf: Leaf = { id: 1, top: 1, bottom: 1, isClock: true };
+      const sample: LeafLines = {
+        faces: [{ leaf: leaf, corners: [{ x: 1, y: 2 }, { x: 3, y: 4 }] }], // [1,2], [3,4]
+        folds: [],
+        cuts: [],
+      };
+
+      const extents = getExtents(sample);
+      expect(extents[0].x).toBe(1);
+      expect(extents[0].y).toBe(2);
+      expect(extents[1].x).toBe(3);
+      expect(extents[1].y).toBe(4);
+    });
+  });
+
   describe('rotateLeafLines', () => {
     it('should rotate all pieces of LeafLines', () => {
       const leaf: Leaf = { id: 1, top: 1, bottom: 1, isClock: true };

@@ -375,7 +375,7 @@ const templatesFlip = {
   "fig12.1": [getSeqScript(8, "F*", [45, 90], ">>"), getSeqOptions(0, -2, 1, "F"), /*sz*/[900, 361]],
   "fig12.4": [getSeqScript(6, "F*", [60, 90], ">>"), getSeqOptions(90, -2, 1, "F"), /*sz*/[900, 500]],
   "fig12.5": [getSeqScript(10, "(F+>>)5", [36, 90]), getSeqOptions(0, 2, 2, "(F+>>)5", undefined, undefined, 1.35), /*sz*/[1100, 488]],
-  "fig12.6": [getOddScript(7, "(F*<)5", "^", labelsF7, 1), { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1400, 256],
+  "fig12.6": [getOddScript(7, "(F*<)5", "^", labelsF7, 1), { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[840, 256],
   [{ end: 9, captions: [firstStar, { text: "a", which: -1 }] },
   { start: 10, captions: [lastStar, { text: "a", which: 0 }, { text: "(F<)5", which: -3, edge: 1 }] }]
   ]
@@ -499,7 +499,7 @@ const templatesDefine = {
 // 28: square silver octa
 const silverOcta8Script = [{ numPats: 8, angles2: [45, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesSilverOcta = {
-  "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1200, 204],
+  "fig28.2": [silverOcta8Script, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[912, 204],
     [{ start: 6, end: 17, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: 1, edge: 1 }] },
     { start: 6, end: 17, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig28.7": [getSeqScript(8, "Tw*", [45, 45], ">"), getSeqOptions(45, -1, 1, "Tw"), /*sz*/[994, 250]],
@@ -509,7 +509,7 @@ const templatesSilverOcta = {
 // 29: hexa bronze dodeca
 const bronzeHexaScript = [{ numPats: 12, angles2: [30, 90], flexAndColor: { flexes: "P* P+ >P>P P+ ^P P+ ^P^", colors } }];
 const templatesBronzeDodeca = {
-  "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[1100, 275],
+  "fig29.2": [bronzeHexaScript, { content: { showLeafProps: true }, rotation: 90 }, /*sz*/[946, 275],
     [{ start: 4, end: 21, captions: [firstStar, { text: "a", which: -1 }, { text: "6", which: -3 }] },
     { start: 4, end: 21, captions: [lastStar, { text: "a", which: 0 }] }]],
   "fig29.9": [[{ pats: [0, 0, [0, 0], 0, [0, 0], 0, 0, 0, [0, 0], 0, [0, 0], 0], angles2: [30, 90], labelAsTree }],
