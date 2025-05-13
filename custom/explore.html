@@ -24,6 +24,7 @@
         return false;
       }
       fm = result;
+      showSearchFlexes(Object.getOwnPropertyNames(fm.flexesToSearch));
       return true;
     }
 
@@ -66,6 +67,39 @@
       if (statusDiv !== null) {
         statusDiv.innerHTML = message;
       }
+    }
+
+    function showSearchFlexes(flexNameArray) {
+      var flexes = flexNameArray.join(' ');
+      var box1 = document.getElementById('searchFlexes');
+      if (box1 !== null) {
+        box1.value = flexes;
+      }
+      var box2 = document.getElementById('cycleFlexes');
+      if (box2 !== null) {
+        box2.value = flexes;
+      }
+    }
+
+    // turn a string of flex names from an `input` box into a Flexes object
+    function getFlexSubset(inputName) {
+      if (fm === undefined) {
+        return [];  // no flexes defined
+      }
+      var box = document.getElementById(inputName);
+      if (box === undefined || box.value === '') {
+        return fm.flexesToSearch; // default search flexes
+      }
+      var names = box.value.split(' ');
+
+      var flexes = {};
+      for (var name of names) {
+        var flex = fm.allFlexes[name];
+        if (flex !== undefined) {
+          flexes[name] = flex;
+        }
+      }
+      return flexes;
     }
 
     function showStates(flexagons, elementName) {
@@ -203,9 +237,10 @@
         return;
       }
 
+      var flexesToSearch = getFlexSubset('searchFlexes');
       var right = includeRight ? fm.allFlexes['>'] : undefined;
       var over = includeOver ? fm.allFlexes['^'] : undefined;
-      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, fm.flexesToSearch, right, over);
+      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, flexesToSearch, right, over);
       if (Flexagonator.isError(find)) {
         var str = Flexagonator.errorToString(find);
         output.innerHTML = str;
@@ -276,14 +311,10 @@
 
       // start searching for cycles
       statusArea.value = "searching...";
-      var flexes = { ...fm.flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
+      var flexesToSearch = getFlexSubset('cycleFlexes');
+      var flexes = { ...flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
       var cycleFinder = new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes, explorer.fetchGroupByStructure());
       setTimeout(stepCycleFinder, 1, cycleFinder, 0);
-    }
-    function cycleKey(key) {
-      if (key === 13) {
-        startCycleFinder();
-      }
     }
     function cancelCycleFinder() {
       cycleFinderCancelled = true;
@@ -420,11 +451,15 @@
   </p>
 
   <p>
-    <input onclick="findShortest(true, true);" type="button" value="Find" /> the shortest flex sequence that will take you between
+    <input onclick="findShortest(true, true);" type="button" value="Find" />
+    the shortest flex sequence that will take you between
     two flexagons given by pat notation or state number:
     <br/>
     <input onclick="findShortest(true, false);" type="button" value="Find (no ^)" />
     <input onclick="findShortest(false, true);" type="button" value="Find (no >)" />
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    use flexes:
+    <input id="searchFlexes" size="50" spellcheck="false" />
     <br/>
     <input id="searchStart" size="100" spellcheck="false" />
     <br/>
@@ -444,8 +479,11 @@
   <p>
     <input onclick="startCycleFinder();" type="button" value="Find" />
         all flex sequence cycles that preserve pat structure starting with state
-    <input onkeypress="cycleKey(event.keyCode)" id="startingIndex" size="5" spellcheck="false" value="0" /> -
+    <input onkeypress="if (event.keyCode===13) startCycleFinder();" id="startingIndex" size="5" spellcheck="false" value="0" /> -
     <input onclick="cancelCycleFinder();" type="button" value="cancel" />
+    <br/>
+    use flexes:
+    <input id="cycleFlexes" size="50" spellcheck="false" />
   </p>
   <div id="cycleStatus"></div>
   <textarea id="cycleBox" cols="100" rows="10" spellcheck="false" readonly="true"></textarea>

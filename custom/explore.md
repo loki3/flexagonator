@@ -120,7 +120,11 @@ to find a flex sequence that will take you back to a desired state.
 This searches for the shortest flex sequence that takes you from one state to another.
 The states can either be specified using using [pat notation](pat-notation.md) or state numbers.
 
-Picking the _Find_ option uses the same set of flexes as the _explore_ option,
+The flexes it uses during the search are listed in the box following the `use flexes` text.
+It defaults to the same set of flexes as the _explore_ option,
+but you can type in any list of supported flexes (separated by spaces).
+
+Picking the _Find_ option will start the search using the specified flexes,
 which includes turning over the flexagon and shifting hinges.
 You can skip turning it over with _Find (no ^)_ or skip shifting hinges with _Find (no >)_.
 
@@ -154,6 +158,10 @@ for more background on this result.)
 If you type in a state number that's part of one such group and pick `Find`,
 it will find the shortest sequence from that state to each of the other states in the group.
 It will then report how long the cycle is for each of these flex sequences.
+
+The flexes it uses during the search are listed in the box following the `use flexes` text.
+It defaults to the same set of flexes as the _explore_ option,
+but you can type in any list of supported flexes (separated by spaces).
 
 ## Pat rearrangements
 
