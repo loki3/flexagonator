@@ -377,6 +377,7 @@
 
   <p>
     Run a script to describe a flexagon, then explore all the states of that flexagon.
+    See <a href="https://github.com/loki3/flexagonator/blob/master/custom/explore.md">explore</a> for help.
   </p>
 
   <p>
@@ -420,7 +421,7 @@
 
   <p>
     <input onclick="findShortest(true, true);" type="button" value="Find" /> the shortest flex sequence that will take you between
-    two flexagons given by pat notation:
+    two flexagons given by pat notation or state number:
     <br/>
     <input onclick="findShortest(true, false);" type="button" value="Find (no ^)" />
     <input onclick="findShortest(false, true);" type="button" value="Find (no >)" />
@@ -434,7 +435,9 @@
   <p>
     <input onclick="findDisconnected();" type="button" value="Find" />
         how many disconnected graphs there are when only using the
-    <input id="useFlex" size="5" spellcheck="false" value="P" /> flex
+    <input id="useFlex" size="5" spellcheck="false" value="P"
+      onkeypress="if (event.keyCode===13) findDisconnected()" />
+    flex
   <div id="disconnected">-</div>
   </p>
 
