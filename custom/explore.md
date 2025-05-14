@@ -65,6 +65,11 @@ At any point during the search, you can pick the _cancel_ button to stop the sea
 Alternately, you can tell it not to turn over the flexagon - _explore (no ^)_ - not
 shift hinges - _explore (no >)_ - or to not turn it over or shift - _explore (no ^ or >)_.
 
+When determining unique states, it considers states that are rotated and/or flipped
+as being the same state.
+For example, states `[0, 1, 2]` and `[1, 2, 0]` are considered to be the same state
+since the second is the same as the first after applying the rotate right flex `>`.
+
 Note that it won't be practical to explore flexagons with a very large number of states,
 though the actual limit depends on your system.
 
@@ -150,7 +155,7 @@ pat structure, it means that no matter how many times you apply the sequence,
 it will continue to preserve that pat structure,
 so it will only travel between other states in the same group.
 Thus, it will have to eventually return to the original state, forming a cycle.
-Since most flex sequences don't cycle, this is simple way to find cyclic sequences.
+Since most flex sequences don't cycle, this is a simple way to find cyclic sequences.
 (See the _Structure Preservation Theorem_ in
 [The Secret World of Flexagons](https://loki3.github.io/flex/secret.html)
 for more background on this result.)
@@ -162,6 +167,17 @@ It will then report how long the cycle is for each of these flex sequences.
 The flexes it uses during the search are listed in the box following the `use flexes` text.
 It defaults to the same set of flexes as the _explore_ option,
 but you can type in any list of supported flexes (separated by spaces).
+
+As noted earlier, when it searches for all states reachable with a set of flexes,
+it considers any states that are simply rotated and/or flipped as equivalent,
+which has some implications for how it finds cycles.
+One, it doesn't consider flex sequences that only consist of `>`, `<`, and `^`,
+since these all result in the same state number.
+And two, for groups where the pat structure is symmetric in some way,
+the number of states that you can cycle between may be greater than it appears
+because intermediate states may be rotated or flipped versions of earlier states.
+For example, the flexes `>>`, `^>`, and `^<` all preserve the
+pat structure `[ -, [--], -, [--] ]`, rotating and flipping the flexagon.
 
 ## Pat rearrangements
 
