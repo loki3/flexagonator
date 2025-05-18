@@ -94,9 +94,14 @@ namespace Flexagonator {
 
     /** check if the flexagon's pat directions match the given pattern */
     hasDirections(patternDirs?: DirectionsOpt): boolean {
-      if (!patternDirs || !this.directions) {
+      if (patternDirs && !this.directions) {
+        // assume pattern needs to match //////
+        const expected = patternDirs.asRaw();
+        return expected.every(e => e === true || e === null);
+      } else if (!patternDirs || !this.directions) {
         return true;
       }
+
       if (patternDirs.getCount() !== this.directions.getCount()) {
         return false;
       }

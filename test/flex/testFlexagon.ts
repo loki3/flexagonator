@@ -202,5 +202,28 @@ namespace Flexagonator {
       expect(match.expectedDirs.asString(true)).toBe('//|');
       expect(match.actualDirs.asString(true)).toBe('/|/');
     });
+
+    it("treats missing flexagon directions as all /'s", () => {
+      const pattern: LeafTree[] = [0, [1, 2], [3, 4]];
+      const directionsMatch = DirectionsOpt.make('??/') as DirectionsOpt;
+      const flexagonNoDir = Flexagon.makeFromTree(trees) as Flexagon;
+      const match = flexagonNoDir.matchPattern(pattern, directionsMatch);
+      if (isPatternError(match)) {
+        console.log(match)
+        fail();
+        return;
+      }
+      expect(match.map(p => p.getString()).join(',')).toBe('1,-2,3,[4,5],[6,-7]');
+
+      // mismatch
+      const directionsMismatch = DirectionsOpt.make('??|') as DirectionsOpt;
+      const match2 = flexagonNoDir.matchPattern(pattern, directionsMismatch);
+      if (!isPatternError(match2) || match2.expectedDirs === undefined || match2.actualDirs !== undefined) {
+        fail();
+        return;
+      }
+      expect(match2.expectedDirs.asString(true)).toBe('??|');
+      expect(match2.actualDirs).toBeUndefined();
+    });
   });
 }
