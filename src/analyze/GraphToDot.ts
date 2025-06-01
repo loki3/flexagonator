@@ -14,6 +14,15 @@ namespace Flexagonator {
     return dotSimpleGraph(transitions);
   }
 
+  /**
+   * create a DOT graph (tree) showing the shortest number of flexes from
+   * a given state (default: 0) to every other state
+   */
+  export function dotTree(allRelFlexes: RelativeFlexes[], startAt?: number): string {
+    const transitions = getStateToStateTree(allRelFlexes, startAt);
+    return dotSimpleGraph(transitions);
+  }
+
   export function dotSimpleGraph(transitions: StateToState): string {
     let str = "graph {\n";
 

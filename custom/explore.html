@@ -200,6 +200,13 @@
       }
     }
 
+    function showTree(found) {
+      var box = document.getElementById('states');
+      if (box !== null) {
+        box.value = Flexagonator.dotTree(found);
+      }
+    }
+
     function showDotLeafGraph(flexagons) {
       var box = document.getElementById('states');
       if (box !== null) {
@@ -436,6 +443,7 @@
     <input onclick="showDotSimple(explorer.getFoundFlexes());" type="button" value="DOT: state to state" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), true);" type="button" value="DOT: flexes" />
     <input onclick="showDotFlexes(explorer.getFoundFlexes(), false);" type="button" value="DOT: directed flexes" />
+    <input onclick="showTree(explorer.getFoundFlexes());" type="button" value="DOT: flex tree" />
     <input onclick="showDotLeafGraph(explorer.getFlexagons());" type="button" value="DOT: leaf graph" />
   </p>
 

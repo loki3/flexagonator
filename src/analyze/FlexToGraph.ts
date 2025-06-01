@@ -30,6 +30,35 @@ namespace Flexagonator {
     return result;
   }
 
+  /**
+   * take a description of all the flexes that can be performed from each state
+   * and create a tree (graph with no cycles) from a given state (default: 0) to
+   * all other states, which will reflect the shortest number of flexes to each state
+   */
+  export function getStateToStateTree(allRelFlexes: RelativeFlexes[], startAt?: number): StateToState {
+    startAt = startAt ?? 0;
+    const result: StateToState = [];
+    const found: Set<Number> = new Set<number>();
+    const queued: number[] = [startAt];
+    let which = 0;
+
+    found.add(startAt);
+    do {
+      const thisState = queued[which];
+      const toStates: number[] = [];
+      for (const relFlex of allRelFlexes[thisState]) {
+        const toState = relFlex.toState;
+        if (!found.has(toState)) {
+          found.add(toState);
+          queued.push(toState);
+          toStates.push(toState);
+        }
+      }
+      result[thisState] = toStates;
+    } while (queued[++which] !== undefined);
+
+    return result;
+  }
 
   export interface FlexToState {
     readonly flex: string,
