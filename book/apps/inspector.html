@@ -376,7 +376,8 @@
       };
       const pats = () => {
         const pats = creator.getCreationPats();
-        return pats ? `&${paramPats}=${encodeURIComponent(pats)}` : '';
+        const patsStr = JSON.stringify(pats);
+        return pats ? `&${paramPats}=${encodeURIComponent(patsStr)}` : '';
       }
       const flexes = () => {
         const fm = creator.getFlexagonManager();
