@@ -8,7 +8,7 @@
   <script type="text/javascript">
     var flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
     var fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
-    var stripContent = 0/*StripContent.FoldingLabels*/;
+    var stripContent = { face: 'both', showLeafProps: true, showIds: false };
     var buttons = null;
     var captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
 
@@ -241,6 +241,21 @@
     function backsideMouseClick(event) {
       flexAndShow('^');
     }
+
+    //
+    // strip settings
+    function setShowStripContent(value) {
+      stripContent.showFoldingOrder = stripContent.showLeafProps = undefined;
+      if (value === 'front-back') { stripContent.face = 'both'; stripContent.showLeafProps = true; }
+      else if (value === 'front') { stripContent.face = 'front'; stripContent.showLeafProps = true; }
+      else if (value === 'back') { stripContent.face = 'back'; stripContent.showLeafProps = true; }
+      else { stripContent.face = 'both'; stripContent.showFoldingOrder = true; }
+      updateUI();
+    }
+    function setShowIds(on) {
+      stripContent.showIds = on;
+      updateUI();
+    }
   </script>
 </head>
 
@@ -327,11 +342,15 @@
   <canvas id="unfolded" width="800" height="600"></canvas>
 
   <p>
-    <input onclick="stripContent = 0; updateUI();" type="button" value="show folding numbers" />
-    <input onclick="stripContent = 1; updateUI();" type="button" value="folding numbers + ids" />
-    <input onclick="stripContent = 2; updateUI();" type="button" value="front colors and labels" />
-    <input onclick="stripContent = 3; updateUI();" type="button" value="back colors and labels" />
-    <input onclick="stripContent = 4; updateUI();" type="button" value="front & back labels" />
+    show:
+    <select onchange="setShowStripContent(event.target.value)" id="showStripContent">
+      <option value="front-back" selected>front &amp; back labels</option>
+      <option value="front">front labels &amp; colors</option>
+      <option value="back">back labels &amp; colors</option>
+      <option value="folding">folding order</option>
+    </select> &nbsp;&nbsp;&nbsp;
+    <input type="checkbox" id="showIds" checked=stripContent.showIds onclick="setShowIds(event.target.checked)">
+    <label for="showIds">show leaf ids</label>
   </p>
 
   <p>
