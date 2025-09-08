@@ -8,7 +8,7 @@
   <script type="text/javascript">
     var flexagon = Flexagonator.Flexagon.makeFromTree(Flexagonator.hexaHexaLeafTree);
     var fm = Flexagonator.FlexagonManager.make(flexagon, Flexagonator.hexaHexaProperties);
-    var stripContent = { face: 'both', showLeafProps: true, showIds: false };
+    var stripContent = { face: 'both', showLeafProps: true, showIds: false, inset: 0.1 };
     var buttons = null;
     var captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
 
@@ -248,7 +248,7 @@
       stripContent.showFoldingOrder = stripContent.showLeafProps = undefined;
       if (value === 'front-back') { stripContent.face = 'both'; stripContent.showLeafProps = true; }
       else if (value === 'front') { stripContent.face = 'front'; stripContent.showLeafProps = true; }
-      else if (value === 'back') { stripContent.face = 'back'; stripContent.showLeafProps = true; }
+      else if (value === 'back') { stripContent.face = 'back-y'; stripContent.showLeafProps = true; }
       else { stripContent.face = 'both'; stripContent.showFoldingOrder = true; }
       updateUI();
     }
