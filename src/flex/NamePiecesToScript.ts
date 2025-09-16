@@ -166,6 +166,11 @@ namespace Flexagonator {
       const directions = Directions.make('/|//|/'.repeat(3));
       return { angles2: [30, 60], directions };
     }
+    // triangular bronze 24flexagon
+    if (sides === 3 && (!leafShape || leafShape.startsWith('bronze')) && n === 24) {
+      const directions = Directions.make('//||||//'.repeat(3));
+      return { angles2: [60, 90], directions };
+    }
 
     // rectangular silver 16flexagon
     if (overallShape === 'rectangular' && (!leafShape || leafShape.startsWith('silver')) && n === 16) {
@@ -216,10 +221,26 @@ namespace Flexagonator {
       const directions = Directions.make('/|////|/');
       return { angles2: [90, 30], directions };
     }
+
     // pentagonal silver decaflexagon
     if (overallShape === 'pentagonal' && leafShape && leafShape.startsWith('silver') && n === 10) {
       const directions = Directions.make('///|//|///');
       return { angles2: [45, 45], directions };
+    }
+    // pentagonal bronze decaflexagon
+    if (overallShape === 'pentagonal' && leafShape && leafShape.startsWith('bronze') && n === 10) {
+      const directions = Directions.make('|//|//|//|');
+      return { angles2: [60, 90], directions };
+    }
+    // pentagonal bronze hexadecaflexagon
+    if (overallShape === 'pentagonal' && leafShape && leafShape.startsWith('bronze') && n === 16) {
+      const directions = Directions.make('|//|//||||//|//|');
+      return { angles2: [90, 60], directions };
+    }
+    // pentagonal bronze octadecaflexagon
+    if (overallShape === 'pentagonal' && leafShape && leafShape.startsWith('bronze') && n === 18) {
+      const directions = Directions.make('/||////||||////||/');
+      return { angles2: [60, 30], directions };
     }
 
     // bracelets

@@ -31,6 +31,7 @@ namespace Flexagonator {
   const flexagonNames: NameList[] = [
     ['triangular', 'bronze', 6],
     ['triangular', 'bronze', 18],
+    ['triangular', 'bronze', 24],
     ['triangular ring', 'right', 12],
     ['pyramid', 'regular', 4],
     ['square', 'silver', 4],
@@ -46,6 +47,9 @@ namespace Flexagonator {
     ['pentagonal', 'isosceles', 5],
     ['pentagonal', 'right', 10],
     ['pentagonal', 'silver', 10],
+    ['pentagonal', 'bronze', 10],
+    ['pentagonal', 'bronze', 16],
+    ['pentagonal', 'bronze', 18],
     ['pentagonal ring', 'right', 20],
     ['hexagonal', 'regular', 6],
     ['hexagonal', 'regular', 10],
