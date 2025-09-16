@@ -35,6 +35,7 @@ namespace Flexagonator {
     ['pyramid', 'regular', 4],
     ['square', 'silver', 4],
     ['square', 'silver', 8],
+    ['square', 'silver', 16],
     ['square', 'silver', 32],
     ['square ring', 'right', 16],
     ['rhombic', 'bronze', 4],

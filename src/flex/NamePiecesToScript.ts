@@ -172,6 +172,11 @@ namespace Flexagonator {
       const directions = Directions.make('|//////|'.repeat(2));
       return { angles2: [90, 45], directions };
     }
+    // square silver 16flexagon
+    if (sides === 4 && (!leafShape || leafShape.startsWith('silver')) && n === 16) {
+      const directions = Directions.make('/||/'.repeat(4));
+      return { angles2: [45, 90], directions };
+    }
     // square silver 32flexagon
     if (sides === 4 && (!leafShape || leafShape.startsWith('silver')) && n === 32) {
       const directions = Directions.make('|//////|'.repeat(4));
