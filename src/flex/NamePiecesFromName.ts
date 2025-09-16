@@ -59,7 +59,7 @@ namespace Flexagonator {
   }
 
   // in 'triangular bronze penta-hexaflexagon', extract 'hexa'
-  function getPatsPrefix(word: string): GreekNumberType | undefined {
+  function getPatsPrefix(word: string): GreekNumberType | number | undefined {
     const chunks = word.split('-');
     if (chunks.length === 0) {
       return undefined;
@@ -68,8 +68,13 @@ namespace Flexagonator {
     if (!last.endsWith('flexagon')) {
       return undefined;
     }
-    const result = last.slice(0, last.length - 8);
-    return result === '' ? undefined : result as GreekNumberType;
+
+    const prefix = last.slice(0, last.length - 8);
+    if (prefix === '') {
+      return undefined;
+    }
+    const asNumber = Number.parseInt(prefix);
+    return typeof asNumber === 'number' && asNumber > 0 ? asNumber : prefix as GreekNumberType;
   }
 
 }

@@ -1,6 +1,6 @@
 namespace Flexagonator {
 
-  describe('namePiecesToScript', () => {
+  describe('namePiecesFromName', () => {
 
     function compare(p1: NamePieces, p2: NamePieces): boolean {
       if (p1.overallShape !== p2.overallShape) { return false; }
@@ -20,6 +20,9 @@ namespace Flexagonator {
     it('should find patsPrefix', () => {
       const pieces = namePiecesFromName('hexaflexagon');
       expect(compare(pieces, { patsPrefix: 'hexa' })).toBeTrue();
+
+      const pieces2 = namePiecesFromName('32flexagon');
+      expect(compare(pieces2, { patsPrefix: 32 })).toBeTrue();
     });
 
     it('should find both faceCount & patsPrefix', () => {

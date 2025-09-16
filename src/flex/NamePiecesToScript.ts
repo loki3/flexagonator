@@ -167,6 +167,17 @@ namespace Flexagonator {
       return { angles2: [30, 60], directions };
     }
 
+    // rectangular silver 16flexagon
+    if (overallShape === 'rectangular' && (!leafShape || leafShape.startsWith('silver')) && n === 16) {
+      const directions = Directions.make('|//////|'.repeat(2));
+      return { angles2: [90, 45], directions };
+    }
+    // square silver 32flexagon
+    if (sides === 4 && (!leafShape || leafShape.startsWith('silver')) && n === 32) {
+      const directions = Directions.make('|//////|'.repeat(4));
+      return { angles2: [45, 45], directions };
+    }
+
     // hexagonal regular decaflexagon
     if (sides === 6 && (!leafShape || leafShape === 'regular') && n === 10) {
       return { angles2: [60, 60], directions: Directions.make('//|//'.repeat(2)) };
@@ -175,6 +186,11 @@ namespace Flexagonator {
     if (sides === 6 && leafShape && leafShape.startsWith('silver') && n === 12) {
       const directions = Directions.make('|//'.repeat(4));
       return { angles2: [45, 90], directions };
+    }
+    // hexagonal bronze icosaflexagon
+    if (sides === 6 && (!leafShape || leafShape.startsWith('bronze')) && n === 20) {
+      const directions = Directions.make('//||//||//'.repeat(2));
+      return { angles2: [30, 60], directions };
     }
     if (overallShape === 'rhombic' && (!leafShape || leafShape.startsWith('bronze'))) {
       if (n === 4) {

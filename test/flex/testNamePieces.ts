@@ -21,6 +21,11 @@ namespace Flexagonator {
       expect(name).toBe('pentaflexagon');
     });
 
+    it('uses a number for a large patsPrefix', () => {
+      const name = namePiecesToName({ patsPrefix: 32 });
+      expect(name).toBe('32flexagon');
+    });
+
     it('uses number patsPrefix', () => {
       const name = namePiecesToName({ patsPrefix: 5 });
       expect(name).toBe('pentaflexagon');
