@@ -12,6 +12,24 @@ namespace Flexagonator {
       expect(result.output).toEqual([[[6, -9], -11], 1, -8, [-2, 7], [[4, -10], -3], 5]);
     });
 
+    it("can handle pat directions", () => {
+      const flexes = makeMorphFlexes(6);
+      const result = makeFlexFromSequence("Tr2", flexes, "Flex", undefined, "|////|");
+      if (isFlexError(result)) {
+        fail("failed to make flex using pat directions");
+        return;
+      }
+      expect(result.input).toEqual([[1, [7, 8]], 2, 3, 4, 5, 6]);
+      expect(result.output).toEqual([7, 2, 3, 4, 5, [[-1, 6], -8]]);
+    });
+
+    it("complains if pat directions don't match", () => {
+      const flexes = makeMorphFlexes(6);
+      // complains when the directions don't support the given sequence
+      const result = makeFlexFromSequence("Tr2", flexes, "Flex", undefined, "|/////");
+      expect(isFlexError(result)).toBe(true);
+    });
+
     /*
     // this runs thru all morph-kite combos (AB' and A'B) & dumps the pat structure in a shortform
     it("can recombine all the morph-kite flexes", () => {

@@ -10,11 +10,11 @@ namespace Flexagonator {
     sequence: string, flexes: Flexes, name?: string,
     rotation?: FlexRotation, inputDirs?: string, outputDirs?: string, orderOfDirs?: number[]
   ): Flex | FlexError {
-    const flexNames = parseFlexSequence(sequence);
-
-    const flexagon = makeEmptyFlexagon(flexes);
+    const dirs = inputDirs ? Directions.make(inputDirs) : undefined;
+    const flexagon = makeEmptyFlexagon(flexes, dirs);
     const fm = new FlexagonManager(flexagon, undefined, flexes);
 
+    const flexNames = parseFlexSequence(sequence);
     const generator = makeGeneratingSequence(flexNames);
     const result = fm.applyFlexes(generator, false);
     if (isFlexError(result)) {
@@ -34,7 +34,7 @@ namespace Flexagonator {
     return makeFlex(name, input, output, fr, inputDirs, outputDirs, orderOfDirs);
   }
 
-  function makeEmptyFlexagon(flexes: Flexes): Flexagon {
+  function makeEmptyFlexagon(flexes: Flexes, dirs?: Directions): Flexagon {
     const allNames = Object.getOwnPropertyNames(flexes);
     const someFlex = flexes[allNames[0]];
     const numPats = someFlex.input.length;
@@ -42,7 +42,7 @@ namespace Flexagonator {
     for (var i = 1; i <= numPats; i++) {
       pats.push(i);
     }
-    return Flexagon.makeFromTree(pats) as Flexagon;
+    return Flexagon.makeFromTree(pats, undefined, dirs) as Flexagon;
   }
 
   function makeGeneratingSequence(flexNames: FlexName[]): FlexName[] {
