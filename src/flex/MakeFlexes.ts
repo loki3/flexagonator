@@ -463,7 +463,7 @@ namespace Flexagonator {
       input = [[1, 2], [3, 4], 5, [6, 7], 8, 9, [10, 11], [12, 13], 14, [15, 16], 17, 18];
       output = [-1, -4, [-5, 3], -7, [-8, 6], [11, -9], -10, -13, [-14, 12], -16, [-17, 15], [2, -18]];
     }
-    return makeFlex("twist flex", input, output, FlexRotation.CBA, dirs, dirs) as Flex;
+    return makeFlex("twist flex", input, output, FlexRotation.BAC, dirs, dirs) as Flex;
   }
 
   function createLtf(patCount: number, dirs?: string): Flex {
