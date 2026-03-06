@@ -1,6 +1,6 @@
 {
   "name": "flexagonator",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "interactive flexagon flexer",
   "scripts": {
     "build": "echo Building... && npm run assemble && npm run test && echo Success!",
