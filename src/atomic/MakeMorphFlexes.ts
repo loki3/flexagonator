@@ -111,6 +111,10 @@ namespace Flexagonator {
       [1, 2], /**/[[[-4, 5], 3]],
       [[3, [1, -2]]], /**/[4, 5],
       "/|", "/", "/|", "/", FlexRotation.Left, -1);  // /\#/ -> /#\/
+    flexes["Tr3s"] = createLocalFlex("transfer 3 stable", patCount - 3, 6,
+      [1, 2], /**/[[[-4, 5], 3]],
+      [[3, [1, -2]], 4], /**/[5], // keep same reference hinge
+      "/|", "/", "/|", "/");  // /\#/
     flexes["Tr4"] = createLocalFlex("transfer 4", patCount - 4, 7,
       [1, 2], /**/[3, [4, [6, -5]]],
       [[[-2, 1], 3], 4], /**/[5, 6],
