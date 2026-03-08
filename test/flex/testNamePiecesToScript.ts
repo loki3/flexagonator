@@ -215,6 +215,24 @@ namespace Flexagonator {
       }
     });
 
+    it("should handle star ring versus other rings", () => {
+      const name: NamePieces = { overallShape: 'star ring', leafShape: 'bronze', patsPrefix: 24 };
+      const [script, errors] = namePiecesToScript(name);
+      expect(script.length).toBe(3);
+      expect(errors.length).toBe(0);
+      expect(script[0].numPats).toBe(24);
+      expect(script[1].angles2 && script[1].angles2[0]).toBe(90);
+      expect(script[1].angles2 && script[1].angles2[1]).toBe(60);
+
+      const name2: NamePieces = { overallShape: 'hexagonal ring', leafShape: 'bronze', patsPrefix: 24 };
+      const [script2, errors2] = namePiecesToScript(name2);
+      expect(script2.length).toBe(3);
+      expect(errors2.length).toBe(0);
+      expect(script2[0].numPats).toBe(24);
+      expect(script2[1].angles2 && script2[1].angles2[0]).toBe(60);
+      expect(script2[1].angles2 && script2[1].angles2[1]).toBe(30);
+    });
+
     it('should complain if faceCount is invalid', () => {
       const name = { faceCount: 'blah' };
       const [script, errors] = namePiecesToScript(name as NamePieces);

@@ -162,12 +162,12 @@ namespace Flexagonator {
         return { angles2: [90, 45], directions };
       }
       // star ring right icosaflexagon
-      if (n === 20 && (leafShape === undefined || leafShape.startsWith('right'))) {
+      if (sides === null && n === 20 && (leafShape === undefined || leafShape.startsWith('right'))) {
         const directions = Directions.make('/||/'.repeat(5));
         return { angles2: [90, 54], directions };
       }
       // star ring bronze 24flexagon
-      if (n === 24 && (leafShape === undefined || leafShape.startsWith('bronze'))) {
+      if (sides === null && n === 24 && (leafShape === undefined || leafShape.startsWith('bronze'))) {
         const directions = Directions.make('/||/'.repeat(6));
         return { angles2: [90, 60], directions };
       }
