@@ -4,6 +4,11 @@ namespace Flexagonator {
    * convert NamePieces to a series of script commands, reporting any errors encountered
    */
   export function namePiecesToScript(name: NamePieces): [ScriptItem[], NamePiecesError[]] {
+    // normalize
+    if (name.overallShape === "") { name = { ...name, overallShape: undefined }; }
+    if (name.leafShape as string === "") { name = { ...name, leafShape: undefined }; }
+    if (name.patsPrefix as string === "") { name = { ...name, patsPrefix: undefined }; }
+
     const info: InfoStorer = new InfoStorer();
     const patCount = getPatsPrefixAsNumber(name.patsPrefix);
 
