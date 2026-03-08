@@ -19,7 +19,7 @@ namespace Flexagonator {
   export type OverallShapeType =
     'triangular' | 'quadrilateral' | 'pentagonal' | 'hexagonal' | 'heptagonal' | 'octagonal' | 'enneagonal' |
     'decagonal' | 'hendecagonal' | 'dodecagonal' | 'dodecagonal ring' |
-    'star' | 'triangular ring' | 'square ring' | 'pentagonal ring' | 'hexagonal ring' | 'octagonal ring' | 'decagonal ring' |
+    'star' | 'star ring' | 'triangular ring' | 'square ring' | 'pentagonal ring' | 'hexagonal ring' | 'octagonal ring' | 'decagonal ring' |
     'square' | 'rectangular' | 'rhombic' | 'kite' |
     'pyramid' | 'bracelet';
 

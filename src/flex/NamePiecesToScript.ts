@@ -120,7 +120,7 @@ namespace Flexagonator {
     }
 
     // rings with a hole in the middle
-    if (overallShape.endsWith('ring') && sides !== null) {
+    if (overallShape.endsWith('ring') && (sides !== null || overallShape === 'star ring')) {
       // hexagonal ring regular n-flexagon
       if (sides === 6 && (!leafShape || leafShape === 'regular')) {
         switch (n) {
@@ -146,18 +146,41 @@ namespace Flexagonator {
         return { angles2: [72, 72], directions: Directions.make('|//|//|'.repeat(2)) };
       }
 
-      // (6,12), (8,16) e.g. hexagonal ring isosceles dodecaflexagon
-      if (sides >= 6 && sides === n / 2 && (!leafShape || leafShape.startsWith('isosceles'))) {
-        return computeRing3Script(n);
+      // hexagonal ring bronze dodecaflexagon
+      if (sides === 6 && n === 12 && leafShape && leafShape.startsWith('bronze')) {
+        const directions = Directions.make('/||/'.repeat(3));
+        return { angles2: [90, 30], directions };
+      }
+      // square ring silver hexadecaflexagon
+      if (sides === 4 && n === 16 && leafShape && leafShape.startsWith('silver')) {
+        const directions = Directions.make('/||/'.repeat(4));
+        return { angles2: [90, 45], directions };
+      }
+      // star ring right icosaflexagon
+      if (n === 20 && (leafShape === undefined || leafShape.startsWith('right'))) {
+        const directions = Directions.make('/||/'.repeat(5));
+        return { angles2: [90, 54], directions };
+      }
+      // star ring bronze 24flexagon
+      if (n === 24 && (leafShape === undefined || leafShape.startsWith('bronze'))) {
+        const directions = Directions.make('/||/'.repeat(6));
+        return { angles2: [90, 60], directions };
       }
 
-      // (6,9) (8,12), (10,15), (12,18), (14,21) e.g. octagonal ring dodecaflexagon
-      if (sides >= 6 && sides === 2 * n / 3) {
-        return computeRing1Script(n);
-      }
-      // (3,12) (4,16) (5,20) (6,24) e.g. triangular ring dodecaflexagon
-      if (sides >= 3 && sides === n / 4) {
-        return computeRing2Script(n);
+      if (sides !== null) {
+        // (6,12), (8,16) e.g. hexagonal ring isosceles dodecaflexagon
+        if (sides >= 6 && sides === n / 2 && (!leafShape || leafShape.startsWith('isosceles'))) {
+          return computeRing3Script(n);
+        }
+
+        // (6,9) (8,12), (10,15), (12,18), (14,21) e.g. octagonal ring dodecaflexagon
+        if (sides >= 6 && sides === 2 * n / 3) {
+          return computeRing1Script(n);
+        }
+        // (3,12) (4,16) (5,20) (6,24) e.g. triangular ring dodecaflexagon
+        if (sides >= 3 && sides === n / 4) {
+          return computeRing2Script(n);
+        }
       }
     }
 
