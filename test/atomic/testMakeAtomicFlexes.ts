@@ -141,6 +141,11 @@ namespace Flexagonator {
       testDefinition("F3", AtomicDecomposition.F3);
     });
 
+    it("should handle /| and //| flexes", () => {
+      testDefinition("N", AtomicDecomposition.N);
+      testDefinition("Bfl", AtomicDecomposition.Bfl);
+    });
+
     it("should handle /\\\\/ flexes", () => {
       testDefinition("Tr4", AtomicDecomposition.Tr4);
       testDefinition("Bf", AtomicDecomposition.Bf);

@@ -81,6 +81,12 @@ namespace Flexagonator {
     // start & end /////
     F3: ">Xl'<< Ul'<< Ur>>> Ul'<< Ur< Ul>Ur'>",
 
+    // start & end /\
+    N: "Ul < Ur > Ul' > Xl << Ur' >",
+
+    // start & end //\
+    Bfl: "> Ul < Ur > Ul' > Ul <<< Ul' Ur' >",
+
     // start & end /\/
     Tr3: "Ur << Ul' >> Ul << Ur' >",
 

@@ -52,9 +52,23 @@ namespace Flexagonator {
       expect(checkForEqual("Lk", "Mkf Lkk Mkbs' <", mainFlexes, morphFlexes)).withContext("Lk failed").toBeTrue();
     });
 
+    it('handles combining flexes on non-isoflexagon dodecaflexagons', () => {
+      const morphFlexes: Flexes = makeMorphFlexes(12);
+      const mainFlexes: Flexes = makeAllFlexes(12);
+
+      const dirsN = Directions.make('|////////|//'); // so that >Mkf' works
+      expect(checkForEqual("N", "< Mkf' Mkr >", mainFlexes, morphFlexes, dirsN)).withContext("N failed").toBeTrue();
+      const dirsBfl = Directions.make('/|////////|/'); // so that Mkf' works
+      expect(checkForEqual("Bfl", "Mkf' Mkl", mainFlexes, morphFlexes, dirsBfl)).withContext("Bfl failed").toBeTrue();
+    });
+
     // check that flex = sequence, when applied
-    function checkForEqual(flex: string, sequence: string, mainFlexes: Flexes, morphFlexes: Flexes): boolean {
-      const pre = Flexagon.makeFromTree(mainFlexes[flex].input) as Flexagon;
+    function checkForEqual(flex: string, sequence: string, mainFlexes: Flexes, morphFlexes: Flexes, dirs?: Directions): boolean {
+      const leaftree = mainFlexes[flex] ? mainFlexes[flex].input : morphFlexes[flex].input;
+      if (dirs === undefined) {
+        dirs = morphFlexes[flex] ? createDirs(morphFlexes[flex].inputDirs) : undefined;
+      }
+      const pre = Flexagon.makeFromTree(leaftree, undefined, dirs) as Flexagon;
       const fFlex = applyFlexes(mainFlexes, morphFlexes, flex, pre);
       const fSequence = applyFlexes(mainFlexes, morphFlexes, sequence, pre);
       return compare(flex, sequence, fFlex, fSequence)
@@ -64,8 +78,8 @@ namespace Flexagonator {
     function applyFlexes(mainFlexes: Flexes, morphFlexes: Flexes, sequence: string, flexagon: Flexagon): Flexagon {
       const flexes = sequence.split(' ');
       for (const flex of flexes) {
-        const which = flex.startsWith('Mk') || (flex === 'Sp') || (flex === 'Lkk') ? morphFlexes : mainFlexes;
-        const result = which[flex].apply(flexagon);
+        const flexdef = mainFlexes[flex] ? mainFlexes[flex] : morphFlexes[flex];
+        const result = flexdef.apply(flexagon);
         if (isFlexError(result)) {
           console.log('failed to apply ', flex, ' with error ', JSON.stringify(result));
           return flexagon;
@@ -73,6 +87,14 @@ namespace Flexagonator {
         flexagon = result;
       }
       return flexagon
+    }
+
+    function createDirs(dirs: DirectionsOpt | undefined): Directions | undefined {
+      if (dirs === undefined) {
+        return undefined;
+      }
+      const bools = dirs.asRaw().map(d => d === null ? true : d);
+      return Directions.make(bools);
     }
 
     // compare the pat structure of two flexagons

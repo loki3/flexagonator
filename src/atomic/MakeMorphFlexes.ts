@@ -1,9 +1,7 @@
 namespace Flexagonator {
 
   /**
-   * create local flexes that transform 4 pats
-   * from an arrangement where all pats meet in the middle (////)
-   * to an arrangement where there's a "kite" sticking off (\//\).
+   * create local flexes that have non-isoflexagons as their input or output
    */
   export function makeMorphFlexes(patCount: number): Flexes {
     let flexes: Flexes = {};
@@ -95,6 +93,17 @@ namespace Flexagonator {
       [1, 2, 3, 4], /**/[5, [[-7, 6], 8]],
       [[1, [3, -2]], 4], /**/[5, 6, 7, 8],
       "//|/", "/|", "|/", "/|//");
+
+    // /\
+    flexes["N"] = createLocalFlex("n", patCount - 2, 6,
+      [[-2, 1]], /**/[[-3, [-5, 4]]],
+      [[[[3, -2], -4], 1]], /**/[-5],
+      "/", "|", "/", "|");
+    // //\
+    flexes["Bfl"] = createLocalFlex("boffle", patCount - 3, 7,
+      [1], /**/[[-3, 2], [-4, [-6, 5]]],
+      [[[3, -4], [1, -2]]], /**/[-5, -6],
+      "/", "/|", "/", "/|");
 
     // backflip = Mkf' Mkb
     flexes["Bf"] = createLocalFlex("backflip", patCount - 4, 9,

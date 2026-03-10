@@ -109,6 +109,14 @@ namespace Flexagonator {
     flexes["F3"] = makeAtomicFlex("flip3",
       "a [[3,-4],[1,-2]] / -5 / -6 / # [8,-7] / 9 / b", "a 1 / [-3,2] / # -4 / -5 / [[-8,9],[-6,7]] / b") as AtomicFlex;
 
+    // start & end /\
+    flexes["N"] = makeAtomicFlex("n",
+      "a [-2,1] / # [-3,[-5,4]] \\ b", "a [[[3,-2],-4],1] / # -5 \\ b") as AtomicFlex;
+
+    // start & end //\
+    flexes["Bfl"] = makeAtomicFlex("boffle",
+      "a 1 / # [-3,2] / [-4,[-6,5]] \\ b", "a [[3,-4],[1,-2]] / # -5 / -6 \\ b") as AtomicFlex;
+
     // from \\ to \\
     flexes["Tr2"] = makeAtomicFlex("transfer2",
       "a 1 \\ # [2,[4,-3]] \\ b", "a [[-2,1],3] \\ # 4 \\ b") as AtomicFlex;
