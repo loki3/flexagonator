@@ -215,6 +215,18 @@ namespace Flexagonator {
       }
     });
 
+    it("should handle hexagonal regular flexagons", () => {
+      const name: NamePieces = { overallShape: 'hexagonal', leafShape: 'regular', patsPrefix: 10 };
+      const [script] = namePiecesToScript(name);
+      expect(script[0].numPats).toBe(10);
+      expect(script[2].directions && Directions.make(script[2].directions).asString(true)).toBe('//|////|//');
+
+      const name2: NamePieces = { overallShape: 'hexagonal', leafShape: 'regular', patsPrefix: 14 };
+      const [script2] = namePiecesToScript(name2);
+      expect(script2[0].numPats).toBe(14);
+      expect(script2[2].directions && Directions.make(script2[2].directions).asString(true)).toBe('//|/|////|/|//');
+    });
+
     it("should handle star ring versus other rings", () => {
       const name: NamePieces = { overallShape: 'star ring', leafShape: 'bronze', patsPrefix: 24 };
       const [script, errors] = namePiecesToScript(name);

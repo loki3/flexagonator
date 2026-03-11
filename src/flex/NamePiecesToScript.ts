@@ -216,9 +216,10 @@ namespace Flexagonator {
       return { angles2: [45, 45], directions };
     }
 
-    // hexagonal regular decaflexagon
-    if (sides === 6 && (!leafShape || leafShape === 'regular') && n === 10) {
-      return { angles2: [60, 60], directions: Directions.make('//|//'.repeat(2)) };
+    // hexagonal regular decaflexagon, 14, 18, etc.
+    if (sides === 6 && (!leafShape || leafShape === 'regular') && n >= 10 && (n - 6) % 4 === 0) {
+      const dirs = '//' + '|/'.repeat((n - 6) / 4) + '/';
+      return { angles2: [60, 60], directions: Directions.make(dirs.repeat(2)) };
     }
     // hexagonal silver dodecaflexagon
     if (sides === 6 && leafShape && leafShape.startsWith('silver') && n === 12) {

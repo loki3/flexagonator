@@ -54,6 +54,8 @@ namespace Flexagonator {
     ['pentagonal ring', 'right', 20],
     ['hexagonal', 'regular', 6],
     ['hexagonal', 'regular', 10],
+    ['hexagonal', 'regular', 14],
+    ['hexagonal', 'regular', 18],
     ['hexagonal', 'silver', 12],
     ['hexagonal', 'bronze', 12],
     ['hexagonal', 'bronze', 20],
