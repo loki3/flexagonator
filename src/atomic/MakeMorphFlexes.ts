@@ -49,10 +49,6 @@ namespace Flexagonator {
 
     // only works on a (////\)2 deca
     if (patCount === 10) {
-      flexes["Tao"] = makeFlex("three-and-open",
-        [[-2, 1], -3, -4, -5, -6, -7, -8, [10, -9], 11, 12],
-        [-11, [1, -12], 2, 3, [-5, 4], -6, -7, -8, -9, -10],
-        FlexRotation.BAC, "///|////|/", "///|////|/") as Flex;
       flexes["Hat"] = makeFlex("half-and-twist",
         [[1, -14], [-3, 2], -4, -5, -6, [8, -7], [-10, 9], -11, -12, -13],
         [-1, -2, -3, [5, -4], [-7, 6], -8, -9, -10, [12, -11], [-14, 13]],
@@ -132,6 +128,25 @@ namespace Flexagonator {
       [1, 2, 3], /**/[4, 5, [6, [8, -7]]],
       [[[-2, 1], 3], 4, 5], /**/[6, 7, 8],
       "|//", "//|", "|//", "//|"); // \//#//\
+
+    // works on hexagonal regular (6 + 4n)flexagons, for example
+    if (patCount >= 7) {
+      // note that the final reference hinge is slightly different for these two cases:
+      // the pc=10 case was chosen so that a regular decaflexagon would appear stable & has now been published,
+      // but in other cases, Tao is clearly a morphing flex, & the final reference hinge
+      // was chosen so that Tao' = ^Tao^ (perhaps it should use a different name instead)
+      if (patCount === 10) {
+        flexes["Tao"] = makeFlex("three-and-open",
+          [[-2, 1], -3, -4, -5, -6, -7, -8, [10, -9], 11, 12],
+          [-11, [1, -12], 2, 3, [-5, 4], -6, -7, -8, -9, -10],
+          FlexRotation.BAC, "///|???/|/", "///|/???|/") as Flex;
+      } else {
+        flexes["Tao"] = createLocalFlex("three-and-open", patCount - 7, 10,
+          [[-2, 1], -3, -4],  /**/[[6, -5], 7, 8, 9],
+          [1, 2, 3, [-5, 4]], /**/[-6, -7, [9, -8]],
+          "/|/", "///|", "|///", "/|/", FlexRotation.BAC); // /\/#///\  ->  \///#/\/
+      }
+    }
 
     // add all the inverses
     for (const flex of Object.keys(flexes)) {
