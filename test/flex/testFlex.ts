@@ -198,6 +198,18 @@ namespace Flexagonator {
       expect(newDirs.asString(true)).toBe('////');  // two directions changed, two stayed the same
     });
 
+    it('lines up unspecified directions', () => {
+      const flexagon = Flexagon.makeFromTree([1, 2, 3, 4], undefined, Directions.make('/|//')) as Flexagon;
+
+      const flex = new Flex("test", [1, 2, 3, 4], [4, 3, 2, 1], FlexRotation.None,
+        DirectionsOpt.make('??//') as DirectionsOpt, DirectionsOpt.make('||??') as DirectionsOpt);
+      const result = flex.apply(flexagon) as Flexagon;
+      expect(result.getAsLeafTrees()).toEqual([4, 3, 2, 1]);
+      const newDirs = result.directions as Directions;
+      // for in: ??//, out: ||??, the ?'s should line up, meaning that out's ?? refer to first two flexagon directions
+      expect(newDirs.asString(true)).toBe('||/|');
+    });
+
     it('supports both changing and rearranging directions', () => {
       const flexagon = Flexagon.makeFromTree([1, 2, 3, 4], undefined, Directions.make('/|//')) as Flexagon;
 

@@ -53,6 +53,8 @@ namespace Flexagonator {
   */
   export class Flex {
     private readonly needsDirections: boolean;
+    /** when output dir is ?, this says which flexagon direction to use */
+    private readonly indices: number[] = [];
 
     constructor(
       readonly name: string,
@@ -70,6 +72,18 @@ namespace Flexagonator {
       const hasOutputDirs = outputDirs ? outputDirs.asRaw().some((d) => d === false) : false;
       const hasChangeDirs = orderOfDirs ? orderOfDirs.some(e => e < 0) : false;
       this.needsDirections = hasOutputDirs || hasChangeDirs;
+      // line up ?'s between input & output directions
+      if (outputDirs) {
+        const rawDirs = outputDirs.asRaw();
+        let copied = 0;  // how many ? directions we've copied
+        for (let i = 0; i < rawDirs.length; i++) {
+          const flexDir = rawDirs[i];
+          if (flexDir === null || flexDir === undefined) {
+            const which = this.getNthCopy(copied++);
+            this.indices[i] = which ?? i;
+          }
+        }
+      }
     }
 
     createInverse(): Flex {
@@ -97,6 +111,24 @@ namespace Flexagonator {
       const angleTracker = this.newAngleTracker(flexagon);
       const directions = this.newDirections(flexagon.directions);
       return new Flexagon(newPats, angleTracker, directions);
+    }
+
+    /** line up ?'s between input & output directions */
+    private getNthCopy(nCopy: number): number | null {
+      if (this.inputDirs === undefined) {
+        return null;
+      }
+      const inputDirs = this.inputDirs.asRaw();
+      for (let i = 0, j = 0; i < inputDirs.length; i++) {
+        const dir = inputDirs[i];
+        if (dir === null) {
+          if (nCopy === j) {
+            return i;
+          }
+          j++;
+        }
+      }
+      return null;
     }
 
     private newAngleTracker(flexagon: Flexagon): AngleTracker {
@@ -139,7 +171,7 @@ namespace Flexagonator {
           const flexDir = flexDirs[i];
           if (flexDir === null || flexDir === undefined) {
             // flex preserves old direction
-            newDirs.push(oldDirs[i]);
+            newDirs.push(oldDirs[this.indices[i]]);
           } else {
             // use flex's explicit direction
             newDirs.push(flexDir);
