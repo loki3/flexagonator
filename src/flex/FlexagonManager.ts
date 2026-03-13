@@ -200,6 +200,21 @@ namespace Flexagonator {
       return flexes.map(flex => flex.fullName);
     }
 
+    /** get a nicely formatted history of flexes */
+    getFlexHistoryString(): string {
+      const flexes = this.history.getCurrent().flexes;
+      const list = flexes.map(flex => flex.fullName);
+      let str = '';
+      for (const f of list) {
+        str += f;
+        // add a space after non-rotates
+        if (f !== '>' && f !== '<' && f !== '^' && f !== '~') {
+          str += ' ';
+        }
+      }
+      return str.trim();
+    }
+
     /** get flexagon from before any flexes were applied */
     getBaseFlexagon(): Flexagon {
       return this.history.getStart().flexagon;
