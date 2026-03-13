@@ -48,19 +48,20 @@ namespace Flexagonator {
   function simplify(flexNames: FlexName[], numPats: number): FlexName[] {
     // figure out what all those rotates do
     let flipped = false;
+    let changeDir = false;
     const where = flexNames.reduce((prev, current) => {
       if (current.flexName === '>') {
         return flipped ? prev - 1 : prev + 1;
       } else if (current.flexName === '<') {
         return flipped ? prev + 1 : prev - 1;
+      } else if (current.flexName === '~') {
+        changeDir = !changeDir;
+        return prev;
       } else {
         flipped = !flipped;
         return prev;
       }
     }, 0);
-    if (where === 0) {
-      return flipped ? [makeFlexName('^')] : [];
-    }
 
     // come up with the shortest description
     let left = (where < 0);
@@ -81,6 +82,9 @@ namespace Flexagonator {
     }
     if (flipped) {
       result.push(makeFlexName('^'));
+    }
+    if (changeDir) {
+      result.push(makeFlexName('~'));
     }
     return result;
   }

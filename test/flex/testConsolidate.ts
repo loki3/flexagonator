@@ -97,6 +97,16 @@ namespace Flexagonator {
       expect(actual[1].fullName).toBe(">");
       expect(actual[2].fullName).toBe("F");
     });
+
+    it('should handle ~', () => {
+      const old = makeFlexNames(["T", ">", "^"]);
+      const more = makeFlexNames(["~", ">", "~", "^", "<", "~"]);
+      const actual = addAndConsolidate(old, more, 5);
+      expect(actual.length).toBe(3);
+      expect(actual[0].fullName).toBe("T");
+      expect(actual[1].fullName).toBe("<");
+      expect(actual[2].fullName).toBe("~");
+    });
   });
 
 }
