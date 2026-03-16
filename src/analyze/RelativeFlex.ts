@@ -25,8 +25,9 @@ namespace Flexagonator {
       return this.where < 0;
     }
 
-    toString(): string {
-      return this.toState + '(' + this.getSequence() + ')';
+    toString(numPats?: number): string {
+      const sequence = numPats === undefined ? this.getSequence() : normalizeSequence(this.getSequence(), numPats);
+      return this.toState + '(' + sequence + ')';
     }
 
     getSequence(): string {
@@ -46,8 +47,8 @@ namespace Flexagonator {
   // all the flexes found from a single state
   export type RelativeFlexes = Array<RelativeFlex>;
 
-  export function relativeFlexesToString(flexes: RelativeFlexes): string {
-    const strs = flexes.map(relFlex => relFlex.toString());
+  export function relativeFlexesToString(flexes: RelativeFlexes, numPats?: number): string {
+    const strs = flexes.map(relFlex => relFlex.toString(numPats));
     return strs.join(', ');
   }
 

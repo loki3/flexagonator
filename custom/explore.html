@@ -152,8 +152,10 @@
       var box = document.getElementById('states');
       if (box !== null) {
         var str = "";
+        var first = explorer ? explorer.getFlexagons()[0] : undefined;
+        var numPats = first ? first.getPatCount() : undefined;
         for (var i = 0; i < found.length; i++) {
-          var s = i.toString() + ": " + Flexagonator.relativeFlexesToString(found[i]) + '\n';
+          var s = i.toString() + ": " + Flexagonator.relativeFlexesToString(found[i], numPats) + '\n';
           str += s;
         }
         box.value = str;
