@@ -76,7 +76,7 @@ namespace Flexagonator {
     }
 
     // if the target flexagon was found, get the flex sequence used
-    getFlexes(): string {
+    getFlexes(normalize?: boolean): string {
       if (!this.found) {
         return "";
       }
@@ -89,7 +89,12 @@ namespace Flexagonator {
         flexes = step.flex.getSequence() + ' ' + flexes;
         stepN = step.previous;
       }
-      return flexes.trim();
+
+      if (!normalize) {
+        return flexes.trim();
+      }
+      const numPats = this.flexagons[0].getPatCount();
+      return normalizeSequence(flexes, numPats);
     }
 
     // returns false once the search is done

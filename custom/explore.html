@@ -262,7 +262,9 @@
       while (find.checkLevel()) {
       }
       if (find.wasFound()) {
-        output.innerHTML = find.getFlexes();
+        const flexes = find.getFlexes(true/*normalize*/);
+        const safe = flexes.replace(/</g, '&lt;');
+        output.innerHTML = safe;
       } else {
         output.innerHTML = "not found - searched " + find.getMaxDepth() + " levels deep";
       }
