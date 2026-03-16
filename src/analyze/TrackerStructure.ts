@@ -60,7 +60,7 @@ namespace Flexagonator {
       this.stateB = flexagon.pats.map(p => p.makeFlipped().getStructure()).reverse();
       if (flexagon.directions) {
         this.dirsA = flexagon.directions.asRaw();
-        this.dirsB = this.dirsA.reverse();
+        this.dirsB = this.dirsA.slice().reverse();
       }
     }
 
