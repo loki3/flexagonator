@@ -32,9 +32,9 @@ namespace Flexagonator {
       expect(result.length).toBe(3);
       expect(result[0].sequence).toBe("P P ^");    // 2 -> 0
       expect(result[0].cycleLength).toBe(2);
-      expect(result[1].sequence).toBe("P ^>P ^");  // 2 -> 1
+      expect(result[1].sequence).toBe("P <^P ^");  // 2 -> 1
       expect(result[1].cycleLength).toBe(6);       // 6 because reference hinge rotates
-      expect(result[2].sequence).toBe("^>P >");    // 2 -> 4
+      expect(result[2].sequence).toBe("<^P >");    // 2 -> 4
       expect(result[2].cycleLength).toBe(2);
     });
 

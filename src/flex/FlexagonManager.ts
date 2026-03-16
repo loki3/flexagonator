@@ -203,16 +203,7 @@ namespace Flexagonator {
     /** get a nicely formatted history of flexes */
     getFlexHistoryString(): string {
       const flexes = this.history.getCurrent().flexes;
-      const list = flexes.map(flex => flex.fullName);
-      let str = '';
-      for (const f of list) {
-        str += f;
-        // add a space after non-rotates
-        if (f !== '>' && f !== '<' && f !== '^' && f !== '~') {
-          str += ' ';
-        }
-      }
-      return str.trim();
+      return sequenceToString(flexes);
     }
 
     /** get flexagon from before any flexes were applied */

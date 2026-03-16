@@ -9,6 +9,7 @@ namespace Flexagonator {
     // state referenced during iterations
     private readonly right;
     private readonly over;
+    private readonly numPats;
     // step 1
     private searchStates?: number[];
     // step 2
@@ -35,6 +36,7 @@ namespace Flexagonator {
       if (this.right === undefined || this.over === undefined) {
         this.error = { groupCycleError: "need definitions for > and ^" };
       }
+      this.numPats = states[0].getPatCount();
     }
 
     /**
@@ -115,7 +117,8 @@ namespace Flexagonator {
 
       // get length of cycle
       const cycleLength = getCycleLength(start, this.flexes, sequence);
-      this.cycles.push({ sequence, cycleLength });
+      const normalized = normalizeSequence(sequence, this.numPats);
+      this.cycles.push({ sequence: normalized, cycleLength });
       // are we completely done?
       this.cyclesDone = ++this.cyclesIndex >= this.searchStates.length;
       return !this.cyclesDone;
