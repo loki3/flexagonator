@@ -243,11 +243,13 @@
         output.innerHTML = str;
         return;
       }
+      var startDirs = turnIntoDirections(searchStartStr);
+      var endDirs = turnIntoDirections(searchEndStr);
 
       var flexesToSearch = getFlexSubset('searchFlexes');
       var right = includeRight ? fm.allFlexes['>'] : undefined;
       var over = includeOver ? fm.allFlexes['^'] : undefined;
-      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, flexesToSearch, right, over);
+      var find = Flexagonator.FindShortest.make(searchStart, searchEnd, flexesToSearch, right, over, startDirs, endDirs);
       if (Flexagonator.isError(find)) {
         var str = Flexagonator.errorToString(find);
         output.innerHTML = str;
@@ -273,6 +275,14 @@
         }
       }
       return Flexagonator.parseLeafTrees(s);
+    }
+    // if string is an index into explored flexagon states, return the associated pat directions
+    function turnIntoDirections(s) {
+      if (s[0] === '[') {
+        return undefined;
+      }
+      const flexagon = explorer.getFlexagons()[Number.parseInt(s)];
+      return flexagon ? flexagon.directions : undefined;
     }
 
     function findDisconnected() {

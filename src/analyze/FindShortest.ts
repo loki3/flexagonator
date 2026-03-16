@@ -27,12 +27,15 @@ namespace Flexagonator {
     private readonly target: number;  // where the desired end state is in 'tracker'
     private found: boolean = false;
 
-    static make(start: LeafTree[], end: LeafTree[], flexes: Flexes, right?: Flex, over?: Flex): FindShortest | TreeError {
-      const startFlexagon = Flexagon.makeFromTree(start);
+    static make(
+      start: LeafTree[], end: LeafTree[], flexes: Flexes, right?: Flex, over?: Flex,
+      startDirs?: Directions, endDirs?: Directions
+    ): FindShortest | TreeError {
+      const startFlexagon = Flexagon.makeFromTree(start, undefined, startDirs);
       if (isTreeError(startFlexagon)) {
         return startFlexagon;
       }
-      const endFlexagon = Flexagon.makeFromTree(end);
+      const endFlexagon = Flexagon.makeFromTree(end, undefined, endDirs ?? startDirs);
       if (isTreeError(endFlexagon)) {
         return endFlexagon;
       }
