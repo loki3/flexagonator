@@ -14,9 +14,10 @@ namespace Flexagonator {
     /** get error explanation, if any */
     getError(): FindCycleError | null;
 
-    /** total number of cycles, or 0 if we don't know yet */
-    getCycleCount(): number;
-
+    /** total number of steps in the search, or 0 if we don't know yet */
+    getTotalSteps(): number;
+    /** which step we're on */
+    getCurrentStep(): number;
     /** how many cycles we've found */
     getFoundCount(): number;
   }

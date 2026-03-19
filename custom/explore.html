@@ -346,15 +346,15 @@
       var statusArea = document.getElementById('cycleStatus');
       var outputArea = document.getElementById('cycleBox');
       if (cycleFinderCancelled) {
-        var result = `found ${cycleFinder.getFoundCount()} of ${cycleFinder.getCycleCount()} cycles`;
+        var result = `found ${cycleFinder.getFoundCount()}, checked ${cycleFinder.getCurrentStep()} of ${cycleFinder.getTotalSteps()}`;
         statusArea.innerHTML = "CANCELLED: " + result;
         return;
       }
       while (cycleFinder.checkNext()) {
         // provide feedback on progress
-        var str = cycleFinder.getCycleCount() === 0
+        var str = cycleFinder.getTotalSteps() === 0
           ? "searching..."
-          : `found ${cycleFinder.getFoundCount()} of ${cycleFinder.getCycleCount()} cycles`;
+          : `found ${cycleFinder.getFoundCount()}, checked ${cycleFinder.getCurrentStep()} of ${cycleFinder.getTotalSteps()}`;
         statusArea.innerHTML = str;
         // show any new results
         var count = cycleFinder.getCycles().length;
@@ -371,7 +371,7 @@
         var error = cycleFinder.getError();
         statusArea.innerHTML = error.findCycleError;
       } else {
-        statusArea.innerHTML = `total cycles: ${cycleFinder.getCycleCount()}`;
+        statusArea.innerHTML = `total cycles: ${cycleFinder.getFoundCount()}`;
         showCycles(cycleFinder, outputArea);
       }
     }

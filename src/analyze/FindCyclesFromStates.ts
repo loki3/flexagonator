@@ -65,9 +65,13 @@ namespace Flexagonator {
       return this.error;
     }
 
-    /** total number of states to check */
-    getCycleCount(): number {
+    /** total number of steps to check */
+    getTotalSteps(): number {
       return this.states.length - 1;
+    }
+    /** which step we're on */
+    getCurrentStep(): number {
+      return this.stepState;
     }
     /** how many cycles we've found */
     getFoundCount(): number {
