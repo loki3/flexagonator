@@ -13,7 +13,7 @@ namespace Flexagonator {
 
     function findGroupCycles(
       states: Flexagon[], start: number, flexes: Flexes
-    ): CycleInfo[] | GroupCycleError {
+    ): CycleInfo[] | FindCycleError {
       const finder = new FindGroupCycles(states, start, flexes);
       while (finder.checkNext()) { }
       const error = finder.getError();
@@ -45,8 +45,8 @@ namespace Flexagonator {
         fail('failed to return error');
         return;
       }
-      const expected: GroupCycleError = { groupCycleError: 'no other states with same pat structure' };
-      expect(result.groupCycleError).toBe(expected.groupCycleError);
+      const expected: FindCycleError = { findCycleError: 'no other states with same pat structure' };
+      expect(result.findCycleError).toBe(expected.findCycleError);
     });
 
     it('complains if no shift flexes passed in', () => {
@@ -56,8 +56,8 @@ namespace Flexagonator {
         fail('failed to return error');
         return;
       }
-      const expected: GroupCycleError = { groupCycleError: 'need definitions for > and ^' };
-      expect(result.groupCycleError).toBe(expected.groupCycleError);
+      const expected: FindCycleError = { findCycleError: 'need definitions for > and ^' };
+      expect(result.findCycleError).toBe(expected.findCycleError);
     });
 
     it('complains about invalid start', () => {
@@ -67,8 +67,8 @@ namespace Flexagonator {
         fail('failed to return error');
         return;
       }
-      const expected: GroupCycleError = { groupCycleError: "invalid start" };
-      expect(result.groupCycleError).toBe(expected.groupCycleError);
+      const expected: FindCycleError = { findCycleError: "invalid start" };
+      expect(result.findCycleError).toBe(expected.findCycleError);
     });
   });
 }

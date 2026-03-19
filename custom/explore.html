@@ -369,7 +369,7 @@
       // done - report results
       if (cycleFinder.getError() !== null) {
         var error = cycleFinder.getError();
-        statusArea.innerHTML = error.groupCycleError;
+        statusArea.innerHTML = error.findCycleError;
       } else {
         statusArea.innerHTML = `total cycles: ${cycleFinder.getCycleCount()}`;
         showCycles(cycleFinder, outputArea);

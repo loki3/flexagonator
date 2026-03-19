@@ -4,8 +4,8 @@ namespace Flexagonator {
    * Find flex sequences that cycle starting from a given state within a list of flexagon states.
    * Restrict search to states that start & end with the same pat structure.
    */
-  export class FindGroupCycles {
-    private error: GroupCycleError | null = null;
+  export class FindGroupCycles implements FindCycles {
+    private error: FindCycleError | null = null;
     // state referenced during iterations
     private readonly right;
     private readonly over;
@@ -34,7 +34,7 @@ namespace Flexagonator {
       this.right = flexes['>'];
       this.over = flexes['^'];
       if (this.right === undefined || this.over === undefined) {
-        this.error = { groupCycleError: "need definitions for > and ^" };
+        this.error = { findCycleError: "need definitions for > and ^" };
       }
       this.numPats = states[0].getPatCount();
     }
@@ -63,7 +63,7 @@ namespace Flexagonator {
     }
 
     /** get error explanation, if any */
-    getError(): GroupCycleError | null {
+    getError(): FindCycleError | null {
       return this.error;
     }
 
@@ -81,10 +81,10 @@ namespace Flexagonator {
       const groups: number[][] = this.groups ?? groupByStructure(this.states);
       const searchStates = findStructureGroup(groups, this.start);
       if (searchStates === null) {
-        this.error = { groupCycleError: "invalid start" };
+        this.error = { findCycleError: "invalid start" };
         return false;
       } else if (searchStates.length === 0) {
-        this.error = { groupCycleError: "no other states with same pat structure" };
+        this.error = { findCycleError: "no other states with same pat structure" };
         return false;
       }
       this.searchStates = searchStates;
@@ -123,23 +123,6 @@ namespace Flexagonator {
       this.cyclesDone = ++this.cyclesIndex >= this.searchStates.length;
       return !this.cyclesDone;
     }
-  }
-
-  /** flex sequence + how many times you apply it so it cycles back to original state */
-  export interface CycleInfo {
-    readonly sequence: string;
-    readonly cycleLength: number;
-  }
-
-  /** explain why findGroupCycles failed */
-  export interface GroupCycleError {
-    readonly groupCycleError:
-    | 'need definitions for > and ^'
-    | 'no other states with same pat structure'
-    | 'invalid start';
-  }
-  export function isGroupCycleError(result: any): result is GroupCycleError {
-    return result && (result as GroupCycleError).groupCycleError !== undefined;
   }
 
   /** return the indices into 'states' of all the flexagons that share the pat structure of states[index] */
