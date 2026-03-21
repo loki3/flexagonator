@@ -5,6 +5,7 @@ Various routines for analyzing flexes on flexagons.
 * [CheckEqual.ts](CheckEqual.ts) - check if two flex sequences have the same effect on a given flexagon
 * [CountFlexes.ts](CountFlexes.ts) - count the number of states that support each flex
 * [Explore.ts](Explore.ts) - explore all the states of flexagon starting from an initial state and applying any of a given set of flexes
+* [FindCyclesFromStates.ts](FindCyclesFromStates.ts) - find flex sequences that cycle starting from a state within a list of flexagon states
 * [FindEqualFlexes.ts](FindEqualFlexes.ts) - check if a flex can be expressed as a sequence of other flexes. If so, get the shortest sequence
 * [FindGroupCycles.ts](FindGroupCycles.ts) - find flex sequences that cycle while preserving the pat structure
 * [FindRearrangements.ts](FindRearrangements.ts) - search through flexagon states for any that have a pat that is a rearranged version of a given pat
