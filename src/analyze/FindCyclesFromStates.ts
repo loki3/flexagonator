@@ -128,12 +128,7 @@ namespace Flexagonator {
       for (let i = 0; i < f1.getPatCount(); i++) {
         fm.applyFlex(">");
         extra += ">";
-        const check = getCycleLength(fm.flexagon, this.flexes, sequence + extra);
-        if (check !== null) {
-          // found a cycle, add to list
-          const normalized = normalizeSequence(sequence + extra, this.numPats);
-          this.cycles.push({ sequence: normalized, cycleLength: check });
-        }
+        this.checkCycle(fm, sequence + extra);
       }
 
       fm.applyFlex("^");
@@ -141,13 +136,28 @@ namespace Flexagonator {
       for (let i = 0; i < f1.getPatCount(); i++) {
         fm.applyFlex(">");
         extra += ">";
-        const check = getCycleLength(fm.flexagon, this.flexes, sequence + extra);
-        if (check !== null) {
-          // found a cycle, add to list
-          const normalized = normalizeSequence(sequence + extra, this.numPats);
-          this.cycles.push({ sequence: normalized, cycleLength: check });
+        this.checkCycle(fm, sequence + extra);
+      }
+    }
+
+    /** add sequence to our list if it's an interesting cycle */
+    private checkCycle(fm: FlexagonManager, sequence: string) {
+      const check = getCycleLength(fm.flexagon, this.flexes, sequence);
+      if (check === null) {
+        return; // not a cycle
+      }
+
+      // if it's a 2-cycle that consists of only a single flex, ignore it
+      if (check <= 2) {
+        const withoutRotates = sequence.replace(/<|>|\^|~/g, '');
+        const flexNames = parseFlexSequence(withoutRotates);
+        if (flexNames.length < 2) {
+          return;
         }
       }
+
+      const normalized = normalizeSequence(sequence, this.numPats);
+      this.cycles.push({ sequence: normalized, cycleLength: check });
     }
   }
 

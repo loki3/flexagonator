@@ -29,12 +29,12 @@ namespace Flexagonator {
         return;
       }
 
-      expect(result.length).toBe(18);
+      expect(result.length).toBe(12);
       const sequences = result.map(c => `(${c.sequence})${c.cycleLength}`);
       expect(sequences[0]).toBe("(P P <<^)2");
       expect(sequences[3]).toBe("(P <^P <<^)6");
       expect(sequences[6]).toBe("(P >)9");
-      expect(sequences[17]).toBe("(<^P ^)9");
+      expect(sequences[11]).toBe("(<^P ^)9");
     });
 
     it('complains if no shift flexes passed in', () => {
