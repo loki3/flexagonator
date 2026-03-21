@@ -115,7 +115,7 @@ namespace Flexagonator {
     flexes["Tr3"] = createLocalFlex("transfer 3", patCount - 3, 6,
       [1, 2], /**/[[[-4, 5], 3]],
       [[3, [1, -2]]], /**/[4, 5],
-      "/|", "/", "/", "|/");  // /\#/ -> /#\/
+      "/|", "/", "/", "|/", FlexRotation.BAC);  // /\#/ -> /#\/
     flexes["Tr3s"] = createLocalFlex("transfer 3 stable", patCount - 3, 6,
       [1, 2], /**/[[[-4, 5], 3]],
       [[3, [1, -2]], 4], /**/[5], // keep same reference hinge
