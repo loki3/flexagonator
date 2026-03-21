@@ -9,6 +9,7 @@
     var fm;
     var explorer;
     var cancelled = false;
+    var cycleFinderActive = null;
     var cycleFinderCancelled = false;
 
     function runScript() {
@@ -340,10 +341,10 @@
       statusArea.value = "searching...";
       var flexesToSearch = getFlexSubset('cycleFlexes');
       var flexes = { ...flexesToSearch, '>': fm.allFlexes['>'], '^': fm.allFlexes['^'] };
-      var cycleFinder = preservePatStructure
+      cycleFinderActive = preservePatStructure
         ? new Flexagonator.FindGroupCycles(explorer.getFlexagons(), startingIndex, flexes, explorer.fetchGroupByStructure())
         : new Flexagonator.FindCyclesFromStates(explorer.getFlexagons(), startingIndex, flexes);
-      setTimeout(stepCycleFinder, 1, cycleFinder, 0);
+      setTimeout(stepCycleFinder, 1, cycleFinderActive, 0);
     }
     function cancelCycleFinder() {
       cycleFinderCancelled = true;
@@ -351,6 +352,9 @@
 
     // do a single step of searching for cycles
     function stepCycleFinder(cycleFinder, totalFound) {
+      if (cycleFinder !== cycleFinderActive) {
+        return; // this one has been replaced, so stop looping
+      }
       var statusArea = document.getElementById('cycleStatus');
       var outputArea = document.getElementById('cycleBox');
       if (cycleFinderCancelled) {
