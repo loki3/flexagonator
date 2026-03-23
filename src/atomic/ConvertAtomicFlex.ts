@@ -18,7 +18,7 @@ namespace Flexagonator {
     const modifiedCount = getPatsCount(atomicFlex.input.left) + getPatsCount(atomicFlex.input.right);
     const totalLeaves = getLeafCount(atomicFlex.input.left) + getLeafCount(atomicFlex.input.right);
 
-    const flex = createLocalFlex(name, patCount - modifiedCount, totalLeaves,
+    const flex = createLocalFlex(name, patCount - modifiedCount, totalLeaves + 1,
       inPatLeft, inPatRight, outPatLeft, outPatRight,
       inDirLeft, inDirRight, outDirLeft, outDirRight, rotation);
     return flex;
