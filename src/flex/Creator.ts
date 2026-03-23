@@ -71,7 +71,7 @@ namespace Flexagonator {
       return text;
     }
 
-    runScriptItem(script: ScriptItem): true | FlexError | TreeError {
+    runScriptItem(script: ScriptItem): true | FlexagonatorError {
       const result = runScriptItem(this.fm, script);
       if (isError(result)) {
         return result;
@@ -80,7 +80,7 @@ namespace Flexagonator {
       return true;
     }
 
-    runScriptString(str: string): true | FlexError | TreeError {
+    runScriptString(str: string): true | FlexagonatorError {
       const result = runScriptString(this.fm, str);
       if (isError(result)) {
         return result;
@@ -90,7 +90,7 @@ namespace Flexagonator {
     }
 
     /** use the given name pieces to generate subsequent flexagons */
-    setNamePieces(pieces: NamePieces): boolean | TreeError | FlexError {
+    setNamePieces(pieces: NamePieces): boolean | FlexagonatorError {
       if (namePiecesToScript(pieces)[1].length > 0) {
         return false; // not enough pieces to determine flexagon
       }
@@ -112,14 +112,14 @@ namespace Flexagonator {
     }
 
     /** create a new flexagon from a flex sequence */
-    createFromSequence(flexes: string): boolean | TreeError | FlexError {
+    createFromSequence(flexes: string): boolean | FlexagonatorError {
       this.generator = flexes;
       this.pats = undefined;
       return this.newFlexagon();
     }
 
     /** create a new flexagon from a description of the pats to use */
-    createFromPats(rawPats: string): boolean | TreeError | FlexError {
+    createFromPats(rawPats: string): boolean | FlexagonatorError {
       const n = getPatsPrefixAsNumber(this.pieces.patsPrefix);
       if (n === null) {
         return false;
@@ -137,7 +137,7 @@ namespace Flexagonator {
      * create a flexagon given the current creation setting
      * @returns true for success, false if name is incomplete, or specific error
      */
-    private newFlexagon(): boolean | TreeError | FlexError {
+    private newFlexagon(): boolean | FlexagonatorError {
       const script = this.makeNewFlexagonScript();
       if (script.length === 0) {
         return false; // insufficient info, so nothing changed

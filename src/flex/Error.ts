@@ -1,12 +1,15 @@
 namespace Flexagonator {
 
+  /** API errors that can be returned */
+  export type FlexagonatorError = TreeError | FlexError | AtomicParseError;
+
   // check if this is one of the errors Flexagonator can signal
-  export function isError(result: any): result is TreeError | PatternError | FlexError {
-    return isTreeError(result) || isPatternError(result) || isFlexError(result);
+  export function isError(result: any): result is TreeError | PatternError | FlexError | AtomicParseError {
+    return isTreeError(result) || isPatternError(result) || isFlexError(result) || isAtomicParseError(result);
   }
 
   // get details about an error
-  export function errorToString(error: TreeError | PatternError | FlexError): string {
+  export function errorToString(error: TreeError | PatternError | FlexError | AtomicParseError): string {
     if (isTreeError(error)) {
       let str = "Tree Error: " + error.reason;
       if (error.context) {
@@ -31,6 +34,12 @@ namespace Flexagonator {
       }
       if (error.patternError) {
         str += " because of " + errorToString(error.patternError);
+      }
+      return str;
+    } else if (isAtomicParseError(error)) {
+      let str = "Error parsing atomic notation: " + error.atomicParseCode + ", input: " + error.input;
+      if (error.context) {
+        str += " context: " + error.context;
       }
       return str;
     }

@@ -49,7 +49,7 @@ namespace Flexagonator {
     | "CantParsePatStructure"
     ;
   export function isAtomicParseError(result: any): result is AtomicParseError {
-    return (result !== null) && (result as AtomicParseError).atomicParseCode !== undefined;
+    return (result !== null) && (result !== undefined) && (result as AtomicParseError).atomicParseCode !== undefined;
   }
 
   // get otherLeft & left

@@ -1,17 +1,17 @@
 namespace Flexagonator {
 
   // create a flexagon, apply a script, and return it
-  export function createFromScript(script: ScriptItem[]): FlexagonManager | TreeError | FlexError {
+  export function createFromScript(script: ScriptItem[]): FlexagonManager | FlexagonatorError {
     const result = Flexagon.makeFromTree([1, 2, 3, 4, 5, 6]) as Flexagon;
     const fm: FlexagonManager = FlexagonManager.make(result);
     return runScript(fm, script);
   }
 
   // apply a script to an existing flexagon (though it may create a new flexagon)
-  export function runScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexError | TreeError {
+  export function runScript(fm: FlexagonManager, script: ScriptItem[]): FlexagonManager | FlexagonatorError {
     for (let item of script) {
       const result = runScriptItem(fm, item);
-      if (isFlexError(result) || isTreeError(result)) {
+      if (isError(result)) {
         return result;
       }
       fm = result;
@@ -19,7 +19,7 @@ namespace Flexagonator {
     return fm;
   }
 
-  export function runScriptString(fm: FlexagonManager, str: string): FlexagonManager | FlexError | TreeError {
+  export function runScriptString(fm: FlexagonManager, str: string): FlexagonManager | FlexagonatorError {
     try {
       const script = JSON.parse(str);
       return runScript(fm, script);
@@ -28,7 +28,7 @@ namespace Flexagonator {
     }
   }
 
-  export function runScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexError | TreeError {
+  export function runScriptItem(fm: FlexagonManager, item: ScriptItem): FlexagonManager | FlexagonatorError {
     if (item.name !== undefined) {
       const pieces = namePiecesFromName(item.name);
       const [script, errors] = namePiecesToScript(pieces);
@@ -142,12 +142,8 @@ namespace Flexagonator {
 
     if (item.addFlex !== undefined) {
       const f = item.addFlex;
-      const name = f.name ? f.name : f.shorthand;
-      const fr = angleOrderToFlexRotation(f.rotation);
-      const newFlex = isFlexFromSequence(f)
-        ? makeFlexFromSequence(f.sequence, fm.allFlexes, name, fr, f.inputDirs, f.outputDirs, f.orderOfDirs)
-        : makeFlex(name, f.input, f.output, fr, f.inputDirs, f.outputDirs, f.orderOfDirs);
-      if (isFlexError(newFlex)) {
+      const newFlex = makeFlexFromScript(f, fm);
+      if (isError(newFlex)) {
         return newFlex;
       }
       fm.allFlexes[f.shorthand] = newFlex;
@@ -237,5 +233,22 @@ namespace Flexagonator {
       case 'Left': return FlexRotation.Left;
     }
     return FlexRotation.None;
+  }
+
+  function makeFlexFromScript(
+    f: FlexFromPats | FlexFromSequence, fm: FlexagonManager
+  ): Flex | FlexError | AtomicParseError {
+    const name = f.name ? f.name : f.shorthand;
+    const fr = angleOrderToFlexRotation(f.rotation);
+    if (isFlexFromSequence(f)) {
+      return makeFlexFromSequence(f.sequence, fm.allFlexes, name, fr, f.inputDirs, f.outputDirs, f.orderOfDirs);
+    }
+    if (typeof (f.input) === 'string' && typeof (f.output) === 'string') {
+      return convertAtomicFlex(name, fm.flexagon.getPatCount(), f.input, f.output, fr);
+    }
+    if (typeof (f.input) !== 'string' && typeof (f.output) !== 'string') {
+      return makeFlex(name, f.input, f.output, fr, f.inputDirs, f.outputDirs, f.orderOfDirs);
+    }
+    return typeof (f.input) === 'string' ? { reason: FlexCode.BadFlexInput } : { reason: FlexCode.BadFlexOutput };
   }
 }

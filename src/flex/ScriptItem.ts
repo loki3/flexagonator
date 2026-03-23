@@ -71,10 +71,10 @@ namespace Flexagonator {
   /** the order of the angles ABC after a flex */
   export type AngleOrder = 'ABC' | 'ACB' | 'BAC' | 'BCA' | 'CAB' | 'CBA' | 'Right' | 'Left';
 
-  /** define a flex in terms of input & output pats */
+  /** define a flex in terms of input & output pats (nested arrays of ids) or atomic pat notation (strings) */
   export interface FlexFromPats extends FlexDef {
-    readonly input: LeafTree[],
-    readonly output: LeafTree[],
+    readonly input: LeafTree[] | string,
+    readonly output: LeafTree[] | string,
   }
 
   /** define a flex in terms of a flex sequence */
