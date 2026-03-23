@@ -66,7 +66,7 @@ namespace Flexagonator {
   }
 
   export function isTreeError(result: any): result is TreeError {
-    return result && (result as TreeError).context !== undefined;
+    return result && (result as TreeError).reason !== undefined && (result as TreeError).context !== undefined;
   }
 
 
