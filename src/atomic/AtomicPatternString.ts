@@ -40,6 +40,7 @@ namespace Flexagonator {
     readonly atomicParseCode: AtomicParseCode;
     readonly input: string;
     readonly context?: string;
+    readonly flexName?: string;
   }
   export type AtomicParseCode =
     | "MissingOtherLeft"

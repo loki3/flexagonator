@@ -41,6 +41,9 @@ namespace Flexagonator {
       if (error.context) {
         str += " context: " + error.context;
       }
+      if (error.flexName) {
+        str += " for flex " + error.flexName;
+      }
       return str;
     }
     return "no error";

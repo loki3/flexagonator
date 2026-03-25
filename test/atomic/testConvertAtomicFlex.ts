@@ -28,7 +28,7 @@ namespace Flexagonator {
     it('supports the atomic pat version of the pyramid shuffle', () => {
       const atomicFlex = convertAtomicFlex('S', 7,
         'a [[[3,-2],-4],1] / -5 / # [7,-6] / b', 'a [-2,1] / -3 / # [7,[-4,[-6,5]]] / b');
-      if (isAtomicParseError(atomicFlex)) {
+      if (isError(atomicFlex)) {
         fail('failed to make pyramid shuffle');
         return;
       }
@@ -41,7 +41,7 @@ namespace Flexagonator {
       const atomicFlex = convertAtomicFlex('Tao', 10,
         'a [10,-9] / 11 \\ 12 / # [-2,1] / -3 / -4 / -5 \\ b',
         'a -9 \\ -10 / # -11 / [1,-12] / 2 / 3 \\ [-5,4] / b');
-      if (isAtomicParseError(atomicFlex)) {
+      if (isError(atomicFlex)) {
         fail('failed to make Tao flex' + JSON.stringify(atomicFlex));
         return;
       }
@@ -50,15 +50,38 @@ namespace Flexagonator {
       expect(checkForEqual(flexes['Tao'], atomicFlex));
     });
 
-    it('complains about bad input', () => {
+    it('complains about bad atomic input', () => {
       const error = convertAtomicFlex('Err', 6,
         'a [10,-9] / # 5',
         'a [-2,1] / -3 / # [7,[-4,[-6,5]]] / b');
       if (!isAtomicParseError(error)) {
-        fail('expected an error' + JSON.stringify(error));
+        fail('expected an atomic error' + JSON.stringify(error));
         return;
       }
       expect(error.atomicParseCode).toBe('MissingOtherRight');
+      expect(error.flexName).toBe('Err');
+    });
+
+    it('complains if it changes the number of pats', () => {
+      const error = convertAtomicFlex('Err', 6,
+        'a [-2,1] / # 3 / b',
+        'a 1 \\ 2 / # -3 \\ -b');
+      if (!isFlexError(error)) {
+        fail('expected a flex error' + JSON.stringify(error));
+        return;
+      }
+      expect(error.reason).toBe('size mismatch');
+    });
+
+    it('complains if input & output have a different number of leaves', () => {
+      const error = convertAtomicFlex('Err', 6,
+        'a [-2,1] / # 3 / b',
+        'a 1 \\ 2 / # [4,-3] \\ -b');
+      if (!isFlexError(error)) {
+        fail('expected a flex error' + JSON.stringify(error));
+        return;
+      }
+      expect(error.reason).toBe('size mismatch');
     });
   });
 }

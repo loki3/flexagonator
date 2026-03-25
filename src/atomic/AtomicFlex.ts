@@ -3,11 +3,11 @@ namespace Flexagonator {
   export function makeAtomicFlex(name: string, inPattern: string, outPattern: string): AtomicFlex | AtomicParseError {
     const input = stringToAtomicPattern(inPattern);
     if (isAtomicParseError(input)) {
-      return input;
+      return { ...input, flexName: name };
     }
     const output = stringToAtomicPattern(outPattern);
     if (isAtomicParseError(output)) {
-      return output;
+      return { ...output, flexName: name };
     }
     return new AtomicFlex(name, input, output);
   }

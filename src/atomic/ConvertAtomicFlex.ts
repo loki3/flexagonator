@@ -4,7 +4,7 @@ namespace Flexagonator {
   export function convertAtomicFlex(
     name: string, patCount: number,
     inPattern: string, outPattern: string, rotation?: FlexRotation
-  ): Flex | AtomicParseError {
+  ): Flex | FlexError | AtomicParseError {
     const atomicFlex = makeAtomicFlex(name, inPattern, outPattern);
     if (isAtomicParseError(atomicFlex)) {
       return atomicFlex;
@@ -15,10 +15,15 @@ namespace Flexagonator {
     const [outPatLeft, outDirLeft] = convertPats(atomicFlex.output, 'left');
     const [outPatRight, outDirRight] = convertPats(atomicFlex.output, 'right');
 
-    const modifiedCount = getPatsCount(atomicFlex.input.left) + getPatsCount(atomicFlex.input.right);
-    const totalLeaves = getLeafCount(atomicFlex.input.left) + getLeafCount(atomicFlex.input.right);
+    const modifiedCountIn = getPatsCount(atomicFlex.input.left) + getPatsCount(atomicFlex.input.right);
+    const modifiedCountOut = getPatsCount(atomicFlex.output.left) + getPatsCount(atomicFlex.output.right);
+    const totalLeavesIn = getLeafCount(atomicFlex.input.left) + getLeafCount(atomicFlex.input.right);
+    const totalLeavesOut = getLeafCount(atomicFlex.output.left) + getLeafCount(atomicFlex.output.right);
+    if (modifiedCountIn !== modifiedCountOut || totalLeavesIn !== totalLeavesOut) {
+      return { reason: FlexCode.SizeMismatch, flexName: name };
+    }
 
-    const flex = createLocalFlex(name, patCount - modifiedCount, totalLeaves + 1,
+    const flex = createLocalFlex(name, patCount - modifiedCountIn, totalLeavesIn + 1,
       inPatLeft, inPatRight, outPatLeft, outPatRight,
       inDirLeft, inDirRight, outDirLeft, outDirRight, rotation);
     return flex;
