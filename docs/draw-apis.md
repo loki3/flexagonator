@@ -174,6 +174,7 @@ By default, it draws the entire strip scaled and rotated to fill the drawing reg
   scale;    // [optional] number: scale factor (approximately the number of pixels on a leaf edge)
   rotation; // [optional] number: rotation (degrees) to apply when drawing
   captions; // [optional] DrawStripCaption[]: specify additional text to display on a given leaf
+  layer;    // [optional] 'all' | 'cuts' | 'folds': draw just a portion of the strip, default: all
 }
 
 // LeafContent

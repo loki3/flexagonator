@@ -3,7 +3,7 @@ namespace Flexagonator {
   export function drawStrip(
     paint: Paint, leaflines: LeafLines,
     content: LeafContent, props: PropertiesForLeaves, scale?: number,
-    rotation?: number, captions?: DrawStripCaption[], center?: boolean
+    rotation?: number, captions?: DrawStripCaption[], center?: boolean, layer?: TemplateLayer
   ) {
     const [w, h] = paint.getSize();
     if (rotation !== undefined) {
@@ -16,24 +16,33 @@ namespace Flexagonator {
     const flip = (content.face === 'back') ? 'x' : (content.face === 'back-y') ? 'y' : undefined;
     const transform = Transform.make({ x: w, y: h }, extents[0], extents[1], flip, scale, 1, center);
 
-    drawLeafContents(paint, leaflines, content, props, transform);
+    if (layer !== 'cuts' && layer !== 'folds') {
+      drawLeafContents(paint, leaflines, content, props, transform);
 
-    if (captions) {
-      paint.setTextColor("black");
-      for (const caption of captions) {
-        drawLeafCaption(paint, transform, leaflines, caption);
+      if (captions) {
+        paint.setTextColor("black");
+        for (const caption of captions) {
+          drawLeafCaption(paint, transform, leaflines, caption);
+        }
       }
     }
 
-    // alternate gray & white dashes
-    paint.setLineColor(0x969696);
-    drawLines(paint, leaflines.folds, transform, "dashed");
+    if (layer === 'folds') {
+      paint.setLineColor("black");
+      drawLines(paint, leaflines.folds, transform);
+    } else if (layer !== 'cuts') {
+      // alternate gray & white dashes
+      paint.setLineColor(0x969696);
+      drawLines(paint, leaflines.folds, transform, "dashed");
+    }
 
-    paint.setLineColor("black");
-    drawLines(paint, leaflines.cuts, transform);
-    if (content.endStyle === 'solid') {
-      const ends = [leaflines.folds[0], leaflines.folds[leaflines.folds.length - 1]];
-      drawLines(paint, ends, transform);
+    if (layer !== 'folds') {
+      paint.setLineColor("black");
+      drawLines(paint, leaflines.cuts, transform);
+      if (content.endStyle === 'solid') {
+        const ends = [leaflines.folds[0], leaflines.folds[leaflines.folds.length - 1]];
+        drawLines(paint, ends, transform);
+      }
     }
   }
 

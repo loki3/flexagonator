@@ -56,7 +56,11 @@ namespace Flexagonator {
     readonly rotation?: number;
     // [optional] extra captions to draw on the strip
     readonly captions?: DrawStripCaption[];
+    // [optional] draw just a portion of the strip, default: all
+    readonly layer?: TemplateLayer;
   }
+
+  export type TemplateLayer = 'all' | 'cuts' | 'folds';
 
   // draw an unfolded flexagon strip
   export function drawUnfolded(target: string | HTMLCanvasElement | string[], fm: FlexagonManager, options?: DrawStripOptions | DrawStripOptions[]) {
@@ -95,7 +99,8 @@ namespace Flexagonator {
         const content = getLeafContent(opt.content);
         const leaflinesSubset = sliceLeafLines(leaflines, opt.start, opt.end);
         paint.start();
-        drawStrip(paint, leaflinesSubset, content, objects.leafProps, opt.scale, opt.rotation, opt.captions);
+        drawStrip(paint, leaflinesSubset, content, objects.leafProps,
+          opt.scale, opt.rotation, opt.captions, undefined, opt.layer);
         paint.end();
       }
     }

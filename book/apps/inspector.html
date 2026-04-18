@@ -26,6 +26,7 @@
     let gSlices = null;  // track how they want the template sliced
     let gSliceStr = '';  // visible string describing slices
     let gCreatedBy = 'name';  // how the current flexagon was created: name | generator | pats | script
+    let gLayer = 'all';  // template layer
 
     function updateUI() {
       const fm = creator.getFlexagonManager();
@@ -296,7 +297,7 @@
       if (gSlices === null) {
         document.getElementById("unfolded1").hidden = false;
         const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
-        Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions });
+        Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions, layer: gLayer });
       } else {
         const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
         const names = slices.map((_, i) => `unfolded${i + 1}`);
@@ -305,7 +306,7 @@
           // e.g., captions of (⚹, a) - (a, b) - (b, ⚹)
           const one = i === 0 ? '⚹' : String.fromCharCode([97 + i - 1]);
           const two = i === slices.length - 1 ? '⚹' : String.fromCharCode([97 + i]);
-          return { ...slice, content, captions: [{ text: one, which: 0 }, { text: two, which: -1 }] };
+          return { ...slice, content, captions: [{ text: one, which: 0 }, { text: two, which: -1 }], layer: gLayer };
         });
         Flexagonator.drawUnfolded(names, fm, options);
       }
@@ -320,6 +321,10 @@
     function initAdvancedTemplateOptions() {
       document.getElementById('canvasWidth').value = 800;
       document.getElementById('canvasHeight').value = 600;
+
+      const elList = document.getElementById('layerList');
+      setOptions(elList, ['all', 'cuts', 'folds']);
+      elList.value = 'all';
     }
 
     function setAdvancedTemplate(checked) {
@@ -351,6 +356,11 @@
         element.width = width;
         element.height = height;
       }
+      drawTemplates();
+    }
+
+    function setCanvasLayer(layer) {
+      gLayer = layer;
       drawTemplates();
     }
 
@@ -525,11 +535,15 @@
   <label for="advancedTemplateCheck"> advanced template options</label>
   <br>
   <div id="advancedTemplateArea" hidden="true">
+    <br/>
     size of each template area (pixels)&nbsp;&nbsp;&nbsp;
     <label for="canvasWidth">width:</label>
     <input onkeypress="updateCanvasSizes(event.keyCode)" id="canvasWidth" aria-label="canvas width" size="10" spellcheck="false" />
     <label for="canvasHeight">height:</label>
     <input onkeypress="updateCanvasSizes(event.keyCode)" id="canvasHeight" aria-label="canvas height" size="10" spellcheck="false" />
+    <br/><br/>
+    <label for="layerList">show layer:</label>
+    <select id="layerList" onchange="setCanvasLayer(event.target.value)" style="min-width: 50px;"></select>
   </div>
 
   <script type="text/javascript">
