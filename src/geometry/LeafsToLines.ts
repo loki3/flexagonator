@@ -82,19 +82,42 @@ namespace Flexagonator {
     return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
   }
 
-  export function sliceLeafLines(leaflines: LeafLines, start?: number, end?: number): LeafLines {
-    if (!start && !end) {
+  export function sliceLeafLines(
+    leaflines: LeafLines, start?: number, end?: number,
+    cutEnds?: boolean,  /** have the ends be cuts rather than folds */
+  ): LeafLines {
+    if (!start && !end && !cutEnds) {
       return leaflines;
     }
     // end+1, because we want inclusive, not exclusive
     const theEnd = end ? end + 1 : end;
     // and there's an extra fold, so we want end+2
     const foldEnd = end ? end + 2 : end;
-    return {
-      faces: leaflines.faces.slice(start, theEnd),
-      folds: leaflines.folds.slice(start, foldEnd),
-      cuts: leaflines.cuts.slice(start, theEnd),
-    };
+
+    const faces = leaflines.faces.slice(start, theEnd);
+    const folds = getFoldsCutEnds(leaflines, start, foldEnd, cutEnds);
+    const cuts = getCutsCutEnds(leaflines, start, theEnd, cutEnds);
+    return { faces, folds, cuts };
+  }
+
+  function getFoldsCutEnds(leaflines: LeafLines, start?: number, end?: number, cutEnds?: boolean): Line[] {
+    if (cutEnds !== true) {
+      return leaflines.folds.slice(start, end);
+    }
+    // inset start & end of this slice
+    const s = start === undefined ? 1 : start + 1;
+    const e = end === leaflines.folds.length - 1 || end === undefined ? leaflines.folds.length - 1 : end - 1;
+    return leaflines.folds.slice(s, e);
+  }
+  function getCutsCutEnds(leaflines: LeafLines, start?: number, end?: number, cutEnds?: boolean): Line[] {
+    const cuts = leaflines.cuts.slice(start, end);
+    if (cutEnds !== true) {
+      return cuts;
+    }
+    // add in first & last folds for this slice
+    const first = leaflines.folds[start ?? 0];
+    const last = leaflines.folds[end ?? leaflines.folds.length - 1];
+    return [first].concat(cuts).concat(last);
   }
 
 

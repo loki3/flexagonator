@@ -92,12 +92,15 @@ namespace Flexagonator {
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     slices.computeAcross(leaflines);
 
+    const layer = slices.options[0].layer;
+    const cutEnds = layer === 'cuts' || layer === 'folds';
+
     for (let i = 0; i < slices.paints.length; i++) {
       const paint = slices.paints[i];
       const opt = slices.options[i];
       if (paint && opt) {
         const content = getLeafContent(opt.content);
-        const leaflinesSubset = sliceLeafLines(leaflines, opt.start, opt.end);
+        const leaflinesSubset = sliceLeafLines(leaflines, opt.start, opt.end, cutEnds);
         paint.start();
         drawStrip(paint, leaflinesSubset, content, objects.leafProps,
           opt.scale, opt.rotation, opt.captions, undefined, opt.layer);
