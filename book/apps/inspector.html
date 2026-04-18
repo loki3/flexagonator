@@ -26,6 +26,7 @@
     let gSlices = null;  // track how they want the template sliced
     let gSliceStr = '';  // visible string describing slices
     let gCreatedBy = 'name';  // how the current flexagon was created: name | generator | pats | script
+    let gTemplateRotation = undefined;
     let gLayer = 'all';  // template layer
 
     function updateUI() {
@@ -297,7 +298,7 @@
       if (gSlices === null) {
         document.getElementById("unfolded1").hidden = false;
         const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
-        Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions, layer: gLayer });
+        Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions, rotation: gTemplateRotation, layer: gLayer });
       } else {
         const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
         const names = slices.map((_, i) => `unfolded${i + 1}`);
@@ -306,7 +307,7 @@
           // e.g., captions of (⚹, a) - (a, b) - (b, ⚹)
           const one = i === 0 ? '⚹' : String.fromCharCode([97 + i - 1]);
           const two = i === slices.length - 1 ? '⚹' : String.fromCharCode([97 + i]);
-          return { ...slice, content, captions: [{ text: one, which: 0 }, { text: two, which: -1 }], layer: gLayer };
+          return { ...slice, content, captions: [{ text: one, which: 0 }, { text: two, which: -1 }], rotation: gTemplateRotation, layer: gLayer };
         });
         Flexagonator.drawUnfolded(names, fm, options);
       }
@@ -356,6 +357,17 @@
         element.width = width;
         element.height = height;
       }
+      drawTemplates();
+    }
+
+    function updateCanvasRotation(key) {
+      if (key !== 13) {
+        return;
+      }
+
+      const elRotation = document.getElementById('canvasRotation');
+      const rotation = Number.parseInt(elRotation.value);
+      gTemplateRotation = Number.isSafeInteger(rotation) ? rotation : undefined;
       drawTemplates();
     }
 
@@ -541,6 +553,9 @@
     <input onkeypress="updateCanvasSizes(event.keyCode)" id="canvasWidth" aria-label="canvas width" size="10" spellcheck="false" />
     <label for="canvasHeight">height:</label>
     <input onkeypress="updateCanvasSizes(event.keyCode)" id="canvasHeight" aria-label="canvas height" size="10" spellcheck="false" />
+    <br/>
+    &nbsp;&nbsp;&nbsp;<label for="canvasRotation">rotation (degrees):</label>
+    <input onkeypress="updateCanvasRotation(event.keyCode)" id="canvasRotation" aria-label="canvas rotation" size="10" spellcheck="false" />
     <br/><br/>
     <label for="layerList">show layer:</label>
     <select id="layerList" onchange="setCanvasLayer(event.target.value)" style="min-width: 50px;"></select>
