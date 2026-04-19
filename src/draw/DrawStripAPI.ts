@@ -92,7 +92,7 @@ namespace Flexagonator {
     const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
     slices.computeAcross(leaflines);
 
-    const layer = slices.options[0].layer;
+    const layer = slices.options[0] ? slices.options[0].layer : undefined;
     const cutEnds = layer === 'cuts' || layer === 'folds';
 
     for (let i = 0; i < slices.paints.length; i++) {
