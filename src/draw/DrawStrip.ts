@@ -28,7 +28,7 @@ namespace Flexagonator {
     }
 
     if (layer === 'folds') {
-      paint.setLineColor("black");
+      paint.setLineColor("gray");
       drawLines(paint, leaflines.folds, transform);
     } else if (layer !== 'cuts') {
       // alternate gray & white dashes
