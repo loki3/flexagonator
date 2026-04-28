@@ -24,6 +24,7 @@ Script commands:
     * **setFace:** set properties for the entire face (front and/or back)
     * **unsetFace:** set properties for just the portion of the current face that's not already set (front and/or back)
     * **labelAsTree:** set properties for all leaf faces by traversing the pats as a binary tree
+    * **labelAsTreeMatch:** same, but every pat is the same and every folded pair gets the same label
 * History
     * **history:** manipulate the history that tracks which flexes have been performed
 * Flexagon name
@@ -380,17 +381,21 @@ Both use the same `front` and `back` settings as `leafProps`.
 ]
 ```
 
-### the `labelAsTree` command
+### the `labelAsTree` and `labelAsTreeMatch` commands
 
-`labelAsTree` sets properties for all leaf faces by traversing the pats as a binary tree.
+`labelAsTree` and `labelAsTreeMatch` set properties for all leaf faces by traversing the pats as a binary tree.
 This is roughly equivalent to the standard labeling for flexagons that are designed for the pinch flex.
 
 * The front and back are labeled 1 & 2. It uses color[0] & color[1] if present.
-* If there's an even number of pats, the odd pats and even pats are assigned
+* `labelAsTree`: If there's an even number of pats, the odd pats and even pats are assigned
     different sets of numbers & colors.
     Leaf faces that are folded together are assigned the same number.
-* If there's an odd number of pats, every pat uses the same numbering scheme.
+* `labelAsTree`: If there's an odd number of pats, every pat uses the same numbering scheme.
     Leaf faces that are folded together are assigned consecutive numbers.
+* `labelAsTreeMatch`: Leaf faces that are folded together are assigned the same number,
+    with every pat using the same numbering scheme.
+    Note that you may end up with twice as many of some labels as there are pats,
+    but this can sometimes be a better numbering when there's an odd number of pats.
 
 ```javascript
 // only label using numbers

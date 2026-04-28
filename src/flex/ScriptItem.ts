@@ -35,6 +35,8 @@ namespace Flexagonator {
     readonly unsetFace?: LeafProperties;
     // label leaf faces based on deep they are in the tree, optionally assigning passed in colors
     readonly labelAsTree?: number[];
+    // same as labelAsTree, but it assigns matching numbers to each face pair as pat is unfolded even if odd number of pats
+    readonly labelAsTreeMatch?: number[];
     // add a new flex to what can be applied to the current flexagon
     readonly addFlex?: FlexFromPats | FlexFromSequence;
     // a list of flexes to search

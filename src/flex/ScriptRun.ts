@@ -140,6 +140,11 @@ namespace Flexagonator {
       fm.leafProps = props;
     }
 
+    if (item.labelAsTreeMatch !== undefined) {
+      const props = labelAsTree(fm.flexagon, item.labelAsTreeMatch, true);
+      fm.leafProps = props;
+    }
+
     if (item.addFlex !== undefined) {
       const f = item.addFlex;
       const newFlex = makeFlexFromScript(f, fm);
