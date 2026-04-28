@@ -115,6 +115,40 @@ namespace Flexagonator {
       expect(props.getFaceLabel(-4)).toBe("4");
       expect(props.getFaceLabel(-3)).toBe("3");
     });
+
+    it('for matching option, assigns matching numbers to each face pair as pat is unfolded, even for an odd number of pats', () => {
+      const flexagon = Flexagon.makeFromTree([[[[3, -2], -4], 1], [[[-7, 6], 8], -5], [[[11, -10], -12], 9]]) as Flexagon;
+      const props = labelAsTree(flexagon, undefined, true);
+
+      // 1's on the front & 2's on the back
+      expect(props.getFaceLabel(3)).toBe("1");
+      expect(props.getFaceLabel(-1)).toBe("2");
+      expect(props.getFaceLabel(-7)).toBe("1");
+      expect(props.getFaceLabel(5)).toBe("2");
+      expect(props.getFaceLabel(11)).toBe("1");
+      expect(props.getFaceLabel(-9)).toBe("2");
+      // 3's on the insides of the first unfolds
+      expect(props.getFaceLabel(1)).toBe("3");
+      expect(props.getFaceLabel(4)).toBe("3");
+      expect(props.getFaceLabel(-5)).toBe("3");
+      expect(props.getFaceLabel(-8)).toBe("3");
+      expect(props.getFaceLabel(9)).toBe("3");
+      expect(props.getFaceLabel(12)).toBe("3");
+      // 4's on the insides of the second unfolds
+      expect(props.getFaceLabel(2)).toBe("4");
+      expect(props.getFaceLabel(-4)).toBe("4");
+      expect(props.getFaceLabel(-6)).toBe("4");
+      expect(props.getFaceLabel(8)).toBe("4");
+      expect(props.getFaceLabel(10)).toBe("4");
+      expect(props.getFaceLabel(-12)).toBe("4");
+      // 5's on the insides of the third unfolds
+      expect(props.getFaceLabel(-3)).toBe("5");
+      expect(props.getFaceLabel(-2)).toBe("5");
+      expect(props.getFaceLabel(7)).toBe("5");
+      expect(props.getFaceLabel(6)).toBe("5");
+      expect(props.getFaceLabel(-11)).toBe("5");
+      expect(props.getFaceLabel(-10)).toBe("5");
+    });
   });
 
 }

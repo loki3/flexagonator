@@ -4,6 +4,7 @@ namespace Flexagonator {
    * Label the sides of the leaves in each pat by doing a breadth first traversal
    * of the binary tree of leaves.
    * - The front and back are labeled 1 & 2, using color[0] & color[1] if present.
+   * - If 'matching', assign matching numbers to each face pair as pat is unfolded.
    * - If there's an even number of pats, the odd pats and even pats are assigned
    *   different sets of numbers & colors.
    *   Leaf faces that are folded together are assigned the same number.
@@ -12,10 +13,10 @@ namespace Flexagonator {
    * @param flexagon the flexagon to label
    * @param colors optional array of colors to apply corresponding where in the traversal we are
    */
-  export function labelAsTree(flexagon: Flexagon, colors?: number[]): PropertiesForLeaves {
+  export function labelAsTree(flexagon: Flexagon, colors?: number[], matching?: boolean): PropertiesForLeaves {
     const leafToLabel: number[] = [];  // leaf number -> label number
     labelOutside(leafToLabel, flexagon);
-    labelInsides(leafToLabel, flexagon);
+    labelInsides(leafToLabel, flexagon, matching);
     // note: we get rid of any gaps in the label numbers we created, which is generally nicer,
     // but we could decide to skip this step if we want consistency across different flexagons.
     const squished = squishNumbers(leafToLabel);
@@ -29,15 +30,46 @@ namespace Flexagonator {
     bottom.forEach(id => leafToLabel[id] = 2);
   }
 
-  function labelInsides(leafToLabel: number[], flexagon: Flexagon): void {
+  /** assign numbers to leaf-faces as each pat is unfolded */
+  function labelInsides(leafToLabel: number[], flexagon: Flexagon, matching?: boolean): void {
     const pats = flexagon.pats;
-    if (pats.length % 2 === 0) {
+    if (matching) {
+      pats.forEach((pat, i) => handlePatMatching(leafToLabel, pat));
+    } else if (pats.length % 2 === 0) {
       pats.forEach((pat, i) => handlePatFromEven(leafToLabel, pat, i));
     } else {
       pats.forEach((pat, i) => handlePatFromOdd(leafToLabel, pat));
     }
   }
 
+  /** assign matching numbers to each face pair as pat is unfolded */
+  function handlePatMatching(leafToLabel: number[], pat: Pat): void {
+    const unfold = pat.unfold();
+    if (unfold === null) {
+      return;
+    }
+    let current = 3;
+    leafToLabel[unfold[0].getTop()] = current;
+    leafToLabel[unfold[1].getTop()] = current;
+
+    let level: (Pat | null)[] = unfold;
+    while (true) {
+      current++;
+      const next = level.map(p => p === null ? null : p.unfold());
+      next.forEach((pair, i) => {
+        if (pair !== null) {
+          leafToLabel[pair[0].getTop()] = current + i;
+          leafToLabel[pair[1].getTop()] = current + i;
+        }
+      });
+      if (!next.some(e => e !== null)) {
+        return;
+      }
+      level = flatten(next);
+    }
+  }
+
+  /** alternate numbers for odd & even pats */
   function handlePatFromEven(leafToLabel: number[], pat: Pat, whichPat: number): void {
     const unfold = pat.unfold();
     if (unfold === null) {
@@ -65,6 +97,7 @@ namespace Flexagonator {
     }
   }
 
+  /** assign consecutive numbers to face pairs as each pat is unfolded */
   function handlePatFromOdd(leafToLabel: number[], pat: Pat): void {
     const unfold = pat.unfold();
     if (unfold === null) {
