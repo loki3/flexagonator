@@ -299,10 +299,11 @@
       const content = { face: gFace, showLeafProps: true, inset: 0.1 };
 
       const fm = creator.getFlexagonManager();
+      const common = { content, rotation: gTemplateAdvanced.rotation, layer: gTemplateAdvanced.layer };
       if (gSlices === null) {
         document.getElementById("unfolded1").hidden = false;
         const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
-        Flexagonator.drawUnfolded('unfolded1', fm, { content, captions: captions, rotation: gTemplateAdvanced.rotation, layer: gTemplateAdvanced.layer });
+        Flexagonator.drawUnfolded('unfolded1', fm, { captions, ...common });
       } else {
         const slices = gSlices.slice(0, maxPieces);  // limit to the number of divs
         const names = slices.map((_, i) => `unfolded${i + 1}`);
@@ -311,7 +312,7 @@
           // e.g., captions of (⚹, a) - (a, b) - (b, ⚹)
           const one = i === 0 ? '⚹' : String.fromCharCode([97 + i - 1]);
           const two = i === slices.length - 1 ? '⚹' : String.fromCharCode([97 + i]);
-          return { ...slice, content, captions: [{ text: one, which: 0 }, { text: two, which: -1 }], rotation: gTemplateAdvanced.rotation, layer: gTemplateAdvanced.layer };
+          return { ...slice, captions: [{ text: one, which: 0 }, { text: two, which: -1 }], ...common };
         });
         Flexagonator.drawUnfolded(names, fm, options);
       }
