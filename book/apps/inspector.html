@@ -30,6 +30,7 @@
       width: 800,
       height: 600,
       rotation: undefined,
+      scale: undefined,
       layer: 'all',
     };
 
@@ -299,7 +300,7 @@
       const content = { face: gFace, showLeafProps: true, inset: 0.1 };
 
       const fm = creator.getFlexagonManager();
-      const common = { content, rotation: gTemplateAdvanced.rotation, layer: gTemplateAdvanced.layer };
+      const common = { content, rotation: gTemplateAdvanced.rotation, scale: gTemplateAdvanced.scale, layer: gTemplateAdvanced.layer };
       if (gSlices === null) {
         document.getElementById("unfolded1").hidden = false;
         const captions = [{ text: '⚹', which: 0 }, { text: '⚹', which: -1 }];
@@ -327,6 +328,8 @@
     function initAdvancedTemplateOptions() {
       document.getElementById('canvasWidth').value = gTemplateAdvanced.width;
       document.getElementById('canvasHeight').value = gTemplateAdvanced.height;
+      document.getElementById('canvasRotation').value = gTemplateAdvanced.rotation !== undefined ? gTemplateAdvanced.rotation : '';
+      document.getElementById('canvasScale').value = gTemplateAdvanced.scale !== undefined ? gTemplateAdvanced.scale : '';
 
       const elList = document.getElementById('layerList');
       setOptions(elList, ['all', 'cuts', 'folds']);
@@ -375,6 +378,17 @@
       const elRotation = document.getElementById('canvasRotation');
       const rotation = Number.parseInt(elRotation.value);
       gTemplateAdvanced.rotation = Number.isSafeInteger(rotation) ? rotation : undefined;
+      drawTemplates();
+    }
+
+    function updateCanvasScale(key) {
+      if (key !== 13) {
+        return;
+      }
+
+      const elScale = document.getElementById('canvasScale');
+      const scale = Number.parseInt(elScale.value);
+      gTemplateAdvanced.scale = Number.isSafeInteger(scale) ? scale : undefined;
       drawTemplates();
     }
 
@@ -563,6 +577,8 @@
     <br/>
     &nbsp;&nbsp;&nbsp;<label for="canvasRotation">rotation (degrees):</label>
     <input onkeypress="updateCanvasRotation(event.keyCode)" id="canvasRotation" aria-label="canvas rotation" size="10" spellcheck="false" />
+    &nbsp;&nbsp;&nbsp;<label for="canvasScale">scale (pixels per leaf edge):</label>
+    <input onkeypress="updateCanvasScale(event.keyCode)" id="canvasScale" aria-label="canvas scale" size="10" spellcheck="false" />
     <br/><br/>
     <label for="layerList">show layer:</label>
     <select id="layerList" onchange="setCanvasLayer(event.target.value)" style="min-width: 50px;"></select>
