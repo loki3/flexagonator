@@ -26,11 +26,12 @@
     let gSlices = null;  // track how they want the template sliced
     let gSliceStr = '';  // visible string describing slices
     let gCreatedBy = 'name';  // how the current flexagon was created: name | generator | pats | script
-    let gTemplateAdvanced = {
+    let gTemplateAdvanced = { // advanced settings for displaying template
       width: 800,
       height: 600,
       rotation: undefined,
       scale: undefined,
+      showIds: false,
       layer: 'all',
     };
 
@@ -297,7 +298,7 @@
 
     function drawTemplates() {
       const maxPieces = 10; // the number of divs used for template pieces
-      const content = { face: gFace, showLeafProps: true, inset: 0.1 };
+      const content = { face: gFace, showLeafProps: true, showIds: gTemplateAdvanced.showIds, inset: 0.1 };
 
       const fm = creator.getFlexagonManager();
       const common = { content, rotation: gTemplateAdvanced.rotation, scale: gTemplateAdvanced.scale, layer: gTemplateAdvanced.layer };
@@ -330,6 +331,7 @@
       document.getElementById('canvasHeight').value = gTemplateAdvanced.height;
       document.getElementById('canvasRotation').value = gTemplateAdvanced.rotation !== undefined ? gTemplateAdvanced.rotation : '';
       document.getElementById('canvasScale').value = gTemplateAdvanced.scale !== undefined ? gTemplateAdvanced.scale : '';
+      document.getElementById('canvasShowIds').checked = gTemplateAdvanced.showIds;
 
       const elList = document.getElementById('layerList');
       setOptions(elList, ['all', 'cuts', 'folds']);
@@ -389,6 +391,11 @@
       const elScale = document.getElementById('canvasScale');
       const scale = Number.parseInt(elScale.value);
       gTemplateAdvanced.scale = Number.isSafeInteger(scale) ? scale : undefined;
+      drawTemplates();
+    }
+
+    function setAdvancedTemplateShowIds(checked) {
+      gTemplateAdvanced.showIds = checked;
       drawTemplates();
     }
 
@@ -580,7 +587,9 @@
     &nbsp;&nbsp;&nbsp;<label for="canvasScale">scale (pixels per leaf edge):</label>
     <input onkeypress="updateCanvasScale(event.keyCode)" id="canvasScale" aria-label="canvas scale" size="10" spellcheck="false" />
     <br/><br/>
-    <label for="layerList">show layer:</label>
+    &nbsp;&nbsp;<input type="checkbox" id="canvasShowIds" onclick="setAdvancedTemplateShowIds(event.target.checked)">
+    <label for="canvasShowIds">show leaf ids</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="layerList">show layer:</label>
     <select id="layerList" onchange="setCanvasLayer(event.target.value)" style="min-width: 50px;"></select>
   </div>
 
