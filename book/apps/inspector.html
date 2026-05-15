@@ -416,6 +416,8 @@
         const pats = Flexagonator.greekPrefixToNumber(pieces.patsPrefix);
         if (pats) {
           setPatCount(pats.toString());
+        } else if (Number.isInteger(pieces.patsPrefix)) {
+          setPatCount(pieces.patsPrefix);
         }
         if (pieces.overallShape) {
           setOverallShape(pieces.overallShape);
