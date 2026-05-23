@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>illustrated flex sequences</title>
+
+  <style>
+    body {
+      font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+    }
+
+  </style>
+
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    // draw a series of flexagons in different states based on a sequence,
+    // expects several canvases (canvasId + "1", canvasId + "2", ...)
+    // 'flexes' get applied after the script is run
+    // 'sequence' is an array of flexes to perform one at a time
+    // [optional] amount to scale
+    // [optional] amount to rotate
+    function showSequence(canvasId, script, flexes, sequence, scale, rotate) {
+      const fm = Flexagonator.createFromScript(script);
+      if (Flexagonator.isError(fm)) { console.log("drawSequence - ", Flexagonator.errorToString(fm)); return; }
+      const result = fm.applyFlexes(flexes);
+      if (Flexagonator.isError(result)) { console.log("drawSequence - ", Flexagonator.errorToString(result)); return; }
+
+      const options = { showIds: false, scale, rotate, showCurrent: false };
+      const width = 180, height = 200;
+
+      showStep(canvasId + "-start1", fm, { ...options, structure: true }, width + 60, height);
+      showStep(canvasId + "-start2", fm, { ...options, back: true }, width, height);
+
+      for (let i = 0; i < sequence.length; i++) {
+        const id = canvasId + (i + 1).toString();
+        fm.applyFlexes(sequence[i]);
+        if (i + 1 !== sequence.length) {
+          showStep(id, fm, options, width, height, sequence[i]);
+        }
+      }
+
+      showStep(canvasId + "-end1", fm, { ...options, structure: true }, width + 60, height, sequence[sequence.length - 1]);
+      showStep(canvasId + "-end2", fm, { ...options, back: true }, width, height);
+    }
+
+    // show a single flexagon state, optionally showing the flexes used to reach the state
+    function showStep(id, fm, options, width, height, flexes) {
+      // flexagon
+      const el = document.getElementById(id);
+      if (el) {
+        el.width = width;
+        el.height = height;
+        Flexagonator.drawEntireFlexagon(id, fm, options);
+      }
+      // flexes
+      if (flexes) {
+        const text = document.getElementById(id + "-tx");
+        if (text) {
+          text.textContent = flexes;
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>illustrated flex sequences</h1>
+
+  <h2>bicolored faces</h2>
+
+  <div class="container">
+    <canvas id="solid1"></canvas>
+    <canvas id="solid2"></canvas>
+    <canvas id="solid3"></canvas>
+    <canvas id="solid4"></canvas>
+    <canvas id="solid5"></canvas>
+    <canvas id="solid6"></canvas>
+  </div>
+  <div class="container">
+    <canvas id="bicolor1"></canvas>
+    <canvas id="bicolor2"></canvas>
+    <canvas id="bicolor3"></canvas>
+    <canvas id="bicolor4"></canvas>
+    <canvas id="bicolor5"></canvas>
+    <canvas id="bicolor6"></canvas>
+  </div>
+  <hr />
+
+  <p>Ltf &lt;Ltf ^&lt;&lt;Ltf ^>>Ltf &lt;Ltf</p>
+  <div class="container">
+    INITIAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="forward-Ltf-start1"></canvas> <canvas id="forward-Ltf-start2"></canvas>
+  </div>
+  <div class="container">
+    <span id="forward-Ltf1-tx"></span><canvas id="forward-Ltf1"></canvas>
+    <span id="forward-Ltf2-tx"></span><canvas id="forward-Ltf2"></canvas>
+    <span id="forward-Ltf3-tx"></span><canvas id="forward-Ltf3"></canvas>
+    <span id="forward-Ltf4-tx"></span><canvas id="forward-Ltf4"></canvas>
+    <span id="forward-Ltf-end1-tx"></span>
+  </div>
+  <div class="container">
+    FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="forward-Ltf-end1"></canvas> <canvas id="forward-Ltf-end2"></canvas>
+  </div>
+  <hr />
+
+  <p>return</p>
+  <div class="container">
+    INITIAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="return-Ltf-start1"></canvas> <canvas id="return-Ltf-start2"></canvas>
+  </div>
+  <div class="container">
+    <span id="return-Ltf1-tx"></span><canvas id="return-Ltf1"></canvas>
+    <span id="return-Ltf2-tx"></span><canvas id="return-Ltf2"></canvas>
+    <span id="return-Ltf3-tx"></span><canvas id="return-Ltf3"></canvas>
+    <span id="return-Ltf4-tx"></span><canvas id="return-Ltf4"></canvas>
+    <span id="return-Ltf-end1-tx"></span>
+  </div>
+  <div class="container">
+    FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="return-Ltf-end1"></canvas> <canvas id="return-Ltf-end2"></canvas>
+  </div>
+  <hr />
+
+  <p>(V&lt;)4 &lt;V >>V (&lt;V)6</p>
+  <div class="container">
+    INITIAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="forward-V-start1"></canvas> <canvas id="forward-V-start2"></canvas>
+  </div>
+  <br/>
+  <div class="container">
+    <span id="forward-V1-tx"></span><canvas id="forward-V1"></canvas>
+    <span id="forward-V2-tx"></span><canvas id="forward-V2"></canvas>
+    <span id="forward-V3-tx"></span><canvas id="forward-V3"></canvas>
+    <span id="forward-V4-tx"></span><canvas id="forward-V4"></canvas>
+    <span id="forward-V5-tx"></span><canvas id="forward-V5"></canvas>
+    <span id="forward-V6-tx"></span><canvas id="forward-V6"></canvas>
+  </div>
+  <div class="container">
+    <span id="forward-V7-tx"></span><canvas id="forward-V7"></canvas>
+    <span id="forward-V8-tx"></span><canvas id="forward-V8"></canvas>
+    <span id="forward-V9-tx"></span><canvas id="forward-V9"></canvas>
+    <span id="forward-V10-tx"></span><canvas id="forward-V10"></canvas>
+    <span id="forward-V11-tx"></span><canvas id="forward-V11"></canvas>
+    <span id="forward-V-end1-tx"></span>
+  </div>
+  <div class="container">
+    FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="forward-V-end1"></canvas> <canvas id="forward-V-end2"></canvas>
+  </div>
+  <hr />
+
+  <p>return</p>
+  <div class="container">
+    INITIAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="return-V-start1"></canvas> <canvas id="return-V-start2"></canvas>
+  </div>
+  <div class="container">
+    <span id="return-V1-tx"></span><canvas id="return-V1"></canvas>
+    <span id="return-V2-tx"></span><canvas id="return-V2"></canvas>
+    <span id="return-V3-tx"></span><canvas id="return-V3"></canvas>
+    <span id="return-V4-tx"></span><canvas id="return-V4"></canvas>
+    <span id="return-V5-tx"></span><canvas id="return-V5"></canvas>
+    <span id="return-V6-tx"></span><canvas id="return-V6"></canvas>
+  </div>
+  <div class="container">
+    <span id="return-V7-tx"></span><canvas id="return-V7"></canvas>
+    <span id="return-V8-tx"></span><canvas id="return-V8"></canvas>
+    <span id="return-V9-tx"></span><canvas id="return-V9"></canvas>
+    <span id="return-V10-tx"></span><canvas id="return-V10"></canvas>
+    <span id="return-V11-tx"></span><canvas id="return-V11"></canvas>
+    <span id="return-V-end1-tx"></span>
+  </div>
+  <div class="container">
+    FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="return-V-end1"></canvas> <canvas id="return-V-end2"></canvas>
+  </div>
+  <hr />
+
+  <p>Tuckerman Traverse</p>
+  <div class="container">
+    INITIAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="tucker-start1"></canvas> <canvas id="tucker-start2"></canvas>
+  </div>
+  <br/>
+  <div class="container">
+    <span id="tucker1-tx"></span><canvas id="tucker1"></canvas>
+    <span id="tucker2-tx"></span><canvas id="tucker2"></canvas>
+    <span id="tucker3-tx"></span><canvas id="tucker3"></canvas>
+    <span id="tucker4-tx"></span><canvas id="tucker4"></canvas>
+    <span id="tucker5-tx"></span><canvas id="tucker5"></canvas>
+    <span id="tucker6-tx"></span><canvas id="tucker6"></canvas>
+  </div>
+  <div class="container">
+    <span id="tucker7-tx"></span><canvas id="tucker7"></canvas>
+    <span id="tucker8-tx"></span><canvas id="tucker8"></canvas>
+    <span id="tucker9-tx"></span><canvas id="tucker9"></canvas>
+    <span id="tucker10-tx"></span><canvas id="tucker10"></canvas>
+    <span id="tucker11-tx"></span><canvas id="tucker11"></canvas>
+    <span id="tucker-end1-tx"></span>
+  </div>
+  <div class="container">
+    FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="tucker-end1"></canvas> <canvas id="tucker-end2"></canvas>
+  </div>
+  <hr />
+
+  <script type="text/javascript">
+    const hexahexa = [{
+      "numPats": 6,
+      "flexAndColor": { "flexes": "P+>P+>PP+>PP+", "colors": ["0x4e79a0", "0x59a04f", "0xe05759", "0xb07aa0", "0xebc948", "0x76b7b0"] }
+    }];
+
+    showSequence("solid", hexahexa, ">P", ["", "^", "P", "P'>P", "<<^PPP", "<<^PP<PP", ""], 1.1, -30);
+    showSequence("bicolor", hexahexa, ">P (V<)4 <V >>V (<V)6^", ["", "^", "P", "P'>P", "<<^PPP", "<<^PP<PP", ""], 1.1, -30);
+
+    // Ltf <Ltf ^<<Ltf ^>>Ltf <Ltf
+    showSequence("forward-Ltf", hexahexa, ">PP^", ["Ltf<", "Ltf^<<", "Ltf^>>", "Ltf<", "Ltf"], 1.1, -30);
+    showSequence("return-Ltf", hexahexa, ">PP^ Ltf <Ltf ^<<Ltf ^>>Ltf <Ltf^", ["Ltf<", "Ltf^<<", "Ltf^>>", "Ltf<", "Ltf"], 1.1, -30);
+    // (V<)4 <V >>V (<V)6
+    showSequence("forward-V", hexahexa, ">P", ["V<", "V<", "V<", "V<<", "V>>", "V<", "V<", "V<", "V<", "V<", "V<", "V"], 1.1, -30);
+    showSequence("return-V", hexahexa, ">P (V<)4 <V >>V (<V)6^", ["V<", "V<", "V<", "V<<", "V>>", "V<", "V<", "V<", "V<", "V<", "V<", "V"], 1.1, -30);
+
+    // Tuckerman Traverse
+    showSequence("tucker", hexahexa, "P ^Ltf <Ltf >>^Ltf <<^Ltf <Ltf ^P", ["P", "P>", "P<", "P", "P", "P>", "P<", "P", "P", "P>", "P<", "P"], 1.1, -30);
+  </script>
+
+</body>
+
+</html>
