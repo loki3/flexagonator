@@ -19,6 +19,10 @@
 
   <script src="../build/out.js"></script>
   <script type="text/javascript">
+    const colors = ["0x4e79a0", "0x59a04f", "0xe05759", "0xb07aa0", "0xebc948", "0x9c7560", "0xbab0b0", "0xf28e2a", "0xff9da6", "0x76b7b0"];
+    // optimized for bi-colored faces
+    const bicolors = ["0x4e79a0", "0x59a04f", "0xe05759", "0xb07aa0", "0xebc948", "0x76b7b0"];
+
     // draw a series of flexagons in different states based on a sequence,
     // expects several canvases (canvasId + "1", canvasId + "2", ...)
     // 'flexes' get applied after the script is run
@@ -209,12 +213,11 @@
     FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
     <canvas id="tucker-end1"></canvas> <canvas id="tucker-end2"></canvas>
   </div>
-  <hr />
 
   <script type="text/javascript">
     const hexahexa = [{
       "numPats": 6,
-      "flexAndColor": { "flexes": "P+>P+>PP+>PP+", "colors": ["0x4e79a0", "0x59a04f", "0xe05759", "0xb07aa0", "0xebc948", "0x76b7b0"] }
+      "flexAndColor": { "flexes": "P+>P+>PP+>PP+", "colors": bicolors }
     }];
 
     showSequence("solid", hexahexa, ">P", ["", "^", "P", "P'>P", "<<^PPP", "<<^PP<PP", ""], 1.1, -30);
@@ -229,6 +232,58 @@
 
     // Tuckerman Traverse
     showSequence("tucker", hexahexa, "P ^Ltf <Ltf >>^Ltf <<^Ltf <Ltf ^P", ["P", "P>", "P<", "P", "P", "P>", "P<", "P", "P", "P>", "P<", "P"], 1.1, -30);
+  </script>
+
+  <!-- pentaflexagon -->
+  <hr />
+  <h1>pentaflexagon</h1>
+
+  <p>
+    L3 ^S &lt;&lt;S >^L3 ^S &lt;&lt;S >^L3 ^S &lt;&lt;S &lt;S &lt;&lt;S &lt;^L3 ^>>S &lt;&lt;S &lt;^L3^
+  </p>
+  <div class="container">
+    INITIAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="penta-start1"></canvas> <canvas id="penta-start2"></canvas>
+  </div>
+  <br/>
+  <div class="container">
+    <span id="penta1-tx"></span><canvas id="penta1"></canvas>
+    <span id="penta2-tx"></span><canvas id="penta2"></canvas>
+    <span id="penta3-tx"></span><canvas id="penta3"></canvas>
+    <span id="penta4-tx"></span><canvas id="penta4"></canvas>
+    <span id="penta5-tx"></span><canvas id="penta5"></canvas>
+  </div>
+  <div class="container">
+    <span id="penta6-tx"></span><canvas id="penta6"></canvas>
+    <span id="penta7-tx"></span><canvas id="penta7"></canvas>
+    <span id="penta8-tx"></span><canvas id="penta8"></canvas>
+    <span id="penta9-tx"></span><canvas id="penta9"></canvas>
+    <span id="penta10-tx"></span><canvas id="penta10"></canvas>
+  </div>
+  <div class="container">
+    <span id="penta11-tx"></span><canvas id="penta11"></canvas>
+    <span id="penta12-tx"></span><canvas id="penta12"></canvas>
+    <span id="penta13-tx"></span><canvas id="penta13"></canvas>
+    <span id="penta14-tx"></span><canvas id="penta14"></canvas>
+    <span id="penta-end1-tx"></span>
+  </div>
+  <div class="container">
+    FINAL state&nbsp;&nbsp;&nbsp;&nbsp;
+    <canvas id="penta-end1"></canvas> <canvas id="penta-end2"></canvas>
+  </div>
+
+  <script type="text/javascript">
+    const penta = [{ "numPats": 5 }, { "pats": "211", "labelAsTree": colors }];
+
+    // (L3 ^ S << S >>^) > (L3 ^ S << S >>^) > (L3 ^ S << S >>^) ^< (<< S << S <^ L3 ^) < (<< S << S <^ L3 ^)
+    const pentaSeq = [
+      "L3^", "S<<", "S>^",
+      "L3^", "S<<", "S>^",
+      "L3^", "S<<", "S<",
+      "S<<", "S<^", "L3^>>",
+      "S<<", "S<^", "L3^"
+    ];
+    showSequence("penta", penta, "", pentaSeq, 1.1, 0);
   </script>
 
 </body>
