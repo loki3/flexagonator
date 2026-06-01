@@ -10,6 +10,7 @@ Various routines for analyzing flexes on flexagons.
 * [FindGroupCycles.ts](FindGroupCycles.ts) - find flex sequences that cycle while preserving the pat structure
 * [FindRearrangements.ts](FindRearrangements.ts) - search through flexagon states for any that have a pat that is a rearranged version of a given pat
 * [FindShortest.ts](FindShortest.ts) - search for the shortest flex sequence from a starting state to an ending state using a given set of sequences
+* [FindStraight.ts](FindStraight.ts) - find the ways a flexagon shape could be folded from a straight strip of equilateral triangles
 * [FindSubgraphs.ts](FindSubgraphs.ts) - given a graph of flexes and states, break it into the subgraphs that can be fully accessed by a list of flexes
 * [FlexGraph.ts](FlexGraph.ts) - information about a graph of flexagons (nodes) and flexes (edges)
 * [FlexToGraph.ts](FlexToGraph.ts) - take a description of all the flexes that can be performed from each state and create a graph of flexagons (nodes) and flexes (edges)
