@@ -272,6 +272,12 @@ namespace Flexagonator {
       return { angles2: [60, 30], directions };
     }
 
+    // octagonal silver tetradecaflexagon
+    if (overallShape === 'octagonal' && leafShape && leafShape.startsWith('silver') && n === 14) {
+      const directions = Directions.make('/////|/'.repeat(2));
+      return { angles2: [45, 90], directions };
+    }
+
     // bracelets
     if (overallShape === 'bracelet') {
       if (leafShape && leafShape.startsWith('silver')) {
