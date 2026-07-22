@@ -263,9 +263,51 @@
     showSequence("tucker", hexahexa, "P ^Ltf <Ltf >>^Ltf <<^Ltf <Ltf ^P", ["P", "P>", "P<", "P", "P", "P>", "P<", "P", "P", "P>", "P<", "P"], 1.1, -30);
   </script>
 
+  <!-- hepta-hexaflexagon -->
+  <hr />
+  <h2>hepta-hexaflexagon</h2>
+  <div class="container">
+    <canvas id="hepta-one1"></canvas>
+    <canvas id="hepta-one2"></canvas>
+    <canvas id="hepta-one3"></canvas>
+    <canvas id="hepta-one4"></canvas>
+    <canvas id="hepta-one5"></canvas>
+    <canvas id="hepta-one6"></canvas>
+    <canvas id="hepta-one7"></canvas>
+  </div>
+  <div class="container">
+    <canvas id="hepta-two1"></canvas>
+    <canvas id="hepta-two2"></canvas>
+    <canvas id="hepta-two3"></canvas>
+    <canvas id="hepta-two4"></canvas>
+    <canvas id="hepta-two5"></canvas>
+    <canvas id="hepta-two6"></canvas>
+    <canvas id="hepta-two7"></canvas>
+  </div>
+  <div class="container">
+    <canvas id="hepta-three1"></canvas>
+    <canvas id="hepta-three2"></canvas>
+    <canvas id="hepta-three3"></canvas>
+    <canvas id="hepta-three4"></canvas>
+    <canvas id="hepta-three5"></canvas>
+    <canvas id="hepta-three6"></canvas>
+    <canvas id="hepta-three7"></canvas>
+  </div>
+
+  <script type="text/javascript">
+    const heptahexa = [{
+      "numPats": 6,
+      "flexAndColor": { "flexes": "(P*^>)5", "colors": colors }
+    }];
+
+    showSequence("hepta-one", heptahexa, "(<^P')5", ["", "^", "^P", "^>P", "^>P", "^>P", "^>P", ""], 1.1, -30); // ^ <P >PP P
+    showSequence("hepta-two", heptahexa, ">S >>T Ltb' >>T <<Ltb' >>Ltb' >V", ["", "^", "P", ">PP", "P", "<P>PPP", "<P >PPPP", ""], 1.1, -30);
+    showSequence("hepta-three", heptahexa, ">S Ltf ^Ltb' >>Ltb' >>Ltb <<S >>Ltb'", ["", "^", "<P", ">PP", "P", ">P <PPP", "P", ""], 1.1, -30);
+  </script>
+
   <!-- pentaflexagon -->
   <hr />
-  <h1>pentaflexagon</h1>
+  <h2>pentaflexagon</h2>
 
   <p>
     L3 ^S &lt;&lt;S >^L3 ^S &lt;&lt;S >^L3 ^S &lt;&lt;S &lt;S &lt;&lt;S &lt;^L3 ^>>S &lt;&lt;S &lt;^L3^
