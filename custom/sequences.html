@@ -76,6 +76,35 @@
 <body>
   <h1>illustrated flex sequences</h1>
 
+  <!-- flex notation -->
+  <h2>flex notation</h2>
+
+  <div class="container">
+    <span id="notation-V1-tx"></span><canvas id="notation-V1"></canvas>
+    <span id="notation-V2-tx"></span><canvas id="notation-V2"></canvas>
+    <span id="notation-V3-tx"></span><canvas id="notation-V3"></canvas>
+    <span id="notation-V4-tx"></span><canvas id="notation-V4"></canvas>
+  </div>
+  <div class="container">
+    <canvas width="93"></canvas>
+    <span id="notation-Ltf1-tx"></span><canvas id="notation-Ltf1"></canvas>
+    <span id="notation-Ltf2-tx"></span><canvas id="notation-Ltf2"></canvas>
+    <span id="notation-Ltf3-tx"></span><canvas id="notation-Ltf3"></canvas>
+  </div>
+
+  <script type="text/javascript">
+    const hexa_notation = [{
+      "numPats": 6,
+      "flexAndColor": { "flexes": "P+>P+>PP+>PP+", "colors": bicolors }
+    }];
+
+    showSequence("notation-V", hexa_notation, ">P", ["", "V", ">", "<", ""], 1.1, -30);
+    showSequence("notation-Ltf", hexa_notation, ">PP^", ["", "Ltf", "^", ""], 1.1, -30);
+  </script>
+
+  <hr />
+
+  <!-- bicolored faces -->
   <h2>bicolored faces</h2>
 
   <div class="container">
