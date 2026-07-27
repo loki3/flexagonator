@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+  <title>flexagon font</title>
+
+  <style>
+    body {
+      font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    td.label {
+      padding-bottom: 0px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+  </style>
+
+  <script src="../build/out.js"></script>
+  <script type="text/javascript">
+    const base = [
+      { "name": "square silver 32flexagon" },
+      { "addMorphFlexes": true },
+      { "flexes": "(Tr2+ >> Tf+ > Tf+F+ > Tf+F+ > Tf+F+ > Tf+ >>)4" },
+      { "labelAsTree": [8371455, 8388482] },
+      { "searchFlexes": "Tr2 Tf F" }
+    ];
+    const letters = {
+      a: "(>)4 F (>)4 Tr2 (>)6 Tf (>)4 Tf (>)6 Tr2 (>)4 F (>)4 Tr2",
+      b: "(>)4 F >> Tf >> Tr2 >> Tf >> Tf > Tf (>)19",
+      c: "Tr2 (>)4 Tf >> Tf >> Tr2 >> Tf >> Tf (>)4 Tr2 (>)8 Tr2 (>)8",
+      d: "(>)4 F >> Tf (>)4 Tf > Tf >> Tf (>)11 Tr2 (>)8",
+      e: "Tr2 (>)5 F (>)3 Tr2 (>)3 F (>)5 Tr2 (>)16",
+      f: "Tr2 (>)5 F (>)3 Tr2 (>)3 F (>)3 Tf >> Tr2 >> Tf (>)14",
+      g: "Tr2 (>)6 Tf >> Tr2 (>)8 Tr2 (>)8 Tr2 (>)8",
+      h: ">> Tf (>)12 Tf (>)4 Tf (>)12 Tf >>",
+      i: "(>)5 F (>)6 F (>)10 F (>)6 F (>)5",
+      j: "Tr2 >> Tf (>)6 Tr2 (>)8 Tr2 (>)8 Tr2 >> Tf (>)3 F (>)3",
+      k: "(>)5 Tf > Tf >> Tr2 >> Tf > Tf (>)6 > Tf (>)12 Tf >>",
+      l: "Tr2 >> Tf (>)3 F (>)3 Tr2 >> Tf >> Tf (>)4 Tr2 (>)8 Tr2 (>)6 Tf >>",
+      m: "(>)8 Tr2 (>)6 Tf >> Tr2 >> Tf (>)6 Tr2 (>)8",
+      n: ">> Tf (>)12 Tf >> Tr2 >> Tf (>)6 Tr2 (>)8",
+      o: "Tr2 (>)8 Tr2 (>)8 Tr2 (>)8 Tr2 (>)8",
+      p: "Tr2 (>)5 F (>)6 F (>)3 Tf (>)4 Tf (>)6 Tr2 (>)8",
+      q: "Tr2 (>)5 F (>)5 Tf (>)4 Tf (>)5 F (>)5 Tr2 (>)8",
+      r: "Tr2 (>)5 F (>)5 Tf (>)4 Tf (>)4 Tf (>)6 Tr2 (>)8",
+      s: "Tr2 (>)5 F (>)3 Tr2 (>)3 F (>)11 Tf (>)10",
+      t: "(>)6 Tf (>)5 F (>)10 F (>)5 Tf (>)6",
+      u: "Tr2 >> Tf (>)6 Tr2 (>)8 Tr2 (>)8 Tr2 (>)6 Tf >>",
+      v: "Tr2 >> Tf (>)10 F (>)8 F (>)10 Tf >>",
+      w: "Tr2 >> Tf (>)6 Tr2 (>)16 Tr2 (>)6 Tf >>",
+      x: "Tr2 >> Tf > Tf (>)10 Tf > Tf >> Tr2 >> Tf > Tf (>)10 Tf > Tf >>",
+      y: "Tr2 >> Tf (>)9 Tf > Tf (>)8 Tf > Tf (>)9 Tf >>",
+      z: "Tr2 (>)10 Tf (>)11 Tf > Tf >> Tr2 >> Tf > Tf (>)5",
+
+      ' ': "Tr2 >> Tf >> Tf >> Tf >> Tr2 >> Tf >> Tf >> Tf >> Tr2 >> Tf >> Tf >> Tf >> Tr2 >> Tf >> Tf >> Tf >>",
+      '.': "Tr2 (>)3 F (>)3 Tf >> Tr2 (>)3 F (>)3 Tf >> Tr2 (>)5 F (>)3 Tr2 (>)3 F (>)3 Tf >>",
+      '!': "Tr2 (>)3 F (>)3 Tf >> Tr2 (>)3 F (>)3 Tf >> Tr2 >> Tf (>)4 Tf >> Tr2 (>)6 Tf >>",
+      '?': "Tr2 (>)10 Tf >> Tf (>)4 Tr2 (>)3 F (>)3 Tf >> Tr2 (>)3 F (>)5",
+    };
+
+    // draw a single letter
+    function drawLetter(canvasId, letter) {
+      const fm = Flexagonator.createFromScript(base);
+      Flexagonator.runScriptItem(fm, { flexes: letters[letter] });
+      Flexagonator.drawEntireFlexagon(canvasId, fm, { showNumbers: false, showIds: false, showCurrent: false });
+    }
+
+    function drawWord(row, word) {
+      for (let i = 0; i < word.length; i++) {
+        const id = row.toString() + (i + 1).toString();
+        console.log('>', id, word[i])
+        drawLetter(id, word[i]);
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <h1>Flexagon Font</h1>
+
+  <table>
+    <tr>
+      <td><span id="letter-a" width="150" height="150"></span></td>
+      <td><span id="letter-b" width="150" height="150"></span></td>
+      <td><span id="letter-c" width="150" height="150"></span></td>
+      <td><span id="letter-d" width="150" height="150"></span></td>
+      <td><span id="letter-e" width="150" height="150"></span></td>
+      <td><span id="letter-f" width="150" height="150"></span></td>
+    </tr>
+    <tr>
+      <td><span id="letter-g" width="150" height="150"></span></td>
+      <td><span id="letter-h" width="150" height="150"></span></td>
+      <td><span id="letter-i" width="150" height="150"></span></td>
+      <td><span id="letter-j" width="150" height="150"></span></td>
+      <td><span id="letter-k" width="150" height="150"></span></td>
+      <td><span id="letter-l" width="150" height="150"></span></td>
+    </tr>
+    <tr>
+      <td><span id="letter-m" width="150" height="150"></span></td>
+      <td><span id="letter-n" width="150" height="150"></span></td>
+      <td><span id="letter-o" width="150" height="150"></span></td>
+      <td><span id="letter-p" width="150" height="150"></span></td>
+      <td><span id="letter-q" width="150" height="150"></span></td>
+      <td><span id="letter-r" width="150" height="150"></span></td>
+    </tr>
+    <tr>
+      <td><span id="letter-s" width="150" height="150"></span></td>
+      <td><span id="letter-t" width="150" height="150"></span></td>
+      <td><span id="letter-u" width="150" height="150"></span></td>
+      <td><span id="letter-v" width="150" height="150"></span></td>
+      <td><span id="letter-w" width="150" height="150"></span></td>
+      <td><span id="letter-x" width="150" height="150"></span></td>
+    </tr>
+    <tr>
+      <td><span id="letter-y" width="150" height="150"></span></td>
+      <td><span id="letter-z" width="150" height="150"></span></td>
+      <td><span id="letter- " width="150" height="150"></span></td>
+      <td><span id="letter-." width="150" height="150"></span></td>
+      <td><span id="letter-!" width="150" height="150"></span></td>
+      <td><span id="letter-?" width="150" height="150"></span></td>
+    </tr>
+  </table>
+
+  <hr />
+  <p>
+    <span id="01" width="150" height="150"></span>&nbsp;
+    <span id="02" width="150" height="150"></span>&nbsp;
+    <span id="03" width="150" height="150"></span>&nbsp;
+    <span id="04" width="150" height="150"></span>&nbsp;
+    <span id="05" width="150" height="150"></span>&nbsp;
+    <span id="06" width="150" height="150"></span>&nbsp;
+    <span id="07" width="150" height="150"></span>&nbsp;
+    <span id="08" width="150" height="150"></span>&nbsp;
+    <br/><br/>
+    <span id="11" width="150" height="150"></span>&nbsp;
+    <span id="12" width="150" height="150"></span>&nbsp;
+    <span id="13" width="150" height="150"></span>&nbsp;
+    <span id="14" width="150" height="150"></span>&nbsp;
+    <span id="15" width="150" height="150"></span>&nbsp;
+    <span id="16" width="150" height="150"></span>&nbsp;
+    <span id="17" width="150" height="150"></span>&nbsp;
+    <span id="18" width="150" height="150"></span>&nbsp;
+    <br/><br/>
+    <span id="21" width="150" height="150"></span>&nbsp;
+    <span id="22" width="150" height="150"></span>&nbsp;
+    <span id="23" width="150" height="150"></span>&nbsp;
+    <span id="24" width="150" height="150"></span>&nbsp;
+    <span id="25" width="150" height="150"></span>&nbsp;
+    <span id="26" width="150" height="150"></span>&nbsp;
+    <span id="27" width="150" height="150"></span>&nbsp;
+    <span id="28" width="150" height="150"></span>&nbsp;
+  </p>
+
+  <script type="text/javascript">
+    const names = Object.getOwnPropertyNames(letters);
+    for (const letter of names) {
+      drawLetter('letter-' + letter, letter);
+    }
+
+    drawWord(0, "flexagon");
+    drawWord(1, "spritz");
+    drawWord(2, "quick");
+  </script>
+
+</body>
+
+</html>
