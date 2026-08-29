@@ -34,6 +34,9 @@
     "sourceMap": true,
     // No implicit null or undefined types. NPE be gone.
     "strictNullChecks": true,
+    "types": [
+      "jasmine"
+    ],
     "outFile": "../build/test-out.js"
   },
   "include": [
