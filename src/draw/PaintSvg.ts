@@ -1,5 +1,7 @@
 namespace Flexagonator {
 
+  const svgNS = "http://www.w3.org/2000/svg";
+
   /** interface for drawing flexagons using SVG */
   export class PaintSvg implements Paint {
     private readonly svg: SVGSVGElement;
@@ -13,8 +15,8 @@ namespace Flexagonator {
 
     constructor(private readonly container: HTMLElement) {
       const [w, h] = this.getSize();
-      this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      this.svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      this.svg = document.createElementNS(svgNS, "svg");
+      this.svg.setAttribute("xmlns", svgNS);
       this.svg.setAttribute("viewBox", `0 0 ${w + 2} ${h + 2}`);
       this.svg.setAttribute("width", w.toString());
       this.svg.setAttribute("height", h.toString());
@@ -61,7 +63,7 @@ namespace Flexagonator {
 
     // <path d="M x,y x,y" />
     drawLines(points: Point[], dashed?: "dashed" | undefined): void {
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      const path = document.createElementNS(svgNS, "path");
 
       const pstr = points.map(p => `${p.x.toString()},${p.y.toString()}`);
       const d = `M ${pstr.join(' ')}`;
@@ -78,7 +80,7 @@ namespace Flexagonator {
     }
     // <polygon points="x,y x,y" />
     drawPolygon(points: Point[], fill?: "fill" | undefined): void {
-      const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+      const polygon = document.createElementNS(svgNS, "polygon");
 
       const pstr = points.map(p => `${p.x.toString()},${p.y.toString()}`);
       const p = `${pstr.join(' ')}`;
@@ -96,7 +98,7 @@ namespace Flexagonator {
     }
     // <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" />
     drawCircle(center: Point, radius: number): void {
-      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      const circle = document.createElementNS(svgNS, "circle");
 
       circle.setAttribute("cx", center.x.toString());
       circle.setAttribute("cy", center.y.toString());
@@ -115,7 +117,7 @@ namespace Flexagonator {
         // workaround for leading space being dropped in xml
         x += this.textSize * 0.3;
       }
-      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      const text = document.createElementNS(svgNS, "text");
 
       text.setAttribute("x", x.toString());
       text.setAttribute("y", y.toString());
