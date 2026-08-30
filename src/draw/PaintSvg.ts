@@ -34,11 +34,19 @@ namespace Flexagonator {
     getSize(): [number, number] {
       // use container.style.width/height if present, else use container.width/height
       const style = this.container.style;
-      const width = style && style.width && style.width.length ? style.width : this.container.getAttribute("width");
-      const height = style && style.height && style.height.length ? style.height : this.container.getAttribute("height");
+      const width = style && style.width && style.width.length ? style.width
+        : this.container.clientWidth ? this.container.clientWidth
+          : this.container.getAttribute("width");
+      const height = style && style.height && style.height.length ? style.height
+        : this.container.clientHeight ? this.container.clientHeight
+          : this.container.getAttribute("height");
       // take off a couple pixels so there's room for thick lines at the edges
-      const useWidth = width === null ? 400 : Number.parseInt(width) - 2;
-      const useHeight = height === null ? 400 : Number.parseInt(height) - 2;
+      const useWidth = width === null ? 400
+        : typeof (width) === 'number' ? width - 2
+          : Number.parseInt(width) - 2;
+      const useHeight = height === null ? 400
+        : typeof (height) === 'number' ? height - 2
+          : Number.parseInt(height) - 2;
       return [useWidth, useHeight];
     }
 
