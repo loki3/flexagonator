@@ -21,6 +21,11 @@ namespace Flexagonator {
     /** set horizontal alignment of text */
     setTextHorizontal(align: "left" | "center" | "right"): void;
 
+    /** set a clipping region */
+    setClipping(points: Point[]): void;
+    /** stop clipping */
+    resetClipping(): void;
+
     /** draw lines connecting a series of points, optionally drawing them dashed */
     drawLines(points: Point[], dashed?: "dashed"): void;
     /** draw a closed polygon, optionally filling it */

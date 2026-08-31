@@ -2,6 +2,8 @@ namespace Flexagonator {
 
   /** interface for drawing flexagons on a canvas */
   export class PaintCanvas implements Paint {
+    private clipActive = false;
+
     constructor(private readonly ctx: CanvasRenderingContext2D) { }
 
     start(dontClear?: "dontClear"): void {
@@ -14,6 +16,7 @@ namespace Flexagonator {
       this.ctx.save();
     }
     end(): void {
+      this.resetClipping();
       this.ctx.restore();
     }
 
@@ -38,6 +41,26 @@ namespace Flexagonator {
     }
     setTextHorizontal(align: "left" | "center" | "right"): void {
       this.ctx.textAlign = align;
+    }
+
+    setClipping(points: Point[]): void {
+      if (this.clipActive) {
+        this.ctx.restore();
+      }
+      this.ctx.save();
+
+      this.ctx.beginPath();
+      points.forEach((p, i) => {
+        i === 0 ? this.ctx.moveTo(p.x, p.y) : this.ctx.lineTo(p.x, p.y);
+      });
+      this.ctx.clip();
+      this.clipActive = true;
+    }
+    resetClipping(): void {
+      if (this.clipActive) {
+        this.ctx.restore();
+        this.clipActive = false;
+      }
     }
 
     drawLines(points: Point[], dashed?: "dashed"): void {

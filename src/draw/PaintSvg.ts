@@ -12,6 +12,8 @@ namespace Flexagonator {
     private textSize: number = 10;
     private textBaseline: "bottom" | "middle" = "bottom";
     private textAnchor: "start" | "middle" | "end" = "start";
+    private hasClip = false;
+    private clipId = 0;  // every new clip needs a unique id
 
     constructor(private readonly container: HTMLElement) {
       const [w, h] = this.getSize();
@@ -69,8 +71,22 @@ namespace Flexagonator {
       this.textAnchor = align === "left" ? "start" : align === "right" ? "end" : "middle";
     }
 
-    // <path d="M x,y x,y" />
-    drawLines(points: Point[], dashed?: "dashed" | undefined): void {
+    setClipping(points: Point[]): void {
+      this.clipId++;
+      const clip = document.createElementNS(svgNS, 'clipPath');
+      clip.setAttributeNS(null, 'id', `clip${this.clipId}`);
+
+      const path = this.pointsToPath(points);
+      clip.appendChild(path);
+
+      this.svg.appendChild(clip);
+      this.hasClip = true;
+    }
+    resetClipping(): void {
+      this.hasClip = false;
+    }
+
+    private pointsToPath(points: Point[], dashed?: "dashed" | undefined): SVGPathElement {
       const path = document.createElementNS(svgNS, "path");
 
       const pstr = points.map(p => `${p.x.toString()},${p.y.toString()}`);
@@ -84,6 +100,15 @@ namespace Flexagonator {
         path.setAttribute("stroke-dasharray", "10,5");
       }
 
+      return path;
+    }
+
+    // <path d="M x,y x,y" />
+    drawLines(points: Point[], dashed?: "dashed" | undefined): void {
+      const path = this.pointsToPath(points, dashed);
+      if (this.hasClip) {
+        path.setAttributeNS(null, 'clip-path', `url(#clip${this.clipId})`);
+      }
       this.svg.appendChild(path);
     }
     // <polygon points="x,y x,y" />
@@ -101,6 +126,9 @@ namespace Flexagonator {
         polygon.setAttribute("stroke-width", this.lineWidth.toString());
         polygon.setAttribute("fill", "none");
       }
+      if (this.hasClip) {
+        polygon.setAttributeNS(null, 'clip-path', `url(#clip${this.clipId})`);
+      }
 
       this.svg.appendChild(polygon);
     }
@@ -115,6 +143,9 @@ namespace Flexagonator {
       circle.setAttribute("stroke", this.lineColor);
       circle.setAttribute("stroke-width", this.lineWidth.toString());
       circle.setAttribute("fill", "none");
+      if (this.hasClip) {
+        circle.setAttributeNS(null, 'clip-path', `url(#clip${this.clipId})`);
+      }
 
       this.svg.appendChild(circle);
     }
