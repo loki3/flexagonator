@@ -6,17 +6,17 @@ namespace Flexagonator {
   }
 
   export interface LeafLines {
-    readonly faces: LeafFace[],  // each face in a strip of leaves
-    readonly folds: Line[],      // all the lines to fold along
-    readonly cuts: Line[]        // all the lines to cut along
+    readonly faces: LeafFace[], /** each face in a strip of leaves */
+    readonly folds: Line[],     /** all the lines to fold along */
+    readonly cuts: Line[],      /** all the lines to cut along */
   }
 
-  /*
+  /**
     Convert an unfolded description of leaves to a set of lines describing
     how to draw the unfolded strip.
-      leafs:  description of leaves & how they're connected
-      angle1: one angle of triangle for the leaf
-      angle2: the edge connecting the angles is the first edge to mirror across
+    @param leafs:  description of leaves & how they're connected
+    @param angle1: one angle of triangle for the leaf
+    @param angle2: the edge connecting the angles is the first edge to mirror across
   */
   export function leafsToLines(leafs: Leaf[], angle1: number, angle2: number): LeafLines {
     const faces: LeafFace[] = [];
@@ -62,6 +62,7 @@ namespace Flexagonator {
     return { faces: faces, folds: folds, cuts: cuts };
   }
 
+  /** find the extents of all the faces */
   export function getExtents(leaflines: LeafLines): [Point, Point] {
     let xmin = null, ymin = null, xmax = null, ymax = null;
     for (const face of leaflines.faces) {
@@ -82,6 +83,7 @@ namespace Flexagonator {
     return [{ x: xmin, y: ymin }, { x: xmax, y: ymax }];
   }
 
+  /** get a portion of the leaf-lines */
   export function sliceLeafLines(
     leaflines: LeafLines, start?: number, end?: number,
     cutEnds?: boolean,  /** have the ends be cuts rather than folds */
@@ -121,7 +123,7 @@ namespace Flexagonator {
   }
 
 
-  // rotate around the origin
+  /** rotate around the origin */
   class Rotate {
     private readonly cos: number;
     private readonly sin: number;
@@ -142,7 +144,7 @@ namespace Flexagonator {
     }
   }
 
-  // rotate leaflines around the origin (in radians)
+  /** rotate leaflines around the origin (in radians) */
   export function rotateLeafLines(leaflines: LeafLines, angle: number): LeafLines {
     if (angle === 0) {
       return leaflines;
