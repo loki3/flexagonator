@@ -9,6 +9,7 @@ namespace Flexagonator {
   }
 
   /** convert a Polygon (folded flexagon) to TilePlaces */
+  /*
   export function polygonToTilePlaces(polygon: Polygon): TilePlace[] {
     const triangles = polygon.getLeafTriangles();
     const places = triangles.map((t, i) => {
@@ -16,8 +17,10 @@ namespace Flexagonator {
     });
     return places;
   }
+  */
 
   /** convert LeafLines (unfolded flexagon) to TilePlaces given a transform to output coordinates */
+  /*
   export function leafLinesToTilePlaces(leafLines: LeafLines, transform: Transform, back: boolean): TilePlace[] {
     const places = leafLines.oriented.map(face => {
       const bounds = face.corners.map(c => transform.apply(c));
@@ -25,5 +28,6 @@ namespace Flexagonator {
     });
     return places;
   }
+  */
 
 }
