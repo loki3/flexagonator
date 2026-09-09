@@ -10,6 +10,10 @@ namespace Flexagonator {
 
   /** compare sets of leaf faces, rounding off coordinates, logging & returning false if it fails */
   function checkLeafFaces(expected: LeafFace[], actual: LeafFace[]): boolean {
+    if (expected.length !== actual.length) {
+      console.log(`mismatched leaf count:\nexpected ${expected.length}\nactual ${actual.length}`);
+      return false;
+    }
     for (let i = 0; i < expected.length; i++) {
       const e = expected[i];
       const a = actual[i];
@@ -29,10 +33,30 @@ namespace Flexagonator {
     return true;
   }
 
-  /** coordinates rounded to the nearest 0.001 */
-  function cornersAsString(p: Point[]) {
+  /** compare sets of leaf lines, rounding off coordinates, logging & returning false if it fails */
+  function checkLeafLines(expected: Line[], actual: Line[]): boolean {
+    if (expected.length !== actual.length) {
+      console.log(`mismatched line count:\nexpected ${expected.length}\nactual ${actual.length}`);
+      return false;
+    }
+    for (let i = 0; i < expected.length; i++) {
+      const e = linesAsString(expected[i]);
+      const a = linesAsString(actual[i]);
+      if (e !== a) {
+        console.log(`mismatched lines in element ${i}:\nexpected ${e}\nactual ${a}`);
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function cornersAsString(p: Point[]): string {
     return `{x:${r(p[0].x)}, y:${r(p[0].y)}}, {x:${r(p[1].x)}, y:${r(p[1].y)}}, {x:${r(p[2].x)}, y:${r(p[2].y)}}`;
   }
+  function linesAsString(l: Line): string {
+    return `{x:${r(l.a.x)}, y:${r(l.a.y)}} - {x:${r(l.b.x)}, y:${r(l.b.y)}}`;
+  }
+  /** coordinate rounded to the nearest 0.001 */
   function r(n: number): number {
     return Math.round(n * 1000) / 1000;
   }
@@ -66,7 +90,32 @@ namespace Flexagonator {
         { leaf: { id: 8, top: 8, bottom: -8, isClock: false }, corners: [{ x: 0, y: -1.732 }, { x: 1, y: -1.732 }, { x: 0.75, y: -2.165 }] },
         { leaf: { id: 9, top: 9, bottom: -9, isClock: true }, corners: [{ x: 0, y: -1.732 }, { x: 0.75, y: -2.165 }, { x: 0.5, y: -2.598 }] },
       ];
+      const expectedCuts: Line[] = [
+        { a: { x: 0, y: 0 }, b: { x: 0.75, y: 0.433 } },
+        { a: { x: 1, y: 0 }, b: { x: 0.75, y: -0.433 } },
+        { a: { x: 0, y: 0 }, b: { x: 0.5, y: -0.866 } },
+        { a: { x: 0.75, y: -0.433 }, b: { x: 1.5, y: -0.866 } },
+        { a: { x: 0.5, y: -0.866 }, b: { x: 0.75, y: -1.299 } },
+        { a: { x: 1.5, y: -0.866 }, b: { x: 1, y: -1.732 } },
+        { a: { x: 0.75, y: -1.299 }, b: { x: 0, y: -1.732 } },
+        { a: { x: 1, y: -1.732 }, b: { x: 0.75, y: -2.165 } },
+        { a: { x: 0, y: -1.732 }, b: { x: 0.5, y: -2.598 } },
+      ];
+      const expectedFolds: Line[] = [
+        { a: { x: 1, y: 0 }, b: { x: 0.75, y: 0.433 } },
+        { a: { x: 0, y: 0 }, b: { x: 1, y: 0 } },
+        { a: { x: 0, y: 0 }, b: { x: 0.75, y: -0.433 } },
+        { a: { x: 0.75, y: -0.433 }, b: { x: 0.5, y: -0.866 } },
+        { a: { x: 0.5, y: -0.866 }, b: { x: 1.5, y: -0.866 } },
+        { a: { x: 1.5, y: -0.866 }, b: { x: 0.75, y: -1.299 } },
+        { a: { x: 0.75, y: -1.299 }, b: { x: 1, y: -1.732 } },
+        { a: { x: 1, y: -1.732 }, b: { x: 0, y: -1.732 } },
+        { a: { x: 0, y: -1.732 }, b: { x: 0.75, y: -2.165 } },
+        { a: { x: 0.75, y: -2.165 }, b: { x: 0.5, y: -2.598 } },
+      ];
       expect(checkLeafFaces(expectedFaces, lines.faces)).toBe(true);
+      expect(checkLeafLines(expectedCuts, lines.cuts)).toBe(true);
+      expect(checkLeafLines(expectedFolds, lines.folds)).toBe(true);
     });
 
     it('creates the geometry for the hepta (generator: (P^>)5)', () => {
@@ -98,7 +147,56 @@ namespace Flexagonator {
         { leaf: { id: 20, top: 20, bottom: -20, isClock: true }, corners: [{ x: 1.75, y: -3.897 }, { x: 2, y: -3.464 }, { x: 2.5, y: -4.33 }] },
         { leaf: { id: 21, top: 21, bottom: -21, isClock: false }, corners: [{ x: 2.5, y: -4.33 }, { x: 2, y: -3.464 }, { x: 2.5, y: -3.464 }] },
       ];
+      const expectedCuts: Line[] = [
+        { a: { x: 0, y: 0 }, b: { x: 0.25, y: 0.433 } },
+        { a: { x: 1, y: 0 }, b: { x: 0.25, y: -0.433 } },
+        { a: { x: 0, y: 0 }, b: { x: -0.5, y: -0.866 } },
+        { a: { x: 0.25, y: -0.433 }, b: { x: 0.5, y: -0.866 } },
+        { a: { x: -0.5, y: -0.866 }, b: { x: 0.25, y: -1.299 } },
+        { a: { x: 0.25, y: -1.299 }, b: { x: 1, y: -1.732 } },
+        { a: { x: 0.5, y: -0.866 }, b: { x: 1, y: -0.866 } },
+        { a: { x: 1, y: -0.866 }, b: { x: 1.5, y: -0.866 } },
+        { a: { x: 1, y: -1.732 }, b: { x: 1.75, y: -1.299 } },
+        { a: { x: 1.5, y: -0.866 }, b: { x: 2.5, y: -0.866 } },
+        { a: { x: 1.75, y: -1.299 }, b: { x: 2, y: -1.732 } },
+        { a: { x: 2.5, y: -0.866 }, b: { x: 2.5, y: -1.732 } },
+        { a: { x: 2.5, y: -1.732 }, b: { x: 2.5, y: -2.598 } },
+        { a: { x: 2, y: -1.732 }, b: { x: 1.75, y: -2.165 } },
+        { a: { x: 1.75, y: -2.165 }, b: { x: 1.5, y: -2.598 } },
+        { a: { x: 2.5, y: -2.598 }, b: { x: 1.75, y: -3.031 } },
+        { a: { x: 1.5, y: -2.598 }, b: { x: 1, y: -3.464 } },
+        { a: { x: 1.75, y: -3.031 }, b: { x: 2, y: -3.464 } },
+        { a: { x: 1, y: -3.464 }, b: { x: 1.75, y: -3.897 } },
+        { a: { x: 1.75, y: -3.897 }, b: { x: 2.5, y: -4.33 } },
+        { a: { x: 2, y: -3.464 }, b: { x: 2.5, y: -3.464 } },
+      ];
+      const expectedFolds: Line[] = [
+        { a: { x: 1, y: 0 }, b: { x: 0.25, y: 0.433 } },
+        { a: { x: 0, y: 0 }, b: { x: 1, y: 0 } },
+        { a: { x: 0, y: 0 }, b: { x: 0.25, y: -0.433 } },
+        { a: { x: 0.25, y: -0.433 }, b: { x: -0.5, y: -0.866 } },
+        { a: { x: -0.5, y: -0.866 }, b: { x: 0.5, y: -0.866 } },
+        { a: { x: 0.5, y: -0.866 }, b: { x: 0.25, y: -1.299 } },
+        { a: { x: 0.5, y: -0.866 }, b: { x: 1, y: -1.732 } },
+        { a: { x: 1, y: -1.732 }, b: { x: 1, y: -0.866 } },
+        { a: { x: 1, y: -1.732 }, b: { x: 1.5, y: -0.866 } },
+        { a: { x: 1.5, y: -0.866 }, b: { x: 1.75, y: -1.299 } },
+        { a: { x: 1.75, y: -1.299 }, b: { x: 2.5, y: -0.866 } },
+        { a: { x: 2.5, y: -0.866 }, b: { x: 2, y: -1.732 } },
+        { a: { x: 2, y: -1.732 }, b: { x: 2.5, y: -1.732 } },
+        { a: { x: 2, y: -1.732 }, b: { x: 2.5, y: -2.598 } },
+        { a: { x: 2.5, y: -2.598 }, b: { x: 1.75, y: -2.165 } },
+        { a: { x: 2.5, y: -2.598 }, b: { x: 1.5, y: -2.598 } },
+        { a: { x: 1.5, y: -2.598 }, b: { x: 1.75, y: -3.031 } },
+        { a: { x: 1.75, y: -3.031 }, b: { x: 1, y: -3.464 } },
+        { a: { x: 1, y: -3.464 }, b: { x: 2, y: -3.464 } },
+        { a: { x: 2, y: -3.464 }, b: { x: 1.75, y: -3.897 } },
+        { a: { x: 2, y: -3.464 }, b: { x: 2.5, y: -4.33 } },
+        { a: { x: 2.5, y: -4.33 }, b: { x: 2.5, y: -3.464 } },
+      ];
       expect(checkLeafFaces(expectedFaces, lines.faces)).toBe(true);
+      expect(checkLeafLines(expectedCuts, lines.cuts)).toBe(true);
+      expect(checkLeafLines(expectedFolds, lines.folds)).toBe(true);
     });
   });
 
