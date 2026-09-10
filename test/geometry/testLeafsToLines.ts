@@ -26,7 +26,7 @@ namespace Flexagonator {
       const ec = cornersAsString(e.corners);
       const ac = cornersAsString(a.corners);
       if (ec !== ac) {
-        console.log(`mismatched corners in element ${i}:\nexpected ${ec}\nactual ${ac}`);
+        console.log(`mismatched corners in element ${i} id ${a.leaf.id}:\nexpected ${ec}\nactual ${ac}`);
         return false;
       }
     }
@@ -34,16 +34,17 @@ namespace Flexagonator {
   }
 
   /** compare sets of leaf lines, rounding off coordinates, logging & returning false if it fails */
-  function checkLeafLines(expected: Line[], actual: Line[]): boolean {
+  function checkLeafLines(expected: Line[], actual: Line[], name: string): boolean {
     if (expected.length !== actual.length) {
-      console.log(`mismatched line count:\nexpected ${expected.length}\nactual ${actual.length}`);
+      console.log(`mismatched ${name} count:\nexpected ${expected.length}\nactual ${actual.length}`);
       return false;
     }
     for (let i = 0; i < expected.length; i++) {
       const e = linesAsString(expected[i]);
       const a = linesAsString(actual[i]);
-      if (e !== a) {
-        console.log(`mismatched lines in element ${i}:\nexpected ${e}\nactual ${a}`);
+      const a2 = linesAsString({ a: actual[i].b, b: actual[i].a });
+      if (e !== a && e !== a2) { // order of the points doesn't matter
+        console.log(`mismatched ${name} in element ${i}:\nexpected ${e}\nactual ${a}`);
         return false;
       }
     }
@@ -90,6 +91,17 @@ namespace Flexagonator {
         { leaf: { id: 8, top: 8, bottom: -8, isClock: false }, corners: [{ x: 0, y: -1.732 }, { x: 1, y: -1.732 }, { x: 0.75, y: -2.165 }] },
         { leaf: { id: 9, top: 9, bottom: -9, isClock: true }, corners: [{ x: 0, y: -1.732 }, { x: 0.75, y: -2.165 }, { x: 0.5, y: -2.598 }] },
       ];
+      const expectedOriented: LeafFace[] = [
+        { leaf: { id: 1, top: 1, bottom: -1, isClock: true }, corners: [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0.75, y: 0.433 }] },
+        { leaf: { id: 2, top: 2, bottom: -2, isClock: false }, corners: [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0.75, y: -0.433 }] },
+        { leaf: { id: 3, top: 3, bottom: -3, isClock: true }, corners: [{ x: 0, y: 0 }, { x: 0.5, y: -0.866 }, { x: 0.75, y: -0.433 }] },
+        { leaf: { id: 4, top: 4, bottom: -4, isClock: false }, corners: [{ x: 1.5, y: -0.866 }, { x: 0.5, y: -0.866 }, { x: 0.75, y: -0.433 }] },
+        { leaf: { id: 5, top: 5, bottom: -5, isClock: true }, corners: [{ x: 1.5, y: -0.866 }, { x: 0.5, y: -0.866 }, { x: 0.75, y: -1.299 }] },
+        { leaf: { id: 6, top: 6, bottom: -6, isClock: false }, corners: [{ x: 1.5, y: -0.866 }, { x: 1, y: -1.732 }, { x: 0.75, y: -1.299 }] },
+        { leaf: { id: 7, top: 7, bottom: -7, isClock: true }, corners: [{ x: 0, y: -1.732 }, { x: 1, y: -1.732 }, { x: 0.75, y: -1.299 }] },
+        { leaf: { id: 8, top: 8, bottom: -8, isClock: false }, corners: [{ x: 0, y: -1.732 }, { x: 1, y: -1.732 }, { x: 0.75, y: -2.165 }] },
+        { leaf: { id: 9, top: 9, bottom: -9, isClock: true }, corners: [{ x: 0, y: -1.732 }, { x: 0.5, y: -2.598 }, { x: 0.75, y: -2.165 }] },
+      ];
       const expectedCuts: Line[] = [
         { a: { x: 0, y: 0 }, b: { x: 0.75, y: 0.433 } },
         { a: { x: 1, y: 0 }, b: { x: 0.75, y: -0.433 } },
@@ -114,8 +126,9 @@ namespace Flexagonator {
         { a: { x: 0.75, y: -2.165 }, b: { x: 0.5, y: -2.598 } },
       ];
       expect(checkLeafFaces(expectedFaces, lines.faces)).toBe(true);
-      expect(checkLeafLines(expectedCuts, lines.cuts)).toBe(true);
-      expect(checkLeafLines(expectedFolds, lines.folds)).toBe(true);
+      expect(checkLeafFaces(expectedOriented, lines.oriented)).toBe(true);
+      expect(checkLeafLines(expectedCuts, lines.cuts, 'cuts')).toBe(true);
+      expect(checkLeafLines(expectedFolds, lines.folds, 'folds')).toBe(true);
     });
 
     it('creates the geometry for the hepta (generator: (P^>)5)', () => {
@@ -146,6 +159,29 @@ namespace Flexagonator {
         { leaf: { id: 19, top: 19, bottom: -19, isClock: true }, corners: [{ x: 1, y: -3.464 }, { x: 2, y: -3.464 }, { x: 1.75, y: -3.897 }] },
         { leaf: { id: 20, top: 20, bottom: -20, isClock: true }, corners: [{ x: 1.75, y: -3.897 }, { x: 2, y: -3.464 }, { x: 2.5, y: -4.33 }] },
         { leaf: { id: 21, top: 21, bottom: -21, isClock: false }, corners: [{ x: 2.5, y: -4.33 }, { x: 2, y: -3.464 }, { x: 2.5, y: -3.464 }] },
+      ];
+      const expectedOriented: LeafFace[] = [
+        { leaf: { id: 1, top: 1, bottom: -1, isClock: true }, corners: [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0.25, y: 0.433 }] },
+        { leaf: { id: 2, top: 2, bottom: -2, isClock: false }, corners: [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 0.25, y: -0.433 }] },
+        { leaf: { id: 3, top: 3, bottom: -3, isClock: true }, corners: [{ x: 0, y: 0 }, { x: -0.5, y: -0.866 }, { x: 0.25, y: -0.433 }] },
+        { leaf: { id: 4, top: 4, bottom: -4, isClock: false }, corners: [{ x: 0.5, y: -0.866 }, { x: -0.5, y: -0.866 }, { x: 0.25, y: -0.433 }] },
+        { leaf: { id: 5, top: 5, bottom: -5, isClock: true }, corners: [{ x: 0.5, y: -0.866 }, { x: -0.5, y: -0.866 }, { x: 0.25, y: -1.299 }] },
+        { leaf: { id: 6, top: 6, bottom: -6, isClock: true }, corners: [{ x: 0.5, y: -0.866 }, { x: 1, y: -1.732 }, { x: 0.25, y: -1.299 }] },
+        { leaf: { id: 7, top: 7, bottom: -7, isClock: false }, corners: [{ x: 0.5, y: -0.866 }, { x: 1, y: -1.732 }, { x: 1, y: -0.866 }] },
+        { leaf: { id: 8, top: 8, bottom: -8, isClock: false }, corners: [{ x: 1.5, y: -0.866 }, { x: 1, y: -1.732 }, { x: 1, y: -0.866 }] },
+        { leaf: { id: 9, top: 9, bottom: -9, isClock: true }, corners: [{ x: 1.5, y: -0.866 }, { x: 1, y: -1.732 }, { x: 1.75, y: -1.299 }] },
+        { leaf: { id: 10, top: 10, bottom: -10, isClock: false }, corners: [{ x: 1.5, y: -0.866 }, { x: 2.5, y: -0.866 }, { x: 1.75, y: -1.299 }] },
+        { leaf: { id: 11, top: 11, bottom: -11, isClock: true }, corners: [{ x: 2, y: -1.732 }, { x: 2.5, y: -0.866 }, { x: 1.75, y: -1.299 }] },
+        { leaf: { id: 12, top: 12, bottom: -12, isClock: false }, corners: [{ x: 2, y: -1.732 }, { x: 2.5, y: -0.866 }, { x: 2.5, y: -1.732 }] },
+        { leaf: { id: 13, top: 13, bottom: -13, isClock: false }, corners: [{ x: 2, y: -1.732 }, { x: 2.5, y: -2.598 }, { x: 2.5, y: -1.732 }] },
+        { leaf: { id: 14, top: 14, bottom: -14, isClock: true }, corners: [{ x: 2, y: -1.732 }, { x: 2.5, y: -2.598 }, { x: 1.75, y: -2.165 }] },
+        { leaf: { id: 15, top: 15, bottom: -15, isClock: true }, corners: [{ x: 1.5, y: -2.598 }, { x: 2.5, y: -2.598 }, { x: 1.75, y: -2.165 }] },
+        { leaf: { id: 16, top: 16, bottom: -16, isClock: false }, corners: [{ x: 1.5, y: -2.598 }, { x: 2.5, y: -2.598 }, { x: 1.75, y: -3.031 }] },
+        { leaf: { id: 17, top: 17, bottom: -17, isClock: true }, corners: [{ x: 1.5, y: -2.598 }, { x: 1, y: -3.464 }, { x: 1.75, y: -3.031 }] },
+        { leaf: { id: 18, top: 18, bottom: -18, isClock: false }, corners: [{ x: 2, y: -3.464 }, { x: 1, y: -3.464 }, { x: 1.75, y: -3.031 }] },
+        { leaf: { id: 19, top: 19, bottom: -19, isClock: true }, corners: [{ x: 2, y: -3.464 }, { x: 1, y: -3.464 }, { x: 1.75, y: -3.897 }] },
+        { leaf: { id: 20, top: 20, bottom: -20, isClock: true }, corners: [{ x: 2, y: -3.464 }, { x: 2.5, y: -4.33 }, { x: 1.75, y: -3.897 }] },
+        { leaf: { id: 21, top: 21, bottom: -21, isClock: false }, corners: [{ x: 2, y: -3.464 }, { x: 2.5, y: -4.33 }, { x: 2.5, y: -3.464 }] },
       ];
       const expectedCuts: Line[] = [
         { a: { x: 0, y: 0 }, b: { x: 0.25, y: 0.433 } },
@@ -195,8 +231,9 @@ namespace Flexagonator {
         { a: { x: 2.5, y: -4.33 }, b: { x: 2.5, y: -3.464 } },
       ];
       expect(checkLeafFaces(expectedFaces, lines.faces)).toBe(true);
-      expect(checkLeafLines(expectedCuts, lines.cuts)).toBe(true);
-      expect(checkLeafLines(expectedFolds, lines.folds)).toBe(true);
+      expect(checkLeafFaces(expectedOriented, lines.oriented)).toBe(true);
+      expect(checkLeafLines(expectedCuts, lines.cuts, 'cuts')).toBe(true);
+      expect(checkLeafLines(expectedFolds, lines.folds, 'folds')).toBe(true);
     });
   });
 
@@ -207,6 +244,7 @@ namespace Flexagonator {
         faces: [{ leaf: leaf, corners: [{ x: 1, y: 2 }, { x: 3, y: 4 }] }], // [1,2], [3,4]
         folds: [],
         cuts: [],
+        oriented: [],
       };
 
       const extents = getExtents(sample);
@@ -222,6 +260,7 @@ namespace Flexagonator {
       const leaf: Leaf = { id: 1, top: 1, bottom: 1, isClock: true };
       const sample: LeafLines = {
         faces: [{ leaf: leaf, corners: [{ x: 1, y: 2 }, { x: 3, y: 4 }] }], // [-2,1], [-4,3]
+        oriented: [{ leaf: leaf, corners: [{ x: 3, y: 4 }, { x: 1, y: 2 }] }], // [-4,3], [-2,1]
         folds: [{ a: { x: -1, y: -2 }, b: { x: -2, y: 1 } }], // [2,-1], [-1,-2]
         cuts: [{ a: { x: 1, y: -2 }, b: { x: 2, y: -1 } }],  // [2,1], [1,2]
       };
@@ -231,6 +270,11 @@ namespace Flexagonator {
       expect(actual.faces[0].corners[0].y).toBeCloseTo(1);
       expect(actual.faces[0].corners[1].x).toBeCloseTo(-4);
       expect(actual.faces[0].corners[1].y).toBeCloseTo(3);
+      expect(actual.oriented.length).toBe(1);
+      expect(actual.oriented[0].corners[0].x).toBeCloseTo(-4);
+      expect(actual.oriented[0].corners[0].y).toBeCloseTo(3);
+      expect(actual.oriented[0].corners[1].x).toBeCloseTo(-2);
+      expect(actual.oriented[0].corners[1].y).toBeCloseTo(1);
       expect(actual.folds[0].a.x).toBeCloseTo(2);
       expect(actual.cuts[0].b.y).toBeCloseTo(2);
     });

@@ -7,9 +7,12 @@ namespace Flexagonator {
 
   export interface LeafLines {
     readonly faces: LeafFace[], /** each face in a strip of leaves */
+    readonly oriented: LeafFace[], /** faces with a consistent orientation relative to the leaf angles */
     readonly folds: Line[],     /** all the lines to fold along */
     readonly cuts: Line[],      /** all the lines to cut along */
   }
+
+  type TriangleBase = 'ab' | 'bc' | 'ca';
 
   /**
     Convert an unfolded description of leaves to a set of lines describing
@@ -19,7 +22,7 @@ namespace Flexagonator {
     @param angle2: the edge connecting the angles is the first edge to mirror across
   */
   export function leafsToLines(leafs: Leaf[], angle1: number, angle2: number): LeafLines {
-    const faces: LeafFace[] = [];
+    const oriented: LeafFace[] = [];
     const folds: Line[] = [];
     const cuts: Line[] = [];
 
@@ -27,15 +30,43 @@ namespace Flexagonator {
     let a = { x: 0, y: 0 };
     let b = { x: 1, y: 0 };
     let c = computeTrianglePoint(angle1, angle2);
-    faces.push({ leaf: leafs[0], corners: [a, b, c] });
-    if (leafs[0].isClock) {
-      folds.push({ a: b, b: c });
-      cuts.push({ a: a, b: c });
-    } else {
-      folds.push({ a: a, b: c });
-      cuts.push({ a: b, b: c });
-    }
+    let base: TriangleBase = leafs[0].isClock ? 'bc' : 'ca';
+    oriented.push({ leaf: leafs[0], corners: [a, b, c] });
+    folds.push(base === 'bc' ? { a: b, b: c } : { a: c, b: a });
     folds.push({ a: a, b: b });
+    cuts.push(base === 'bc' ? { a: a, b: c } : { a: b, b: c });
+    const faces = getLegacyFaces(leafs, a, b, c);
+
+    base = 'ab';
+    for (let i = 1; i < leafs.length; i++) {
+      const leaf = leafs[i];
+      const dir = leaf.isClock === (i % 2 === 1); // where next leaf is connected & odd/even leaf mirroring
+      if (base === 'ab') {
+        c = mirror(a, b, c);
+        base = dir ? 'bc' : 'ca';
+        cuts.push(dir ? { a: c, b: a } : { a: b, b: c });
+      } else if (base === 'bc') {
+        a = mirror(b, c, a);
+        base = dir ? 'ca' : 'ab';
+        cuts.push(dir ? { a: a, b: b } : { a: c, b: a });
+      } else { // base === 'ca'
+        b = mirror(c, a, b);
+        base = dir ? 'ab' : 'bc';
+        cuts.push(dir ? { a: b, b: c } : { a: a, b: b });
+      }
+
+      oriented.push({ leaf: leafs[i], corners: [a, b, c] });
+      const fold = base === 'ab' ? { a: a, b: b } : base === 'bc' ? { a: b, b: c } : { a: c, b: a };
+      folds.push(fold);
+    }
+
+    return { faces, oriented, folds, cuts };
+  }
+
+  // continue using old method of computing faces for backward compatibility of label placement
+  function getLegacyFaces(leafs: Leaf[], a: Point, b: Point, c: Point): LeafFace[] {
+    const faces: LeafFace[] = [];
+    faces.push({ leaf: leafs[0], corners: [a, b, c] });
 
     // keep mirroring a corner based on the direction the strip winds
     for (let i = 1; i < leafs.length; i++) {
@@ -43,23 +74,16 @@ namespace Flexagonator {
       faces.push({ leaf: leafs[i], corners: [a, b, c] });
 
       if (leafs[i].isClock) {
-        folds.push({ a: b, b: c });
-        cuts.push({ a: a, b: c });
-
         const temp = a;
         a = c;
         c = temp;
       } else {
-        folds.push({ a: a, b: c });
-        cuts.push({ a: b, b: c });
-
         const temp = b;
         b = c;
         c = temp;
       }
     }
-
-    return { faces: faces, folds: folds, cuts: cuts };
+    return faces;
   }
 
   /** find the extents of all the faces */
@@ -97,9 +121,10 @@ namespace Flexagonator {
     const foldEnd = end ? end + 2 : end;
 
     const faces = leaflines.faces.slice(start, theEnd);
+    const oriented = leaflines.oriented.slice(start, theEnd);
     const folds = getFoldsCutEnds(leaflines, start, foldEnd, cutEnds);
     const cuts = getCutsCutEnds(leaflines, start, theEnd, cutEnds);
-    return { faces, folds, cuts };
+    return { faces, oriented, folds, cuts };
   }
 
   function getFoldsCutEnds(leaflines: LeafLines, start?: number, end?: number, cutEnds?: boolean): Line[] {
@@ -156,10 +181,15 @@ namespace Flexagonator {
       const corners = oldface.corners.map(oldcorner => rotate.point(oldcorner));
       faces.push({ leaf: oldface.leaf, corners: corners });
     }
+    const oriented: LeafFace[] = [];
+    for (let oldface of leaflines.oriented) {
+      const corners = oldface.corners.map(oldcorner => rotate.point(oldcorner));
+      oriented.push({ leaf: oldface.leaf, corners: corners });
+    }
 
     const folds: Line[] = leaflines.folds.map(oldfold => rotate.line(oldfold));
     const cuts: Line[] = leaflines.cuts.map(oldcut => rotate.line(oldcut));
 
-    return { faces: faces, folds: folds, cuts: cuts };
+    return { faces, oriented, folds, cuts };
   }
 }
