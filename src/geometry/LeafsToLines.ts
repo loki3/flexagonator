@@ -13,6 +13,7 @@ namespace Flexagonator {
   }
 
   type TriangleBase = 'ab' | 'bc' | 'ca';
+  type Orientation = 'acb' | 'bac' | 'cba';
 
   /**
     Convert an unfolded description of leaves to a set of lines describing
@@ -20,8 +21,11 @@ namespace Flexagonator {
     @param leafs:  description of leaves & how they're connected
     @param angle1: one angle of triangle for the leaf
     @param angle2: the edge connecting the angles is the first edge to mirror across
+    @param corners: the order of the 3 corners: 0, 1, & 2
   */
-  export function leafsToLines(leafs: Leaf[], angle1: number, angle2: number): LeafLines {
+  export function leafsToLines(
+    leafs: Leaf[], angle1: number, angle2: number, corners: number[]
+  ): LeafLines {
     const oriented: LeafFace[] = [];
     const folds: Line[] = [];
     const cuts: Line[] = [];
@@ -31,7 +35,8 @@ namespace Flexagonator {
     let b = { x: 1, y: 0 };
     let c = computeTrianglePoint(angle1, angle2);
     let base: TriangleBase = leafs[0].isClock ? 'bc' : 'ca';
-    oriented.push({ leaf: leafs[0], corners: [a, b, c] });
+    let orientation = getOrientation(corners);
+    oriented.push({ leaf: leafs[0], corners: reorient(a, b, c, orientation) });
     folds.push(base === 'bc' ? { a: b, b: c } : { a: c, b: a });
     folds.push({ a: a, b: b });
     cuts.push(base === 'bc' ? { a: a, b: c } : { a: b, b: c });
@@ -55,12 +60,30 @@ namespace Flexagonator {
         cuts.push(dir ? { a: b, b: c } : { a: a, b: b });
       }
 
-      oriented.push({ leaf: leafs[i], corners: [a, b, c] });
+      const corners = reorient(a, b, c, orientation);
+      oriented.push({ leaf: leafs[i], corners });
       const fold = base === 'ab' ? { a: a, b: b } : base === 'bc' ? { a: b, b: c } : { a: c, b: a };
       folds.push(fold);
     }
 
     return { faces, oriented, folds, cuts };
+  }
+
+  /** how the corners of the oriented triangles should be rearranged to properly match where the angles are */
+  function getOrientation(corners: number[]): Orientation {
+    switch (corners[0]) {
+      case 0: return 'acb';
+      case 1: return 'cba';
+      case 2: return 'bac';
+    }
+    return 'acb';
+  }
+  function reorient(a: Point, b: Point, c: Point, orientation: Orientation): Point[] {
+    switch (orientation) {
+      case 'acb': return [a, c, b];
+      case 'bac': return [b, a, c];
+      case 'cba': return [c, b, a];
+    }
   }
 
   // continue using old method of computing faces for backward compatibility of label placement

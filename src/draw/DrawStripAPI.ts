@@ -89,7 +89,7 @@ namespace Flexagonator {
     }
 
     const angles = objects.angleInfo.getUnfoldedAngles(objects.flexagon, unfolded);
-    const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]));
+    const leaflines = leafsToLines(unfolded, toRadians(angles[0]), toRadians(angles[1]), objects.flexagon.angleTracker.corners);
     slices.computeAcross(leaflines);
 
     const layer = slices.options[0] ? slices.options[0].layer : undefined;

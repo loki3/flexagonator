@@ -33,7 +33,7 @@ namespace Flexagonator {
     const ids = showFront ? flexagon.getTopIds() : flexagon.getBottomIds().map(id => -id);
     const leafs = getAsLeafs(flexagon.getPatCount(), ids, flexagon.directions);
     const angles = angleInfo.getUnfoldedAngles(flexagon, leafs);
-    const leaflines = leafsToLines(leafs, toRadians(angles[0]), toRadians(angles[1]));
+    const leaflines = leafsToLines(leafs, toRadians(angles[0]), toRadians(angles[1]), flexagon.angleTracker.corners);
 
     // rotate lines so the current hinge is at the top, then add in user specified rotation
     const straighten = getCurrentHingeAngle(leaflines);
