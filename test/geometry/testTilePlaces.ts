@@ -20,6 +20,9 @@ namespace Flexagonator {
   function boundsAsString(p: Point[]): string {
     return `{x:${r(p[0].x)}, y:${r(p[0].y)}}, {x:${r(p[1].x)}, y:${r(p[1].y)}}, {x:${r(p[2].x)}, y:${r(p[2].y)}}`;
   }
+  function pointAsString(p: Point): string {
+    return `{x:${r(p.x)}, y:${r(p.y)}}`;
+  }
   /** coordinate rounded to the nearest 0.001 */
   function r(n: number): number {
     return Math.round(n * 100) / 100;
@@ -113,6 +116,21 @@ namespace Flexagonator {
         { id: 5, bounds: [{ x: 173.63, y: 200.34 }, { x: 259.95, y: 150.51 }, { x: 173.63, y: 100.67 }] }];
 
       expect(checkTilePlaces(expected, places, 5, 'leafLinesToTilePlaces')).toBe(true);
+    });
+  });
+
+  describe('getTileOutputTransform', () => {
+    it('handles any order for baseline', () => {
+      const bounds1 = [{ x: 1, y: 199 }, { x: 115, y: 264 }, { x: 115, y: 1 }];
+      const bounds2 = [bounds1[1], bounds1[0], bounds1[2]];
+
+      const transform1 = getTileOutputTransform(bounds1);
+      const transform2 = getTileOutputTransform(bounds2);
+
+      const p1 = pointAsString(transform1.transform({ x: 2, y: 3 }));
+      const p2 = pointAsString(transform2.transform({ x: 2, y: 3 }));
+      expect(p1).toBe('{x:424, y:-13}');
+      expect(p2).toBe('{x:424, y:-13}');
     });
   });
 }

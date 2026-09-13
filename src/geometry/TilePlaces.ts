@@ -8,6 +8,7 @@ namespace Flexagonator {
     readonly bounds: Point[];
   }
 
+
   /**
    * convert a Polygon (folded isoflexagon) to TilePlaces, which describes where to draw tiles
    * @param ids leaf ids around the polygon
@@ -43,6 +44,7 @@ namespace Flexagonator {
     }
   }
 
+
   /** convert LeafLines (unfolded flexagon) to TilePlaces given a transform to output coordinates */
   export function leafLinesToTilePlaces(
     leafLines: LeafLines, transform: Transform, back: boolean
@@ -56,6 +58,31 @@ namespace Flexagonator {
       return { id: face.leaf.id * (back ? -1 : 1), bounds };
     });
     return places;
+  }
+
+
+  /** map tile coordinates to output bounds coordinate system */
+  export function getTileOutputTransform(bounds: Point[]): Matrix2D {
+    // possibly swap baseline so the transform always aims toward the third point
+    const isClock = goesClockwise(bounds[0], bounds[1], bounds[2]);
+    const itemToPaint = isClock
+      ? makeTransform(bounds[1], bounds[0])
+      : makeTransform(bounds[0], bounds[1]);
+    return itemToPaint;
+  }
+
+  function goesClockwise(a: Point, b: Point, c: Point): boolean {
+    const calc = (b.y - a.y) * (c.x - b.x) - (b.x - a.x) * (c.y - b.y);
+    return calc > 0;
+  }
+
+  /** offset, scale, & rotate everything so that (0,0)-(0,1) in tile coords maps to (p1,p2) */
+  function makeTransform(p1: Point, p2: Point): Matrix2D {
+    const dx = p2.x - p1.x;
+    const dy = p2.y - p1.y;
+    const scale = Math.sqrt(dx * dx + dy * dy);
+    const angle = Math.atan2(dy, dx);
+    return Matrix2D.new().mirror('x').offset(1, 0).scale(scale).rotate(angle).offset(p1.x, p1.y);
   }
 
 }
