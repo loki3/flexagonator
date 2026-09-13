@@ -3,7 +3,8 @@ namespace Flexagonator {
   export function drawStrip(
     paint: Paint, leaflines: LeafLines,
     content: LeafContent, props: PropertiesForLeaves, scale?: number,
-    rotation?: number, captions?: DrawStripCaption[], center?: boolean, layer?: TemplateLayer
+    rotation?: number, captions?: DrawStripCaption[], center?: boolean,
+    layer?: TemplateLayer, tiles?: Tiles, corners?: number[]
   ) {
     const [w, h] = paint.getSize();
     if (rotation !== undefined) {
@@ -25,6 +26,12 @@ namespace Flexagonator {
           drawLeafCaption(paint, transform, leaflines, caption);
         }
       }
+    }
+
+    if (tiles) {
+      const back = content.face === 'back' || content.face === 'back-y';
+      const places = leafLinesToTilePlaces(leaflines, transform, back);
+      drawTiles(paint, tiles, places);
     }
 
     if (layer === 'folds') {

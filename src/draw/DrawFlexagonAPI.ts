@@ -25,6 +25,7 @@ namespace Flexagonator {
     readonly generate?: boolean;    // include every flex with * added - default: false
     readonly scale?: number;        // scale factor - default: 1
     readonly rotate?: number;       // amount to rotate flexagon (degrees) - default: 0
+    readonly tiles?: Tiles;         // draw on individual leaves
   }
 
   // draw a flexagon in its current state, with optional colors, flexes, etc.
@@ -81,7 +82,8 @@ namespace Flexagonator {
       }
     } else {
       drawFlexagon(paint, objects.flexagon, polygon, objects.leafProps,
-        showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker, options.scaleStructure);
+        showFront, showStructure, showIds, showCurrent, showNumbers, showCenterMarker,
+        options.scaleStructure, options.tiles);
       if (options.both) {
         const backpolygon = createBackPolygon(width, height, objects.flexagon, objects.angleInfo);
         drawFlexagon(paint, objects.flexagon, backpolygon, objects.leafProps, false/*showFront*/, StructureType.None, false/*showIds*/);

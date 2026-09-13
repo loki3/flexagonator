@@ -8,7 +8,8 @@ namespace Flexagonator {
 
   export function drawFlexagon(paint: Paint, flexagon: Flexagon, polygon: Polygon,
     props: PropertiesForLeaves, front: boolean, patstructure: StructureType, showids: boolean,
-    showCurrent?: boolean, showNumbers?: boolean, showCenterMarker?: boolean, scaleStructure?: number
+    showCurrent?: boolean, showNumbers?: boolean, showCenterMarker?: boolean, scaleStructure?: number,
+    tiles?: Tiles
   ) {
 
     const markerText = polygon.radius / 6;
@@ -24,6 +25,12 @@ namespace Flexagonator {
     paint.setLineColor(0x5a96d2);
     const corners = polygon.getCorners();
     drawPolygon(paint, corners);
+
+    if (tiles) {
+      const places = polygonToTilePlaces(polygon, ids, flexagon.angleTracker.corners);
+      drawTiles(paint, tiles, places);
+    }
+
     drawSpokes(paint, corners, polygon.xCenter, polygon.yCenter);
     if (showCurrent === undefined || showCurrent) {
       drawText(paint, markerText, corners[0], corners[1], "⚹");

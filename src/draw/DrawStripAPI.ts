@@ -58,6 +58,8 @@ namespace Flexagonator {
     readonly captions?: DrawStripCaption[];
     // [optional] draw just a portion of the strip, default: all
     readonly layer?: TemplateLayer;
+    // [optional] drawing on individual leaf-faces
+    readonly tiles?: Tiles;
   }
 
   export type TemplateLayer = 'all' | 'cuts' | 'folds';
@@ -103,7 +105,8 @@ namespace Flexagonator {
         const leaflinesSubset = sliceLeafLines(leaflines, opt.start, opt.end, cutEnds);
         paint.start();
         drawStrip(paint, leaflinesSubset, content, objects.leafProps,
-          opt.scale, opt.rotation, opt.captions, undefined, opt.layer);
+          opt.scale, opt.rotation, opt.captions, undefined, opt.layer,
+          opt.tiles, objects.flexagon.angleTracker.corners);
         paint.end();
       }
     }
