@@ -4,7 +4,7 @@ namespace Flexagonator {
     paint: Paint, leaflines: LeafLines,
     content: LeafContent, props: PropertiesForLeaves, scale?: number,
     rotation?: number, captions?: DrawStripCaption[], center?: boolean,
-    layer?: TemplateLayer, tiles?: Tiles, corners?: number[]
+    layer?: TemplateLayer, tiles?: Tiles
   ) {
     const [w, h] = paint.getSize();
     if (rotation !== undefined) {

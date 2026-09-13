@@ -105,8 +105,7 @@ namespace Flexagonator {
         const leaflinesSubset = sliceLeafLines(leaflines, opt.start, opt.end, cutEnds);
         paint.start();
         drawStrip(paint, leaflinesSubset, content, objects.leafProps,
-          opt.scale, opt.rotation, opt.captions, undefined, opt.layer,
-          opt.tiles, objects.flexagon.angleTracker.corners);
+          opt.scale, opt.rotation, opt.captions, undefined, opt.layer, opt.tiles);
         paint.end();
       }
     }
