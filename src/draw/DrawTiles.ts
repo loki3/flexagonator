@@ -3,7 +3,7 @@ namespace Flexagonator {
   /**
    * draw tiles in the specified places
    * @param tiles description of what to draw for each leaf-id
-   * @param places where to draw a tile
+   * @param places where to draw a tile in output coordinates
    */
   export function drawTiles(paint: Paint, tiles: Tiles, places: TilePlace[]) {
     for (const place of places) {
@@ -24,16 +24,8 @@ namespace Flexagonator {
       paint.drawPolygon(bounds, 'fill');
     }
 
-    // map item coordinates to output bounds coordinate system
-    const p1 = bounds[0];
-    const p2 = bounds[1];
-    const dx = p2.x - p1.x;
-    const dy = p2.y - p1.y;
-    const scale = Math.sqrt(dx * dx + dy * dy);
-    const angle = Math.atan2(dy, dx);
-    const itemToPaint = Matrix2D.new().mirror('x').offset(1, 0).scale(scale).rotate(angle).offset(p1.x, p1.y)
-
-    // draw items
+    // draw tile items
+    const itemToPaint = getTileOutputTransform(bounds);
     const drawer = new ItemDrawer(paint, itemToPaint);
     for (const item of tile.items) {
       handleItem(drawer, item);
@@ -51,22 +43,31 @@ namespace Flexagonator {
     constructor(private readonly paint: Paint, private readonly transform: Matrix2D) { }
 
     doLines(item: ItemLines) {
+      if (item.points === undefined) {
+        return;
+      }
       if (item.color) {
         this.paint.setLineColor(item.color);
       }
-      const points = item.points.map(l => this.transform.transform(l));
+      const points = item.points.map(p => this.transform.transform(p));
       this.paint.drawLines(points);
     }
 
     doPolygon(item: ItemPolygon) {
+      if (item.corners === undefined) {
+        return;
+      }
       if (item.color) {
         this.paint.setFillColor(item.color);
       }
-      const corners = item.corners.map(l => this.transform.transform(l));
+      const corners = item.corners.map(p => this.transform.transform(p));
       this.paint.drawPolygon(corners, 'fill');
     }
 
     doCircle(item: ItemCircle) {
+      if (item.center === undefined || item.radius === undefined) {
+        return;
+      }
       if (item.color) {
         this.paint.setLineColor(item.color);
       }
