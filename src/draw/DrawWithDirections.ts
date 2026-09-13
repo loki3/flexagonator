@@ -6,12 +6,13 @@ namespace Flexagonator {
    */
   export function drawWithDirections(paint: Paint, objects: DrawFlexagonObjects,
     showFront: boolean, showStructure: StructureType, showIds: boolean,
-    showCurrent: boolean, showNumbers: boolean, rotation?: number
+    showCurrent: boolean, showNumbers: boolean, rotation?: number, tiles?: Tiles
   ): Line[] {
     const leaflines = getLeafLines(objects.flexagon, objects.angleInfo, showFront, rotation);
     const content: LeafContent = { showLeafProps: true, showIds, face: showFront ? 'front' : 'back', inset: 0.1 };
     const leafProps = fillInProps(objects.leafProps, objects.flexagon.getTopIds(), objects.flexagon.getBottomIds(), showNumbers);
-    drawStrip(paint, leaflines, content, leafProps, undefined, 0, undefined, true/*center*/);
+    drawStrip(paint, leaflines, content, leafProps, undefined, 0, undefined,
+      true/*center*/, undefined, tiles);
 
     const transform = getTransform(paint, leaflines, showFront);
     const hinges = getHingeLines(leaflines, transform);
